@@ -26,6 +26,6 @@ Bu projede geliştirme, derleme, test ve denetim işlemleri evrensel `/suite` mo
 - Hata ayıklama yaparken veya özellik eklerken asla "Sorma işini bırak" kuralını unutmayın.
 - YAGNI (You Aren't Gonna Need It) kuralına sadık kalın, gereksiz karmaşıklıktan kaçının.
 - **Tasarım:** Belgin'den farklı olarak, lüks saat satışı yapıldığı için "Teal/Gold" değil "Beyaz/Siyah/Lüks Altın (#846b32)" kullanılır.
-- **Fiyatlama:** Belgin'deki "İZKO/Harem Altın" motoru bu projede HİÇBİR ŞEKİLDE ÇALIŞMAZ. Fiyatlar tamamen **Chrono24 Küresel Fiyatı × USD Kuru × 1.80** formülüyle çalışır.
+- **Fiyatlama:** Belgin'deki "İZKO/Harem Altın" motoru bu projede HİÇBİR ŞEKİLDE ÇALIŞMAZ. Fiyatlar tamamen **Chrono24 Küresel Fiyatı × USD Kuru × 2.50 (+%150 Gümrük/Kâr Marjı)** formülüyle çalışır.
 
 Tüm AI ajanları bu dosyayı ve `AGENTS.md` dosyasını sistemin mutlak anayasası olarak kabul edecektir.

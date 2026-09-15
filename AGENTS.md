@@ -1,9 +1,9 @@
 # Saatchi & Co. (Lüks Saatler) — Ajan Kuralları ve Mimarisi
 
-## 1. Fiyatlama ve Borsa Akışı (DEĞİŞMEZ KURAL — CHRONO24 MANDATE)
+## 1. Fiyatlama ve Borsa Akışı (DEĞİŞMEZ KURAL — YENİ GÜMRÜK YASASI & CHRONO24 MANDATE)
 Saatchi projesindeki tüm saatler "Elit Kategori" lüks saatlerdir.
-- **Fiyatlama Formülü:** Bütün saatler için Chrono24 küresel piyasa referans fiyatı ve +%80 kâr marjı zorunludur.
-- **Hesaplama:** `Chrono24 USD Referans Fiyatı × Güncel USD/TRY Kuru × 1.80` (Yani %80 kâr marjı).
+- **Fiyatlama Formülü:** Bütün saatler için Chrono24 küresel piyasa referans fiyatı ve +%150 gümrük/kâr marjı zorunludur.
+- **Hesaplama:** `Chrono24 USD Referans Fiyatı × Güncel USD/TRY Kuru × 2.50` (Yani %150 marj).
 - Asla rastgele fiyat üretilmez veya altın piyasası (İZKO/Harem) kuralları bu projede KULLANILMAZ. Saatlerin yegane kaynağı Chrono24'tür.
 
 ## 2. UI / Tasarım İşleri — Zorunlu (Luxury UX/UI)

@@ -2,8 +2,8 @@
 import json
 import os
 
-# DO NOT CHANGE: Master Suite Saatchi pricing mandate
-# Chrono24 USD Ref * 1.80 (80% markup)
+# YENİ GÜMRÜK YASASI VE SAATCHI KURALI:
+# Chrono24 USD Ref * 2.50 (+%150 Gümrük/Kâr Marjı)
 
 FILE_PATH = 'src/data/elit-saatler.json'
 
@@ -18,8 +18,8 @@ def update_prices():
     updated = 0
     for watch in watches:
         orig_price = watch.get('originalPrice', 0)
-        # Yeni Kural: +%80 (x 1.8)
-        new_calc_price = int(orig_price * 1.8)
+        # Yeni Kural: +%150 (x 2.5)
+        new_calc_price = int(orig_price * 2.5)
         watch['calculatedPrice'] = new_calc_price
         
         # TL Format: ₺954.352
@@ -30,7 +30,7 @@ def update_prices():
     with open(FILE_PATH, 'w', encoding='utf-8') as f:
         json.dump(watches, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ {updated} saatin fiyatı %80 kâr marjı (x1.8) Chrono24 kuralıyla güncellendi.")
+    print(f"✅ {updated} saatin fiyatı YENİ GÜMRÜK YASASI (%150 kâr/gümrük marjı - x2.5) ile güncellendi.")
 
 if __name__ == '__main__':
     update_prices()
