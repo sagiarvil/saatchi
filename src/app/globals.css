@@ -1,26 +1,77 @@
 @import "tailwindcss";
 
 :root {
+  /* ROLEX STYLE THEME */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #666666; /* Rolex body text is dark grey */
+  
+  --primary: #846b32; /* Rolex Gold / Bronze from the screenshot */
+  --primary-hover: #6d5828; 
+  
+  --surface: #f9f9f9; 
+  --surface-border: #e5e5e5; 
 }
 
-@theme inline {
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-surface: var(--surface);
+  --color-surface-border: var(--surface-border);
+
+  /* Force Rolex fonts everywhere by default */
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  --animate-marquee: marquee 30s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--surface); 
+}
+::-webkit-scrollbar-thumb {
+  background: #cccccc; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary); 
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* KESİN EMİR: CİHAZ HAREKET ENGELLEME (REDUCE MOTION) AYARLARINI KIR VE ANİMASYONLARI %100 ÇALIŞTIR */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: inherit !important;
+    animation-iteration-count: inherit !important;
+    transition-duration: inherit !important;
+    scroll-behavior: smooth !important;
+  }
 }

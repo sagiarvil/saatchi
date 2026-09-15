@@ -1,0 +1,3 @@
+module.exports=[27572,a=>{"use strict";var b=a.i(7997);a.s(["default",0,function({children:a}){return(0,b.jsx)("html",{lang:"tr",className:"h-full antialiased",children:(0,b.jsx)("body",{className:"min-h-full flex flex-col",children:a})})},"metadata",0,{title:"Saatchi E-Ticaret",description:"Master Web Engineering Mandate v1.0"}])},50645,function(a){a.n(a.i(27572))}];
+
+//# sourceMappingURL=src_app_layout_tsx_0r5yz5t._.js.map
