@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
 import LuxuryImageZoom from "@/components/ui/LuxuryImageZoom";
+import WatchListClient from "../WatchListClient";
 import { LuxuryWatchStory } from "@/components/ui/LuxuryWatchStory";
 import { ShieldCheck, Truck, Gem, Lock, Phone, ChevronRight, CheckCircle, PackageOpen } from "lucide-react";
 
@@ -73,30 +74,10 @@ export default async function SaatDetailOrCategory({ params }: { params: Promise
           <h1 className="text-3xl md:text-5xl font-serif text-foreground mb-4 uppercase tracking-[0.2em] text-center">{categoryTitle}</h1>
           <p className="text-foreground/60 text-center mb-16 max-w-2xl mx-auto font-light">Zamanın ruhunu yansıtan eşsiz tasarımlar. Saatchi güvencesiyle lüksün doruklarına ulaşın.</p>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {filteredWatches.map((watch, idx) => {
-              const slugParts = watch.seoUrl.split('/');
-              const slug = slugParts[slugParts.length - 1];
-              return (
-                <Link href={`/saatler/${slug}`} key={idx} className="group bg-white rounded-2xl border border-black/5 p-4 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] hover:border-[#C2A768]/40 transition-all duration-500 flex flex-col items-center">
-                  <div className="w-full aspect-square mb-6 relative overflow-hidden flex items-center justify-center rounded-xl bg-[radial-gradient(circle_at_50%_50%,_#ffffff_20%,_#f8f6f0_100%)] border border-black/5 p-4">
-                    {watch.image ? (
-                      <img src={watch.image} alt={watch.modelName} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 drop-shadow-sm" />
-                    ) : (
-                      <div className="w-full h-full bg-white flex items-center justify-center border border-gray-100">
-                        <span className="text-foreground/40 font-serif text-sm">Görsel Yok</span>
-                      </div>
-                    )}
-                  </div>
-                  <h3 className="text-primary text-[10px] tracking-widest uppercase mb-2 text-center font-bold">{watch.brand}</h3>
-                  <h4 className="text-foreground font-serif text-center mb-4 line-clamp-2 h-12 leading-tight">{watch.modelName}</h4>
-                  <div className="mt-auto pt-4 border-t border-surface-border w-full text-center">
-                    <span className="text-lg font-serif text-foreground font-semibold">{watch.price}</span>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
+          <WatchListClient 
+            initialWatches={allWatches} 
+            initialGender={slug === 'erkek' ? 'Erkek' : slug === 'kadin' ? 'Kadın' : ''} 
+          />
         </div>
       </div>
     );

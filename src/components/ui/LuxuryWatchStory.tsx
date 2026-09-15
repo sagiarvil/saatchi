@@ -44,30 +44,30 @@ export function LuxuryWatchStory({ watch }: { watch: any }) {
   const conclusion = conclusions[(hash + 3) % conclusions.length];
 
   return (
-    <div className="mt-16 border-t border-[#333] pt-12">
-      <h2 className="text-2xl md:text-3xl font-serif text-[#C2A768] mb-8 text-center uppercase tracking-widest">
+    <div className="mt-16 border-t border-surface-border pt-12">
+      <h2 className="text-2xl md:text-3xl font-serif text-primary mb-8 text-center uppercase tracking-widest">
         {brand} {model} : ZAMANIN ÖTESİNDE BİR MİRAS
       </h2>
       
-      <div className="prose prose-invert max-w-none text-[#d1d5db] font-light leading-relaxed space-y-8">
+      <div className="prose max-w-none text-foreground font-light leading-relaxed space-y-8">
         
         <div>
-          <h3 className="text-lg font-bold text-white mb-3 tracking-wide border-l-2 border-[#C2A768] pl-3 uppercase">Mükemmelliğin Doğuşu</h3>
+          <h3 className="text-lg font-bold text-black mb-3 tracking-wide border-l-2 border-primary pl-3 uppercase">Mükemmelliğin Doğuşu</h3>
           <p className="text-justify text-[15px]">{intro}</p>
         </div>
 
         <div>
-          <h3 className="text-lg font-bold text-white mb-3 tracking-wide border-l-2 border-[#C2A768] pl-3 uppercase">Kusursuz Mühendislik ve İsviçre İşçiliği</h3>
+          <h3 className="text-lg font-bold text-black mb-3 tracking-wide border-l-2 border-primary pl-3 uppercase">Kusursuz Mühendislik ve İsviçre İşçiliği</h3>
           <p className="text-justify text-[15px]">{body}</p>
         </div>
 
         <div>
-          <h3 className="text-lg font-bold text-white mb-3 tracking-wide border-l-2 border-[#C2A768] pl-3 uppercase">Geleceğe Yatırım ve Nesiller Boyu Miras</h3>
+          <h3 className="text-lg font-bold text-black mb-3 tracking-wide border-l-2 border-primary pl-3 uppercase">Geleceğe Yatırım ve Nesiller Boyu Miras</h3>
           <p className="text-justify text-[15px]">{investment}</p>
         </div>
 
         <div>
-          <h3 className="text-lg font-bold text-white mb-3 tracking-wide border-l-2 border-[#C2A768] pl-3 uppercase">Saatchi Ayrıcalığıyla Sahip Olun</h3>
+          <h3 className="text-lg font-bold text-black mb-3 tracking-wide border-l-2 border-primary pl-3 uppercase">Saatchi Ayrıcalığıyla Sahip Olun</h3>
           <p className="text-justify text-[15px]">{conclusion}</p>
         </div>
 

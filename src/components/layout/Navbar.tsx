@@ -100,6 +100,12 @@ export function Navbar() {
           
           {/* Right: Icons */}
           <div className="flex-1 flex justify-end items-center space-x-6 md:space-x-8 text-white">
+            <div className="hidden md:flex space-x-12 items-center text-xs tracking-widest uppercase">
+              <Link href="/saatler" className="hover:opacity-70 transition-opacity">Koleksiyon</Link>
+              <Link href="/markalar" className="hover:opacity-70 transition-opacity">Markalar</Link>
+              <Link href="/kurumsal" className="hover:opacity-70 transition-opacity">Kurumsal</Link>
+              <Link href="/iletisim" className="hover:opacity-70 transition-opacity">İletişim</Link>
+            </div>
             <Link href="/elit-saat/koleksiyon" className="hover:opacity-70 transition-opacity">
               <Watch className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1} />
             </Link>

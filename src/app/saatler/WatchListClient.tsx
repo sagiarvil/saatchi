@@ -2,9 +2,9 @@
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
 
-export default function WatchListClient({ initialWatches }: { initialWatches: any[] }) {
+export default function WatchListClient({ initialWatches, initialGender = '' }: { initialWatches: any[], initialGender?: string }) {
   const [filterBrand, setFilterBrand] = useState('');
-  const [filterGender, setFilterGender] = useState('');
+  const [filterGender, setFilterGender] = useState(initialGender);
   const [filterPrice, setFilterPrice] = useState('');
 
   const brands = Array.from(new Set(initialWatches.map(w => w.brand))).sort();
@@ -76,14 +76,14 @@ export default function WatchListClient({ initialWatches }: { initialWatches: an
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map(watch => (
             <Link key={watch.id} href={watch.seoUrl} className="group bg-surface border border-surface-border rounded-xl p-4 flex flex-col hover:border-primary hover:shadow-xl transition-all duration-300">
-              <div className="w-full aspect-square relative mb-4 rounded-lg overflow-hidden bg-white flex items-center justify-center p-4">
+              <div className="w-full aspect-square relative mb-4 rounded-lg overflow-hidden bg-surface flex items-center justify-center">
                 {watch.image ? (
-                  <img src={watch.image} alt={watch.modelName} className="object-contain w-full h-full mix-blend-multiply group-hover:scale-105 transition-transform duration-500" />
+                  <img src={watch.image} alt={watch.modelName} className="object-cover object-center w-full h-full group-hover:scale-105 transition-transform duration-500" />
                 ) : (
                   <div className="text-xs text-foreground/40 font-serif">Görsel Yok</div>
                 )}
                 {watch.gender && (
-                  <span className="absolute top-2 left-2 bg-primary text-white text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-sm">
+                  <span className="absolute top-2 left-2 bg-primary text-white text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-sm z-10">
                     {watch.gender}
                   </span>
                 )}

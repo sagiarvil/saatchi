@@ -37,26 +37,24 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
               {featuredWatches.map((watch) => (
                 <Link href={watch.seoUrl} key={watch.id} className="group cursor-pointer flex flex-col items-center">
-                  <div className="w-full aspect-[4/5] mb-8 relative flex items-center justify-center transition-all duration-700 bg-[radial-gradient(circle_at_50%_50%,_#ffffff_20%,_#f8f6f0_100%)] rounded-2xl border border-black/5 overflow-hidden group-hover:border-[#C2A768]/40 group-hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)]">
-                    <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="w-full aspect-[4/5] mb-8 relative flex items-center justify-center transition-all duration-700 bg-surface rounded-2xl border border-surface-border overflow-hidden group-hover:border-[#C2A768]/40 group-hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)]">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
                     {/* Saat Görseli */}
-                    <div className="w-48 h-48 sm:w-64 sm:h-64 relative flex items-center justify-center group-hover:scale-105 transition-transform duration-700 z-0">
-                      <div className="relative aspect-[4/5] bg-white overflow-hidden p-6 flex items-center justify-center w-full h-full">
+                    <div className="absolute inset-0 w-full h-full z-0">
                         {watch.image ? (
                           /* eslint-disable-next-line @next/next/no-img-element */
                           <img
                             src={watch.image}
                             alt={watch.modelName}
-                            className="w-full h-full object-contain mix-blend-multiply drop-shadow-xl group-hover:scale-110 transition-transform duration-700 ease-out"
+                            className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
                           />
                         ) : (
-                          <div className="w-full h-full flex flex-col items-center justify-center text-[#C2A768]/30">
+                          <div className="w-full h-full bg-surface flex flex-col items-center justify-center text-[#C2A768]/30">
                             <Watch className="w-12 h-12 mb-2 opacity-50" />
                             <span className="text-[10px] tracking-widest uppercase font-bold">Görsel Yok</span>
                           </div>
                         )}
-                      </div>
                     </div>
                     
                     <div className="absolute bottom-6 left-0 right-0 text-center z-20 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
