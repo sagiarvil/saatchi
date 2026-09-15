@@ -67,12 +67,12 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
               const slug = slugParts[slugParts.length - 1];
 
               return (
-                <Link href={`/elit-saat/${slug}`} key={idx} className="group bg-white rounded-2xl border border-black/5 p-4 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] hover:border-[#C2A768]/40 transition-all duration-500 flex flex-col items-center">
-                  <div className="w-full aspect-square mb-6 relative overflow-hidden flex items-center justify-center rounded-xl bg-[radial-gradient(circle_at_50%_50%,_#ffffff_20%,_#f8f6f0_100%)] border border-black/5 p-4">
+                <Link href={`/elit-saat/${slug}`} key={idx} className="group bg-surface rounded-2xl border border-surface-border p-4 hover:shadow-xl hover:border-primary/40 transition-all duration-500 flex flex-col items-center">
+                  <div className="w-full aspect-square mb-6 relative overflow-hidden flex items-center justify-center rounded-xl bg-surface">
                     {watch.image ? (
-                      <img src={watch.image} alt={watch.modelName} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 drop-shadow-sm" />
+                      <img src={watch.image} alt={watch.modelName} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
                     ) : (
-                      <div className="w-full h-full bg-white flex flex-col items-center justify-center p-4 border border-gray-100 group-hover:border-[#C2A768]/30 transition-colors">
+                      <div className="w-full h-full bg-surface flex flex-col items-center justify-center p-4 border border-surface-border group-hover:border-[#C2A768]/30 transition-colors">
                         <ShieldCheck className="w-8 h-8 text-[#C2A768]/50 mb-3" strokeWidth={1} />
                         <span className="text-primary text-[10px] tracking-widest uppercase font-bold text-center">{watch.brand || 'LÜKS SAAT'}</span>
                         <span className="text-foreground/40 font-serif text-xs mt-1 text-center">Görsel Hazırlanıyor</span>
@@ -110,7 +110,7 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
     <div className="bg-background min-h-screen border-t border-surface-border">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="flex flex-col md:flex-row gap-16">
-          <div className="w-full md:w-1/2 bg-white relative flex items-center justify-center p-8 lg:p-16 border border-surface-border">
+          <div className="w-full md:w-1/2 relative flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl">
             {watch.image ? (
               <LuxuryImageZoom 
                 src={watch.image} 

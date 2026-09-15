@@ -6,15 +6,14 @@ export default function LuxuryImageZoom({ src, alt }: { src: string; alt: string
 
   return (
     <div 
-      className={`relative cursor-crosshair overflow-hidden rounded-2xl bg-white flex items-center justify-center p-8 transition-all duration-500 w-full ${isZoomed ? 'scale-110 shadow-2xl z-50' : ''}`}
+      className={`relative cursor-crosshair overflow-hidden rounded-2xl bg-surface flex items-center justify-center w-full aspect-square transition-all duration-500 ${isZoomed ? 'scale-105 shadow-2xl z-50' : ''}`}
       onMouseEnter={() => setIsZoomed(true)}
       onMouseLeave={() => setIsZoomed(false)}
     >
       <img 
         src={src} 
         alt={alt} 
-        className="w-full h-auto object-contain mix-blend-multiply drop-shadow-xl" 
-        style={{ maxHeight: '500px' }}
+        className="w-full h-full object-cover object-center" 
       />
     </div>
   );

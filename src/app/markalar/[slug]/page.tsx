@@ -65,12 +65,12 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
               const linkUrl = isElit ? `/elit-saat/${watchSlug}` : `/saatler/${watchSlug}`;
               
               return (
-                <Link href={linkUrl} key={idx} className="group bg-white rounded-2xl border border-black/5 p-4 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)] hover:border-[#C2A768]/40 transition-all duration-500 flex flex-col items-center">
-                  <div className="w-full aspect-square mb-6 relative overflow-hidden flex items-center justify-center rounded-xl bg-[radial-gradient(circle_at_50%_50%,_#ffffff_20%,_#f8f6f0_100%)] border border-black/5 p-4">
+                <Link href={linkUrl} key={idx} className="group bg-surface rounded-2xl border border-surface-border p-4 hover:shadow-xl hover:border-primary/40 transition-all duration-500 flex flex-col items-center">
+                  <div className="w-full aspect-square mb-6 relative overflow-hidden flex items-center justify-center rounded-xl bg-surface">
                     {watch.image ? (
-                      <img src={watch.image} alt={watch.modelName} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-105 transition-transform duration-700 drop-shadow-sm" />
+                      <img src={watch.image} alt={watch.modelName} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
                     ) : (
-                      <div className="w-full h-full bg-white flex flex-col items-center justify-center p-4 border border-gray-100 group-hover:border-[#C2A768]/30 transition-colors">
+                      <div className="w-full h-full bg-surface flex flex-col items-center justify-center p-4 border border-surface-border group-hover:border-[#C2A768]/30 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-[#C2A768]/50 mb-3"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
                         <span className="text-primary text-[10px] tracking-widest uppercase font-bold text-center">{watch.brand || 'LÜKS SAAT'}</span>
                         <span className="text-foreground/40 font-serif text-xs mt-1 text-center">Görsel Hazırlanıyor</span>
