@@ -195,7 +195,7 @@ export function Navbar() {
                   type="text" 
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Model, marka, referans veya saat arayın (Örn: Rolex, Versace, Seiko, TAG Heuer...)" 
+                  placeholder="Model, marka, referans veya saat arayın (Örn: Rolex, Patek Philippe, Omega, Richard Mille...)" 
                   className="w-full bg-transparent border-none text-slate-800 text-base md:text-lg ml-3 focus:outline-none placeholder:text-gray-400 font-medium"
                   autoFocus={searchOpen}
                 />
@@ -212,8 +212,8 @@ export function Navbar() {
             <div className="flex items-center gap-3 mt-5 px-1 overflow-x-auto no-scrollbar whitespace-nowrap">
               <span className="text-[11px] font-bold text-gray-500 tracking-wider">POPÜLER:</span>
               <button onClick={() => setSearchQuery('Rolex')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">Rolex</button>
-              <button onClick={() => setSearchQuery('Versace')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">Versace</button>
-              <button onClick={() => setSearchQuery('Seiko')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">Seiko</button>
+              <button onClick={() => setSearchQuery('Richard Mille')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">Richard Mille</button>
+              <button onClick={() => setSearchQuery('Panerai')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">Panerai</button>
             </div>
           </div>
           

@@ -8812,7 +8812,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     } else {
       // 2. Lüks Saat Kataloğu
       const allCatalog = (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS)) ? PRODUCTS : [];
-      const watchCatalog = allCatalog.filter(p => p.isElite || p.isWatch || p.category === 'elit-saatler' || p.category === 'saat' || (p.brand && ['rolex','cartier','omega','patek','audemars piguet','hublot','breitling','iwc','tag heuer','seiko','tissot'].includes(p.brand.toLowerCase()))).map(p => ({
+      const watchCatalog = allCatalog.filter(p => p.isElite || p.isWatch || p.category === 'elit-saatler' || p.category === 'saat' || (p.brand && ['rolex','cartier','omega','patek','audemars piguet','hublot','breitling','iwc','tag heuer','tissot'].includes(p.brand.toLowerCase()))).map(p => ({
         name: `${p.brand ? p.brand + ' ' : ''}${p.name || p.title || ''}`.trim(),
         price: Number(p.price || p.priceTry || 0),
         category: p.brand || 'Lüks Saat',
@@ -8961,10 +8961,10 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       'iwc', 'portugieser', 'portofino', 'da vinci',
       'panerai', 'luminor', 'radiomir',
       'vacheron', 'constantin', 'overseas', 'patrimony',
-      'seiko', 'prospex', 'presage', 'astron', 'king seiko', '5 sports',
+       'prospex', 'presage', 'astron', 'king seiko', '5 sports',
       'tissot', 'prx', 'seastar', 'gentleman', 'le locle',
       'longines', 'hydroconquest', 'master collection', 'spirit',
-      'versace', 'medusa', 'icon active',
+       'medusa', 'icon active',
       'calvin klein', 'michael kors', 'diesel', 'fossil', 'guess', 'welder', 'gc',
       'citizen', 'orient', 'casio', 'edifice', 'g-shock', 'hamilton', 'chopard', 'zenith', 'montblanc'
     ];
