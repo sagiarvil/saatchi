@@ -75,23 +75,28 @@ export default function WatchListClient({ initialWatches, initialGender = '' }: 
         <div className="mb-4 text-sm text-foreground/60">{filtered.length} sonuç bulundu.</div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map(watch => (
-            <Link key={watch.id} href={watch.seoUrl} className="group bg-surface border border-surface-border rounded-xl p-4 flex flex-col hover:border-primary hover:shadow-xl transition-all duration-300">
-              <div className="w-full aspect-square relative mb-4 rounded-lg overflow-hidden bg-surface flex items-center justify-center">
+            <Link key={watch.id} href={watch.seoUrl} className="group bg-surface border border-surface-border rounded-xl flex flex-col hover:border-primary/50 hover:shadow-2xl transition-all duration-500 overflow-hidden">
+              <div className="w-full aspect-[4/5] relative overflow-hidden bg-white flex items-center justify-center">
                 {watch.image ? (
-                  <img src={watch.image} alt={watch.modelName} className="object-cover object-center w-full h-full group-hover:scale-105 transition-transform duration-500" />
+                  <img src={watch.image} alt={watch.modelName} className="object-cover object-center w-full h-full group-hover:scale-110 transition-transform duration-700 ease-out" />
                 ) : (
                   <div className="text-xs text-foreground/40 font-serif">Görsel Yok</div>
                 )}
                 {watch.gender && (
-                  <span className="absolute top-2 left-2 bg-primary text-white text-[9px] uppercase tracking-widest px-2 py-0.5 rounded-sm z-10">
+                  <span className="absolute top-4 left-4 bg-[#846b32] text-white text-[9px] font-bold uppercase tracking-widest px-2 py-1 rounded shadow-md z-10">
                     {watch.gender}
                   </span>
                 )}
               </div>
-              <h3 className="text-primary text-[10px] tracking-widest uppercase mb-1 font-bold text-center">{watch.brand}</h3>
-              <h4 className="text-foreground font-serif text-center mb-3 line-clamp-2 h-10 leading-tight text-sm">{watch.modelName}</h4>
-              <div className="mt-auto pt-3 border-t border-surface-border text-center">
-                <span className="text-base font-serif text-foreground font-semibold">{watch.price}</span>
+              <div className="text-center w-full p-6 flex flex-col flex-grow items-center justify-between">
+                <div>
+                  <h3 className="text-primary text-[10px] tracking-widest uppercase mb-2 font-bold">{watch.brand}</h3>
+                  <h4 className="text-foreground font-serif mb-4 line-clamp-2 min-h-[40px] leading-tight text-sm group-hover:text-primary transition-colors">{watch.modelName}</h4>
+                </div>
+                <div className="w-full">
+                  <div className="h-px w-8 bg-surface-border mx-auto mb-4 group-hover:bg-primary/50 group-hover:w-16 transition-all duration-500"></div>
+                  <span className="text-base font-serif text-foreground font-semibold tracking-wide">{watch.price}</span>
+                </div>
               </div>
             </Link>
           ))}

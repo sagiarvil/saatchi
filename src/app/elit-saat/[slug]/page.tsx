@@ -57,22 +57,30 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
               const slug = slugParts[slugParts.length - 1];
 
               return (
-                <Link href={`/elit-saat/${slug}`} key={idx} className="group bg-surface rounded-2xl border border-surface-border p-4 hover:shadow-xl hover:border-primary/40 transition-all duration-500 flex flex-col items-center">
-                  <div className="w-full aspect-square mb-6 relative overflow-hidden flex items-center justify-center rounded-xl bg-surface">
+                <Link href={`/elit-saat/${slug}`} key={idx} className="group bg-surface rounded-2xl border border-surface-border overflow-hidden hover:shadow-xl hover:border-primary/40 transition-all duration-500 flex flex-col">
+                  <div className="w-full aspect-[4/5] relative overflow-hidden bg-white flex items-center justify-center">
+                    <div className="absolute top-4 left-4 z-10 bg-black/80 text-[#C2A768] text-[9px] font-bold tracking-widest px-2 py-1 rounded shadow-sm uppercase border border-[#C2A768]/30">
+                      ELİT
+                    </div>
                     {watch.image ? (
-                      <img src={watch.image} alt={watch.modelName} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+                      <img src={watch.image} alt={watch.modelName} className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out" />
                     ) : (
-                      <div className="w-full h-full bg-surface flex flex-col items-center justify-center p-4 border border-surface-border group-hover:border-[#C2A768]/30 transition-colors">
+                      <div className="w-full h-full flex flex-col items-center justify-center p-4 border border-surface-border group-hover:border-[#C2A768]/30 transition-colors">
                         <ShieldCheck className="w-8 h-8 text-[#C2A768]/50 mb-3" strokeWidth={1} />
                         <span className="text-primary text-[10px] tracking-widest uppercase font-bold text-center">{watch.brand || 'LÜKS SAAT'}</span>
                         <span className="text-foreground/40 font-serif text-xs mt-1 text-center">Görsel Hazırlanıyor</span>
                       </div>
                     )}
                   </div>
-                  <h3 className="text-primary text-[10px] tracking-widest uppercase mb-2 text-center font-bold">{watch.brand || 'Bilinmiyor'}</h3>
-                  <h4 className="text-foreground font-serif text-center mb-4 line-clamp-2 h-12 leading-tight">{watch.modelName}</h4>
-                  <div className="mt-auto pt-4 border-t border-surface-border w-full text-center">
-                    <span className="text-lg font-serif text-foreground font-semibold">{watch.price}</span>
+                  <div className="text-center w-full p-6 flex flex-col flex-grow items-center justify-between">
+                    <div>
+                      <h3 className="text-primary text-[10px] tracking-[0.2em] uppercase mb-2 font-bold">{watch.brand || 'Bilinmiyor'}</h3>
+                      <h4 className="text-sm font-serif text-foreground mb-4 leading-relaxed group-hover:text-primary transition-colors line-clamp-2 min-h-[40px]">{watch.modelName}</h4>
+                    </div>
+                    <div className="w-full">
+                      <div className="h-px w-8 bg-surface-border mx-auto mb-4 group-hover:bg-primary/50 group-hover:w-16 transition-all duration-500"></div>
+                      <span className="text-lg font-serif text-foreground font-medium tracking-wide">{watch.price}</span>
+                    </div>
                   </div>
                 </Link>
               );

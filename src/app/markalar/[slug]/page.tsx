@@ -45,25 +45,34 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
               const linkUrl = isElit ? `/elit-saat/${watchSlug}` : `/saatler/${watchSlug}`;
               
               return (
-                <Link href={linkUrl} key={idx} className="group bg-surface rounded-2xl border border-surface-border p-4 hover:shadow-xl hover:border-primary/40 transition-all duration-500 flex flex-col items-center">
-                  <div className="w-full aspect-square mb-6 relative overflow-hidden flex items-center justify-center rounded-xl bg-surface">
+                <Link href={linkUrl} key={idx} className="group bg-surface rounded-2xl border border-surface-border overflow-hidden hover:shadow-xl hover:border-primary/40 transition-all duration-500 flex flex-col">
+                  <div className="w-full aspect-[4/5] relative overflow-hidden bg-white flex items-center justify-center">
+                    {watch.category && (
+                      <div className="absolute top-4 left-4 z-10 bg-[#846b32] text-white text-[9px] font-bold tracking-widest px-2 py-1 rounded shadow-sm uppercase">
+                        {watch.category}
+                      </div>
+                    )}
                     {watch.image ? (
-                      <img src={watch.image} alt={watch.modelName} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+                      <img src={watch.image} alt={watch.modelName} className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out" />
                     ) : (
-                      <div className="w-full h-full bg-surface flex flex-col items-center justify-center p-4 border border-surface-border group-hover:border-[#C2A768]/30 transition-colors">
+                      <div className="w-full h-full flex flex-col items-center justify-center p-4 border border-surface-border group-hover:border-[#C2A768]/30 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-[#C2A768]/50 mb-3"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
                         <span className="text-primary text-[10px] tracking-widest uppercase font-bold text-center">{watch.brand || 'LÜKS SAAT'}</span>
                         <span className="text-foreground/40 font-serif text-xs mt-1 text-center">Görsel Hazırlanıyor</span>
                       </div>
                     )}
                   </div>
-                  <div className="text-center w-full">
-                    <p className="text-primary text-[10px] tracking-[0.2em] uppercase mb-2">{watch.brand}</p>
-                    <h2 className="text-sm font-serif text-foreground mb-4 leading-relaxed group-hover:text-primary transition-colors line-clamp-2 h-10">
-                      {watch.modelName}
-                    </h2>
-                    <div className="h-px w-12 bg-surface-border mx-auto mb-4 group-hover:bg-primary/50 transition-colors"></div>
-                    <p className="text-lg font-serif text-foreground">{watch.price}</p>
+                  <div className="text-center w-full p-6 flex flex-col flex-grow items-center justify-between">
+                    <div>
+                      <p className="text-primary text-[10px] tracking-[0.2em] uppercase mb-2">{watch.brand}</p>
+                      <h2 className="text-sm font-serif text-foreground mb-4 leading-relaxed group-hover:text-primary transition-colors line-clamp-2 min-h-[40px]">
+                        {watch.modelName}
+                      </h2>
+                    </div>
+                    <div>
+                      <div className="h-px w-8 bg-surface-border mx-auto mb-4 group-hover:bg-primary/50 group-hover:w-16 transition-all duration-500"></div>
+                      <p className="text-lg font-serif text-foreground">{watch.price}</p>
+                    </div>
                   </div>
                 </Link>
               );
