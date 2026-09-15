@@ -1,20 +1,9 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
+import saatlerData from '@/data/saatler.json';
+import elitSaatlerData from '@/data/elit-saatler.json';
 
 export default async function MarkalarPage() {
-  const saatlerPath = path.join(process.cwd(), 'src/data/saatler.json');
-  const elitPath = path.join(process.cwd(), 'src/data/elit-saatler.json');
-  
-  let allWatches: any[] = [];
-  
-  if (fs.existsSync(saatlerPath)) {
-    allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(saatlerPath, 'utf8'))];
-  }
-  if (fs.existsSync(elitPath)) {
-    allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(elitPath, 'utf8'))];
-  }
-
+  let allWatches: any[] = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
   // Extract unique brands
   const brandsSet = new Set<string>();
   allWatches.forEach(w => {

@@ -1,24 +1,20 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
+import saatlerData from '@/data/saatler.json';
+import elitSaatlerData from '@/data/elit-saatler.json';
 import LuxuryImageZoom from "@/components/ui/LuxuryImageZoom";
 import { ShieldCheck, Truck, Gem, Lock, Phone, ChevronRight, CheckCircle, PackageOpen } from "lucide-react";
 
 
 
 export async function generateStaticParams() {
-  const filePath = path.join(process.cwd(), 'src/data/elit-saatler.json');
   let slugs = ['limited-edition', 'tourbillon', 'altin-kaplama', 'koleksiyon'];
   
-  if (fs.existsSync(filePath)) {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const watches = JSON.parse(fileContents);
-    const watchSlugs = watches.map((w: any) => {
-      const parts = w.seoUrl.split('/');
-      return parts[parts.length - 1];
-    });
-    slugs = [...slugs, ...watchSlugs];
-  }
+  const watches = (elitSaatlerData as any[]);
+  const watchSlugs = watches.map((w: any) => {
+    const parts = w.seoUrl.split('/');
+    return parts[parts.length - 1];
+  });
+  slugs = [...slugs, ...watchSlugs];
   
   return slugs.map(slug => ({ slug }));
 }
@@ -27,13 +23,7 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
   const isCategory = ['limited-edition', 'tourbillon', 'altin-kaplama', 'koleksiyon'].includes(slug);
-  const filePath = path.join(process.cwd(), 'src/data/elit-saatler.json');
-  let allWatches: any[] = [];
-  
-  if (fs.existsSync(filePath)) {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    allWatches = JSON.parse(fileContents);
-  }
+  let allWatches: any[] = (elitSaatlerData as any[]);
 
   // --- CATEGORY VIEW ---
   if (isCategory) {

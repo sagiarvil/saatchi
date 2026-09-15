@@ -1,6 +1,6 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
+import saatlerData from '@/data/saatler.json';
+import elitSaatlerData from '@/data/elit-saatler.json';
 import LuxuryImageZoom from "@/components/ui/LuxuryImageZoom";
 import WatchListClient from "../WatchListClient";
 import { LuxuryWatchStory } from "@/components/ui/LuxuryWatchStory";
@@ -10,12 +10,7 @@ import { ShieldCheck, Truck, Gem, Lock, Phone, ChevronRight, CheckCircle, Packag
 
 export async function generateStaticParams() {
   let slugs = ['erkek', 'kadin', 'unisex']; // Category slugs
-  const saatlerPath = path.join(process.cwd(), 'src/data/saatler.json');
-  const elitPath = path.join(process.cwd(), 'src/data/elit-saatler.json');
-  
-  let allWatches: any[] = [];
-  if (fs.existsSync(saatlerPath)) allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(saatlerPath, 'utf8'))];
-  if (fs.existsSync(elitPath)) allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(elitPath, 'utf8'))];
+  let allWatches: any[] = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
 
   const watchSlugs = allWatches.map((w: any) => {
     const parts = w.seoUrl.split('/');
@@ -31,16 +26,7 @@ export default async function SaatDetailOrCategory({ params }: { params: Promise
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
   const isCategory = ['erkek', 'kadin', 'unisex'].includes(slug);
-  const saatlerPath = path.join(process.cwd(), 'src/data/saatler.json');
-  const elitPath = path.join(process.cwd(), 'src/data/elit-saatler.json');
-  let allWatches: any[] = [];
-  
-  if (fs.existsSync(saatlerPath)) {
-    allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(saatlerPath, 'utf8'))];
-  }
-  if (fs.existsSync(elitPath)) {
-    allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(elitPath, 'utf8'))];
-  }
+  let allWatches: any[] = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
 
   // --- CATEGORY VIEW ---
   if (isCategory) {

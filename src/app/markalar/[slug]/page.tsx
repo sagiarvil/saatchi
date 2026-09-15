@@ -1,19 +1,9 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
+import saatlerData from '@/data/saatler.json';
+import elitSaatlerData from '@/data/elit-saatler.json';
 
 export async function generateStaticParams() {
-  const saatlerPath = path.join(process.cwd(), 'src/data/saatler.json');
-  const elitPath = path.join(process.cwd(), 'src/data/elit-saatler.json');
-  
-  let allWatches: any[] = [];
-  
-  if (fs.existsSync(saatlerPath)) {
-    allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(saatlerPath, 'utf8'))];
-  }
-  if (fs.existsSync(elitPath)) {
-    allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(elitPath, 'utf8'))];
-  }
+  let allWatches: any[] = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
 
   const brandsSet = new Set<string>();
   allWatches.forEach(w => {
@@ -29,17 +19,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
   
-  const saatlerPath = path.join(process.cwd(), 'src/data/saatler.json');
-  const elitPath = path.join(process.cwd(), 'src/data/elit-saatler.json');
-  
-  let allWatches: any[] = [];
-  
-  if (fs.existsSync(saatlerPath)) {
-    allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(saatlerPath, 'utf8'))];
-  }
-  if (fs.existsSync(elitPath)) {
-    allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(elitPath, 'utf8'))];
-  }
+  let allWatches: any[] = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
 
   const brandWatches = allWatches.filter(w => 
     w.brand && w.brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') === slug
