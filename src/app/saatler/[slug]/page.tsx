@@ -8,18 +8,20 @@ import { ShieldCheck, Truck, Gem, Lock, Phone, ChevronRight, CheckCircle, Packag
 
 
 export async function generateStaticParams() {
-  const filePath = path.join(process.cwd(), 'src/data/saatler.json');
   let slugs = ['erkek', 'kadin', 'unisex']; // Category slugs
+  const saatlerPath = path.join(process.cwd(), 'src/data/saatler.json');
+  const elitPath = path.join(process.cwd(), 'src/data/elit-saatler.json');
   
-  if (fs.existsSync(filePath)) {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const watches = JSON.parse(fileContents);
-    const watchSlugs = watches.map((w: any) => {
-      const parts = w.seoUrl.split('/');
-      return parts[parts.length - 1];
-    });
-    slugs = [...slugs, ...watchSlugs];
-  }
+  let allWatches: any[] = [];
+  if (fs.existsSync(saatlerPath)) allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(saatlerPath, 'utf8'))];
+  if (fs.existsSync(elitPath)) allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(elitPath, 'utf8'))];
+
+  const watchSlugs = allWatches.map((w: any) => {
+    const parts = w.seoUrl.split('/');
+    return parts[parts.length - 1];
+  });
+  slugs = [...slugs, ...watchSlugs];
+
   
   return slugs.map(slug => ({ slug }));
 }
@@ -28,12 +30,15 @@ export default async function SaatDetailOrCategory({ params }: { params: Promise
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
   const isCategory = ['erkek', 'kadin', 'unisex'].includes(slug);
-  const filePath = path.join(process.cwd(), 'src/data/saatler.json');
+  const saatlerPath = path.join(process.cwd(), 'src/data/saatler.json');
+  const elitPath = path.join(process.cwd(), 'src/data/elit-saatler.json');
   let allWatches: any[] = [];
   
-  if (fs.existsSync(filePath)) {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    allWatches = JSON.parse(fileContents);
+  if (fs.existsSync(saatlerPath)) {
+    allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(saatlerPath, 'utf8'))];
+  }
+  if (fs.existsSync(elitPath)) {
+    allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(elitPath, 'utf8'))];
   }
 
   // --- CATEGORY VIEW ---
@@ -41,9 +46,17 @@ export default async function SaatDetailOrCategory({ params }: { params: Promise
     let filteredWatches = allWatches;
     // Basic mock filtering based on text or seoUrl
     if (slug === 'kadin') {
-      filteredWatches = allWatches.filter(w => w.seoUrl.toLowerCase().includes('kadin') || w.modelName.toLowerCase().includes('kadın') || w.modelName.toLowerCase().includes('lady'));
+      filteredWatches = allWatches.filter(w => 
+        w.seoUrl.toLowerCase().includes('kadin') || 
+        w.modelName.toLowerCase().includes('kadın') || 
+        w.modelName.toLowerCase().includes('lady') || 
+        (w.category && w.category.toLowerCase().includes('kadın'))
+      );
     } else if (slug === 'erkek') {
-      filteredWatches = allWatches.filter(w => w.seoUrl.toLowerCase().includes('erkek') || (!w.seoUrl.toLowerCase().includes('kadin') && !w.modelName.toLowerCase().includes('kadın') && !w.modelName.toLowerCase().includes('lady')));
+      filteredWatches = allWatches.filter(w => 
+        (w.category && w.category.toLowerCase().includes('erkek')) ||
+        (!w.seoUrl.toLowerCase().includes('kadin') && !w.modelName.toLowerCase().includes('kadın') && !w.modelName.toLowerCase().includes('lady') && (!w.category || !w.category.toLowerCase().includes('kadın')))
+      );
     } else if (slug === 'unisex') {
       filteredWatches = allWatches.filter(w => w.seoUrl.toLowerCase().includes('unisex'));
     }
