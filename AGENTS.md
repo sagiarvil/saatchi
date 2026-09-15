@@ -1,9 +1,31 @@
-<!-- BEGIN:nextjs-agent-rules -->
+# Saatchi & Co. (Lüks Saatler) — Ajan Kuralları ve Mimarisi
 
-# This is NOT the Next.js you know
+## 1. Fiyatlama ve Borsa Akışı (DEĞİŞMEZ KURAL — CHRONO24 MANDATE)
+Saatchi projesindeki tüm saatler "Elit Kategori" lüks saatlerdir.
+- **Fiyatlama Formülü:** Bütün saatler için Chrono24 küresel piyasa referans fiyatı ve +%80 kâr marjı zorunludur.
+- **Hesaplama:** `Chrono24 USD Referans Fiyatı × Güncel USD/TRY Kuru × 1.80` (Yani %80 kâr marjı).
+- Asla rastgele fiyat üretilmez veya altın piyasası (İZKO/Harem) kuralları bu projede KULLANILMAZ. Saatlerin yegane kaynağı Chrono24'tür.
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+## 2. UI / Tasarım İşleri — Zorunlu (Luxury UX/UI)
+Kullanıcıya görünen tüm HTML, CSS, Next.js bileşenleri (Navbar, Footer, Ürün Kartları) için:
+1. **Renk Paleti:** Saatchi'nin marka kimliği olan Beyaz (`#ffffff`), Siyah (`#000000`), Koyu Gri (`#333333`) ve Lüks Altın (`#846b32`) tonları kesin olarak korunacaktır. Renk paleti dışına çıkılmaz.
+2. **Tipografi:** Rolex ve Patek Philippe tarzı sinematik ve elit bir görünüm (`"Helvetica Neue", Helvetica, Arial, sans-serif` veya `Geist`). Büyük, okunabilir, minimalist ve nefes alan boşluklar (whitespace).
+3. **Responsive:** 320px–1440px aralığında yatay kaydırma çubuğu oluşması kesinlikle yasaktır (`overflow-x: hidden` yama olarak kullanılamaz, DOM düzeltilir).
+4. **Animasyonlar:** Ürün kartlarında yavaş (700ms) scale ve fade-in efektleri (group-hover) kullanılır. Hızlı ve ucuz hissettiren animasyonlar yasaktır.
 
-This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+## 3. GİB e-Arşiv Fatura & Müşteri İzolasyonu (DEĞİŞMEZ KURAL)
+Saatchi'de kesilecek lüks saat faturaları için Belgin standartları birebir geçerlidir:
+1. GİB e-Arşiv portalına gönderilen taslak ve imza kayıtlarında benzersiz `invoiceUuid` (ETTN) alanı zorunludur.
+2. GİB listelerinden (`RG_TASLAKLAR` vb.) fatura bilgisi çekilirken ASLA son eleman fallback'i (`list[list.length - 1]`) KULLANILAMAZ. Hedef faturanın benzersiz `ettn` değeri ile eşleşme zorunludur.
+3. Fatura kalemlerinde saat markası ve modeli (Örn: "Rolex Submariner Date 41mm") net olarak yazılır.
 
-<!-- END:nextjs-agent-rules -->
+## 4. Canonical SEO / GEO / LLMS Mandate
+- Arama motoru ve LLM (Perplexity, ChatGPT Search, Gemini) uyumluluğu için `llms.txt` ve Schema.org (`@graph`) zırhı zorunludur.
+- Saatlerin referans numaraları, üretim yılları ve kutu/sertifika durumları yapısal veride (Structured Data) kesin olarak belirtilmelidir.
+
+## 5. Sıfır Hata ve 4/4 Kalite Kapısı
+Hiçbir kod bloğu şu 4 kapı doğrulanmadan onaylanamaz:
+1. **Syntax:** `npm run build` ve `eslint` sıfır hata vermelidir.
+2. **BOM & Encoding:** Saf UTF-8.
+3. **Güvenlik:** XSS, SQLi ve fiyat manipülasyonlarına (Client-side fiyat değiştirme) karşı Backend'de (Next.js Server Actions/API) kesin fiyat doğrulaması.
+4. **Kanıt:** Eklenen her özellik test edilmeli ve loglanmalıdır.
