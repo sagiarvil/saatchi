@@ -1,7 +1,2 @@
 User-agent: *
-Allow: /
-Allow: /saatler/
-Allow: /elit-saat/
-Allow: /markalar/
-
-Sitemap: https://saatchi.com.tr/sitemap.xml
+Disallow: /

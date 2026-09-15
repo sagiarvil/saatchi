@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     locale: "tr_TR",
   },
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
   },
 };
 
