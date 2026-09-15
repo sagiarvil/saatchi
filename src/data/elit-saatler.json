@@ -12,7 +12,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "2",
@@ -27,7 +28,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "3",
@@ -42,7 +44,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "4",
@@ -57,7 +60,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "5",
@@ -67,12 +71,13 @@
     "calculatedPrice": 731510,
     "foreignPrice": "$8,606",
     "price": "₺731.510",
-    "seoUrl": "/elit-saat/rolex-oyster-perpetual-gumus-kadran-elit-kategori-luks-erkek-saati-5",
+    "seoUrl": "/elit-saat/rolex-oyster-perpetual-gumus-kadran-elit-kategori-luks-kadin-saati-5",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Watch+With+White+Background&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "6",
@@ -82,12 +87,13 @@
     "calculatedPrice": 3121115,
     "foreignPrice": "$36,719",
     "price": "₺3.121.115",
-    "seoUrl": "/elit-saat/rolex-sky-dweller-altin-detayli-elit-kategori-luks-erkek-saati-6",
+    "seoUrl": "/elit-saat/rolex-sky-dweller-altin-detayli-elit-kategori-luks-kadin-saati-6",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Watch+White+Background&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "7",
@@ -102,7 +108,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "8",
@@ -117,7 +124,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "9",
@@ -127,12 +135,13 @@
     "calculatedPrice": 2905045,
     "foreignPrice": "$34,177",
     "price": "₺2.905.045",
-    "seoUrl": "/elit-saat/rolex-explorer-titanyum-elit-kategori-luks-erkek-saati-9",
+    "seoUrl": "/elit-saat/rolex-explorer-titanyum-elit-kategori-luks-kadin-saati-9",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Watch+White+Background&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "10",
@@ -142,12 +151,13 @@
     "calculatedPrice": 816935,
     "foreignPrice": "$9,611",
     "price": "₺816.935",
-    "seoUrl": "/elit-saat/rolex-milgauss-siyah-kadran-elit-kategori-luks-erkek-saati-10",
+    "seoUrl": "/elit-saat/rolex-milgauss-siyah-kadran-elit-kategori-luks-kadin-saati-10",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Milgauss+Black+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "11",
@@ -162,7 +172,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "12",
@@ -177,7 +188,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "13",
@@ -192,7 +204,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "14",
@@ -207,7 +220,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "15",
@@ -217,12 +231,13 @@
     "calculatedPrice": 622285,
     "foreignPrice": "$7,321",
     "price": "₺622.285",
-    "seoUrl": "/elit-saat/rolex-oyster-perpetual-altin-detayli-elit-kategori-luks-erkek-saati-15",
+    "seoUrl": "/elit-saat/rolex-oyster-perpetual-altin-detayli-elit-kategori-luks-kadin-saati-15",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Watch+With+White+Background&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "16",
@@ -237,7 +252,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "17",
@@ -252,7 +268,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "18",
@@ -267,7 +284,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "19",
@@ -277,12 +295,13 @@
     "calculatedPrice": 2309705,
     "foreignPrice": "$27,173",
     "price": "₺2.309.705",
-    "seoUrl": "/elit-saat/rolex-explorer-siyah-kadran-elit-kategori-luks-erkek-saati-19",
+    "seoUrl": "/elit-saat/rolex-explorer-siyah-kadran-elit-kategori-luks-kadin-saati-19",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Explorer+Black+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "20",
@@ -297,7 +316,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "21",
@@ -312,7 +332,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "22",
@@ -327,7 +348,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "23",
@@ -342,7 +364,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "24",
@@ -352,12 +375,13 @@
     "calculatedPrice": 831640,
     "foreignPrice": "$9,784",
     "price": "₺831.640",
-    "seoUrl": "/elit-saat/rolex-datejust-41-altin-detayli-elit-kategori-luks-erkek-saati-24",
+    "seoUrl": "/elit-saat/rolex-datejust-41-altin-detayli-elit-kategori-luks-kadin-saati-24",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Datejust+41Mm+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "25",
@@ -367,12 +391,13 @@
     "calculatedPrice": 3710930,
     "foreignPrice": "$43,658",
     "price": "₺3.710.930",
-    "seoUrl": "/elit-saat/rolex-oyster-perpetual-rose-gold-elit-kategori-luks-erkek-saati-25",
+    "seoUrl": "/elit-saat/rolex-oyster-perpetual-rose-gold-elit-kategori-luks-kadin-saati-25",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Oyster+Rose+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "26",
@@ -387,7 +412,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "27",
@@ -402,7 +428,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "28",
@@ -417,7 +444,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "29",
@@ -427,12 +455,13 @@
     "calculatedPrice": 812855,
     "foreignPrice": "$9,563",
     "price": "₺812.855",
-    "seoUrl": "/elit-saat/rolex-explorer-mavi-kadran-elit-kategori-luks-erkek-saati-29",
+    "seoUrl": "/elit-saat/rolex-explorer-mavi-kadran-elit-kategori-luks-kadin-saati-29",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Explorer+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "30",
@@ -447,7 +476,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "31",
@@ -462,7 +492,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "32",
@@ -477,7 +508,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "33",
@@ -492,7 +524,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "34",
@@ -507,7 +540,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "35",
@@ -522,7 +556,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "36",
@@ -537,7 +572,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "37",
@@ -552,7 +588,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "38",
@@ -567,7 +604,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "39",
@@ -577,12 +615,13 @@
     "calculatedPrice": 493340,
     "foreignPrice": "$5,804",
     "price": "₺493.340",
-    "seoUrl": "/elit-saat/rolex-explorer-beyaz-kadran-elit-kategori-luks-erkek-saati-39",
+    "seoUrl": "/elit-saat/rolex-explorer-beyaz-kadran-elit-kategori-luks-kadin-saati-39",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Explorer+White+Face&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "40",
@@ -597,7 +636,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "41",
@@ -612,7 +652,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "42",
@@ -627,7 +668,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "43",
@@ -642,7 +684,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "44",
@@ -652,12 +695,13 @@
     "calculatedPrice": 2951455,
     "foreignPrice": "$34,723",
     "price": "₺2.951.455",
-    "seoUrl": "/elit-saat/rolex-datejust-41-elik-elit-kategori-luks-erkek-saati-44",
+    "seoUrl": "/elit-saat/rolex-datejust-41-elik-elit-kategori-luks-kadin-saati-44",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Datejust+41Mm+Stainless+Steel&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "45",
@@ -672,7 +716,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "46",
@@ -687,7 +732,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "47",
@@ -702,7 +748,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "48",
@@ -712,12 +759,13 @@
     "calculatedPrice": 1637185,
     "foreignPrice": "$19,261",
     "price": "₺1.637.185",
-    "seoUrl": "/elit-saat/rolex-yacht-master-beyaz-kadran-elit-kategori-luks-erkek-saati-48",
+    "seoUrl": "/elit-saat/rolex-yacht-master-beyaz-kadran-elit-kategori-luks-kadin-saati-48",
     "image": "https://tse1.mm.bing.net/th?q=White+Rolex+Yachtmaster&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "49",
@@ -732,7 +780,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "50",
@@ -742,12 +791,13 @@
     "calculatedPrice": 491215,
     "foreignPrice": "$5,779",
     "price": "₺491.215",
-    "seoUrl": "/elit-saat/rolex-milgauss-gumus-kadran-elit-kategori-luks-erkek-saati-50",
+    "seoUrl": "/elit-saat/rolex-milgauss-gumus-kadran-elit-kategori-luks-kadin-saati-50",
     "image": "https://tse1.mm.bing.net/th?q=Rolex+Milgauss+Cheapest&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "51",
@@ -757,12 +807,13 @@
     "calculatedPrice": 3055665,
     "foreignPrice": "$35,949",
     "price": "₺3.055.665",
-    "seoUrl": "/elit-saat/omega-speedmaster-professional-moonwatch-siyah-kadran-elit-kategori-luks-erkek-saati-51",
+    "seoUrl": "/elit-saat/omega-speedmaster-professional-moonwatch-siyah-kadran-elit-kategori-luks-kadin-saati-51",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Speedmaster+Moonwatch+Black&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "52",
@@ -777,7 +828,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "53",
@@ -787,12 +839,13 @@
     "calculatedPrice": 2086325,
     "foreignPrice": "$24,545",
     "price": "₺2.086.325",
-    "seoUrl": "/elit-saat/omega-aqua-terra-beyaz-kadran-elit-kategori-luks-erkek-saati-53",
+    "seoUrl": "/elit-saat/omega-aqua-terra-beyaz-kadran-elit-kategori-luks-kadin-saati-53",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Aqua+Terra+White&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "54",
@@ -807,7 +860,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "55",
@@ -817,12 +871,13 @@
     "calculatedPrice": 1539095,
     "foreignPrice": "$18,107",
     "price": "₺1.539.095",
-    "seoUrl": "/elit-saat/omega-constellation-gumus-kadran-elit-kategori-luks-erkek-saati-55",
+    "seoUrl": "/elit-saat/omega-constellation-gumus-kadran-elit-kategori-luks-kadin-saati-55",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Constellation+Silver+Dial+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "56",
@@ -837,7 +892,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "57",
@@ -847,12 +903,13 @@
     "calculatedPrice": 1271770,
     "foreignPrice": "$14,962",
     "price": "₺1.271.770",
-    "seoUrl": "/elit-saat/omega-speedmaster-57-rose-gold-elit-kategori-luks-erkek-saati-57",
+    "seoUrl": "/elit-saat/omega-speedmaster-57-rose-gold-elit-kategori-luks-kadin-saati-57",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Rose+Gold+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "58",
@@ -867,7 +924,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "59",
@@ -877,12 +935,13 @@
     "calculatedPrice": 3648710,
     "foreignPrice": "$42,926",
     "price": "₺3.648.710",
-    "seoUrl": "/elit-saat/omega-speedmaster-professional-moonwatch-titanyum-elit-kategori-luks-erkek-saati-59",
+    "seoUrl": "/elit-saat/omega-speedmaster-professional-moonwatch-titanyum-elit-kategori-luks-kadin-saati-59",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "60",
@@ -892,12 +951,13 @@
     "calculatedPrice": 3319080,
     "foreignPrice": "$39,048",
     "price": "₺3.319.080",
-    "seoUrl": "/elit-saat/omega-seamaster-diver-300m-siyah-kadran-elit-kategori-luks-erkek-saati-60",
+    "seoUrl": "/elit-saat/omega-seamaster-diver-300m-siyah-kadran-elit-kategori-luks-kadin-saati-60",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Seamaster+300M+Black+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "61",
@@ -907,12 +967,13 @@
     "calculatedPrice": 797725,
     "foreignPrice": "$9,385",
     "price": "₺797.725",
-    "seoUrl": "/elit-saat/omega-aqua-terra-mavi-kadran-elit-kategori-luks-erkek-saati-61",
+    "seoUrl": "/elit-saat/omega-aqua-terra-mavi-kadran-elit-kategori-luks-kadin-saati-61",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Aqua+Terra+41Mm+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "62",
@@ -922,12 +983,13 @@
     "calculatedPrice": 2271795,
     "foreignPrice": "$26,727",
     "price": "₺2.271.795",
-    "seoUrl": "/elit-saat/omega-planet-ocean-beyaz-kadran-elit-kategori-luks-erkek-saati-62",
+    "seoUrl": "/elit-saat/omega-planet-ocean-beyaz-kadran-elit-kategori-luks-kadin-saati-62",
     "image": "https://tse1.mm.bing.net/th?q=White+Omega+Planet+Ocean&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "63",
@@ -937,12 +999,13 @@
     "calculatedPrice": 3429920,
     "foreignPrice": "$40,352",
     "price": "₺3.429.920",
-    "seoUrl": "/elit-saat/omega-constellation-yesil-kadran-elit-kategori-luks-erkek-saati-63",
+    "seoUrl": "/elit-saat/omega-constellation-yesil-kadran-elit-kategori-luks-kadin-saati-63",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Constellation+Green+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "64",
@@ -957,7 +1020,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "65",
@@ -972,7 +1036,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "66",
@@ -982,12 +1047,13 @@
     "calculatedPrice": 487560,
     "foreignPrice": "$5,736",
     "price": "₺487.560",
-    "seoUrl": "/elit-saat/omega-seamaster-300-rose-gold-elit-kategori-luks-erkek-saati-66",
+    "seoUrl": "/elit-saat/omega-seamaster-300-rose-gold-elit-kategori-luks-kadin-saati-66",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Seamaster+300M+Sedna+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "67",
@@ -997,12 +1063,13 @@
     "calculatedPrice": 534140,
     "foreignPrice": "$6,284",
     "price": "₺534.140",
-    "seoUrl": "/elit-saat/omega-speedmaster-professional-moonwatch-elik-elit-kategori-luks-erkek-saati-67",
+    "seoUrl": "/elit-saat/omega-speedmaster-professional-moonwatch-elik-elit-kategori-luks-kadin-saati-67",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Speedmaster+Professional+Moonwatch+Price&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "68",
@@ -1012,12 +1079,13 @@
     "calculatedPrice": 2421820,
     "foreignPrice": "$28,492",
     "price": "₺2.421.820",
-    "seoUrl": "/elit-saat/omega-seamaster-diver-300m-titanyum-elit-kategori-luks-erkek-saati-68",
+    "seoUrl": "/elit-saat/omega-seamaster-diver-300m-titanyum-elit-kategori-luks-kadin-saati-68",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "69",
@@ -1027,12 +1095,13 @@
     "calculatedPrice": 2878440,
     "foreignPrice": "$33,864",
     "price": "₺2.878.440",
-    "seoUrl": "/elit-saat/omega-aqua-terra-siyah-kadran-elit-kategori-luks-erkek-saati-69",
+    "seoUrl": "/elit-saat/omega-aqua-terra-siyah-kadran-elit-kategori-luks-kadin-saati-69",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Aqua+Terra+Black+Lacquer+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "70",
@@ -1042,12 +1111,13 @@
     "calculatedPrice": 2011015,
     "foreignPrice": "$23,659",
     "price": "₺2.011.015",
-    "seoUrl": "/elit-saat/omega-planet-ocean-mavi-kadran-elit-kategori-luks-erkek-saati-70",
+    "seoUrl": "/elit-saat/omega-planet-ocean-mavi-kadran-elit-kategori-luks-kadin-saati-70",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Seamaster+Planet+Ocean+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "71",
@@ -1057,12 +1127,13 @@
     "calculatedPrice": 688245,
     "foreignPrice": "$8,097",
     "price": "₺688.245",
-    "seoUrl": "/elit-saat/omega-constellation-beyaz-kadran-elit-kategori-luks-erkek-saati-71",
+    "seoUrl": "/elit-saat/omega-constellation-beyaz-kadran-elit-kategori-luks-kadin-saati-71",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Constellation+Silver+Dial+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "72",
@@ -1072,12 +1143,13 @@
     "calculatedPrice": 2570740,
     "foreignPrice": "$30,244",
     "price": "₺2.570.740",
-    "seoUrl": "/elit-saat/omega-de-ville-yesil-kadran-elit-kategori-luks-erkek-saati-72",
+    "seoUrl": "/elit-saat/omega-de-ville-yesil-kadran-elit-kategori-luks-kadin-saati-72",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Green+Face+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "73",
@@ -1092,7 +1164,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "74",
@@ -1107,7 +1180,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "75",
@@ -1122,7 +1196,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "76",
@@ -1137,7 +1212,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "77",
@@ -1147,12 +1223,13 @@
     "calculatedPrice": 1127185,
     "foreignPrice": "$13,261",
     "price": "₺1.127.185",
-    "seoUrl": "/elit-saat/omega-aqua-terra-titanyum-elit-kategori-luks-erkek-saati-77",
+    "seoUrl": "/elit-saat/omega-aqua-terra-titanyum-elit-kategori-luks-kadin-saati-77",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Seamaster+Aqua+Terra+150M+Titanium&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "78",
@@ -1162,12 +1239,13 @@
     "calculatedPrice": 818040,
     "foreignPrice": "$9,624",
     "price": "₺818.040",
-    "seoUrl": "/elit-saat/omega-planet-ocean-siyah-kadran-elit-kategori-luks-erkek-saati-78",
+    "seoUrl": "/elit-saat/omega-planet-ocean-siyah-kadran-elit-kategori-luks-kadin-saati-78",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Planet+Ocean+45+5Mm+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "79",
@@ -1177,12 +1255,13 @@
     "calculatedPrice": 948175,
     "foreignPrice": "$11,155",
     "price": "₺948.175",
-    "seoUrl": "/elit-saat/omega-constellation-mavi-kadran-elit-kategori-luks-erkek-saati-79",
+    "seoUrl": "/elit-saat/omega-constellation-mavi-kadran-elit-kategori-luks-kadin-saati-79",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Constellation+Blue+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "80",
@@ -1197,7 +1276,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "81",
@@ -1207,12 +1287,13 @@
     "calculatedPrice": 3724785,
     "foreignPrice": "$43,821",
     "price": "₺3.724.785",
-    "seoUrl": "/elit-saat/omega-speedmaster-57-yesil-kadran-elit-kategori-luks-erkek-saati-81",
+    "seoUrl": "/elit-saat/omega-speedmaster-57-yesil-kadran-elit-kategori-luks-kadin-saati-81",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Speedmaster+Green+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "82",
@@ -1227,7 +1308,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "83",
@@ -1237,12 +1319,13 @@
     "calculatedPrice": 2050710,
     "foreignPrice": "$24,126",
     "price": "₺2.050.710",
-    "seoUrl": "/elit-saat/omega-speedmaster-professional-moonwatch-altin-detayli-elit-kategori-luks-erkek-saati-83",
+    "seoUrl": "/elit-saat/omega-speedmaster-professional-moonwatch-altin-detayli-elit-kategori-luks-kadin-saati-83",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Speedmaster+Canopus+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "84",
@@ -1257,7 +1340,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "85",
@@ -1272,7 +1356,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "86",
@@ -1287,7 +1372,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "87",
@@ -1297,12 +1383,13 @@
     "calculatedPrice": 2468060,
     "foreignPrice": "$29,036",
     "price": "₺2.468.060",
-    "seoUrl": "/elit-saat/omega-constellation-siyah-kadran-elit-kategori-luks-erkek-saati-87",
+    "seoUrl": "/elit-saat/omega-constellation-siyah-kadran-elit-kategori-luks-kadin-saati-87",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Constellation+Black+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "88",
@@ -1317,7 +1404,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "89",
@@ -1327,12 +1415,13 @@
     "calculatedPrice": 1419415,
     "foreignPrice": "$16,699",
     "price": "₺1.419.415",
-    "seoUrl": "/elit-saat/omega-speedmaster-57-beyaz-kadran-elit-kategori-luks-erkek-saati-89",
+    "seoUrl": "/elit-saat/omega-speedmaster-57-beyaz-kadran-elit-kategori-luks-kadin-saati-89",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "90",
@@ -1342,12 +1431,13 @@
     "calculatedPrice": 1677390,
     "foreignPrice": "$19,734",
     "price": "₺1.677.390",
-    "seoUrl": "/elit-saat/omega-seamaster-300-yesil-kadran-elit-kategori-luks-erkek-saati-90",
+    "seoUrl": "/elit-saat/omega-seamaster-300-yesil-kadran-elit-kategori-luks-kadin-saati-90",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Seamaster+300M+Green+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "91",
@@ -1362,7 +1452,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "92",
@@ -1377,7 +1468,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "93",
@@ -1392,7 +1484,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "94",
@@ -1407,7 +1500,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "95",
@@ -1417,12 +1511,13 @@
     "calculatedPrice": 3810635,
     "foreignPrice": "$44,831",
     "price": "₺3.810.635",
-    "seoUrl": "/elit-saat/omega-constellation-titanyum-elit-kategori-luks-erkek-saati-95",
+    "seoUrl": "/elit-saat/omega-constellation-titanyum-elit-kategori-luks-kadin-saati-95",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "96",
@@ -1437,7 +1532,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "97",
@@ -1447,12 +1543,13 @@
     "calculatedPrice": 679915,
     "foreignPrice": "$7,999",
     "price": "₺679.915",
-    "seoUrl": "/elit-saat/omega-speedmaster-57-mavi-kadran-elit-kategori-luks-erkek-saati-97",
+    "seoUrl": "/elit-saat/omega-speedmaster-57-mavi-kadran-elit-kategori-luks-kadin-saati-97",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Speedmaster+57+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "98",
@@ -1462,12 +1559,13 @@
     "calculatedPrice": 2001665,
     "foreignPrice": "$23,549",
     "price": "₺2.001.665",
-    "seoUrl": "/elit-saat/omega-seamaster-300-beyaz-kadran-elit-kategori-luks-erkek-saati-98",
+    "seoUrl": "/elit-saat/omega-seamaster-300-beyaz-kadran-elit-kategori-luks-kadin-saati-98",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Seamaster+300+White&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "99",
@@ -1482,7 +1580,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "100",
@@ -1492,12 +1591,13 @@
     "calculatedPrice": 2670955,
     "foreignPrice": "$31,423",
     "price": "₺2.670.955",
-    "seoUrl": "/elit-saat/omega-seamaster-diver-300m-gumus-kadran-elit-kategori-luks-erkek-saati-100",
+    "seoUrl": "/elit-saat/omega-seamaster-diver-300m-gumus-kadran-elit-kategori-luks-kadin-saati-100",
     "image": "https://tse1.mm.bing.net/th?q=Omega+Seamaster+Diver+300M+Co+Axial+Master+Chronometer&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "101",
@@ -1507,12 +1607,13 @@
     "calculatedPrice": 12133155,
     "foreignPrice": "$142,743",
     "price": "₺12.133.155",
-    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-siyah-kadran-elit-kategori-luks-erkek-saati-101",
+    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-siyah-kadran-elit-kategori-luks-kadin-saati-101",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Nautilus+5711+Black+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "102",
@@ -1522,12 +1623,13 @@
     "calculatedPrice": 10759300,
     "foreignPrice": "$126,580",
     "price": "₺10.759.300",
-    "seoUrl": "/elit-saat/patek-philippe-aquanaut-mavi-kadran-elit-kategori-luks-erkek-saati-102",
+    "seoUrl": "/elit-saat/patek-philippe-aquanaut-mavi-kadran-elit-kategori-luks-kadin-saati-102",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Aquanaut+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "103",
@@ -1537,12 +1639,13 @@
     "calculatedPrice": 5127370,
     "foreignPrice": "$60,322",
     "price": "₺5.127.370",
-    "seoUrl": "/elit-saat/patek-philippe-calatrava-beyaz-kadran-elit-kategori-luks-erkek-saati-103",
+    "seoUrl": "/elit-saat/patek-philippe-calatrava-beyaz-kadran-elit-kategori-luks-kadin-saati-103",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Calatrava+White+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "104",
@@ -1552,12 +1655,13 @@
     "calculatedPrice": 3706000,
     "foreignPrice": "$43,600",
     "price": "₺3.706.000",
-    "seoUrl": "/elit-saat/patek-philippe-complications-yesil-kadran-elit-kategori-luks-erkek-saati-104",
+    "seoUrl": "/elit-saat/patek-philippe-complications-yesil-kadran-elit-kategori-luks-kadin-saati-104",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Green+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "105",
@@ -1572,7 +1676,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "106",
@@ -1587,7 +1692,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "107",
@@ -1597,12 +1703,13 @@
     "calculatedPrice": 3439100,
     "foreignPrice": "$40,460",
     "price": "₺3.439.100",
-    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-rose-gold-elit-kategori-luks-erkek-saati-107",
+    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-rose-gold-elit-kategori-luks-kadin-saati-107",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Nautilus+5712+Rose+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "108",
@@ -1612,12 +1719,13 @@
     "calculatedPrice": 10996280,
     "foreignPrice": "$129,368",
     "price": "₺10.996.280",
-    "seoUrl": "/elit-saat/patek-philippe-aquanaut-elik-elit-kategori-luks-erkek-saati-108",
+    "seoUrl": "/elit-saat/patek-philippe-aquanaut-elik-elit-kategori-luks-kadin-saati-108",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Aquanaut+Steel&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "109",
@@ -1627,12 +1735,13 @@
     "calculatedPrice": 11093690,
     "foreignPrice": "$130,514",
     "price": "₺11.093.690",
-    "seoUrl": "/elit-saat/patek-philippe-calatrava-titanyum-elit-kategori-luks-erkek-saati-109",
+    "seoUrl": "/elit-saat/patek-philippe-calatrava-titanyum-elit-kategori-luks-kadin-saati-109",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Watches+Png&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "110",
@@ -1647,7 +1756,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "111",
@@ -1662,7 +1772,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "112",
@@ -1672,12 +1783,13 @@
     "calculatedPrice": 4363390,
     "foreignPrice": "$51,334",
     "price": "₺4.363.390",
-    "seoUrl": "/elit-saat/patek-philippe-golden-ellipse-beyaz-kadran-elit-kategori-luks-erkek-saati-112",
+    "seoUrl": "/elit-saat/patek-philippe-golden-ellipse-beyaz-kadran-elit-kategori-luks-kadin-saati-112",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Golden+Ellipse+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "113",
@@ -1687,12 +1799,13 @@
     "calculatedPrice": 10510420,
     "foreignPrice": "$123,652",
     "price": "₺10.510.420",
-    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-yesil-kadran-elit-kategori-luks-erkek-saati-113",
+    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-yesil-kadran-elit-kategori-luks-kadin-saati-113",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+5711+Green+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "114",
@@ -1707,7 +1820,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "115",
@@ -1722,7 +1836,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "116",
@@ -1737,7 +1852,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "117",
@@ -1752,7 +1868,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "118",
@@ -1767,7 +1884,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "119",
@@ -1777,12 +1895,13 @@
     "calculatedPrice": 6579510,
     "foreignPrice": "$77,406",
     "price": "₺6.579.510",
-    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-siyah-kadran-elit-kategori-luks-erkek-saati-119",
+    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-siyah-kadran-elit-kategori-luks-kadin-saati-119",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Nautilus+5711+Black+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "120",
@@ -1792,12 +1911,13 @@
     "calculatedPrice": 1804125,
     "foreignPrice": "$21,225",
     "price": "₺1.804.125",
-    "seoUrl": "/elit-saat/patek-philippe-aquanaut-mavi-kadran-elit-kategori-luks-erkek-saati-120",
+    "seoUrl": "/elit-saat/patek-philippe-aquanaut-mavi-kadran-elit-kategori-luks-kadin-saati-120",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Aquanaut+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "121",
@@ -1807,12 +1927,13 @@
     "calculatedPrice": 7214630,
     "foreignPrice": "$84,878",
     "price": "₺7.214.630",
-    "seoUrl": "/elit-saat/patek-philippe-calatrava-beyaz-kadran-elit-kategori-luks-erkek-saati-121",
+    "seoUrl": "/elit-saat/patek-philippe-calatrava-beyaz-kadran-elit-kategori-luks-kadin-saati-121",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Calatrava+White+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "122",
@@ -1827,7 +1948,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "123",
@@ -1842,7 +1964,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "124",
@@ -1857,7 +1980,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "125",
@@ -1867,12 +1991,13 @@
     "calculatedPrice": 1443895,
     "foreignPrice": "$16,987",
     "price": "₺1.443.895",
-    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-rose-gold-elit-kategori-luks-erkek-saati-125",
+    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-rose-gold-elit-kategori-luks-kadin-saati-125",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Nautilus+5712+Rose+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "126",
@@ -1882,12 +2007,13 @@
     "calculatedPrice": 10502855,
     "foreignPrice": "$123,563",
     "price": "₺10.502.855",
-    "seoUrl": "/elit-saat/patek-philippe-aquanaut-elik-elit-kategori-luks-erkek-saati-126",
+    "seoUrl": "/elit-saat/patek-philippe-aquanaut-elik-elit-kategori-luks-kadin-saati-126",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Aquanaut+Steel&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "127",
@@ -1897,12 +2023,13 @@
     "calculatedPrice": 10992880,
     "foreignPrice": "$129,328",
     "price": "₺10.992.880",
-    "seoUrl": "/elit-saat/patek-philippe-calatrava-titanyum-elit-kategori-luks-erkek-saati-127",
+    "seoUrl": "/elit-saat/patek-philippe-calatrava-titanyum-elit-kategori-luks-kadin-saati-127",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Watches+Png&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "128",
@@ -1912,12 +2039,13 @@
     "calculatedPrice": 7933220,
     "foreignPrice": "$93,332",
     "price": "₺7.933.220",
-    "seoUrl": "/elit-saat/patek-philippe-complications-siyah-kadran-elit-kategori-luks-erkek-saati-128",
+    "seoUrl": "/elit-saat/patek-philippe-complications-siyah-kadran-elit-kategori-luks-kadin-saati-128",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Watches+Black&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "129",
@@ -1927,12 +2055,13 @@
     "calculatedPrice": 12073825,
     "foreignPrice": "$142,045",
     "price": "₺12.073.825",
-    "seoUrl": "/elit-saat/patek-philippe-grand-complications-mavi-kadran-elit-kategori-luks-erkek-saati-129",
+    "seoUrl": "/elit-saat/patek-philippe-grand-complications-mavi-kadran-elit-kategori-luks-kadin-saati-129",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Grand+Complications+Price&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "130",
@@ -1942,12 +2071,13 @@
     "calculatedPrice": 2549405,
     "foreignPrice": "$29,993",
     "price": "₺2.549.405",
-    "seoUrl": "/elit-saat/patek-philippe-golden-ellipse-beyaz-kadran-elit-kategori-luks-erkek-saati-130",
+    "seoUrl": "/elit-saat/patek-philippe-golden-ellipse-beyaz-kadran-elit-kategori-luks-kadin-saati-130",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Golden+Ellipse+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "131",
@@ -1957,12 +2087,13 @@
     "calculatedPrice": 6393105,
     "foreignPrice": "$75,213",
     "price": "₺6.393.105",
-    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-yesil-kadran-elit-kategori-luks-erkek-saati-131",
+    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-yesil-kadran-elit-kategori-luks-kadin-saati-131",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+5711+Green+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "132",
@@ -1972,12 +2103,13 @@
     "calculatedPrice": 10198725,
     "foreignPrice": "$119,985",
     "price": "₺10.198.725",
-    "seoUrl": "/elit-saat/patek-philippe-aquanaut-gumus-kadran-elit-kategori-luks-erkek-saati-132",
+    "seoUrl": "/elit-saat/patek-philippe-aquanaut-gumus-kadran-elit-kategori-luks-kadin-saati-132",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "133",
@@ -1992,7 +2124,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "134",
@@ -2007,7 +2140,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "135",
@@ -2017,12 +2151,13 @@
     "calculatedPrice": 5217640,
     "foreignPrice": "$61,384",
     "price": "₺5.217.640",
-    "seoUrl": "/elit-saat/patek-philippe-grand-complications-elik-elit-kategori-luks-erkek-saati-135",
+    "seoUrl": "/elit-saat/patek-philippe-grand-complications-elik-elit-kategori-luks-kadin-saati-135",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Grand+Complications+Price&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "136",
@@ -2032,12 +2167,13 @@
     "calculatedPrice": 8787725,
     "foreignPrice": "$103,385",
     "price": "₺8.787.725",
-    "seoUrl": "/elit-saat/patek-philippe-golden-ellipse-titanyum-elit-kategori-luks-erkek-saati-136",
+    "seoUrl": "/elit-saat/patek-philippe-golden-ellipse-titanyum-elit-kategori-luks-kadin-saati-136",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Golden+Ellipse+Price&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "137",
@@ -2052,7 +2188,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "138",
@@ -2067,7 +2204,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "139",
@@ -2082,7 +2220,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "140",
@@ -2092,12 +2231,13 @@
     "calculatedPrice": 4977855,
     "foreignPrice": "$58,563",
     "price": "₺4.977.855",
-    "seoUrl": "/elit-saat/patek-philippe-complications-yesil-kadran-elit-kategori-luks-erkek-saati-140",
+    "seoUrl": "/elit-saat/patek-philippe-complications-yesil-kadran-elit-kategori-luks-kadin-saati-140",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Green+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "141",
@@ -2112,7 +2252,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "142",
@@ -2127,7 +2268,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "143",
@@ -2142,7 +2284,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "144",
@@ -2157,7 +2300,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "145",
@@ -2172,7 +2316,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "146",
@@ -2187,7 +2332,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "147",
@@ -2202,7 +2348,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "148",
@@ -2212,12 +2359,13 @@
     "calculatedPrice": 2501125,
     "foreignPrice": "$29,425",
     "price": "₺2.501.125",
-    "seoUrl": "/elit-saat/patek-philippe-golden-ellipse-beyaz-kadran-elit-kategori-luks-erkek-saati-148",
+    "seoUrl": "/elit-saat/patek-philippe-golden-ellipse-beyaz-kadran-elit-kategori-luks-kadin-saati-148",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+Golden+Ellipse+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "149",
@@ -2227,12 +2375,13 @@
     "calculatedPrice": 1941740,
     "foreignPrice": "$22,844",
     "price": "₺1.941.740",
-    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-yesil-kadran-elit-kategori-luks-erkek-saati-149",
+    "seoUrl": "/elit-saat/patek-philippe-nautilus-5711-yesil-kadran-elit-kategori-luks-kadin-saati-149",
     "image": "https://tse1.mm.bing.net/th?q=Patek+Philippe+5711+Green+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "150",
@@ -2242,12 +2391,13 @@
     "calculatedPrice": 6221235,
     "foreignPrice": "$73,191",
     "price": "₺6.221.235",
-    "seoUrl": "/elit-saat/patek-philippe-aquanaut-gumus-kadran-elit-kategori-luks-erkek-saati-150",
+    "seoUrl": "/elit-saat/patek-philippe-aquanaut-gumus-kadran-elit-kategori-luks-kadin-saati-150",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "151",
@@ -2262,7 +2412,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "152",
@@ -2277,7 +2428,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "153",
@@ -2287,12 +2439,13 @@
     "calculatedPrice": 1830815,
     "foreignPrice": "$21,539",
     "price": "₺1.830.815",
-    "seoUrl": "/elit-saat/cartier-ballon-bleu-beyaz-kadran-elit-kategori-luks-erkek-saati-153",
+    "seoUrl": "/elit-saat/cartier-ballon-bleu-beyaz-kadran-elit-kategori-luks-kadin-saati-153",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "154",
@@ -2302,12 +2455,13 @@
     "calculatedPrice": 1817215,
     "foreignPrice": "$21,379",
     "price": "₺1.817.215",
-    "seoUrl": "/elit-saat/cartier-panthere-yesil-kadran-elit-kategori-luks-erkek-saati-154",
+    "seoUrl": "/elit-saat/cartier-panthere-yesil-kadran-elit-kategori-luks-kadin-saati-154",
     "image": "https://tse1.mm.bing.net/th?q=Green+Cartier+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "155",
@@ -2317,12 +2471,13 @@
     "calculatedPrice": 3409520,
     "foreignPrice": "$40,112",
     "price": "₺3.409.520",
-    "seoUrl": "/elit-saat/cartier-pasha-de-cartier-gumus-kadran-elit-kategori-luks-erkek-saati-155",
+    "seoUrl": "/elit-saat/cartier-pasha-de-cartier-gumus-kadran-elit-kategori-luks-kadin-saati-155",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Pasha+De+Cartier+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "156",
@@ -2337,7 +2492,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "157",
@@ -2347,12 +2503,13 @@
     "calculatedPrice": 920465,
     "foreignPrice": "$10,829",
     "price": "₺920.465",
-    "seoUrl": "/elit-saat/cartier-tank-francaise-rose-gold-elit-kategori-luks-erkek-saati-157",
+    "seoUrl": "/elit-saat/cartier-tank-francaise-rose-gold-elit-kategori-luks-kadin-saati-157",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "158",
@@ -2367,7 +2524,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "159",
@@ -2377,12 +2535,13 @@
     "calculatedPrice": 3096550,
     "foreignPrice": "$36,430",
     "price": "₺3.096.550",
-    "seoUrl": "/elit-saat/cartier-tank-must-titanyum-elit-kategori-luks-erkek-saati-159",
+    "seoUrl": "/elit-saat/cartier-tank-must-titanyum-elit-kategori-luks-kadin-saati-159",
     "image": "https://tse1.mm.bing.net/th?q=Must+De+Cartier+Vintage+Tank+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "160",
@@ -2392,12 +2551,13 @@
     "calculatedPrice": 3386995,
     "foreignPrice": "$39,847",
     "price": "₺3.386.995",
-    "seoUrl": "/elit-saat/cartier-ballon-bleu-siyah-kadran-elit-kategori-luks-erkek-saati-160",
+    "seoUrl": "/elit-saat/cartier-ballon-bleu-siyah-kadran-elit-kategori-luks-kadin-saati-160",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Watch+Ballon+Bleu+De+Cc9008&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "161",
@@ -2407,12 +2567,13 @@
     "calculatedPrice": 3720705,
     "foreignPrice": "$43,773",
     "price": "₺3.720.705",
-    "seoUrl": "/elit-saat/cartier-panthere-mavi-kadran-elit-kategori-luks-erkek-saati-161",
+    "seoUrl": "/elit-saat/cartier-panthere-mavi-kadran-elit-kategori-luks-kadin-saati-161",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Panthere+Orologio&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "162",
@@ -2422,12 +2583,13 @@
     "calculatedPrice": 1702040,
     "foreignPrice": "$20,024",
     "price": "₺1.702.040",
-    "seoUrl": "/elit-saat/cartier-pasha-de-cartier-beyaz-kadran-elit-kategori-luks-erkek-saati-162",
+    "seoUrl": "/elit-saat/cartier-pasha-de-cartier-beyaz-kadran-elit-kategori-luks-kadin-saati-162",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Pasha+De+Cartier+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "163",
@@ -2442,7 +2604,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "164",
@@ -2452,12 +2615,13 @@
     "calculatedPrice": 1573690,
     "foreignPrice": "$18,514",
     "price": "₺1.573.690",
-    "seoUrl": "/elit-saat/cartier-tank-francaise-gumus-kadran-elit-kategori-luks-erkek-saati-164",
+    "seoUrl": "/elit-saat/cartier-tank-francaise-gumus-kadran-elit-kategori-luks-kadin-saati-164",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Stainless+Steel+Tank+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "165",
@@ -2472,7 +2636,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "166",
@@ -2487,7 +2652,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "167",
@@ -2502,7 +2668,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "168",
@@ -2512,12 +2679,13 @@
     "calculatedPrice": 2721870,
     "foreignPrice": "$32,022",
     "price": "₺2.721.870",
-    "seoUrl": "/elit-saat/cartier-panthere-titanyum-elit-kategori-luks-erkek-saati-168",
+    "seoUrl": "/elit-saat/cartier-panthere-titanyum-elit-kategori-luks-kadin-saati-168",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Panthere+Watch+Silver&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "169",
@@ -2532,7 +2700,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "170",
@@ -2542,12 +2711,13 @@
     "calculatedPrice": 1782535,
     "foreignPrice": "$20,971",
     "price": "₺1.782.535",
-    "seoUrl": "/elit-saat/cartier-drive-de-cartier-mavi-kadran-elit-kategori-luks-erkek-saati-170",
+    "seoUrl": "/elit-saat/cartier-drive-de-cartier-mavi-kadran-elit-kategori-luks-kadin-saati-170",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Drive+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "171",
@@ -2557,12 +2727,13 @@
     "calculatedPrice": 2318630,
     "foreignPrice": "$27,278",
     "price": "₺2.318.630",
-    "seoUrl": "/elit-saat/cartier-tank-francaise-beyaz-kadran-elit-kategori-luks-erkek-saati-171",
+    "seoUrl": "/elit-saat/cartier-tank-francaise-beyaz-kadran-elit-kategori-luks-kadin-saati-171",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Tank+Fran%c3%a7aise+Watch+Women&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "172",
@@ -2572,12 +2743,13 @@
     "calculatedPrice": 2329680,
     "foreignPrice": "$27,408",
     "price": "₺2.329.680",
-    "seoUrl": "/elit-saat/cartier-santos-de-cartier-yesil-kadran-elit-kategori-luks-erkek-saati-172",
+    "seoUrl": "/elit-saat/cartier-santos-de-cartier-yesil-kadran-elit-kategori-luks-kadin-saati-172",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Santos+Watch+Green+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "173",
@@ -2587,12 +2759,13 @@
     "calculatedPrice": 1489540,
     "foreignPrice": "$17,524",
     "price": "₺1.489.540",
-    "seoUrl": "/elit-saat/cartier-tank-must-gumus-kadran-elit-kategori-luks-erkek-saati-173",
+    "seoUrl": "/elit-saat/cartier-tank-must-gumus-kadran-elit-kategori-luks-kadin-saati-173",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Tank+Silver&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "174",
@@ -2602,12 +2775,13 @@
     "calculatedPrice": 1129650,
     "foreignPrice": "$13,290",
     "price": "₺1.129.650",
-    "seoUrl": "/elit-saat/cartier-ballon-bleu-altin-detayli-elit-kategori-luks-erkek-saati-174",
+    "seoUrl": "/elit-saat/cartier-ballon-bleu-altin-detayli-elit-kategori-luks-kadin-saati-174",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Ballon+Bleu+Yellow+Gold+Ladies+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "175",
@@ -2617,12 +2791,13 @@
     "calculatedPrice": 3108620,
     "foreignPrice": "$36,572",
     "price": "₺3.108.620",
-    "seoUrl": "/elit-saat/cartier-panthere-rose-gold-elit-kategori-luks-erkek-saati-175",
+    "seoUrl": "/elit-saat/cartier-panthere-rose-gold-elit-kategori-luks-kadin-saati-175",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Santos+Rose+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "176",
@@ -2632,12 +2807,13 @@
     "calculatedPrice": 1810415,
     "foreignPrice": "$21,299",
     "price": "₺1.810.415",
-    "seoUrl": "/elit-saat/cartier-pasha-de-cartier-elik-elit-kategori-luks-erkek-saati-176",
+    "seoUrl": "/elit-saat/cartier-pasha-de-cartier-elik-elit-kategori-luks-kadin-saati-176",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Pasha+De+Cartier+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "177",
@@ -2652,7 +2828,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "178",
@@ -2662,12 +2839,13 @@
     "calculatedPrice": 3487805,
     "foreignPrice": "$41,033",
     "price": "₺3.487.805",
-    "seoUrl": "/elit-saat/cartier-tank-francaise-siyah-kadran-elit-kategori-luks-erkek-saati-178",
+    "seoUrl": "/elit-saat/cartier-tank-francaise-siyah-kadran-elit-kategori-luks-kadin-saati-178",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Tank+Small+Black&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "179",
@@ -2682,7 +2860,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "180",
@@ -2692,12 +2871,13 @@
     "calculatedPrice": 514165,
     "foreignPrice": "$6,049",
     "price": "₺514.165",
-    "seoUrl": "/elit-saat/cartier-tank-must-beyaz-kadran-elit-kategori-luks-erkek-saati-180",
+    "seoUrl": "/elit-saat/cartier-tank-must-beyaz-kadran-elit-kategori-luks-kadin-saati-180",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Tank+Must+De+Cartier+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "181",
@@ -2707,12 +2887,13 @@
     "calculatedPrice": 2219775,
     "foreignPrice": "$26,115",
     "price": "₺2.219.775",
-    "seoUrl": "/elit-saat/cartier-ballon-bleu-yesil-kadran-elit-kategori-luks-erkek-saati-181",
+    "seoUrl": "/elit-saat/cartier-ballon-bleu-yesil-kadran-elit-kategori-luks-kadin-saati-181",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Watch+Ballon+Bleu+De+Cc9008&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "182",
@@ -2722,12 +2903,13 @@
     "calculatedPrice": 2852175,
     "foreignPrice": "$33,555",
     "price": "₺2.852.175",
-    "seoUrl": "/elit-saat/cartier-panthere-gumus-kadran-elit-kategori-luks-erkek-saati-182",
+    "seoUrl": "/elit-saat/cartier-panthere-gumus-kadran-elit-kategori-luks-kadin-saati-182",
     "image": "https://tse1.mm.bing.net/th?q=Silver+Cartier+Square+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "183",
@@ -2742,7 +2924,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "184",
@@ -2757,7 +2940,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "185",
@@ -2767,12 +2951,13 @@
     "calculatedPrice": 2553485,
     "foreignPrice": "$30,041",
     "price": "₺2.553.485",
-    "seoUrl": "/elit-saat/cartier-tank-francaise-elik-elit-kategori-luks-erkek-saati-185",
+    "seoUrl": "/elit-saat/cartier-tank-francaise-elik-elit-kategori-luks-kadin-saati-185",
     "image": "https://tse1.mm.bing.net/th?q=Yellow+Gold+Cartier+Tank+Fran%c3%a7aise+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "186",
@@ -2782,12 +2967,13 @@
     "calculatedPrice": 2016625,
     "foreignPrice": "$23,725",
     "price": "₺2.016.625",
-    "seoUrl": "/elit-saat/cartier-santos-de-cartier-titanyum-elit-kategori-luks-erkek-saati-186",
+    "seoUrl": "/elit-saat/cartier-santos-de-cartier-titanyum-elit-kategori-luks-kadin-saati-186",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "187",
@@ -2802,7 +2988,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "188",
@@ -2817,7 +3004,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "189",
@@ -2827,12 +3015,13 @@
     "calculatedPrice": 1360170,
     "foreignPrice": "$16,002",
     "price": "₺1.360.170",
-    "seoUrl": "/elit-saat/cartier-panthere-beyaz-kadran-elit-kategori-luks-erkek-saati-189",
+    "seoUrl": "/elit-saat/cartier-panthere-beyaz-kadran-elit-kategori-luks-kadin-saati-189",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Panthere+Watch+Silver&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "190",
@@ -2842,12 +3031,13 @@
     "calculatedPrice": 3236290,
     "foreignPrice": "$38,074",
     "price": "₺3.236.290",
-    "seoUrl": "/elit-saat/cartier-pasha-de-cartier-yesil-kadran-elit-kategori-luks-erkek-saati-190",
+    "seoUrl": "/elit-saat/cartier-pasha-de-cartier-yesil-kadran-elit-kategori-luks-kadin-saati-190",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Pasha+Watch+503870Nx&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "191",
@@ -2857,12 +3047,13 @@
     "calculatedPrice": 1521755,
     "foreignPrice": "$17,903",
     "price": "₺1.521.755",
-    "seoUrl": "/elit-saat/cartier-drive-de-cartier-gumus-kadran-elit-kategori-luks-erkek-saati-191",
+    "seoUrl": "/elit-saat/cartier-drive-de-cartier-gumus-kadran-elit-kategori-luks-kadin-saati-191",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Drive+Extra+Flat&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "192",
@@ -2872,12 +3063,13 @@
     "calculatedPrice": 3342370,
     "foreignPrice": "$39,322",
     "price": "₺3.342.370",
-    "seoUrl": "/elit-saat/cartier-tank-francaise-altin-detayli-elit-kategori-luks-erkek-saati-192",
+    "seoUrl": "/elit-saat/cartier-tank-francaise-altin-detayli-elit-kategori-luks-kadin-saati-192",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "193",
@@ -2892,7 +3084,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "194",
@@ -2907,7 +3100,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "195",
@@ -2922,7 +3116,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "196",
@@ -2932,12 +3127,13 @@
     "calculatedPrice": 671245,
     "foreignPrice": "$7,897",
     "price": "₺671.245",
-    "seoUrl": "/elit-saat/cartier-panthere-siyah-kadran-elit-kategori-luks-erkek-saati-196",
+    "seoUrl": "/elit-saat/cartier-panthere-siyah-kadran-elit-kategori-luks-kadin-saati-196",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Panthere+Png&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "197",
@@ -2947,12 +3143,13 @@
     "calculatedPrice": 3558610,
     "foreignPrice": "$41,866",
     "price": "₺3.558.610",
-    "seoUrl": "/elit-saat/cartier-pasha-de-cartier-mavi-kadran-elit-kategori-luks-erkek-saati-197",
+    "seoUrl": "/elit-saat/cartier-pasha-de-cartier-mavi-kadran-elit-kategori-luks-kadin-saati-197",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Pasha+De+Cartier+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "198",
@@ -2962,12 +3159,13 @@
     "calculatedPrice": 563805,
     "foreignPrice": "$6,633",
     "price": "₺563.805",
-    "seoUrl": "/elit-saat/cartier-drive-de-cartier-beyaz-kadran-elit-kategori-luks-erkek-saati-198",
+    "seoUrl": "/elit-saat/cartier-drive-de-cartier-beyaz-kadran-elit-kategori-luks-kadin-saati-198",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Drive+Extra+Flat&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "199",
@@ -2977,12 +3175,13 @@
     "calculatedPrice": 2242045,
     "foreignPrice": "$26,377",
     "price": "₺2.242.045",
-    "seoUrl": "/elit-saat/cartier-tank-francaise-yesil-kadran-elit-kategori-luks-erkek-saati-199",
+    "seoUrl": "/elit-saat/cartier-tank-francaise-yesil-kadran-elit-kategori-luks-kadin-saati-199",
     "image": "https://tse1.mm.bing.net/th?q=Cartier+Tank+Green&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "200",
@@ -2997,7 +3196,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "201",
@@ -3012,7 +3212,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "202",
@@ -3027,7 +3228,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "203",
@@ -3037,12 +3239,13 @@
     "calculatedPrice": 2034305,
     "foreignPrice": "$23,933",
     "price": "₺2.034.305",
-    "seoUrl": "/elit-saat/tag-heuer-aquaracer-beyaz-kadran-elit-kategori-luks-erkek-saati-203",
+    "seoUrl": "/elit-saat/tag-heuer-aquaracer-beyaz-kadran-elit-kategori-luks-kadin-saati-203",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Aquaracer+White+Dial&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "204",
@@ -3052,12 +3255,13 @@
     "calculatedPrice": 1056805,
     "foreignPrice": "$12,433",
     "price": "₺1.056.805",
-    "seoUrl": "/elit-saat/tag-heuer-formula-1-yesil-kadran-elit-kategori-luks-erkek-saati-204",
+    "seoUrl": "/elit-saat/tag-heuer-formula-1-yesil-kadran-elit-kategori-luks-kadin-saati-204",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Formula+1+Green&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "205",
@@ -3072,7 +3276,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "206",
@@ -3087,7 +3292,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "207",
@@ -3102,7 +3308,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "208",
@@ -3117,7 +3324,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "209",
@@ -3127,12 +3335,13 @@
     "calculatedPrice": 2048330,
     "foreignPrice": "$24,098",
     "price": "₺2.048.330",
-    "seoUrl": "/elit-saat/tag-heuer-aquaracer-titanyum-elit-kategori-luks-erkek-saati-209",
+    "seoUrl": "/elit-saat/tag-heuer-aquaracer-titanyum-elit-kategori-luks-kadin-saati-209",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Aquaracer+Professional+Titanium&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "210",
@@ -3147,7 +3356,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "211",
@@ -3157,12 +3367,13 @@
     "calculatedPrice": 3056855,
     "foreignPrice": "$35,963",
     "price": "₺3.056.855",
-    "seoUrl": "/elit-saat/tag-heuer-autavia-mavi-kadran-elit-kategori-luks-erkek-saati-211",
+    "seoUrl": "/elit-saat/tag-heuer-autavia-mavi-kadran-elit-kategori-luks-kadin-saati-211",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Autavia+Light+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "212",
@@ -3177,7 +3388,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "213",
@@ -3187,12 +3399,13 @@
     "calculatedPrice": 747830,
     "foreignPrice": "$8,798",
     "price": "₺747.830",
-    "seoUrl": "/elit-saat/tag-heuer-carrera-yesil-kadran-elit-kategori-luks-erkek-saati-213",
+    "seoUrl": "/elit-saat/tag-heuer-carrera-yesil-kadran-elit-kategori-luks-kadin-saati-213",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Carrera+Green+Face&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "214",
@@ -3202,12 +3415,13 @@
     "calculatedPrice": 1187535,
     "foreignPrice": "$13,971",
     "price": "₺1.187.535",
-    "seoUrl": "/elit-saat/tag-heuer-monaco-gumus-kadran-elit-kategori-luks-erkek-saati-214",
+    "seoUrl": "/elit-saat/tag-heuer-monaco-gumus-kadran-elit-kategori-luks-kadin-saati-214",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Monaco+High+Resolution&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "215",
@@ -3217,12 +3431,13 @@
     "calculatedPrice": 1089955,
     "foreignPrice": "$12,823",
     "price": "₺1.089.955",
-    "seoUrl": "/elit-saat/tag-heuer-aquaracer-altin-detayli-elit-kategori-luks-erkek-saati-215",
+    "seoUrl": "/elit-saat/tag-heuer-aquaracer-altin-detayli-elit-kategori-luks-kadin-saati-215",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Aquaracer+Gold+And+Silver&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "216",
@@ -3232,12 +3447,13 @@
     "calculatedPrice": 2954005,
     "foreignPrice": "$34,753",
     "price": "₺2.954.005",
-    "seoUrl": "/elit-saat/tag-heuer-formula-1-rose-gold-elit-kategori-luks-erkek-saati-216",
+    "seoUrl": "/elit-saat/tag-heuer-formula-1-rose-gold-elit-kategori-luks-kadin-saati-216",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Rose+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "217",
@@ -3252,7 +3468,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "218",
@@ -3262,12 +3479,13 @@
     "calculatedPrice": 2367505,
     "foreignPrice": "$27,853",
     "price": "₺2.367.505",
-    "seoUrl": "/elit-saat/tag-heuer-link-titanyum-elit-kategori-luks-erkek-saati-218",
+    "seoUrl": "/elit-saat/tag-heuer-link-titanyum-elit-kategori-luks-kadin-saati-218",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Link+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "219",
@@ -3282,7 +3500,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "220",
@@ -3292,12 +3511,13 @@
     "calculatedPrice": 2455990,
     "foreignPrice": "$28,894",
     "price": "₺2.455.990",
-    "seoUrl": "/elit-saat/tag-heuer-monaco-mavi-kadran-elit-kategori-luks-erkek-saati-220",
+    "seoUrl": "/elit-saat/tag-heuer-monaco-mavi-kadran-elit-kategori-luks-kadin-saati-220",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Monaco+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "221",
@@ -3312,7 +3532,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "222",
@@ -3327,7 +3548,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "223",
@@ -3342,7 +3564,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "224",
@@ -3357,7 +3580,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "225",
@@ -3367,12 +3591,13 @@
     "calculatedPrice": 3636555,
     "foreignPrice": "$42,783",
     "price": "₺3.636.555",
-    "seoUrl": "/elit-saat/tag-heuer-carrera-rose-gold-elit-kategori-luks-erkek-saati-225",
+    "seoUrl": "/elit-saat/tag-heuer-carrera-rose-gold-elit-kategori-luks-kadin-saati-225",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Rose+Gold+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "226",
@@ -3382,12 +3607,13 @@
     "calculatedPrice": 1168750,
     "foreignPrice": "$13,750",
     "price": "₺1.168.750",
-    "seoUrl": "/elit-saat/tag-heuer-monaco-elik-elit-kategori-luks-erkek-saati-226",
+    "seoUrl": "/elit-saat/tag-heuer-monaco-elik-elit-kategori-luks-kadin-saati-226",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Monaco+High+Resolution&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "227",
@@ -3402,7 +3628,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "228",
@@ -3412,12 +3639,13 @@
     "calculatedPrice": 1247630,
     "foreignPrice": "$14,678",
     "price": "₺1.247.630",
-    "seoUrl": "/elit-saat/tag-heuer-formula-1-siyah-kadran-elit-kategori-luks-erkek-saati-228",
+    "seoUrl": "/elit-saat/tag-heuer-formula-1-siyah-kadran-elit-kategori-luks-kadin-saati-228",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Formula+1+Watch+Black&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "229",
@@ -3427,12 +3655,13 @@
     "calculatedPrice": 1927205,
     "foreignPrice": "$22,673",
     "price": "₺1.927.205",
-    "seoUrl": "/elit-saat/tag-heuer-autavia-mavi-kadran-elit-kategori-luks-erkek-saati-229",
+    "seoUrl": "/elit-saat/tag-heuer-autavia-mavi-kadran-elit-kategori-luks-kadin-saati-229",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Autavia+Light+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "230",
@@ -3447,7 +3676,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "231",
@@ -3457,12 +3687,13 @@
     "calculatedPrice": 635545,
     "foreignPrice": "$7,477",
     "price": "₺635.545",
-    "seoUrl": "/elit-saat/tag-heuer-carrera-yesil-kadran-elit-kategori-luks-erkek-saati-231",
+    "seoUrl": "/elit-saat/tag-heuer-carrera-yesil-kadran-elit-kategori-luks-kadin-saati-231",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Carrera+Green+Face&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "232",
@@ -3472,12 +3703,13 @@
     "calculatedPrice": 915620,
     "foreignPrice": "$10,772",
     "price": "₺915.620",
-    "seoUrl": "/elit-saat/tag-heuer-monaco-gumus-kadran-elit-kategori-luks-erkek-saati-232",
+    "seoUrl": "/elit-saat/tag-heuer-monaco-gumus-kadran-elit-kategori-luks-kadin-saati-232",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Monaco+High+Resolution&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "233",
@@ -3492,7 +3724,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "234",
@@ -3507,7 +3740,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "235",
@@ -3522,7 +3756,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "236",
@@ -3537,7 +3772,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "237",
@@ -3547,12 +3783,13 @@
     "calculatedPrice": 1597405,
     "foreignPrice": "$18,793",
     "price": "₺1.597.405",
-    "seoUrl": "/elit-saat/tag-heuer-carrera-siyah-kadran-elit-kategori-luks-erkek-saati-237",
+    "seoUrl": "/elit-saat/tag-heuer-carrera-siyah-kadran-elit-kategori-luks-kadin-saati-237",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Carrera+Black&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "238",
@@ -3562,12 +3799,13 @@
     "calculatedPrice": 2833220,
     "foreignPrice": "$33,332",
     "price": "₺2.833.220",
-    "seoUrl": "/elit-saat/tag-heuer-monaco-mavi-kadran-elit-kategori-luks-erkek-saati-238",
+    "seoUrl": "/elit-saat/tag-heuer-monaco-mavi-kadran-elit-kategori-luks-kadin-saati-238",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Monaco+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "239",
@@ -3582,7 +3820,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "240",
@@ -3597,7 +3836,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "241",
@@ -3612,7 +3852,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "242",
@@ -3627,7 +3868,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "243",
@@ -3637,12 +3879,13 @@
     "calculatedPrice": 1769955,
     "foreignPrice": "$20,823",
     "price": "₺1.769.955",
-    "seoUrl": "/elit-saat/tag-heuer-carrera-rose-gold-elit-kategori-luks-erkek-saati-243",
+    "seoUrl": "/elit-saat/tag-heuer-carrera-rose-gold-elit-kategori-luks-kadin-saati-243",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+Rose+Gold+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "244",
@@ -3657,7 +3900,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "245",
@@ -3672,7 +3916,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "246",
@@ -3687,7 +3932,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "247",
@@ -3702,7 +3948,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "248",
@@ -3712,12 +3959,13 @@
     "calculatedPrice": 1036830,
     "foreignPrice": "$12,198",
     "price": "₺1.036.830",
-    "seoUrl": "/elit-saat/tag-heuer-link-beyaz-kadran-elit-kategori-luks-erkek-saati-248",
+    "seoUrl": "/elit-saat/tag-heuer-link-beyaz-kadran-elit-kategori-luks-kadin-saati-248",
     "image": "https://tse1.mm.bing.net/th?q=Tag+Heuer+White+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "249",
@@ -3732,7 +3980,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "250",
@@ -3747,7 +3996,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "251",
@@ -3762,7 +4012,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "252",
@@ -3772,12 +4023,13 @@
     "calculatedPrice": 1977355,
     "foreignPrice": "$23,263",
     "price": "₺1.977.355",
-    "seoUrl": "/elit-saat/iwc-portugieser-mavi-kadran-elit-kategori-luks-erkek-saati-252",
+    "seoUrl": "/elit-saat/iwc-portugieser-mavi-kadran-elit-kategori-luks-kadin-saati-252",
     "image": "https://tse1.mm.bing.net/th?q=Iwc+Portugieser+Chronograph+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "253",
@@ -3792,7 +4044,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "254",
@@ -3807,7 +4060,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "255",
@@ -3817,12 +4071,13 @@
     "calculatedPrice": 3700050,
     "foreignPrice": "$43,530",
     "price": "₺3.700.050",
-    "seoUrl": "/elit-saat/iwc-ingenieur-gumus-kadran-elit-kategori-luks-erkek-saati-255",
+    "seoUrl": "/elit-saat/iwc-ingenieur-gumus-kadran-elit-kategori-luks-kadin-saati-255",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "256",
@@ -3832,12 +4087,13 @@
     "calculatedPrice": 1070150,
     "foreignPrice": "$12,590",
     "price": "₺1.070.150",
-    "seoUrl": "/elit-saat/iwc-da-vinci-altin-detayli-elit-kategori-luks-erkek-saati-256",
+    "seoUrl": "/elit-saat/iwc-da-vinci-altin-detayli-elit-kategori-luks-kadin-saati-256",
     "image": "https://tse1.mm.bing.net/th?q=Iwc+Da+Vinci+Automatic&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "257",
@@ -3852,7 +4108,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "258",
@@ -3867,7 +4124,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "259",
@@ -3882,7 +4140,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "260",
@@ -3897,7 +4156,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "261",
@@ -3907,12 +4167,13 @@
     "calculatedPrice": 635630,
     "foreignPrice": "$7,478",
     "price": "₺635.630",
-    "seoUrl": "/elit-saat/iwc-ingenieur-mavi-kadran-elit-kategori-luks-erkek-saati-261",
+    "seoUrl": "/elit-saat/iwc-ingenieur-mavi-kadran-elit-kategori-luks-kadin-saati-261",
     "image": "https://tse1.mm.bing.net/th?q=Iwc+Ingenieur+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "262",
@@ -3922,12 +4183,13 @@
     "calculatedPrice": 1555075,
     "foreignPrice": "$18,295",
     "price": "₺1.555.075",
-    "seoUrl": "/elit-saat/iwc-da-vinci-beyaz-kadran-elit-kategori-luks-erkek-saati-262",
+    "seoUrl": "/elit-saat/iwc-da-vinci-beyaz-kadran-elit-kategori-luks-kadin-saati-262",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "263",
@@ -3942,7 +4204,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "264",
@@ -3957,7 +4220,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "265",
@@ -3967,12 +4231,13 @@
     "calculatedPrice": 507025,
     "foreignPrice": "$5,965",
     "price": "₺507.025",
-    "seoUrl": "/elit-saat/iwc-portofino-altin-detayli-elit-kategori-luks-erkek-saati-265",
+    "seoUrl": "/elit-saat/iwc-portofino-altin-detayli-elit-kategori-luks-kadin-saati-265",
     "image": "https://tse1.mm.bing.net/th?q=Iwc+Portofino+Automatic&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "266",
@@ -3987,7 +4252,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "267",
@@ -4002,7 +4268,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "268",
@@ -4017,7 +4284,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "269",
@@ -4032,7 +4300,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "270",
@@ -4042,12 +4311,13 @@
     "calculatedPrice": 999005,
     "foreignPrice": "$11,753",
     "price": "₺999.005",
-    "seoUrl": "/elit-saat/iwc-portugieser-mavi-kadran-elit-kategori-luks-erkek-saati-270",
+    "seoUrl": "/elit-saat/iwc-portugieser-mavi-kadran-elit-kategori-luks-kadin-saati-270",
     "image": "https://tse1.mm.bing.net/th?q=Iwc+Portugieser+Chronograph+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "271",
@@ -4062,7 +4332,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "272",
@@ -4077,7 +4348,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "273",
@@ -4092,7 +4364,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "274",
@@ -4107,7 +4380,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "275",
@@ -4122,7 +4396,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "276",
@@ -4132,12 +4407,13 @@
     "calculatedPrice": 476765,
     "foreignPrice": "$5,609",
     "price": "₺476.765",
-    "seoUrl": "/elit-saat/iwc-portugieser-elik-elit-kategori-luks-erkek-saati-276",
+    "seoUrl": "/elit-saat/iwc-portugieser-elik-elit-kategori-luks-kadin-saati-276",
     "image": "https://tse1.mm.bing.net/th?q=Iwc+Schaffhausen+Watch+Png&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "277",
@@ -4147,12 +4423,13 @@
     "calculatedPrice": 3441650,
     "foreignPrice": "$40,490",
     "price": "₺3.441.650",
-    "seoUrl": "/elit-saat/iwc-portofino-titanyum-elit-kategori-luks-erkek-saati-277",
+    "seoUrl": "/elit-saat/iwc-portofino-titanyum-elit-kategori-luks-kadin-saati-277",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "278",
@@ -4167,7 +4444,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "279",
@@ -4177,12 +4455,13 @@
     "calculatedPrice": 3253885,
     "foreignPrice": "$38,281",
     "price": "₺3.253.885",
-    "seoUrl": "/elit-saat/iwc-ingenieur-mavi-kadran-elit-kategori-luks-erkek-saati-279",
+    "seoUrl": "/elit-saat/iwc-ingenieur-mavi-kadran-elit-kategori-luks-kadin-saati-279",
     "image": "https://tse1.mm.bing.net/th?q=Iwc+Ingenieur+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "280",
@@ -4192,12 +4471,13 @@
     "calculatedPrice": 3104115,
     "foreignPrice": "$36,519",
     "price": "₺3.104.115",
-    "seoUrl": "/elit-saat/iwc-da-vinci-beyaz-kadran-elit-kategori-luks-erkek-saati-280",
+    "seoUrl": "/elit-saat/iwc-da-vinci-beyaz-kadran-elit-kategori-luks-kadin-saati-280",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "281",
@@ -4212,7 +4492,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "282",
@@ -4227,7 +4508,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "283",
@@ -4242,7 +4524,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "284",
@@ -4257,7 +4540,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "285",
@@ -4272,7 +4556,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "286",
@@ -4287,7 +4572,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "287",
@@ -4302,7 +4588,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "288",
@@ -4312,12 +4599,13 @@
     "calculatedPrice": 3583005,
     "foreignPrice": "$42,153",
     "price": "₺3.583.005",
-    "seoUrl": "/elit-saat/iwc-portugieser-mavi-kadran-elit-kategori-luks-erkek-saati-288",
+    "seoUrl": "/elit-saat/iwc-portugieser-mavi-kadran-elit-kategori-luks-kadin-saati-288",
     "image": "https://tse1.mm.bing.net/th?q=Iwc+Portugieser+Chronograph+Blue&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "289",
@@ -4327,12 +4615,13 @@
     "calculatedPrice": 1903830,
     "foreignPrice": "$22,398",
     "price": "₺1.903.830",
-    "seoUrl": "/elit-saat/iwc-portofino-beyaz-kadran-elit-kategori-luks-erkek-saati-289",
+    "seoUrl": "/elit-saat/iwc-portofino-beyaz-kadran-elit-kategori-luks-kadin-saati-289",
     "image": "https://tse1.mm.bing.net/th?q=Iwc+Portofino+Automatic+37&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "290",
@@ -4347,7 +4636,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "291",
@@ -4357,12 +4647,13 @@
     "calculatedPrice": 2013480,
     "foreignPrice": "$23,688",
     "price": "₺2.013.480",
-    "seoUrl": "/elit-saat/iwc-ingenieur-gumus-kadran-elit-kategori-luks-erkek-saati-291",
+    "seoUrl": "/elit-saat/iwc-ingenieur-gumus-kadran-elit-kategori-luks-kadin-saati-291",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "292",
@@ -4377,7 +4668,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "293",
@@ -4392,7 +4684,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "294",
@@ -4407,7 +4700,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "295",
@@ -4422,7 +4716,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "296",
@@ -4437,7 +4732,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "297",
@@ -4452,7 +4748,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "298",
@@ -4462,12 +4759,13 @@
     "calculatedPrice": 2034985,
     "foreignPrice": "$23,941",
     "price": "₺2.034.985",
-    "seoUrl": "/elit-saat/iwc-da-vinci-beyaz-kadran-elit-kategori-luks-erkek-saati-298",
+    "seoUrl": "/elit-saat/iwc-da-vinci-beyaz-kadran-elit-kategori-luks-kadin-saati-298",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "299",
@@ -4482,7 +4780,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "300",
@@ -4497,7 +4796,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "301",
@@ -4507,12 +4807,13 @@
     "calculatedPrice": 3219885,
     "foreignPrice": "$37,881",
     "price": "₺3.219.885",
-    "seoUrl": "/elit-saat/hublot-big-bang-siyah-kadran-elit-kategori-luks-erkek-saati-301",
+    "seoUrl": "/elit-saat/hublot-big-bang-siyah-kadran-elit-kategori-luks-kadin-saati-301",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Black&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "302",
@@ -4527,7 +4828,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "303",
@@ -4537,12 +4839,13 @@
     "calculatedPrice": 1481380,
     "foreignPrice": "$17,428",
     "price": "₺1.481.380",
-    "seoUrl": "/elit-saat/hublot-spirit-of-big-bang-beyaz-kadran-elit-kategori-luks-erkek-saati-303",
+    "seoUrl": "/elit-saat/hublot-spirit-of-big-bang-beyaz-kadran-elit-kategori-luks-kadin-saati-303",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+White+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "304",
@@ -4557,7 +4860,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "305",
@@ -4572,7 +4876,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "306",
@@ -4582,12 +4887,13 @@
     "calculatedPrice": 2262615,
     "foreignPrice": "$26,619",
     "price": "₺2.262.615",
-    "seoUrl": "/elit-saat/hublot-classic-fusion-altin-detayli-elit-kategori-luks-erkek-saati-306",
+    "seoUrl": "/elit-saat/hublot-classic-fusion-altin-detayli-elit-kategori-luks-kadin-saati-306",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Watch+Png&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "307",
@@ -4602,7 +4908,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "308",
@@ -4612,12 +4919,13 @@
     "calculatedPrice": 3056855,
     "foreignPrice": "$35,963",
     "price": "₺3.056.855",
-    "seoUrl": "/elit-saat/hublot-king-power-elik-elit-kategori-luks-erkek-saati-308",
+    "seoUrl": "/elit-saat/hublot-king-power-elik-elit-kategori-luks-kadin-saati-308",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Watch+Png&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "309",
@@ -4627,12 +4935,13 @@
     "calculatedPrice": 3377390,
     "foreignPrice": "$39,734",
     "price": "₺3.377.390",
-    "seoUrl": "/elit-saat/hublot-big-bang-titanyum-elit-kategori-luks-erkek-saati-309",
+    "seoUrl": "/elit-saat/hublot-big-bang-titanyum-elit-kategori-luks-kadin-saati-309",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Watches+Png&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "310",
@@ -4642,12 +4951,13 @@
     "calculatedPrice": 2210595,
     "foreignPrice": "$26,007",
     "price": "₺2.210.595",
-    "seoUrl": "/elit-saat/hublot-classic-fusion-siyah-kadran-elit-kategori-luks-erkek-saati-310",
+    "seoUrl": "/elit-saat/hublot-classic-fusion-siyah-kadran-elit-kategori-luks-kadin-saati-310",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Classic+Fusion+Black&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "311",
@@ -4662,7 +4972,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "312",
@@ -4672,12 +4983,13 @@
     "calculatedPrice": 751825,
     "foreignPrice": "$8,845",
     "price": "₺751.825",
-    "seoUrl": "/elit-saat/hublot-king-power-beyaz-kadran-elit-kategori-luks-erkek-saati-312",
+    "seoUrl": "/elit-saat/hublot-king-power-beyaz-kadran-elit-kategori-luks-kadin-saati-312",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Watches+Men+White&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "313",
@@ -4692,7 +5004,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "314",
@@ -4702,12 +5015,13 @@
     "calculatedPrice": 3573315,
     "foreignPrice": "$42,039",
     "price": "₺3.573.315",
-    "seoUrl": "/elit-saat/hublot-classic-fusion-gumus-kadran-elit-kategori-luks-erkek-saati-314",
+    "seoUrl": "/elit-saat/hublot-classic-fusion-gumus-kadran-elit-kategori-luks-kadin-saati-314",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Classic+Fusion+45Mm&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "315",
@@ -4717,12 +5031,13 @@
     "calculatedPrice": 974015,
     "foreignPrice": "$11,459",
     "price": "₺974.015",
-    "seoUrl": "/elit-saat/hublot-spirit-of-big-bang-altin-detayli-elit-kategori-luks-erkek-saati-315",
+    "seoUrl": "/elit-saat/hublot-spirit-of-big-bang-altin-detayli-elit-kategori-luks-kadin-saati-315",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+King+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "316",
@@ -4737,7 +5052,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "317",
@@ -4752,7 +5068,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "318",
@@ -4762,12 +5079,13 @@
     "calculatedPrice": 3655680,
     "foreignPrice": "$43,008",
     "price": "₺3.655.680",
-    "seoUrl": "/elit-saat/hublot-classic-fusion-titanyum-elit-kategori-luks-erkek-saati-318",
+    "seoUrl": "/elit-saat/hublot-classic-fusion-titanyum-elit-kategori-luks-kadin-saati-318",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Watch+Png&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "319",
@@ -4777,12 +5095,13 @@
     "calculatedPrice": 1580575,
     "foreignPrice": "$18,595",
     "price": "₺1.580.575",
-    "seoUrl": "/elit-saat/hublot-spirit-of-big-bang-siyah-kadran-elit-kategori-luks-erkek-saati-319",
+    "seoUrl": "/elit-saat/hublot-spirit-of-big-bang-siyah-kadran-elit-kategori-luks-kadin-saati-319",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Watches+Png&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "320",
@@ -4797,7 +5116,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "321",
@@ -4812,7 +5132,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "322",
@@ -4822,12 +5143,13 @@
     "calculatedPrice": 1253240,
     "foreignPrice": "$14,744",
     "price": "₺1.253.240",
-    "seoUrl": "/elit-saat/hublot-classic-fusion-yesil-kadran-elit-kategori-luks-erkek-saati-322",
+    "seoUrl": "/elit-saat/hublot-classic-fusion-yesil-kadran-elit-kategori-luks-kadin-saati-322",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Green&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "323",
@@ -4842,7 +5164,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "324",
@@ -4852,12 +5175,13 @@
     "calculatedPrice": 2524925,
     "foreignPrice": "$29,705",
     "price": "₺2.524.925",
-    "seoUrl": "/elit-saat/hublot-king-power-altin-detayli-elit-kategori-luks-erkek-saati-324",
+    "seoUrl": "/elit-saat/hublot-king-power-altin-detayli-elit-kategori-luks-kadin-saati-324",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Watches+Men+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "325",
@@ -4867,12 +5191,13 @@
     "calculatedPrice": 575875,
     "foreignPrice": "$6,775",
     "price": "₺575.875",
-    "seoUrl": "/elit-saat/hublot-big-bang-rose-gold-elit-kategori-luks-erkek-saati-325",
+    "seoUrl": "/elit-saat/hublot-big-bang-rose-gold-elit-kategori-luks-kadin-saati-325",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Rose+Gold+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "326",
@@ -4887,7 +5212,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "327",
@@ -4902,7 +5228,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "328",
@@ -4917,7 +5244,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "329",
@@ -4927,12 +5255,13 @@
     "calculatedPrice": 3518915,
     "foreignPrice": "$41,399",
     "price": "₺3.518.915",
-    "seoUrl": "/elit-saat/hublot-big-bang-mavi-kadran-elit-kategori-luks-erkek-saati-329",
+    "seoUrl": "/elit-saat/hublot-big-bang-mavi-kadran-elit-kategori-luks-kadin-saati-329",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Blue+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "330",
@@ -4947,7 +5276,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "331",
@@ -4957,12 +5287,13 @@
     "calculatedPrice": 1247715,
     "foreignPrice": "$14,679",
     "price": "₺1.247.715",
-    "seoUrl": "/elit-saat/hublot-spirit-of-big-bang-yesil-kadran-elit-kategori-luks-erkek-saati-331",
+    "seoUrl": "/elit-saat/hublot-spirit-of-big-bang-yesil-kadran-elit-kategori-luks-kadin-saati-331",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Green&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "332",
@@ -4977,7 +5308,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "333",
@@ -4987,12 +5319,13 @@
     "calculatedPrice": 1141125,
     "foreignPrice": "$13,425",
     "price": "₺1.141.125",
-    "seoUrl": "/elit-saat/hublot-big-bang-altin-detayli-elit-kategori-luks-erkek-saati-333",
+    "seoUrl": "/elit-saat/hublot-big-bang-altin-detayli-elit-kategori-luks-kadin-saati-333",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Watches+Men+Gold&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "334",
@@ -5002,12 +5335,13 @@
     "calculatedPrice": 3694950,
     "foreignPrice": "$43,470",
     "price": "₺3.694.950",
-    "seoUrl": "/elit-saat/hublot-classic-fusion-rose-gold-elit-kategori-luks-erkek-saati-334",
+    "seoUrl": "/elit-saat/hublot-classic-fusion-rose-gold-elit-kategori-luks-kadin-saati-334",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Rose+Gold+Skeleton+Fusion&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "335",
@@ -5017,12 +5351,13 @@
     "calculatedPrice": 1963160,
     "foreignPrice": "$23,096",
     "price": "₺1.963.160",
-    "seoUrl": "/elit-saat/hublot-spirit-of-big-bang-elik-elit-kategori-luks-erkek-saati-335",
+    "seoUrl": "/elit-saat/hublot-spirit-of-big-bang-elik-elit-kategori-luks-kadin-saati-335",
     "image": "",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "336",
@@ -5032,12 +5367,13 @@
     "calculatedPrice": 3148910,
     "foreignPrice": "$37,046",
     "price": "₺3.148.910",
-    "seoUrl": "/elit-saat/hublot-king-power-titanyum-elit-kategori-luks-erkek-saati-336",
+    "seoUrl": "/elit-saat/hublot-king-power-titanyum-elit-kategori-luks-kadin-saati-336",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Titanium+Watch&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "337",
@@ -5052,7 +5388,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "338",
@@ -5067,7 +5404,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "339",
@@ -5082,7 +5420,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "340",
@@ -5097,7 +5436,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "341",
@@ -5112,7 +5452,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "342",
@@ -5122,12 +5463,13 @@
     "calculatedPrice": 1654865,
     "foreignPrice": "$19,469",
     "price": "₺1.654.865",
-    "seoUrl": "/elit-saat/hublot-classic-fusion-altin-detayli-elit-kategori-luks-erkek-saati-342",
+    "seoUrl": "/elit-saat/hublot-classic-fusion-altin-detayli-elit-kategori-luks-kadin-saati-342",
     "image": "https://tse1.mm.bing.net/th?q=Hublot+Watch+Png&w=2000&h=2000&c=7&rs=1&p=0&dpr=2",
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "343",
@@ -5142,7 +5484,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "344",
@@ -5157,7 +5500,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Kutusuz (Sertifikalı)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "345",
@@ -5172,7 +5516,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "346",
@@ -5187,7 +5532,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "347",
@@ -5202,7 +5548,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Sıfır",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "348",
@@ -5217,7 +5564,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "349",
@@ -5232,7 +5580,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "350",
@@ -5247,7 +5596,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "İkinci El (Mükemmel Durumda)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "351",
@@ -5262,7 +5612,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "352",
@@ -5277,7 +5628,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "353",
@@ -5292,7 +5644,8 @@
     "category": "Elit Kategori",
     "stock": 1,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "354",
@@ -5307,7 +5660,8 @@
     "category": "Elit Kategori",
     "stock": 3,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "355",
@@ -5322,7 +5676,8 @@
     "category": "Elit Kategori",
     "stock": 3,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "356",
@@ -5337,7 +5692,8 @@
     "category": "Lüks Erkek",
     "stock": 3,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "357",
@@ -5352,7 +5708,8 @@
     "category": "Lüks Erkek",
     "stock": 2,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "358",
@@ -5367,7 +5724,8 @@
     "category": "Lüks Erkek",
     "stock": 1,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "359",
@@ -5382,7 +5740,8 @@
     "category": "Lüks Kadın",
     "stock": 1,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "360",
@@ -5397,7 +5756,8 @@
     "category": "Lüks Erkek",
     "stock": 1,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "361",
@@ -5412,7 +5772,8 @@
     "category": "Lüks Erkek",
     "stock": 2,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "362",
@@ -5427,7 +5788,8 @@
     "category": "Lüks Erkek",
     "stock": 1,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "363",
@@ -5442,7 +5804,8 @@
     "category": "Lüks Erkek",
     "stock": 3,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   },
   {
     "id": "364",
@@ -5457,7 +5820,8 @@
     "category": "Lüks Kadın",
     "stock": 2,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Kadın"
   },
   {
     "id": "365",
@@ -5472,6 +5836,7 @@
     "category": "Lüks Erkek",
     "stock": 2,
     "condition": "Orijinal ve Kutulu (Sıfır Ayarında)",
-    "description": ""
+    "description": "",
+    "gender": "Erkek"
   }
 ]
