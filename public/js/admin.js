@@ -1,5 +1,5 @@
 // ==========================================================
-// BELGIN KUYUMCULUK — YÖNETİCİ VE TAHSİLAT PANELİ JS MOTORU
+// Saatchi Lüks Saatler — YÖNETİCİ VE TAHSİLAT PANELİ JS MOTORU
 // ==========================================================
 
 const getFirebaseAdminConfig = () => {
@@ -17,9 +17,9 @@ const ALLOWED_ADMIN_EMAILS = [
   'barisbagirlar@gmail.com',
   'teb232@gmail.com',
   'info@cimetricaone.com',
-  'destek@belginkuyumculuk.com',
-  'yonetim@belginkuyumculuk.com',
-  'belginkuyumculuk@gmail.com'
+  'destek@SaatchiSaatçilik.com',
+  'yonetim@SaatchiSaatçilik.com',
+  'SaatchiSaatçilik@gmail.com'
 ];
 
 // ISO 8583 & TÜRKİYE BANKACILIK RESMİ SANAL POS HATA KODLARI SÖZLÜĞÜ (KUVEYT TÜRK / ZİRAAT / BKM)
@@ -218,7 +218,7 @@ const AdminApp = {
     this.startClock();
     this.initKeyboardShortcuts();
     // Kuveyt Türk POS oranı (Varsayılan: 2.99)
-    const savedKuveyt = localStorage.getItem('belgin_pos_rate_kuveyt') || localStorage.getItem('belgin_pos_bank_rate');
+    const savedKuveyt = localStorage.getItem('Saatchi_pos_rate_kuveyt') || localStorage.getItem('Saatchi_pos_bank_rate');
     if (savedKuveyt !== null && !isNaN(parseFloat(savedKuveyt))) {
       const parsed = parseFloat(savedKuveyt);
       this.posRateKuveytTurk = (parsed === 3.74) ? 2.99 : parsed;
@@ -231,7 +231,7 @@ const AdminApp = {
     if (rateInput) rateInput.value = this.posRateKuveytTurk;
 
     // Tosla POS oranı (Varsayılan: 3.79)
-    const savedTosla = localStorage.getItem('belgin_pos_rate_tosla');
+    const savedTosla = localStorage.getItem('Saatchi_pos_rate_tosla');
     if (savedTosla !== null && !isNaN(parseFloat(savedTosla))) {
       this.posRateTosla = parseFloat(savedTosla);
     } else {
@@ -241,7 +241,7 @@ const AdminApp = {
     if (toslaInput) toslaInput.value = this.posRateTosla;
 
     try {
-      const savedPeriods = localStorage.getItem('belgin_pos_rate_periods');
+      const savedPeriods = localStorage.getItem('Saatchi_pos_rate_periods');
       if (savedPeriods) this.posRatePeriods = JSON.parse(savedPeriods) || [];
     } catch (_) {
       this.posRatePeriods = [];
@@ -339,7 +339,7 @@ const AdminApp = {
     if (this.isAuthenticating) return;
     this.isAuthenticating = true;
 
-    sessionStorage.removeItem('belgin_admin_logged_out');
+    sessionStorage.removeItem('Saatchi_admin_logged_out');
     const errEl = document.getElementById('googleAuthError');
     if (errEl) errEl.style.display = 'none';
 
@@ -441,11 +441,11 @@ const AdminApp = {
 
   loadCachedOrders() {
     try {
-      const cached = localStorage.getItem('belgin_admin_cached_data');
+      const cached = localStorage.getItem('Saatchi_admin_cached_data');
       if (cached) {
         // Eski sahte/mock verileri temizle
         if (cached.includes('POS-14000-8291') || cached.includes('BLG-12865794') || cached.includes('VIP-9941-45000')) {
-          localStorage.removeItem('belgin_admin_cached_data');
+          localStorage.removeItem('Saatchi_admin_cached_data');
           return;
         }
         const parsed = JSON.parse(cached);
@@ -823,7 +823,7 @@ const AdminApp = {
       if (data && data.success && Array.isArray(data.orders)) {
         this.orders = data.orders;
         try {
-          localStorage.setItem('belgin_admin_cached_data', JSON.stringify({
+          localStorage.setItem('Saatchi_admin_cached_data', JSON.stringify({
             summary: data.summary,
             orders: data.orders
           }));
@@ -1435,7 +1435,7 @@ const AdminApp = {
                 </div>
               ` : (o.invoiceStatus !== 'SIGNED' ? `
                 <button type="button" class="btn-mobile-action btn-mobile-invoice-sign" onclick="AdminApp.openOrderInvoiceModal('${o.orderId}')">
-                  <span>🧾 GİB e-Arşiv Fatura Kes (Altın / Saat)</span>
+                  <span>🧾 GİB e-Arşiv Fatura Kes (lüks saat / Saat)</span>
                 </button>
               ` : `
                 <div class="mobile-actions-split">
@@ -1583,7 +1583,7 @@ const AdminApp = {
     return raw || 'Kuveyt Türk';
   },
 
-  // KUYUMCULUK ÖZEL MATRAH VEYA SAAT %20 KDV HESAPLAMA
+  // Saatçilik ÖZEL MATRAH VEYA SAAT %20 KDV HESAPLAMA
   calculateJewelryBreakdown(totalAmount, order = null) {
     const total = Number(totalAmount) || 0;
     const prodName = order ? (order.productName || (Array.isArray(order.items) && order.items[0]?.name) || '') : '';
@@ -1592,11 +1592,11 @@ const AdminApp = {
       order.taxType === 'SAAT_STANDART' ||
       (Array.isArray(order.items) && order.items.some(it => it.taxType === 'SAAT_STANDART' || (this.isWatchProduct && this.isWatchProduct(it.name)))) ||
       ((this.isWatchProduct && this.isWatchProduct(prodName)) &&
-       !pLower.includes('altın') &&
+       !pLower.includes('lüks saat') &&
        !pLower.includes('ziynet') &&
        !pLower.includes('bilezik') &&
-       !pLower.includes('kuyumculuk') &&
-       !pLower.includes('mücevherat'))
+       !pLower.includes('Saatçilik') &&
+       !pLower.includes('lüks saat'))
     );
 
     if (isWatch) {
@@ -1671,7 +1671,7 @@ const AdminApp = {
 
   // HUKUKİ DELİL & SÖZLEŞME ÇIKTISI AÇ (10/10 BANKA-READY)
   printLegalDocument(orderId, tab = null) {
-    const adminKey = this.adminPin || sessionStorage.getItem('belgin_admin_pin') || localStorage.getItem('belgin_admin_pin') || '';
+    const adminKey = this.adminPin || sessionStorage.getItem('Saatchi_admin_pin') || localStorage.getItem('Saatchi_admin_pin') || '';
     const order = (this.orders || []).find(o => o.orderId === orderId) ||
                   (this.filteredOrders || []).find(o => o.orderId === orderId) ||
                   (this.storeInvoices || []).find(o => o && (o.orderId === orderId || o.id === orderId));
@@ -1686,13 +1686,13 @@ const AdminApp = {
 
   // CHARGEBACK SAVUNMA PAKETİ ÇIKTISI AÇ (10.4 veya 13.1)
   printChargebackPack(orderId, reasonCode = '10.4') {
-    const adminKey = this.adminPin || sessionStorage.getItem('belgin_admin_pin') || localStorage.getItem('belgin_admin_pin') || '';
+    const adminKey = this.adminPin || sessionStorage.getItem('Saatchi_admin_pin') || localStorage.getItem('Saatchi_admin_pin') || '';
     window.open(`/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}&reasonPack=${encodeURIComponent(reasonCode)}&adminKey=${encodeURIComponent(adminKey)}`, '_blank');
   },
 
   // ÜRÜN TESLİM, KONTROL VE ÖDEME İŞLEMİ TEYİT BEYANI AÇ
   printDeliveryStatement(orderId) {
-    const adminKey = this.adminPin || sessionStorage.getItem('belgin_admin_pin') || localStorage.getItem('belgin_admin_pin') || '';
+    const adminKey = this.adminPin || sessionStorage.getItem('Saatchi_admin_pin') || localStorage.getItem('Saatchi_admin_pin') || '';
     const order = (this.orders || []).find(o => o.orderId === orderId) ||
                   (this.filteredOrders || []).find(o => o.orderId === orderId) ||
                   (this.storeInvoices || []).find(o => o && (o.orderId === orderId || o.id === orderId));
@@ -1728,7 +1728,7 @@ const AdminApp = {
       };
     }
     try {
-      const stored = localStorage.getItem('belgin_decl_' + orderId);
+      const stored = localStorage.getItem('Saatchi_decl_' + orderId);
       if (stored) return JSON.parse(stored);
     } catch (_) {}
     return null;
@@ -1748,7 +1748,7 @@ const AdminApp = {
 
       if (!order) {
         try {
-          const stored = localStorage.getItem('belgin_store_invoices');
+          const stored = localStorage.getItem('Saatchi_store_invoices');
           if (stored) {
             const list = JSON.parse(stored);
             order = (list || []).find(o => o && (o.orderId === orderId || o.id === orderId));
@@ -1759,7 +1759,7 @@ const AdminApp = {
       // 2. Yüklenmiş özel beyan / kimlik kaydını kontrol et
       let storedDecl = null;
       try {
-        const declRaw = localStorage.getItem('belgin_decl_' + orderId);
+        const declRaw = localStorage.getItem('Saatchi_decl_' + orderId);
         if (declRaw) storedDecl = JSON.parse(declRaw);
       } catch (_) {}
 
@@ -1919,7 +1919,7 @@ const AdminApp = {
       };
 
       try {
-        localStorage.setItem('belgin_decl_' + orderId, JSON.stringify(declData));
+        localStorage.setItem('Saatchi_decl_' + orderId, JSON.stringify(declData));
       } catch (_) {}
 
       // 1. Online Sipariş objesini güncelle
@@ -1937,7 +1937,7 @@ const AdminApp = {
         storeInv.declarationType = file.type || 'image/jpeg';
         storeInv.declarationName = file.name;
         try {
-          localStorage.setItem('belgin_store_invoices', JSON.stringify(this.storeInvoices));
+          localStorage.setItem('Saatchi_store_invoices', JSON.stringify(this.storeInvoices));
           // Sunucuya da kaydet
           fetch('/api/admin/store-invoices/create', {
             method: 'POST',
@@ -1961,7 +1961,7 @@ const AdminApp = {
     if (!confirm('Bu kayda ait kimlik / beyan belgesini kaldırmak istediğinize emin misiniz?')) return;
 
     try {
-      localStorage.removeItem('belgin_decl_' + this.activeDeclarationOrderId);
+      localStorage.removeItem('Saatchi_decl_' + this.activeDeclarationOrderId);
     } catch (_) {}
 
     const order = this.orders && this.orders.find(o => o && (o.orderId === this.activeDeclarationOrderId || o.id === this.activeDeclarationOrderId));
@@ -1979,7 +1979,7 @@ const AdminApp = {
       delete storeInv.declarationType;
       delete storeInv.declarationName;
       try {
-        localStorage.setItem('belgin_store_invoices', JSON.stringify(this.storeInvoices));
+        localStorage.setItem('Saatchi_store_invoices', JSON.stringify(this.storeInvoices));
       } catch (_) {}
     }
 
@@ -1999,7 +1999,7 @@ const AdminApp = {
 
     let storedDecl = null;
     try {
-      const declRaw = localStorage.getItem('belgin_decl_' + orderId);
+      const declRaw = localStorage.getItem('Saatchi_decl_' + orderId);
       if (declRaw) storedDecl = JSON.parse(declRaw);
     } catch (_) {}
 
@@ -2019,11 +2019,11 @@ const AdminApp = {
       storedDecl.customerPhone = custPhone || storedDecl.customerPhone;
       storedDecl.totalAmount = total || storedDecl.totalAmount;
       try {
-        localStorage.setItem('belgin_decl_' + orderId, JSON.stringify(storedDecl));
+        localStorage.setItem('Saatchi_decl_' + orderId, JSON.stringify(storedDecl));
       } catch (_) {}
     }
 
-    const adminKey = this.adminPin || sessionStorage.getItem('belgin_admin_pin') || localStorage.getItem('belgin_admin_pin') || '';
+    const adminKey = this.adminPin || sessionStorage.getItem('Saatchi_admin_pin') || localStorage.getItem('Saatchi_admin_pin') || '';
     window.open(`/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}&tab=declaration&adminKey=${encodeURIComponent(adminKey)}`, '_blank');
   },
 
@@ -2553,11 +2553,11 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     prodName = this.cleanInvoiceProductName(prodName);
     const pLower = String(prodName || '').toLowerCase().trim();
     const isWatch = (this.isWatchProduct && this.isWatchProduct(prodName)) && 
-      !pLower.includes('altın') && 
+      !pLower.includes('lüks saat') && 
       !pLower.includes('ziynet') && 
       !pLower.includes('bilezik') && 
-      !pLower.includes('kuyumculuk') && 
-      !pLower.includes('mücevherat');
+      !pLower.includes('Saatçilik') && 
+      !pLower.includes('lüks saat');
 
     const goldInput = document.getElementById('cfgGoldItemName');
     if (goldInput) {
@@ -2727,7 +2727,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
       const goldItemInputVal = document.getElementById('cfgGoldItemName')?.value?.trim();
       const rawProdName = goldItemInputVal || order.vipTitle || order.title || order.productName || (Array.isArray(order.items) && order.items[0]?.name) || '';
-      const prodName = (rawProdName && !rawProdName.includes('Saat / Mücevherat')) 
+      const prodName = (rawProdName && !rawProdName.includes('Saat / lüks saat')) 
         ? this.cleanInvoiceProductName(rawProdName)
         : '22 Ayar Bilezik';
 
@@ -3011,7 +3011,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     // MASAK 180.000 TL+ Kimlik Zorunluluğu Kontrolü
     const hasDoc = Boolean(order.declarationDoc || order.identityDoc || this.getStoredDeclaration(orderId));
     if (Number(order.totalAmount || 0) >= 180000 && !hasDoc) {
-      alert(`🚨 MASAK MEVZUAT ZORUNLULUĞU:\n\nSipariş tutarı ₺${Number(order.totalAmount || 0).toLocaleString('tr-TR', {minimumFractionDigits:2})} olup 180.000 TL yasal sınırını aşmaktadır.\n\nMASAK ve Kuyumculuk Mevzuatı gereğince 180.000 TL ve üzeri tüm işlemlerde müşteriden T.C. Kimlik Kartı / Pasaport kopyası alınması ve sisteme yüklenmesi YASAL ZORUNLULUKTUR.\n\nLütfen önce "Kimlik / Beyan Yükle" butonundan müşterinin kimlik belgesini sisteme yükleyiniz.`);
+      alert(`🚨 MASAK MEVZUAT ZORUNLULUĞU:\n\nSipariş tutarı ₺${Number(order.totalAmount || 0).toLocaleString('tr-TR', {minimumFractionDigits:2})} olup 180.000 TL yasal sınırını aşmaktadır.\n\nMASAK ve Saatçilik Mevzuatı gereğince 180.000 TL ve üzeri tüm işlemlerde müşteriden T.C. Kimlik Kartı / Pasaport kopyası alınması ve sisteme yüklenmesi YASAL ZORUNLULUKTUR.\n\nLütfen önce "Kimlik / Beyan Yükle" butonundan müşterinin kimlik belgesini sisteme yükleyiniz.`);
       this.openDeclarationModal(orderId);
       return;
     }
@@ -3250,7 +3250,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
             this.batchPendingStoreInvoices.forEach(inv => {
               inv.invoiceStatus = 'SIGNED';
             });
-            try { localStorage.setItem('belgin_store_invoices', JSON.stringify(this.storeInvoices)); } catch (_) {}
+            try { localStorage.setItem('Saatchi_store_invoices', JSON.stringify(this.storeInvoices)); } catch (_) {}
           }
           this.closeSmsModal();
           this.filterTable();
@@ -3313,7 +3313,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
             targetStoreInv.invoiceStatus = 'SIGNED';
             targetStoreInv.invoiceNumber = data.invoiceNumber;
             targetStoreInv.invoiceUuid = this.activeInvoiceUuid;
-            try { localStorage.setItem('belgin_store_invoices', JSON.stringify(this.storeInvoices)); } catch (_) {}
+            try { localStorage.setItem('Saatchi_store_invoices', JSON.stringify(this.storeInvoices)); } catch (_) {}
           }
 
           this.closeSmsModal();
@@ -3372,12 +3372,12 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (phone.startsWith('0')) phone = '90' + phone.substring(1);
     if (!phone.startsWith('90')) phone = '90' + phone;
 
-    const invoiceUrl = `https://www.belginkuyumculuk.com/api/admin/invoice/view?uuid=${encodeURIComponent(order.invoiceUuid || '')}&orderId=${encodeURIComponent(order.orderId || '')}&print=1&adminKey=1999`;
+    const invoiceUrl = `https://www.SaatchiSaatçilik.com/api/admin/invoice/view?uuid=${encodeURIComponent(order.invoiceUuid || '')}&orderId=${encodeURIComponent(order.orderId || '')}&print=1&adminKey=1999`;
     const customerName = order.customerName || order.customer?.name || 'Değerli Müşterimiz';
     const amount = Number(order.totalAmount || order.total || 0).toLocaleString('tr-TR', { minimumFractionDigits: 2 });
     const invoiceNo = order.invoiceNumber || 'GİB e-Arşiv Faturanız';
 
-    const msg = `Sayın *${customerName}*,\n\nSaatchi Kuyumculuk'tan yapmış olduğunuz *₺${amount}* tutarındaki alışverişinize ait resmi GİB e-Arşiv faturanız düzenlenmiştir.\n\n🧾 *Fatura No:* ${invoiceNo}\n📄 *Faturayı PDF Olarak İndirmek & Görüntülemek İçin:*\n${invoiceUrl}\n\nBizi tercih ettiğiniz için teşekkür eder, iyi günlerde kullanmanızı dileriz.\n\n*Saatchi Kuyumculuk*\nMenderes Cad. No:231/B Buca / İzmir\n0 (541) 930 52 72`;
+    const msg = `Sayın *${customerName}*,\n\nSaatchi Saatçilik'tan yapmış olduğunuz *₺${amount}* tutarındaki alışverişinize ait resmi GİB e-Arşiv faturanız düzenlenmiştir.\n\n🧾 *Fatura No:* ${invoiceNo}\n📄 *Faturayı PDF Olarak İndirmek & Görüntülemek İçin:*\n${invoiceUrl}\n\nBizi tercih ettiğiniz için teşekkür eder, iyi günlerde kullanmanızı dileriz.\n\n*Saatchi Saatçilik*\nMenderes Cad. No:231/B Buca / İzmir\n0 (541) 930 52 72`;
 
     const waUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msg)}`;
     window.open(waUrl, '_blank');
@@ -3508,7 +3508,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
   },
 
   async confirmOrder(orderId) {
-    if (!confirm(`${orderId} numaralı siparişin bankadan tahsil edildiğini onaylıyor musunuz?\n\nBu işlem siparişi 'Tahsil Edildi' durumuna geçirir ve muhasebe@belginkuyumculuk.com adresine otomatik resmi bildirim gönderir.`)) {
+    if (!confirm(`${orderId} numaralı siparişin bankadan tahsil edildiğini onaylıyor musunuz?\n\nBu işlem siparişi 'Tahsil Edildi' durumuna geçirir ve muhasebe@SaatchiSaatçilik.com adresine otomatik resmi bildirim gönderir.`)) {
       return;
     }
 
@@ -3743,7 +3743,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
           const q = parseInt(it.qty || it.miktar || 1, 10) || 1;
           const pr = Number(it.price || it.fiyat || it.lineTotal || (it.unitPrice ? it.unitPrice * q : 0)) || 0;
           return {
-            name: it.name || it.malHizmet || it.title || '22 Ayar Altın Bilezik',
+            name: it.name || it.malHizmet || it.title || '22 Ayar lüks saat Bilezik',
             qty: q,
             price: pr,
             unitPrice: Number(it.unitPrice || it.birimFiyat || (pr > 0 ? pr / q : 0))
@@ -3757,7 +3757,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
           unitPrice: Number(it.birimFiyat) || 0
         }));
       } else if (o.productName && (o.productName.includes('+') || o.productName.includes(' + '))) {
-        // "1x 22 Ayar Bilezik + 2x Çeyrek Altın" formatı
+        // "1x 22 Ayar Bilezik + 2x Çeyrek lüks saat" formatı
         const parts = o.productName.split('+').map(p => p.trim()).filter(Boolean);
         const autoPrice = parts.length > 0 ? (orderAmount / parts.length) : orderAmount;
         itemsList = parts.map(part => {
@@ -3779,14 +3779,14 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         const bd = this.calculateJewelryBreakdown(orderAmount, o);
         if (bd && Array.isArray(bd.items) && bd.items.length > 0) {
           itemsList = bd.items.map(it => ({
-            name: it.name || it.malHizmet || '22 Ayar Altın Bilezik',
+            name: it.name || it.malHizmet || '22 Ayar lüks saat Bilezik',
             qty: parseInt(it.qty || it.miktar || 1, 10) || 1,
             price: Number(it.lineTotal || it.fiyat || it.price) || (orderAmount / bd.items.length),
             unitPrice: Number(it.unitPrice || it.birimFiyat) || 0
           }));
         } else {
           itemsList = [{
-            name: o.productName || o.title || (o.invoiceType === 'WATCH' ? 'Lüks İsviçre Kol Saati' : '22 Ayar Altın Bilezik'),
+            name: o.productName || o.title || (o.invoiceType === 'WATCH' ? 'Lüks İsviçre Kol Saati' : '22 Ayar lüks saat Bilezik'),
             qty: parseInt(o.qty, 10) || 1,
             unitPrice: orderAmount / (parseInt(o.qty, 10) || 1),
             price: orderAmount
@@ -3828,7 +3828,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       // 2. KALEM SATIRLARI (Her kalem kendi fiyatıyla, kuruşu kuruşuna fatura toplamına eşitlenir)
       itemsList.forEach((it, itIdx) => {
         rowCount++;
-        const itName = String(it.name || it.malHizmet || it.title || '22 Ayar Altın Bilezik').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        const itName = String(it.name || it.malHizmet || it.title || '22 Ayar lüks saat Bilezik').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         const itQty = parseInt(it.qty, 10) || 1;
         const itPrice = Number(it.price || (it.unitPrice ? it.unitPrice * itQty : orderAmount / itemsList.length) || 0);
         const itUnitPrice = Number(it.unitPrice || (itQty > 0 ? itPrice / itQty : itPrice) || 0);
@@ -3890,7 +3890,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       <body>
         <table>
           <tr>
-            <td colspan="11" style="border:none; font-size: 16pt; font-weight: bold; color: #042926; padding-bottom: 4px;">BELGİN KUYUMCULUK & MÜCEVHERAT</td>
+            <td colspan="11" style="border:none; font-size: 16pt; font-weight: bold; color: #042926; padding-bottom: 4px;">BELGİN Saatçilik & lüks saat</td>
           </tr>
           <tr>
             <td colspan="11" style="border:none; font-size: 12pt; font-weight: bold; color: #B68A32; padding-bottom: 4px;">Fatura Satış Kalemleri ve Tahsilat Raporu</td>
@@ -3935,7 +3935,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.setAttribute('href', url);
-    link.setAttribute('download', `Saatchi_Kuyumculuk_Fatura_Kalemleri_Raporu${dateSuffix}.xls`);
+    link.setAttribute('download', `Saatchi_Saatçilik_Fatura_Kalemleri_Raporu${dateSuffix}.xls`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -4065,11 +4065,11 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
               TCKN: <span style="font-family:monospace; color:#B45309; font-weight:700;">${o.customerIdentity && o.customerIdentity !== '—' && !o.customerIdentity.includes('Yok') && o.customerIdentity !== '11111111111' ? o.customerIdentity : '—'}</span> • 
               Belge No: <span style="font-family:monospace; color:#084C47; font-weight:700;">${o.invoiceNumber || o.orderId}</span>
             </div>
-            <div style="font-size:11px; color:#059669; font-weight:600;">${o.productName || 'Kuyumculuk Ürünü'} (Özel Matrah)</div>
+            <div style="font-size:11px; color:#059669; font-weight:600;">${o.productName || 'Saatçilik Ürünü'} (Özel Matrah)</div>
           </div>
           <div style="text-align:right;">
             <div style="font-weight:800; color:#15803D; font-size:13px;">₺${Number(o.totalAmount || 0).toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</div>
-            <a href="https://belginkuyumculuk.com/api/admin/invoice/view?uuid=${o.invoiceUuid || ''}&adminKey=1999" target="_blank" style="font-size:10.5px; color:#0284C7; font-weight:700; text-decoration:none;">📄 Faturayı Aç</a>
+            <a href="https://SaatchiSaatçilik.com/api/admin/invoice/view?uuid=${o.invoiceUuid || ''}&adminKey=1999" target="_blank" style="font-size:10.5px; color:#0284C7; font-weight:700; text-decoration:none;">📄 Faturayı Aç</a>
           </div>
         </div>
       `).join('');
@@ -4100,14 +4100,14 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       const custName = o.customerName || o.customer?.name || 'Müşteri';
       const tckn = o.customerIdentity && o.customerIdentity !== '—' ? o.customerIdentity : '11111111111';
       const invNo = o.invoiceNumber || o.orderId;
-      const prodName = o.productName || (o.invoiceBreakdown && o.invoiceBreakdown.productName) || 'Kuyumculuk Ürünü';
+      const prodName = o.productName || (o.invoiceBreakdown && o.invoiceBreakdown.productName) || 'Saatçilik Ürünü';
       const amtFormatted = Number(o.totalAmount || o.total || 0).toLocaleString('tr-TR', { minimumFractionDigits: 2 });
-      const invUrl = `https://www.belginkuyumculuk.com/api/admin/invoice/view?uuid=${encodeURIComponent(o.invoiceUuid || '')}&orderId=${encodeURIComponent(o.orderId || '')}&print=1&adminKey=1999`;
+      const invUrl = `https://www.SaatchiSaatçilik.com/api/admin/invoice/view?uuid=${encodeURIComponent(o.invoiceUuid || '')}&orderId=${encodeURIComponent(o.orderId || '')}&print=1&adminKey=1999`;
 
       return `${idx + 1}️⃣ *${custName}*\n• *TCKN / VKN:* ${tckn}\n• *Fatura No:* ${invNo}\n• *Ürün:* ${prodName} (Özel Matrah)\n• *Tutar:* ₺${amtFormatted}\n• *Resmi Fatura (PDF İndir):*\n${invUrl}`;
     }).join('\n\n');
 
-    return `📊 *BELGİN KUYUMCULUK — GİB E-ARŞİV FATURA DÖKÜMÜ*\n📅 *Tarih:* ${dateFormatted}\n📁 *Fatura Adedi:* ${count} Adet\n💰 *Genel Toplam:* ₺${totalFormatted}\n\n────────────────────────\n🧾 *FATURA DÖKÜMÜ:*\n\n${lines}\n\n────────────────────────\n📌 _KDV Kanunu 23/f özel matrah kapsamında muhasebe kayıtlarına işlenmek üzere iletilmiştir._\n🏢 *Saatchi Kuyumculuk* (Buca / İzmir)`;
+    return `📊 *BELGİN Saatçilik — GİB E-ARŞİV FATURA DÖKÜMÜ*\n📅 *Tarih:* ${dateFormatted}\n📁 *Fatura Adedi:* ${count} Adet\n💰 *Genel Toplam:* ₺${totalFormatted}\n\n────────────────────────\n🧾 *FATURA DÖKÜMÜ:*\n\n${lines}\n\n────────────────────────\n📌 _KDV Kanunu 23/f özel matrah kapsamında muhasebe kayıtlarına işlenmek üzere iletilmiştir._\n🏢 *Saatchi Saatçilik* (Buca / İzmir)`;
   },
 
   // WHATSAPP İLE MUHASEBEYE TEK SEFERDE İLET
@@ -4352,14 +4352,14 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (bankType === 'tosla') {
       this.posRateTosla = clean;
       try {
-        localStorage.setItem('belgin_pos_rate_tosla', this.posRateTosla);
+        localStorage.setItem('Saatchi_pos_rate_tosla', this.posRateTosla);
       } catch (_) {}
     } else {
       this.posRateKuveytTurk = clean;
       this.posBankCommissionRate = clean;
       try {
-        localStorage.setItem('belgin_pos_rate_kuveyt', this.posRateKuveytTurk);
-        localStorage.setItem('belgin_pos_bank_rate', this.posBankCommissionRate);
+        localStorage.setItem('Saatchi_pos_rate_kuveyt', this.posRateKuveytTurk);
+        localStorage.setItem('Saatchi_pos_bank_rate', this.posBankCommissionRate);
       } catch (_) {}
     }
 
@@ -4516,7 +4516,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     });
 
     try {
-      localStorage.setItem('belgin_pos_rate_periods', JSON.stringify(this.posRatePeriods));
+      localStorage.setItem('Saatchi_pos_rate_periods', JSON.stringify(this.posRatePeriods));
     } catch (_) {}
 
     const sInput = document.getElementById('ratePeriodStart');
@@ -4537,7 +4537,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (idx < 0 || idx >= this.posRatePeriods.length) return;
     this.posRatePeriods.splice(idx, 1);
     try {
-      localStorage.setItem('belgin_pos_rate_periods', JSON.stringify(this.posRatePeriods));
+      localStorage.setItem('Saatchi_pos_rate_periods', JSON.stringify(this.posRatePeriods));
     } catch (_) {}
     this.updatePosRatePeriodsCount();
     this.renderPosRatePeriodsTable();
@@ -5476,7 +5476,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const listEl = document.getElementById('manualOrderItemsList');
     if (listEl) {
       listEl.innerHTML = '';
-      this.addManualOrderItemRow('22 Ayar İşçilikli Altın Bilezik', 1, '');
+      this.addManualOrderItemRow('22 Ayar İşçilikli lüks saat Bilezik', 1, '');
     }
 
     const amountInput = document.getElementById('manualTotalAmount');
@@ -5534,7 +5534,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (listEl && listEl.children.length === 1) {
       const firstRowName = listEl.querySelector('.manual-item-name');
       if (firstRowName) {
-        if (type === 'GOLD') firstRowName.value = '22 Ayar İşçilikli Altın Bilezik';
+        if (type === 'GOLD') firstRowName.value = '22 Ayar İşçilikli lüks saat Bilezik';
         else if (type === 'WATCH') firstRowName.value = 'Lüks İsviçre Kol Saati';
       }
     }
@@ -5552,7 +5552,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (!listEl) return;
 
     const type = document.getElementById('manualInvoiceType')?.value || 'GOLD';
-    const defaultName = name || (type === 'WATCH' ? 'Lüks İsviçre Kol Saati' : '22 Ayar İşçilikli Altın Bilezik');
+    const defaultName = name || (type === 'WATCH' ? 'Lüks İsviçre Kol Saati' : '22 Ayar İşçilikli lüks saat Bilezik');
     const priceVal = (price !== '' && price !== undefined) ? price : '';
 
     const rowDiv = document.createElement('div');
@@ -5654,19 +5654,19 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     }
 
     let filtered = [];
-    const isGoldPattern = /altın|ziynet|bilezik|çeyrek|yarım|tam|ata|cumhuriyet|gremse|ayar|gram/i;
+    const isGoldPattern = /lüks saat|ziynet|bilezik|çeyrek|yarım|tam|ata|cumhuriyet|gremse|ayar|gram/i;
 
     if (type === 'GOLD') {
       filtered = allProds.filter(p => {
         const brand = String(p.brand || '').toLowerCase();
         const name = String(p.name || '').toLowerCase();
-        return brand.includes('belgin') || isGoldPattern.test(name);
+        return brand.includes('Saatchi') || isGoldPattern.test(name);
       });
     } else if (type === 'WATCH') {
       filtered = allProds.filter(p => {
         const brand = String(p.brand || '').toLowerCase();
         const name = String(p.name || '').toLowerCase();
-        return !brand.includes('belgin') && !isGoldPattern.test(name);
+        return !brand.includes('Saatchi') && !isGoldPattern.test(name);
       });
     } else {
       filtered = [...allProds];
@@ -5754,7 +5754,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     }
 
     if (type === 'GOLD') {
-      if (previewHeader) previewHeader.textContent = '⚖️ e-Arşiv Fatura Özel Matrah Dökümü (Altın):';
+      if (previewHeader) previewHeader.textContent = '⚖️ e-Arşiv Fatura Özel Matrah Dökümü (lüks saat):';
       const laborRate = parseFloat(document.getElementById('manualLaborRateInput')?.value || 1.25) || 0;
       let workmanshipTotal = 0;
       let workmanshipNet = 0;
@@ -5834,7 +5834,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const items = [];
 
     rows.forEach(r => {
-      const iName = r.querySelector('.manual-item-name')?.value?.trim() || (invoiceType === 'WATCH' ? 'Lüks Kol Saati' : '22 Ayar İşçilikli Altın Bilezik');
+      const iName = r.querySelector('.manual-item-name')?.value?.trim() || (invoiceType === 'WATCH' ? 'Lüks Kol Saati' : '22 Ayar İşçilikli lüks saat Bilezik');
       const iQty = parseInt(r.querySelector('.manual-item-qty')?.value || '1', 10) || 1;
       const iPrice = parseFloat(r.querySelector('.manual-item-price')?.value || 0) || 0;
       if (iName) {
@@ -5867,7 +5867,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
     if (items.length === 0) {
       items.push({
-        name: invoiceType === 'WATCH' ? 'Lüks İsviçre Kol Saati' : '22 Ayar İşçilikli Altın Bilezik',
+        name: invoiceType === 'WATCH' ? 'Lüks İsviçre Kol Saati' : '22 Ayar İşçilikli lüks saat Bilezik',
         qty: 1,
         unitPrice: totalAmount,
         price: totalAmount
@@ -5946,10 +5946,10 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       this.orders = [createdOrder, ...this.orders.filter(o => o.orderId !== createdOrder.orderId)];
       
       try {
-        const cached = localStorage.getItem('belgin_admin_cached_data');
+        const cached = localStorage.getItem('Saatchi_admin_cached_data');
         let cData = cached ? JSON.parse(cached) : { orders: [] };
         cData.orders = [createdOrder, ...(cData.orders || []).filter(o => o.orderId !== createdOrder.orderId)];
-        localStorage.setItem('belgin_admin_cached_data', JSON.stringify(cData));
+        localStorage.setItem('Saatchi_admin_cached_data', JSON.stringify(cData));
       } catch (_) {}
 
       this.closeManualOrderModal();
@@ -6012,7 +6012,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (refInput) refInput.value = '';
 
     const prodInput = document.getElementById('manualEftProductName');
-    if (prodInput) prodInput.value = '22 Ayar İşçilikli Altın Bilezik';
+    if (prodInput) prodInput.value = '22 Ayar İşçilikli lüks saat Bilezik';
 
     const errDiv = document.getElementById('manualEftErrorMsg');
     if (errDiv) {
@@ -6073,7 +6073,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const amountVal = parseFloat(document.getElementById('manualEftAmount')?.value || 0);
     const total = isNaN(amountVal) || amountVal < 0 ? 0 : amountVal;
 
-    // Kural: %5 Saatchi Kuyumculuk Kârı, %95 Borcumuz (Net Hakediş)
+    // Kural: %5 Saatchi Saatçilik Kârı, %95 Borcumuz (Net Hakediş)
     const profit = Math.round(total * 0.05 * 100) / 100;
     const hakedis = Math.round(total * 0.95 * 100) / 100;
 
@@ -6098,7 +6098,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const customerPhone = document.getElementById('manualEftCustomerPhone')?.value?.trim();
     const customerIdentity = document.getElementById('manualEftCustomerIdentity')?.value?.trim();
     const refNo = document.getElementById('manualEftRefNo')?.value?.trim();
-    const productName = document.getElementById('manualEftProductName')?.value?.trim() || '22 Ayar İşçilikli Altın Bilezik';
+    const productName = document.getElementById('manualEftProductName')?.value?.trim() || '22 Ayar İşçilikli lüks saat Bilezik';
 
     if (isNaN(amountVal) || amountVal <= 0) {
       if (errDiv) {
@@ -6198,10 +6198,10 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       this.orders = [createdOrder, ...this.orders.filter(o => o.orderId !== createdOrder.orderId)];
 
       try {
-        const cached = localStorage.getItem('belgin_admin_cached_data');
+        const cached = localStorage.getItem('Saatchi_admin_cached_data');
         let cData = cached ? JSON.parse(cached) : { orders: [] };
         cData.orders = [createdOrder, ...(cData.orders || []).filter(o => o.orderId !== createdOrder.orderId)];
-        localStorage.setItem('belgin_admin_cached_data', JSON.stringify(cData));
+        localStorage.setItem('Saatchi_admin_cached_data', JSON.stringify(cData));
       } catch (_) {}
 
       this.closeManualEftModal();
@@ -6303,7 +6303,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         const isWatch = (this.isWatchProduct && this.isWatchProduct(order.productName || order.title)) || order.invoiceType === 'WATCH';
         const ordQty = parseFloat(order.qty) || 1;
         itemsToLoad = [{
-          name: order.productName || order.title || (isWatch ? 'Lüks İsviçre Kol Saati' : '22 Ayar İşçilikli Altın Bilezik'),
+          name: order.productName || order.title || (isWatch ? 'Lüks İsviçre Kol Saati' : '22 Ayar İşçilikli lüks saat Bilezik'),
           qty: ordQty,
           price: Number(order.totalAmount || 0),
           unitPrice: Number(order.totalAmount || 0) / ordQty,
@@ -6395,7 +6395,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (quickTotalInput) quickTotalInput.value = currentTotal.toFixed(2);
 
     // İlk ürün adını ve ADEDİNİ koru (Adet tam sayı olmalı, asla küsuratlı olamaz!)
-    let firstProdName = '22 Ayar İşçilikli Altın Bilezik';
+    let firstProdName = '22 Ayar İşçilikli lüks saat Bilezik';
     let savedQty = 1;
 
     if (rows.length > 0) {
@@ -6423,18 +6423,18 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       this.addEditCustomerItemRow(firstProdName, savedQty, goldUnitPrice, currentTotal, 0);
       this.showToast(`✅ ${this.formatCurrency(currentTotal)} tutarı işçiliksiz tek satır (%0 Özel Matrah, ${savedQty} Adet) olarak ayarlandı.`);
     } else {
-      // İşçilik payını ve altın matrahını hesapla (İşçilik toplam tutarın içinde kalır, asla üzerine eklenmez)
+      // İşçilik payını ve lüks saat matrahını hesapla (İşçilik toplam tutarın içinde kalır, asla üzerine eklenmez)
       const laborTotal = Math.max(0.01, Math.round(currentTotal * (rate / 100) * 100) / 100);
       const goldTotal = Math.round((currentTotal - laborTotal) * 100) / 100;
 
-      // 1. Satır: Altın Ürünü (%0 Özel Matrah) — Adet tam sayı korunur, birim fiyat = goldTotal / savedQty
+      // 1. Satır: lüks saat Ürünü (%0 Özel Matrah) — Adet tam sayı korunur, birim fiyat = goldTotal / savedQty
       const goldUnitPrice = Math.round((goldTotal / savedQty) * 100) / 100;
       this.addEditCustomerItemRow(firstProdName, savedQty, goldUnitPrice, goldTotal, 0);
 
       // 2. Satır: İşçilik (AGENTS kuralı: açıklama doğrudan ve yalnızca 'İşçilik', %20 KDV)
       this.addEditCustomerItemRow('İşçilik', 1, laborTotal, laborTotal, 20);
 
-      this.showToast(`⚡ %${rate} İşçilik Ayrıştırıldı: ${this.formatCurrency(goldTotal)} Altın (${savedQty} Adet x ${this.formatCurrency(goldUnitPrice)}) + ${this.formatCurrency(laborTotal)} İşçilik = ${this.formatCurrency(currentTotal)}`);
+      this.showToast(`⚡ %${rate} İşçilik Ayrıştırıldı: ${this.formatCurrency(goldTotal)} lüks saat (${savedQty} Adet x ${this.formatCurrency(goldUnitPrice)}) + ${this.formatCurrency(laborTotal)} İşçilik = ${this.formatCurrency(currentTotal)}`);
     }
 
     this.recalculateEditCustomerTotal();
@@ -6472,7 +6472,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       </div>
       <div>
         <select class="edit-item-kdv" style="width:100%; border:1.5px solid ${isVat20 ? '#059669' : '#CBD5E1'}; padding:5px 2px; border-radius:5px; font-size:11px; font-weight:700; color:#0F172A; background:#FFF;" onchange="AdminApp.recalculateEditCustomerTotal()">
-          <option value="0" ${!isVat20 ? 'selected' : ''}>%0 Özel Matrah (Altın)</option>
+          <option value="0" ${!isVat20 ? 'selected' : ''}>%0 Özel Matrah (lüks saat)</option>
           <option value="20" ${isVat20 ? 'selected' : ''}>%20 KDV (İşçilik/Saat)</option>
         </select>
       </div>
@@ -6522,7 +6522,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
             priceInput.value = laborAmt.toFixed(2);
             if (unitPriceInput) unitPriceInput.value = laborAmt.toFixed(2);
 
-            this.showToast(`⚡ İşçilik algılandı: ₺${laborAmt.toLocaleString('tr-TR', {minimumFractionDigits:2})} işçilik (%20 KDV) ve ₺${newGoldAmt.toLocaleString('tr-TR', {minimumFractionDigits:2})} altın bedeli (%0 Özel Matrah) ayrıştırıldı.`);
+            this.showToast(`⚡ İşçilik algılandı: ₺${laborAmt.toLocaleString('tr-TR', {minimumFractionDigits:2})} işçilik (%20 KDV) ve ₺${newGoldAmt.toLocaleString('tr-TR', {minimumFractionDigits:2})} lüks saat bedeli (%0 Özel Matrah) ayrıştırıldı.`);
           }
         }
       }
@@ -6791,7 +6791,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       }
 
       try {
-        const cached = localStorage.getItem('belgin_admin_cached_data');
+        const cached = localStorage.getItem('Saatchi_admin_cached_data');
         if (cached) {
           let cData = JSON.parse(cached);
           if (cData && Array.isArray(cData.orders)) {
@@ -6813,7 +6813,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
                 cTarget.totalAmount = finalTotal;
                 cTarget.total = finalTotal;
               }
-              localStorage.setItem('belgin_admin_cached_data', JSON.stringify(cData));
+              localStorage.setItem('Saatchi_admin_cached_data', JSON.stringify(cData));
             }
           }
         }
@@ -7047,7 +7047,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       <body>
         <table style="width:100%; margin-bottom:15px;">
           <tr>
-            <td colspan="5" class="header-title">BELGİN KUYUMCULUK — CARİ HESAP & KÂR EKSTRESİ</td>
+            <td colspan="5" class="header-title">BELGİN Saatçilik — CARİ HESAP & KÂR EKSTRESİ</td>
             <td colspan="4" class="remaining-hero">GÜNCEL ÖDENECEK TUTAR: ${fmt(s.totalRemaining)} ₺</td>
           </tr>
           <tr>
@@ -7093,7 +7093,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Saatchi_Kuyumculuk_Cari_Hesap_Ekstresi_${new Date().toISOString().slice(0, 10)}.xls`;
+    a.download = `Saatchi_Saatçilik_Cari_Hesap_Ekstresi_${new Date().toISOString().slice(0, 10)}.xls`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -7160,7 +7160,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       <html lang="tr">
       <head>
         <meta charset="UTF-8">
-        <title>Cari Hesap Ekstresi — Saatchi Kuyumculuk</title>
+        <title>Cari Hesap Ekstresi — Saatchi Saatçilik</title>
         <style>
           @page {
             size: A4 portrait;
@@ -7291,7 +7291,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
         <div class="header">
           <div>
-            <div class="brand-name">BELGİN KUYUMCULUK</div>
+            <div class="brand-name">BELGİN Saatçilik</div>
             <div class="doc-title">CARİ HESAP EKSTRESİ</div>
             <div class="doc-meta">
               <strong>Dönem:</strong> ${periodStr} | <strong>Rapor Tarihi:</strong> ${nowStr}
@@ -7347,7 +7347,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         </table>
 
         <div class="footer-note">
-          <div>Saatchi Kuyumculuk Resmi Cari Hesap Dökümüdür.</div>
+          <div>Saatchi Saatçilik Resmi Cari Hesap Dökümüdür.</div>
           <div>Menderes Cad. No:231/B Buca / İZMİR</div>
         </div>
 
@@ -7388,7 +7388,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     }
     if (!this.storeItems || this.storeItems.length === 0) {
       this.storeItems = [
-        { name: '22 Ayar Altın Bilezik', qty: 1, unitPrice: 0, kdvRate: 0, lineTotal: 0, kdvAmount: 0 }
+        { name: '22 Ayar lüks saat Bilezik', qty: 1, unitPrice: 0, kdvRate: 0, lineTotal: 0, kdvAmount: 0 }
       ];
     }
     this.renderStoreInvoiceItems();
@@ -7400,7 +7400,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
   // Eski 1MB+ Base64 kalıntılarını otomatik tespit edip küçülten koruma
   autoSanitizeBloatedLocalInvoices() {
     try {
-      const stored = localStorage.getItem('belgin_store_invoices');
+      const stored = localStorage.getItem('Saatchi_store_invoices');
       if (!stored) return;
       let list = JSON.parse(stored);
       let changed = false;
@@ -7419,7 +7419,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
           return inv;
         });
         if (changed) {
-          localStorage.setItem('belgin_store_invoices', JSON.stringify(list));
+          localStorage.setItem('Saatchi_store_invoices', JSON.stringify(list));
           this.storeInvoices = list;
           if (typeof this.filterStoreTable === 'function') this.filterStoreTable();
         }
@@ -7554,7 +7554,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         if (previewImg) previewImg.src = '';
         if (nameEl) nameEl.textContent = '';
         if (badgeEl) {
-          badgeEl.innerHTML = '(Altın tesliminde kimlik kopyası zorunludur)';
+          badgeEl.innerHTML = '(lüks saat tesliminde kimlik kopyası zorunludur)';
         }
       }
     }
@@ -7619,7 +7619,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
   // MAĞAZA YASAL DOKÜMANTASYON & HUKUKİ EVRAK İNDİRME / YAZDIRMA
   printStoreFormDoc(docType = 'delivery-tutanak', targetOrderId = null) {
     let orderId = targetOrderId || this.editingStoreOrderId;
-    const adminKey = this.adminPin || sessionStorage.getItem('belgin_admin_pin') || localStorage.getItem('belgin_admin_pin') || '';
+    const adminKey = this.adminPin || sessionStorage.getItem('Saatchi_admin_pin') || localStorage.getItem('Saatchi_admin_pin') || '';
 
     let invoiceData = null;
     if (orderId) {
@@ -7651,15 +7651,15 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
       const items = (this.storeInvoiceItems && this.storeInvoiceItems.length > 0) ? this.storeInvoiceItems.map(it => ({
         id: it.id || 'STORE-PROD-1',
-        name: it.name || it.title || 'Kıymetli Maden / Mücevherat',
-        title: it.name || it.title || 'Kıymetli Maden / Mücevherat',
+        name: it.name || it.title || 'Kıymetli Maden / lüks saat',
+        title: it.name || it.title || 'Kıymetli Maden / lüks saat',
         price: Number(it.price || 0),
         qty: Number(it.qty || 1),
         kdvRate: Number(it.kdvRate || 0)
       })) : [{
         id: 'STORE-PROD-1',
-        name: 'Kıymetli Maden / Altın / Mücevherat',
-        title: 'Kıymetli Maden / Altın / Mücevherat',
+        name: 'Kıymetli Maden / lüks saat / lüks saat',
+        title: 'Kıymetli Maden / lüks saat / lüks saat',
         price: grandTotal || 10000,
         qty: 1,
         kdvRate: 0
@@ -7695,7 +7695,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       };
 
       try {
-        localStorage.setItem('belgin_temp_legal_invoice', JSON.stringify(invoiceData));
+        localStorage.setItem('Saatchi_temp_legal_invoice', JSON.stringify(invoiceData));
       } catch (_) {}
     }
 
@@ -7790,7 +7790,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const laborItem = this.storeItems.find(it => String(it.name || '').toLowerCase().includes('işçilik'));
     const mainItem = this.storeItems.find(it => !String(it.name || '').toLowerCase().includes('işçilik')) || this.storeItems[0];
 
-    if (mainItem && freeNameEl) freeNameEl.value = mainItem.name || '22 Ayar Altın Bilezik';
+    if (mainItem && freeNameEl) freeNameEl.value = mainItem.name || '22 Ayar lüks saat Bilezik';
     if (mainItem && freeQtyEl) freeQtyEl.value = mainItem.qty || 1;
     if (mainItem && freeKdvEl) freeKdvEl.value = String(mainItem.kdvRate !== undefined ? mainItem.kdvRate : 0);
 
@@ -7902,7 +7902,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
     // 2. LocalStorage'daki Mağaza Faturaları
     try {
-      const stored = localStorage.getItem('belgin_store_invoices');
+      const stored = localStorage.getItem('Saatchi_store_invoices');
       if (stored) {
         const parsed = JSON.parse(stored);
         if (Array.isArray(parsed)) {
@@ -7937,7 +7937,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
     // 4. Cached Sipariş Verisi
     try {
-      const cached = localStorage.getItem('belgin_admin_cached_data');
+      const cached = localStorage.getItem('Saatchi_admin_cached_data');
       if (cached) {
         const parsed = JSON.parse(cached);
         if (parsed && Array.isArray(parsed.orders)) {
@@ -8120,15 +8120,15 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const freeQtyEl = document.getElementById('freeItemQty');
     const freePriceEl = document.getElementById('freeItemPrice');
     const freeKdvEl = document.getElementById('freeItemKdvRate');
-    if (freeNameEl) freeNameEl.value = '22 Ayar Altın Bilezik';
+    if (freeNameEl) freeNameEl.value = '22 Ayar lüks saat Bilezik';
     if (freeQtyEl) freeQtyEl.value = '1';
     if (freePriceEl) freePriceEl.value = '';
     if (freeKdvEl) freeKdvEl.value = '0';
     this.handleFreeItemChange();
 
-    // Formu tamamen sıfırla - varsayılan 22 Ayar Altın Bilezik kalemi
+    // Formu tamamen sıfırla - varsayılan 22 Ayar lüks saat Bilezik kalemi
     this.storeItems = [
-      { name: '22 Ayar Altın Bilezik', qty: 1, unitPrice: 0, kdvRate: 0, lineTotal: 0, kdvAmount: 0 }
+      { name: '22 Ayar lüks saat Bilezik', qty: 1, unitPrice: 0, kdvRate: 0, lineTotal: 0, kdvAmount: 0 }
     ];
     this.renderStoreInvoiceItems();
     this.calculateStoreInvoiceLiveSummary();
@@ -8205,7 +8205,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const kdvEl = document.getElementById('freeItemKdvRate');
     const laborEl = document.getElementById('freeItemLaborRate');
 
-    const name = (nameEl?.value || '22 Ayar Altın Bilezik').trim();
+    const name = (nameEl?.value || '22 Ayar lüks saat Bilezik').trim();
     const qty = Math.max(1, parseInt(qtyEl?.value, 10) || 1);
     const totalAmount = this.parseSmartCalcAmount(priceEl?.value || 0);
     let rate = parseFloat(kdvEl?.value) || 0;
@@ -8277,7 +8277,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       if (laborRate > 0) {
         const unitGold = Math.round((goldGross / qty) * 100) / 100;
         items.push({
-          name: name || '22 Ayar Altın Bilezik',
+          name: name || '22 Ayar lüks saat Bilezik',
           qty: qty,
           unitPrice: unitGold,
           kdvRate: 0,
@@ -8335,10 +8335,10 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
     const itemsToAdd = [];
     if (data.laborRate > 0) {
-      // 1. Altın Kalemi (%0 KDV Özel Matrah)
+      // 1. lüks saat Kalemi (%0 KDV Özel Matrah)
       const unitGold = Math.round((data.goldGross / data.qty) * 100) / 100;
       itemsToAdd.push({
-        name: data.name || '22 Ayar Altın Bilezik',
+        name: data.name || '22 Ayar lüks saat Bilezik',
         qty: data.qty,
         unitPrice: unitGold,
         kdvRate: 0,
@@ -8432,11 +8432,11 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const amountInput = document.getElementById('smartCalcWorkmanshipAmount');
 
     const totalAmount = this.parseSmartCalcAmount(totalInput?.value || 0);
-    const prodName = String(nameInput?.value || '22 Ayar Altın Bilezik').trim();
+    const prodName = String(nameInput?.value || '22 Ayar lüks saat Bilezik').trim();
     let unitPrice = Math.max(0, parseFloat(priceInput?.value) || 0);
     const workmanshipRate = Math.max(0, parseFloat(rateInput?.value) || 0);
 
-    // İşçilik tutarı ve altın matrahı hesabı
+    // İşçilik tutarı ve lüks saat matrahı hesabı
     const workmanshipTotal = Math.round((totalAmount * (workmanshipRate / 100)) * 100) / 100;
     const goldTotal = Math.max(0, Math.round((totalAmount - workmanshipTotal) * 100) / 100);
 
@@ -8683,16 +8683,16 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     this.showToast(`⚡ 22 Ayar Bilezik ve İşçilik kalemleri (₺${totalAmount.toLocaleString('tr-TR')}) başarıyla faturaya aktarıldı.`);
   },
 
-  // İşçilik Kalemi Ekle (Altın Tutarı İçinden Otomatik Düşerek Toplamı Sabit Tutar)
+  // İşçilik Kalemi Ekle (lüks saat Tutarı İçinden Otomatik Düşerek Toplamı Sabit Tutar)
   addStoreLaborRow(laborPercent = 1) {
     const rate = parseFloat(laborPercent) || 1;
     
-    // Faturadaki altın satırını ve varsa mevcut işçilik satırını tespit et
+    // Faturadaki lüks saat satırını ve varsa mevcut işçilik satırını tespit et
     const goldItemIdx = (this.storeItems || []).findIndex(it => (it.name || '').trim() && it.name.trim() !== 'İşçilik');
     const existingLaborIdx = (this.storeItems || []).findIndex(it => (it.name || '').trim() === 'İşçilik');
 
     if (goldItemIdx === -1) {
-      // Eğer henüz altın satırı girilmemişse boş bir işçilik satırı ekle
+      // Eğer henüz lüks saat satırı girilmemişse boş bir işçilik satırı ekle
       const newLaborItem = {
         name: 'İşçilik',
         qty: 1,
@@ -8715,23 +8715,23 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const goldItem = this.storeItems[goldItemIdx];
     const existingLaborItem = existingLaborIdx !== -1 ? this.storeItems[existingLaborIdx] : null;
 
-    // Toplam Fatura Satış Tutarı (Mevcut Altın + Varsa Mevcut İşçilik)
+    // Toplam Fatura Satış Tutarı (Mevcut lüks saat + Varsa Mevcut İşçilik)
     const baseTotal = Math.round((Number(goldItem.lineTotal || goldItem.unitPrice || 0) + (existingLaborItem ? Number(existingLaborItem.lineTotal || existingLaborItem.unitPrice || 0) : 0)) * 100) / 100;
 
     if (baseTotal <= 0) {
-      this.showToast('⚠️ Lütfen önce geçerli bir altın tutarı giriniz.');
+      this.showToast('⚠️ Lütfen önce geçerli bir lüks saat tutarı giriniz.');
       return;
     }
 
     // İşçilik Tutarı: Toplam Tutarın %1'i, %1.5'i veya %2'si (Toplamın İçinde)
     const laborGross = Math.round(baseTotal * (rate / 100) * 100) / 100;
-    // Özel Matrah Altın Tutarı: Toplam Tutar - İşçilik Tutarı
+    // Özel Matrah lüks saat Tutarı: Toplam Tutar - İşçilik Tutarı
     const goldGross = Math.round((baseTotal - laborGross) * 100) / 100;
 
     // İşçilik KDV Tutarı
     const laborKdv = Math.round((laborGross - (laborGross / (1 + (rate / 100)))) * 100) / 100;
 
-    // 1. Altın Satırını Güncelle (%0 KDV Özel Matrah)
+    // 1. lüks saat Satırını Güncelle (%0 KDV Özel Matrah)
     const goldQty = Math.max(1, Number(goldItem.qty || 1));
     this.storeItems[goldItemIdx].unitPrice = Math.round((goldGross / goldQty) * 100) / 100;
     this.storeItems[goldItemIdx].lineTotal = goldGross;
@@ -8756,10 +8756,10 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
     this.renderStoreInvoiceItems();
     this.calculateStoreInvoiceLiveSummary();
-    this.showToast(`✨ Toplam ₺${baseTotal.toLocaleString('tr-TR')} sabit tutuldu: Altın ₺${goldGross.toLocaleString('tr-TR')} + İşçilik ₺${laborGross.toLocaleString('tr-TR')} (%${rate} KDV)`);
+    this.showToast(`✨ Toplam ₺${baseTotal.toLocaleString('tr-TR')} sabit tutuldu: lüks saat ₺${goldGross.toLocaleString('tr-TR')} + İşçilik ₺${laborGross.toLocaleString('tr-TR')} (%${rate} KDV)`);
   },
 
-  // 🌟 Hedef Tutara Göre En Yakın 5 Ürünü Arama ve Listeleme (Altın vs Saat)
+  // 🌟 Hedef Tutara Göre En Yakın 5 Ürünü Arama ve Listeleme (lüks saat vs Saat)
   searchProductsByTargetPrice(type, targetPrice) {
     const target = Number(String(targetPrice).replace(/\./g, '').replace(/,/g, '.').replace(/[^\d.]/g, '')) || 0;
     const containerId = (type === 'gold') ? 'goldSearchResultsContainer' : 'watchSearchResultsContainer';
@@ -8767,7 +8767,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (!container) return;
 
     if (target <= 0) {
-      container.innerHTML = `<div style="font-size:11px; color:#94A3B8; font-style:italic; padding:6px 0;">Hedef tutarı yazarak en yakın 5 ${type === 'gold' ? 'altın' : 'saat'} modelini listeleyebilirsiniz.</div>`;
+      container.innerHTML = `<div style="font-size:11px; color:#94A3B8; font-style:italic; padding:6px 0;">Hedef tutarı yazarak en yakın 5 ${type === 'gold' ? 'lüks saat' : 'saat'} modelini listeleyebilirsiniz.</div>`;
       return;
     }
 
@@ -8778,32 +8778,32 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         ? VipEngine.VIP_22_CATALOG.map(p => ({
             name: p.name,
             price: (typeof VipEngine.getProductUnitPrice === 'function') ? VipEngine.getProductUnitPrice(p) : (p.basePrice || 0),
-            category: '22 Ayar Altın & Bilezik',
+            category: '22 Ayar lüks saat & Bilezik',
             kdvRate: 0,
             isGold: true
           }))
         : [
-            { name: '7 Gram 22 Ayar Ajda Altın Bilezik', price: 45570, category: '22 Ayar Bilezik', kdvRate: 0, isGold: true },
-            { name: '10 gr 22 Ayar Burma Altın Bilezik', price: 65240, category: '22 Ayar Bilezik', kdvRate: 0, isGold: true },
-            { name: '15 gr 22 Ayar Burma Altın Bilezik', price: 97860, category: '22 Ayar Bilezik', kdvRate: 0, isGold: true },
-            { name: '20 gr 22 Ayar Burma Altın Bilezik', price: 130480, category: '22 Ayar Bilezik', kdvRate: 0, isGold: true },
-            { name: '25 gr 3\'lü Burma 22 Ayar Altın Bilezik', price: 163100, category: '22 Ayar Bilezik', kdvRate: 0, isGold: true },
+            { name: '7 Gram 22 Ayar Ajda lüks saat Bilezik', price: 45570, category: '22 Ayar Bilezik', kdvRate: 0, isGold: true },
+            { name: '10 gr 22 Ayar Burma lüks saat Bilezik', price: 65240, category: '22 Ayar Bilezik', kdvRate: 0, isGold: true },
+            { name: '15 gr 22 Ayar Burma lüks saat Bilezik', price: 97860, category: '22 Ayar Bilezik', kdvRate: 0, isGold: true },
+            { name: '20 gr 22 Ayar Burma lüks saat Bilezik', price: 130480, category: '22 Ayar Bilezik', kdvRate: 0, isGold: true },
+            { name: '25 gr 3\'lü Burma 22 Ayar lüks saat Bilezik', price: 163100, category: '22 Ayar Bilezik', kdvRate: 0, isGold: true },
             { name: 'Ata Tam Yeni 22 ayar', price: 46107, category: 'Sarrafiye', kdvRate: 0, isGold: true },
-            { name: 'Yarım Altın', price: 22322, category: 'Sarrafiye', kdvRate: 0, isGold: true },
-            { name: 'Çeyrek Altın', price: 11070, category: 'Sarrafiye', kdvRate: 0, isGold: true },
-            { name: 'Ziynet Çeyrek Altın', price: 11070, category: 'Sarrafiye', kdvRate: 0, isGold: true },
-            { name: 'Ata Çeyrek Altın', price: 11520, category: 'Sarrafiye', kdvRate: 0, isGold: true },
-            { name: 'Ata Yarım Altın', price: 23050, category: 'Sarrafiye', kdvRate: 0, isGold: true },
-            { name: 'Gremse Altın (2.5\'luk)', price: 110700, category: 'Sarrafiye', kdvRate: 0, isGold: true },
-            { name: 'Ata Beşli Altın (5\'lik)', price: 230500, category: 'Sarrafiye', kdvRate: 0, isGold: true }
+            { name: 'Yarım lüks saat', price: 22322, category: 'Sarrafiye', kdvRate: 0, isGold: true },
+            { name: 'Çeyrek lüks saat', price: 11070, category: 'Sarrafiye', kdvRate: 0, isGold: true },
+            { name: 'Ziynet Çeyrek lüks saat', price: 11070, category: 'Sarrafiye', kdvRate: 0, isGold: true },
+            { name: 'Ata Çeyrek lüks saat', price: 11520, category: 'Sarrafiye', kdvRate: 0, isGold: true },
+            { name: 'Ata Yarım lüks saat', price: 23050, category: 'Sarrafiye', kdvRate: 0, isGold: true },
+            { name: 'Gremse lüks saat (2.5\'luk)', price: 110700, category: 'Sarrafiye', kdvRate: 0, isGold: true },
+            { name: 'Ata Beşli lüks saat (5\'lik)', price: 230500, category: 'Sarrafiye', kdvRate: 0, isGold: true }
           ];
 
-      // Eğer PRODUCTS içinde altın/mücevher varsa ekle
+      // Eğer PRODUCTS içinde lüks saat/saat varsa ekle
       const allCatalog = (typeof PRODUCTS !== 'undefined' && Array.isArray(PRODUCTS)) ? PRODUCTS : [];
       const goldCatalog = allCatalog.filter(p => !p.isElite && !p.isWatch && p.category !== 'elit-saatler').map(p => ({
-        name: p.name || p.title || 'Altın Ürünü',
+        name: p.name || p.title || 'lüks saat Ürünü',
         price: Number(p.price || p.priceTry || 0),
-        category: p.category || 'Mücevherat',
+        category: p.category || 'lüks saat',
         kdvRate: 0,
         isGold: true
       }));
@@ -8825,7 +8825,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         { name: 'Rolex Submariner Date 41mm 126610LN', price: 580000, category: 'Rolex', kdvRate: 20 },
         { name: 'Rolex GMT-Master II Pepsi 126710BLRO', price: 820000, category: 'Rolex', kdvRate: 20 },
         { name: 'Rolex Daytona 126500LN Siyah Kadran', price: 1250000, category: 'Rolex', kdvRate: 20 },
-        { name: 'Rolex Day-Date 40 228238 18K Sarı Altın', price: 1750000, category: 'Rolex', kdvRate: 20 },
+        { name: 'Rolex Day-Date 40 228238 18K Sarı lüks saat', price: 1750000, category: 'Rolex', kdvRate: 20 },
         { name: 'Cartier Santos de Cartier Large Steel', price: 340000, category: 'Cartier', kdvRate: 20 },
         { name: 'Audemars Piguet Royal Oak Selfwinding 41mm', price: 1450000, category: 'Audemars Piguet', kdvRate: 20 },
         { name: 'Patek Philippe Nautilus 5711/1A-010', price: 3200000, category: 'Patek Philippe', kdvRate: 20 },
@@ -8994,8 +8994,8 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
           continue;
         }
 
-        // 2. Altın, ziynet, bilezik kalemleri
-        if (itLower.includes('bilezik') || itLower.includes('ziynet') || itLower.includes('çeyrek') || itLower.includes('yarım') || itLower.includes('tam altın') || itLower.includes('ata') || itLower.includes('külçe') || itLower.includes('has altın') || itLower.includes('gram altın') || itLower.includes('ayar')) {
+        // 2. lüks saat, ziynet, bilezik kalemleri
+        if (itLower.includes('bilezik') || itLower.includes('ziynet') || itLower.includes('çeyrek') || itLower.includes('yarım') || itLower.includes('tam lüks saat') || itLower.includes('ata') || itLower.includes('külçe') || itLower.includes('has lüks saat') || itLower.includes('gram lüks saat') || itLower.includes('ayar')) {
           hasGoldLine = true;
           continue;
         }
@@ -9012,7 +9012,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       return true;
     }
 
-    // Faturada altın kalemi varsa veya açıkça VIP 22 ise kesinlikle saat faturası değildir
+    // Faturada lüks saat kalemi varsa veya açıkça VIP 22 ise kesinlikle saat faturası değildir
     if (hasGoldLine || record.isVip22 === true || record.tag === '/22') {
       return false;
     }
@@ -9025,7 +9025,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       return true;
     }
 
-    // Ürün başlığı kontrolü (altın/bilezik ifadeleri içermiyorsa)
+    // Ürün başlığı kontrolü (lüks saat/bilezik ifadeleri içermiyorsa)
     const candidateNames = [
       record.productName,
       record.vipTitle,
@@ -9036,7 +9036,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
     for (const name of candidateNames) {
       const pLower = String(name).toLowerCase().trim();
-      if (pLower.includes('bilezik') || pLower.includes('ziynet') || pLower.includes('altın') || pLower.includes('altin') || pLower.includes('ayar') || pLower.includes('has')) {
+      if (pLower.includes('bilezik') || pLower.includes('ziynet') || pLower.includes('lüks saat') || pLower.includes('altin') || pLower.includes('ayar') || pLower.includes('has')) {
         continue;
       }
       if (this.isWatchProduct(name)) {
@@ -9069,7 +9069,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       // Eğer saat ürününe 0 KDV verilmek istenirse REDDET ve %20'de tut
       if (newRate < 20 && this.isWatchProduct(this.storeItems[idx].name)) {
         this.storeItems[idx].kdvRate = 20;
-        alert(`❌ MEVZUAT UYARISI / KDV KORUMASI:\n\n"${this.storeItems[idx].name}" bir saat ürünüdür.\n\n3065 Sayılı KDV Kanunu gereğince saat satışlarında %20 KDV oranı yasal zorunluluktur. Saat ürünleri altın gibi %0 KDV (Özel Matrah) olarak faturalandırılamaz!\n\nKDV oranı zorunlu olarak %20'ye sabitlendi.`);
+        alert(`❌ MEVZUAT UYARISI / KDV KORUMASI:\n\n"${this.storeItems[idx].name}" bir saat ürünüdür.\n\n3065 Sayılı KDV Kanunu gereğince saat satışlarında %20 KDV oranı yasal zorunluluktur. Saat ürünleri lüks saat gibi %0 KDV (Özel Matrah) olarak faturalandırılamaz!\n\nKDV oranı zorunlu olarak %20'ye sabitlendi.`);
         this.showToast(`❌ Saat ürünlerinde %0 KDV uygulanamaz. %20 KDV zorunludur!`);
         this.renderStoreInvoiceItems();
         return;
@@ -9265,7 +9265,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (statusBadge && !this.currentStoreIdentityDoc) {
       statusBadge.textContent = isMasakMandatory
         ? '(180.000 TL ve üzeri olduğu için kimlik belgesi ZORUNLUDUR)'
-        : '(180.000 TL altında kimlik belgesi isteğe bağlıdır)';
+        : '(180.000 TL lüks saatda kimlik belgesi isteğe bağlıdır)';
       statusBadge.style.color = isMasakMandatory ? '#DC2626' : '#B45309';
     }
 
@@ -9344,9 +9344,9 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (totalAmount >= 180000 && !this.currentStoreIdentityDoc) {
       if (errEl) {
         errEl.style.display = 'block';
-        errEl.innerHTML = `<strong>🚨 MASAK MEVZUAT ZORUNLULUĞU:</strong> Fatura tutarı <strong>₺${Number(totalAmount).toLocaleString('tr-TR', {minimumFractionDigits:2})}</strong> olup 180.000 TL yasal kimlik tespit eşiğini aşmaktadır.<br>Mali Suçları Araştırma Kurulu (MASAK) mevzuatı gereğince 180.000 TL ve üzeri altın / mücevherat satışlarında müşteriden T.C. Kimlik Kartı / Pasaport fotokopisi alınması ve sisteme yüklenmesi yasal zorunluluktur. Lütfen kimlik belgesi görselini yükleyiniz.`;
+        errEl.innerHTML = `<strong>🚨 MASAK MEVZUAT ZORUNLULUĞU:</strong> Fatura tutarı <strong>₺${Number(totalAmount).toLocaleString('tr-TR', {minimumFractionDigits:2})}</strong> olup 180.000 TL yasal kimlik tespit eşiğini aşmaktadır.<br>Mali Suçları Araştırma Kurulu (MASAK) mevzuatı gereğince 180.000 TL ve üzeri lüks saat / lüks saat satışlarında müşteriden T.C. Kimlik Kartı / Pasaport fotokopisi alınması ve sisteme yüklenmesi yasal zorunluluktur. Lütfen kimlik belgesi görselini yükleyiniz.`;
       }
-      alert(`🚨 MASAK MEVZUAT ZORUNLULUĞU:\n\nFatura tutarı ₺${Number(totalAmount).toLocaleString('tr-TR', {minimumFractionDigits:2})} olup 180.000 TL yasal sınırını aşmaktadır.\n\nMASAK ve Kuyumculuk Mevzuatı gereğince 180.000 TL ve üzeri tüm işlemlerde müşteriden T.C. Kimlik Kartı / Pasaport kopyası alınması ve sisteme yüklenmesi YASAL ZORUNLULUKTUR.\n\nLütfen kimlik belgesi görselini yükleyiniz.`);
+      alert(`🚨 MASAK MEVZUAT ZORUNLULUĞU:\n\nFatura tutarı ₺${Number(totalAmount).toLocaleString('tr-TR', {minimumFractionDigits:2})} olup 180.000 TL yasal sınırını aşmaktadır.\n\nMASAK ve Saatçilik Mevzuatı gereğince 180.000 TL ve üzeri tüm işlemlerde müşteriden T.C. Kimlik Kartı / Pasaport kopyası alınması ve sisteme yüklenmesi YASAL ZORUNLULUKTUR.\n\nLütfen kimlik belgesi görselini yükleyiniz.`);
       document.getElementById('storeIdentityContainerBox')?.scrollIntoView({ behavior: 'smooth' });
       return;
     }
@@ -9358,7 +9358,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
           errEl.style.display = 'block';
           errEl.innerHTML = `<strong>❌ MEVZUAT ENGELİ:</strong> "${it.name}" bir saat ürünüdür. 3065 Sayılı KDV Kanunu gereğince saat satışlarında %20 KDV oranı yasal zorunluluktur. %0 KDV (Özel Matrah) uygulanamaz! Lütfen KDV oranını %20 olarak güncelleyiniz.`;
         }
-        alert(`❌ MEVZUAT ENGELİ / KDV KORUMASI:\n\n"${it.name}" bir saat ürünüdür.\n\n3065 Sayılı KDV Kanunu gereğince saat ürünlerinde %20 KDV oranı yasal zorunluluktur. Saat ürünleri altın gibi %0 KDV olarak faturalandırılamaz!\n\nLütfen ilgili satırın KDV oranını %20 yapınız.`);
+        alert(`❌ MEVZUAT ENGELİ / KDV KORUMASI:\n\n"${it.name}" bir saat ürünüdür.\n\n3065 Sayılı KDV Kanunu gereğince saat ürünlerinde %20 KDV oranı yasal zorunluluktur. Saat ürünleri lüks saat gibi %0 KDV olarak faturalandırılamaz!\n\nLütfen ilgili satırın KDV oranını %20 yapınız.`);
         return;
       }
     }
@@ -9437,12 +9437,12 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     // 1. Önce Local Cache'e anında kaydet ve ekranda listele
     try {
       let localList = [];
-      const stored = localStorage.getItem('belgin_store_invoices');
+      const stored = localStorage.getItem('Saatchi_store_invoices');
       if (stored) {
         try { localList = JSON.parse(stored); } catch (_) {}
       }
       localList = [invoiceDoc, ...localList.filter(x => x.orderId !== invoiceId)];
-      localStorage.setItem('belgin_store_invoices', JSON.stringify(localList));
+      localStorage.setItem('Saatchi_store_invoices', JSON.stringify(localList));
       this.storeInvoices = localList;
       this.filterStoreTable();
       this.showToast(isEdit ? `✅ Fatura (${invoiceId}) başarıyla güncellendi.` : `✅ Mağaza Fatura Taslağı (${invoiceId}) listeye eklendi.`);
@@ -9489,7 +9489,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
     // 1. Önce localStorage'dan hızlıca yükle
     try {
-      const stored = localStorage.getItem('belgin_store_invoices');
+      const stored = localStorage.getItem('Saatchi_store_invoices');
       if (stored) {
         let parsed = JSON.parse(stored);
         if (Array.isArray(parsed) && parsed.length > 0) {
@@ -9525,7 +9525,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
           paymentChannel: inv.paymentChannel || inv.paymentMethod || 'HAVALE_EFT'
         }));
         try {
-          localStorage.setItem('belgin_store_invoices', JSON.stringify(this.storeInvoices));
+          localStorage.setItem('Saatchi_store_invoices', JSON.stringify(this.storeInvoices));
         } catch (_) {}
         this.filterStoreTable();
       }
@@ -9547,13 +9547,13 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     inv.provider = newMethod === 'KREDI_KARTI' ? (inv.posProvider || 'KUVEYT_TURK') : (newMethod === 'HAVALE_EFT' ? (inv.bankName || 'KUVEYT_TURK') : 'NAKIT');
 
     try {
-      localStorage.setItem('belgin_store_invoices', JSON.stringify(list));
-      const declRaw = localStorage.getItem('belgin_decl_' + orderId);
+      localStorage.setItem('Saatchi_store_invoices', JSON.stringify(list));
+      const declRaw = localStorage.getItem('Saatchi_decl_' + orderId);
       if (declRaw) {
         const decl = JSON.parse(declRaw);
         decl.paymentMethod = newMethod;
         decl.paymentChannel = newMethod;
-        localStorage.setItem('belgin_decl_' + orderId, JSON.stringify(decl));
+        localStorage.setItem('Saatchi_decl_' + orderId, JSON.stringify(decl));
       }
     } catch (_) {}
 
@@ -9664,7 +9664,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
         const itemsDisplay = Array.isArray(inv.items) && inv.items.length > 0
           ? inv.items.map(i => `<span style="font-weight:700; color:#0F172A;">${this.escapeHtml(i.name || 'Ürün')}</span> <span style="color:#64748B; font-weight:800;">(x${i.qty || 1})</span>`).join('<br>')
-          : `<span style="font-weight:700; color:#0F172A;">${this.escapeHtml(inv.productName || 'Kuyumculuk Satışı')}</span>`;
+          : `<span style="font-weight:700; color:#0F172A;">${this.escapeHtml(inv.productName || 'Saatçilik Satışı')}</span>`;
 
         const payMethod = inv.paymentMethod || inv.paymentChannel || 'HAVALE_EFT';
         const paySelectorHtml = `
@@ -9788,7 +9788,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
         const itemsDisplay = Array.isArray(inv.items) && inv.items.length > 0
           ? inv.items.map(i => `${this.escapeHtml(i.name || 'Ürün')} (x${i.qty || 1})`).join(', ')
-          : this.escapeHtml(inv.productName || 'Kuyumculuk Satışı');
+          : this.escapeHtml(inv.productName || 'Saatçilik Satışı');
 
         return `
           <article class="admin-mobile-card ${isCancelled ? 'card-status-failed' : (isSigned ? 'card-status-paid' : 'card-status-pending')}" style="${isSelected ? 'border-color:#10B981; background:#F8FCF9;' : ''}">
@@ -10002,7 +10002,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     let inv = fallbackDoc || (this.storeInvoices || []).find(i => i.orderId === invoiceId || i.id === invoiceId);
     if (!inv) {
       try {
-        const stored = localStorage.getItem('belgin_store_invoices');
+        const stored = localStorage.getItem('Saatchi_store_invoices');
         if (stored) {
           const parsed = JSON.parse(stored);
           inv = (parsed || []).find(i => i.orderId === invoiceId || i.id === invoiceId);
@@ -10207,8 +10207,8 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (phone.startsWith('0')) phone = '90' + phone.substring(1);
     if (!phone.startsWith('90')) phone = '90' + phone;
 
-    const invoiceUrl = `https://www.belginkuyumculuk.com/api/admin/invoice/view?uuid=${encodeURIComponent(inv.invoiceUuid || '')}&orderId=${encodeURIComponent(inv.orderId || '')}&print=1`;
-    const msg = `Sayın ${inv.customerName},\n\nSaatchi Kuyumculuk mağazamızdan gerçekleştirdiğiniz alışverişe ait e-Arşiv faturanız düzenlenmiştir.\n\n📄 Belge No: ${inv.invoiceNumber || 'GİB e-Arşiv'}\n💰 Tutar: ₺${Number(inv.totalAmount || 0).toLocaleString('tr-TR')}\n📄 Fatura (PDF İndir): ${invoiceUrl}\n\nBizi tercih ettiğiniz için teşekkür ederiz.\nSaatchi Kuyumculuk — Menderes Cad. No:231/B Buca İzmir`;
+    const invoiceUrl = `https://www.SaatchiSaatçilik.com/api/admin/invoice/view?uuid=${encodeURIComponent(inv.invoiceUuid || '')}&orderId=${encodeURIComponent(inv.orderId || '')}&print=1`;
+    const msg = `Sayın ${inv.customerName},\n\nSaatchi Saatçilik mağazamızdan gerçekleştirdiğiniz alışverişe ait e-Arşiv faturanız düzenlenmiştir.\n\n📄 Belge No: ${inv.invoiceNumber || 'GİB e-Arşiv'}\n💰 Tutar: ₺${Number(inv.totalAmount || 0).toLocaleString('tr-TR')}\n📄 Fatura (PDF İndir): ${invoiceUrl}\n\nBizi tercih ettiğiniz için teşekkür ederiz.\nSaatchi Saatçilik — Menderes Cad. No:231/B Buca İzmir`;
 
     const waUrl = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msg)}`;
     window.open(waUrl, '_blank');
@@ -10222,7 +10222,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     this.storeInvoices = (this.storeInvoices || []).filter(inv => inv.orderId !== orderId && inv.id !== orderId);
     this.selectedStoreInvoiceIds.delete(orderId);
     try {
-      localStorage.setItem('belgin_store_invoices', JSON.stringify(this.storeInvoices));
+      localStorage.setItem('Saatchi_store_invoices', JSON.stringify(this.storeInvoices));
     } catch (_) {}
     this.filterStoreTable();
     this.showToast(`🗑️ ${orderId} başarıyla silindi.`);
@@ -10286,7 +10286,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         </style>
       </head>
       <body>
-        <h2>BELGİN KUYUMCULUK — MAĞAZA VE MANUEL FATURALAR LİSTESİ</h2>
+        <h2>BELGİN Saatçilik — MAĞAZA VE MANUEL FATURALAR LİSTESİ</h2>
         <table>
           <thead>
             <tr>
@@ -10318,7 +10318,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Saatchi_Kuyumculuk_Magaza_Faturalari_${new Date().toISOString().slice(0, 10)}.xls`;
+    a.download = `Saatchi_Saatçilik_Magaza_Faturalari_${new Date().toISOString().slice(0, 10)}.xls`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -10392,7 +10392,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     ];
 
     actions.forEach(act => {
-      const savedTime = localStorage.getItem(`belgin_sync_time_${act}`);
+      const savedTime = localStorage.getItem(`Saatchi_sync_time_${act}`);
       const el = document.getElementById(`time-sync-${act}`);
       if (el && savedTime) {
         el.textContent = savedTime;
@@ -10462,8 +10462,8 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       'magazine': 'Lüks Saat Magazin Makaleleri Güncellemesi',
       'magazine_safety': 'Magazin Güvenlik ve Dil Filtresi Taraması',
       'magazine_enhance': 'Magazin Editoryal Alıntı ve Başlık Biçimlendirme',
-      'gold_prices': 'Harem Altın Canlı Borsa & +%0.5 Marj Güncellemesi',
-      'gold_stock': 'Altın, Külçe ve Sarrafiye Stok Doğrulaması',
+      'gold_prices': 'Harem lüks saat Canlı Borsa & +%0.5 Marj Güncellemesi',
+      'gold_stock': 'lüks saat, Külçe ve Sarrafiye Stok Doğrulaması',
       'saatvesaat': 'Saat ve Saat Distribütör Kataloğu Senkronizasyonu',
       'carren': 'Carren Saat Kataloğu ve Model Güncellemesi',
       'elite_watches': 'Elite Lüks Saatler Portföyü ve Fiyat Koruması',
@@ -10559,18 +10559,18 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       this.logToTerminal('info', 'Güvenlik filtresi (magazine-safety-filter.js) yürütülüyor...');
       this.logToTerminal('info', 'Bozuk HTML entity temizliği (&#8217;, &#038; vb.) kontrol edildi.');
       this.logToTerminal('success', 'Sıfır tolerans: 3. taraf logo veya harici pazar yeri referansı bulunamadı.');
-      this.logToTerminal('success', 'Tüm içerikler Saatchi Kuyumculuk editoryal kütüphanesine mühürlendi.');
+      this.logToTerminal('success', 'Tüm içerikler Saatchi Saatçilik editoryal kütüphanesine mühürlendi.');
     } else if (action === 'magazine_enhance') {
       this.logToTerminal('info', 'Editoryal alıntı motoru (format-and-enhance-magazine.js) çalıştırılıyor...');
       this.logToTerminal('success', 'Her makaleye özgün editoryal alıntı kutuları ve başlık hiyerarşisi uygulandı.');
     } else if (action === 'gold_prices') {
-      this.logToTerminal('info', 'Harem Altın Canlı Borsa soketi (wss://hrmsocketonly.haremaltin.com) sorgulanıyor...');
+      this.logToTerminal('info', 'Harem lüks saat Canlı Borsa soketi (wss://hrmsocketonly.haremaltin.com) sorgulanıyor...');
       this.logToTerminal('info', 'SATIŞ FİYATI KURALI: Canlı Ham Satış x 1.005 (+%0.5 kâr marjı) hesaplanıyor...');
       this.logToTerminal('info', 'ALIŞ FİYATI KURALI: Birebir 1.00x marjsız geri alım fiyatı doğrulanıyor...');
-      this.logToTerminal('success', 'Has Altın, Gram Altın, Çeyrek, Yarım, Tam, Ata ve 22 Ayar Bilezik fiyatları +%0.5 marjla güncellendi.');
+      this.logToTerminal('success', 'Has lüks saat, Gram lüks saat, Çeyrek, Yarım, Tam, Ata ve 22 Ayar Bilezik fiyatları +%0.5 marjla güncellendi.');
     } else if (action === 'gold_stock') {
       this.logToTerminal('info', 'Ağa Külçe ve Darphane sarrafiye stokları taranıyor...');
-      this.logToTerminal('success', 'Tüm altın ürünleri stok ve teslimat parametreleriyle eşitlendi.');
+      this.logToTerminal('success', 'Tüm lüks saat ürünleri stok ve teslimat parametreleriyle eşitlendi.');
     } else if (action === 'saatvesaat') {
       this.logToTerminal('info', 'Saat ve Saat resmi distribütör kataloğu taranıyor...');
       this.logToTerminal('info', '1.000+ saat modelinin fiyat ve stok varyantları karşılaştırılıyor...');
@@ -10585,7 +10585,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     } else if (action === 'smart_diff') {
       this.logToTerminal('info', 'Smart-Diff birleşik akıllı tarama motoru çalışıyor...');
       this.logToTerminal('info', '2.125 ürünün fiyat ve stok deltaları hesaplanıyor...');
-      this.logToTerminal('success', 'Smart-Diff tamamlandı: Altın (+%0.5) ve Saat kataloğu PayTR sunucu kataloğuyla 1:1 eşitlendi.');
+      this.logToTerminal('success', 'Smart-Diff tamamlandı: lüks saat (+%0.5) ve Saat kataloğu PayTR sunucu kataloğuyla 1:1 eşitlendi.');
     } else if (action === 'seo_build') {
       this.logToTerminal('info', 'Statik SEO sayfaları ve Google zengin snippet JSON-LD şemaları derleniyor...');
       this.logToTerminal('success', 'Tüm ürün, kategori ve magazin statik HTML sayfaları derlendi.');
@@ -10605,7 +10605,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     }
 
     // Save timestamp to localStorage
-    localStorage.setItem(`belgin_sync_time_${storageKey}`, timestampStr);
+    localStorage.setItem(`Saatchi_sync_time_${storageKey}`, timestampStr);
     const timeEl = document.getElementById(`time-sync-${storageKey}`);
     if (timeEl) {
       timeEl.textContent = timestampStr;
@@ -10631,7 +10631,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
   initFeasibilityTab() {
     try {
       if (!this._feasibilityInitialized) {
-        const savedMargin = localStorage.getItem('belgin_feasibility_margin');
+        const savedMargin = localStorage.getItem('Saatchi_feasibility_margin');
         if (savedMargin !== null && !isNaN(parseFloat(savedMargin))) {
           this.feasibilityMargin = parseFloat(savedMargin);
         } else {
@@ -10782,7 +10782,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
     this.updateFeasibilityMarginPresetButtons(btnEl);
     try {
-      localStorage.setItem('belgin_feasibility_margin', String(val));
+      localStorage.setItem('Saatchi_feasibility_margin', String(val));
     } catch (_) {}
 
     // Hedef Kâr ve Ciro senkronizasyonu
@@ -10887,7 +10887,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
       this.updateFeasibilityMarginPresetButtons();
       try {
-        localStorage.setItem('belgin_feasibility_margin', String(parsed));
+        localStorage.setItem('Saatchi_feasibility_margin', String(parsed));
       } catch (_) {}
 
       // Hedef Kâr ve Ciro senkronizasyonu

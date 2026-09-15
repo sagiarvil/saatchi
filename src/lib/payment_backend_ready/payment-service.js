@@ -1,5 +1,5 @@
 /**
- * BELGIN KUYUMCULUK — PRODUCTION HARDENED PAYMENT SERVICE
+ * Saatchi Lüks Saatler — PRODUCTION HARDENED PAYMENT SERVICE
  * Kuveyt Türk Sanal POS Odaklı Çoklu POS, FSM Durum Modeli, Idempotency ve Finansal Güvenlik
  */
 
@@ -17,8 +17,8 @@ const notifier = require('../notifier');
 const { calculateVip22Breakdown } = require('../earsiv-service');
 
 const HIGH_VALUE_SECURE_DELIVERY_THRESHOLD = 12000;
-const LEGAL_EVIDENCE_SCHEMA = 'belgin-order-evidence-v2';
-const VIP_SIGNING_SECRET = process.env.VIP_PAYMENT_SECRET || 'BELGIN_VIP_SECURITY_SECRET_2026';
+const LEGAL_EVIDENCE_SCHEMA = 'Saatchi-order-evidence-v2';
+const VIP_SIGNING_SECRET = process.env.VIP_PAYMENT_SECRET || 'Saatchi_VIP_SECURITY_SECRET_2026';
 
 // Idempotency & Rate Limit In-Memory Cache (LRU-like with TTL)
 const idempotencyCache = new Map();
@@ -73,7 +73,7 @@ function verifyVipToken(token, expectedId = '') {
           id: String(payload.id || payload.orderId || `VIP-${Date.now()}`),
           name: String(payload.name || payload.title || 'Lüks Özel Sipariş').slice(0, 200),
           price,
-          brand: 'Belgin Kuyumculuk',
+          brand: 'Saatchi Lüks Saatler',
           reference: 'VIP-SHOWROOM',
           metal: 'Özel Tasarım',
           category: 'luxury',
@@ -101,7 +101,7 @@ function verifyVipToken(token, expectedId = '') {
           id: orderId || `VIP-${Date.now()}`,
           name: title || 'Lüks Koleksiyon Siparişi',
           price,
-          brand: 'Belgin Kuyumculuk',
+          brand: 'Saatchi Lüks Saatler',
           reference: 'VIP-SHOWROOM',
           metal: 'Özel Tasarım',
           category: 'luxury',
@@ -122,12 +122,12 @@ function isHighValueCatalogProduct(product) {
   const category = String(product.category || '').toLowerCase();
   const metal = String(product.metal || '').toLowerCase();
   const isPreOwned = product.isPreOwned === true || category === 'seckin-urunler' || category === 'ikinci-el' || category === 'luxury';
-  const isGold = product.isGold === true || category === 'gold' || category === 'altin' || category === 'altın' || category === 'mucevherat' || category === 'jewelry' || category === 'jewellery' || metal.includes('altın') || /au\s?\d{3}/i.test(metal);
+  const isGold = product.isGold === true || category === 'gold' || category === 'altin' || category === 'lüks saat' || category === 'mucevherat' || category === 'jewelry' || category === 'jewellery' || metal.includes('lüks saat') || /au\s?\d{3}/i.test(metal);
 
   // 1. Seçkin Ürünler (İkinci El / Lüks Koleksiyon Saatler: Rolex, AP vb.) -> Sadece Mağaza Teslim Zorunludur
   if (isPreOwned) return true;
 
-  // 2. Altın ve Mücevherat Ürünleri (Bilezik, Sarrafiye, Pırlanta) -> Sadece Mağaza Teslim Zorunludur
+  // 2. lüks saat ve saatat Ürünleri (Bilezik, Sarrafiye, Pırlanta) -> Sadece Mağaza Teslim Zorunludur
   if (isGold) return true;
 
   // 3. Saatler Kategorisi (Carren, Saat&Saat vb. tüm sıfır saatler) -> Ücretsiz Kargo Yapılabilir
@@ -162,9 +162,9 @@ function normalizeCart(clientItems, isVipPayment = false, vipToken = null, produ
       const prodBrand = String(product.brand || '').toLowerCase();
       const prodName = String(product.name || '').toLowerCase();
       const isWatch = (prodCat === 'elit-saatler' || prodCat === 'saat' || prodCat === 'watch' || prodCat === 'watches');
-      const isGoldJewellery = !isWatch && (prodCat === 'jewelry' || prodCat === 'jewellery' || prodCat === 'mucevherat' || prodCat === 'altin' || prodCat === 'gold' || prodBrand.includes('belgin kuyumculuk') || product.isGold === true || /altın|altin|külçe|kulce|bilezik|çeyrek|ceyrek|yarım\s+altın|tam\s+altın|ata\s+altın|reşat|resat|ziynet|sarrafiye|gremse/i.test(prodName));
+      const isGoldJewellery = !isWatch && (prodCat === 'jewelry' || prodCat === 'jewellery' || prodCat === 'mucevherat' || prodCat === 'altin' || prodCat === 'gold' || prodBrand.includes('Saatchi Lüks Saatler') || product.isGold === true || /lüks saat|altin|külçe|kulce|bilezik|çeyrek|ceyrek|yarım\s+lüks saat|tam\s+lüks saat|ata\s+lüks saat|reşat|resat|ziynet|sarrafiye|gremse/i.test(prodName));
       if (!isVipPayment && isGoldJewellery) {
-        const error = new Error('Mevzuat ve şirket politikalarımız gereğince Altın ve Mücevherat ürünlerinde web sitesi üzerinden doğrudan kredi kartı ile satış yapılmamaktadır. Ödemelerinizi Banka Havalesi / EFT ile tamamlayabilir veya showroom mağazamızdan teslim alabilirsiniz.');
+        const error = new Error('Mevzuat ve şirket politikalarımız gereğince lüks saat ve saatat ürünlerinde web sitesi üzerinden doğrudan kredi kartı ile satış yapılmamaktadır. Ödemelerinizi Banka Havalesi / EFT ile tamamlayabilir veya showroom mağazamızdan teslim alabilirsiniz.');
         error.code = 'JEWELLERY_CC_NOT_ALLOWED';
         throw error;
       }
@@ -232,12 +232,12 @@ function validateLegalAndDelivery(body, items) {
 
   if (hasHighValue) {
     if (!highValueDeliveryAccepted) {
-      const error = new Error('12.000 TL ve üzerindeki altın/mücevherat ürünü için mağaza teslim, kimlik doğrulama ve işlem güvenliği koşulu onayı zorunludur.');
+      const error = new Error('12.000 TL ve üzerindeki lüks saat/saatat ürünü için mağaza teslim, kimlik doğrulama ve işlem güvenliği koşulu onayı zorunludur.');
       error.code = 'HIGH_VALUE_CONSENT_REQUIRED';
       throw error;
     }
     if (deliveryMethod !== 'showroom') {
-      const error = new Error('12.000 TL ve üzerindeki altın ve mücevherat ürünleri yalnız mağazadan teslim edilir.');
+      const error = new Error('12.000 TL ve üzerindeki lüks saat ve saatat ürünleri yalnız mağazadan teslim edilir.');
       error.code = 'HIGH_VALUE_DELIVERY_REQUIRED';
       throw error;
     }
@@ -323,7 +323,7 @@ class PaymentService {
       }
       if (!email) {
         const cleanPhone = String(body.user_phone || body.phone || body.customer?.phone || '').replace(/\D/g, '');
-        email = cleanPhone ? `musteri_${cleanPhone}@belginkuyumculuk.com` : `siparis_${Date.now()}@belginkuyumculuk.com`;
+        email = cleanPhone ? `musteri_${cleanPhone}@SaatchiSaatçilik.com` : `siparis_${Date.now()}@SaatchiSaatçilik.com`;
       }
 
     const items = normalizeCart(body.items, isVipPayment, body.vipToken, productCatalog);
@@ -347,7 +347,7 @@ class PaymentService {
     const finalItems = (vip22Breakdown && vip22Breakdown.items && vip22Breakdown.items.length > 0)
       ? vip22Breakdown.items.map(it => ({
           id: it.id || it.reference || 'BLG-22K',
-          name: it.name || it.malHizmet || rawVipTitle || '22 Ayar Altın Ürünü',
+          name: it.name || it.malHizmet || rawVipTitle || '22 Ayar lüks saat Ürünü',
           price: Number(it.unitPrice || it.birimFiyat || it.lineTotal || it.fiyat || 0),
           qty: Number(it.qty || it.miktar || 1),
           lineTotal: Number(it.lineTotal || it.fiyat || 0),
@@ -355,7 +355,7 @@ class PaymentService {
           ozelMatrah: it.ozelMatrahNedeni === '351' || it.kdvRate === 0,
           url: it.url || null,
           reference: it.reference || null,
-          brand: 'Belgin Kuyumculuk',
+          brand: 'Saatchi Lüks Saatler',
           isGold: true,
           category: 'jewelry'
         }))
@@ -397,7 +397,7 @@ class PaymentService {
       vipTitle: rawVipTitle || null,
       title: rawVipTitle || null,
       items: finalItems,
-      productName: rawVipTitle || (vip22Breakdown ? vip22Breakdown.productName : ((finalItems && finalItems[0]?.name) ? String(finalItems[0].name).trim() : 'Kuyumculuk Ürünü')),
+      productName: rawVipTitle || (vip22Breakdown ? vip22Breakdown.productName : ((finalItems && finalItems[0]?.name) ? String(finalItems[0].name).trim() : 'Saatçilik Ürünü')),
       productSnapshotHash,
       total: serverTotal,
       totalAmount: serverTotal,
@@ -647,7 +647,7 @@ class PaymentService {
         rawDetails,
       }, admin);
 
-      // BAŞARISIZ İŞLEM ANLIK TELEGRAM & MOBİL PUSH BİLDİRİMİ (@Belgin_kasa_pos_bot)
+      // BAŞARISIZ İŞLEM ANLIK TELEGRAM & MOBİL PUSH BİLDİRİMİ (@Saatchi_kasa_pos_bot)
       const failedOrderData = {
         ...order,
         orderId,
@@ -788,7 +788,7 @@ class PaymentService {
         rawDetails: rawDetails,
       }, admin);
 
-      // BAŞARISIZ İŞLEM ANLIK TELEGRAM & MOBİL PUSH BİLDİRİMİ (@Belgin_kasa_pos_bot)
+      // BAŞARISIZ İŞLEM ANLIK TELEGRAM & MOBİL PUSH BİLDİRİMİ (@Saatchi_kasa_pos_bot)
       const failedOrderData = {
         ...order,
         orderId,

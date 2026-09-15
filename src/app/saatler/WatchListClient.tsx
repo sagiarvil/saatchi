@@ -1,5 +1,6 @@
 'use client';
 import { useState, useMemo } from 'react';
+import Image from "next/image";
 import Link from 'next/link';
 
 export default function WatchListClient({ initialWatches, initialGender = '' }: { initialWatches: any[], initialGender?: string }) {
@@ -76,9 +77,9 @@ export default function WatchListClient({ initialWatches, initialGender = '' }: 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map(watch => (
             <Link key={watch.id} href={watch.seoUrl} className="group bg-surface border border-surface-border rounded-xl flex flex-col hover:border-primary/50 hover:shadow-2xl transition-all duration-500 overflow-hidden">
-              <div className="w-full aspect-[4/5] relative overflow-hidden bg-white flex items-center justify-center">
+              <div className="w-full aspect-square relative overflow-hidden bg-[#FAFAFA] flex items-center justify-center border-b border-surface-border">
                 {watch.image ? (
-                  <img src={watch.image} alt={watch.modelName} className="object-cover object-center w-full h-full group-hover:scale-110 transition-transform duration-700 ease-out" />
+                  <Image src={watch.image} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-6 group-hover:scale-110 transition-transform duration-700 ease-out" />
                 ) : (
                   <div className="text-xs text-foreground/40 font-serif">Görsel Yok</div>
                 )}

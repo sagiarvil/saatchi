@@ -2881,7 +2881,7 @@
 <!-- ÜST YÖNETİCİ BAŞLIĞI -->
 <header class="admin-navbar" style="display:none;">
   <a href="/admin" class="admin-brand">
-    <img src="images/belgin-logo.png" alt="Saatchi Lüks Saatler">
+    <img src="images/Saatchi-logo.png" alt="Saatchi Lüks Saatler">
     <span class="admin-title-badge">YÖNETİM & TAHSIILAT PANELİ</span>
   </a>
 
@@ -3243,7 +3243,7 @@
                   <label class="form-field-label" for="storeCustCompanyName" style="color:#334155; font-weight:700;">
                     🏢 Firma Ticari Unvanı (Kurumsal VKN):
                   </label>
-                  <input type="text" id="storeCustCompanyName" class="form-field-input" placeholder="Örn: ABC Kuyumculuk Mücevherat Ltd. Şti." style="font-weight:600; color:#0F172A; background:#FFF;">
+                  <input type="text" id="storeCustCompanyName" class="form-field-input" placeholder="Örn: ABC Saatçilik lüks saat Ltd. Şti." style="font-weight:600; color:#0F172A; background:#FFF;">
                 </div>
 
                 <div class="form-field-group" style="margin-bottom:0;">
@@ -3370,7 +3370,7 @@
                     <span>✍️ Hızlı Tutar Yaz (%0 / KDV)</span>
                   </button>
                   <button type="button" id="tabStoreModeGold" class="btn-preset" style="padding:6px 14px; font-size:12px;" onclick="AdminApp.switchStoreItemMode('gold')">
-                    <span>🪙 Altın Ürünü Ara</span>
+                    <span>🪙 lüks saat Ürünü Ara</span>
                   </button>
                   <button type="button" id="tabStoreModeWatch" class="btn-preset" style="padding:6px 14px; font-size:12px;" onclick="AdminApp.switchStoreItemMode('watch')">
                     <span>⌚ Lüks Saat Ara (%20)</span>
@@ -3392,7 +3392,7 @@
                       <label style="display:block; font-size:11.5px; font-weight:700; color:#0F172A; margin-bottom:3px;" for="freeItemName">
                         Ürün Açıklaması: *
                       </label>
-                      <input type="text" id="freeItemName" class="form-field-input" placeholder="Örn: 22 Ayar Altın Bilezik" value="22 Ayar Altın Bilezik" style="font-size:12.5px; font-weight:700; color:#0F172A; width:100%;" oninput="AdminApp.handleFreeItemChange()">
+                      <input type="text" id="freeItemName" class="form-field-input" placeholder="Örn: 22 Ayar lüks saat Bilezik" value="22 Ayar lüks saat Bilezik" style="font-size:12.5px; font-weight:700; color:#0F172A; width:100%;" oninput="AdminApp.handleFreeItemChange()">
                     </div>
 
                     <div>
@@ -3462,12 +3462,12 @@
                 <div id="storeModeGoldBox" style="display:none;">
                   <div style="display:flex; gap:10px; margin-bottom:8px;">
                     <div style="position:relative; flex:1;">
-                      <input type="text" id="goldTargetPriceInput" class="form-field-input" placeholder="Hedef Altın Tutarını Girin (Örn: 96.000)" style="font-size:13px; font-weight:700; color:#92400E; padding-left:24px;" oninput="AdminApp.searchProductsByTargetPrice('gold', this.value)">
+                      <input type="text" id="goldTargetPriceInput" class="form-field-input" placeholder="Hedef lüks saat Tutarını Girin (Örn: 96.000)" style="font-size:13px; font-weight:700; color:#92400E; padding-left:24px;" oninput="AdminApp.searchProductsByTargetPrice('gold', this.value)">
                       <span style="position:absolute; left:8px; top:50%; transform:translateY(-50%); font-weight:800; color:#D97706;">₺</span>
                     </div>
                   </div>
                   <div id="goldSearchResultsContainer" style="min-height:30px; font-size:11.5px; color:#64748B;">
-                    Hedef tutarı yazarak vitrindeki altın modellerini listeleyebilirsiniz.
+                    Hedef tutarı yazarak vitrindeki lüks saat modellerini listeleyebilirsiniz.
                   </div>
                 </div>
 
@@ -4897,10 +4897,10 @@
         </div>
       </div>
 
-      <!-- 3. BÖLÜM: SATILAN ÜRÜN & KUYUMCULUK ÖZEL MATRAH HESABI -->
+      <!-- 3. BÖLÜM: SATILAN ÜRÜN & Saatçilik ÖZEL MATRAH HESABI -->
       <div style="background:#F0FDF4; border:1px solid #BBF7D0; border-radius:10px; padding:14px; margin-bottom:16px;">
         <div style="font-size:12px; font-weight:800; color:#166534; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px; display:flex; align-items:center; gap:6px;">
-          <span>💍</span> 3. Satılan Ürün & Kuyumculuk Özel Matrah Tutarı
+          <span>💍</span> 3. Satılan Ürün & Saatçilik Özel Matrah Tutarı
         </div>
 
         <!-- 🌟 Fatura & Ürün Türü Seçimi -->
@@ -4910,7 +4910,7 @@
           </label>
           <div style="display:flex; gap:6px; flex-wrap:wrap;">
             <button type="button" id="btnManualTypeGold" class="btn-template-chip active" style="padding:6px 12px; font-size:12px; font-weight:800; background:#064E3B; color:#FFF; border-color:#064E3B; border-radius:6px; cursor:pointer;" onclick="AdminApp.setManualInvoiceType('GOLD')">
-              🪙 Altın & Ziynet (%0 Özel Matrah + İşçilik)
+              🪙 lüks saat & Ziynet (%0 Özel Matrah + İşçilik)
             </button>
             <button type="button" id="btnManualTypeWatch" class="btn-template-chip" style="padding:6px 12px; font-size:12px; font-weight:800; background:#FFF; color:#0284C7; border:1.5px solid #0284C7; border-radius:6px; cursor:pointer;" onclick="AdminApp.setManualInvoiceType('WATCH')">
               ⌚ Saat / Lüks Kol Saati (%20 KDV Standart)
@@ -4923,11 +4923,11 @@
 
         <input type="hidden" id="manualInvoiceType" value="GOLD">
 
-        <!-- 📦 Çoklu Ürün / Altın Parçalama Satırları -->
+        <!-- 📦 Çoklu Ürün / lüks saat Parçalama Satırları -->
         <div style="margin-bottom:12px;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
             <label style="font-size:11px; font-weight:800; color:#14532D; text-transform:uppercase;">
-              Satılan Ürünler & Altın Kalemleri (Parçalayarak Ekle):
+              Satılan Ürünler & lüks saat Kalemleri (Parçalayarak Ekle):
             </label>
             <button type="button" onclick="AdminApp.addManualOrderItemRow()" style="display:inline-flex; align-items:center; gap:4px; background:#059669; color:#FFF; border:none; padding:4px 10px; border-radius:5px; font-size:11.5px; font-weight:800; cursor:pointer;">
               <span>➕ Yeni Satır Ekle</span>
@@ -4950,7 +4950,7 @@
           </div>
         </div>
 
-        <!-- Dinamik Altın İşçilik veya Serbest KDV Seçici -->
+        <!-- Dinamik lüks saat İşçilik veya Serbest KDV Seçici -->
         <div id="manualGoldLaborRow" style="display:flex; justify-content:space-between; align-items:center; background:#ECFDF5; border:1px solid #A7F3D0; border-radius:6px; padding:6px 10px; margin-bottom:10px;">
           <span style="font-size:11px; font-weight:800; color:#065F46;">🔨 İşçilik Oranı (%20 KDV Dahil):</span>
           <div style="display:flex; gap:4px; align-items:center;">
@@ -5172,7 +5172,7 @@
           <label style="display:block; font-size:11px; font-weight:700; color:#166534; margin-bottom:2px;">
             Ürün / Kalem Açıklaması:
           </label>
-          <input type="text" id="manualEftProductName" value="22 Ayar İşçilikli Altın Bilezik" placeholder="Örn: 22 Ayar İşçilikli Altın Bilezik" style="width:100%; border:1px solid #86EFAC; padding:8px 10px; border-radius:6px; font-size:12.5px; font-weight:700; color:#064E3B;">
+          <input type="text" id="manualEftProductName" value="22 Ayar İşçilikli lüks saat Bilezik" placeholder="Örn: 22 Ayar İşçilikli lüks saat Bilezik" style="width:100%; border:1px solid #86EFAC; padding:8px 10px; border-radius:6px; font-size:12.5px; font-weight:700; color:#064E3B;">
           <span style="font-size:10.5px; color:#15803D; margin-top:3px; display:block;">ℹ️ Faturada 'Kıymetli Maden Bedeli (Özel Matrah %0 KDV)' ve 'İşçilik' olarak ayrıştırılacaktır.</span>
         </div>
       </div>
@@ -5420,10 +5420,10 @@
             <span style="font-size:18px;">🔨</span>
             <div>
               <div style="font-size:11.5px; font-weight:800; color:#064E3B; text-transform:uppercase;">
-                Altın & İşçilik Otomasyonu (Tek Tıkla Ayır):
+                lüks saat & İşçilik Otomasyonu (Tek Tıkla Ayır):
               </div>
               <div style="font-size:10.5px; color:#047857;">
-                Toplam tutardan işçiliği otomatik hesaplayıp <strong>Altın (%0 Özel Matrah)</strong> ve <strong>İşçilik (%20 KDV)</strong> olarak kuruşu kuruşuna 2 satıra böler.
+                Toplam tutardan işçiliği otomatik hesaplayıp <strong>lüks saat (%0 Özel Matrah)</strong> ve <strong>İşçilik (%20 KDV)</strong> olarak kuruşu kuruşuna 2 satıra böler.
               </div>
             </div>
           </div>
@@ -5431,9 +5431,9 @@
             <span style="font-size:11px; font-weight:700; color:#064E3B;">Hızlı Oran:</span>
             <button type="button" class="btn-template-chip" style="padding:4px 8px; font-size:11px; font-weight:800; background:#FFF; border:1.5px solid #10B981; color:#065F46; border-radius:5px; cursor:pointer;" onclick="AdminApp.autoApplyLaborSplit(1)" title="%1 İşçilik (%20 KDV) olarak hesaplar">%1</button>
             <button type="button" class="btn-template-chip" style="padding:4px 8px; font-size:11px; font-weight:800; background:#FFF; border:1.5px solid #10B981; color:#065F46; border-radius:5px; cursor:pointer;" onclick="AdminApp.autoApplyLaborSplit(1.25)" title="%1,25 İşçilik">%1,25</button>
-            <button type="button" class="btn-template-chip" style="padding:4px 10px; font-size:11.5px; font-weight:900; background:#065F46; border:1.5px solid #065F46; color:#FFF; border-radius:5px; cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,0.15);" onclick="AdminApp.autoApplyLaborSplit(1.5)" title="%1,5 Standart Kuyumcu İşçiliği (Önerilen)">%1,5 (Standart / Önerilen)</button>
+            <button type="button" class="btn-template-chip" style="padding:4px 10px; font-size:11.5px; font-weight:900; background:#065F46; border:1.5px solid #065F46; color:#FFF; border-radius:5px; cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,0.15);" onclick="AdminApp.autoApplyLaborSplit(1.5)" title="%1,5 Standart Komisyon (Önerilen)">%1,5 (Standart / Önerilen)</button>
             <button type="button" class="btn-template-chip" style="padding:4px 8px; font-size:11px; font-weight:800; background:#FFF; border:1.5px solid #10B981; color:#065F46; border-radius:5px; cursor:pointer;" onclick="AdminApp.autoApplyLaborSplit(2)" title="%2 İşçilik">%2</button>
-            <button type="button" class="btn-template-chip" style="padding:4px 8px; font-size:11px; font-weight:700; background:#FFF; border:1.5px solid #CBD5E1; color:#475569; border-radius:5px; cursor:pointer;" onclick="AdminApp.autoApplyLaborSplit(0)" title="İşçilik satırını kaldırır, tek satır %0 altın yapar">%0 (İşçiliksiz)</button>
+            <button type="button" class="btn-template-chip" style="padding:4px 8px; font-size:11px; font-weight:700; background:#FFF; border:1.5px solid #CBD5E1; color:#475569; border-radius:5px; cursor:pointer;" onclick="AdminApp.autoApplyLaborSplit(0)" title="İşçilik satırını kaldırır, tek satır %0 lüks saat yapar">%0 (İşçiliksiz)</button>
           </div>
         </div>
 
@@ -5469,7 +5469,7 @@
             <label style="display:block; font-size:11px; font-weight:700; color:#475569; margin-bottom:3px;">
               Firma / Şirket Unvanı:
             </label>
-            <input type="text" id="editCustomerCompanyName" placeholder="Örn: ABC Kuyumculuk Ltd. Şti." style="width:100%; border:1px solid #CBD5E1; padding:8px 10px; border-radius:6px; font-size:12.5px;">
+            <input type="text" id="editCustomerCompanyName" placeholder="Örn: ABC Saatçilik Ltd. Şti." style="width:100%; border:1px solid #CBD5E1; padding:8px 10px; border-radius:6px; font-size:12.5px;">
           </div>
 
           <div>
@@ -5516,7 +5516,7 @@
             e-Arşiv Fatura Kesim & Yapılandırma Sihirbazı
           </h3>
           <span style="font-size:11.5px; color:#D1FAE5; font-weight:500;">
-            KDV Kanunu 23/f (Altın Özel Matrah) veya Saat (%20 KDV) olarak fatura tipini belirleyin
+            KDV Kanunu 23/f (lüks saat Özel Matrah) veya Saat (%20 KDV) olarak fatura tipini belirleyin
           </span>
         </div>
       </div>
@@ -5600,7 +5600,7 @@
         <div style="display:grid; grid-template-columns:1.5fr 1.5fr; gap:8px;">
           <div>
             <label style="display:block; font-size:11px; font-weight:700; color:#334155; margin-bottom:2px;">Firma / Şirket Ticari Unvanı (10 Haneli VKN'de Resmi Başlık):</label>
-            <input type="text" id="cfgModalCompanyNameInput" class="form-field-input" placeholder="Örn: ABC Kuyumculuk Ltd. Şti." style="font-size:12px; font-weight:700; padding:6px 8px; border:1px solid #CBD5E1; border-radius:6px;">
+            <input type="text" id="cfgModalCompanyNameInput" class="form-field-input" placeholder="Örn: ABC Saatçilik Ltd. Şti." style="font-size:12px; font-weight:700; padding:6px 8px; border:1px solid #CBD5E1; border-radius:6px;">
           </div>
           <div>
             <label style="display:block; font-size:11px; font-weight:700; color:#334155; margin-bottom:2px;">Fatura Adresi:</label>
@@ -5617,7 +5617,7 @@
 
         <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:14px;">
           <button type="button" id="btnCfgTypeGold" class="btn-template-chip active" style="padding:10px 8px; font-size:12px; font-weight:800; background:#064E3B; color:#FFF; border-color:#064E3B; border-radius:8px; cursor:pointer; text-align:center;" onclick="AdminApp.setOrderInvoiceConfigType('GOLD')">
-            🪙 Altın & Ziynet<br><span style="font-size:10px; font-weight:600; opacity:0.9;">%0 Özel Matrah + İşçilik</span>
+            🪙 lüks saat & Ziynet<br><span style="font-size:10px; font-weight:600; opacity:0.9;">%0 Özel Matrah + İşçilik</span>
           </button>
           <button type="button" id="btnCfgTypeWatch" class="btn-template-chip" style="padding:10px 8px; font-size:12px; font-weight:800; background:#FFF; color:#0284C7; border:1.5px solid #0284C7; border-radius:8px; cursor:pointer; text-align:center;" onclick="AdminApp.setOrderInvoiceConfigType('WATCH')">
             ⌚ Saat / Lüks Saat<br><span style="font-size:10px; font-weight:600; opacity:0.9;">%20 KDV Standart</span>
@@ -5627,13 +5627,13 @@
           </button>
         </div>
 
-        <!-- Altın Ayarları: İşçilik Oranı -->
+        <!-- lüks saat Ayarları: İşçilik Oranı -->
         <div id="cfgGoldSettingsBlock" style="background:#FFFDF7; border:1.5px solid #FCD34D; border-radius:8px; padding:12px; margin-bottom:12px;">
           <div style="margin-bottom:10px;">
             <label for="cfgGoldItemName" style="display:block; font-size:11.5px; font-weight:800; color:#92400E; margin-bottom:3px;">
-              🏷️ Altın / Ziynet / VIP Ürün Açıklaması: * <small style="font-weight:600; color:#B45309;">(VIP Linkte Girdiğiniz Ürün Adı)</small>
+              🏷️ lüks saat / Ziynet / VIP Ürün Açıklaması: * <small style="font-weight:600; color:#B45309;">(VIP Linkte Girdiğiniz Ürün Adı)</small>
             </label>
-            <input type="text" id="cfgGoldItemName" value="22 Ayar Bilezik" placeholder="Örn: 22 Ayar Burma Bilezik / 24 Ayar Külçe Altın" style="width:100%; border:1.5px solid #D97706; border-radius:6px; padding:8px 10px; font-size:13px; font-weight:700; color:#78350F; background:#FFF;" oninput="AdminApp.updateOrderInvoiceLiveSummary()">
+            <input type="text" id="cfgGoldItemName" value="22 Ayar Bilezik" placeholder="Örn: 22 Ayar Burma Bilezik / 24 Ayar Külçe lüks saat" style="width:100%; border:1.5px solid #D97706; border-radius:6px; padding:8px 10px; font-size:13px; font-weight:700; color:#78350F; background:#FFF;" oninput="AdminApp.updateOrderInvoiceLiveSummary()">
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
             <div>

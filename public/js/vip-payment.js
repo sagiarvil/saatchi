@@ -1,4 +1,4 @@
-// BELGIN KUYUMCULUK — VIP ÖDEME LİNKİ & CHECKOUT MOTORU
+// Saatchi Lüks Saatler — VIP ÖDEME LİNKİ & CHECKOUT MOTORU
 // Güvenli Kompakt Maskeli Token (?p=...) ve WhatsApp Entegrasyonu
 (function (global) {
   'use strict';
@@ -32,7 +32,7 @@
       id: '22-ayar-bilezik',
       name: '22 Ayar Bilezik',
       reference: 'BLG-BLZ-22K',
-      url: 'https://www.belginkuyumculuk.com/urun/22-ayar-bilezik/',
+      url: 'https://www.SaatchiSaatçilik.com/urun/22-ayar-bilezik/',
       basePrice: 65000,
       karat: 22,
       priceKey: 'gramGold22k',
@@ -118,7 +118,7 @@
           name: cleanProdName,
           malHizmet: malHizmetDesc,
           reference: 'BLG-BLZ-22K',
-          url: 'https://www.belginkuyumculuk.com/urun/22-ayar-bilezik/',
+          url: 'https://www.SaatchiSaatçilik.com/urun/22-ayar-bilezik/',
           qty: 1,
           miktar: 1,
           birim: 'C62',
@@ -138,7 +138,7 @@
           name: 'İşçilik',
           malHizmet: 'İşçilik',
           reference: 'BLG-ISC-22K',
-          url: 'https://www.belginkuyumculuk.com/',
+          url: 'https://www.SaatchiSaatçilik.com/',
           qty: 1,
           miktar: 1,
           birim: 'C62',
@@ -243,9 +243,9 @@
       }
     },
 
-    // 5. VIP Link Üretimi (https://www.belginkuyumculuk.com/vip?p=...)
+    // 5. VIP Link Üretimi (https://www.SaatchiSaatçilik.com/vip?p=...)
     buildVipUrl(payload, customOrigin) {
-      const origin = customOrigin || (typeof window !== 'undefined' && window.location.origin.includes('localhost') ? window.location.origin : 'https://www.belginkuyumculuk.com');
+      const origin = customOrigin || (typeof window !== 'undefined' && window.location.origin.includes('localhost') ? window.location.origin : 'https://www.SaatchiSaatçilik.com');
       const compactToken = this.encodeCompact(payload);
       return `${origin}/vip?p=${compactToken}`;
     },
@@ -506,7 +506,7 @@ ${shortUrl}
         qty: 1,
         isVipCustom: true,
         vipToken: token,
-        brand: 'Belgin Kuyumculuk',
+        brand: 'Saatchi Lüks Saatler',
         category: 'luxury'
       }];
 
@@ -524,7 +524,7 @@ ${shortUrl}
           vipTitle: payload.title || null,
           user_name: name,
           user_phone: phone,
-          email: cleanPhone ? `musteri_${cleanPhone}@belginkuyumculuk.com` : `vip_${Date.now()}@belginkuyumculuk.com`,
+          email: cleanPhone ? `musteri_${cleanPhone}@SaatchiSaatçilik.com` : `vip_${Date.now()}@SaatchiSaatçilik.com`,
           customerIdentity: identity,
           customerAddress: address,
           user_address: address,
@@ -589,7 +589,7 @@ ${shortUrl}
       const notice = document.createElement('div');
       notice.id = 'ziraatHostNotice';
       notice.style.cssText = 'background:#0B1917;border:1.5px solid #1E3B36;border-radius:12px;padding:16px;margin-bottom:18px;color:#F3E5AB;font-size:12.5px;line-height:1.55;';
-      notice.innerHTML = '<strong style="display:block;margin-bottom:5px;">Ziraat Katılım 3D Secure Ortak Ödeme</strong><span style="color:#8EAAA5;">Kart numarası, son kullanma tarihi ve CVV bilgileri Belgin ekranında alınmaz. “Güvenli Öde” sonrası Ziraat Katılım’ın 3DHost sayfasında girilir.</span>';
+      notice.innerHTML = '<strong style="display:block;margin-bottom:5px;">Ziraat Katılım 3D Secure Ortak Ödeme</strong><span style="color:#8EAAA5;">Kart numarası, son kullanma tarihi ve CVV bilgileri Saatchi ekranında alınmaz. “Güvenli Öde” sonrası Ziraat Katılım’ın 3DHost sayfasında girilir.</span>';
       cardWrap?.parentNode?.insertBefore(notice, cardWrap);
     }
 

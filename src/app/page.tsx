@@ -1,4 +1,5 @@
 import { Watch } from "lucide-react";
+import Image from "next/image";
 
 import { Navbar } from '@/components/layout/Navbar';
 import { BrandMarquee } from '@/components/ui/BrandMarquee';
@@ -7,7 +8,7 @@ import Link from 'next/link';
 import elitSaatler from '@/data/elit-saatler.json';
 
 export default function Home() {
-  // Sadece Chrono24 (Elit) veritabanından en özel 3 saati alıyoruz
+  // Sadece Global (Elit) veritabanından en özel 3 saati alıyoruz
   const featuredWatches = [...elitSaatler]
     .sort((a, b) => b.calculatedPrice - a.calculatedPrice)
     .slice(0, 3);
@@ -37,18 +38,14 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
               {featuredWatches.map((watch) => (
                 <Link href={watch.seoUrl} key={watch.id} className="group cursor-pointer flex flex-col items-center">
-                  <div className="w-full aspect-[4/5] mb-8 relative flex items-center justify-center transition-all duration-700 bg-surface rounded-2xl border border-surface-border overflow-hidden group-hover:border-[#C2A768]/40 group-hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)]">
+                  <div className="w-full aspect-square bg-[#FAFAFA] mb-8 relative flex items-center justify-center transition-all duration-700 bg-surface rounded-2xl border border-surface-border overflow-hidden group-hover:border-[#C2A768]/40 group-hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)]">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
                     {/* Saat Görseli */}
                     <div className="absolute inset-0 w-full h-full z-0">
                         {watch.image ? (
-                          /* eslint-disable-next-line @next/next/no-img-element */
-                          <img
-                            src={watch.image}
-                            alt={watch.modelName}
-                            className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out"
-                          />
+                          
+                          <Image src={watch.image} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-6 group-hover:scale-110 transition-transform duration-700 ease-out" />
                         ) : (
                           <div className="w-full h-full bg-surface flex flex-col items-center justify-center text-[#C2A768]/30">
                             <Watch className="w-12 h-12 mb-2 opacity-50" />

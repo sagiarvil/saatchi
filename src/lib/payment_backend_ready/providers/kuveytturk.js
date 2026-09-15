@@ -1,5 +1,5 @@
 /**
- * BELGIN KUYUMCULUK — KUVEYT TÜRK SANAL POS ADAPTER
+ * Saatchi Lüks Saatler — KUVEYT TÜRK SANAL POS ADAPTER
  * Kuveyt Türk 3D Secure Model & Two-Phase Payment Gateway Modülü
  * Resmi Kuveyt Türk Dokümantasyonu (ISO-8859-9 SHA-1 / ThreeDModelPayGate & ThreeDModelProvisionGate)
  */
@@ -104,7 +104,7 @@ async function sendXmlRequest(urlOrPath, xmlBody) {
         headers: {
           'Content-Type': 'application/xml; charset=utf-8',
           'Content-Length': postData.length,
-          'X-Belgin-Secret': SECRET,
+          'X-Saatchi-Secret': SECRET,
         },
         ca: pinnedProxyCa ? [pinnedProxyCa] : undefined,
         rejectUnauthorized: Boolean(pinnedProxyCa),
@@ -167,8 +167,8 @@ class KuveytTurkProvider {
     const amountInKurus = order.amountInKurus || Math.round(Number(order.total || order.totalAmount) * 100);
     const amount = String(amountInKurus);
 
-    const okUrl = 'https://www.belginkuyumculuk.com/api/payment/callback/kuveytturk';
-    const failUrl = 'https://www.belginkuyumculuk.com/api/payment/callback/kuveytturk';
+    const okUrl = 'https://www.SaatchiSaatçilik.com/api/payment/callback/kuveytturk';
+    const failUrl = 'https://www.SaatchiSaatçilik.com/api/payment/callback/kuveytturk';
     const merchantOrderId = String(order.orderId || order.id);
 
     const hashedPassword = getHashedPassword(config.password);
@@ -202,7 +202,7 @@ class KuveytTurkProvider {
       };
     }
 
-    const cardHolderName = String(order.cardHolder || params?.cardHolder || order.customer?.name || 'BELGIN DEGERLI MUSTERI').slice(0, 50).toLocaleUpperCase('tr-TR');
+    const cardHolderName = String(order.cardHolder || params?.cardHolder || order.customer?.name || 'Saatchi DEGERLI MUSTERI').slice(0, 50).toLocaleUpperCase('tr-TR');
     let cardType = 'MasterCard';
     if (cardNumber.startsWith('4')) cardType = 'Visa';
     else if (cardNumber.startsWith('9792')) cardType = 'Troy';

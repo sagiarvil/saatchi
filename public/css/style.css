@@ -1,5 +1,5 @@
 /* ==========================================================
-   BELGIN KUYUMCULUK — HAUTE JOAILLERIE & HORLOGERIE (EST. 1999)
+   Saatchi Lüks Saatler — HAUTE JOAILLERIE & HORLOGERIE (EST. 1999)
    ULTRA-LUXURY BESPOKE DESIGN SYSTEM • BUCA / İZMİR
    ========================================================== */
 
@@ -2723,9 +2723,9 @@ p, span, li, td, th, label, input, button, select, textarea {
 }
 
 /* ==========================================================
-   4. BELGIN SIGNATURE MAISON HERO (LUXURY EDITORIAL)
+   4. Saatchi SIGNATURE MAISON HERO (LUXURY EDITORIAL)
 /* ==========================================================
-   4. BELGIN SIGNATURE MAISON HERO (LUXURY EDITORIAL & WOW FACTOR)
+   4. Saatchi SIGNATURE MAISON HERO (LUXURY EDITORIAL & WOW FACTOR)
    ========================================================== */
 .hero-signature {
   position: relative;
@@ -2789,7 +2789,7 @@ p, span, li, td, th, label, input, button, select, textarea {
     linear-gradient(270deg, rgba(4, 7, 6, 0.88) 0%, rgba(4, 7, 6, 0.72) 34%, rgba(4, 7, 6, 0.25) 58%, rgba(4, 7, 6, 0.05) 75%, transparent 100%),
     /* 2. Üst ve alt sinematik gölge geçişi */
     linear-gradient(180deg, rgba(3, 6, 5, 0.45) 0%, transparent 20%, transparent 80%, rgba(5, 8, 7, 0.92) 100%),
-    /* 3. Lüks Zümrüt & Sıcak Altın İpeksi Atmosfer */
+    /* 3. Lüks Zümrüt & Sıcak lüks saat İpeksi Atmosfer */
     linear-gradient(135deg, rgba(4, 28, 22, 0.15) 0%, rgba(194, 167, 104, 0.04) 40%, rgba(2, 6, 5, 0.35) 100%);
 }
 
@@ -4914,7 +4914,7 @@ p, span, li, td, th, label, input, button, select, textarea {
   gap: 6px;
 }
 
-/* Belgin Kuyumculuk - Altın & Mücevherat Özel Havale/EFT & Showroom Protokol Kartı (Quiet Luxury) */
+/* Saatchi Lüks Saatler - lüks saat & lüks saat Özel Havale/EFT & Showroom Protokol Kartı (Quiet Luxury) */
 .pdp-gold-wire-protocol {
   display: flex !important;
   flex-direction: column !important;
@@ -5619,7 +5619,7 @@ p, span, li, td, th, label, input, button, select, textarea {
   box-shadow: 0 8px 24px rgba(10, 61, 46, 0.32), 0 0 0 3px rgba(194, 167, 104, 0.25);
 }
 
-/* 2. İmparatorluk Altını (Takas & Değerleme) */
+/* 2. İmparatorluk lüks saatı (Takas & Değerleme) */
 .icon-box-gold {
   background: linear-gradient(135deg, #8A6D0B 0%, #D4AF37 50%, #F5D77F 100%);
   color: #FFFFFF;
@@ -7177,7 +7177,7 @@ mark.legal-highlight {
 }
 
 
-/* BELGIN BRAND LOGO INTEGRATION v1 */
+/* Saatchi BRAND LOGO INTEGRATION v1 */
 .brand-logo-link {
   display: inline-flex;
   align-items: center;
@@ -7957,7 +7957,7 @@ mark.legal-highlight {
 
 
 /* ==========================================================
-   ULTRA-PREMIUM LUXURY CHECKOUT CTA BUTTON (BELGIN MAISON)
+   ULTRA-PREMIUM LUXURY CHECKOUT CTA BUTTON (Saatchi MAISON)
    ========================================================== */
 .btn-checkout-luxe {
   display: inline-flex;
@@ -8089,7 +8089,7 @@ select {
 
 /* ==========================================================
    CANLI FİYATLAR & HAREM ALTIN / İZKO CANLI PİYASA STİLLERİ
-   Arka Plan: #fff200 (Özel Canlı Altın Sarısı)
+   Arka Plan: #fff200 (Özel Canlı lüks saat Sarısı)
    ========================================================== */
 
 .live-dot-pulse {
@@ -8133,7 +8133,7 @@ select {
 }
 
 /* ==========================================================
-   CANLI FİYATLAR — GÖRSELDEKİ BİREBİR DİJİTAL KUYUMCU TABELASI (#fff200)
+   CANLI FİYATLAR — GÖRSELDEKİ BİREBİR DİJİTAL SAAT TABELASI (#fff200)
    (BÜYÜK HARFLER, OKUNAKLI ULTRA BOLD RAKAMLAR, ORANTILI GENİŞLİK)
    ========================================================== */
 
@@ -8155,8 +8155,8 @@ body.page-is-canli-fiyatlar .footer-machine-summary,
 body.page-canli-fiyatlar .seo-business-facts,
 body.page-is-canli-fiyatlar .seo-business-facts,
 body.page-canli-fiyatlar-mode .seo-business-facts,
-body.page-canli-fiyatlar [data-belgin-defense-layer],
-body.page-is-canli-fiyatlar [data-belgin-defense-layer],
+body.page-canli-fiyatlar [data-Saatchi-defense-layer],
+body.page-is-canli-fiyatlar [data-Saatchi-defense-layer],
 body.page-canli-fiyatlar #legalEvidenceIntegrityBox,
 body.page-is-canli-fiyatlar #legalEvidenceIntegrityBox,
 #page-canli-fiyatlar #legalEvidenceIntegrityBox,
@@ -8280,7 +8280,7 @@ body.page-canli-fiyatlar-mode {
 }
 
 /* ==========================================================
-   BELGİN KUYUMCULUK & SAAT — Cenevre & Haute Horlogerie Borsa Terminali
+   BELGİN Saatçilik & SAAT — Cenevre & Haute Horlogerie Borsa Terminali
    Dünya Standartlarında Elit Canlı Fiyat Panosu (Rolex / Cartier Seviyesi)
    ========================================================== */
 
@@ -8492,7 +8492,7 @@ body.page-is-canli-fiyatlar {
   font-weight: 800 !important;
 }
 
-/* Has Altın Satırı: Lüks İsviçre Vurgusu */
+/* Has lüks saat Satırı: Lüks İsviçre Vurgusu */
 .board-exact-table tr:last-child {
   background: linear-gradient(90deg, rgba(197, 160, 89, 0.18) 0%, rgba(8, 76, 71, 0.3) 100%) !important;
   border-top: 1px solid rgba(197, 160, 89, 0.6) !important;
@@ -8895,15 +8895,15 @@ body.page-canli-fiyatlar-mode .gold-ticker-strip,
 }
 
 /* ==========================================================
-   KUYUMCULUK & ALTIN ALANLARINI VE GÖRSELLERİNİ GİZLEME
+   Saatçilik & ALTIN ALANLARINI VE GÖRSELLERİNİ GİZLEME
    ========================================================== */
 
-/* 1. Üst Canlı Altın Ticker Bandı */
+/* 1. Üst Canlı lüks saat Ticker Bandı */
 .gold-ticker-strip {
   display: none !important;
 }
 
-/* 5. Ana Sayfa & Vitrin Bölümleri (Mücevher Markaları & Yeni Eklenen Mücevherler) */
+/* 5. Ana Sayfa & Vitrin Bölümleri (saat Markaları & Yeni Eklenen saatler) */
 #secHomeJewelry,
 #jewelryBrandsGrid {
   display: none !important;
@@ -8914,16 +8914,16 @@ body.page-canli-fiyatlar-mode .gold-ticker-strip,
   display: block !important;
 }
 
-/* 6. Alt Bilgi (Footer) Kuyumculuk & Altın Rehber Bağlantıları */
+/* 6. Alt Bilgi (Footer) Saatçilik & lüks saat Rehber Bağlantıları */
 .footer-art-col a[data-page="mucevherat"],
 .footer-art-col a[href*="mucevherat"],
 .footer-art-col a[href*="altin-yatirimi"],
 .footer-art-col a[href*="pirlanta-ve-gemoloji"],
-.footer-art-col a[href*="izmir-kuyumculuk"] {
+.footer-art-col a[href*="izmir-Saatçilik"] {
   display: none !important;
 }
 
-/* 7. Canlı Arama Etiketleri (Gram Altın, Ziynet, Bilezik) */
+/* 7. Canlı Arama Etiketleri (Gram lüks saat, Ziynet, Bilezik) */
 .search-quick-tags button:nth-child(n+5) {
   display: none !important;
 }
@@ -9031,7 +9031,7 @@ body.page-canli-fiyatlar-mode .gold-ticker-strip,
 
 /* ==========================================================
    👑 BELGİN HAUTE HORLOGERIE & JOAILLERIE — ELİT MOBİL TASARIM SİSTEMİ
-   Dünya devi lüks saat & mücevher markaları (Rolex, Cartier, Patek Philippe)
+   Dünya devi lüks saat & saat markaları (Rolex, Cartier, Patek Philippe)
    seviyesinde kusursuz mobil tipografi, hiyerarşi ve mikro etkileşimler.
    ========================================================== */
 

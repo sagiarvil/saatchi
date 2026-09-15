@@ -105,97 +105,65 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
   }
 
   return (
-    <div className="bg-background min-h-screen border-t border-surface-border">
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="flex flex-col md:flex-row gap-16">
-          <div className="w-full md:w-1/2 relative flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl">
-            {watch.image ? (
-              <LuxuryImageZoom 
-                src={watch.image} 
-                alt={watch.modelName} 
-              />
-            ) : (
-              <div className="w-full h-full min-h-[450px] bg-[#FAFAFA] flex flex-col items-center justify-center p-8 border border-gray-100 shadow-inner">
-                <ShieldCheck className="w-16 h-16 text-[#C2A768]/30 mb-6" strokeWidth={1} />
-                <span className="text-primary text-sm tracking-[0.3em] uppercase font-bold text-center">{watch.brand || 'LÜKS SAAT'}</span>
-                <span className="text-foreground/50 font-serif text-lg mt-3 text-center">Özel Sipariş - Görsel Hazırlanıyor</span>
-              </div>
-            )}
-          </div>
-          <div className="w-full md:w-1/2 flex flex-col justify-center">
-            {/* ULTRA LUXURY MAISON HEADER */}
-            <div className="mb-6 pb-6 border-b border-surface-border">
-              <span className="text-[10px] sm:text-xs tracking-[0.2em] font-extrabold text-[#C2A768] uppercase block mb-3">
-                👑 SAATCHI & SEMİH SONBAHAR HAUTE HORLOGERIE | ELITE COLLECTION
-              </span>
-              <h2 className="text-[#C2A768] tracking-[0.2em] uppercase text-xs sm:text-sm mb-3 font-bold flex items-center gap-2">
-                {watch.brand} <span className="w-1.5 h-1.5 bg-[#C2A768] rounded-full inline-block"></span> <span className="text-foreground/50 font-normal">Authentic</span>
-              </h2>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-foreground mb-4 leading-tight tracking-tight">
-                {watch.modelName}
-              </h1>
-              <p className="text-xs text-foreground/50 font-medium tracking-wide flex items-center gap-2">
-                <Lock className="w-3.5 h-3.5 text-[#C2A768]" /> 256-Bit EV SSL & 3D Secure Doğrudan Tahsilat Protokolü
-              </p>
-            </div>
+    <div className="bg-[#070A09] min-h-screen border-t border-[#1a1a1a] py-12">
+      <main className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <article className="seo-prerender-pdp" style={{ background: '#0d1613', border: '1px solid rgba(194,167,104,0.3)', borderRadius: '18px', color: '#fff', padding: '24px' }}>
+          
+          <nav className="pdp-crumbs" style={{ fontSize: '13px', color: '#a3b8b0', marginBottom: '20px' }}>
+            <Link href="/" style={{ color: '#C2A768', textDecoration: 'none' }}>Ana Sayfa</Link> / <Link href="/elit-saat" style={{ color: '#C2A768', textDecoration: 'none' }}>Elit Kategori — Lüks Saat Evleri</Link> / <span style={{ color: '#fff' }}>{watch.modelName}</span>
+          </nav>
 
-            <p className="text-foreground/80 font-light leading-relaxed mb-8 text-sm sm:text-base text-justify">
-              {watch.description || `Saat işçiliğinin zirvesi. ${watch.brand} geleneğini ve modern lüksü tek bir kasada birleştiren bu master-piece, sadece zamanı değil; taşıyanın gücünü ve prestijini de simgeliyor.`}
+          {/* HERO ANSWER ENGINE (AEO / SSOT KÜNYE) */}
+          <div className="hero-answer-engine" style={{ margin: '0 0 24px', background: 'rgba(194,167,104,0.05)', border: '1px solid rgba(194,167,104,0.2)', padding: '16px', borderRadius: '10px' }}>
+            <div className="hero-answer-engine-badge flex items-center" style={{ fontSize: '11px', fontWeight: 'bold', color: '#C2A768', letterSpacing: '1px', marginBottom: '8px' }}>
+              <span className="dot" style={{ display: 'inline-block', width: '6px', height: '6px', background: '#34D399', borderRadius: '50%', marginRight: '6px' }}></span>
+              ONAYLI ÜRÜN KÜNYESİ & EKSPERTİZ BİLGİSİ
+            </div>
+            <p className="hero-answer-engine-text" style={{ fontSize: '13px', lineHeight: '1.6', color: '#d5e2dc', marginBottom: '12px' }}>
+              Bu {watch.modelName} (Ref: {watch.ref || watch.id}) modeli, Saatchi & Semih Sonbahar güvencesiyle sunulmaktadır. Sıfır distribütör garantili ve tescilli kutu-belge tam set olarak sağlanır. 12.000 TL üzeri alımlarda kimlik teyitli VIP teslimat ve Akbank 3D Pay 256-bit SSL ödeme altyapısı geçerlidir.
             </p>
+            <div className="hero-answer-engine-meta" style={{ display: 'flex', gap: '16px', fontSize: '12px', flexWrap: 'wrap' }}>
+              <span><strong style={{ color: '#C2A768' }}>Fiziki Konum:</strong> Saatchi Showroom</span>
+              <span><strong style={{ color: '#C2A768' }}>Fiyat Durumu:</strong> {watch.price} (Canlı Kur)</span>
+              <span><strong style={{ color: '#C2A768' }}>Kondisyon:</strong> {watch.condition || 'Sıfır Distribütör Garantili'}</span>
+            </div>
+          </div>
 
-            {/* Specifications Section - Dark/Gold Theme */}
-            <div className="mb-8 bg-[#0a0a0a] border border-[#222] rounded-xl p-6 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#C2A768] to-[#9E8548]"></div>
-              <div className="flex justify-between items-center mb-6 pb-4 border-b border-[#333]">
-                <h3 className="text-sm font-extrabold tracking-widest uppercase text-[#C2A768] flex items-center gap-2">
-                  <Gem className="w-4 h-4 text-[#C2A768]" /> Üst Düzey Donanım
-                </h3>
-              </div>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
-                {(watch.features && watch.features.length > 0) ? (
-                  watch.features.map((feature: string, idx: number) => (
-                    <li key={idx} className="flex items-start text-[13px] text-[#e0e0e0] font-medium">
-                      <CheckCircle className="w-3.5 h-3.5 text-[#C2A768] mr-2.5 mt-0.5 flex-shrink-0" />
-                      <span className="leading-snug">{feature}</span>
-                    </li>
-                  ))
-                ) : (
-                  <>
-                    <li className="flex items-start text-[13px] text-[#e0e0e0] font-medium"><PackageOpen className="w-3.5 h-3.5 text-[#C2A768] mr-2.5 mt-0.5 flex-shrink-0" /> <span className="leading-snug">VIP Ahşap Kutu & Uluslararası Sertifika</span></li>
-                    <li className="flex items-start text-[13px] text-[#e0e0e0] font-medium"><Gem className="w-3.5 h-3.5 text-[#C2A768] mr-2.5 mt-0.5 flex-shrink-0" /> <span className="leading-snug">Çizilmeye Dirençli Safir Cam</span></li>
-                    <li className="flex items-start text-[13px] text-[#e0e0e0] font-medium"><CheckCircle className="w-3.5 h-3.5 text-[#C2A768] mr-2.5 mt-0.5 flex-shrink-0" /> <span className="leading-snug">18K Som Altın / Titanyum Detaylar</span></li>
-                    <li className="flex items-start text-[13px] text-[#e0e0e0] font-medium"><CheckCircle className="w-3.5 h-3.5 text-[#C2A768] mr-2.5 mt-0.5 flex-shrink-0" /> <span className="leading-snug">El Yapımı İsviçre Mekanizması</span></li>
-                  </>
-                )}
-              </ul>
+          <div className="pdp-art-main grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* GALLERY */}
+            <div className="pdp-art-gallery" style={{ background: '#070d0b', padding: '20px', borderRadius: '14px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '400px' }}>
+              {watch.image ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img src={watch.image} alt={watch.modelName} style={{ maxWidth: '100%', maxHeight: '500px', objectFit: 'contain' }} />
+              ) : null}
             </div>
 
-            {/* Price & Action Area */}
-            <div className="bg-white border border-surface-border p-6 rounded-xl shadow-lg mb-8 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 bg-black text-[#C2A768] text-[10px] font-extrabold px-3 py-1 rounded-bl-lg flex items-center gap-1 uppercase tracking-wider">
-              </div>
+            {/* INFO */}
+            <div className="pdp-art-info" style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              <span className="pdp-art-brand" style={{ fontSize: '14px', color: '#C2A768', letterSpacing: '2px', textTransform: 'uppercase', fontWeight: 700 }}>{watch.brand}</span>
+              <h1 style={{ fontSize: 'clamp(26px,3vw,38px)', lineHeight: '1.15', margin: 0, color: '#fff' }}>{watch.modelName}</h1>
+              <p className="pdp-art-ref" style={{ fontSize: '13px', color: '#8fa099', margin: 0 }}>Ref: {watch.ref || watch.id} • Durum: {watch.condition || 'Sıfır Distribütör Garantili'}</p>
+              <div className="pdp-art-price" style={{ fontSize: '32px', fontWeight: 800, color: '#34D399', margin: '8px 0' }}>{watch.price}</div>
               
-              <div className="flex flex-col mb-6 pt-2">
-                <span className="text-foreground/50 text-[11px] tracking-widest uppercase font-bold mb-1">VIP Satış Fiyatı</span>
-                <span className="text-4xl md:text-5xl font-serif text-foreground font-medium">{watch.price}</span>
+              <div className="pdp-special-order-info" style={{ background: 'rgba(194,167,104,0.1)', border: '1px solid rgba(194,167,104,0.3)', borderRadius: '8px', padding: '12px 16px', margin: '4px 0 10px', fontSize: '13px', lineHeight: '1.5', color: '#f0e6d2' }}>
+                <strong style={{ color: '#C2A768', display: 'block', marginBottom: '2px', fontSize: '13.5px' }}>📦 Özel Sipariş ile Temin Edilir</strong>
+                <span style={{ color: '#d5e2dc' }}>Ürün, talebiniz üzerine özel olarak temin edilir. Güncel temin süresi için bizimle iletişime geçebilirsiniz.</span>
               </div>
+              <p className="pdp-art-description" style={{ fontSize: '14px', lineHeight: '1.7', color: '#d5e2dc' }}>
+                {watch.description || `${watch.modelName}, saat işçiliğinin zirve standardıdır. İsviçre manüfaktür mekanizma ve çizilmeye dayanıklı safir cam ile donatılmıştır.`}
+              </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/vip-checkout" className="flex-1 relative overflow-hidden bg-gradient-to-br from-[#111] to-[#333] text-[#C2A768] font-extrabold tracking-widest uppercase text-xs sm:text-sm py-4 px-6 rounded-lg text-center shadow-[0_4px_14px_0_rgba(0,0,0,0.39)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.23)] hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-[#C2A768]/30">
-                  Hemen Satın Al
-                  <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              <div style={{ marginTop: '16px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+                <Link href="/vip-checkout" style={{ background: 'linear-gradient(135deg,#C2A768,#9E8548)', color: '#070A09', fontWeight: 700, padding: '14px 28px', border: 'none', borderRadius: '10px', cursor: 'pointer', textAlign: 'center', flex: 1 }}>
+                  Güvenli Satın Al
                 </Link>
-                <a href="https://wa.me/905419305372" target="_blank" rel="noopener noreferrer" className="flex-1 bg-gradient-to-br from-[#C2A768] to-[#9E8548] text-white px-6 py-4 rounded-lg font-bold tracking-widest uppercase text-xs sm:text-sm text-center transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-xl hover:-translate-y-0.5">
-                  <Phone className="w-4 h-4" /> WhatsApp
+                <a href="https://wa.me/905419305372" target="_blank" rel="noopener noreferrer" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', padding: '14px 24px', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '10px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flex: 1 }}>
+                  WhatsApp İletişim
                 </a>
               </div>
             </div>
-
-            {/* Minor Metadata */}
-            <div className="flex items-center justify-between text-[11px] text-foreground/50 uppercase tracking-widest border-t border-surface-border pt-4">
-            </div>
           </div>
-        </div>
+        </article>
       </main>
     </div>
   );

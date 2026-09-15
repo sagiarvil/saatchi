@@ -1,5 +1,5 @@
 /**
- * BELGIN KUYUMCULUK — PAYMENT PROVIDER ROUTER
+ * Saatchi Lüks Saatler — PAYMENT PROVIDER ROUTER
  * Çoklu POS Yönlendiricisi & Güvenlik Kapısı
  */
 

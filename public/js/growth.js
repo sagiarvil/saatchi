@@ -1,8 +1,8 @@
 (() => {
   'use strict';
   const AI_HOSTS = ['chatgpt.com', 'perplexity.ai', 'claude.ai', 'gemini.google.com', 'copilot.microsoft.com'];
-  const KEY = 'belgin:growth:session:v1';
-  const FIRST = 'belgin:growth:first-touch:v1';
+  const KEY = 'Saatchi:growth:session:v1';
+  const FIRST = 'Saatchi:growth:first-touch:v1';
 
   function id(prefix) {
     const token = globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -31,7 +31,7 @@
       event,
       event_id: id('ev'),
       session_id: sessionValue(KEY, () => id('ss')),
-      site: 'belginkuyumculuk.com',
+      site: 'SaatchiSaatçilik.com',
       page: location.pathname,
       timestamp: new Date().toISOString(),
       ...source(),
@@ -47,7 +47,7 @@
     // Kept as a safe no-op for backward compatibility.
   }
 
-  window.BelginGrowth = { track, ensureCommerceNavigationVisible };
+  window.SaatchiGrowth = { track, ensureCommerceNavigationVisible };
   track('page_view');
 
   document.addEventListener('click', (event) => {

@@ -1,4 +1,6 @@
-import React from 'react';
+const fs = require('fs');
+
+const content = `import React from 'react';
 import Image from "next/image";
 import Link from 'next/link';
 
@@ -60,3 +62,7 @@ export function Footer() {
     </footer>
   );
 }
+`;
+
+fs.writeFileSync('src/components/layout/Footer.tsx', content, 'utf8');
+console.log('Footer updated.');

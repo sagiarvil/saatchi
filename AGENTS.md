@@ -29,3 +29,7 @@ Hiçbir kod bloğu şu 4 kapı doğrulanmadan onaylanamaz:
 2. **BOM & Encoding:** Saf UTF-8.
 3. **Güvenlik:** XSS, SQLi ve fiyat manipülasyonlarına (Client-side fiyat değiştirme) karşı Backend'de (Next.js Server Actions/API) kesin fiyat doğrulaması.
 4. **Kanıt:** Eklenen her özellik test edilmeli ve loglanmalıdır.
+
+## 6. KESİN YASAK (CHRONO24 KELİMESİ)
+- Fiyatlama Chrono24 mantığıyla yapılsa bile, **"Chrono24" kelimesi projenin HİÇBİR YERİNDE (UI, metinler, JSON) geçmeyecektir.**
+- Bunun yerine "Global İsviçre Saat Borsası", "Uluslararası Lüks Saat Borsası", "Global Watch Index" gibi terimler kullanılacaktır. Bu kalıcı ve evrensel bir kuraldır.

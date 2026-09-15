@@ -1,5 +1,5 @@
 /**
- * BELGIN KUYUMCULUK — FINANCIAL PAYMENT CONSTANTS & ORDER STATE MACHINE
+ * Saatchi Lüks Saatler — FINANCIAL PAYMENT CONSTANTS & ORDER STATE MACHINE
  * Kuveyt Türk Sanal POS Odaklı Çoklu POS, Durum Modeli ve Finansal Standartlar
  */
 

@@ -1,5 +1,5 @@
 /**
- * BELGIN KUYUMCULUK — PAYTR PROVIDER ADAPTER
+ * Saatchi Lüks Saatler — PAYTR PROVIDER ADAPTER
  * Hosted iFrame / 3D Secure Entegrasyonu
  */
 
@@ -65,13 +65,13 @@ class PayTRProvider {
       user_basket: basketBase64,
       debug_on: testMode ? 1 : 0,
       test_mode: testMode ? 1 : 0,
-      no_installment: 1, // Kuyumculukta %100 tek çekim
+      no_installment: 1, // Saatçilikta %100 tek çekim
       max_installment: 1,
       user_name: String(order.customer.name || 'Müşteri').slice(0, 150),
       user_address: String(order.customer.address || '').slice(0, 1000),
       user_phone: String(order.customer.phone || '').slice(0, 50),
-      merchant_ok_url: 'https://www.belginkuyumculuk.com/odeme-basarili',
-      merchant_fail_url: 'https://www.belginkuyumculuk.com/odeme-basarisiz',
+      merchant_ok_url: 'https://www.SaatchiSaatçilik.com/odeme-basarili',
+      merchant_fail_url: 'https://www.SaatchiSaatçilik.com/odeme-basarisiz',
       timeout_limit: 30,
       currency: 'TL',
       lang: 'tr',

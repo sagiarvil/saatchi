@@ -12,10 +12,10 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Belgin Kuyumculuk & Saat</title>
+  <title>Saatchi Lüks Saatler & Saat</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#0A1412">
-  <meta name="apple-mobile-web-app-title" content="Belgin Ödeme">
+  <meta name="apple-mobile-web-app-title" content="Saatchi Ödeme">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -219,7 +219,7 @@
 <body>
 
   <div class="header" style="margin-bottom: 20px;">
-    <img src="images/belgin-crest-b.png" alt="Belgin Emblemi" style="width:84px; height:84px; object-fit:contain; filter: drop-shadow(0 4px 16px rgba(212,175,55,0.4));">
+    <img src="images/Saatchi-crest-b.png" alt="Saatchi Emblemi" style="width:84px; height:84px; object-fit:contain; filter: drop-shadow(0 4px 16px rgba(212,175,55,0.4));">
   </div>
 
   <main class="container">
@@ -415,8 +415,8 @@
         termsAcceptedAt: new Date().toISOString(),
         paymentMethod: paymentMethodName
       };
-      sessionStorage.setItem('belgin_checkout_draft', JSON.stringify(draft));
-      localStorage.setItem('belgin_checkout_draft', JSON.stringify(draft));
+      sessionStorage.setItem('Saatchi_checkout_draft', JSON.stringify(draft));
+      localStorage.setItem('Saatchi_checkout_draft', JSON.stringify(draft));
     }
 
     document.getElementById('custName')?.addEventListener('input', syncDraft);
@@ -552,7 +552,7 @@
             qty: 1,
             isVipCustom: true,
             vipToken: token,
-            brand: 'Belgin Kuyumculuk',
+            brand: 'Saatchi Lüks Saatler',
             category: 'luxury'
           }
         ];
@@ -567,7 +567,7 @@
           vipTitle: currentPayload.title || null,
           user_name: name,
           user_phone: phone,
-          email: cleanPhone ? `musteri_${cleanPhone}@belginkuyumculuk.com` : `vip_${Date.now()}@belginkuyumculuk.com`,
+          email: cleanPhone ? `musteri_${cleanPhone}@SaatchiSaatçilik.com` : `vip_${Date.now()}@SaatchiSaatçilik.com`,
           customerIdentity: identity,
           customerAddress: address,
           user_address: address,

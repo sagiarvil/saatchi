@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Image from "next/image";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, Search, Watch, X, ArrowRight, ShieldCheck } from 'lucide-react';
@@ -89,24 +90,15 @@ export function Navbar() {
           {/* Center: Logo */}
           <div className="flex-shrink-0 flex justify-center items-center">
             <Link href="/" className="flex items-center justify-center">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img 
-                src="/logo.png" 
-                alt="Saatchi & Saatchi" 
-                className={`w-auto object-contain transition-all duration-700 invert brightness-0 ${isScrolled ? 'h-7 md:h-8' : 'h-10 md:h-12'}`} 
-              />
+              {}
+              <Image src="/logo.png" alt="Saatchi & Saatchi" width={180} height={48} className={`w-auto object-contain transition-all duration-700 invert brightness-0 ${isScrolled ? 'h-7 md:h-8' : 'h-10 md:h-12'}`} priority />
             </Link>
           </div>
           
           {/* Right: Icons */}
           <div className="flex-1 flex justify-end items-center space-x-6 md:space-x-8 text-white">
-            <div className="hidden md:flex space-x-12 items-center text-xs tracking-widest uppercase">
-              <Link href="/saatler" className="hover:opacity-70 transition-opacity">Koleksiyon</Link>
-              <Link href="/markalar" className="hover:opacity-70 transition-opacity">Markalar</Link>
-              <Link href="/kurumsal" className="hover:opacity-70 transition-opacity">Kurumsal</Link>
-              <Link href="/iletisim" className="hover:opacity-70 transition-opacity">İletişim</Link>
-            </div>
-            <Link href="/elit-saat/koleksiyon" className="hover:opacity-70 transition-opacity">
+
+            <Link href="/elit-saat" className="hover:opacity-70 transition-opacity">
               <Watch className="w-5 h-5 md:w-6 md:h-6" strokeWidth={1} />
             </Link>
             <button onClick={() => setSearchOpen(true)} className="hover:opacity-70 transition-opacity">
@@ -141,7 +133,7 @@ export function Navbar() {
             { name: "Tüm Markalar", href: "/markalar", type: "main" },
             { name: "Erkek Saatleri", href: "/saatler/erkek", type: "main" },
             { name: "Kadın Saatleri", href: "/saatler/kadin", type: "main" },
-            { name: "Elit Koleksiyon", href: "/elit-saat/koleksiyon", type: "highlight" },
+            { name: "Elit Kategori", href: "/elit-saat", type: "highlight" },
             { name: "Kurumsal", href: "/kurumsal", type: "sub" },
             { name: "İletişim", href: "/iletisim", type: "sub" }
           ].map((item, idx) => {
@@ -174,8 +166,8 @@ export function Navbar() {
 
         {/* Drawer Footer */}
         <div className="px-8 py-10 bg-gray-50 mt-auto">
-           {/* eslint-disable-next-line @next/next/no-img-element */}
-           <img src="/logo.png" alt="Saatchi & Saatchi" className="h-6 w-auto object-contain opacity-50 mb-4" />
+           {}
+           <Image src="/logo.png" alt="Saatchi & Saatchi" width={120} height={24} className="h-6 w-auto object-contain opacity-50 mb-4" />
            <p className="text-xs text-gray-400 font-serif">© 2026 SAATCHI & SAATCHI. Tüm Hakları Saklıdır.</p>
         </div>
       </div>
@@ -184,7 +176,7 @@ export function Navbar() {
       
       {/* 
         PREMIUM SEARCH MODAL
-        Belgin.com standard reference 
+        Saatchi standard reference 
       */}
       <div className={`fixed inset-0 z-[70] flex items-start justify-center pt-4 md:pt-12 px-4 bg-black/60 backdrop-blur-sm transition-all duration-500 ${searchOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
         {/* Click outside to close */}
@@ -246,7 +238,7 @@ export function Navbar() {
                   >
                     <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 bg-[radial-gradient(circle_at_50%_50%,_#ffffff_30%,_#f8f6f0_100%)] border border-gray-100 rounded-xl p-2 mr-4 md:mr-5 flex items-center justify-center overflow-hidden">
                       {watch.image ? (
-                        <img src={watch.image} alt={watch.modelName} className="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform duration-500" />
+                        <Image src={watch.image} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-2 group-hover:scale-110 transition-transform duration-500" />
                       ) : (
                         <Search className="w-6 h-6 text-gray-300" />
                       )}

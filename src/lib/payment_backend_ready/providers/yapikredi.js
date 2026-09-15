@@ -1,5 +1,5 @@
 /**
- * BELGIN KUYUMCULUK — YAPI KREDİ POSNET PROVIDER ADAPTER (FAIL-CLOSED SCAFFOLD)
+ * Saatchi Lüks Saatler — YAPI KREDİ POSNET PROVIDER ADAPTER (FAIL-CLOSED SCAFFOLD)
  * Teknik doküman ve resmi API parametreleri geldiğinde entegre edilecektir.
  */
 

@@ -7,8 +7,9 @@ export function generateStaticParams() {
   }));
 }
 
-export default function LegalPage({ params }: { params: { slug: string } }) {
-  const page = legalData.find((p) => p.slug === params.slug);
+export default async function LegalPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const page = legalData.find((p) => p.slug === slug);
 
   if (!page) {
     notFound();

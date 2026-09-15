@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * BELGIN KUYUMCULUK — ZIRAAT KATILIM PAYFOR 3DHOST ADAPTER
+ * Saatchi Lüks Saatler — ZIRAAT KATILIM PAYFOR 3DHOST ADAPTER
  *
  * Isolation contract:
  * - Kuveyt Türk adapter/config/callback flow is not imported or modified here.
@@ -194,7 +194,7 @@ function resolveCallbackUrl() {
 function getConfig({ requireMerchantPass = false } = {}) {
   const mbrId = String(process.env.ZIRAAT_MBR_ID || '12').trim();
   const merchantId = String(process.env.ZIRAAT_MERCHANT_ID || '9814992').trim();
-  const userCode = String(process.env.ZIRAAT_API_USER || 'apibelginkymclk').trim();
+  const userCode = String(process.env.ZIRAAT_API_USER || 'apiSaatchikymclk').trim();
   const userPass = String(process.env.ZIRAAT_API_PASSWORD || '');
   const merchantPass = String(process.env.ZIRAAT_MERCHANT_PASS || '');
   const gatewayUrl = String(process.env.ZIRAAT_3DHOST_URL || DEFAULT_GATEWAY_URL).trim();

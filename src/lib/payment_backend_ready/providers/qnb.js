@@ -1,5 +1,5 @@
 /**
- * BELGIN KUYUMCULUK — QNB FINANSBANK PROVIDER ADAPTER (FAIL-CLOSED SCAFFOLD)
+ * Saatchi Lüks Saatler — QNB FINANSBANK PROVIDER ADAPTER (FAIL-CLOSED SCAFFOLD)
  * Teknik doküman ve resmi API parametreleri geldiğinde entegre edilecektir.
  */
 
