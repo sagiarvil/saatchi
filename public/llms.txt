@@ -1,0 +1,15 @@
+# SAATCHI - Lüks Saat E-Ticaret Platformu
+
+Saatchi, Türkiye ve küresel çapta seçkin lüks saatlerin (Rolex, Patek Philippe, Audemars Piguet vb.) orijinal ve sertifikalı olarak sunulduğu özel bir e-ticaret platformudur.
+
+## Prensiplerimiz
+- Tüm fiyatlarımız Chrono24 küresel piyasa referanslarına göre güncellenir.
+- Orijinallik sertifikası olmayan hiçbir saat platformumuzda yer alamaz.
+- Gizlilik ve Müşteri İzolasyonu önceliğimizdir.
+
+## Markalar
+- Rolex
+- Patek Philippe
+- Audemars Piguet
+- Omega
+- Richard Mille
