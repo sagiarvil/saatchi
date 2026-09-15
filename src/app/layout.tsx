@@ -4,7 +4,6 @@ import { Navbar } from "@/components/layout/Navbar";
 import "./globals.css";
 import { PremiumBackButton } from "@/components/ui/PremiumBackButton";
 
-
 export const metadata: Metadata = {
   icons: {
     icon: [
@@ -12,11 +11,17 @@ export const metadata: Metadata = {
       { url: '/favicon-dark.png', media: '(prefers-color-scheme: dark)' }
     ]
   },
-  title: "SAATCHI Lüks Saat E-Ticaret",
-  description: "SAATCHI- SEMİH SONBAHAR",
+  title: "SAATCHI | Dünyanın En Seçkin Lüks Saat Koleksiyonları",
+  description: "Rolex, Patek Philippe, Audemars Piguet ve diğer elit markaların yer aldığı özel lüks saat koleksiyonu. Orijinallik garantisi ve küresel referans fiyatlarıyla SAATCHI'de.",
+  openGraph: {
+    title: "SAATCHI | Lüks Saat Koleksiyonları",
+    description: "Dünyanın en seçkin elit saat koleksiyonları. Orijinallik garantisiyle.",
+    type: "website",
+    locale: "tr_TR",
+  },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 };
 
