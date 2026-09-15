@@ -1,15 +1,20 @@
-# SAATCHI - Lüks Saat E-Ticaret Platformu
+# Saatchi Lüks Saat Koleksiyonu
+Dünyanın en prestijli, sınırlı üretim ve üst düzey komplikasyonlu saatleri.
 
-Saatchi, Türkiye ve küresel çapta seçkin lüks saatlerin (Rolex, Patek Philippe, Audemars Piguet vb.) orijinal ve sertifikalı olarak sunulduğu özel bir e-ticaret platformudur.
+## Hakkımızda
+Saatchi, %100 orijinal ve sertifikalı ikinci el lüks saatleri güvenle satın alabileceğiniz Türkiye'nin en seçkin platformudur.
 
-## Prensiplerimiz
-- Tüm fiyatlarımız Chrono24 küresel piyasa referanslarına göre güncellenir.
-- Orijinallik sertifikası olmayan hiçbir saat platformumuzda yer alamaz.
-- Gizlilik ve Müşteri İzolasyonu önceliğimizdir.
-
-## Markalar
+## Özel Koleksiyonlar
 - Rolex
 - Patek Philippe
 - Audemars Piguet
-- Omega
 - Richard Mille
+- Hublot
+- Omega
+
+## Fiyatlandırma ve Gümrük
+Saatchi'de yer alan tüm saat fiyatları küresel Chrono24 endeksi üzerinden Türkiye gümrük ve vergi oranları hesaplanarak standart %150 marj (x2.5) ile TL cinsinden şeffaf olarak listelenir.
+
+## İletişim & Güvenlik
+VIP Ödeme linki ile güvenli ödeme.
+Siparişler zırhlı kurye veya özel teslimat ile sigortalı gönderilir.
