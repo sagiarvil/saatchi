@@ -41,17 +41,26 @@ function VIPCheckoutContent() {
 
   const processPayment = async () => {
     setErrorMsg('');
-    if (!formData.custName || !formData.custPhone || !formData.custIdentity || !formData.custAddress || !formData.cardNumber) {
-      setErrorMsg('Lütfen tüm zorunlu alanları doldurunuz.');
+    if (!formData.custName || !formData.cardNumber) {
+      setErrorMsg('Lütfen zorunlu alanları doldurun.');
       return;
     }
-    
     setLoading(true);
-    // Burada hazırlanan altyapı çağrılacak (şuan backend mock/hazırlık aşamasında)
     try {
-      // Örnek: await fetch('/api/payment/create', ...)
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      alert('Altyapı hazır. Entegrasyon aktif edildiğinde işlem 3D Secure sayfasına yönlendirilecektir.');
+      const response = await fetch('/api/payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, amount: formattedAmount })
+      });
+      
+      const data = await response.json();
+      
+      if (data.status === 'success') {
+        alert(data.message);
+        // İleride 3D Secure'a yönlendir: window.location.href = data.paymentUrl;
+      } else {
+        throw new Error(data.message);
+      }
     } catch (err: any) {
       setErrorMsg(err.message || 'Bir hata oluştu.');
     } finally {
