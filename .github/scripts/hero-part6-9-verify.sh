@@ -65,13 +65,9 @@ require "preload={current === 0 ? 'auto' : 'metadata'}" "hero1 priority preload 
 require "src={activeSlide.video}" "video source is not limited to active slide"
 video_tag_count="$(grep -c '<video' "$hero")"
 [ "$video_tag_count" -eq 1 ] || fail "expected exactly one active video element, found $video_tag_count"
+forbid 'rel="preload"' "explicit speculative media preload link found; only active video should drive media loading"
 
-# Reject speculative hidden/media elements or explicit hero2/hero3 preload links.
-if grep -Eiq '<link[^>]+rel=["'"']preload["'"'][^>]+hero[23]\.mp4|hero[23]\.mp4[^>]+rel=["'"']preload["'"']' "$hero"; then
-  fail "speculative hero2/hero3 preload link found"
-fi
-
-echo "network_policy=PASS active_video_elements=$video_tag_count first_preload=auto later_preload=metadata"
+echo "network_policy=PASS active_video_elements=$video_tag_count first_preload=auto later_preload=metadata speculative_preload_links=0"
 
 echo "== PART 9: media failure handling =="
 require "video.addEventListener('loadedmetadata', retry);" "loadedmetadata handler missing"
@@ -85,7 +81,6 @@ require 'if (video) failedVideoRef.current = video;' "hard-error terminal markin
 require 'failedVideoRef.current = null;' "next-slide error guard reset missing"
 require 'key={activeSlide.id}' "video remount must be tied only to slide identity"
 
-# Error handler must not advance or remount the current slide by itself.
 error_block="$(awk '/const handleVideoError = \(\) => \{/{flag=1} flag{print} flag && /^  };/ {exit}' "$hero")"
 printf '%s\n' "$error_block" | grep -Fq 'setMediaState('
 if printf '%s\n' "$error_block" | grep -Eq 'setCurrent|activeSlide|SLIDES'; then
