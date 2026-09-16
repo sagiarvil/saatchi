@@ -1,11 +1,6 @@
 name: Hero Video Mobile Normalization
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/hero-video-normalize.yml'
-      - '.github/scripts/hero-video-normalize.sh'
   workflow_dispatch:
 
 permissions:
