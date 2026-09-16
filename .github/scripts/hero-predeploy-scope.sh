@@ -21,6 +21,7 @@ fi
 allowed() {
   case "$1" in
     src/components/ui/HeroSlider.tsx) return 0 ;;
+    src/app/globals.css) return 0 ;;
     public/videos/*) return 0 ;;
     .github/scripts/hero-*) return 0 ;;
     .github/workflows/hero-*) return 0 ;;
