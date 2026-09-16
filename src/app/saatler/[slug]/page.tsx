@@ -55,21 +55,6 @@ export default async function SaatlerPage({ params }: { params: { slug: string }
             <Link href="/" style={{ color: '#065F46', textDecoration: 'none' }}>Ana Sayfa</Link> / <Link href="/saatler" style={{ color: '#065F46', textDecoration: 'none' }}>Lüks Saat Koleksiyonu</Link> / <span style={{ color: '#111827', fontWeight: 600 }}>{watch.modelName}</span>
           </nav>
 
-          {/* PDP HERO ANSWER ENGINE */}
-          <div className="hero-answer-engine" style={{ margin: '0 0 24px', background: '#F0FDF4', border: '1px solid #BBF7D0', padding: '16px', borderRadius: '12px' }}>
-            <div style={{ color: '#065F46', fontSize: '12px', fontWeight: 'bold', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '6px' }}>
-               <span style={{ width: '8px', height: '8px', background: '#34D399', borderRadius: '50%', display: 'inline-block' }}></span> ONAYLI ÜRÜN KÜNYESİ & EKSPERTİZ BİLGİSİ
-            </div>
-            <p style={{ fontSize: '13px', color: '#374151', lineHeight: 1.6, marginBottom: '12px' }}>
-              Bu {watch.brand} {watch.modelName} modeli, Saatchi & Co. stok ve temin ağı güvencesiyle sunulmaktadır. Sıfır distribütör garantili ve tescilli kutu-belge tam set olarak sağlanır. VIP teslimat ve 256-bit SSL ödeme altyapısı geçerlidir.
-            </p>
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', fontSize: '12px', color: '#111827' }}>
-              <span><strong style={{ color: '#065F46' }}>Fiziki Konum:</strong> Saatchi Showroom</span>
-              <span><strong style={{ color: '#065F46' }}>Fiyat Durumu:</strong> {watch.price} (Canlı Kur)</span>
-              <span><strong style={{ color: '#065F46' }}>Kondisyon:</strong> Sıfır Distribütör Garantili</span>
-            </div>
-          </div>
-
           <div style={{ display: 'flex', flexDirection: 'row', gap: '30px', flexWrap: 'wrap' }}>
             <div style={{ flex: '1 1 400px', background: '#F9FAFB', padding: '20px', borderRadius: '14px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <ZoomImage src={getProxiedImageUrl(watch.image) || '/images/placeholder.jpg'} alt={watch.modelName} />

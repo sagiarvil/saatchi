@@ -4,14 +4,10 @@ import Link from 'next/link';
 
 const BRANDS = [
   { name: "ROLEX", font: "font-serif font-bold tracking-[0.1em]", color: "text-[#006039]" },
-  { name: "PATEK PHILIPPE", font: "font-serif font-light tracking-[0.15em]", color: "text-[#4A3C31]" },
-  { name: "AUDEMARS PIGUET", font: "font-sans font-medium tracking-widest uppercase", color: "text-[#111827]" },
-  { name: "VACHERON CONSTANTIN", font: "font-serif font-light tracking-[0.2em] italic", color: "text-[#1F2937]" },
-  { name: "OMEGA", font: "font-sans font-bold tracking-widest", color: "text-[#C8102E]" },
   { name: "CARTIER", font: "font-serif font-semibold tracking-[0.1em] italic", color: "text-[#8E2323]" },
   { name: "TAG HEUER", font: "font-sans font-black tracking-widest uppercase", color: "text-[#111827]" },
-  { name: "IWC SCHAFFHAUSEN", font: "font-serif font-medium tracking-[0.1em]", color: "text-[#374151]" },
-  { name: "HUBLOT", font: "font-sans font-black tracking-[0.15em] uppercase", color: "text-[#111827]" }
+  { name: "RADO", font: "font-sans font-semibold tracking-[0.15em]", color: "text-[#111827]" },
+  { name: "TISSOT", font: "font-sans font-bold tracking-[0.15em]", color: "text-[#C8102E]" }
 ];
 
 export function BrandMarquee() {

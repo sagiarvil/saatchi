@@ -23,10 +23,10 @@ export function Navbar() {
   useEffect(() => {
     if (searchQuery.length > 1) {
       const q = searchQuery.toLowerCase();
-      const results = allWatches.filter(w => 
-        (w.brand && w.brand.toLowerCase().includes(q)) || 
-        (w.modelName && w.modelName.toLowerCase().includes(q))
-      ).slice(0, 20);
+      const results = allWatches.filter(w => {
+        const haystack = `${w.brand || ''} ${w.modelName || ''} ${w.id || ''} ${'ref' in w ? String(w.ref ?? '') : ''}`.toLowerCase();
+        return haystack.includes(q);
+      }).slice(0, 20);
       setSearchResults(results);
     } else {
       setSearchResults([]);
@@ -131,9 +131,13 @@ export function Navbar() {
         {/* Drawer Links - Rolex Style */}
         <nav className="flex-grow overflow-y-auto px-8 py-10 flex flex-col space-y-6">
           {[
-                        { name: "Tüm Markalar", href: "/markalar", type: "main" },
+            { name: "Tüm Markalar", href: "/markalar", type: "main" },
             { name: "Elit Kategori", href: "/elit-saat", type: "highlight" },
             { name: "Rolex", href: "/markalar/rolex", type: "main" },
+            { name: "Cartier", href: "/markalar/cartier", type: "main" },
+            { name: "TAG Heuer", href: "/markalar/tag-heuer", type: "main" },
+            { name: "Rado", href: "/markalar/rado", type: "main" },
+            { name: "Tissot", href: "/markalar/tissot", type: "main" },
             { name: "Kurumsal", href: "/kurumsal", type: "sub" },
             { name: "İletişim", href: "/iletisim", type: "sub" }
           ].map((item, idx) => {
@@ -210,8 +214,10 @@ export function Navbar() {
             <div className="flex items-center gap-3 mt-5 px-1 overflow-x-auto no-scrollbar whitespace-nowrap">
               <span className="text-[11px] font-bold text-gray-500 tracking-wider">POPÜLER:</span>
               <button onClick={() => setSearchQuery('Rolex')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">Rolex</button>
-              <button onClick={() => setSearchQuery('Richard Mille')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">Richard Mille</button>
-              <button onClick={() => setSearchQuery('Panerai')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">Panerai</button>
+              <button onClick={() => setSearchQuery('Cartier')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">Cartier</button>
+              <button onClick={() => setSearchQuery('TAG Heuer')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">TAG Heuer</button>
+              <button onClick={() => setSearchQuery('Rado')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">Rado</button>
+              <button onClick={() => setSearchQuery('Tissot')} className="px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-semibold text-slate-700 hover:border-[#0A3D2E] hover:text-[#0A3D2E] transition-colors">Tissot</button>
             </div>
           </div>
           
@@ -224,10 +230,7 @@ export function Navbar() {
 
             <div className="flex flex-col gap-3">
               {(searchResults.length > 0 ? searchResults : allWatches.slice(0, 5)).map((watch, idx) => {
-                const slugParts = watch.seoUrl.split('/');
-                const watchSlug = slugParts[slugParts.length - 1];
-                const isElit = watch.category && watch.category.toLowerCase().includes('elit');
-                const linkUrl = isElit ? `/elit-saat/${watchSlug}` : `/saatler/${watchSlug}`;
+                const linkUrl = watch.seoUrl;
                 
                 return (
                   <Link 

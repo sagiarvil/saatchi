@@ -39,7 +39,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
               {featuredWatches.map((watch) => (
                 <Link href={watch.seoUrl} key={watch.id} className="group cursor-pointer flex flex-col items-center">
-                  <div className="w-full aspect-square bg-[#FAFAFA] mb-8 relative flex items-center justify-center transition-all duration-700 bg-surface rounded-2xl border border-surface-border overflow-hidden group-hover:border-[#C2A768]/40 group-hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)]">
+                  <div className="w-full aspect-[4/5] bg-[#FAFAFA] mb-8 relative flex items-center justify-center transition-all duration-700 bg-surface rounded-2xl border border-surface-border overflow-hidden group-hover:border-[#C2A768]/40 group-hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)]">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
                     {/* Saat Görseli */}

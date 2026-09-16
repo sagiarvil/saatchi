@@ -109,9 +109,9 @@ export default function WatchListClient({ initialWatches, initialGender = '' }: 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-[26px]">
         {filtered.map(watch => (
           <Link key={watch.id} href={watch.seoUrl} className="group relative flex flex-col bg-[#FFFFFF] border border-[#E1DCD2]/90 rounded-[12px] md:rounded-[14px] overflow-hidden transition-all duration-[450ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-[0_16px_36px_-4px_rgba(28,43,38,0.10),0_0_0_1px_rgba(197,160,89,0.55)] hover:-translate-y-[6px] hover:border-[#C5A059]/60 shadow-[0_4px_14px_rgba(0,0,0,0.04)]">
-            <div className="relative w-full pt-[100%] bg-[radial-gradient(circle_at_50%_50%,#ffffff_30%,#f7f5f0_100%)] border-b border-[#F0ECE4]/85 overflow-hidden">
+            <div className="relative w-full aspect-[4/5] bg-[radial-gradient(circle_at_50%_50%,#ffffff_30%,#f7f5f0_100%)] border-b border-[#F0ECE4]/85 overflow-hidden">
               {watch.image ? (
-                <img src={getProxiedImageUrl(watch.image)} alt={watch.modelName} className="absolute inset-0 w-full h-full object-contain p-[14px] transition-transform duration-500 ease-out group-hover:scale-105" />
+                <img src={getProxiedImageUrl(watch.image)} alt={watch.modelName} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-contain p-4 md:p-6 transition-transform duration-500 ease-out group-hover:scale-105" />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center text-xs text-foreground/40 font-serif">Görsel Yok</div>
               )}

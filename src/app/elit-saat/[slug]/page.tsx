@@ -68,7 +68,7 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
                       ELİT
                     </div>
                     {watch.image ? (
-                      <img src={getProxiedImageUrl(watch.image)} alt={watch.modelName} className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-700 ease-out" />
+                      <img src={getProxiedImageUrl(watch.image)} alt={watch.modelName} loading="lazy" decoding="async" className="w-full h-full object-contain object-center p-4 md:p-6 group-hover:scale-105 transition-transform duration-700 ease-out" />
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center p-4 border border-surface-border group-hover:border-[#C2A768]/30 transition-colors">
                         <ShieldCheck className="w-8 h-8 text-[#C2A768]/50 mb-3" strokeWidth={1} />
@@ -117,22 +117,6 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
           <nav className="pdp-crumbs" style={{ fontSize: '13px', color: '#6B7280', marginBottom: '20px' }}>
             <Link href="/" style={{ color: '#065F46', textDecoration: 'none' }}>Ana Sayfa</Link> / <Link href="/elit-saat" style={{ color: '#065F46', textDecoration: 'none' }}>Elit Kategori — Lüks Saat Evleri</Link> / <span style={{ color: '#111827', fontWeight: 600 }}>{watch.modelName}</span>
           </nav>
-
-          {/* HERO ANSWER ENGINE (AEO / SSOT KÜNYE) */}
-          <div className="hero-answer-engine" style={{ margin: '0 0 24px', background: '#F0FDF4', border: '1px solid #BBF7D0', padding: '16px', borderRadius: '10px' }}>
-            <div className="hero-answer-engine-badge flex items-center" style={{ fontSize: '11px', fontWeight: 'bold', color: '#065F46', letterSpacing: '1px', marginBottom: '8px' }}>
-              <span className="dot" style={{ display: 'inline-block', width: '6px', height: '6px', background: '#34D399', borderRadius: '50%', marginRight: '6px' }}></span>
-              ONAYLI ÜRÜN KÜNYESİ & EKSPERTİZ BİLGİSİ
-            </div>
-            <p className="hero-answer-engine-text" style={{ fontSize: '13px', lineHeight: '1.6', color: '#374151', marginBottom: '12px' }}>
-              Bu {watch.modelName} (Ref: {watch.ref || watch.id}) modeli, Saatchi & Semih Sonbahar güvencesiyle sunulmaktadır. Sıfır distribütör garantili ve tescilli kutu-belge tam set olarak sağlanır. 12.000 TL üzeri alımlarda kimlik teyitli VIP teslimat ve Akbank 3D Pay 256-bit SSL ödeme altyapısı geçerlidir.
-            </p>
-            <div className="hero-answer-engine-meta" style={{ display: 'flex', gap: '16px', fontSize: '12px', flexWrap: 'wrap' }}>
-              <span><strong style={{ color: '#065F46' }}>Fiziki Konum:</strong> Saatchi Showroom</span>
-              <span><strong style={{ color: '#065F46' }}>Fiyat Durumu:</strong> {watch.price} (Canlı Kur)</span>
-              <span><strong style={{ color: '#065F46' }}>Kondisyon:</strong> {watch.condition || 'Sıfır Distribütör Garantili'}</span>
-            </div>
-          </div>
 
           <div className="pdp-art-main grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* GALLERY */}
