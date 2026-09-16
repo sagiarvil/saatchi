@@ -15,7 +15,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,12 +29,81 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Verify hero media assets
+      - name: Verify hero media assets and git tracking
         shell: bash
         run: |
           set -euo pipefail
           for file in public/videos/hero1.mp4 public/videos/hero2.mp4 public/videos/hero3.mp4; do
             test -s "$file" || { echo "Missing or empty hero asset: $file"; exit 1; }
+            git ls-files --error-unmatch "$file" >/dev/null
+            mime="$(file -b --mime-type "$file")"
+            test "$mime" = "video/mp4" || { echo "Unexpected local MIME for $file: $mime"; exit 1; }
+            echo "$file tracked, non-empty, MIME=$mime, bytes=$(stat -c%s "$file")"
+          done
+
+      - name: Verify mobile-compatible MP4 structure
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v ffprobe >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y ffmpeg
+          fi
+
+          for file in public/videos/hero1.mp4 public/videos/hero2.mp4 public/videos/hero3.mp4; do
+            video_codec="$(ffprobe -v error -select_streams v:0 -show_entries stream=codec_name -of default=nw=1:nk=1 "$file")"
+            pixel_format="$(ffprobe -v error -select_streams v:0 -show_entries stream=pix_fmt -of default=nw=1:nk=1 "$file")"
+            audio_codec="$(ffprobe -v error -select_streams a:0 -show_entries stream=codec_name -of default=nw=1:nk=1 "$file" || true)"
+
+            test "$video_codec" = "h264" || { echo "$file video codec is $video_codec, expected h264"; exit 1; }
+            test "$pixel_format" = "yuv420p" || { echo "$file pixel format is $pixel_format, expected yuv420p"; exit 1; }
+            if [ -n "$audio_codec" ] && [ "$audio_codec" != "aac" ]; then
+              echo "$file audio codec is $audio_codec, expected aac or no audio"
+              exit 1
+            fi
+
+            python3 - "$file" <<'PY'
+import os
+import struct
+import sys
+
+path = sys.argv[1]
+size = os.path.getsize(path)
+atoms = []
+pos = 0
+with open(path, 'rb') as fh:
+    while pos + 8 <= size:
+        fh.seek(pos)
+        header = fh.read(8)
+        if len(header) < 8:
+            break
+        atom_size = struct.unpack('>I', header[:4])[0]
+        atom_type = header[4:8].decode('latin-1')
+        header_size = 8
+        if atom_size == 1:
+            ext = fh.read(8)
+            if len(ext) < 8:
+                raise SystemExit(f'{path}: truncated extended atom header')
+            atom_size = struct.unpack('>Q', ext)[0]
+            header_size = 16
+        elif atom_size == 0:
+            atom_size = size - pos
+        if atom_size < header_size:
+            raise SystemExit(f'{path}: invalid atom size for {atom_type}')
+        atoms.append((atom_type, pos, atom_size))
+        pos += atom_size
+
+names = [a[0] for a in atoms]
+if 'moov' not in names or 'mdat' not in names:
+    raise SystemExit(f'{path}: missing moov or mdat atom; atoms={names}')
+moov_pos = next(a[1] for a in atoms if a[0] == 'moov')
+mdat_pos = next(a[1] for a in atoms if a[0] == 'mdat')
+print(f'{path}: atoms={names} moov={moov_pos} mdat={mdat_pos}')
+if moov_pos > mdat_pos:
+    raise SystemExit(f'{path}: moov atom is after mdat; not fast-start optimized')
+PY
+
+            echo "$file codec=$video_codec pix_fmt=$pixel_format audio=${audio_codec:-none}"
           done
 
       - name: Lint mobile hero
@@ -42,3 +111,78 @@ jobs:
 
       - name: Production build
         run: npm run build
+
+      - name: Verify current deployment artifact contains hero media
+        shell: bash
+        run: |
+          set -euo pipefail
+          public_dir="$(node - <<'NODE'
+          const fs = require('fs');
+          const config = JSON.parse(fs.readFileSync('firebase.json', 'utf8'));
+          const raw = config.hosting;
+          const hosting = Array.isArray(raw)
+            ? (raw.find((entry) => entry && entry.site === 'saatchi') || raw[0])
+            : raw;
+          process.stdout.write(hosting && typeof hosting.public === 'string' ? hosting.public : '');
+          NODE
+          )"
+
+          if [ -z "$public_dir" ]; then
+            echo "No hosting.public directory is configured; artifact-path verification is not applicable to this configuration."
+            exit 0
+          fi
+
+          echo "Current Firebase public directory: $public_dir"
+          for name in hero1.mp4 hero2.mp4 hero3.mp4; do
+            target="$public_dir/videos/$name"
+            test -s "$target" || { echo "Hero asset missing from current deployment artifact: $target"; exit 1; }
+            echo "$target present, bytes=$(stat -c%s "$target")"
+          done
+
+      - name: Probe production hero URLs with mobile clients
+        if: always()
+        shell: bash
+        run: |
+          set -u
+          ios_ua='Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1'
+          android_ua='Mozilla/5.0 (Linux; Android 15; Pixel 9) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Mobile Safari/537.36'
+          failures=0
+
+          probe() {
+            local ua_name="$1"
+            local ua="$2"
+            local name="$3"
+            local url="https://saatchi.watch/videos/$name"
+            local headers
+            headers="$(mktemp)"
+            local code
+            code="$(curl -sS -L --retry 2 --connect-timeout 10 --max-time 40 \
+              -A "$ua" -H 'Range: bytes=0-1023' -D "$headers" -o /dev/null \
+              -w '%{http_code}' "$url" 2>/tmp/hero-curl.err || true)"
+            local content_type
+            content_type="$(awk 'BEGIN{IGNORECASE=1} /^content-type:/ {v=$2} END {gsub(/\r/,"",v); split(v,a,";"); print tolower(a[1])}' "$headers")"
+            local accept_ranges
+            accept_ranges="$(awk 'BEGIN{IGNORECASE=1} /^accept-ranges:/ {v=$2} END {gsub(/\r/,"",v); print tolower(v)}' "$headers")"
+            local content_range
+            content_range="$(awk 'BEGIN{IGNORECASE=1} /^content-range:/ {$1=""; sub(/^ /,""); v=$0} END {gsub(/\r/,"",v); print v}' "$headers")"
+
+            echo "$ua_name $url -> HTTP=$code Content-Type=${content_type:-missing} Accept-Ranges=${accept_ranges:-missing} Content-Range=${content_range:-missing}"
+
+            if [ "$code" != "200" ] && [ "$code" != "206" ]; then
+              echo "Unexpected HTTP status for $url: $code"
+              cat /tmp/hero-curl.err || true
+              failures=1
+            fi
+            if [ "$content_type" != "video/mp4" ]; then
+              echo "Unexpected production MIME for $url: ${content_type:-missing}"
+              failures=1
+            fi
+            rm -f "$headers"
+          }
+
+          for name in hero1.mp4 hero2.mp4 hero3.mp4; do
+            probe ios "$ios_ua" "$name"
+            probe android "$android_ua" "$name"
+          done
+
+          exit "$failures"
