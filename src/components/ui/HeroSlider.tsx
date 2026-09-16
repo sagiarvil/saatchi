@@ -3,12 +3,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
-const SLIDE_DURATION_MS = 7000;
+const SLIDE_DURATION_MS = 12000;
 
 const SLIDES = [
   {
     id: 1,
     video: '/videos/hero1.mp4',
+    mobileVideo: '/videos/hero1-mobile.mp4',
     subtitle: 'SAATCHI AYRICALIĞI',
     title: 'Zamanın Ötesinde\nBir Miras',
     desc: "Kusursuz İsviçre mühendisliği ve Saatchi'nin eşsiz tasarım vizyonuyla şekillenen Masterpiece koleksiyonunu keşfedin.",
@@ -18,6 +19,7 @@ const SLIDES = [
   {
     id: 2,
     video: '/videos/hero2.mp4',
+    mobileVideo: '/videos/hero2-mobile.mp4',
     subtitle: 'ELİT KATEGORİ',
     title: 'Mükemmelliğin\nYeni Standardı',
     desc: 'Dünyanın en prestijli markalarından derlenen, kişiye özel sertifikalı ve VIP teslimatlı seçkin modeller.',
@@ -27,6 +29,7 @@ const SLIDES = [
   {
     id: 3,
     video: '/videos/hero3.mp4',
+    mobileVideo: '/videos/hero3-mobile.mp4',
     subtitle: 'ÖZEL KOLEKSİYON',
     title: 'Sadece Sizin\nİçin Tasarlandı',
     desc: 'Karakterinizi yansıtan eşsiz detaylar. SAATCHI - SEMİH SONBAHAR güvencesiyle elit dünyaya adım atın.',
@@ -177,12 +180,11 @@ export function HeroSlider() {
         <video
           key={activeSlide.id}
           ref={videoRef}
-          src={activeSlide.video}
           autoPlay
           loop
           muted
           playsInline
-          preload={current === 0 ? 'auto' : 'metadata'}
+          preload="auto"
           controls={false}
           disablePictureInPicture
           aria-hidden="true"
@@ -194,7 +196,10 @@ export function HeroSlider() {
             videoPlaying ? 'opacity-100' : 'opacity-0'
           }`}
           style={{ WebkitTransform: 'translate3d(0,0,0)', transform: 'translate3d(0,0,0)' }}
-        />
+        >
+          <source media="(max-width: 767px)" src={activeSlide.mobileVideo} type="video/mp4" />
+          <source src={activeSlide.video} type="video/mp4" />
+        </video>
 
         <div data-hero-overlay="true" className="pointer-events-none absolute inset-0 z-[2] bg-[#0a0a0a]/25 mix-blend-multiply" />
         <div data-hero-overlay="true" className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-black/35 to-black/85" />
