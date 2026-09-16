@@ -22,6 +22,7 @@ allowed() {
   case "$1" in
     src/components/ui/HeroSlider.tsx) return 0 ;;
     src/app/globals.css) return 0 ;;
+    postcss.config.mjs) return 0 ;; # existing Tailwind/PostCSS pipeline restored from repo backup
     public/videos/*) return 0 ;;
     .github/scripts/hero-*) return 0 ;;
     .github/workflows/hero-*) return 0 ;;
