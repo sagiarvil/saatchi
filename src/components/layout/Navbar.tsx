@@ -62,7 +62,7 @@ export function Navbar() {
   return (
     <>
       <header 
-        className={`fixed top-0 w-full z-50 transition-all duration-700 ${
+        className={`${isHomePage ? 'fixed' : 'sticky'} top-0 w-full z-50 transition-all duration-700 ${
           isScrolled || !isHomePage ? 'bg-[#1a1a1a]/95 backdrop-blur-md py-3 border-b border-white/10' : 'bg-gradient-to-b from-black/80 to-transparent py-6'
         }`}
       >
@@ -92,7 +92,7 @@ export function Navbar() {
           <div className="flex-shrink-0 flex justify-center items-center">
             <Link href="/" className="flex items-center justify-center">
               {}
-              <Image src="/logo.png" alt="Saatchi & Saatchi" width={180} height={48} className={`w-auto object-contain transition-all duration-700 invert brightness-0 ${isScrolled ? 'h-7 md:h-8' : 'h-10 md:h-12'}`} priority />
+              <Image src="/logo.png" alt="Saatchi & Saatchi" width={180} height={48} className={`w-auto object-contain transition-all duration-700 invert brightness-0 ${isScrolled || !isHomePage ? 'h-7 md:h-8' : 'h-10 md:h-12'}`} priority />
             </Link>
           </div>
           
