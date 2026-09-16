@@ -25,7 +25,7 @@ for needle in \
   "loop" \
   "muted" \
   "playsInline" \
-  'preload="auto"' \
+  "preload={current === 0 ? 'auto' : 'metadata'}" \
   "video.muted = true" \
   "video.defaultMuted = true" \
   "video.playsInline = true" \
