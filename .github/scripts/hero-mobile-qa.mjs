@@ -166,7 +166,7 @@ async function runDeviceProfile(profile) {
   page.on('pageerror', (error) => pageErrors.push(String(error)));
   try {
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await page.waitForSelector('[data-hero-fallback="true"]', { state: 'visible', timeout: 10000 });
+    await page.waitForSelector('[data-hero-fallback="true"]', { state: 'attached', timeout: 10000 });
     await page.waitForTimeout(300);
     const initial = await getHeroState(page);
     structuralAssertions(scope, initial);
@@ -191,7 +191,7 @@ async function runViewportSweep(profile) {
     const page = await context.newPage();
     try {
       await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
-      await page.waitForSelector('[data-hero-fallback="true"]', { state: 'visible', timeout: 10000 });
+      await page.waitForSelector('[data-hero-fallback="true"]', { state: 'attached', timeout: 10000 });
       await page.waitForTimeout(150);
       structuralAssertions(scope, await getHeroState(page));
     } catch (error) {
@@ -222,7 +222,7 @@ async function runNetworkProfile(name, network) {
   });
   try {
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await page.waitForSelector('[data-hero-fallback="true"]', { state: 'visible', timeout: 10000 });
+    await page.waitForSelector('[data-hero-fallback="true"]', { state: 'attached', timeout: 10000 });
     const cold = await getHeroState(page);
     record(scope, 'cold load fallback immediate', cold.sectionVisible && cold.fallbackVisible && cold.activeVisible);
     record(scope, 'cache disabled', true, { note: 'Chromium CDP Network.setCacheDisabled=true' });
@@ -245,7 +245,7 @@ async function runMediaFailureMode() {
   await page.route('**/videos/*.mp4', (route) => route.abort('failed'));
   try {
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    await page.waitForSelector('[data-hero-fallback="true"]', { state: 'visible', timeout: 10000 });
+    await page.waitForSelector('[data-hero-fallback="true"]', { state: 'attached', timeout: 10000 });
     const first = await getHeroState(page);
     structuralAssertions(scope, first);
     await checkSlider(page, scope, first.titleText);
