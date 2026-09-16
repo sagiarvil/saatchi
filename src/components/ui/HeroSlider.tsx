@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 
 const SLIDES = [
@@ -31,115 +31,178 @@ const SLIDES = [
     link: '/kurumsal',
     btnText: 'Markamızı Keşfedin',
   },
-];
+] as const;
+
+type MediaState = 'loading' | 'playing' | 'blocked' | 'failed';
 
 export function HeroSlider() {
   const [current, setCurrent] = useState(0);
-  const [videoPlaying, setVideoPlaying] = useState(false);
+  const [mediaState, setMediaState] = useState<MediaState>('loading');
   const videoRef = useRef<HTMLVideoElement>(null);
+  const retryTimersRef = useRef<number[]>([]);
   const activeSlide = SLIDES[current];
+  const videoPlaying = mediaState === 'playing';
+
+  const clearRetryTimers = useCallback(() => {
+    retryTimersRef.current.forEach((timer) => window.clearTimeout(timer));
+    retryTimersRef.current = [];
+  }, []);
+
+  const tryPlay = useCallback(async () => {
+    const video = videoRef.current;
+    if (!video || document.visibilityState === 'hidden') return;
+
+    // iOS Safari / in-app WebView autoplay contract.
+    // Properties are set as well as attributes because older WebKit builds can
+    // inspect one before React has reflected the other.
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', 'true');
+    video.setAttribute('x-webkit-airplay', 'deny');
+
+    try {
+      await video.play();
+      setMediaState('playing');
+      clearRetryTimers();
+    } catch (error) {
+      const name = error instanceof DOMException ? error.name : '';
+
+      // NotAllowedError is expected on some iOS/device policy combinations.
+      // Keep the hero visible and retry on the first real user interaction.
+      if (name === 'NotAllowedError' || name === 'AbortError') {
+        setMediaState((state) => (state === 'failed' ? state : 'blocked'));
+        return;
+      }
+
+      setMediaState((state) => (state === 'failed' ? state : 'blocked'));
+    }
+  }, [clearRetryTimers]);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Mobile autoplay contract: muted + inline playback must be set as DOM
-    // properties before play() is requested. Keep the fallback attributes for
-    // older iOS/WebView implementations as well.
+    setMediaState('loading');
+    clearRetryTimers();
+
     video.muted = true;
     video.defaultMuted = true;
     video.playsInline = true;
     video.setAttribute('muted', '');
+    video.setAttribute('autoplay', '');
     video.setAttribute('playsinline', '');
     video.setAttribute('webkit-playsinline', 'true');
+    video.setAttribute('x-webkit-airplay', 'deny');
 
-    const tryPlay = () => {
-      if (document.visibilityState === 'hidden') return;
-      const attempt = video.play();
-      if (attempt) {
-        attempt.catch(() => {
-          // A browser/OS policy may still require a real user gesture.
-          // The one-shot interaction handlers below retry playback safely.
-        });
-      }
-    };
-
+    const retry = () => void tryPlay();
     const handleVisibility = () => {
-      if (document.visibilityState === 'visible') tryPlay();
+      if (document.visibilityState === 'visible') retry();
     };
+    const handleOnline = () => retry();
 
-    video.addEventListener('loadeddata', tryPlay);
-    video.addEventListener('canplay', tryPlay);
-    window.addEventListener('pageshow', tryPlay);
+    video.addEventListener('loadedmetadata', retry);
+    video.addEventListener('loadeddata', retry);
+    video.addEventListener('canplay', retry);
+    window.addEventListener('pageshow', retry);
+    window.addEventListener('online', handleOnline);
     document.addEventListener('visibilitychange', handleVisibility);
 
-    // Safari/WebView can reject the initial autoplay request under device-level
-    // media policies. The first genuine interaction unlocks playback without
-    // permanent polling, global video scans or repeated decoder work.
-    window.addEventListener('touchstart', tryPlay, { once: true, passive: true });
-    window.addEventListener('pointerdown', tryPlay, { once: true, passive: true });
-    window.addEventListener('click', tryPlay, { once: true, passive: true });
+    // Keep interaction retries active until playback succeeds. A one-shot
+    // listener can fire before Safari has buffered enough media and then leave
+    // the hero permanently blocked.
+    window.addEventListener('touchstart', retry, { passive: true });
+    window.addEventListener('pointerdown', retry, { passive: true });
+    window.addEventListener('click', retry, { passive: true });
 
-    tryPlay();
+    // Short bounded retry window covers delayed mobile decoder/network startup
+    // without creating a permanent polling loop.
+    [0, 250, 900, 2200].forEach((delay) => {
+      const timer = window.setTimeout(retry, delay);
+      retryTimersRef.current.push(timer);
+    });
 
     return () => {
-      video.removeEventListener('loadeddata', tryPlay);
-      video.removeEventListener('canplay', tryPlay);
-      window.removeEventListener('pageshow', tryPlay);
+      clearRetryTimers();
+      video.removeEventListener('loadedmetadata', retry);
+      video.removeEventListener('loadeddata', retry);
+      video.removeEventListener('canplay', retry);
+      window.removeEventListener('pageshow', retry);
+      window.removeEventListener('online', handleOnline);
       document.removeEventListener('visibilitychange', handleVisibility);
-      window.removeEventListener('touchstart', tryPlay);
-      window.removeEventListener('pointerdown', tryPlay);
-      window.removeEventListener('click', tryPlay);
+      window.removeEventListener('touchstart', retry);
+      window.removeEventListener('pointerdown', retry);
+      window.removeEventListener('click', retry);
     };
-  }, [current]);
+  }, [current, clearRetryTimers, tryPlay]);
 
   useEffect(() => {
-    if (!videoPlaying) return;
+    // When video playback is available, rotate normally. If an OS/browser
+    // blocks video, keep the hero usable and rotate the textual composition
+    // rather than freezing on a blank frame.
+    if (mediaState === 'loading') return;
 
-    // Do not advance away from a slide before its video has actually started.
-    // This prevents slow mobile connections from continuously swapping large
-    // media files before the user sees any motion.
     const timer = window.setTimeout(() => {
-      setVideoPlaying(false);
+      setMediaState('loading');
       setCurrent((prev) => (prev + 1) % SLIDES.length);
-    }, 7000);
+    }, videoPlaying ? 7000 : 9000);
 
     return () => window.clearTimeout(timer);
-  }, [current, videoPlaying]);
+  }, [current, mediaState, videoPlaying]);
 
   const selectSlide = (index: number) => {
-    if (index === current) return;
-    setVideoPlaying(false);
+    if (index === current) {
+      void tryPlay();
+      return;
+    }
+
+    setMediaState('loading');
     setCurrent(index);
   };
 
   return (
-    <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0a]">
-      {/* One active background video only. This avoids starting three large MP4 decoders on mobile. */}
+    <section className="relative w-full h-[100svh] min-h-[560px] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0a]">
       <div className="absolute inset-0 w-full h-full bg-[#0a0a0a]">
+        {/* Permanent visual fallback: mobile visitors never receive an empty/black
+            hero while media is buffering, blocked or unavailable. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 scale-110"
+          style={{
+            background:
+              'radial-gradient(circle at 72% 28%, rgba(132,107,50,0.30), transparent 34%), radial-gradient(circle at 18% 76%, rgba(255,255,255,0.08), transparent 30%), linear-gradient(135deg, #171717 0%, #080808 48%, #000000 100%)',
+          }}
+        />
+
         <video
           key={activeSlide.id}
           ref={videoRef}
+          src={activeSlide.video}
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
           controls={false}
+          disablePictureInPicture
           aria-hidden="true"
-          onPlaying={() => setVideoPlaying(true)}
-          onPause={() => setVideoPlaying(false)}
-          className="absolute inset-0 w-full h-full object-cover opacity-100 contrast-[1.15] saturate-[0.80] brightness-[0.75]"
-        >
-          <source src={activeSlide.video} type="video/mp4" />
-        </video>
+          onPlaying={() => setMediaState('playing')}
+          onCanPlay={() => void tryPlay()}
+          onError={() => setMediaState('failed')}
+          onStalled={() => setMediaState((state) => (state === 'playing' ? state : 'blocked'))}
+          className={`absolute inset-0 block w-full h-full object-cover object-center contrast-[1.15] saturate-[0.80] brightness-[0.75] transition-opacity duration-500 ${
+            videoPlaying ? 'opacity-100' : 'opacity-0'
+          }`}
+          style={{ WebkitTransform: 'translate3d(0,0,0)', transform: 'translate3d(0,0,0)' }}
+        />
 
-        {/* Cinematic Hollywood Filter & Radial Vignette */}
-        <div className="absolute inset-0 bg-[#0a0a0a]/30 pointer-events-none mix-blend-multiply" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-black/40 to-black/90 pointer-events-none" />
-
-        {/* Text Protection Gradient */}
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/95 via-black/50 to-transparent pointer-events-none" />
+        {/* Cinematic Filter & Radial Vignette */}
+        <div className="absolute inset-0 bg-[#0a0a0a]/25 pointer-events-none mix-blend-multiply" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-black/35 to-black/85 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/95 via-black/45 to-transparent pointer-events-none" />
       </div>
 
       {SLIDES.map((slide, index) => (
@@ -149,8 +212,7 @@ export function HeroSlider() {
             index === current ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
           }`}
         >
-          {/* Hero Content - Bottom Left Aligned (Patek Exact Layout) */}
-          <div className="absolute inset-0 flex flex-col justify-end items-start text-left px-6 md:px-12 pb-12 md:pb-16 w-full max-w-[1600px] mx-auto">
+          <div className="absolute inset-0 flex flex-col justify-end items-start text-left px-6 md:px-12 pb-[max(3rem,env(safe-area-inset-bottom))] md:pb-16 w-full max-w-[1600px] mx-auto">
             {slide.subtitle && (
               <h2
                 className={`text-white/90 tracking-[0.2em] uppercase text-[9px] md:text-[10px] font-normal mb-2 transform transition-all duration-1000 delay-300 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
@@ -187,7 +249,6 @@ export function HeroSlider() {
         </div>
       ))}
 
-      {/* Slide Controls - Vertical on the Right */}
       <div className="absolute right-4 md:right-8 top-1/2 transform -translate-y-1/2 z-20 flex flex-col gap-3">
         {SLIDES.map((_, index) => (
           <button
