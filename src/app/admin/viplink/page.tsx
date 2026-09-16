@@ -1,183 +1,116 @@
 'use client';
-import React, { useState } from 'react';
-import { Watch, Link as LinkIcon, Check, Copy, ShieldCheck } from 'lucide-react';
+
+import { useState } from 'react';
+import { Check, Copy, KeyRound, Link2, ShieldCheck, Sparkles, Watch } from 'lucide-react';
 
 export default function VipLinkGenerator() {
-  const [productTitle, setProductTitle] = useState('');
+  const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
-  const [provider, setProvider] = useState('SAATCHI_SECURE');
+  const [adminKey, setAdminKey] = useState('');
   const [generatedLink, setGeneratedLink] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const handleFormatAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let raw = e.target.value.replace(/\D/g, '');
-    if (!raw) {
-      setAmount('');
+  const rawAmount = Number(amount.replace(/\D/g, '') || 0);
+  const formattedAmount = rawAmount ? new Intl.NumberFormat('tr-TR').format(rawAmount) : '';
+
+  async function generateLink() {
+    setError('');
+    setGeneratedLink('');
+    if (!title.trim() || rawAmount <= 0 || !adminKey) {
+      setError('Ürün adı, tutar ve yönetim anahtarı zorunludur.');
       return;
     }
-    const formatted = new Intl.NumberFormat('tr-TR').format(Number(raw));
-    setAmount(formatted);
-  };
+    setLoading(true);
+    try {
+      const response = await fetch('/api/vip-link', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-vip-admin-key': adminKey },
+        body: JSON.stringify({ title: title.trim(), amount: rawAmount })
+      });
+      const data = await response.json();
+      if (!response.ok || !data.success) throw new Error(data.message || 'VIP link oluşturulamadı.');
+      setGeneratedLink(data.url);
+    } catch (e: any) {
+      setError(e.message || 'VIP link oluşturulamadı.');
+    } finally {
+      setLoading(false);
+    }
+  }
 
-  const generateLink = () => {
-    if (!productTitle || !amount) return;
-    
-    const rawAmount = amount.replace(/\D/g, '');
-    const orderId = 'SAATCHI-VIP-' + Date.now().toString().slice(-6);
-    
-    // Basit bir base64 payload
-    const payload = {
-      title: productTitle,
-      amount: rawAmount,
-      provider: provider,
-      orderId: orderId,
-      t: Date.now()
-    };
-    
-    const token = btoa(encodeURIComponent(JSON.stringify(payload)));
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://saatchi.watch';
-    
-    // vip-checkout'a parametreleri base64 olarak (p) veya düz yollayabiliriz. 
-    // Şimdilik düz okunan amount ve orderId kullanıyoruz (Saatchi stili)
-    const url = `${origin}/vip-checkout?amount=${rawAmount}&orderId=${orderId}&title=${encodeURIComponent(productTitle)}&p=${token}`;
-    
-    setGeneratedLink(url);
-    setCopied(false);
-  };
-
-  const copyToClipboard = () => {
+  async function copyLink() {
     if (!generatedLink) return;
-    navigator.clipboard.writeText(generatedLink);
+    await navigator.clipboard.writeText(generatedLink);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const rawAmount = parseInt(amount.replace(/\D/g, '') || '0', 10);
-  const isFormValid = productTitle.length > 0 && rawAmount > 0;
+    setTimeout(() => setCopied(false), 1800);
+  }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0A] text-white pt-32 pb-20 px-4 md:px-8 font-sans">
-      <div className="max-w-2xl mx-auto">
-        
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="font-serif text-[#C2A768] text-2xl md:text-3xl font-bold tracking-widest uppercase mb-2">Saatchi</h1>
-          <p className="text-white/50 text-xs tracking-[0.2em] uppercase">VIP Ödeme Linki Oluşturucu</p>
-        </div>
+    <div className="min-h-screen bg-[#0d0c0b] px-4 py-12 text-[#f5f0e8] sm:px-6 lg:py-16">
+      <div className="mx-auto max-w-5xl">
+        <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
+          <section className="lg:sticky lg:top-28">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#b98284]">SAATCHI / Private Office</p>
+            <h1 className="mt-5 text-4xl font-medium leading-[1.04] tracking-[-0.04em] sm:text-5xl">VIP tahsilat linki.</h1>
+            <p className="mt-5 max-w-md text-sm leading-7 text-[#9f9790]">Tutar tarayıcıdan değiştirilemez. Link 7 gün geçerlidir ve ödeme kaydı Belgin yönetim merkezinde açılır.</p>
+            <div className="mt-8 space-y-3 border-t border-white/10 pt-6 text-xs leading-6 text-[#817a74]">
+              <p className="flex gap-3"><ShieldCheck className="mt-1 h-4 w-4 shrink-0 text-[#c2a768]" /> HMAC imzalı, sunucu tarafından doğrulanan fiyat ve ürün adı.</p>
+              <p className="flex gap-3"><Link2 className="mt-1 h-4 w-4 shrink-0 text-[#c2a768]" /> Belgin Admin sipariş ve ödeme kayıt zinciriyle ortak çalışır.</p>
+            </div>
+          </section>
 
-        {/* Generator Card */}
-        <div className="bg-[#111] border border-white/10 rounded-none p-6 md:p-10 relative overflow-hidden">
-          
-          {/* Subtle Accent */}
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C2A768] to-transparent opacity-50"></div>
+          <section className="border border-white/10 bg-[linear-gradient(145deg,#151311_0%,#11100f_55%,#1b0e10_100%)] p-6 shadow-[0_30px_100px_rgba(0,0,0,.35)] sm:p-9">
+            <div className="mb-8 flex items-center justify-between border-b border-white/10 pb-6">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.24em] text-[#7f7770]">Yeni bağlantı</p>
+                <h2 className="mt-2 text-xl font-medium">Özel ödeme talebi</h2>
+              </div>
+              <Watch className="h-7 w-7 text-[#c2a768]" strokeWidth={1.1} />
+            </div>
 
-          <div className="space-y-8">
-            {/* Model Name */}
-            <div>
-              <label className="block text-xs font-semibold text-white/50 uppercase tracking-widest mb-3">Saat Modeli veya Sipariş Adı <span className="text-[#C2A768]">*</span></label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Watch className="w-5 h-5 text-white/20" />
+            <div className="space-y-7">
+              <div>
+                <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                  <label className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#a69d95]">Ürün / Sipariş Adı</label>
+                  <button type="button" onClick={() => setTitle('Lüks Kol Saati')} className="inline-flex items-center gap-2 border border-[#7f262b]/70 bg-[#7f262b]/10 px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#d9babb] transition-colors hover:bg-[#7f262b]/20"><Sparkles className="h-3.5 w-3.5" /> Lüks Kol Saati</button>
                 </div>
-                <input 
-                  type="text" 
-                  value={productTitle}
-                  onChange={(e) => setProductTitle(e.target.value)}
-                  className="w-full bg-[#1A1A1A] border border-white/5 rounded-none pl-12 pr-4 py-4 text-white text-lg focus:outline-none focus:border-[#C2A768]/50 transition-colors placeholder:text-white/20 font-light" 
-                  placeholder="Örn: Patek Philippe Nautilus 5711" 
-                />
+                <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Örn. Rolex Submariner / Özel Sipariş" className="w-full border border-white/10 bg-black/25 px-4 py-4 text-base text-white outline-none transition-colors placeholder:text-white/20 focus:border-[#9b6063]" />
               </div>
-            </div>
 
-            {/* Amount */}
-            <div>
-              <label className="block text-xs font-semibold text-white/50 uppercase tracking-widest mb-3">Sipariş Tutarı (TL) <span className="text-[#C2A768]">*</span></label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <span className="text-white/50 font-serif text-xl">₺</span>
+              <div>
+                <label className="mb-3 block text-[10px] font-semibold uppercase tracking-[0.2em] text-[#a69d95]">Tahsilat Tutarı</label>
+                <div className="flex items-center border border-white/10 bg-black/25 px-4 focus-within:border-[#9b6063]">
+                  <span className="mr-3 text-xl text-[#c2a768]">₺</span>
+                  <input value={formattedAmount} onChange={(e) => setAmount(e.target.value.replace(/\D/g, ''))} inputMode="numeric" placeholder="0" className="w-full bg-transparent py-4 text-2xl font-light text-white outline-none placeholder:text-white/15" />
                 </div>
-                <input 
-                  type="text" 
-                  value={amount}
-                  onChange={handleFormatAmount}
-                  inputMode="numeric"
-                  className="w-full bg-[#1A1A1A] border border-white/5 rounded-none pl-12 pr-4 py-4 text-white text-2xl font-serif focus:outline-none focus:border-[#C2A768]/50 transition-colors placeholder:text-white/20" 
-                  placeholder="2.500.000" 
-                />
               </div>
+
+              <div>
+                <label className="mb-3 block text-[10px] font-semibold uppercase tracking-[0.2em] text-[#a69d95]">Yönetim Anahtarı</label>
+                <div className="flex items-center border border-white/10 bg-black/25 px-4 focus-within:border-[#9b6063]">
+                  <KeyRound className="mr-3 h-4 w-4 text-[#6f6862]" />
+                  <input type="password" value={adminKey} onChange={(e) => setAdminKey(e.target.value)} autoComplete="current-password" placeholder="••••••••••••" className="w-full bg-transparent py-4 text-sm text-white outline-none placeholder:text-white/15" />
+                </div>
+              </div>
+
+              {error && <div className="border border-red-900/40 bg-red-950/25 px-4 py-3 text-sm text-red-200">{error}</div>}
+
+              <button onClick={generateLink} disabled={loading} className="w-full bg-[#f3eee6] px-5 py-4 text-[11px] font-bold uppercase tracking-[0.2em] text-[#171311] transition-colors hover:bg-white disabled:cursor-not-allowed disabled:opacity-50">{loading ? 'Oluşturuluyor…' : 'Güvenli VIP Link Oluştur'}</button>
             </div>
 
-            {/* Provider Selector (Simulation for Future) */}
-            <div>
-              <label className="block text-xs font-semibold text-white/50 uppercase tracking-widest mb-3">Tahsilat Altyapısı <span className="text-[#C2A768]">*</span></label>
-              <div className="grid grid-cols-2 gap-4">
-                <button 
-                  onClick={() => setProvider('SAATCHI_SECURE')}
-                  className={`py-4 px-4 border text-sm font-semibold tracking-wide transition-all ${provider === 'SAATCHI_SECURE' ? 'border-[#C2A768] bg-[#C2A768]/10 text-[#C2A768]' : 'border-white/10 text-white/40 hover:border-white/30'}`}
-                >
-                  <ShieldCheck className="w-4 h-4 inline-block mr-2 mb-0.5" /> Saatchi Güvenli POS
-                </button>
-                <button 
-                  onClick={() => setProvider('OTHER_POS')}
-                  className={`py-4 px-4 border text-sm font-semibold tracking-wide transition-all ${provider === 'OTHER_POS' ? 'border-[#C2A768] bg-[#C2A768]/10 text-[#C2A768]' : 'border-white/10 text-white/40 hover:border-white/30'}`}
-                >
-                  Yedek Sanal POS
-                </button>
+            {generatedLink && (
+              <div className="mt-8 border-t border-white/10 pt-7">
+                <p className="mb-3 flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#c2a768]"><Check className="h-4 w-4" /> Link hazır</p>
+                <div className="break-all border border-white/10 bg-black/30 p-4 font-mono text-xs leading-6 text-[#bbb2a9]">{generatedLink}</div>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <button onClick={copyLink} className="inline-flex items-center justify-center gap-2 border border-white/15 px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.17em] hover:border-white/30"><Copy className="h-4 w-4" /> {copied ? 'Kopyalandı' : 'Linki Kopyala'}</button>
+                  <a href={`https://wa.me/?text=${encodeURIComponent(`${title}\n\nGüvenli SAATCHI VIP ödeme bağlantınız:\n${generatedLink}`)}`} target="_blank" rel="noreferrer" className="inline-flex items-center justify-center border border-[#7f262b]/70 bg-[#7f262b]/10 px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.17em] text-[#ead7d7]">WhatsApp ile gönder</a>
+                </div>
               </div>
-            </div>
-
-            {/* Generate Button */}
-            <button 
-              onClick={generateLink}
-              disabled={!isFormValid}
-              className="w-full bg-white text-black font-bold uppercase tracking-widest text-sm py-5 mt-4 hover:bg-[#C2A768] hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              VIP Ödeme Linki Oluştur
-            </button>
-          </div>
-
+            )}
+          </section>
         </div>
-
-        {/* Result Section */}
-        {generatedLink && (
-          <div className="mt-8 bg-[#111] border border-[#C2A768]/30 rounded-none p-6 md:p-8 animate-fade-in">
-            <h3 className="text-[#C2A768] text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-              <Check className="w-4 h-4" /> Link Başarıyla Oluşturuldu
-            </h3>
-            
-            <div className="bg-[#1A1A1A] border border-white/5 p-4 flex items-center justify-between gap-4 break-all">
-              <span className="text-white/70 font-mono text-sm leading-relaxed select-all">
-                {generatedLink}
-              </span>
-              <button 
-                onClick={copyToClipboard}
-                className="shrink-0 bg-white/10 hover:bg-white/20 p-3 rounded-none transition-colors"
-                title="Kopyala"
-              >
-                {copied ? <Check className="w-5 h-5 text-[#C2A768]" /> : <Copy className="w-5 h-5 text-white" />}
-              </button>
-            </div>
-
-            <div className="mt-6 flex flex-col md:flex-row gap-4">
-              <button 
-                onClick={copyToClipboard}
-                className="flex-1 border border-[#C2A768] text-[#C2A768] hover:bg-[#C2A768] hover:text-black font-bold uppercase tracking-widest text-xs py-4 transition-colors"
-              >
-                {copied ? 'Kopyalandı!' : 'Linki Kopyala'}
-              </button>
-              
-              <a 
-                href={`https://wa.me/?text=${encodeURIComponent('Sayın Müşterimiz,\n\n' + productTitle + ' siparişinize ait güvenli VIP ödeme linkiniz aşağıdadır:\n\n' + generatedLink + '\n\nSaatchi')}`}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 bg-[#25D366] text-black font-bold uppercase tracking-widest text-xs py-4 flex items-center justify-center hover:bg-[#20b858] transition-colors"
-              >
-                WhatsApp İle Gönder
-              </a>
-            </div>
-          </div>
-        )}
-
       </div>
     </div>
   );
