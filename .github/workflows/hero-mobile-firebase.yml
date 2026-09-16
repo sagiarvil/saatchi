@@ -1,0 +1,62 @@
+name: Hero Mobile Firebase Gate
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/components/ui/HeroSlider.tsx'
+      - 'public/videos/**'
+      - 'firebase.json'
+      - 'next.config.ts'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/hero-mobile-firebase.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify hero media assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in public/videos/hero1.mp4 public/videos/hero2.mp4 public/videos/hero3.mp4; do
+            test -s "$file" || { echo "Missing or empty hero asset: $file"; exit 1; }
+          done
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Production build
+        run: npm run build
+
+      - name: Verify Firebase production architecture
+        shell: bash
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const config = JSON.parse(fs.readFileSync('firebase.json', 'utf8'));
+          const hosting = config.hosting;
+          if (!hosting || hosting.site !== 'saatchi') throw new Error('Firebase site must be saatchi');
+          if (hosting.source !== '.') throw new Error('Firebase Hosting must build from Next.js source');
+          if (hosting.public) throw new Error('firebase.json must not deploy a stale public/out directory');
+          if (!hosting.frameworksBackend) throw new Error('Firebase framework backend is required for Next.js API routes');
+          console.log('Firebase Hosting architecture verified.');
+          NODE
