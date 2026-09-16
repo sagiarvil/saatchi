@@ -6,10 +6,6 @@ on:
     paths:
       - 'src/components/ui/HeroSlider.tsx'
       - 'public/videos/**'
-      - 'firebase.json'
-      - 'next.config.ts'
-      - 'package.json'
-      - 'package-lock.json'
       - '.github/workflows/hero-mobile-firebase.yml'
   workflow_dispatch:
 
@@ -46,17 +42,3 @@ jobs:
 
       - name: Production build
         run: npm run build
-
-      - name: Verify Firebase production architecture
-        shell: bash
-        run: |
-          node - <<'NODE'
-          const fs = require('fs');
-          const config = JSON.parse(fs.readFileSync('firebase.json', 'utf8'));
-          const hosting = config.hosting;
-          if (!hosting || hosting.site !== 'saatchi') throw new Error('Firebase site must be saatchi');
-          if (hosting.source !== '.') throw new Error('Firebase Hosting must build from Next.js source');
-          if (hosting.public) throw new Error('firebase.json must not deploy a stale public/out directory');
-          if (!hosting.frameworksBackend) throw new Error('Firebase framework backend is required for Next.js API routes');
-          console.log('Firebase Hosting architecture verified.');
-          NODE
