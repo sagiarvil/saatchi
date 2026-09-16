@@ -114,13 +114,12 @@ export function HeroSlider() {
   };
 
   return (
-    <section className="relative w-full h-[100svh] min-h-[520px] md:h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0a]">
+    <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-[#0a0a0a]">
       {/* One active background video only. This avoids starting three large MP4 decoders on mobile. */}
       <div className="absolute inset-0 w-full h-full bg-[#0a0a0a]">
         <video
           key={activeSlide.id}
           ref={videoRef}
-          src={activeSlide.video}
           autoPlay
           loop
           muted
@@ -131,7 +130,9 @@ export function HeroSlider() {
           onPlaying={() => setVideoPlaying(true)}
           onPause={() => setVideoPlaying(false)}
           className="absolute inset-0 w-full h-full object-cover opacity-100 contrast-[1.15] saturate-[0.80] brightness-[0.75]"
-        />
+        >
+          <source src={activeSlide.video} type="video/mp4" />
+        </video>
 
         {/* Cinematic Hollywood Filter & Radial Vignette */}
         <div className="absolute inset-0 bg-[#0a0a0a]/30 pointer-events-none mix-blend-multiply" />
