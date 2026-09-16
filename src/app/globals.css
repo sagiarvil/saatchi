@@ -66,13 +66,21 @@
   }
 }
 
+/* Hero media visibility is explicit and independent of responsive breakpoints. */
+[data-hero-video="true"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  visibility: visible;
+  object-fit: cover;
+}
 
-/* KESİN EMİR: CİHAZ HAREKET ENGELLEME (REDUCE MOTION) AYARLARINI KIR VE ANİMASYONLARI %100 ÇALIŞTIR */
+/* Respect reduced-motion without globally rewriting animation/transition timing.
+   Hero video remains present in the DOM and is not hidden by this policy. */
 @media (prefers-reduced-motion: reduce) {
-  *, ::before, ::after {
-    animation-duration: inherit !important;
-    animation-iteration-count: inherit !important;
-    transition-duration: inherit !important;
-    scroll-behavior: smooth !important;
+  html {
+    scroll-behavior: auto;
   }
 }
