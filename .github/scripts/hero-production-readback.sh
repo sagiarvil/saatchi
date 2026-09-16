@@ -14,12 +14,24 @@ tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
 echo "== Production homepage readback =="
-http_code="$(curl -sS -L --retry 2 --connect-timeout 10 --max-time 60 -A "$IOS_UA" -o "$tmp/home.html" -w '%{http_code}' "$BASE_URL/")"
-echo "homepage HTTP=$http_code bytes=$(stat -c%s "$tmp/home.html")"
+home_headers="$tmp/home.headers"
+http_code="$(curl -sS -L --retry 2 --connect-timeout 10 --max-time 60 -A "$IOS_UA" -D "$home_headers" -o "$tmp/home.html" -w '%{http_code}' "$BASE_URL/")"
+server_header="$(awk 'BEGIN{IGNORECASE=1} /^server:/ {$1=""; sub(/^ /,""); v=$0} END {gsub(/\r/,"",v); print v}' "$home_headers")"
+cache_header="$(awk 'BEGIN{IGNORECASE=1} /^cache-control:/ {$1=""; sub(/^ /,""); v=$0} END {gsub(/\r/,"",v); print v}' "$home_headers")"
+echo "homepage HTTP=$http_code bytes=$(stat -c%s "$tmp/home.html") server='${server_header:-missing}' cache='${cache_header:-missing}'"
 [ "$http_code" = "200" ] || fail "homepage returned HTTP=$http_code"
 
 grep -Fq 'data-hero-root="true"' "$tmp/home.html" || fail "live homepage does not contain current data-hero-root marker"
 grep -Fq '/videos/hero1.mp4' "$tmp/home.html" || fail "live homepage does not reference hero1.mp4"
+
+echo "== Live runtime shape probe =="
+for route in /api/payment /api/gib; do
+  route_headers="$tmp/$(echo "$route" | tr '/' '_').headers"
+  route_code="$(curl -sS -L --retry 1 --connect-timeout 10 --max-time 30 -A "$IOS_UA" -D "$route_headers" -o /dev/null -w '%{http_code}' "$BASE_URL$route")"
+  route_allow="$(awk 'BEGIN{IGNORECASE=1} /^allow:/ {$1=""; sub(/^ /,""); v=$0} END {gsub(/\r/,"",v); print v}' "$route_headers")"
+  route_server="$(awk 'BEGIN{IGNORECASE=1} /^server:/ {$1=""; sub(/^ /,""); v=$0} END {gsub(/\r/,"",v); print v}' "$route_headers")"
+  echo "$route GET HTTP=$route_code Allow='${route_allow:-missing}' Server='${route_server:-missing}'"
+done
 
 echo "== Production video binary readback =="
 for name in hero1.mp4 hero2.mp4 hero3.mp4; do
