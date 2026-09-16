@@ -38,6 +38,30 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Inspect hero video mobile compatibility
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in public/videos/hero*.mp4; do
+            echo "=== $file ==="
+            ffprobe -v error \
+              -select_streams v:0 \
+              -show_entries stream=codec_name,profile,pix_fmt,width,height,level,r_frame_rate \
+              -of default=noprint_wrappers=1 "$file"
+            echo
+          done
+
+      - name: Probe current production media delivery
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "=== homepage ==="
+          curl -sSIL --max-time 20 https://saatchi.watch/ | sed -n '1,30p'
+          echo "=== hero1 full headers ==="
+          curl -sSIL --max-time 20 https://saatchi.watch/videos/hero1.mp4 | sed -n '1,40p'
+          echo "=== hero1 range request ==="
+          curl -sS -D - -o /dev/null --max-time 20 -H 'Range: bytes=0-1023' https://saatchi.watch/videos/hero1.mp4 | sed -n '1,40p'
+
       - name: Verify Cloudflare release credentials
         shell: bash
         run: |
