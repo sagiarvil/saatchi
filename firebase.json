@@ -1,27 +1,12 @@
 {
   "hosting": {
     "site": "saatchi",
-    "source": ".",
+    "public": "out",
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**",
-      ".firebase/**"
+      "**/node_modules/**"
     ],
-    "frameworksBackend": {
-      "region": "us-central1"
-    },
-    "cleanUrls": true,
-    "headers": [
-      {
-        "source": "/videos/**",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public,max-age=3600,must-revalidate"
-          }
-        ]
-      }
-    ]
+    "cleanUrls": true
   }
 }
