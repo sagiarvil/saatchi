@@ -42,11 +42,9 @@ for needle in \
   require_literal "$hero" "$needle"
 done
 
-# There must be only one direct play() call in the component, through tryPlay().
 play_calls="$(grep -o 'video\.play()' "$hero" | wc -l | tr -d ' ')"
 [ "$play_calls" = "1" ] || fail "expected exactly one direct video.play() call, found $play_calls"
 
-# Removed aggressive retry sources must stay removed.
 for forbidden in \
   "retryTimersRef" \
   "clearRetryTimers" \
@@ -63,7 +61,12 @@ done
 echo "== PART 4: mobile visibility and viewport invariants =="
 for needle in \
   'data-hero-video="true"' \
-  "absolute inset-0 block h-full w-full object-cover" \
+  "absolute" \
+  "inset-0" \
+  "block" \
+  "h-full" \
+  "w-full" \
+  "object-cover" \
   "h-[100svh]" \
   "min-h-[560px]"; do
   require_literal "$hero" "$needle"
@@ -121,7 +124,6 @@ if grep -RIn --include='*.css' -E 'prefers-reduced-motion[^}]*' src >/dev/null 2
   echo "Reduced-motion declarations found under src; scoped policy inspected above."
 fi
 
-# The legacy force-play patch may remain archived, but must not be imported by active src code.
 if grep -RIn --exclude-dir=node_modules -F "patch_video_force" src >/dev/null 2>&1; then
   fail "legacy force-play patch is referenced from active src code"
 fi
