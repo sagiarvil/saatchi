@@ -1,0 +1,30 @@
+name: Hero Production Readback
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/components/ui/HeroSlider.tsx'
+      - 'src/app/globals.css'
+      - 'public/videos/hero1.mp4'
+      - 'public/videos/hero2.mp4'
+      - 'public/videos/hero3.mp4'
+      - 'postcss.config.mjs'
+      - '.github/scripts/hero-production-readback.sh'
+      - '.github/workflows/hero-production-readback.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  readback:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Verify production equals repository
+        env:
+          HERO_PRODUCTION_URL: https://saatchi.watch
+        run: bash .github/scripts/hero-production-readback.sh
