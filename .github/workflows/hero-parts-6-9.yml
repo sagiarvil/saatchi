@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'src/components/ui/HeroSlider.tsx'
+      - 'src/app/globals.css'
       - 'public/videos/**'
       - '.github/scripts/hero-part6-9-verify.sh'
       - '.github/workflows/hero-parts-6-9.yml'
