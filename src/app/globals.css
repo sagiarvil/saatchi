@@ -204,6 +204,18 @@
   transform: translateY(0);
 }
 
+/* A hard media error must never make text or CTA wait behind entrance animation. */
+[data-hero-root="true"][data-hero-media-state="failed"] [data-hero-content="active"] div,
+[data-hero-root="true"][data-hero-media-state="failed"] [data-hero-content="active"] h2,
+[data-hero-root="true"][data-hero-media-state="failed"] [data-hero-content="active"] h1,
+[data-hero-root="true"][data-hero-media-state="failed"] [data-hero-content="active"] p,
+[data-hero-root="true"][data-hero-media-state="failed"] [data-hero-content="active"] [data-hero-cta="true"] {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s;
+  transition-duration: 0s;
+}
+
 [data-hero-content] h2 {
   margin: 0 0 8px;
   color: rgba(255, 255, 255, 0.9);
