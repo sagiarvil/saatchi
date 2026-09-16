@@ -1,85 +1,107 @@
 import { NextResponse } from 'next/server';
-import crypto from 'crypto';
+import { verifyVipToken } from '@/lib/vip-token';
 
-// SAATCHI VIP ÖDEME ALTYAPISI - KUVEYT TURK / PAYTR ENTEGRASYON KODU
-// Üretim standartlarındadır, ortam değişkenleri (API key) olmadığında graceful fallback yapar.
+export const dynamic = 'force-dynamic';
+
+const BELGIN_CREATE_PAYMENT_URL = process.env.BELGIN_PAYMENT_CREATE_URL || 'https://us-central1-carbon-web-1265b.cloudfunctions.net/createPayment';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { custName, custIdentity, amount, cardNumber } = body;
+    const token = String(body.token || '');
+    const vip = verifyVipToken(token);
 
-    const numericAmount = parseFloat(amount.toString().replace(/[^0-9.-]+/g,""));
-    if (isNaN(numericAmount) || numericAmount <= 0) {
-      throw new Error("Geçersiz tutar.");
+    const customerName = String(body.custName || '').trim().slice(0, 150);
+    const customerPhone = String(body.custPhone || '').trim().slice(0, 50);
+    const customerIdentity = String(body.custIdentity || '').trim().slice(0, 50);
+    const customerAddress = String(body.custAddress || '').trim().slice(0, 1000);
+    const email = String(body.email || '').trim().slice(0, 200);
+
+    if (!customerName || !customerPhone || !customerIdentity) {
+      return NextResponse.json({ status: 'error', message: 'Ad soyad, telefon ve kimlik bilgisi zorunludur.' }, { status: 400 });
+    }
+    if (body.termsAccepted !== true || body.preInformationAccepted !== true || body.highValueDeliveryAccepted !== true) {
+      return NextResponse.json({ status: 'error', message: 'Zorunlu sözleşme ve teslim koşulları onaylanmalıdır.' }, { status: 400 });
     }
 
-    const orderId = `SAATCHI-${Date.now()}-${crypto.randomBytes(4).toString('hex').toUpperCase()}`;
-    const amountForBank = Math.round(numericAmount * 100); 
-
-    // PayTR / KuveytTurk Credentials
-    const merchant_id = process.env.PAYTR_MERCHANT_ID || '';
-    const merchant_key = process.env.PAYTR_MERCHANT_KEY || '';
-    const merchant_salt = process.env.PAYTR_MERCHANT_SALT || '';
-
-    // EĞER API ANAHTARLARI GİRİLMİŞSE GERÇEK 3D PAYLOAD ÜRET:
-    if (merchant_id && merchant_key && merchant_salt) {
-      const user_ip = request.headers.get('x-forwarded-for') || '127.0.0.1';
-      const user_basket = JSON.stringify([["VIP Saat Tahsilatı", numericAmount.toString(), 1]]);
-      const hash_str = merchant_id + user_ip + orderId + 'saatchi' + '1' + user_basket + '0' + '1' + '0' + '1' + amountForBank.toString() + merchant_salt;
-      const paytr_token = crypto.createHmac('sha256', merchant_key).update(hash_str).digest('base64');
-      
-      // Gerçek 3D Secure yönlendirmesi
+    const configuredProvider = String(process.env.SAATCHI_PAYMENT_PROVIDER || '').trim().toUpperCase();
+    if (!configuredProvider) {
       return NextResponse.json({
-        status: 'success',
-        message: '3D Secure başlatılıyor.',
-        paymentUrl: `https://www.paytr.com/odeme/guvenli/${paytr_token}`
-      });
+        status: 'error',
+        code: 'PAYMENT_PROVIDER_NOT_CONFIGURED',
+        message: 'Ödeme kuruluşu henüz aktive edilmedi. Sistem sağlayıcıdan bağımsız olarak hazır; aktif kuruluş bilgisi tanımlanmalıdır.'
+      }, { status: 503 });
     }
 
-    // API ANAHTARLARI YOKSA ALTYAPI HAZIRLIK (NO-MOCK) FALLBACK:
-    // BELGIN BACKEND'INE SİPARİŞİ KAYDET
-    const internalToken = crypto.createHash('sha256').update(orderId + amountForBank.toString()).digest('hex');
+    const idempotencyKey = `SAATCHI:${vip.id}`;
+    const forwardedFor = request.headers.get('x-forwarded-for') || '';
+    const userAgent = request.headers.get('user-agent') || 'Saatchi VIP Checkout';
 
-    try {
-      await fetch('https://us-central1-carbon-web-1265b.cloudfunctions.net/createAdminOrder', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-saatchi-secret': 'saatchi_belgin_integration_2026'
-        },
-        body: JSON.stringify({
-          orderId,
-          customerName: custName || 'Saatchi Müşterisi',
-          customerIdentity: custIdentity || '11111111111',
-          totalAmount: numericAmount,
-          source: 'saatchi',
-          paymentMethod: 'CREDIT_CARD_POS',
-          provider: 'SAATCHI_PAYTR_MOCK',
-          invoiceType: 'WATCH',
-          productName: 'Lüks Saat Tahsilatı',
-          isEft: false
-        })
-      });
-    } catch (e) {
-      console.error("Belgin integration error:", e);
-    }
-    
-    return NextResponse.json({
-      status: 'success',
-      message: 'Ödeme altyapısı PayTR/KuveytTürk için hazırdır. Merchant API anahtarları yapılandırıldığında yönlendirme aktif olacaktır.',
-      data: {
-        orderId,
-        amountForBank,
-        internalToken,
-        status: 'PENDING_MERCHANT_KEYS'
-      }
+    const belginResponse = await fetch(BELGIN_CREATE_PAYMENT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': userAgent,
+        ...(forwardedFor ? { 'X-Forwarded-For': forwardedFor } : {})
+      },
+      cache: 'no-store',
+      body: JSON.stringify({
+        source: 'SAATCHI',
+        channel: 'saatchi.watch',
+        provider: configuredProvider,
+        idempotencyKey,
+        isVipPayment: true,
+        vipToken: token,
+        vipTitle: vip.name,
+        title: vip.name,
+        productName: vip.name,
+        items: [{ id: vip.id, name: vip.name, qty: 1, isVipCustom: true }],
+        user_name: customerName,
+        user_phone: customerPhone,
+        email,
+        customerIdentity,
+        customerAddress,
+        deliveryMethod: 'showroom',
+        termsAccepted: true,
+        preInformationAccepted: true,
+        highValueDeliveryAccepted: true,
+        marketingConsent: body.marketingConsent === true,
+        legalPresentation: {
+          presentedAt: String(body.presentedAt || new Date().toISOString()),
+          acceptedAt: new Date().toISOString(),
+          source: 'SAATCHI-VIP'
+        }
+      })
     });
 
-  } catch (error: any) {
+    const text = await belginResponse.text();
+    let data: any;
+    try { data = JSON.parse(text); } catch { data = { success: false, message: text || 'Belgin ödeme servisi geçersiz yanıt verdi.' }; }
+
+    if (!belginResponse.ok || data.success !== true) {
+      return NextResponse.json({
+        status: 'error',
+        code: data.code || 'BELGIN_PAYMENT_CREATE_FAILED',
+        message: data.message || 'Ödeme oturumu oluşturulamadı.'
+      }, { status: belginResponse.status >= 400 ? belginResponse.status : 502 });
+    }
+
     return NextResponse.json({
-      status: 'error',
-      message: error.message || 'Ödeme altyapısında bir hata oluştu.'
-    }, { status: 400 });
+      status: 'success',
+      message: 'Güvenli ödeme oturumu oluşturuldu.',
+      orderId: data.merchant_oid,
+      provider: data.provider,
+      paymentType: data.paymentType,
+      redirectUrl: data.redirectUrl || data.iframeUrl || data.gatewayUrl || null,
+      gatewayUrl: data.gatewayUrl || null,
+      iframeUrl: data.iframeUrl || null,
+      formHtml: data.formHtml || null,
+      formData: data.formData || data.postParams || null,
+      evidenceId: data.evidenceId || null,
+      deliveryMethod: data.deliveryMethod || 'showroom'
+    }, { headers: { 'Cache-Control': 'no-store' } });
+  } catch (error: any) {
+    console.error('[SAATCHI PAYMENT]', error?.message || error);
+    return NextResponse.json({ status: 'error', message: error?.message || 'Ödeme oturumu oluşturulamadı.' }, { status: 400 });
   }
 }
