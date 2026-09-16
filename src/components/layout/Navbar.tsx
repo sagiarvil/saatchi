@@ -236,7 +236,7 @@ export function Navbar() {
                     onClick={() => setSearchOpen(false)}
                     className="group flex items-center p-3 md:p-4 bg-white border border-gray-200 rounded-2xl hover:border-[#0A3D2E]/40 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300"
                   >
-                    <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 bg-[radial-gradient(circle_at_50%_50%,_#ffffff_30%,_#f8f6f0_100%)] border border-gray-100 rounded-xl p-2 mr-4 md:mr-5 flex items-center justify-center overflow-hidden">
+                    <div className="relative w-16 h-16 md:w-20 md:h-20 shrink-0 bg-[radial-gradient(circle_at_50%_50%,_#ffffff_30%,_#f8f6f0_100%)] border border-gray-100 rounded-xl p-2 mr-4 md:mr-5 flex items-center justify-center overflow-hidden">
                       {watch.image ? (
                         <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-2 group-hover:scale-110 transition-transform duration-500" />
                       ) : (
