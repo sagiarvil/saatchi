@@ -7,6 +7,7 @@ on:
     branches: [main]
     paths:
       - 'src/components/ui/HeroSlider.tsx'
+      - 'src/app/globals.css'
       - 'public/videos/**'
       - '.github/scripts/hero-ci-guard.sh'
       - '.github/workflows/hero-mobile-firebase.yml'
