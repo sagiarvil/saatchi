@@ -66,15 +66,289 @@
   }
 }
 
+/*
+ * Hero critical rendering contract.
+ * These rules are deliberately plain scoped CSS so the homepage hero remains
+ * stable even if utility-CSS generation is unavailable in a build/runtime.
+ * They do not alter any site-wide layout or deployment architecture.
+ */
+[data-hero-root="true"],
+[data-hero-root="true"] * {
+  box-sizing: border-box;
+}
+
+[data-hero-root="true"] {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  width: 100%;
+  height: 100svh;
+  min-height: min(560px, 100svh);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+@supports not (height: 100svh) {
+  [data-hero-root="true"] {
+    height: 100vh;
+    min-height: min(560px, 100vh);
+  }
+}
+
+[data-hero-background="true"] {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0a0a0a;
+}
+
+[data-hero-fallback="true"] {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  visibility: visible;
+  transform: scale(1.08);
+  transform-origin: center;
+}
+
 /* Hero media visibility is explicit and independent of responsive breakpoints. */
 [data-hero-video="true"] {
   position: absolute;
   inset: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   display: block;
   visibility: visible;
   object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 500ms ease;
+  will-change: opacity;
+}
+
+[data-hero-root="true"][data-hero-media-state="playing"] [data-hero-video="true"] {
+  opacity: 1;
+}
+
+[data-hero-overlay="true"] {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  visibility: visible;
+}
+
+[data-hero-background="true"] > [data-hero-overlay="true"]:nth-of-type(2) {
+  background: rgba(10, 10, 10, 0.25);
+  mix-blend-mode: multiply;
+}
+
+[data-hero-background="true"] > [data-hero-overlay="true"]:nth-of-type(3) {
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.35) 58%, rgba(0, 0, 0, 0.85) 100%);
+}
+
+[data-hero-background="true"] > [data-hero-overlay="true"]:nth-of-type(4) {
+  top: auto;
+  height: 66.6667%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.45), transparent);
+}
+
+[data-hero-content] {
+  position: absolute;
+  inset: 0;
+  transition: opacity 650ms ease;
+}
+
+[data-hero-content="active"] {
+  z-index: 10;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+[data-hero-content="inactive"] {
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-hero-content] > div {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 24px max(48px, env(safe-area-inset-bottom));
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: left;
+}
+
+[data-hero-content="active"] h2,
+[data-hero-content="active"] h1,
+[data-hero-content="active"] p,
+[data-hero-content="active"] [data-hero-cta="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-hero-content] h2 {
+  margin: 0 0 8px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+[data-hero-content] h1 {
+  max-width: 48rem;
+  margin: 0 0 20px;
+  white-space: pre-line;
+  color: #ffffff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 200;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
+[data-hero-content] p {
+  max-width: 36rem;
+  margin: 0 0 32px;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+[data-hero-cta="true"] {
+  display: inline-block;
+  border-radius: 9999px;
+  background: #ffffff;
+  padding: 12px 24px;
+  color: #111827;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 250ms ease;
+}
+
+[data-hero-cta="true"]:hover {
+  background: #f3f4f6;
+}
+
+[data-hero-nav="true"] {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transform: translateY(-50%);
+}
+
+[data-hero-nav="true"] button {
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
+  min-height: 6px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ffffff;
+  border-radius: 9999px;
+  background: transparent;
+  appearance: none;
+}
+
+@media (min-width: 768px) {
+  [data-hero-content] > div {
+    padding-right: 48px;
+    padding-bottom: max(64px, env(safe-area-inset-bottom));
+    padding-left: 48px;
+  }
+
+  [data-hero-content] h2 {
+    font-size: 10px;
+  }
+
+  [data-hero-content] h1 {
+    font-size: 40px;
+  }
+
+  [data-hero-content] p {
+    font-size: 15px;
+  }
+
+  [data-hero-cta="true"] {
+    font-size: 10px;
+  }
+
+  [data-hero-nav="true"] {
+    right: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  [data-hero-content] h1 {
+    font-size: 44px;
+  }
+}
+
+/* Short landscape screens must retain every hero element inside the viewport. */
+@media (max-height: 480px) and (orientation: landscape) {
+  [data-hero-content] > div {
+    padding: 0 48px max(14px, env(safe-area-inset-bottom)) 20px;
+  }
+
+  [data-hero-content] h2 {
+    margin-bottom: 4px;
+    font-size: 8px;
+    line-height: 1.1;
+  }
+
+  [data-hero-content] h1 {
+    max-width: 70%;
+    margin-bottom: 7px;
+    font-size: 22px;
+    line-height: 1.05;
+  }
+
+  [data-hero-content] p {
+    max-width: 72%;
+    margin-bottom: 9px;
+    font-size: 11px;
+    line-height: 1.25;
+  }
+
+  [data-hero-cta="true"] {
+    padding: 7px 14px;
+    font-size: 8px;
+  }
+
+  [data-hero-nav="true"] {
+    right: 14px;
+    gap: 9px;
+  }
 }
 
 /* Respect reduced-motion without globally rewriting animation/transition timing.
