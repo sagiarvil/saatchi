@@ -33,3 +33,11 @@ Hiçbir kod bloğu şu 4 kapı doğrulanmadan onaylanamaz:
 ## 6. KESİN YASAK (CHRONO24 KELİMESİ)
 - Fiyatlama Chrono24 mantığıyla yapılsa bile, **"Chrono24" kelimesi projenin HİÇBİR YERİNDE (UI, metinler, JSON) geçmeyecektir.**
 - Bunun yerine "Global İsviçre Saat Borsası", "Uluslararası Lüks Saat Borsası", "Global Watch Index" gibi terimler kullanılacaktır. Bu kalıcı ve evrensel bir kuraldır.
+
+## 7. DEPLOYMENT / HOSTING SOURCE OF TRUTH — DEĞİŞMEZ KURAL
+- `saatchi.watch` üretim hosting altyapısı **Firebase Hosting**'dir.
+- Firebase project ID: `studio-7658156126-ffb8e`.
+- Firebase Hosting site ID / target: `saatchi`.
+- `.firebaserc` ve `firebase.json` üretim dağıtımının tek yetkili kaynaklarıdır.
+- Repo içinde `wrangler`, `OpenNext Cloudflare` veya Cloudflare deploy kalıntıları bulunsa dahi bunlar üretim hosting kaynağı olarak yorumlanamaz ve `saatchi.watch` Cloudflare'a deploy EDİLEMEZ.
+- Kullanıcı açıkça hosting mimarisini değiştirmedikçe tüm build/deploy/rollback işlemleri Firebase Hosting üzerinden yapılır.
