@@ -24,6 +24,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Report Firebase deploy credential readiness
+        env:
+          FIREBASE_SA_PROJECT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STUDIO_7658156126_FFB8E }}
+          FIREBASE_SA_GENERIC: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          FIREBASE_TOKEN_VALUE: ${{ secrets.FIREBASE_TOKEN }}
+          GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+        run: |
+          if [ -n "$FIREBASE_SA_PROJECT" ] || [ -n "$FIREBASE_SA_GENERIC" ] || [ -n "$FIREBASE_TOKEN_VALUE" ] || [ -n "$GCP_SA_KEY" ]; then
+            echo 'FIREBASE_DEPLOY_AUTH=AVAILABLE'
+          else
+            echo 'FIREBASE_DEPLOY_AUTH=NOT_CONFIGURED'
+          fi
       - name: Verify production equals repository
         env:
           HERO_PRODUCTION_URL: https://saatchi.watch
