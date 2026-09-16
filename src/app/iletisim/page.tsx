@@ -1,96 +1,102 @@
-import Link from 'next/link';
-import { MapPin, Phone, MessageCircle, Clock, ChevronRight } from 'lucide-react';
+import { ArrowUpRight, Clock3, MapPin, MessageCircle, Navigation, PhoneCall, ShieldCheck } from 'lucide-react';
+
+const address = 'Menderes Caddesi No:231/B, Buca / İzmir';
+const mapsUrl = 'https://share.google/mhx0N9skVc5ZibBPM';
+const mapEmbed = 'https://www.google.com/maps?q=Menderes%20Caddesi%20No%3A231%2FB%20Buca%20Izmir&output=embed';
 
 export default function IletisimPage() {
   return (
-    <div className="bg-[#0a0a0a] min-h-screen">
-      <main className="flex-grow flex flex-col items-center w-full pb-32">
-        
-        {/* PREMIUM HERO SECTION */}
-        <section className="relative w-full h-[60vh] flex flex-col items-center justify-center overflow-hidden bg-black border-b border-[#222]">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1a1a1a] via-black to-black z-0"></div>
-          
-          <div className="relative z-20 text-center px-4 max-w-4xl mt-20">
-            <h2 className="text-[#C2A768] tracking-[0.4em] uppercase text-xs md:text-sm font-extrabold mb-6 flex items-center justify-center gap-4">
-              <span className="w-8 h-px bg-[#C2A768]/50"></span>
-              VIP Müşteri Hizmetleri
-              <span className="w-8 h-px bg-[#C2A768]/50"></span>
-            </h2>
-            <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-tight tracking-tight">
-              Ayrıcalıklı <span className="text-white/70 italic">İletişim</span>
-            </h1>
-          </div>
-        </section>
-
-        {/* İLETİŞİM BİLGİLERİ */}
-        <section className="w-full max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8 relative z-30 -mt-20">
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            {/* Showroom Card */}
-            <div className="flex flex-col items-center text-center p-12 bg-[#0d0d0d] border border-[#222] hover:border-[#C2A768]/40 transition-colors duration-500 shadow-2xl">
-              <MapPin className="w-10 h-10 text-[#C2A768] mb-8" strokeWidth={1} />
-              <h4 className="text-lg font-serif text-white mb-4 uppercase tracking-[0.2em]">Fiziksel Showroom</h4>
-              <p className="text-white/50 text-sm leading-relaxed mb-8 font-light" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
-                Merkez Mağazamız<br/>
-                Menderes Caddesi No:231/B<br/>
-                Buca / İzmir<br/>
-                Şirinyer / Çarşı Meydanı Mevkii
-              </p>
-              <a href="https://share.google/mhx0N9skVc5ZibBPM" target="_blank" rel="noopener noreferrer" className="mt-auto flex items-center gap-2 text-[#C2A768] hover:text-white uppercase tracking-widest text-[10px] font-bold transition-colors">
-                Haritada Aç <ChevronRight className="w-3 h-3" />
-              </a>
+    <div className="min-h-screen bg-[#0d0c0b] text-[#f4f0e8]">
+      <main>
+        <section className="relative overflow-hidden border-b border-white/10">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(107,31,36,0.22),transparent_32%),linear-gradient(180deg,#151311_0%,#0d0c0b_100%)]" />
+          <div className="relative mx-auto grid max-w-7xl gap-8 px-5 py-16 sm:px-8 md:py-20 lg:grid-cols-[1fr_420px] lg:items-end lg:px-12">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#b78284]">Concierge / İzmir</p>
+              <h1 className="mt-4 max-w-3xl text-4xl font-medium leading-[1.03] tracking-[-0.04em] sm:text-5xl md:text-6xl">
+                Doğrudan, sakin,<br />kişisel iletişim.
+              </h1>
             </div>
-
-            {/* WhatsApp Card - Highlighted */}
-            <div className="flex flex-col items-center text-center p-12 bg-gradient-to-b from-[#151515] to-[#0a0a0a] border border-[#C2A768]/30 transform md:-translate-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-              <MessageCircle className="w-12 h-12 text-[#C2A768] mb-8" strokeWidth={1} />
-              <h4 className="text-lg font-serif text-white mb-4 uppercase tracking-[0.2em]">VIP WhatsApp</h4>
-              <p className="text-white/50 text-sm leading-relaxed mb-6 font-light" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
-                Anlık Ekspertiz, Takas & Fiyat Bilgisi İçin Doğrudan Temsilciye Bağlanın.
+            <div className="border-l border-[#7f262b] pl-6">
+              <p className="text-sm leading-7 text-[#bfb7ae]">
+                Ürün inceleme, showroom randevusu, takas ve yüksek değerli teslim süreçlerinde aracı katman olmadan doğrudan ekibimize ulaşın.
               </p>
-              <a href="https://wa.me/905419305372" className="text-2xl font-light text-white mb-8 hover:text-[#C2A768] transition-colors tracking-wider">
-                +90 541 930 53 72
-              </a>
-              <a href="https://wa.me/905419305372?text=Merhaba,%20Showroom%20randevusu%20ve%20urunler%20hakkinda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" className="mt-auto bg-white text-black hover:bg-gray-200 px-8 py-4 rounded-full uppercase tracking-widest text-[10px] font-bold transition-all w-full text-center">
-                Mesaj Gönder
-              </a>
-            </div>
-
-            {/* Phone Card */}
-            <div className="flex flex-col items-center text-center p-12 bg-[#0d0d0d] border border-[#222] hover:border-[#C2A768]/40 transition-colors duration-500 shadow-2xl">
-              <Phone className="w-10 h-10 text-[#C2A768] mb-8" strokeWidth={1} />
-              <h4 className="text-lg font-serif text-white mb-4 uppercase tracking-[0.2em]">Müşteri Temsilcisi</h4>
-              <p className="text-white/50 text-sm leading-relaxed mb-6 font-light" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
-                Özel Danışmanlık ve Santral Hattımız
-              </p>
-              <a href="tel:+905398234141" className="text-2xl font-light text-white mb-8 hover:text-[#C2A768] transition-colors tracking-wider">
-                +90 539 823 41 41
-              </a>
-              <div className="mt-auto w-full border-t border-[#222] pt-6 flex flex-col items-center">
-                <Clock className="w-4 h-4 text-[#C2A768]/50 mb-2" />
-                <p className="text-white/30 text-[10px] tracking-widest uppercase">Pazartesi – Cumartesi</p>
-                <p className="text-white/50 text-sm mt-1">09:00 – 19:00</p>
+              <div className="mt-5 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-[#827a73]">
+                <Clock3 className="h-4 w-4 text-[#c2a768]" strokeWidth={1.3} />
+                Pazartesi – Cumartesi · 09:00 – 19:00
               </div>
             </div>
-
-          </div>
-
-          {/* ACTIVE GOOGLE MAP EMBED - CINEMATIC */}
-          <div className="mt-24 w-full h-[500px] border border-[#222] relative overflow-hidden rounded-xl">
-            <div className="absolute inset-0 bg-black/20 z-10 pointer-events-none"></div>
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12509.734898144078!2d27.1353118!3d38.3846665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14bbdfa0026e6495%3A0xc3458c55dc4b321a!2zxZ5pcmlueWVyLCBCdWNhL8Swem1pcg!5e0!3m2!1str!2str!4v1700000000000!5m2!1str!2str" 
-              width="100%" 
-              height="100%" 
-              style={{ border: 0, filter: 'grayscale(100%) contrast(1.2) opacity(0.8)' }} 
-              allowFullScreen={true} 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
           </div>
         </section>
 
+        <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-16 lg:px-12">
+          <div className="grid gap-px border border-white/10 bg-white/10 md:grid-cols-3">
+            <article className="bg-[#121110] p-7 md:p-8">
+              <MapPin className="h-6 w-6 text-[#c2a768]" strokeWidth={1.2} />
+              <p className="mt-7 text-[10px] font-semibold uppercase tracking-[0.23em] text-[#8c837b]">Fiziksel Showroom</p>
+              <h2 className="mt-3 text-xl font-medium text-[#f4f0e8]">Buca / İzmir</h2>
+              <p className="mt-4 text-sm leading-7 text-[#a69f97]">{address}<br />Şirinyer / Çarşı Meydanı mevkii</p>
+              <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d4c7b8] transition-colors hover:text-white">
+                Yol tarifi <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </article>
+
+            <article className="bg-[linear-gradient(160deg,#1a1514_0%,#121110_60%,#1a0d0f_100%)] p-7 md:p-8">
+              <MessageCircle className="h-6 w-6 text-[#c2a768]" strokeWidth={1.2} />
+              <p className="mt-7 text-[10px] font-semibold uppercase tracking-[0.23em] text-[#8c837b]">VIP WhatsApp</p>
+              <a href="https://wa.me/905419305372" className="mt-3 block text-2xl font-light tracking-[-0.02em] text-[#f4f0e8] transition-colors hover:text-white">+90 541 930 53 72</a>
+              <p className="mt-4 text-sm leading-7 text-[#a69f97]">Model, kondisyon, takas ve randevu için doğrudan danışman hattı.</p>
+              <a href="https://wa.me/905419305372?text=Merhaba,%20SAATCHI%20showroom%20randevusu%20ve%20saatler%20hakkinda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex items-center gap-2 bg-[#f4f0e8] px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#171311] transition-colors hover:bg-white">
+                Mesaj gönder <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </article>
+
+            <article className="bg-[#121110] p-7 md:p-8">
+              <PhoneCall className="h-6 w-6 text-[#c2a768]" strokeWidth={1.2} />
+              <p className="mt-7 text-[10px] font-semibold uppercase tracking-[0.23em] text-[#8c837b]">Müşteri Temsilcisi</p>
+              <a href="tel:+905398234141" className="mt-3 block text-2xl font-light tracking-[-0.02em] text-[#f4f0e8] transition-colors hover:text-white">+90 539 823 41 41</a>
+              <p className="mt-4 text-sm leading-7 text-[#a69f97]">Özel danışmanlık, sipariş durumu ve showroom koordinasyonu.</p>
+              <a href="mailto:info@saatchi.watch" className="mt-7 inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#d4c7b8] transition-colors hover:text-white">
+                info@saatchi.watch <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </article>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-5 pb-16 sm:px-8 md:pb-20 lg:px-12">
+          <div className="overflow-hidden border border-white/10 bg-[#11100f]">
+            <div className="flex flex-col gap-5 border-b border-white/10 px-6 py-6 md:flex-row md:items-center md:justify-between md:px-8">
+              <div>
+                <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#b78284]">
+                  <Navigation className="h-4 w-4" strokeWidth={1.3} />
+                  Doğrulanmış showroom konumu
+                </div>
+                <h2 className="mt-2 text-xl font-medium text-[#f4f0e8]">Menderes Caddesi No:231/B</h2>
+                <p className="mt-1 text-sm text-[#8f8780]">Buca / İzmir · Şirinyer Çarşı aksı</p>
+              </div>
+              <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 border border-white/15 px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#e6ddd2] transition-colors hover:border-[#7f262b] hover:bg-[#7f262b]/10">
+                Google Maps’te aç <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+
+            <div className="group relative h-[360px] overflow-hidden bg-[#181614] sm:h-[420px] lg:h-[460px]">
+              <iframe
+                src={mapEmbed}
+                title="SAATCHI Showroom - Buca İzmir"
+                className="h-full w-full grayscale opacity-80 transition-all duration-700 group-hover:grayscale-0 group-hover:opacity-100"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(13,12,11,0.18)_0%,transparent_26%,transparent_70%,rgba(13,12,11,0.22)_100%)]" />
+              <div className="pointer-events-none absolute bottom-5 left-5 hidden items-center gap-2 border border-white/15 bg-black/70 px-4 py-3 text-[10px] uppercase tracking-[0.18em] text-[#f4f0e8] backdrop-blur-md sm:flex">
+                <ShieldCheck className="h-4 w-4 text-[#c2a768]" strokeWidth={1.2} />
+                Showroom konumu · etkileşim için haritayı kullanın
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
   );
