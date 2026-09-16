@@ -8,6 +8,7 @@ on:
     paths:
       - 'src/components/ui/HeroSlider.tsx'
       - 'src/app/globals.css'
+      - 'postcss.config.mjs'
       - 'public/videos/**'
       - '.github/scripts/hero-ci-guard.sh'
       - '.github/workflows/hero-mobile-firebase.yml'
