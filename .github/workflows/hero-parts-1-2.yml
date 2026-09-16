@@ -6,6 +6,8 @@ on:
     paths:
       - 'public/videos/**'
       - 'src/components/ui/HeroSlider.tsx'
+      - 'src/app/globals.css'
+      - 'postcss.config.mjs'
       - '.github/scripts/hero-part1-verify.sh'
       - '.github/workflows/hero-parts-1-2.yml'
   workflow_dispatch:
