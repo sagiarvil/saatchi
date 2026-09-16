@@ -114,16 +114,18 @@ process.stdout.write(hosting && typeof hosting.public === 'string' ? hosting.pub
 NODE
 )"
 
-if [ -n "$public_dir" ]; then
-  echo "Firebase public directory from current config: $public_dir"
+if [ -n "$public_dir" ] && [ -d "$public_dir" ]; then
+  echo "Firebase public directory materialized in this job: $public_dir"
   for name in hero1.mp4 hero2.mp4 hero3.mp4; do
     target="$public_dir/videos/$name"
     if [ ! -s "$target" ]; then
-      fail "Hero asset missing from current deployment artifact: $target"
+      fail "Hero asset missing from materialized deployment artifact: $target"
     else
       echo "$target bytes=$(stat -c%s "$target")"
     fi
   done
+elif [ -n "$public_dir" ]; then
+  echo "Firebase public directory is configured as '$public_dir' but is not materialized by this verification job; live production HTTP probes below are authoritative for deployed delivery."
 else
   echo "No hosting.public directory is configured; static artifact-path check is not applicable."
 fi
@@ -154,6 +156,9 @@ probe() {
   fi
   if [ "$content_type" != "video/mp4" ]; then
     fail "$ua_name $url returned Content-Type=${content_type:-missing}"
+  fi
+  if [ "$code" = "206" ] && [ -z "$content_range" ]; then
+    fail "$ua_name $url returned 206 without Content-Range"
   fi
   rm -f "$headers" "$errfile"
 }
