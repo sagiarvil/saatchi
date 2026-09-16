@@ -60,8 +60,6 @@ export function HeroSlider() {
     const video = videoRef.current;
     if (!video || document.visibilityState === 'hidden') return;
 
-    // A hard media error is terminal for this mounted video. The next slide
-    // receives a fresh video element and can attempt playback normally.
     if (failedVideoRef.current === video) return;
 
     configureInlineAutoplay(video);
@@ -70,7 +68,6 @@ export function HeroSlider() {
     try {
       await video.play();
 
-      // Ignore a stale promise from a previous slide or a superseded attempt.
       if (videoRef.current !== video || playAttemptRef.current !== attempt) return;
       setMediaState('playing');
     } catch (error) {
@@ -121,7 +118,6 @@ export function HeroSlider() {
     window.addEventListener('pointerdown', handleFirstInteraction, { passive: true });
     window.addEventListener('click', handleFirstInteraction, { passive: true });
 
-    // Initial render attempt. Further retries are event-driven only.
     retry();
 
     return () => {
@@ -135,8 +131,6 @@ export function HeroSlider() {
   }, [current, tryPlay]);
 
   useEffect(() => {
-    // Slider lifecycle is intentionally independent from media lifecycle. Even
-    // if no media event ever fires, the hero advances instead of freezing.
     const timer = window.setTimeout(() => {
       setMediaState('loading');
       setCurrent((prev) => (prev + 1) % SLIDES.length);
@@ -163,9 +157,13 @@ export function HeroSlider() {
   };
 
   return (
-    <section className="relative flex h-[100svh] min-h-[560px] w-full flex-col items-center justify-center overflow-hidden bg-[#0a0a0a] md:h-screen">
+    <section
+      data-hero-root="true"
+      data-hero-media-state={mediaState}
+      className="relative flex h-[100svh] min-h-[560px] w-full flex-col items-center justify-center overflow-hidden bg-[#0a0a0a] md:h-screen"
+      style={{ minHeight: 'min(560px, 100svh)' }}
+    >
       <div className="absolute inset-0 z-0 h-full w-full bg-[#0a0a0a]" data-hero-background="true">
-        {/* Layer 1: permanent fallback. It never depends on video state. */}
         <div
           aria-hidden="true"
           data-hero-fallback="true"
@@ -176,8 +174,6 @@ export function HeroSlider() {
           }}
         />
 
-        {/* Layer 2: one active video only. hero1 receives eager preload; later
-            slides avoid speculative full downloads until they become active. */}
         <video
           key={activeSlide.id}
           ref={videoRef}
@@ -200,7 +196,6 @@ export function HeroSlider() {
           style={{ WebkitTransform: 'translate3d(0,0,0)', transform: 'translate3d(0,0,0)' }}
         />
 
-        {/* Layer 3: cinematic overlays remain above fallback/video, but below content. */}
         <div data-hero-overlay="true" className="pointer-events-none absolute inset-0 z-[2] bg-[#0a0a0a]/25 mix-blend-multiply" />
         <div data-hero-overlay="true" className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-black/35 to-black/85" />
         <div data-hero-overlay="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-2/3 bg-gradient-to-t from-black/95 via-black/45 to-transparent" />
