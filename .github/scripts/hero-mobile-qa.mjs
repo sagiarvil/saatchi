@@ -34,8 +34,19 @@ const profiles = [
 ];
 
 const viewportWidths = [320, 360, 375, 390, 414, 430, 768];
-const launchers = { chromium, webkit };
 const browsers = {};
+
+async function launchChromium() {
+  try {
+    const browser = await chromium.launch({ headless: true, channel: 'chrome' });
+    console.log('CHROMIUM_QA_ENGINE=system-chrome');
+    return browser;
+  } catch (error) {
+    console.warn(`WARN system Chrome unavailable; falling back to bundled Chromium: ${String(error)}`);
+    console.log('CHROMIUM_QA_ENGINE=bundled-chromium');
+    return chromium.launch({ headless: true });
+  }
+}
 
 async function newContext(profile, viewport = profile.viewport) {
   return browsers[profile.engine].newContext({
@@ -49,28 +60,31 @@ async function newContext(profile, viewport = profile.viewport) {
 
 async function getHeroState(page) {
   return page.evaluate(() => {
-    const section = document.querySelector('section');
-    const fallback = document.querySelector('[data-hero-fallback="true"]');
-    const video = document.querySelector('[data-hero-video="true"]');
-    const active = document.querySelector('[data-hero-content="active"]');
-    const cta = active?.querySelector('[data-hero-cta="true"]');
-    const title = active?.querySelector('h1');
-    const overlays = [...document.querySelectorAll('[data-hero-overlay="true"]')];
-    const nav = document.querySelector('[data-hero-nav="true"]');
-    const rect = (el) => el ? el.getBoundingClientRect().toJSON() : null;
+    const root = document.querySelector('[data-hero-root="true"]');
+    const fallback = root?.querySelector('[data-hero-fallback="true"]') || null;
+    const video = root?.querySelector('[data-hero-video="true"]') || null;
+    const active = root?.querySelector('[data-hero-content="active"]') || null;
+    const cta = active?.querySelector('[data-hero-cta="true"]') || null;
+    const title = active?.querySelector('h1') || null;
+    const overlays = root ? [...root.querySelectorAll('[data-hero-overlay="true"]')] : [];
+    const nav = root?.querySelector('[data-hero-nav="true"]') || null;
+    const rect = (el) => (el ? el.getBoundingClientRect().toJSON() : null);
     const visible = (el) => {
       if (!el) return false;
       const s = getComputedStyle(el);
       const r = el.getBoundingClientRect();
       return s.display !== 'none' && s.visibility !== 'hidden' && Number.parseFloat(s.opacity || '1') > 0 && r.width > 0 && r.height > 0;
     };
-    const sr = section?.getBoundingClientRect();
+    const rr = root?.getBoundingClientRect();
     const vr = video?.getBoundingClientRect();
+    const fr = fallback?.getBoundingClientRect();
     const viewport = { width: innerWidth, height: innerHeight };
     return {
-      sectionVisible: visible(section),
+      rootVisible: visible(root),
+      sectionVisible: visible(root),
       fallbackVisible: visible(fallback),
       fallbackBackground: fallback ? getComputedStyle(fallback).backgroundImage : '',
+      fallbackCoversHero: Boolean(rr && fr && fr.left <= rr.left + 1 && fr.top <= rr.top + 1 && fr.right >= rr.right - 1 && fr.bottom >= rr.bottom - 1),
       activeVisible: visible(active),
       titleVisible: visible(title),
       titleText: title?.textContent?.trim() || '',
@@ -79,16 +93,18 @@ async function getHeroState(page) {
       titleRect: rect(title),
       videoVisible: visible(video),
       videoRect: rect(video),
-      sectionRect: rect(section),
+      sectionRect: rect(root),
       videoObjectFit: video ? getComputedStyle(video).objectFit : '',
       videoPaused: video instanceof HTMLVideoElement ? video.paused : null,
       videoCurrentTime: video instanceof HTMLVideoElement ? video.currentTime : null,
       videoReadyState: video instanceof HTMLVideoElement ? video.readyState : null,
+      mediaState: root?.getAttribute('data-hero-media-state') || '',
       overlayVisibleCount: overlays.filter(visible).length,
       navVisible: visible(nav),
+      heroHorizontalOverflow: root ? root.scrollWidth > root.clientWidth + 1 : true,
       scrollHeight: document.documentElement.scrollHeight,
       viewport,
-      videoCoversHero: Boolean(sr && vr && Math.abs(sr.width - vr.width) <= 2 && Math.abs(sr.height - vr.height) <= 2),
+      videoCoversHero: Boolean(rr && vr && Math.abs(rr.width - vr.width) <= 2 && Math.abs(rr.height - vr.height) <= 2 && Math.abs(rr.left - vr.left) <= 2 && Math.abs(rr.top - vr.top) <= 2),
       ctaInsideViewport: Boolean(cta && (() => { const r = cta.getBoundingClientRect(); return r.left >= -1 && r.right <= innerWidth + 1 && r.top >= -1 && r.bottom <= innerHeight + 1; })()),
       titleInsideViewport: Boolean(title && (() => { const r = title.getBoundingClientRect(); return r.left >= -1 && r.right <= innerWidth + 1 && r.top >= -1 && r.bottom <= innerHeight + 1; })()),
     };
@@ -96,26 +112,28 @@ async function getHeroState(page) {
 }
 
 function structuralAssertions(scope, state) {
-  record(scope, 'hero first-load visible', state.sectionVisible && state.activeVisible && state.fallbackVisible);
-  record(scope, 'no blank/black-only hero', state.fallbackVisible && state.activeVisible && state.titleVisible && state.fallbackBackground !== 'none');
+  record(scope, 'hero first-load visible', state.rootVisible && state.activeVisible && state.fallbackVisible);
+  record(scope, 'no blank/black-only hero', state.fallbackVisible && state.fallbackCoversHero && state.activeVisible && state.titleVisible && state.fallbackBackground !== 'none');
   record(scope, 'text inside viewport', state.titleVisible && state.titleInsideViewport);
   record(scope, 'CTA visible inside viewport', state.ctaVisible && state.ctaInsideViewport);
   record(scope, 'video fills hero with object-cover', state.videoCoversHero && state.videoObjectFit === 'cover');
   record(scope, 'background/overlay visible', state.fallbackVisible && state.overlayVisibleCount >= 3);
   record(scope, 'hero navigation visible', state.navVisible);
+  record(scope, 'no hero horizontal overflow', !state.heroHorizontalOverflow);
 }
 
 async function waitForPlayback(page, scope) {
   let started = false;
   try {
     await page.waitForFunction(() => {
-      const v = document.querySelector('[data-hero-video="true"]');
+      const root = document.querySelector('[data-hero-root="true"]');
+      const v = root?.querySelector('[data-hero-video="true"]');
       return v instanceof HTMLVideoElement && !v.paused && v.currentTime > 0.05 && v.readyState >= 2;
-    }, null, { timeout: 5500 });
+    }, null, { timeout: 7000 });
     started = true;
   } catch {}
   const state = await getHeroState(page);
-  record(scope, 'video starts', started, { note: `paused=${state.videoPaused} currentTime=${state.videoCurrentTime} readyState=${state.videoReadyState}` });
+  record(scope, 'video starts', started, { note: `state=${state.mediaState} paused=${state.videoPaused} currentTime=${state.videoCurrentTime} readyState=${state.videoReadyState}` });
 }
 
 async function checkScroll(page, scope) {
@@ -138,19 +156,24 @@ async function checkOrientation(page, profile, scope) {
   }
   const portrait = profile.viewport;
   await page.setViewportSize({ width: portrait.height, height: portrait.width });
-  await page.waitForTimeout(250);
+  await page.waitForTimeout(300);
   const landscape = await getHeroState(page);
-  record(scope, 'orientation change', landscape.sectionVisible && landscape.activeVisible && landscape.ctaVisible && landscape.ctaInsideViewport && landscape.videoCoversHero, {
-    note: `landscape=${portrait.height}x${portrait.width} ctaInside=${landscape.ctaInsideViewport}`,
-  });
+  record(
+    scope,
+    'orientation change',
+    landscape.rootVisible && landscape.activeVisible && landscape.titleInsideViewport && landscape.ctaVisible && landscape.ctaInsideViewport && landscape.videoCoversHero && !landscape.heroHorizontalOverflow,
+    { note: `landscape=${portrait.height}x${portrait.width} titleInside=${landscape.titleInsideViewport} ctaInside=${landscape.ctaInsideViewport}` },
+  );
   await page.setViewportSize(portrait);
+  await page.waitForTimeout(100);
 }
 
 async function checkSlider(page, scope, initialTitle) {
   let advanced = false;
   try {
     await page.waitForFunction((oldTitle) => {
-      const active = document.querySelector('[data-hero-content="active"] h1');
+      const root = document.querySelector('[data-hero-root="true"]');
+      const active = root?.querySelector('[data-hero-content="active"] h1');
       return Boolean(active && active.textContent?.trim() && active.textContent.trim() !== oldTitle);
     }, initialTitle, { timeout: 8500 });
     advanced = true;
@@ -166,6 +189,7 @@ async function runDeviceProfile(profile) {
   page.on('pageerror', (error) => pageErrors.push(String(error)));
   try {
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.waitForSelector('[data-hero-root="true"]', { state: 'visible', timeout: 10000 });
     await page.waitForSelector('[data-hero-fallback="true"]', { state: 'attached', timeout: 10000 });
     await page.waitForTimeout(300);
     const initial = await getHeroState(page);
@@ -191,8 +215,9 @@ async function runViewportSweep(profile) {
     const page = await context.newPage();
     try {
       await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
+      await page.waitForSelector('[data-hero-root="true"]', { state: 'visible', timeout: 10000 });
       await page.waitForSelector('[data-hero-fallback="true"]', { state: 'attached', timeout: 10000 });
-      await page.waitForTimeout(150);
+      await page.waitForTimeout(200);
       structuralAssertions(scope, await getHeroState(page));
     } catch (error) {
       record(scope, 'viewport execution', false, { note: String(error) });
@@ -222,13 +247,16 @@ async function runNetworkProfile(name, network) {
   });
   try {
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.waitForSelector('[data-hero-root="true"]', { state: 'visible', timeout: 10000 });
     await page.waitForSelector('[data-hero-fallback="true"]', { state: 'attached', timeout: 10000 });
     const cold = await getHeroState(page);
-    record(scope, 'cold load fallback immediate', cold.sectionVisible && cold.fallbackVisible && cold.activeVisible);
+    record(scope, 'cold load fallback immediate', cold.rootVisible && cold.fallbackVisible && cold.fallbackCoversHero && cold.activeVisible && cold.titleVisible && cold.ctaVisible);
     record(scope, 'cache disabled', true, { note: 'Chromium CDP Network.setCacheDisabled=true' });
     await page.reload({ waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.waitForSelector('[data-hero-root="true"]', { state: 'visible', timeout: 10000 });
+    await page.waitForSelector('[data-hero-fallback="true"]', { state: 'attached', timeout: 10000 });
     const hard = await getHeroState(page);
-    record(scope, 'hard reload fallback immediate', hard.sectionVisible && hard.fallbackVisible && hard.activeVisible);
+    record(scope, 'hard reload fallback immediate', hard.rootVisible && hard.fallbackVisible && hard.fallbackCoversHero && hard.activeVisible && hard.titleVisible && hard.ctaVisible);
     await page.screenshot({ path: path.join(OUT_DIR, `network-${name.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}.png`), fullPage: false });
   } catch (error) {
     record(scope, 'network execution', false, { note: String(error) });
@@ -245,12 +273,14 @@ async function runMediaFailureMode() {
   await page.route('**/videos/*.mp4', (route) => route.abort('failed'));
   try {
     await page.goto(BASE_URL, { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.waitForSelector('[data-hero-root="true"]', { state: 'visible', timeout: 10000 });
     await page.waitForSelector('[data-hero-fallback="true"]', { state: 'attached', timeout: 10000 });
+    await page.waitForTimeout(250);
     const first = await getHeroState(page);
     structuralAssertions(scope, first);
     await checkSlider(page, scope, first.titleText);
     const after = await getHeroState(page);
-    record(scope, 'fallback survives media failure', after.fallbackVisible && after.activeVisible && after.ctaVisible);
+    record(scope, 'fallback survives media failure', after.fallbackVisible && after.fallbackCoversHero && after.activeVisible && after.titleVisible && after.ctaVisible && after.ctaInsideViewport);
     await page.screenshot({ path: path.join(OUT_DIR, 'media-failure-fallback.png'), fullPage: false });
   } catch (error) {
     record(scope, 'failure-mode execution', false, { note: String(error) });
@@ -260,7 +290,7 @@ async function runMediaFailureMode() {
 }
 
 try {
-  browsers.chromium = await chromium.launch({ headless: true });
+  browsers.chromium = await launchChromium();
   browsers.webkit = await webkit.launch({ headless: true });
 
   for (const profile of profiles) await runDeviceProfile(profile);
