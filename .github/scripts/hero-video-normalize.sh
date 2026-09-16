@@ -7,11 +7,19 @@ files=(
   "public/videos/hero3.mp4"
 )
 
-# Quality guardrails for the compatibility transcode. These are internal
-# acceptance thresholds, not claims of a universal perceptual standard.
-min_ssim="0.985"
-min_psnr="36.0"
-crf_candidates=(18 20 22)
+# Immutable pre-normalization source blobs. Using the original VP9/AV1 sources
+# avoids generational H.264-to-H.264 quality loss during later refinements.
+declare -A baseline_blobs=(
+  ["hero1.mp4"]="d76db02fd6802b7fbe876b74e1dd2b736eb9f563"
+  ["hero2.mp4"]="a7ba1cf24e304203a28ea200228f7ec1ccd5e498"
+  ["hero3.mp4"]="d01533d3a66b0f9e0d4a40c4458d938ebca34ea7"
+)
+
+# Conservative internal quality gates. These are evidence thresholds for this
+# project, not a claim that SSIM/PSNR alone define perceptual quality.
+min_ssim="0.990"
+min_psnr="42.0"
+crf_candidates=(22 24 26 28)
 
 if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
   echo "Installing ffmpeg/ffprobe"
@@ -109,29 +117,37 @@ measure_quality() {
   printf '%s %s\n' "$ssim" "$psnr"
 }
 
-echo "== PART 2: mobile-safe video normalization =="
+echo "== PART 2: mobile-safe video normalization / bitrate refinement =="
 
-total_before=0
-total_after=0
+total_original=0
+total_selected=0
 
 for file in "${files[@]}"; do
   if [ ! -s "$file" ]; then
-    echo "ERROR: missing or empty source: $file"
+    echo "ERROR: missing or empty current asset: $file"
     exit 1
   fi
 
   base="$(basename "$file" .mp4)"
-  source_copy="$tmpdir/${base}.source.mp4"
-  cp "$file" "$source_copy"
+  blob="${baseline_blobs[$(basename "$file")]}"
+  source_copy="$tmpdir/${base}.original.mp4"
 
-  before_sha="$(git hash-object "$file")"
-  before_size="$(stat -c%s "$file")"
-  before_video="$(probe_video "$file")"
-  before_audio="$(probe_audio_codec "$file")"
-  before_duration="$(probe_duration "$file")"
-  total_before=$((total_before + before_size))
+  if ! git cat-file -e "$blob" 2>/dev/null; then
+    echo "ERROR: original source blob is unavailable for $file: $blob"
+    exit 1
+  fi
+  git cat-file blob "$blob" > "$source_copy"
 
-  echo "SOURCE $file sha=$before_sha bytes=$before_size video=$before_video audio=${before_audio:-none} duration=$before_duration"
+  original_size="$(stat -c%s "$source_copy")"
+  original_video="$(probe_video "$source_copy")"
+  original_audio="$(probe_audio_codec "$source_copy")"
+  original_duration="$(probe_duration "$source_copy")"
+  current_size="$(stat -c%s "$file")"
+  current_video="$(probe_video "$file")"
+  total_original=$((total_original + original_size))
+
+  echo "ORIGINAL $file blob=$blob bytes=$original_size video=$original_video audio=${original_audio:-none} duration=$original_duration"
+  echo "CURRENT  $file bytes=$current_size video=$current_video"
 
   best=""
   best_size=0
@@ -165,7 +181,8 @@ for file in "${files[@]}"; do
 
     read -r ssim psnr < <(measure_quality "$source_copy" "$candidate")
     candidate_size="$(stat -c%s "$candidate")"
-    echo "CANDIDATE $file crf=$crf bytes=$candidate_size ssim=$ssim psnr=$psnr"
+    delta_original="$(awk -v b="$original_size" -v a="$candidate_size" 'BEGIN { printf "%.2f", ((a-b)/b)*100 }')"
+    echo "CANDIDATE $file crf=$crf bytes=$candidate_size delta_vs_original_pct=$delta_original ssim=$ssim psnr=$psnr"
 
     if float_ge "$ssim" "$min_ssim" && float_ge "$psnr" "$min_psnr"; then
       if [ -z "$best" ] || [ "$candidate_size" -lt "$best_size" ]; then
@@ -183,7 +200,6 @@ for file in "${files[@]}"; do
     exit 1
   fi
 
-  # Verify geometry, frame rate, and duration were not materially altered.
   source_dims_fps="$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate -of csv=p=0 "$source_copy")"
   best_dims_fps="$(ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate -of csv=p=0 "$best")"
   if [ "$source_dims_fps" != "$best_dims_fps" ]; then
@@ -206,23 +222,22 @@ for file in "${files[@]}"; do
   final_audio="$(probe_audio_codec "$file")"
   final_atoms="$(atom_check "$file")"
   final_size="$(stat -c%s "$file")"
-  total_after=$((total_after + final_size))
-  delta_pct="$(awk -v b="$before_size" -v a="$final_size" 'BEGIN { printf "%.2f", ((a-b)/b)*100 }')"
+  total_selected=$((total_selected + final_size))
+  delta_pct="$(awk -v b="$original_size" -v a="$final_size" 'BEGIN { printf "%.2f", ((a-b)/b)*100 }')"
 
   [ "$final_codec" = "h264" ] || { echo "ERROR: final codec is not h264 for $file"; exit 1; }
   [ "$final_pix" = "yuv420p" ] || { echo "ERROR: final pix_fmt is not yuv420p for $file"; exit 1; }
   [ -z "$final_audio" ] || { echo "ERROR: final file has audio for $file"; exit 1; }
 
-  echo "SELECTED $file crf=$best_crf bytes=$final_size delta_pct=$delta_pct ssim=$best_ssim psnr=$best_psnr codec=$final_codec pix_fmt=$final_pix audio=none $final_atoms"
+  echo "SELECTED $file crf=$best_crf bytes=$final_size delta_vs_original_pct=$delta_pct ssim=$best_ssim psnr=$best_psnr codec=$final_codec pix_fmt=$final_pix audio=none $final_atoms"
 done
 
-total_delta_pct="$(awk -v b="$total_before" -v a="$total_after" 'BEGIN { printf "%.2f", ((a-b)/b)*100 }')"
-echo "TOTAL before_bytes=$total_before after_bytes=$total_after delta_pct=$total_delta_pct"
+total_delta_pct="$(awk -v b="$total_original" -v a="$total_selected" 'BEGIN { printf "%.2f", ((a-b)/b)*100 }')"
+echo "TOTAL original_bytes=$total_original selected_bytes=$total_selected delta_vs_original_pct=$total_delta_pct"
 
 echo "== Final repository diff scope =="
 git status --short -- public/videos/hero1.mp4 public/videos/hero2.mp4 public/videos/hero3.mp4
 
-# No architecture/application files are modified by this script.
 for forbidden in firebase.json next.config.ts package.json package-lock.json src/components/ui/HeroSlider.tsx; do
   if ! git diff --quiet -- "$forbidden"; then
     echo "ERROR: forbidden out-of-scope change detected: $forbidden"
