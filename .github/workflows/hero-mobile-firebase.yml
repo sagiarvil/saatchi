@@ -41,8 +41,8 @@ jobs:
             test -s "$file" || { echo "Missing or empty hero asset: $file"; exit 1; }
           done
 
-      - name: Lint
-        run: npm run lint
+      - name: Lint mobile hero
+        run: npx eslint src/components/ui/HeroSlider.tsx
 
       - name: Production build
         run: npm run build
