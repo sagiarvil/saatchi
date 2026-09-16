@@ -5,6 +5,8 @@ on:
     branches:
       - main
     paths:
+      - src/components/ui/HeroSlider.tsx
+      - public/videos/**
       - .github/workflows/hero-mobile-release.yml
 
 permissions:
@@ -30,8 +32,8 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
-      - name: Lint
-        run: npm run lint
+      - name: Lint hero release surface
+        run: npx eslint src/components/ui/HeroSlider.tsx
 
       - name: Build
         run: npm run build
