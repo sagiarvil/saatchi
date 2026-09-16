@@ -1,4 +1,5 @@
 name: Hero Mobile Firebase Gate
+# Architecture-neutral hero regression gate.
 
 on:
   push:
