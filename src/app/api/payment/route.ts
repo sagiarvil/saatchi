@@ -38,8 +38,32 @@ export async function POST(request: Request) {
     }
 
     // API ANAHTARLARI YOKSA ALTYAPI HAZIRLIK (NO-MOCK) FALLBACK:
-    // Form verileri doğrulandı, crypto token oluşturuldu, sistem payment gateway'e gitmeye hazırdır.
+    // BELGIN BACKEND'INE SİPARİŞİ KAYDET
     const internalToken = crypto.createHash('sha256').update(orderId + amountForBank.toString()).digest('hex');
+
+    try {
+      await fetch('https://us-central1-carbon-web-1265b.cloudfunctions.net/createAdminOrder', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-saatchi-secret': 'saatchi_belgin_integration_2026'
+        },
+        body: JSON.stringify({
+          orderId,
+          customerName: custName || 'Saatchi Müşterisi',
+          customerIdentity: custIdentity || '11111111111',
+          totalAmount: numericAmount,
+          source: 'saatchi',
+          paymentMethod: 'CREDIT_CARD_POS',
+          provider: 'SAATCHI_PAYTR_MOCK',
+          invoiceType: 'WATCH',
+          productName: 'Lüks Saat Tahsilatı',
+          isEft: false
+        })
+      });
+    } catch (e) {
+      console.error("Belgin integration error:", e);
+    }
     
     return NextResponse.json({
       status: 'success',

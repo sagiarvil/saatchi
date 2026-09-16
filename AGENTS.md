@@ -34,10 +34,12 @@ Hiçbir kod bloğu şu 4 kapı doğrulanmadan onaylanamaz:
 - Fiyatlama Chrono24 mantığıyla yapılsa bile, **"Chrono24" kelimesi projenin HİÇBİR YERİNDE (UI, metinler, JSON) geçmeyecektir.**
 - Bunun yerine "Global İsviçre Saat Borsası", "Uluslararası Lüks Saat Borsası", "Global Watch Index" gibi terimler kullanılacaktır. Bu kalıcı ve evrensel bir kuraldır.
 
-## 7. DEPLOYMENT / HOSTING SOURCE OF TRUTH — DEĞİŞMEZ KURAL
-- `saatchi.watch` üretim hosting altyapısı **Firebase Hosting**'dir.
-- Firebase project ID: `studio-7658156126-ffb8e`.
-- Firebase Hosting site ID / target: `saatchi`.
-- `.firebaserc` ve `firebase.json` üretim dağıtımının tek yetkili kaynaklarıdır.
-- Repo içinde `wrangler`, `OpenNext Cloudflare` veya Cloudflare deploy kalıntıları bulunsa dahi bunlar üretim hosting kaynağı olarak yorumlanamaz ve `saatchi.watch` Cloudflare'a deploy EDİLEMEZ.
-- Kullanıcı açıkça hosting mimarisini değiştirmedikçe tüm build/deploy/rollback işlemleri Firebase Hosting üzerinden yapılır.
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->

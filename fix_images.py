@@ -1,41 +1,48 @@
-import json
-import urllib.parse
+import os
 import re
 
-files = ['src/data/elit-saatler.json', 'src/data/saatler.json']
+files_to_fix = [
+    "src/app/elit-saat/[slug]/page.tsx",
+    "src/app/markalar/[slug]/page.tsx",
+    "src/app/saatler/WatchListClient.tsx",
+    "src/app/saatler/[slug]/page.tsx",
+    "src/app/page.tsx",
+    "src/components/layout/Navbar.tsx",
+    "src/components/ui/LuxuryImageZoom.tsx"
+]
 
-def optimize_image_url(url):
-    if not url:
-        return url
-        
-    # Extract the query 'q=' if it exists
-    match = re.search(r'q=([^&]+)', url)
-    if match:
-        query = match.group(1)
-        # Create a direct Bing high-res thumbnail URL
-        # Using 4K dimension request (w=3840&h=3840) - Bing will return the max available up to this limit
-        # c=7 is crop/quality, fm=webp for compression
-        return f"https://tse1.mm.bing.net/th?q={query}&w=2000&h=2000&c=7&rs=1&p=0&dpr=2"
+import_statement = "import { getProxiedImageUrl } from '@/utils/imageProxy';\n"
+
+for path in files_to_fix:
+    if not os.path.exists(path):
+        continue
+    with open(path, 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    # Add import if not present
+    if "getProxiedImageUrl" not in content:
+        # Find last import
+        imports_end = [m.end() for m in re.finditer(r"import .*?from .*?;?\n", content)]
+        if imports_end:
+            insert_pos = imports_end[-1]
+            content = content[:insert_pos] + import_statement + content[insert_pos:]
+        else:
+            content = import_statement + content
+
+    # Replace <Image src={watch.image} -> <Image unoptimized src={getProxiedImageUrl(watch.image)}
+    content = re.sub(r'<Image([^>]*)src=\{watch\.image\}', r'<Image unoptimized\1src={getProxiedImageUrl(watch.image)}', content)
     
-    # For Richard Mille / Panerai ones I just added, they had direct TSE URLs with w=400&h=400
-    if 'w=400&h=400' in url:
-        return url.replace('w=400&h=400', 'w=2000&h=2000')
-        
-    return url
+    # Replace <img src={watch.image} -> <img src={getProxiedImageUrl(watch.image)}
+    content = re.sub(r'<img([^>]*)src=\{watch\.image\}', r'<img\1src={getProxiedImageUrl(watch.image)}', content)
+    
+    # Replace <img src={watch.image || '/images/placeholder.jpg'} -> <img src={getProxiedImageUrl(watch.image) || '/images/placeholder.jpg'}
+    content = re.sub(r'<img([^>]*)src=\{watch\.image \|\| ([^\}]+)\}', r'<img\1src={getProxiedImageUrl(watch.image) || \2}', content)
 
-for file_path in files:
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-            
-        for item in data:
-            if 'image' in item:
-                item['image'] = optimize_image_url(item['image'])
-                
-        with open(file_path, 'w', encoding='utf-8') as f:
-            json.dump(data, f, ensure_ascii=False, indent=2)
-            
-        print(f"Fixed images in {file_path}")
-    except Exception as e:
-        print(f"Skipped {file_path}: {e}")
+    # For LuxuryImageZoom.tsx
+    if "LuxuryImageZoom" in path:
+        content = re.sub(r'<Image([^>]*)src=\{src\}', r'<Image unoptimized\1src={getProxiedImageUrl(src)}', content)
 
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(content)
+
+print("Done")

@@ -6,6 +6,7 @@ import { BrandMarquee } from '@/components/ui/BrandMarquee';
 import { HeroSlider } from '@/components/ui/HeroSlider';
 import Link from 'next/link';
 import elitSaatler from '@/data/elit-saatler.json';
+import { getProxiedImageUrl } from '@/utils/imageProxy';
 
 export default function Home() {
   // Sadece Global (Elit) veritabanından en özel 3 saati alıyoruz
@@ -27,7 +28,7 @@ export default function Home() {
 
         {/* ELEGANT FEATURED WATCHES */}
         <section className="w-full bg-surface py-32 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+          <div className="w-full max-w-[1536px] mx-auto">
             <div className="text-center mb-20">
               <h3 className="text-3xl md:text-[34px] font-bold text-[#846b32] mb-6" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
                 Seçkin Modeller
@@ -45,7 +46,7 @@ export default function Home() {
                     <div className="absolute inset-0 w-full h-full z-0">
                         {watch.image ? (
                           
-                          <Image src={watch.image} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-6 group-hover:scale-110 transition-transform duration-700 ease-out" />
+                          <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-6 group-hover:scale-110 transition-transform duration-700 ease-out" />
                         ) : (
                           <div className="w-full h-full bg-surface flex flex-col items-center justify-center text-[#C2A768]/30">
                             <Watch className="w-12 h-12 mb-2 opacity-50" />
@@ -77,13 +78,13 @@ export default function Home() {
               className="text-2xl md:text-[32px] font-bold mb-8 text-[#846b32]" 
               style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', lineHeight: '1.4' }}
             >
-              Saatchi celebrates a century of watchmaking accomplishments and paves the way for future triumphs.
+              Saatchi, saatçilik başarılarıyla dolu bir yüzyılı kutlarken gelecekteki zaferlerin de temellerini atıyor.
             </h2>
             <p 
               className="text-[15px] md:text-[17px] text-[#666666] leading-relaxed mb-12"
               style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
             >
-              Materials science, dial-making artistry and horological performance: the watches presented this year enshrine technical excellence, immortalize dreams come true and shape the watchmaking emotions of tomorrow. Through these timepieces, the brand ushers in a new era of achievement and innovation, stamped with an even more exacting Superlative Chronometer certification symbolized, as ever, by the green seal.
+              Malzeme bilimi, kadran sanatı ve horolojik performans: Bu yıl sunulan saatler teknik mükemmelliği taçlandırıyor, gerçeğe dönüşen hayalleri ölümsüzleştiriyor ve geleceğin saatçilik duygularını şekillendiriyor. Marka, daima yeşil mühürle simgelenen ve çok daha zorlu Üstün Kronometre sertifikasını taşıyan bu zaman ölçerlerle, başarı ve inovasyon dolu yeni bir çağın kapılarını aralıyor.
             </p>
             <Link 
               href="/elit-saat/koleksiyon" 

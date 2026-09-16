@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
-import "./globals.css";
+import "./tailwind.css";
 import { PremiumBackButton } from "@/components/ui/PremiumBackButton";
 
 export const metadata: Metadata = {
   icons: {
-    icon: [
-      { url: '/favicon-light.png', media: '(prefers-color-scheme: light)' },
-      { url: '/favicon-dark.png', media: '(prefers-color-scheme: dark)' }
-    ]
+    icon: '/favicon.svg?v=2',
+    shortcut: '/favicon.svg?v=2',
+    apple: '/favicon.svg?v=2',
   },
   title: "SAATCHI | Dünyanın En Seçkin Lüks Saat Koleksiyonları",
   description: "Rolex, Patek Philippe, Audemars Piguet ve diğer elit markaların yer aldığı özel lüks saat koleksiyonu. Orijinallik garantisi ve küresel referans fiyatlarıyla SAATCHI'de.",
@@ -32,6 +31,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" className="h-full antialiased">
+      <head>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2" />
+      </head>
       <body className="min-h-full flex flex-col bg-black">
         <Navbar />
         <PremiumBackButton />

@@ -1,249 +1,154 @@
 'use client';
-
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-
-const SLIDE_DURATION_MS = 12000;
 
 const SLIDES = [
   {
     id: 1,
-    video: '/videos/hero1.mp4',
-    mobileVideo: '/videos/hero1-mobile.mp4',
-    subtitle: 'SAATCHI AYRICALIĞI',
-    title: 'Zamanın Ötesinde\nBir Miras',
+    video: "/videos/hero1.mp4",
+    subtitle: "SAATCHI AYRICALIĞI",
+    title: "Zamanın Ötesinde\nBir Miras",
     desc: "Kusursuz İsviçre mühendisliği ve Saatchi'nin eşsiz tasarım vizyonuyla şekillenen Masterpiece koleksiyonunu keşfedin.",
-    link: '/elit-saat/koleksiyon',
-    btnText: 'Koleksiyonu Keşfet',
+    link: "/elit-saat/koleksiyon",
+    btnText: "Koleksiyonu Keşfet"
   },
   {
     id: 2,
-    video: '/videos/hero2.mp4',
-    mobileVideo: '/videos/hero2-mobile.mp4',
-    subtitle: 'ELİT KATEGORİ',
-    title: 'Mükemmelliğin\nYeni Standardı',
-    desc: 'Dünyanın en prestijli markalarından derlenen, kişiye özel sertifikalı ve VIP teslimatlı seçkin modeller.',
-    link: '/elit-saat/koleksiyon',
-    btnText: 'Elit Seriyi İncele',
+    video: "/videos/hero2.mp4",
+    subtitle: "ELİT KATEGORİ",
+    title: "Mükemmelliğin\nYeni Standardı",
+    desc: "Dünyanın en prestijli markalarından derlenen, kişiye özel sertifikalı ve VIP teslimatlı seçkin modeller.",
+    link: "/elit-saat/koleksiyon",
+    btnText: "Elit Seriyi İncele"
   },
   {
     id: 3,
-    video: '/videos/hero3.mp4',
-    mobileVideo: '/videos/hero3-mobile.mp4',
-    subtitle: 'ÖZEL KOLEKSİYON',
-    title: 'Sadece Sizin\nİçin Tasarlandı',
-    desc: 'Karakterinizi yansıtan eşsiz detaylar. SAATCHI - SEMİH SONBAHAR güvencesiyle elit dünyaya adım atın.',
-    link: '/kurumsal',
-    btnText: 'Markamızı Keşfedin',
-  },
-] as const;
-
-type MediaState = 'loading' | 'playing' | 'blocked' | 'failed';
-
-function configureInlineAutoplay(video: HTMLVideoElement) {
-  video.muted = true;
-  video.defaultMuted = true;
-  video.playsInline = true;
-  video.setAttribute('muted', '');
-  video.setAttribute('autoplay', '');
-  video.setAttribute('playsinline', '');
-  video.setAttribute('webkit-playsinline', 'true');
-}
+    video: "/videos/hero3.mp4",
+    subtitle: "ÖZEL KOLEKSİYON",
+    title: "Sadece Sizin\nİçin Tasarlandı",
+    desc: "Karakterinizi yansıtan eşsiz detaylar. SAATCHI - SEMİH SONBAHAR güvencesiyle elit dünyaya adım atın.",
+    link: "/kurumsal",
+    btnText: "Markamızı Keşfedin"
+  }
+];
 
 export function HeroSlider() {
   const [current, setCurrent] = useState(0);
-  const [mediaState, setMediaState] = useState<MediaState>('loading');
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const playAttemptRef = useRef(0);
-  const failedVideoRef = useRef<HTMLVideoElement | null>(null);
-  const activeSlide = SLIDES[current];
-  const videoPlaying = mediaState === 'playing';
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  const tryPlay = useCallback(async () => {
-    const video = videoRef.current;
-    if (!video || document.visibilityState === 'hidden') return;
-
-    if (failedVideoRef.current === video) return;
-
-    configureInlineAutoplay(video);
-    const attempt = ++playAttemptRef.current;
-
-    try {
-      await video.play();
-
-      if (videoRef.current !== video || playAttemptRef.current !== attempt) return;
-      setMediaState('playing');
-    } catch (error) {
-      if (videoRef.current !== video || playAttemptRef.current !== attempt) return;
-
-      const name = error instanceof DOMException ? error.name : '';
-      if (name === 'NotAllowedError' || name === 'AbortError') {
-        setMediaState((state) => (state === 'failed' ? state : 'blocked'));
-        return;
-      }
-
-      setMediaState((state) => (state === 'failed' ? state : 'blocked'));
-    }
-  }, []);
-
+  // Force videos to play on all devices, bypassing Low Power Mode constraints safely
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    failedVideoRef.current = null;
-    setMediaState('loading');
-    configureInlineAutoplay(video);
-
-    const retry = () => void tryPlay();
-    const handleVisibility = () => {
-      if (document.visibilityState === 'visible') retry();
+    const playVideos = () => {
+      videoRefs.current.forEach(video => {
+        if (video && video.paused) {
+          // Play returns a promise. Catch to avoid unhandled rejections if OS blocks it.
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(() => {
+              // Silently catch OS blocks
+            });
+          }
+        }
+      });
     };
 
-    let interactionConsumed = false;
-    const removeInteractionListeners = () => {
-      window.removeEventListener('touchstart', handleFirstInteraction);
-      window.removeEventListener('pointerdown', handleFirstInteraction);
-      window.removeEventListener('click', handleFirstInteraction);
-    };
-    const handleFirstInteraction = () => {
-      if (interactionConsumed) return;
-      interactionConsumed = true;
-      removeInteractionListeners();
-      retry();
-    };
+    // Try to play immediately
+    playVideos();
+    
+    // Some devices require user interaction to unlock media playback
+    // Use passive listeners and avoid high-frequency events like mousemove
+    const events = ['touchstart', 'touchend', 'click', 'scroll'];
+    events.forEach(event => {
+      window.addEventListener(event, playVideos, { once: false, passive: true });
+    });
 
-    video.addEventListener('loadedmetadata', retry);
-    video.addEventListener('canplay', retry);
-    window.addEventListener('pageshow', retry);
-    document.addEventListener('visibilitychange', handleVisibility);
-
-    window.addEventListener('touchstart', handleFirstInteraction, { passive: true });
-    window.addEventListener('pointerdown', handleFirstInteraction, { passive: true });
-    window.addEventListener('click', handleFirstInteraction, { passive: true });
-
-    retry();
+    // Check periodically in case it gets paused by the OS (e.g. exiting fullscreen or tab switch)
+    const interval = setInterval(playVideos, 3000);
 
     return () => {
-      playAttemptRef.current += 1;
-      video.removeEventListener('loadedmetadata', retry);
-      video.removeEventListener('canplay', retry);
-      window.removeEventListener('pageshow', retry);
-      document.removeEventListener('visibilitychange', handleVisibility);
-      removeInteractionListeners();
+      events.forEach(event => window.removeEventListener(event, playVideos));
+      clearInterval(interval);
     };
-  }, [current, tryPlay]);
+  }, []); // Empty dependency array so it only mounts once
 
   useEffect(() => {
-    const timer = window.setTimeout(() => {
-      setMediaState('loading');
+    const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % SLIDES.length);
-    }, SLIDE_DURATION_MS);
-
-    return () => window.clearTimeout(timer);
-  }, [current]);
-
-  const selectSlide = (index: number) => {
-    if (index === current) {
-      void tryPlay();
-      return;
-    }
-
-    setMediaState('loading');
-    setCurrent(index);
-  };
-
-  const handleVideoError = () => {
-    const video = videoRef.current;
-    if (video) failedVideoRef.current = video;
-    playAttemptRef.current += 1;
-    setMediaState('failed');
-  };
+    }, 7000); // 7s auto-slide
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <section
-      data-hero-root="true"
-      data-hero-media-state={mediaState}
-      className="relative flex h-[100svh] min-h-[560px] w-full flex-col items-center justify-center overflow-hidden bg-[#0a0a0a] md:h-screen"
-      style={{ minHeight: 'min(560px, 100svh)' }}
-    >
-      <div className="absolute inset-0 z-0 h-full w-full bg-[#0a0a0a]" data-hero-background="true">
-        <div
-          aria-hidden="true"
-          data-hero-fallback="true"
-          className="absolute inset-0 z-0 scale-110"
-          style={{
-            background:
-              'radial-gradient(circle at 72% 28%, rgba(132,107,50,0.30), transparent 34%), radial-gradient(circle at 18% 76%, rgba(255,255,255,0.08), transparent 30%), linear-gradient(135deg, #171717 0%, #080808 48%, #000000 100%)',
-          }}
-        />
-
-        <video
-          key={activeSlide.id}
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          controls={false}
-          disablePictureInPicture
-          aria-hidden="true"
-          data-hero-video="true"
-          onPlaying={() => setMediaState('playing')}
-          onError={handleVideoError}
-          onStalled={() => setMediaState((state) => (state === 'playing' || state === 'failed' ? state : 'blocked'))}
-          className={`absolute inset-0 z-[1] block h-full w-full object-cover object-center contrast-[1.15] saturate-[0.80] brightness-[0.75] transition-opacity duration-500 ${
-            videoPlaying ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{ WebkitTransform: 'translate3d(0,0,0)', transform: 'translate3d(0,0,0)' }}
-        >
-          <source media="(max-width: 767px)" src={activeSlide.mobileVideo} type="video/mp4" />
-          <source src={activeSlide.video} type="video/mp4" />
-        </video>
-
-        <div data-hero-overlay="true" className="pointer-events-none absolute inset-0 z-[2] bg-[#0a0a0a]/25 mix-blend-multiply" />
-        <div data-hero-overlay="true" className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-black/35 to-black/85" />
-        <div data-hero-overlay="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-2/3 bg-gradient-to-t from-black/95 via-black/45 to-transparent" />
-      </div>
-
+    <section className="relative w-full h-[100svh] min-h-[500px] flex flex-col items-center justify-center overflow-hidden bg-[#050505]">
       {SLIDES.map((slide, index) => (
         <div
           key={slide.id}
-          data-hero-content={index === current ? 'active' : 'inactive'}
           className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === current ? 'z-10 opacity-100' : 'pointer-events-none z-0 opacity-0'
+            index === current ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
           }`}
         >
-          <div className="absolute inset-0 mx-auto flex w-full max-w-[1600px] flex-col items-start justify-end px-6 pb-[max(3rem,env(safe-area-inset-bottom))] text-left md:px-12 md:pb-16">
+          {/* Background Video with Mobile-Safe Fallback */}
+          <div className="absolute inset-0 w-full h-full bg-gradient-to-br from-[#111] to-[#222]">
+            <div
+              ref={(el) => { if (el) videoRefs.current[index] = el.querySelector('video'); }}
+              dangerouslySetInnerHTML={{
+                __html: `
+                  <video
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                    webkit-playsinline="true"
+                    preload="auto"
+                    class="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto object-cover transform -translate-x-1/2 -translate-y-1/2 opacity-100 contrast-[1.15] saturate-[0.80] brightness-[0.75] transition-opacity duration-700"
+                    style="-webkit-mask-image: -webkit-radial-gradient(white, black);"
+                  >
+                    <source src="${slide.video}" type="video/mp4" />
+                  </video>
+                `
+              }}
+              className="absolute inset-0 w-full h-full"
+            />
+            
+            {/* Cinematic Hollywood Filter & Radial Vignette */}
+            <div className="absolute inset-0 bg-[#0a0a0a]/30 pointer-events-none mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-black/40 to-black/90 pointer-events-none"></div>
+            
+            {/* Text Protection Gradient optimized for mobile */}
+            <div className="absolute inset-x-0 bottom-0 h-[80%] bg-gradient-to-t from-black/100 via-black/70 to-transparent pointer-events-none"></div>
+          </div>
+
+          {/* Hero Content - Bottom Left Aligned with Mobile Optimizations */}
+          <div className="absolute inset-0 flex flex-col justify-end items-start text-left px-5 sm:px-8 md:px-12 pb-16 sm:pb-20 md:pb-16 w-full max-w-[1600px] mx-auto z-20">
             {slide.subtitle && (
-              <h2
-                className={`mb-2 text-[9px] font-normal uppercase tracking-[0.2em] text-white/90 transition-all delay-300 duration-1000 md:text-[10px] ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+              <h2 
+                className={`text-white/90 tracking-[0.25em] uppercase text-[10px] sm:text-[11px] md:text-[12px] font-bold mb-3 md:mb-4 transform transition-all duration-1000 delay-300 ${index === current ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
                 style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
               >
+                <span className="inline-block w-2 h-2 bg-[#846b32] rounded-full mr-3 animate-pulse"></span>
                 {slide.subtitle}
               </h2>
             )}
 
-            <h1
-              className={`mb-5 max-w-3xl whitespace-pre-line text-[32px] font-thin leading-tight text-white transition-all delay-500 duration-1000 md:text-[40px] lg:text-[44px] ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-              style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', fontWeight: 200, letterSpacing: '0.02em' }}
+            <h1 
+              className={`text-[36px] sm:text-[44px] md:text-[56px] lg:text-[64px] font-thin text-white mb-4 sm:mb-6 leading-[1.05] max-w-3xl transform transition-all duration-1000 delay-500 whitespace-pre-line ${index === current ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}
+              style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', fontWeight: 200, letterSpacing: '0.01em', textShadow: '0 4px 20px rgba(0,0,0,0.5)' }}
             >
               {slide.title}
             </h1>
 
-            <p
-              className={`mb-8 max-w-xl text-[13px] leading-relaxed text-white/90 transition-all delay-[700ms] duration-1000 md:text-[15px] ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
-              style={{ fontFamily: '"Times New Roman", Times, serif' }}
+            <p 
+              className={`text-[14px] sm:text-[16px] md:text-[18px] text-white/90 mb-8 sm:mb-10 max-w-xl leading-relaxed transform transition-all duration-1000 delay-[700ms] ${index === current ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"}`}
+              style={{ fontFamily: '"Times New Roman", Times, serif', textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
             >
               {slide.desc}
             </p>
 
-            <div className={`transition-all delay-[900ms] duration-1000 ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}>
+            <div className={`transform transition-all duration-1000 delay-[900ms] ${index === current ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"} w-full sm:w-auto`}>
               <Link
                 href={slide.link}
-                data-hero-cta="true"
-                className="inline-block rounded-full bg-white px-6 py-3 text-[9px] uppercase tracking-[0.15em] text-gray-900 transition-all duration-500 hover:bg-gray-100 md:text-[10px]"
-                style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', fontWeight: 400 }}
+                className="bg-white text-black hover:bg-gray-100 uppercase tracking-[0.15em] text-[11px] md:text-[12px] px-8 py-4 sm:px-10 sm:py-4 rounded-full transition-all duration-500 flex items-center justify-center font-bold w-full sm:w-auto shadow-xl"
+                style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}
               >
                 {slide.btnText}
               </Link>
@@ -252,13 +157,16 @@ export function HeroSlider() {
         </div>
       ))}
 
-      <div data-hero-nav="true" className="absolute right-4 top-1/2 z-20 flex -translate-y-1/2 flex-col gap-3 md:right-8">
+      {/* Slide Controls - Vertical on the Right (Hidden on very small screens, bottom on mobile) */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 md:left-auto md:-translate-x-0 md:right-8 md:top-1/2 md:-translate-y-1/2 z-30 flex flex-row md:flex-col gap-3 md:gap-4">
         {SLIDES.map((_, index) => (
           <button
             key={index}
-            onClick={() => selectSlide(index)}
-            className={`h-1.5 w-1.5 rounded-full border border-white transition-all duration-500 ${
-              index === current ? 'scale-125 bg-white' : 'bg-transparent hover:bg-white/50'
+            onClick={() => setCurrent(index)}
+            className={`rounded-full transition-all duration-500 ${
+              index === current 
+                ? "w-8 h-1.5 md:w-1.5 md:h-8 bg-white" 
+                : "w-2 h-2 md:w-1.5 md:h-1.5 bg-white/40 hover:bg-white/70 border border-transparent"
             }`}
             aria-label={`Slayt ${index + 1}`}
           />

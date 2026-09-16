@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import { getProxiedImageUrl } from '@/utils/imageProxy';
 
 export default function LuxuryImageZoom({ src, alt }: { src: string; alt: string }) {
   const [isZoomed, setIsZoomed] = useState(false);
@@ -11,8 +12,8 @@ export default function LuxuryImageZoom({ src, alt }: { src: string; alt: string
       onMouseEnter={() => setIsZoomed(true)}
       onMouseLeave={() => setIsZoomed(false)}
     >
-      <Image 
-        src={src} 
+      <Image unoptimized 
+        src={getProxiedImageUrl(src)} 
         alt={alt}
         fill
         sizes="(max-width: 768px) 100vw, 50vw"

@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Menu, Search, Watch, X, ArrowRight, ShieldCheck } from 'lucide-react';
 import saatlerData from '@/data/saatler.json';
 import elitSaatlerData from '@/data/elit-saatler.json';
+import { getProxiedImageUrl } from '@/utils/imageProxy';
 
 const allWatches = [...saatlerData, ...elitSaatlerData];
 
@@ -130,10 +131,9 @@ export function Navbar() {
         {/* Drawer Links - Rolex Style */}
         <nav className="flex-grow overflow-y-auto px-8 py-10 flex flex-col space-y-6">
           {[
-            { name: "Tüm Markalar", href: "/markalar", type: "main" },
-            { name: "Erkek Saatleri", href: "/saatler/erkek", type: "main" },
-            { name: "Kadın Saatleri", href: "/saatler/kadin", type: "main" },
+                        { name: "Tüm Markalar", href: "/markalar", type: "main" },
             { name: "Elit Kategori", href: "/elit-saat", type: "highlight" },
+            { name: "Rolex", href: "/markalar/rolex", type: "main" },
             { name: "Kurumsal", href: "/kurumsal", type: "sub" },
             { name: "İletişim", href: "/iletisim", type: "sub" }
           ].map((item, idx) => {
@@ -238,7 +238,7 @@ export function Navbar() {
                   >
                     <div className="w-16 h-16 md:w-20 md:h-20 shrink-0 bg-[radial-gradient(circle_at_50%_50%,_#ffffff_30%,_#f8f6f0_100%)] border border-gray-100 rounded-xl p-2 mr-4 md:mr-5 flex items-center justify-center overflow-hidden">
                       {watch.image ? (
-                        <Image src={watch.image} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-2 group-hover:scale-110 transition-transform duration-500" />
+                        <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-2 group-hover:scale-110 transition-transform duration-500" />
                       ) : (
                         <Search className="w-6 h-6 text-gray-300" />
                       )}

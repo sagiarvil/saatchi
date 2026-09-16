@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from "next/image";
 import saatlerData from '@/data/saatler.json';
 import elitSaatlerData from '@/data/elit-saatler.json';
+import { getProxiedImageUrl } from '@/utils/imageProxy';
 
 export async function generateStaticParams() {
   let allWatches: any[] = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
@@ -54,7 +55,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
                       </div>
                     )}
                     {watch.image ? (
-                      <Image src={watch.image} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-6 group-hover:scale-110 transition-transform duration-700 ease-out" />
+                      <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-6 group-hover:scale-110 transition-transform duration-700 ease-out" />
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center p-4 border border-surface-border group-hover:border-[#C2A768]/30 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-[#C2A768]/50 mb-3"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
