@@ -1,5 +1,6 @@
-name: Hero Mobile Firebase Gate
-# Architecture-neutral hero regression gate.
+name: Hero CI Guard
+# Hero-only regression gate. It deliberately does not validate Firebase,
+# Cloudflare, SSR/static-export choices, API architecture, or deployment model.
 
 on:
   push:
@@ -7,7 +8,7 @@ on:
     paths:
       - 'src/components/ui/HeroSlider.tsx'
       - 'public/videos/**'
-      - '.github/scripts/hero-part1-verify.sh'
+      - '.github/scripts/hero-ci-guard.sh'
       - '.github/workflows/hero-mobile-firebase.yml'
   workflow_dispatch:
 
@@ -31,5 +32,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run PART 1 hero verification
-        run: bash .github/scripts/hero-part1-verify.sh
+      - name: Run architecture-neutral hero guard
+        run: bash .github/scripts/hero-ci-guard.sh
