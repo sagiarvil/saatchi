@@ -35,44 +35,41 @@ const SLIDES = [
 
 type MediaState = 'loading' | 'playing' | 'blocked' | 'failed';
 
+function configureInlineAutoplay(video: HTMLVideoElement) {
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+  video.setAttribute('muted', '');
+  video.setAttribute('autoplay', '');
+  video.setAttribute('playsinline', '');
+  video.setAttribute('webkit-playsinline', 'true');
+}
+
 export function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const [mediaState, setMediaState] = useState<MediaState>('loading');
   const videoRef = useRef<HTMLVideoElement>(null);
-  const retryTimersRef = useRef<number[]>([]);
+  const playAttemptRef = useRef(0);
   const activeSlide = SLIDES[current];
   const videoPlaying = mediaState === 'playing';
-
-  const clearRetryTimers = useCallback(() => {
-    retryTimersRef.current.forEach((timer) => window.clearTimeout(timer));
-    retryTimersRef.current = [];
-  }, []);
 
   const tryPlay = useCallback(async () => {
     const video = videoRef.current;
     if (!video || document.visibilityState === 'hidden') return;
 
-    // iOS Safari / in-app WebView autoplay contract.
-    // Properties are set as well as attributes because older WebKit builds can
-    // inspect one before React has reflected the other.
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
-    video.setAttribute('muted', '');
-    video.setAttribute('autoplay', '');
-    video.setAttribute('playsinline', '');
-    video.setAttribute('webkit-playsinline', 'true');
-    video.setAttribute('x-webkit-airplay', 'deny');
+    configureInlineAutoplay(video);
+    const attempt = ++playAttemptRef.current;
 
     try {
       await video.play();
-      setMediaState('playing');
-      clearRetryTimers();
-    } catch (error) {
-      const name = error instanceof DOMException ? error.name : '';
 
-      // NotAllowedError is expected on some iOS/device policy combinations.
-      // Keep the hero visible and retry on the first real user interaction.
+      // Ignore a stale promise from a previous slide or a superseded attempt.
+      if (videoRef.current !== video || playAttemptRef.current !== attempt) return;
+      setMediaState('playing');
+    } catch (error) {
+      if (videoRef.current !== video || playAttemptRef.current !== attempt) return;
+
+      const name = error instanceof DOMException ? error.name : '';
       if (name === 'NotAllowedError' || name === 'AbortError') {
         setMediaState((state) => (state === 'failed' ? state : 'blocked'));
         return;
@@ -80,64 +77,58 @@ export function HeroSlider() {
 
       setMediaState((state) => (state === 'failed' ? state : 'blocked'));
     }
-  }, [clearRetryTimers]);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     setMediaState('loading');
-    clearRetryTimers();
-
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
-    video.setAttribute('muted', '');
-    video.setAttribute('autoplay', '');
-    video.setAttribute('playsinline', '');
-    video.setAttribute('webkit-playsinline', 'true');
-    video.setAttribute('x-webkit-airplay', 'deny');
+    configureInlineAutoplay(video);
 
     const retry = () => void tryPlay();
     const handleVisibility = () => {
       if (document.visibilityState === 'visible') retry();
     };
-    const handleOnline = () => retry();
+
+    let interactionConsumed = false;
+    const removeInteractionListeners = () => {
+      window.removeEventListener('touchstart', handleFirstInteraction);
+      window.removeEventListener('pointerdown', handleFirstInteraction);
+      window.removeEventListener('click', handleFirstInteraction);
+    };
+    const handleFirstInteraction = () => {
+      if (interactionConsumed) return;
+      interactionConsumed = true;
+      removeInteractionListeners();
+      retry();
+    };
 
     video.addEventListener('loadedmetadata', retry);
-    video.addEventListener('loadeddata', retry);
     video.addEventListener('canplay', retry);
     window.addEventListener('pageshow', retry);
-    window.addEventListener('online', handleOnline);
     document.addEventListener('visibilitychange', handleVisibility);
 
-    // Keep interaction retries active until playback succeeds. A one-shot
-    // listener can fire before Safari has buffered enough media and then leave
-    // the hero permanently blocked.
-    window.addEventListener('touchstart', retry, { passive: true });
-    window.addEventListener('pointerdown', retry, { passive: true });
-    window.addEventListener('click', retry, { passive: true });
+    // A single real interaction retry covers autoplay-policy blocks without
+    // keeping permanent click/touch playback hooks alive.
+    window.addEventListener('touchstart', handleFirstInteraction, { passive: true });
+    window.addEventListener('pointerdown', handleFirstInteraction, { passive: true });
+    window.addEventListener('click', handleFirstInteraction, { passive: true });
 
-    // Short bounded retry window covers delayed mobile decoder/network startup
-    // without creating a permanent polling loop.
-    [0, 250, 900, 2200].forEach((delay) => {
-      const timer = window.setTimeout(retry, delay);
-      retryTimersRef.current.push(timer);
-    });
+    // Initial render attempt. Further retries are event-driven only; there is
+    // no polling loop or timer-based play storm.
+    retry();
 
     return () => {
-      clearRetryTimers();
+      // Invalidate any play() promise still resolving for the outgoing slide.
+      playAttemptRef.current += 1;
       video.removeEventListener('loadedmetadata', retry);
-      video.removeEventListener('loadeddata', retry);
       video.removeEventListener('canplay', retry);
       window.removeEventListener('pageshow', retry);
-      window.removeEventListener('online', handleOnline);
       document.removeEventListener('visibilitychange', handleVisibility);
-      window.removeEventListener('touchstart', retry);
-      window.removeEventListener('pointerdown', retry);
-      window.removeEventListener('click', retry);
+      removeInteractionListeners();
     };
-  }, [current, clearRetryTimers, tryPlay]);
+  }, [current, tryPlay]);
 
   useEffect(() => {
     // When video playback is available, rotate normally. If an OS/browser
@@ -189,11 +180,11 @@ export function HeroSlider() {
           controls={false}
           disablePictureInPicture
           aria-hidden="true"
+          data-hero-video="true"
           onPlaying={() => setMediaState('playing')}
-          onCanPlay={() => void tryPlay()}
           onError={() => setMediaState('failed')}
           onStalled={() => setMediaState((state) => (state === 'playing' ? state : 'blocked'))}
-          className={`absolute inset-0 block w-full h-full object-cover object-center contrast-[1.15] saturate-[0.80] brightness-[0.75] transition-opacity duration-500 ${
+          className={`absolute inset-0 block h-full w-full object-cover object-center contrast-[1.15] saturate-[0.80] brightness-[0.75] transition-opacity duration-500 ${
             videoPlaying ? 'opacity-100' : 'opacity-0'
           }`}
           style={{ WebkitTransform: 'translate3d(0,0,0)', transform: 'translate3d(0,0,0)' }}
