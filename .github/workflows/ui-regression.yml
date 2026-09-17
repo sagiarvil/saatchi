@@ -34,8 +34,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Install pricing test dependencies
+        run: python3 -m pip install -q curl_cffi beautifulsoup4
+
       - name: Python syntax guards
-        run: python3 -m py_compile scripts/update_prices.py scripts/update_prices_resilient.py scripts/sync-konyali-brand-safe.py scripts/fix-carren-catalog.py
+        run: python3 -m py_compile scripts/update_prices.py scripts/update_prices_resilient.py scripts/test-pricing-engine.py scripts/sync-konyali-brand-safe.py scripts/fix-carren-catalog.py
+
+      - name: Pricing unit regression test
+        run: python3 scripts/test-pricing-engine.py
 
       - name: Release shell syntax guard
         run: bash -n scripts/publish-saatchi-catalog.sh
