@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-09-17T15:36:07+0300",
+  "markup": 1.5,
+  "maxPublicPrice": 1799000,
+  "eliteCount": 533,
+  "standardCount": 1207,
+  "sourceCounts": {
+    "TAG Heuer": 124,
+    "Rado": 378,
+    "Tissot": 125,
+    "Carren": 0,
+    "Calvin Klein": 402,
+    "Michael Kors": 420,
+    "Versace": 260
+  },
+  "eliteBrandCounts": {
+    "Rolex": 13,
+    "Cartier": 18,
+    "TAG Heuer": 124,
+    "Rado": 378
+  },
+  "watchBrandCounts": {
+    "Tissot": 125,
+    "Carren": 0,
+    "Calvin Klein": 402,
+    "Michael Kors": 420,
+    "Versace": 260
+  },
+  "errors": [],
+  "elapsedSeconds": 1196.56
+}
