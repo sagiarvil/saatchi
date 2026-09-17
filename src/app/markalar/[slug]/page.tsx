@@ -4,7 +4,7 @@ import saatlerData from '@/data/saatler.json';
 import elitSaatlerData from '@/data/elit-saatler.json';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
 
-const MAX_CATALOG_PRICE = 1_799_000;
+const MAX_CATALOG_PRICE = 1_700_000;
 const ELITE_BRANDS = new Set(['Rolex', 'Cartier', 'TAG Heuer', 'Rado']);
 const NO_CAP_BRANDS = new Set(['Rolex', 'Cartier']);
 
@@ -17,7 +17,7 @@ function allowedCatalog() {
     const brand = String(watch.brand || '');
     const price = Number(watch.calculatedPrice || 0);
     if (price <= 0) return false;
-    return NO_CAP_BRANDS.has(brand) || price <= MAX_CATALOG_PRICE;
+    return price <= MAX_CATALOG_PRICE;
   });
 }
 

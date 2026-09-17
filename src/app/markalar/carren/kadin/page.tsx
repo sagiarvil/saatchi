@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function CarrenWomenPage() {
   const filtered = (watches as any[]).filter((watch) =>
-    watch.brand === 'Carren' && watch.gender === 'Kadın' && Number(watch.calculatedPrice || 0) <= 1799000
+    watch.brand === 'Carren' && watch.gender === 'Kadın' && Number(watch.calculatedPrice || 0) <= 1700000
   );
 
   return (

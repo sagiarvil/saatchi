@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 export default function SaatlerPage() {
-  const allWatches = (watches as any[]).filter((watch) => Number(watch.calculatedPrice || 0) <= 1799000);
+  const allWatches = (watches as any[]).filter((watch) => Number(watch.calculatedPrice || 0) <= 1700000);
 
   return (
     <div className="min-h-screen bg-background border-t border-surface-border">

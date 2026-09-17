@@ -8,14 +8,14 @@ export const metadata = {
 
 const ELITE_BRANDS = new Set(['Rolex', 'Cartier', 'TAG Heuer', 'Rado']);
 const NO_CAP_BRANDS = new Set(['Rolex', 'Cartier']);
-const MAX_CATALOG_PRICE = 1_799_000;
+const MAX_CATALOG_PRICE = 1_700_000;
 
 export default function ElitSaatlerPage() {
   const allWatches = (elitSaatlerData as any[]).filter((watch) => {
     const brand = String(watch.brand || '');
     const price = Number(watch.calculatedPrice || 0);
     if (!ELITE_BRANDS.has(brand) || price <= 0) return false;
-    return NO_CAP_BRANDS.has(brand) || price <= MAX_CATALOG_PRICE;
+    return price <= MAX_CATALOG_PRICE;
   });
 
   return (
