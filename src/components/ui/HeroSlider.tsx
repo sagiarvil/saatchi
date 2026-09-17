@@ -9,6 +9,8 @@ const SLIDES = [
   {
     id: 1,
     video: '/videos/hero1.mp4',
+    poster: '/images/poster-hero1.jpg',
+    mobilePoster: '/images/poster-hero1-mobile.jpg',
     mobileVideo: '/videos/hero1-mobile.mp4',
     subtitle: 'SAATCHI AYRICALIĞI',
     title: 'Zamanın Ötesinde\nBir Miras',
@@ -19,6 +21,8 @@ const SLIDES = [
   {
     id: 2,
     video: '/videos/hero2.mp4',
+    poster: '/images/poster-hero2.jpg',
+    mobilePoster: '/images/poster-hero2-mobile.jpg',
     mobileVideo: '/videos/hero2-mobile.mp4',
     subtitle: 'ELİT KATEGORİ',
     title: 'Mükemmelliğin\nYeni Standardı',
@@ -29,6 +33,8 @@ const SLIDES = [
   {
     id: 3,
     video: '/videos/hero3.mp4',
+    poster: '/images/poster-hero3.jpg',
+    mobilePoster: '/images/poster-hero3-mobile.jpg',
     mobileVideo: '/videos/hero3-mobile.mp4',
     subtitle: 'ÖZEL KOLEKSİYON',
     title: 'Sadece Sizin\nİçin Tasarlandı',
@@ -162,9 +168,9 @@ export function HeroSlider() {
           <source src={activeSlide.video} type="video/mp4" />
         </video>
 
-        <div data-hero-overlay="true" className="pointer-events-none absolute inset-0 z-[2] bg-[#0a0a0a]/25 mix-blend-multiply" />
-        <div data-hero-overlay="true" className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-black/35 to-black/85" />
-        <div data-hero-overlay="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-2/3 bg-gradient-to-t from-black/95 via-black/45 to-transparent" />
+        <div data-hero-overlay="true" className="pointer-events-none absolute inset-0 z-[2] bg-[#0a0a0a]/15 mix-blend-multiply" />
+        <div data-hero-overlay="true" className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-black/25 to-black/75" />
+        <div data-hero-overlay="true" className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
       </div>
 
       {SLIDES.map((slide, index) => (
