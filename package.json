@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "npx @tailwindcss/cli -i src/app/globals.css -o src/app/tailwind.css && next build && echo '{\"sortedMiddleware\":[],\"middleware\":{},\"functions\":{},\"version\":2}' > .next/server/middleware-manifest.json",
+    "check:hero": "node scripts/check-hero-autoplay.mjs",
+    "build": "npm run check:hero && npx @tailwindcss/cli -i src/app/globals.css -o src/app/tailwind.css && next build && echo '{\"sortedMiddleware\":[],\"middleware\":{},\"functions\":{},\"version\":2}' > .next/server/middleware-manifest.json",
     "dev": "next dev",
     "start": "next start",
     "lint": "eslint",
