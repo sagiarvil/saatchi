@@ -63,5 +63,5 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-## 9. Rolex Görsel Senkronizasyon Kuralı (Ersan Diamonds)
-Rolex ürün görselleri (image) yalnızca `https://ersandiamonds.com/koleksiyon?brand=rolex` adresinden, **SADECE TAM EŞLEŞMELİ** (exact match) ürün adları bulunarak alınacaktır. Uydurma, tahmini veya bulanık (fuzzy) eşleştirme ile görsel atanması kesinlikle yasaktır. Bu işlem `scripts/sync-rolex-ersan-images.py` betiği ile otomatize edilmiştir.
+## 9. Rolex ve Cartier Görsel Senkronizasyon Kuralı (Ersan Diamonds)
+Rolex ve Cartier ürün görselleri (image) yalnızca `https://ersandiamonds.com/koleksiyon?brand=rolex` ve `?brand=cartier` adreslerinden, **SADECE TAM EŞLEŞMELİ** (exact match) ürün adları bulunarak alınacaktır. Uydurma, tahmini veya bulanık (fuzzy) eşleştirme ile görsel atanması kesinlikle yasaktır. Bu işlem `scripts/sync-ersan-images.py` betiği ile otomatize edilmiştir.
