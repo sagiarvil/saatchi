@@ -53,7 +53,9 @@ def parse_number(value: Any) -> Optional[float]:
             text = text.replace(",", "")
     elif "," in text:
         parts = text.split(",")
-        if len(parts[-1]) in (1, 2, 3, 4):
+        if len(parts) == 2 and len(parts[-1]) == 3:
+            text = "".join(parts)
+        elif len(parts[-1]) in (1, 2, 4):
             text = "".join(parts[:-1]) + "." + parts[-1]
         else:
             text = "".join(parts)
