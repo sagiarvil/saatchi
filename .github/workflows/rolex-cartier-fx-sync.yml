@@ -59,7 +59,9 @@ jobs:
           items=json.loads(Path('src/data/elit-saatler.json').read_text(encoding='utf-8'))
           report=json.loads(Path('scripts/sync-saatchi-catalog-report.json').read_text(encoding='utf-8'))
           rc=[x for x in items if x.get('brand') in {'Rolex','Cartier'}]
-          bad=[x.get('id') for x in rc if x.get('sourcePriceStatus')!='live_source_url' or x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell' or not str(x.get('sourceUrl') or '').startswith('https://www.chrono24.com/') or not x.get('sourceVerifiedAt') or x.get('pricingRule')!='FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50']
+          def chrono24(url):
+              return str(url or '').startswith(('https://www.chrono24.com/','https://www.chrono24.de/'))
+          bad=[x.get('id') for x in rc if x.get('sourcePriceStatus')!='live_source_url' or x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell' or x.get('sourceCurrency') not in {'USD','EUR'} or not chrono24(x.get('sourceUrl')) or not x.get('sourceVerifiedAt') or x.get('pricingRule')!='FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50']
           if len(rc)!=31 or bad or report.get('rolexCartierLiveSourceVerifiedCount')!=31:
               print('ROLEX_CARTIER_LIVE_PRICE_READBACK_FAILED','count=',len(rc),'bad=',bad,'report=',report.get('rolexCartierLiveSourceVerifiedCount'))
               sys.exit(1)
