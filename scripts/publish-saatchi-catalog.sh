@@ -48,7 +48,7 @@ over_non_rc=[x for x in all_items if x.get('brand') not in {'Rolex','Cartier'} a
 elite_allowed={'Rolex','Cartier','TAG Heuer','Rado'}
 wrong_elite=[x for x in elite if x.get('brand') not in elite_allowed]
 rc=[x for x in elite if x.get('brand') in {'Rolex','Cartier'}]
-bad_rc=[x for x in rc if x.get('pricingRule')!=RC_RULE or x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell' or x.get('sourceCurrency') not in {'USD','EUR'} or float(x.get('fxRate') or 0)<=0]
+bad_rc=[x for x in rc if x.get('pricingRule')!=RC_RULE or x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell' or x.get('sourceCurrency') not in {'USD','EUR'} or float(x.get('fxRate') or 0)<=0 or not str(x.get('sourceUrl') or '').startswith(('https://','http://')) or x.get('sourcePriceStatus')!='live_source_url']
 carren=[x for x in watch if x.get('brand')=='Carren']
 bad_carren=[x for x in carren if int(x.get('calculatedPrice') or 0)!=CARREN_PRICE or x.get('price')!='₺19.990' or x.get('pricingRule')!='CARREN_FIXED_19990']
 
