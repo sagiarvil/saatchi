@@ -10,6 +10,8 @@ on:
       - 'src/app/api/vip-link/**'
       - 'src/app/api/payment/**'
       - 'src/lib/vip-**'
+      - 'scripts/write-build-id.mjs'
+      - 'package.json'
       - '.github/workflows/live-runtime-smoke.yml'
 
 permissions:
@@ -24,8 +26,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Verify public VIP runtime boundaries
+      - name: Verify public VIP runtime boundaries and deployed commit
         shell: bash
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
         run: |
           set -euo pipefail
           BASE='https://saatchi.watch'
@@ -45,6 +49,16 @@ jobs:
             echo
             test "$status" = "$expected"
           }
+
+          request build_info GET "$BASE/build-info.json" 200
+          python3 - "$TMP/build_info.body" "$EXPECTED_SHA" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          expected=sys.argv[2]
+          assert d.get('gitSha') == expected, {'live':d.get('gitSha'),'expected':expected}
+          assert d.get('builtAt'), d
+          print('LIVE_DEPLOY_SHA_OK', expected)
+          PY
 
           request session GET "$BASE/api/admin-session" 200
           python3 - "$TMP/session.body" <<'PY'
