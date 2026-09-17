@@ -1,23 +1,19 @@
-name: Saatchi UI Regression
+name: Saatchi Main Regression
 
 on:
   push:
     branches: [main]
-    paths:
-      - 'src/components/layout/Navbar.tsx'
-      - 'src/components/ui/HeroSlider.tsx'
-      - 'scripts/check-hero-autoplay.mjs'
-      - 'scripts/check-premium-ui-regressions.mjs'
-      - 'package.json'
-      - 'package-lock.json'
-      - '.github/workflows/ui-regression.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: saatchi-main-regression
+  cancel-in-progress: true
+
 jobs:
-  verify-ui:
+  verify-main:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -30,8 +26,16 @@ jobs:
           node-version: '22'
           cache: npm
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: Install dependencies
         run: npm ci
+
+      - name: Python syntax guards
+        run: python3 -m py_compile scripts/update_prices.py scripts/sync-konyali-brand-safe.py scripts/fix-carren-catalog.py
 
       - name: Hero autoplay guard
         run: npm run check:hero
