@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { signVipToken, verifyVipToken } from '@/lib/vip-token';
-import { assertAdminSession } from '@/lib/vip-admin-session';
+import { assertAdminSession, assertSameOriginMutation } from '@/lib/vip-admin-session';
 import { assertVipLinkActive, createVipLinkRecord, revokeVipLink } from '@/lib/vip-link-store';
 
 export const dynamic = 'force-dynamic';
@@ -14,6 +14,7 @@ function noStore(response: NextResponse) {
 
 export async function POST(request: Request) {
   try {
+    assertSameOriginMutation(request);
     assertAdminSession(request);
     const body = await request.json();
     const title = String(body.title || '').trim().slice(0, 180);
@@ -42,7 +43,8 @@ export async function POST(request: Request) {
   } catch (error: any) {
     const message = String(error?.message || 'VIP link oluşturulamadı.');
     const authError = message.includes('Yönetim oturumu');
-    return noStore(NextResponse.json({ success: false, message }, { status: authError ? 401 : 503 }));
+    const originError = message.includes('Çapraz kaynak');
+    return noStore(NextResponse.json({ success: false, message }, { status: originError ? 403 : authError ? 401 : 503 }));
   }
 }
 
@@ -62,6 +64,7 @@ export async function GET(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
+    assertSameOriginMutation(request);
     assertAdminSession(request);
     const body = await request.json();
     const id = String(body?.id || '').trim();
@@ -73,6 +76,7 @@ export async function DELETE(request: Request) {
   } catch (error: any) {
     const message = String(error?.message || 'VIP link iptal edilemedi.');
     const authError = message.includes('Yönetim oturumu');
-    return noStore(NextResponse.json({ success: false, message }, { status: authError ? 401 : 503 }));
+    const originError = message.includes('Çapraz kaynak');
+    return noStore(NextResponse.json({ success: false, message }, { status: originError ? 403 : authError ? 401 : 503 }));
   }
 }
