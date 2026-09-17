@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/rolex-cartier-source-map.json'
       - 'scripts/update_prices.py'
+      - 'scripts/update_prices_resilient.py'
       - '.github/workflows/rolex-cartier-fx-sync.yml'
   workflow_dispatch:
 
@@ -48,24 +49,40 @@ jobs:
       - name: Install pricing dependencies
         run: python3 -m pip install -q curl_cffi beautifulsoup4
 
+      - name: Python syntax guard
+        run: python3 -m py_compile scripts/update_prices.py scripts/update_prices_resilient.py
+
       - name: Live verify references and update prices
-        run: python3 scripts/update_prices.py
+        run: python3 scripts/update_prices_resilient.py
 
       - name: Require 31 live source readbacks
         run: |
           python3 - <<'PY'
           import json, sys
           from pathlib import Path
+          from urllib.parse import urlparse
+
           items=json.loads(Path('src/data/elit-saatler.json').read_text(encoding='utf-8'))
           report=json.loads(Path('scripts/sync-saatchi-catalog-report.json').read_text(encoding='utf-8'))
           rc=[x for x in items if x.get('brand') in {'Rolex','Cartier'}]
-          def chrono24(url):
-              return str(url or '').startswith(('https://www.chrono24.com/','https://www.chrono24.de/'))
-          bad=[x.get('id') for x in rc if x.get('sourcePriceStatus')!='live_source_url' or x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell' or x.get('sourceCurrency') not in {'USD','EUR'} or not chrono24(x.get('sourceUrl')) or not x.get('sourceVerifiedAt') or x.get('pricingRule')!='FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50']
-          if len(rc)!=31 or bad or report.get('rolexCartierLiveSourceVerifiedCount')!=31:
-              print('ROLEX_CARTIER_LIVE_PRICE_READBACK_FAILED','count=',len(rc),'bad=',bad,'report=',report.get('rolexCartierLiveSourceVerifiedCount'))
+
+          def valid_source(x):
+              url=str(x.get('sourceUrl') or '')
+              host=urlparse(url).netloc.lower()
+              provider=str(x.get('sourceProvider') or '')
+              kind=str(x.get('sourcePriceKind') or '')
+              if provider=='Chrono24':
+                  return 'chrono24.' in host and kind.startswith('LIVE_LISTING_MEDIAN_')
+              if provider=='WatchCharts':
+                  return (host=='watchcharts.com' or host.endswith('.watchcharts.com')) and kind=='WATCHCHARTS_MARKET_USD'
+              return False
+
+          bad=[x.get('id') for x in rc if x.get('sourcePriceStatus')!='live_source_url' or x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell' or x.get('sourceCurrency') not in {'USD','EUR'} or not valid_source(x) or not x.get('sourceVerifiedAt') or x.get('pricingRule')!='FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50']
+          provider_counts=report.get('rolexCartierSourceProviderCounts') or {}
+          if len(rc)!=31 or bad or report.get('rolexCartierLiveSourceVerifiedCount')!=31 or sum(int(v) for v in provider_counts.values())!=31:
+              print('ROLEX_CARTIER_LIVE_PRICE_READBACK_FAILED','count=',len(rc),'bad=',bad,'report=',report.get('rolexCartierLiveSourceVerifiedCount'),'providers=',provider_counts)
               sys.exit(1)
-          print('ROLEX_CARTIER_LIVE_PRICE_READBACK_OK count=31')
+          print('ROLEX_CARTIER_LIVE_PRICE_READBACK_OK count=31 providers=',provider_counts)
           PY
 
       - name: Commit verified price changes
