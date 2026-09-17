@@ -62,3 +62,6 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## 9. Rolex Görsel Senkronizasyon Kuralı (Ersan Diamonds)
+Rolex ürün görselleri (image) yalnızca `https://ersandiamonds.com/koleksiyon?brand=rolex` adresinden, **SADECE TAM EŞLEŞMELİ** (exact match) ürün adları bulunarak alınacaktır. Uydurma, tahmini veya bulanık (fuzzy) eşleştirme ile görsel atanması kesinlikle yasaktır. Bu işlem `scripts/sync-rolex-ersan-images.py` betiği ile otomatize edilmiştir.
