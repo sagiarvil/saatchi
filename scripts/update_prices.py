@@ -76,6 +76,32 @@ def parse_number(value: Any) -> Optional[float]:
         return None
 
 
+def parse_fx_rate(value: Any) -> Optional[float]:
+    """Parse TRY FX quotes where Turkish decimal commas commonly carry 3-6 decimals.
+
+    Generic price parsing intentionally treats `14,495` as fourteen-thousand-four-hundred-
+    ninety-five. FX quotes are a different data type: `48,6730` must be 48.6730, not 486730.
+    """
+    if value is None:
+        return None
+    if isinstance(value, (int, float)):
+        number = float(value)
+    else:
+        text = str(value).strip().replace("\u00a0", " ")
+        text = re.sub(r"[^0-9.,]", "", text)
+        if not text:
+            return None
+        if "," in text:
+            text = text.replace(".", "").replace(",", ".")
+        elif text.count(".") > 1:
+            text = text.replace(".", "")
+        try:
+            number = float(text)
+        except ValueError:
+            return None
+    return number if 1.0 <= number <= 1000.0 else None
+
+
 def fmt_try(value: int) -> str:
     return "₺" + f"{int(value):,}".replace(",", ".")
 
@@ -228,7 +254,7 @@ def fetch_doviz_sell_rates() -> dict[str, float]:
     rates: dict[str, float] = {}
     for code in ("USD", "EUR"):
         node = soup.select_one(f'[data-socket-key="{code}"][data-socket-attr="s"]')
-        value = parse_number(node.get_text(" ", strip=True)) if node else None
+        value = parse_fx_rate(node.get_text(" ", strip=True)) if node else None
         if not value:
             for row in soup.find_all("tr"):
                 text = " ".join(row.stripped_strings)
@@ -236,11 +262,11 @@ def fetch_doviz_sell_rates() -> dict[str, float]:
                     continue
                 nums = re.findall(r"\d+[.,]\d+", text)
                 if len(nums) >= 2:
-                    value = parse_number(nums[1])
+                    value = parse_fx_rate(nums[1])
                     if value:
                         break
         if not value:
-            raise RuntimeError(f"Doviz.com {code}/TRY satış kuru okunamadı")
+            raise RuntimeError(f"Doviz.com {code}/TRY satış kuru okunamadı veya gerçekçi aralık dışında")
         rates[code] = value
     return rates
 
