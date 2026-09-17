@@ -1,0 +1,43 @@
+name: Saatchi UI Regression
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/components/layout/Navbar.tsx'
+      - 'src/components/ui/HeroSlider.tsx'
+      - 'scripts/check-hero-autoplay.mjs'
+      - 'scripts/check-premium-ui-regressions.mjs'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/ui-regression.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Hero autoplay guard
+        run: npm run check:hero
+
+      - name: Premium UI guard
+        run: npm run check:premium-ui
+
+      - name: Production build
+        run: npm run build
