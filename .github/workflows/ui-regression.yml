@@ -43,5 +43,8 @@ jobs:
       - name: Premium UI guard
         run: npm run check:premium-ui
 
+      - name: VIP security guard
+        run: npm run check:vip
+
       - name: Production build
         run: npm run build
