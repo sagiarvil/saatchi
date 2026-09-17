@@ -1,33 +1,281 @@
 [
-  {"id":"5014","reference":"124270","amount":9200,"currency":"USD","sourceUrl":"https://www.chrono24.com/rolex/ref-124270.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5015","reference":"226570-0001","amount":12499,"currency":"USD","sourceUrl":"https://www.chrono24.com/rolex/ref-226570.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5011","reference":"124060","amount":11600,"currency":"EUR","sourceUrl":"https://www.chrono24.de/rolex/ref-124060.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5008","reference":"126234-0050","amount":11995,"currency":"EUR","sourceUrl":"https://www.chrono24.de/rolex/ref-126234.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5006","reference":"126334-0002","amount":15550,"currency":"USD","sourceUrl":"https://www.chrono24.com/rolex/ref-126334.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5007","reference":"126334-0014","amount":15550,"currency":"USD","sourceUrl":"https://www.chrono24.com/rolex/ref-126334.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5001","reference":"126610LN","amount":16540,"currency":"USD","sourceUrl":"https://www.chrono24.com/rolex/ref-126610.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5020","reference":"126600","amount":13017,"currency":"USD","sourceUrl":"https://www.chrono24.com/rolex/ref-126600.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5018","reference":"124300-0006","amount":10100,"currency":"USD","sourceUrl":"https://www.chrono24.com/rolex/ref-124300.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5012","reference":"126610LV","amount":15969,"currency":"USD","sourceUrl":"https://www.chrono24.com/rolex/ref-126610lv.htm","verifiedAt":"2026-09-17T19:07:07Z","evidenceRunId":35262808172},
-  {"id":"5019","reference":"126000-0014","amount":10600,"currency":"USD","sourceUrl":"https://www.chrono24.com/rolex/ref-126000.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5004","reference":"126710BLNR-0003","amount":16490,"currency":"EUR","sourceUrl":"https://www.chrono24.de/rolex/ref-126710blnr.htm","verifiedAt":"2026-09-17T19:07:07Z","evidenceRunId":35262808172},
-  {"id":"5005","reference":"126720VTNR-0001","amount":15420,"currency":"EUR","sourceUrl":"https://www.chrono24.de/rolex/ref-126720vtnr.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5104","reference":"WSTA0041","amount":3200,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wsta0041.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5114","reference":"WSRN0032","amount":3706,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wsrn0032.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5107","reference":"WSTA0065","amount":4184,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wsta0065.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5105","reference":"WSTA0040","amount":4943,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wsta0040.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5113","reference":"WSTA0083","amount":6595,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wsta0083.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5102","reference":"WSSA0029","amount":6600,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wssa0029.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5111","reference":"WSPA0009","amount":4542,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wspa0009.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5108","reference":"WSBB0025","amount":4282,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wsbb0025.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5101","reference":"WSSA0018","amount":8000,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wssa0018.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5120","reference":"WSPA0027","amount":6584,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wspa0027.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5110","reference":"W2PN0007","amount":10499,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-w2pn0007.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5115","reference":"WSSA0017","amount":8238,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wssa0017.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5106","reference":"WGTA0010","amount":9300,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wgta0010.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5118","reference":"W2SA0016","amount":12356,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-w2sa0016.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5117","reference":"WGBA0007","amount":10964,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wgba0007.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5109","reference":"W3BB0024","amount":14918,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-w3bb0024.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5112","reference":"WGSA0032","amount":16462,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wgsa0032.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647},
-  {"id":"5116","reference":"WGBB0030","amount":13205,"currency":"USD","sourceUrl":"https://www.chrono24.com/cartier/ref-wgbb0030.htm","verifiedAt":"2026-09-17T19:11:00Z","evidenceRunId":35263097647}
+  {
+    "id": "5014",
+    "reference": "124270",
+    "amount": 7850.0,
+    "currency": "EUR",
+    "sourceUrl": "https://www.chrono24.de/rolex/ref-124270.htm",
+    "verifiedAt": "2026-09-17T19:15:57Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5018",
+    "reference": "124300-0006",
+    "amount": 10719.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-124300.htm",
+    "verifiedAt": "2026-09-17T19:16:16Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5019",
+    "reference": "126000-0014",
+    "amount": 10995.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-126000.htm",
+    "verifiedAt": "2026-09-17T19:16:19Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5015",
+    "reference": "226570-0001",
+    "amount": 10178.0,
+    "currency": "EUR",
+    "sourceUrl": "https://www.chrono24.de/rolex/ref-226570.htm",
+    "verifiedAt": "2026-09-17T19:16:02Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5020",
+    "reference": "126600",
+    "amount": 13200.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-126600.htm",
+    "verifiedAt": "2026-09-17T19:16:15Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5011",
+    "reference": "124060",
+    "amount": 14063.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-124060.htm",
+    "verifiedAt": "2026-09-17T19:16:03Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5008",
+    "reference": "126234-0050",
+    "amount": 14495.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-126234.htm",
+    "verifiedAt": "2026-09-17T19:16:05Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5006",
+    "reference": "126334-0002",
+    "amount": 13450.0,
+    "currency": "EUR",
+    "sourceUrl": "https://www.chrono24.de/rolex/ref-126334.htm",
+    "verifiedAt": "2026-09-17T19:16:09Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5007",
+    "reference": "126334-0014",
+    "amount": 15800.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-126334.htm",
+    "verifiedAt": "2026-09-17T19:16:12Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5012",
+    "reference": "126610LV",
+    "amount": 15984.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-126610lv.htm",
+    "verifiedAt": "2026-09-17T19:16:17Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5001",
+    "reference": "126610LN",
+    "amount": 16540.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-126610.htm",
+    "verifiedAt": "2026-09-17T19:16:13Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5004",
+    "reference": "126710BLNR-0003",
+    "amount": 18000.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-126710blnr.htm",
+    "verifiedAt": "2026-09-17T19:16:19Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5005",
+    "reference": "126720VTNR-0001",
+    "amount": 21000.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-126720vtnr.htm",
+    "verifiedAt": "2026-09-17T19:16:21Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5104",
+    "reference": "WSTA0041",
+    "amount": 3200.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsta0041.htm",
+    "verifiedAt": "2026-09-17T19:16:22Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5114",
+    "reference": "WSRN0032",
+    "amount": 3706.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsrn0032.htm",
+    "verifiedAt": "2026-09-17T19:16:23Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5107",
+    "reference": "WSTA0065",
+    "amount": 4184.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsta0065.htm",
+    "verifiedAt": "2026-09-17T19:16:24Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5108",
+    "reference": "WSBB0025",
+    "amount": 4282.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsbb0025.htm",
+    "verifiedAt": "2026-09-17T19:16:30Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5111",
+    "reference": "WSPA0009",
+    "amount": 4542.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wspa0009.htm",
+    "verifiedAt": "2026-09-17T19:16:29Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5105",
+    "reference": "WSTA0040",
+    "amount": 4943.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsta0040.htm",
+    "verifiedAt": "2026-09-17T19:16:25Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5120",
+    "reference": "WSPA0027",
+    "amount": 6584.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wspa0027.htm",
+    "verifiedAt": "2026-09-17T19:16:32Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5113",
+    "reference": "WSTA0083",
+    "amount": 6595.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsta0083.htm",
+    "verifiedAt": "2026-09-17T19:16:26Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5102",
+    "reference": "WSSA0029",
+    "amount": 6600.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wssa0029.htm",
+    "verifiedAt": "2026-09-17T19:16:28Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5101",
+    "reference": "WSSA0018",
+    "amount": 8095.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wssa0018.htm",
+    "verifiedAt": "2026-09-17T19:16:31Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5115",
+    "reference": "WSSA0017",
+    "amount": 8270.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wssa0017.htm",
+    "verifiedAt": "2026-09-17T19:16:35Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5106",
+    "reference": "WGTA0010",
+    "amount": 9300.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wgta0010.htm",
+    "verifiedAt": "2026-09-17T19:16:36Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5110",
+    "reference": "W2PN0007",
+    "amount": 10499.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-w2pn0007.htm",
+    "verifiedAt": "2026-09-17T19:16:34Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5117",
+    "reference": "WGBA0007",
+    "amount": 10964.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wgba0007.htm",
+    "verifiedAt": "2026-09-17T19:16:38Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5118",
+    "reference": "W2SA0016",
+    "amount": 12356.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-w2sa0016.htm",
+    "verifiedAt": "2026-09-17T19:16:37Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5116",
+    "reference": "WGBB0030",
+    "amount": 13205.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wgbb0030.htm",
+    "verifiedAt": "2026-09-17T19:16:42Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5109",
+    "reference": "W3BB0024",
+    "amount": 14918.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-w3bb0024.htm",
+    "verifiedAt": "2026-09-17T19:16:39Z",
+    "evidenceRunId": "35263787316"
+  },
+  {
+    "id": "5112",
+    "reference": "WGSA0032",
+    "amount": 16462.0,
+    "currency": "USD",
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wgsa0032.htm",
+    "verifiedAt": "2026-09-17T19:16:41Z",
+    "evidenceRunId": "35263787316"
+  }
 ]
