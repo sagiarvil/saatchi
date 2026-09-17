@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "check:hero": "node scripts/check-hero-autoplay.mjs",
-    "build": "npm run check:hero && npx @tailwindcss/cli -i src/app/globals.css -o src/app/tailwind.css && next build && echo '{\"sortedMiddleware\":[],\"middleware\":{},\"functions\":{},\"version\":2}' > .next/server/middleware-manifest.json",
+    "check:premium-ui": "node scripts/check-premium-ui-regressions.mjs",
+    "build": "npm run check:hero && npm run check:premium-ui && npx @tailwindcss/cli -i src/app/globals.css -o src/app/tailwind.css && next build && echo '{\"sortedMiddleware\":[],\"middleware\":{},\"functions\":{},\"version\":2}' > .next/server/middleware-manifest.json",
     "dev": "next dev",
     "start": "next start",
     "lint": "eslint",
