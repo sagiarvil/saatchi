@@ -11,7 +11,11 @@ import { getProxiedImageUrl } from '@/utils/imageProxy';
 
 const allWatches = [...saatlerData, ...elitSaatlerData] as any[];
 
-const MENU_GROUPS = [
+type MenuGroupId = 'elite' | 'other';
+type MenuBrand = { name: string; href: string; source: string };
+type MenuGroup = { id: MenuGroupId; title: string; note: string; brands: readonly MenuBrand[] };
+
+const MENU_GROUPS: readonly MenuGroup[] = [
   {
     id: 'elite',
     title: 'Elit Saatler',
@@ -35,9 +39,7 @@ const MENU_GROUPS = [
       { name: 'Versace', href: '/markalar/versace', source: 'Saat&Saat kaynağı' },
     ],
   },
-] as const;
-
-type MenuGroupId = (typeof MENU_GROUPS)[number]['id'];
+];
 
 export function Navbar() {
   const pathname = usePathname();
@@ -56,6 +58,14 @@ export function Navbar() {
     () => allWatches.filter((watch) => String(watch.brand || '').trim() === activeBrand),
     [activeBrand],
   );
+  const brandCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const watch of allWatches) {
+      const brand = String(watch.brand || '').trim();
+      if (brand) counts.set(brand, (counts.get(brand) ?? 0) + 1);
+    }
+    return counts;
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -94,6 +104,18 @@ export function Navbar() {
       setSearchResults([]);
     }
   }, [searchOpen]);
+
+  useEffect(() => {
+    if (!menuOpen && !searchOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setMenuOpen(false);
+        setSearchOpen(false);
+      }
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [menuOpen, searchOpen]);
 
   const selectGroup = (groupId: MenuGroupId) => {
     const group = MENU_GROUPS.find((candidate) => candidate.id === groupId) ?? MENU_GROUPS[0];
@@ -139,34 +161,34 @@ export function Navbar() {
             <button type="button" onClick={() => setMenuOpen(false)} className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#151311] text-[#d7cec4] transition-colors hover:border-white/35 hover:text-white" aria-label="Menüyü kapat"><X className="h-5 w-5" strokeWidth={1.2} /></button>
           </div>
 
-          <div className="grid min-h-0 bg-[#0b0a09] lg:grid-cols-[330px_minmax(0,1fr)] xl:grid-cols-[350px_minmax(0,1fr)_300px]">
-            <nav className="min-h-0 overflow-y-auto border-b border-white/10 bg-[#11100f] px-5 py-5 sm:px-8 lg:border-b-0 lg:border-r lg:px-7" aria-label="Saat kategorileri">
-              <div className="mb-5 flex items-center justify-between">
+          <div className="grid min-h-0 grid-rows-[minmax(0,42%)_minmax(0,58%)] bg-[#0b0a09] lg:grid-cols-[330px_minmax(0,1fr)] lg:grid-rows-1 xl:grid-cols-[350px_minmax(0,1fr)_300px]">
+            <nav className="min-h-0 overflow-y-auto border-b border-white/10 bg-[#11100f] px-5 py-4 sm:px-8 lg:border-b-0 lg:border-r lg:px-7 lg:py-5" aria-label="Saat kategorileri">
+              <div className="mb-4 flex items-center justify-between">
                 <p className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#b99064]">Koleksiyonlar</p>
                 <Link href="/markalar" onClick={() => setMenuOpen(false)} className="text-[9px] uppercase tracking-[0.18em] text-[#77706a] hover:text-white">Tümü</Link>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-2.5">
                 {MENU_GROUPS.map((group, groupIndex) => {
                   const selected = group.id === activeGroupId;
                   return (
                     <section key={group.id} className={`overflow-hidden rounded-2xl border ${selected ? 'border-[#846b32]/55 bg-[#171410]' : 'border-white/[.08] bg-[#0d0c0b]'}`}>
-                      <button type="button" onClick={() => selectGroup(group.id)} className="flex w-full items-start gap-3 px-4 py-3 text-left" aria-expanded={selected}>
+                      <button type="button" onClick={() => selectGroup(group.id)} className="flex w-full items-start gap-3 px-4 py-2.5 text-left" aria-expanded={selected}>
                         <span className="pt-1 text-[9px] tracking-[0.16em] text-[#6d655e]">0{groupIndex + 1}</span>
                         <span className="min-w-0 flex-1">
-                          <span className="block text-[18px] font-medium leading-tight tracking-[-0.02em] text-[#f2ece5]">{group.title}</span>
+                          <span className="block text-[17px] font-medium leading-tight tracking-[-0.02em] text-[#f2ece5]">{group.title}</span>
                           <span className="mt-1 block text-[9px] leading-4 tracking-[0.04em] text-[#80776f]">{group.note}</span>
                         </span>
                         <ChevronRight className={`mt-1 h-4 w-4 shrink-0 text-[#9a856b] transition-transform ${selected ? 'rotate-90' : ''}`} strokeWidth={1.2} />
                       </button>
 
                       {selected && (
-                        <div className="border-t border-white/[.07] px-2 py-2">
+                        <div className="border-t border-white/[.07] px-2 py-1.5">
                           {group.brands.map((brand) => {
                             const active = activeBrand === brand.name;
-                            const count = allWatches.filter((watch) => String(watch.brand || '').trim() === brand.name).length;
+                            const count = brandCounts.get(brand.name) ?? 0;
                             return (
-                              <button key={brand.name} type="button" onClick={() => setActiveBrand(brand.name)} className={`grid w-full grid-cols-[1fr_auto] items-center gap-3 rounded-xl px-3 py-2 text-left transition-colors ${active ? 'bg-[#846b32]/15 text-white' : 'text-[#c7bfb6] hover:bg-white/[.04] hover:text-white'}`}>
+                              <button key={brand.name} type="button" onClick={() => setActiveBrand(brand.name)} className={`grid w-full grid-cols-[1fr_auto] items-center gap-3 rounded-xl px-3 py-1.5 text-left transition-colors ${active ? 'bg-[#846b32]/15 text-white' : 'text-[#c7bfb6] hover:bg-white/[.04] hover:text-white'}`}>
                                 <span className="min-w-0"><span className="block truncate text-[13px] font-medium">{brand.name}</span><span className="mt-0.5 block truncate text-[8px] uppercase tracking-[0.13em] text-[#716a64]">{brand.source}</span></span>
                                 <span className="text-[9px] tabular-nums text-[#8f8274]">{count}</span>
                               </button>
@@ -181,26 +203,26 @@ export function Navbar() {
             </nav>
 
             <section className="grid min-h-0 grid-rows-[auto_minmax(0,1fr)] bg-[#0b0a09]" aria-label={`${activeBrand} ürünleri`}>
-              <div className="border-b border-white/[.08] px-5 py-4 sm:px-8 md:px-10">
+              <div className="border-b border-white/[.08] px-5 py-3 sm:px-8 md:px-10 lg:py-4">
                 <div className="flex flex-wrap items-end justify-between gap-3">
                   <div>
                     <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-[#a38363]">{activeGroup.title}</p>
-                    <h2 className="mt-1 text-[clamp(25px,3vw,40px)] font-medium leading-none tracking-[-0.035em] text-white">{activeBrand}</h2>
-                    <p className="mt-2 text-[10px] tracking-[0.05em] text-[#77706a]">{activeBrandMeta.source}</p>
+                    <h2 className="mt-1 text-[clamp(23px,3vw,40px)] font-medium leading-none tracking-[-0.035em] text-white">{activeBrand}</h2>
+                    <p className="mt-1.5 text-[9px] tracking-[0.05em] text-[#77706a] sm:text-[10px]">{activeBrandMeta.source}</p>
                   </div>
                   <Link href={activeBrandMeta.href} onClick={() => setMenuOpen(false)} className="inline-flex items-center gap-2 text-[9px] font-semibold uppercase tracking-[0.18em] text-[#c8ad7f] hover:text-white">Marka sayfası <ArrowUpRight className="h-3.5 w-3.5" /></Link>
                 </div>
               </div>
 
-              <div className="min-h-0 overflow-y-auto overscroll-contain px-3 py-2 sm:px-6 md:px-8">
+              <div className="min-h-0 overflow-y-auto overscroll-contain px-3 py-1.5 sm:px-6 md:px-8">
                 <div className="divide-y divide-white/[.055]">
                   {activeProducts.map((watch) => (
-                    <Link key={String(watch.id || watch.seoUrl)} href={watch.seoUrl} onClick={() => setMenuOpen(false)} className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-2 py-2.5 sm:px-3 sm:py-2.5 hover:bg-white/[.035]">
+                    <Link key={String(watch.id || watch.seoUrl)} href={watch.seoUrl} onClick={() => setMenuOpen(false)} className="group grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-2 py-2 sm:px-3 hover:bg-white/[.035]">
                       <div className="min-w-0">
-                        <p className="truncate text-[12px] font-medium leading-[1.15] tracking-[-0.01em] text-[#ddd6ce] transition-colors group-hover:text-white sm:text-[13px]">{watch.modelName}</p>
-                        <p className="mt-1 truncate text-[8px] uppercase tracking-[0.14em] text-[#69625d]">{watch.reference || watch.ref || watch.id}</p>
+                        <p className="truncate text-[11px] font-medium leading-[1.12] tracking-[-0.01em] text-[#ddd6ce] transition-colors group-hover:text-white sm:text-[12px]">{watch.modelName}</p>
+                        <p className="mt-0.5 truncate text-[8px] uppercase tracking-[0.14em] text-[#69625d]">{watch.reference || watch.ref || watch.id}</p>
                       </div>
-                      <span className="whitespace-nowrap text-[10px] font-medium tabular-nums text-[#a98d68] sm:text-[11px]">{watch.price}</span>
+                      <span className="whitespace-nowrap text-[9px] font-medium tabular-nums text-[#a98d68] sm:text-[10px]">{watch.price}</span>
                     </Link>
                   ))}
                   {!activeProducts.length && <p className="px-3 py-8 text-sm text-[#8b837c]">Bu marka için katalog ürünü bulunamadı.</p>}
