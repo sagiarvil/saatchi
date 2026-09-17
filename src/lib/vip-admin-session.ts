@@ -1,10 +1,10 @@
 import crypto from 'crypto';
 
 export const VIP_ADMIN_COOKIE = 'saatchi_vip_admin';
-const SESSION_TTL_MS = 8 * 60 * 60 * 1000;
+const SESSION_TTL_MS = 2 * 60 * 60 * 1000;
 
 type AdminSessionPayload = {
-  v: 1;
+  v: 2;
   iat: number;
   exp: number;
   nonce: string;
@@ -16,10 +16,21 @@ function getPaymentSecret() {
   return secret;
 }
 
+export function assertConfiguredAdminKey() {
+  const key = process.env.VIP_ADMIN_KEY;
+  if (!key || key.length < 12) throw new Error('VIP_ADMIN_KEY yapılandırılmamış.');
+  return key;
+}
+
 function getSessionSecret() {
   const explicit = process.env.VIP_ADMIN_SESSION_SECRET;
-  if (explicit && explicit.length >= 32) return explicit;
-  return crypto.createHmac('sha256', getPaymentSecret()).update('saatchi:vip-admin-session:v1').digest('hex');
+  const rootSecret = explicit && explicit.length >= 32 ? explicit : getPaymentSecret();
+  const adminKeyFingerprint = crypto.createHash('sha256').update(assertConfiguredAdminKey(), 'utf8').digest();
+  return crypto
+    .createHmac('sha256', rootSecret)
+    .update('saatchi:vip-admin-session:v2')
+    .update(adminKeyFingerprint)
+    .digest('hex');
 }
 
 function signBody(body: string) {
@@ -36,12 +47,6 @@ function parseCookies(header: string | null) {
     if (key) out.set(key, decodeURIComponent(value));
   }
   return out;
-}
-
-export function assertConfiguredAdminKey() {
-  const key = process.env.VIP_ADMIN_KEY;
-  if (!key || key.length < 12) throw new Error('VIP_ADMIN_KEY yapılandırılmamış.');
-  return key;
 }
 
 export function verifyAdminKey(candidate: string) {
@@ -69,12 +74,15 @@ export function assertSameOriginMutation(request: Request) {
       throw new Error('Çapraz kaynak yönetim isteği reddedildi.');
     }
   }
+  if (!origin && !referer && fetchSite !== 'same-origin') {
+    throw new Error('Yönetim isteği kaynak doğrulamasından geçemedi.');
+  }
 }
 
 export function createAdminSession() {
   const now = Date.now();
   const payload: AdminSessionPayload = {
-    v: 1,
+    v: 2,
     iat: now,
     exp: now + SESSION_TTL_MS,
     nonce: crypto.randomBytes(18).toString('base64url'),
@@ -95,8 +103,15 @@ export function verifyAdminSessionToken(token: string): AdminSessionPayload {
   if (expected.length !== actual.length || !crypto.timingSafeEqual(expected, actual)) {
     throw new Error('Yönetim oturumu doğrulanamadı.');
   }
-  const payload = JSON.parse(Buffer.from(body, 'base64url').toString('utf8')) as AdminSessionPayload;
-  if (payload.v !== 1 || !payload.exp || payload.exp <= Date.now()) throw new Error('Yönetim oturumunun süresi dolmuş.');
+  let payload: AdminSessionPayload;
+  try {
+    payload = JSON.parse(Buffer.from(body, 'base64url').toString('utf8')) as AdminSessionPayload;
+  } catch {
+    throw new Error('Yönetim oturumu içeriği geçersiz.');
+  }
+  if (payload.v !== 2 || !payload.iat || !payload.exp || payload.exp <= Date.now() || payload.iat > Date.now() + 60_000) {
+    throw new Error('Yönetim oturumunun süresi dolmuş veya geçersiz.');
+  }
   return payload;
 }
 
