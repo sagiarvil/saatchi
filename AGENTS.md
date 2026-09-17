@@ -1,10 +1,12 @@
 # Saatchi & Co. (Lüks Saatler) — Ajan Kuralları ve Mimarisi
 
-## 1. Fiyatlama ve Borsa Akışı (DEĞİŞMEZ KURAL — YENİ GÜMRÜK YASASI & CHRONO24 MANDATE)
-Saatchi projesindeki tüm saatler "Elit Kategori" lüks saatlerdir.
-- **Fiyatlama Formülü:** Bütün saatler için Chrono24 küresel piyasa referans fiyatı ve +%150 gümrük/kâr marjı zorunludur.
-- **Hesaplama:** `Chrono24 USD Referans Fiyatı × Güncel USD/TRY Kuru × 2.50` (Yani %150 marj).
-- Asla rastgele fiyat üretilmez veya altın piyasası (İZKO/Harem) kuralları bu projede KULLANILMAZ. Saatlerin yegane kaynağı Chrono24'tür.
+## 1. Fiyatlama ve Kaynak Akışı (DEĞİŞMEZ KURAL)
+Saatchi fiyatlama sistemi marka/kaynak bazında ayrıdır ve hiçbir ajan bu üç kuralı birbirine karıştıramaz:
+1. **Rolex + Cartier:** Kaynak sitedeki yabancı para fiyatı esas alınır. Kaynak para birimi USD ise Döviz.com USD/TRY **satış** kuru, EUR ise Döviz.com EUR/TRY **satış** kuru kullanılır. TL karşılığı bulunduktan sonra **+%150 artış uygulanır**, yani formül `Yabancı Para Kaynak Fiyatı × Döviz.com Satış Kuru × 2.50` şeklindedir. Rolex ve Cartier için 1.799.000 TL katalog tavanı uygulanmaz; hesaplanan fiyat siteye aynen yansıtılır.
+2. **Konyalı Saat + Saat&Saat kaynaklı ürünler:** Kaynak sitedeki doğrulanmış TL fiyatı × `1.50`. Bu akış TAG Heuer, Rado, Tissot, Calvin Klein, Michael Kors ve Versace için geçerlidir. Bu grupta 1.799.000 TL katalog tavanı korunur.
+3. **Carren:** Kaynak fiyat kullanılmaz; tüm Carren ürünleri sabit **19.990 TL** olarak yayınlanır. Erkek/Kadın ayrımı ve stok bilgisi kaynak siteden alınır.
+
+Fiyat üretiminde rastgele değer kullanılamaz. Her üründe uygulanan fiyat kuralı, kaynak fiyat/para birimi, kur kaynağı ve mümkünse kaynak URL kayıt altında tutulmalıdır. Rolex/Cartier kaydında doğrudan `sourceUrl` varsa fiyat bu URL'den canlı doğrulanır; URL yoksa mevcut `foreignPrice` yalnız geçici kaynak referansı olarak kullanılır ve `sourcePriceStatus` ile açıkça işaretlenir.
 
 ## 2. UI / Tasarım İşleri — Zorunlu (Luxury UX/UI)
 Kullanıcıya görünen tüm HTML, CSS, Next.js bileşenleri (Navbar, Footer, Ürün Kartları) için:
@@ -25,14 +27,14 @@ Saatchi'de kesilecek lüks saat faturaları için Belgin standartları birebir g
 
 ## 5. Sıfır Hata ve 4/4 Kalite Kapısı
 Hiçbir kod bloğu şu 4 kapı doğrulanmadan onaylanamaz:
-1. **Syntax:** `npm run build` ve `eslint` sıfır hata vermelidir.
+1. **Syntax:** `npm run build` ve proje için tanımlı hedefli doğrulamalar sıfır hata vermelidir. Repo genelindeki tarihsel lint borcu ayrı iş olarak ele alınır; otomatik `--fix` ile ödeme/legacy kodu topluca değiştirilemez.
 2. **BOM & Encoding:** Saf UTF-8.
 3. **Güvenlik:** XSS, SQLi ve fiyat manipülasyonlarına (Client-side fiyat değiştirme) karşı Backend'de (Next.js Server Actions/API) kesin fiyat doğrulaması.
 4. **Kanıt:** Eklenen her özellik test edilmeli ve loglanmalıdır.
 
-## 6. KESİN YASAK (CHRONO24 KELİMESİ)
-- Fiyatlama Chrono24 mantığıyla yapılsa bile, **"Chrono24" kelimesi projenin HİÇBİR YERİNDE (UI, metinler, JSON) geçmeyecektir.**
-- Bunun yerine "Global İsviçre Saat Borsası", "Uluslararası Lüks Saat Borsası", "Global Watch Index" gibi terimler kullanılacaktır. Bu kalıcı ve evrensel bir kuraldır.
+## 6. KAYNAK ADI / MARKA METNİ KURALI
+- Harici piyasa sağlayıcılarının marka adları kullanıcıya açık UI, ürün metni veya JSON açıklama alanlarında gereksiz biçimde gösterilmeyecektir.
+- Kullanıcıya açık metinlerde gerektiğinde "Global İsviçre Saat Borsası", "Uluslararası Lüks Saat Borsası" veya "Global Watch Index" gibi nötr ifadeler kullanılacaktır.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
