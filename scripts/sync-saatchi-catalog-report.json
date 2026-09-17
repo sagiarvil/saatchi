@@ -3,12 +3,12 @@
   "markup": 1.5,
   "maxPublicPrice": 1799000,
   "eliteCount": 533,
-  "standardCount": 1207,
+  "standardCount": 1653,
   "sourceCounts": {
     "TAG Heuer": 124,
     "Rado": 378,
     "Tissot": 125,
-    "Carren": 0,
+    "Carren": 446,
     "Calvin Klein": 402,
     "Michael Kors": 420,
     "Versace": 260
@@ -21,11 +21,16 @@
   },
   "watchBrandCounts": {
     "Tissot": 125,
-    "Carren": 0,
+    "Carren": 446,
     "Calvin Klein": 402,
     "Michael Kors": 420,
     "Versace": 260
   },
   "errors": [],
-  "elapsedSeconds": 1196.56
+  "elapsedSeconds": 1196.56,
+  "carrenFixedPrice": 19990,
+  "carrenGenderCounts": {
+    "Erkek": 175,
+    "Kadın": 271
+  }
 }
