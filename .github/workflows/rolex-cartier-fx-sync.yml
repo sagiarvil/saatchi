@@ -8,6 +8,7 @@ on:
       - 'scripts/rolex-cartier-verified-snapshot.json'
       - 'scripts/update_prices.py'
       - 'scripts/update_prices_resilient.py'
+      - 'scripts/test-pricing-engine.py'
       - '.github/workflows/rolex-cartier-fx-sync.yml'
   schedule:
     - cron: '17 3 * * *'
@@ -66,12 +67,15 @@ jobs:
         run: python3 -m pip install -q curl_cffi beautifulsoup4
 
       - name: Python syntax guard
-        run: python3 -m py_compile scripts/update_prices.py scripts/update_prices_resilient.py
+        run: python3 -m py_compile scripts/update_prices.py scripts/update_prices_resilient.py scripts/test-pricing-engine.py
+
+      - name: Pricing unit regression test
+        run: python3 scripts/test-pricing-engine.py
 
       - name: Refresh live sources with fresh durable fallback
         run: python3 scripts/update_prices_resilient.py
 
-      - name: Require 31 verified fresh source readbacks
+      - name: Require 31 verified fresh source readbacks and exact pricing units
         run: |
           python3 - <<'PY'
           import json, sys
@@ -107,16 +111,31 @@ jobs:
                   return kind.startswith('VERIFIED_SNAPSHOT_') and fresh(x.get('sourceVerifiedAt'))
               return False
 
-          bad=[x.get('id') for x in rc if x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell' or x.get('sourceCurrency') not in {'USD','EUR'} or not valid_source(x) or not x.get('sourceVerifiedAt') or x.get('pricingRule')!='FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50' or not x.get('calculatedPrice')]
+          def pricing_math_ok(x):
+              try:
+                  source=float(x.get('sourcePriceForeign') or 0)
+                  fx=float(x.get('fxRate') or 0)
+                  base=int(x.get('originalPrice') or 0)
+                  final=int(x.get('calculatedPrice') or 0)
+              except Exception:
+                  return False
+              if not (source > 0 and 1 <= fx <= 1000 and base > 0 and final > 0): return False
+              if abs(base-round(source*fx)) > 1: return False
+              if abs(final-round(base*2.50)) > 1: return False
+              return True
+
+          bad=[x.get('id') for x in rc if x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell' or x.get('sourceCurrency') not in {'USD','EUR'} or not valid_source(x) or not x.get('sourceVerifiedAt') or x.get('pricingRule')!='FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50' or not pricing_math_ok(x)]
           provider_counts=report.get('rolexCartierSourceProviderCounts') or {}
           snapshot_bad=[s.get('id') for s in snapshots if not fresh(s.get('verifiedAt')) or not s.get('amount') or s.get('currency') not in {'USD','EUR'}]
           verified=int(report.get('rolexCartierVerifiedSourceCount') or 0)
           live=int(report.get('rolexCartierLiveSourceVerifiedCount') or 0)
           fallback=int(report.get('rolexCartierSnapshotFallbackCount') or 0)
-          if len(rc)!=31 or bad or snapshot_bad or verified!=31 or live+fallback!=31 or sum(int(v) for v in provider_counts.values())!=31:
-              print('ROLEX_CARTIER_VERIFIED_SOURCE_READBACK_FAILED','count=',len(rc),'bad=',bad,'snapshot_bad=',snapshot_bad,'verified=',verified,'live=',live,'fallback=',fallback,'providers=',provider_counts)
+          rates=report.get('fxRates') or {}
+          rate_bad={k:v for k,v in rates.items() if not isinstance(v,(int,float)) or not (1 <= float(v) <= 1000)}
+          if len(rc)!=31 or bad or snapshot_bad or verified!=31 or live+fallback!=31 or sum(int(v) for v in provider_counts.values())!=31 or rate_bad:
+              print('ROLEX_CARTIER_VERIFIED_SOURCE_READBACK_FAILED','count=',len(rc),'bad=',bad,'snapshot_bad=',snapshot_bad,'verified=',verified,'live=',live,'fallback=',fallback,'providers=',provider_counts,'rate_bad=',rate_bad)
               sys.exit(1)
-          print('ROLEX_CARTIER_VERIFIED_SOURCE_READBACK_OK count=31 live=',live,'fresh_snapshot=',fallback,'providers=',provider_counts)
+          print('ROLEX_CARTIER_VERIFIED_SOURCE_READBACK_OK count=31 live=',live,'fresh_snapshot=',fallback,'providers=',provider_counts,'fxRates=',rates)
           PY
 
       - name: Commit verified price and provenance changes
