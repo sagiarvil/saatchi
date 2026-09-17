@@ -11,7 +11,10 @@ export const revalidate = 0;
 export async function generateStaticParams() {
   let slugs = ['limited-edition', 'tourbillon', 'altin-kaplama', 'koleksiyon'];
   const watches = elitSaatlerData as any[];
-  slugs = [...slugs, ...watches.map((w: any) => String(w.seoUrl || '').split('/').pop()).filter(Boolean)];
+  const watchSlugs = watches
+    .map((w: any) => String(w.seoUrl || '').split('/').pop())
+    .filter((slug): slug is string => typeof slug === 'string' && slug.length > 0);
+  slugs = [...slugs, ...watchSlugs];
   return slugs.map((slug) => ({ slug }));
 }
 
