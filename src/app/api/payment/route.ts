@@ -6,7 +6,15 @@ export const dynamic = 'force-dynamic';
 
 const BELGIN_CREATE_PAYMENT_URL = process.env.BELGIN_PAYMENT_CREATE_URL || 'https://us-central1-carbon-web-1265b.cloudfunctions.net/createPayment';
 
+function noStore(payload: unknown, init?: ResponseInit) {
+  const response = NextResponse.json(payload, init);
+  response.headers.set('Cache-Control', 'no-store, max-age=0');
+  response.headers.set('Pragma', 'no-cache');
+  return response;
+}
+
 export async function POST(request: Request) {
+  const requestId = crypto.randomUUID();
   try {
     const body = await request.json();
     const token = String(body.token || '');
@@ -20,10 +28,10 @@ export async function POST(request: Request) {
     const email = String(body.email || '').trim().slice(0, 200);
 
     if (!customerName || !customerPhone || !customerIdentity) {
-      return NextResponse.json({ status: 'error', message: 'Ad soyad, telefon ve kimlik bilgisi zorunludur.' }, { status: 400 });
+      return noStore({ status: 'error', requestId, message: 'Ad soyad, telefon ve kimlik bilgisi zorunludur.' }, { status: 400 });
     }
     if (body.termsAccepted !== true || body.preInformationAccepted !== true || body.highValueDeliveryAccepted !== true) {
-      return NextResponse.json({ status: 'error', message: 'Zorunlu sözleşme ve teslim koşulları onaylanmalıdır.' }, { status: 400 });
+      return noStore({ status: 'error', requestId, message: 'Zorunlu sözleşme ve teslim koşulları onaylanmalıdır.' }, { status: 400 });
     }
 
     const configuredProvider = String(process.env.SAATCHI_PAYMENT_PROVIDER || '').trim().toUpperCase();
@@ -65,9 +73,11 @@ export async function POST(request: Request) {
       headers: {
         'Content-Type': 'application/json',
         'User-Agent': userAgent,
+        'X-SAATCHI-Request-Id': requestId,
         ...(forwardedFor ? { 'X-Forwarded-For': forwardedFor } : {})
       },
       cache: 'no-store',
+      signal: AbortSignal.timeout(20_000),
       body: JSON.stringify(paymentPayload)
     });
 
@@ -80,15 +90,21 @@ export async function POST(request: Request) {
     }
 
     if (!belginResponse.ok || data.success !== true) {
-      return NextResponse.json({
+      return noStore({
         status: 'error',
+        requestId,
         code: data.code || 'BELGIN_PAYMENT_CREATE_FAILED',
         message: data.message || 'Ödeme oturumu oluşturulamadı.'
       }, { status: belginResponse.status >= 400 ? belginResponse.status : 502 });
     }
 
-    return NextResponse.json({
+    // Re-check durable state after the external call so a revoke racing with payment-session
+    // creation cannot result in a usable redirect being returned to the customer.
+    await assertVipLinkActive(vip, token);
+
+    return noStore({
       status: 'success',
+      requestId,
       message: 'Güvenli ödeme oturumu oluşturuldu.',
       orderId: data.merchant_oid,
       provider: data.provider,
@@ -100,9 +116,9 @@ export async function POST(request: Request) {
       formData: data.formData || data.postParams || null,
       evidenceId: data.evidenceId || null,
       deliveryMethod: data.deliveryMethod || 'showroom'
-    }, { headers: { 'Cache-Control': 'no-store' } });
+    });
   } catch (error: any) {
-    console.error('[SAATCHI PAYMENT]', error?.message || error);
-    return NextResponse.json({ status: 'error', message: error?.message || 'Ödeme oturumu oluşturulamadı.' }, { status: 400 });
+    console.error('[SAATCHI PAYMENT]', requestId, error?.message || error);
+    return noStore({ status: 'error', requestId, message: error?.message || 'Ödeme oturumu oluşturulamadı.' }, { status: 400 });
   }
 }
