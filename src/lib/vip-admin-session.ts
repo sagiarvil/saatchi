@@ -50,6 +50,27 @@ export function verifyAdminKey(candidate: string) {
   return expected.length === actual.length && crypto.timingSafeEqual(expected, actual);
 }
 
+export function assertSameOriginMutation(request: Request) {
+  const expectedOrigin = new URL(request.url).origin;
+  const origin = request.headers.get('origin');
+  const referer = request.headers.get('referer');
+  const fetchSite = request.headers.get('sec-fetch-site');
+
+  if (fetchSite && !['same-origin', 'none'].includes(fetchSite)) {
+    throw new Error('Çapraz kaynak yönetim isteği reddedildi.');
+  }
+  if (origin && origin !== expectedOrigin) {
+    throw new Error('Çapraz kaynak yönetim isteği reddedildi.');
+  }
+  if (!origin && referer) {
+    try {
+      if (new URL(referer).origin !== expectedOrigin) throw new Error('cross-origin');
+    } catch {
+      throw new Error('Çapraz kaynak yönetim isteği reddedildi.');
+    }
+  }
+}
+
 export function createAdminSession() {
   const now = Date.now();
   const payload: AdminSessionPayload = {
