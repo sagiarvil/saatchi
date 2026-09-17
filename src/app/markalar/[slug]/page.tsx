@@ -4,17 +4,21 @@ import saatlerData from '@/data/saatler.json';
 import elitSaatlerData from '@/data/elit-saatler.json';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
 
-const MAX_CATALOG_PRICE = 1799000;
+const MAX_CATALOG_PRICE = 1_799_000;
 const ELITE_BRANDS = new Set(['Rolex', 'Cartier', 'TAG Heuer', 'Rado']);
+const NO_CAP_BRANDS = new Set(['Rolex', 'Cartier']);
 
 function brandSlug(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
 function allowedCatalog() {
-  return [...(saatlerData as any[]), ...(elitSaatlerData as any[])].filter((watch) =>
-    Number(watch.calculatedPrice || 0) > 0 && Number(watch.calculatedPrice || 0) <= MAX_CATALOG_PRICE
-  );
+  return [...(saatlerData as any[]), ...(elitSaatlerData as any[])].filter((watch) => {
+    const brand = String(watch.brand || '');
+    const price = Number(watch.calculatedPrice || 0);
+    if (price <= 0) return false;
+    return NO_CAP_BRANDS.has(brand) || price <= MAX_CATALOG_PRICE;
+  });
 }
 
 export async function generateStaticParams() {
@@ -49,10 +53,10 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
 
               return (
                 <Link href={linkUrl} key={String(watch.id || idx)} className="group bg-surface rounded-2xl border border-surface-border overflow-hidden hover:shadow-xl hover:border-primary/40 transition-all duration-500 flex flex-col">
-                  <div className="w-full aspect-square relative overflow-hidden bg-[#FAFAFA] flex items-center justify-center">
+                  <div className="w-full aspect-[4/5] relative overflow-hidden bg-[#FAFAFA] flex items-center justify-center">
                     <div className="absolute top-4 left-4 z-10 bg-[#846b32] text-white text-[9px] font-bold tracking-widest px-2 py-1 rounded shadow-sm uppercase">{isElit ? 'ELITE' : 'SAAT'}</div>
                     {watch.image ? (
-                      <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain scale-[1.12] group-hover:scale-[1.16] transition-transform duration-700 ease-out" />
+                      <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-4 md:p-6 group-hover:scale-[1.03] transition-transform duration-700 ease-out" />
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center p-4 border border-surface-border group-hover:border-[#C2A768]/30 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-[#C2A768]/50 mb-3"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
