@@ -32,10 +32,10 @@
   "rolexCartierFxSource": "doviz.com",
   "rolexCartierFxSide": "sell",
   "fxRates": {
-    "USD": 486730.0,
-    "EUR": 559926.0
+    "USD": 48.6728,
+    "EUR": 55.998
   },
-  "rolexCartierPricingUpdatedAt": "2026-09-17T19:15:53+0000",
+  "rolexCartierPricingUpdatedAt": "2026-09-17T19:27:31+0000",
   "carrenFixedPrice": 19990,
   "carrenGenderCounts": {
     "Erkek": 175,
@@ -49,13 +49,13 @@
   },
   "rolexCartierSourceProvider": "Chrono24 primary; WatchCharts exact-model fallback; durable <=72h verified snapshot",
   "rolexCartierSourcePriceKind": "LIVE_OR_FRESH_VERIFIED_MARKET_REFERENCE_USD_OR_EUR",
-  "rolexCartierLiveSourceVerifiedCount": 31,
+  "rolexCartierLiveSourceVerifiedCount": 30,
   "rolexCartierSourceProviderCounts": {
     "Chrono24": 31
   },
   "rolexCartierVerifiedSourceCount": 31,
-  "rolexCartierSnapshotFallbackCount": 0,
+  "rolexCartierSnapshotFallbackCount": 1,
   "rolexCartierSnapshotTtlSeconds": 259200,
   "rolexCartierSourceDriftGuard": 0.35,
-  "rolexCartierVerificationRunId": "35263787316"
+  "rolexCartierVerificationRunId": "35264924446"
 }

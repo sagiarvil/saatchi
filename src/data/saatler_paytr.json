@@ -3,15 +3,15 @@
     "id": "5014",
     "modelName": "Rolex Explorer 36mm Oystersteel Siyah Kadran",
     "brand": "Rolex",
-    "calculatedPrice": 10988547750,
+    "calculatedPrice": 1101830,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.de/rolex/ref-124270.htm"
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-124270.htm"
   },
   {
     "id": "5018",
     "modelName": "Rolex Oyster Perpetual 41mm Turkuaz Mavi 'Tiffany' Kadran",
     "brand": "Rolex",
-    "calculatedPrice": 13043147175,
+    "calculatedPrice": 1291290,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/rolex/ref-124300.htm"
   },
@@ -19,7 +19,7 @@
     "id": "5019",
     "modelName": "Rolex Oyster Perpetual 36mm Siyah Kadran",
     "brand": "Rolex",
-    "calculatedPrice": 13378990875,
+    "calculatedPrice": 1337892,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/rolex/ref-126000.htm"
   },
@@ -27,15 +27,15 @@
     "id": "5015",
     "modelName": "Rolex Explorer II 42mm Beyaz 'Polar' Kadran",
     "brand": "Rolex",
-    "calculatedPrice": 14247317070,
+    "calculatedPrice": 1496445,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.de/rolex/ref-226570.htm"
+    "sourceUrl": "https://www.chrono24.com/rolex/ref-226570.htm"
   },
   {
     "id": "5020",
     "modelName": "Rolex Sea-Dweller 43mm Oystersteel & Siyah Kadran Kırmızı Yazı",
     "brand": "Rolex",
-    "calculatedPrice": 16062090000,
+    "calculatedPrice": 1606202,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/rolex/ref-126600.htm"
   },
@@ -43,39 +43,39 @@
     "id": "5011",
     "modelName": "Rolex Submariner No-Date 41mm Oystersteel",
     "brand": "Rolex",
-    "calculatedPrice": 17112209975,
+    "calculatedPrice": 1623942,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-124060.htm"
+    "sourceUrl": "https://www.chrono24.de/rolex/ref-124060.htm"
   },
   {
     "id": "5008",
     "modelName": "Rolex Datejust 36mm Mavi Fluted Motif Kadran",
     "brand": "Rolex",
-    "calculatedPrice": 17637878375,
+    "calculatedPrice": 1763780,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/rolex/ref-126234.htm"
-  },
-  {
-    "id": "5006",
-    "modelName": "Rolex Datejust 41mm Yivli Bezel & Mavi Kadran Jubilee",
-    "brand": "Rolex",
-    "calculatedPrice": 18827511750,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.de/rolex/ref-126334.htm"
   },
   {
     "id": "5007",
     "modelName": "Rolex Datejust 41mm Wimbledon Yeşil Romen Rakamlı",
     "brand": "Rolex",
-    "calculatedPrice": 19225835000,
+    "calculatedPrice": 1882932,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-126334.htm"
+    "sourceUrl": "https://www.chrono24.de/rolex/ref-126334.htm"
+  },
+  {
+    "id": "5006",
+    "modelName": "Rolex Datejust 41mm Yivli Bezel & Mavi Kadran Jubilee",
+    "brand": "Rolex",
+    "calculatedPrice": 1882932,
+    "stock": 1,
+    "sourceUrl": "https://www.chrono24.de/rolex/ref-126334.htm"
   },
   {
     "id": "5012",
     "modelName": "Rolex Submariner Date 41mm 'Kermit / Starbucks' Yeşil Bezel",
     "brand": "Rolex",
-    "calculatedPrice": 19449730800,
+    "calculatedPrice": 1946668,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/rolex/ref-126610lv.htm"
   },
@@ -83,7 +83,7 @@
     "id": "5001",
     "modelName": "Rolex Submariner Date 41mm Siyah Kadran & Cerachrom Bezel",
     "brand": "Rolex",
-    "calculatedPrice": 20126285500,
+    "calculatedPrice": 2012620,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/rolex/ref-126610.htm"
   },
@@ -91,7 +91,7 @@
     "id": "5004",
     "modelName": "Rolex GMT-Master II 40mm 'Batman' Oyster Bilezik",
     "brand": "Rolex",
-    "calculatedPrice": 21902850000,
+    "calculatedPrice": 2190275,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/rolex/ref-126710blnr.htm"
   },
@@ -99,7 +99,7 @@
     "id": "5005",
     "modelName": "Rolex GMT-Master II 'Sprite' Sol Tepe Yeşil/Siyah",
     "brand": "Rolex",
-    "calculatedPrice": 25553325000,
+    "calculatedPrice": 2555322,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/rolex/ref-126720vtnr.htm"
   },
@@ -107,7 +107,7 @@
     "id": "5104",
     "modelName": "Cartier Tank Must Large Model Paslanmaz Çelik Kuvars",
     "brand": "Cartier",
-    "calculatedPrice": 3893840000,
+    "calculatedPrice": 389382,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-wsta0041.htm"
   },
@@ -115,7 +115,7 @@
     "id": "5114",
     "modelName": "Cartier Ronde Must de Cartier 40mm Otomatik Çelik Kumral Deri",
     "brand": "Cartier",
-    "calculatedPrice": 4509553450,
+    "calculatedPrice": 450952,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-wsrn0032.htm"
   },
@@ -123,23 +123,15 @@
     "id": "5107",
     "modelName": "Cartier Tank Française Medium Model Paslanmaz Çelik Bilezik",
     "brand": "Cartier",
-    "calculatedPrice": 5091195800,
+    "calculatedPrice": 510142,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsta0065.htm"
-  },
-  {
-    "id": "5108",
-    "modelName": "Cartier Ballon Bleu de Cartier 42mm Otomatik Çelik Mavi Kadran",
-    "brand": "Cartier",
-    "calculatedPrice": 5210444650,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsbb0025.htm"
+    "sourceUrl": "https://www.chrono24.de/cartier/ref-wsta0065.htm"
   },
   {
     "id": "5111",
     "modelName": "Cartier Pasha de Cartier 41mm Otomatik Çelik & Mavi Kordon",
     "brand": "Cartier",
-    "calculatedPrice": 5526819150,
+    "calculatedPrice": 552680,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-wspa0009.htm"
   },
@@ -147,31 +139,39 @@
     "id": "5105",
     "modelName": "Cartier Tank Must Extra-Large Otomatik Guilloché Kadran Çelik",
     "brand": "Cartier",
-    "calculatedPrice": 6014765975,
+    "calculatedPrice": 594980,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsta0040.htm"
+    "sourceUrl": "https://www.chrono24.de/cartier/ref-wsta0040.htm"
   },
   {
-    "id": "5120",
-    "modelName": "Cartier Pasha de Cartier Chronograph 41mm Çelik",
+    "id": "5108",
+    "modelName": "Cartier Ballon Bleu de Cartier 42mm Otomatik Çelik Mavi Kadran",
     "brand": "Cartier",
-    "calculatedPrice": 8011575800,
+    "calculatedPrice": 602398,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wspa0027.htm"
+    "sourceUrl": "https://www.chrono24.de/cartier/ref-wsbb0025.htm"
   },
   {
     "id": "5113",
     "modelName": "Cartier Tank Américaine Large Model Otomatik Paslanmaz Çelik",
     "brand": "Cartier",
-    "calculatedPrice": 8024960875,
+    "calculatedPrice": 768712,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsta0083.htm"
+    "sourceUrl": "https://www.chrono24.de/cartier/ref-wsta0083.htm"
+  },
+  {
+    "id": "5120",
+    "modelName": "Cartier Pasha de Cartier Chronograph 41mm Çelik",
+    "brand": "Cartier",
+    "calculatedPrice": 801155,
+    "stock": 1,
+    "sourceUrl": "https://www.chrono24.com/cartier/ref-wspa0027.htm"
   },
   {
     "id": "5102",
     "modelName": "Cartier Santos de Cartier Medium Model Çelik Otomatik",
     "brand": "Cartier",
-    "calculatedPrice": 8031045000,
+    "calculatedPrice": 803100,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-wssa0029.htm"
   },
@@ -179,7 +179,7 @@
     "id": "5101",
     "modelName": "Cartier Santos de Cartier Large Model Çelik Gümüş Kadran",
     "brand": "Cartier",
-    "calculatedPrice": 9850198375,
+    "calculatedPrice": 985015,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-wssa0018.htm"
   },
@@ -187,7 +187,7 @@
     "id": "5115",
     "modelName": "Cartier Santos de Cartier Chronograph XL Çelik & ADLC Siyah Bezel",
     "brand": "Cartier",
-    "calculatedPrice": 10063142750,
+    "calculatedPrice": 1006310,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-wssa0017.htm"
   },
@@ -195,7 +195,7 @@
     "id": "5106",
     "modelName": "Cartier Tank Louis Cartier Small 18K Pembe Altın Manuel Kurmalı",
     "brand": "Cartier",
-    "calculatedPrice": 11316472500,
+    "calculatedPrice": 1131642,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-wgta0010.htm"
   },
@@ -203,7 +203,7 @@
     "id": "5110",
     "modelName": "Cartier Panthère de Cartier Medium Model 18K Sarı Altın & Çelik",
     "brand": "Cartier",
-    "calculatedPrice": 12775445675,
+    "calculatedPrice": 1277540,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-w2pn0007.htm"
   },
@@ -211,7 +211,7 @@
     "id": "5117",
     "modelName": "Cartier Baignoire Small Model 18K Sarı Altın & Siyah Rugan Deri",
     "brand": "Cartier",
-    "calculatedPrice": 13341269300,
+    "calculatedPrice": 1334122,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-wgba0007.htm"
   },
@@ -219,7 +219,7 @@
     "id": "5118",
     "modelName": "Cartier Santos de Cartier 18K Sarı Altın & Çelik İki Tonlu Medium",
     "brand": "Cartier",
-    "calculatedPrice": 15035089700,
+    "calculatedPrice": 1503502,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-w2sa0016.htm"
   },
@@ -227,7 +227,7 @@
     "id": "5116",
     "modelName": "Cartier Ballon Bleu de Cartier 42mm 18K Pembe Altın",
     "brand": "Cartier",
-    "calculatedPrice": 16068174125,
+    "calculatedPrice": 1606810,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-wgbb0030.htm"
   },
@@ -235,7 +235,7 @@
     "id": "5109",
     "modelName": "Cartier Ballon Bleu de Cartier 36mm 18K Pembe Altın ve Çelik Pırlantalı",
     "brand": "Cartier",
-    "calculatedPrice": 18152595350,
+    "calculatedPrice": 1815252,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-w3bb0024.htm"
   },
@@ -243,7 +243,7 @@
     "id": "5112",
     "modelName": "Cartier Santos-Dumont Extra-Large 18K Pembe Altın Manuel Kurmalı",
     "brand": "Cartier",
-    "calculatedPrice": 20031373150,
+    "calculatedPrice": 2003130,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com/cartier/ref-wgsa0032.htm"
   },
