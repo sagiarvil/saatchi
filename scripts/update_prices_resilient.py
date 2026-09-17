@@ -60,7 +60,7 @@ def watchcharts_market_price(html: str, reference: str) -> float:
 
     patterns = (
         r"Market Price\s*\$\s*([0-9][0-9,]{2,})",
-        r"Market Price[^$]{0,80}\$\s*([0-9][0-9,]{2,})",
+        r"Market Price[^$]{0,120}\$\s*([0-9][0-9,]{2,})",
         r"\$\s*([0-9][0-9,]{2,})\s+MKT",
     )
     values: list[float] = []
@@ -76,25 +76,44 @@ def watchcharts_market_price(html: str, reference: str) -> float:
     return float(round(values[0]))
 
 
+def _watchcharts_price_from_url(url: str, reference: str) -> float:
+    host = urlparse(url).netloc.lower()
+    if not (host == "watchcharts.com" or host.endswith(".watchcharts.com")):
+        raise RuntimeError(f"unsupported WatchCharts host {host or '<missing>'}")
+    html = fetch_page_resilient(url)
+    return watchcharts_market_price(html, reference)
+
+
 def source_page_price_resilient(item: dict) -> tuple[float, str, str]:
-    primary_errors: list[str] = []
+    errors: list[str] = []
     try:
         return _BASE_SOURCE_PAGE_PRICE(item)
     except Exception as exc:
-        primary_errors.append(str(exc))
+        errors.append(str(exc))
 
+    reference = str(item.get("reference") or "").strip()
     identity_url = str(item.get("identitySourceUrl") or "").strip()
-    host = urlparse(identity_url).netloc.lower()
-    if identity_url.startswith("https://") and (host == "watchcharts.com" or host.endswith(".watchcharts.com")):
+    identity_host = urlparse(identity_url).netloc.lower()
+    if identity_url.startswith("https://") and (identity_host == "watchcharts.com" or identity_host.endswith(".watchcharts.com")):
         try:
-            html = fetch_page_resilient(identity_url)
-            reference = str(item.get("reference") or "").strip()
-            amount = watchcharts_market_price(html, reference)
-            return amount, "USD", identity_url
+            return _watchcharts_price_from_url(identity_url, reference), "USD", identity_url
         except Exception as exc:
-            primary_errors.append(f"WatchCharts fallback failed: {exc}")
+            errors.append(f"WatchCharts identity fallback failed: {exc}")
 
-    raise RuntimeError(" | ".join(primary_errors))
+    row = base.load_source_map().get(str(item.get("id") or ""), {})
+    fallback_urls = row.get("fallbackSourceUrls") or []
+    if isinstance(fallback_urls, str):
+        fallback_urls = [fallback_urls]
+    for fallback_url in fallback_urls:
+        url = str(fallback_url or "").strip()
+        if not url.startswith("https://"):
+            continue
+        try:
+            return _watchcharts_price_from_url(url, reference), "USD", url
+        except Exception as exc:
+            errors.append(f"fallback {url} failed: {exc}")
+
+    raise RuntimeError(" | ".join(errors))
 
 
 def normalize_provenance() -> None:
