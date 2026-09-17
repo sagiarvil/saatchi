@@ -1,6 +1,12 @@
-name: Rolex Cartier FX Price Sync
+name: Rolex Cartier Live Source Sync
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/rolex-cartier-source-map.json'
+      - 'scripts/update_prices.py'
+      - '.github/workflows/rolex-cartier-fx-sync.yml'
   workflow_dispatch:
 
 permissions:
@@ -13,48 +19,51 @@ concurrency:
 jobs:
   update-prices:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Require live source URLs for every Rolex and Cartier item
+      - name: Validate 31 real source mappings
         run: |
           python3 - <<'PY'
           import json, sys
           from pathlib import Path
-          items=json.loads(Path('src/data/elit-saatler.json').read_text(encoding='utf-8'))
-          rc=[x for x in items if x.get('brand') in {'Rolex','Cartier'}]
-          missing=[x.get('id') for x in rc if not str(x.get('sourceUrl') or '').startswith(('https://','http://'))]
-          if not rc or missing:
-              print('ROLEX_CARTIER_LIVE_SOURCE_GATE_FAILED')
-              print('count=',len(rc),'missing_source_url=',missing)
+          rows=json.loads(Path('scripts/rolex-cartier-source-map.json').read_text(encoding='utf-8'))
+          ids=[str(x.get('id') or '') for x in rows]
+          bad=[x for x in rows if x.get('brand') not in {'Rolex','Cartier'} or not str(x.get('reference') or '') or not str(x.get('sourceUrl') or '').startswith('https://www.chrono24.com/') or not str(x.get('identitySourceUrl') or '').startswith('https://')]
+          if len(rows)!=31 or len(set(ids))!=31 or bad:
+              print('ROLEX_CARTIER_SOURCE_MAP_INVALID', 'count=',len(rows),'unique=',len(set(ids)),'bad=',bad[:3])
               sys.exit(1)
-          print('ROLEX_CARTIER_LIVE_SOURCE_GATE_OK count=',len(rc))
+          print('ROLEX_CARTIER_SOURCE_MAP_OK count=31')
           PY
 
       - name: Install pricing dependencies
         run: python3 -m pip install -q curl_cffi beautifulsoup4
 
-      - name: Update Rolex and Cartier prices
+      - name: Live verify references and update prices
         run: python3 scripts/update_prices.py
 
-      - name: Require live source price readback
+      - name: Require 31 live source readbacks
         run: |
           python3 - <<'PY'
           import json, sys
           from pathlib import Path
           items=json.loads(Path('src/data/elit-saatler.json').read_text(encoding='utf-8'))
+          report=json.loads(Path('scripts/sync-saatchi-catalog-report.json').read_text(encoding='utf-8'))
           rc=[x for x in items if x.get('brand') in {'Rolex','Cartier'}]
-          bad=[x.get('id') for x in rc if x.get('sourcePriceStatus')!='live_source_url' or x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell']
-          if bad:
-              print('ROLEX_CARTIER_LIVE_PRICE_READBACK_FAILED',bad)
+          bad=[x.get('id') for x in rc if x.get('sourcePriceStatus')!='live_source_url' or x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell' or not str(x.get('sourceUrl') or '').startswith('https://www.chrono24.com/') or not x.get('sourceVerifiedAt') or x.get('pricingRule')!='FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50']
+          if len(rc)!=31 or bad or report.get('rolexCartierLiveSourceVerifiedCount')!=31:
+              print('ROLEX_CARTIER_LIVE_PRICE_READBACK_FAILED','count=',len(rc),'bad=',bad,'report=',report.get('rolexCartierLiveSourceVerifiedCount'))
               sys.exit(1)
-          print('ROLEX_CARTIER_LIVE_PRICE_READBACK_OK count=',len(rc))
+          print('ROLEX_CARTIER_LIVE_PRICE_READBACK_OK count=31')
           PY
 
       - name: Commit verified price changes
@@ -62,4 +71,10 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/elit-saatler.json src/data/saatler_paytr.json scripts/sync-saatchi-catalog-report.json
-          git diff --cached --quiet || (git commit -m "data: refresh Rolex Cartier prices from live source and Doviz FX" && git push)
+          if ! git diff --cached --quiet; then
+            git commit -m "data: refresh Rolex Cartier from 31 verified live sources"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          else
+            echo "Rolex/Cartier live-source data unchanged."
+          fi
