@@ -1,0 +1,74 @@
+name: Saatchi Live Runtime Smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'src/app/api/admin-session/**'
+      - 'src/app/api/admin/vip-links/**'
+      - 'src/app/api/vip-link/**'
+      - 'src/app/api/payment/**'
+      - 'src/lib/vip-**'
+      - '.github/workflows/live-runtime-smoke.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: saatchi-live-runtime-smoke
+  cancel-in-progress: true
+
+jobs:
+  public-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify public VIP runtime boundaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='https://saatchi.watch'
+          TMP="$(mktemp -d)"
+          trap 'rm -rf "$TMP"' EXIT
+
+          request() {
+            local name="$1" method="$2" url="$3" expected="$4" body="${5:-}"
+            local args=(-sS -X "$method" -D "$TMP/$name.headers" -o "$TMP/$name.body" -w '%{http_code}' --connect-timeout 10 --max-time 25)
+            if [ -n "$body" ]; then
+              args+=(-H 'Content-Type: application/json' -H 'Origin: https://saatchi.watch' --data "$body")
+            fi
+            local status
+            status="$(curl "${args[@]}" "$url")"
+            echo "$name HTTP=$status"
+            cat "$TMP/$name.body"
+            echo
+            test "$status" = "$expected"
+          }
+
+          request session GET "$BASE/api/admin-session" 200
+          python3 - "$TMP/session.body" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          assert d.get('success') is True and d.get('authenticated') is False, d
+          PY
+          grep -Eiq '^cache-control:.*no-store' "$TMP/session.headers"
+
+          request admin_list GET "$BASE/api/admin/vip-links" 401
+          python3 - "$TMP/admin_list.body" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          assert d.get('success') is False, d
+          PY
+
+          request invalid_token GET "$BASE/api/vip-link?token=invalid" 400
+          python3 - "$TMP/invalid_token.body" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          assert d.get('success') is False, d
+          PY
+
+          request wrong_login POST "$BASE/api/admin-session" 401 '{"key":"definitely-wrong-runtime-smoke-key"}'
+          request unauth_create POST "$BASE/api/vip-link" 401 '{"title":"Runtime Smoke","amount":123456}'
+
+          echo 'SAATCHI_LIVE_PUBLIC_RUNTIME_SMOKE_OK'
