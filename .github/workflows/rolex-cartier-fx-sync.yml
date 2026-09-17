@@ -1,8 +1,6 @@
 name: Rolex Cartier FX Price Sync
 
 on:
-  schedule:
-    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -24,15 +22,44 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Require live source URLs for every Rolex and Cartier item
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          from pathlib import Path
+          items=json.loads(Path('src/data/elit-saatler.json').read_text(encoding='utf-8'))
+          rc=[x for x in items if x.get('brand') in {'Rolex','Cartier'}]
+          missing=[x.get('id') for x in rc if not str(x.get('sourceUrl') or '').startswith(('https://','http://'))]
+          if not rc or missing:
+              print('ROLEX_CARTIER_LIVE_SOURCE_GATE_FAILED')
+              print('count=',len(rc),'missing_source_url=',missing)
+              sys.exit(1)
+          print('ROLEX_CARTIER_LIVE_SOURCE_GATE_OK count=',len(rc))
+          PY
+
       - name: Install pricing dependencies
         run: python3 -m pip install -q curl_cffi beautifulsoup4
 
       - name: Update Rolex and Cartier prices
         run: python3 scripts/update_prices.py
 
+      - name: Require live source price readback
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          from pathlib import Path
+          items=json.loads(Path('src/data/elit-saatler.json').read_text(encoding='utf-8'))
+          rc=[x for x in items if x.get('brand') in {'Rolex','Cartier'}]
+          bad=[x.get('id') for x in rc if x.get('sourcePriceStatus')!='live_source_url' or x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell']
+          if bad:
+              print('ROLEX_CARTIER_LIVE_PRICE_READBACK_FAILED',bad)
+              sys.exit(1)
+          print('ROLEX_CARTIER_LIVE_PRICE_READBACK_OK count=',len(rc))
+          PY
+
       - name: Commit verified price changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add src/data/elit-saatler.json src/data/saatler_paytr.json scripts/sync-saatchi-catalog-report.json
-          git diff --cached --quiet || (git commit -m "data: refresh Rolex Cartier prices from Doviz FX" && git push)
+          git diff --cached --quiet || (git commit -m "data: refresh Rolex Cartier prices from live source and Doviz FX" && git push)
