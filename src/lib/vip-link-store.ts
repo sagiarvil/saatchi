@@ -10,6 +10,7 @@ type FirestoreValue =
   | { booleanValue: boolean };
 
 type FirestoreDocument = { fields?: Record<string, FirestoreValue> };
+type FirestoreListResponse = { documents?: FirestoreDocument[]; nextPageToken?: string };
 
 export type VipLinkRecord = {
   id: string;
@@ -30,6 +31,11 @@ function projectId() {
     if (parsed.projectId) return String(parsed.projectId);
   } catch {}
   return 'studio-7658156126-ffb8e';
+}
+
+function collectionUrl(pageSize = 50) {
+  const safeSize = Math.min(100, Math.max(1, Math.floor(pageSize)));
+  return `https://firestore.googleapis.com/v1/projects/${encodeURIComponent(projectId())}/databases/(default)/documents/${COLLECTION}?pageSize=${safeSize}`;
 }
 
 function docUrl(id: string) {
@@ -142,6 +148,17 @@ export async function getVipLinkRecord(id: string) {
   if (response.status === 404) return null;
   if (!response.ok) throw new Error(`VIP link durumu okunamadı (${response.status}).`);
   return decode(await response.json() as FirestoreDocument);
+}
+
+export async function listVipLinkRecords(limit = 50) {
+  const response = await firestoreFetch(collectionUrl(limit), { method: 'GET' });
+  if (!response.ok) throw new Error(`VIP link listesi okunamadı (${response.status}).`);
+  const data = await response.json() as FirestoreListResponse;
+  return (data.documents || [])
+    .map(decode)
+    .filter((record) => record.id.startsWith('VIP-SAATCHI-'))
+    .sort((a, b) => b.createdAt - a.createdAt)
+    .slice(0, Math.min(100, Math.max(1, Math.floor(limit))));
 }
 
 export async function assertVipLinkActive(payload: VipTokenPayload, token: string) {
