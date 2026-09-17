@@ -24,7 +24,7 @@ BACKUP_FILE = Path(tempfile.gettempdir()) / "saatchi-rolex-cartier-backup.json"
 DOVIZ_URL = "https://kur.doviz.com/"
 TARGET_BRANDS = {"Rolex", "Cartier"}
 MARKUP_MULTIPLIER = 2.50
-TIMEOUT = 30
+TIMEOUT = 25
 _PAGE_CACHE: dict[str, str] = {}
 _SESSION = requests.Session(impersonate="chrome")
 _LAST_MARKETPLACE_FETCH = 0.0
@@ -47,8 +47,6 @@ def parse_number(value: Any) -> Optional[float]:
     if isinstance(value, (int, float)):
         return float(value) if float(value) > 0 else None
     text = str(value).strip().replace("\u00a0", " ")
-    if not text:
-        return None
     text = re.sub(r"[^0-9.,]", "", text)
     if not text:
         return None
@@ -61,12 +59,16 @@ def parse_number(value: Any) -> Optional[float]:
         parts = text.split(",")
         if len(parts) == 2 and len(parts[-1]) == 3:
             text = "".join(parts)
-        elif len(parts[-1]) in (1, 2, 4):
-            text = "".join(parts[:-1]) + "." + parts[-1]
+        elif len(parts) == 2 and len(parts[-1]) in (1, 2):
+            text = parts[0] + "." + parts[1]
         else:
             text = "".join(parts)
-    elif text.count(".") > 1:
-        text = text.replace(".", "")
+    elif "." in text:
+        parts = text.split(".")
+        if len(parts) == 2 and len(parts[-1]) == 3:
+            text = "".join(parts)
+        elif len(parts) > 2:
+            text = "".join(parts)
     try:
         number = float(text)
         return number if number > 0 else None
@@ -93,7 +95,7 @@ def load_source_map() -> dict[str, dict]:
         reference = str(row.get("reference") or "").strip()
         source_reference = str(row.get("sourceReference") or reference).strip()
         source_url = str(row.get("sourceUrl") or "").strip()
-        if not item_id or item_id in mapped or brand not in TARGET_BRANDS or not reference or not source_reference or not source_url.startswith("https://"):
+        if not item_id or item_id in mapped or brand not in TARGET_BRANDS or not reference or not source_reference or not source_url.startswith("https://www.chrono24.com/"):
             raise RuntimeError(f"Invalid Rolex/Cartier source map row: {row}")
         mapped[item_id] = row
     return mapped
@@ -113,18 +115,23 @@ def mapped_item(item: dict, source_map: dict[str, dict]) -> dict:
     result["sourceUrl"] = row["sourceUrl"]
     result["identitySourceUrl"] = row.get("identitySourceUrl") or row["sourceUrl"]
     result["sourceProvider"] = "Chrono24"
-    result["sourcePriceKind"] = "LIVE_LISTING_MEDIAN_USD"
     if row.get("modelName"):
         result["modelName"] = str(row["modelName"])
     return result
 
 
+def marketplace_candidates(url: str) -> list[str]:
+    urls = [url]
+    if "www.chrono24.com/" in url:
+        urls.append(url.replace("www.chrono24.com/", "www.chrono24.de/", 1))
+    return urls
+
+
 def _rate_limit_marketplace(url: str) -> None:
     global _LAST_MARKETPLACE_FETCH
-    host = urlparse(url).netloc.lower()
-    if "chrono24.com" not in host:
+    if "chrono24." not in urlparse(url).netloc.lower():
         return
-    wait_for = 1.35 - (time.monotonic() - _LAST_MARKETPLACE_FETCH)
+    wait_for = 1.20 - (time.monotonic() - _LAST_MARKETPLACE_FETCH)
     if wait_for > 0:
         time.sleep(wait_for)
     _LAST_MARKETPLACE_FETCH = time.monotonic()
@@ -133,16 +140,16 @@ def _rate_limit_marketplace(url: str) -> None:
 def fetch_page(url: str) -> str:
     if url in _PAGE_CACHE:
         return _PAGE_CACHE[url]
-
-    last_status = 0
-    for attempt in range(5):
+    last_status: int | str = "error"
+    is_german = "chrono24.de" in urlparse(url).netloc.lower()
+    for attempt in range(2):
         _rate_limit_marketplace(url)
         try:
             response = _SESSION.get(
                 url,
                 timeout=TIMEOUT,
                 headers={
-                    "Accept-Language": "en-US,en;q=0.9",
+                    "Accept-Language": "de-DE,de;q=0.9,en;q=0.7" if is_german else "en-US,en;q=0.9",
                     "Cache-Control": "no-cache",
                     "Referer": "https://www.google.com/",
                 },
@@ -154,69 +161,68 @@ def fetch_page(url: str) -> str:
             if response.status_code not in {403, 429, 503}:
                 break
         except Exception:
-            last_status = 0
-        if attempt < 4:
-            time.sleep(2.5 * (attempt + 1))
-
-    raise RuntimeError(f"source HTTP {last_status or 'error'} after retries: {url}")
+            last_status = "error"
+        if attempt == 0:
+            time.sleep(2.0)
+    raise RuntimeError(f"source HTTP {last_status}: {url}")
 
 
 def contains_reference(text: str, reference: str) -> bool:
     return normalize_ref(reference) in normalize_ref(BeautifulSoup(text, "html.parser").get_text(" ", strip=True))
 
 
-def verify_source_identity(item: dict, pricing_html: str) -> None:
+def verify_exact_identity(item: dict, pricing_html: str) -> None:
     full_ref = str(item.get("reference") or "").strip()
-    source_ref = str(item.get("sourceReference") or full_ref).strip()
-    if not contains_reference(pricing_html, source_ref):
-        raise RuntimeError(f"{item.get('brand')}:{item.get('id')} pricing source does not contain {source_ref}")
     if contains_reference(pricing_html, full_ref):
         return
     identity_url = str(item.get("identitySourceUrl") or "").strip()
     if not identity_url:
-        raise RuntimeError(f"{item.get('brand')}:{item.get('id')} exact reference {full_ref} not verified")
+        raise RuntimeError(f"exact reference {full_ref} not verified")
     identity_html = fetch_page(identity_url)
     if not contains_reference(identity_html, full_ref):
-        raise RuntimeError(f"{item.get('brand')}:{item.get('id')} identity source does not contain {full_ref}")
+        raise RuntimeError(f"identity source does not contain {full_ref}")
 
 
-def chrono24_live_price(html: str) -> Optional[float]:
-    soup = BeautifulSoup(html, "html.parser")
-    text = " ".join(soup.stripped_strings)
-
-    preferred_patterns = [
-        r"average listing price(?:\s+of)?(?:\s+approximately)?\s*\$\s*([0-9][0-9,]{2,})",
-        r"Average Listing Price\s*\$\s*([0-9][0-9,]{2,})",
-    ]
-    for pattern in preferred_patterns:
-        match = re.search(pattern, text, flags=re.I)
-        if match:
-            value = parse_number(match.group(1))
-            if value and 750 <= value <= 500_000:
-                return value
-
-    prices: list[float] = []
-    for match in re.finditer(r"(?<![A-Z])(?:US\$|\$)\s*([0-9][0-9,]{2,})(?:\.\d{2})?", text, flags=re.I):
-        value = parse_number(match.group(1))
-        if value and 750 <= value <= 500_000:
-            prices.append(value)
-
-    if len(prices) < 5:
+def median_price(values: list[float]) -> Optional[float]:
+    if len(values) < 5:
         return None
-
-    prices.sort()
-    trim = max(1, int(len(prices) * 0.10)) if len(prices) >= 20 else 0
-    sample = prices[trim:len(prices) - trim] if trim and len(prices) - (2 * trim) >= 5 else prices
+    values = sorted(values)
+    trim = max(1, int(len(values) * 0.10)) if len(values) >= 20 else 0
+    sample = values[trim:len(values) - trim] if trim and len(values) - (2 * trim) >= 5 else values
     return float(round(statistics.median(sample)))
 
 
+def chrono24_live_price(html: str, currency_hint: str) -> Optional[float]:
+    text = " ".join(BeautifulSoup(html, "html.parser").stripped_strings)
+    if currency_hint == "USD":
+        for pattern in (
+            r"average listing price(?:\s+of)?(?:\s+approximately)?\s*\$\s*([0-9][0-9,]{2,})",
+            r"Average Listing Price\s*\$\s*([0-9][0-9,]{2,})",
+        ):
+            match = re.search(pattern, text, flags=re.I)
+            if match:
+                value = parse_number(match.group(1))
+                if value and 750 <= value <= 500_000:
+                    return value
+        values = [
+            value for value in (
+                parse_number(match.group(1))
+                for match in re.finditer(r"(?:US\$|\$)\s*([0-9][0-9,]{2,})(?:\.\d{2})?", text, flags=re.I)
+            ) if value and 750 <= value <= 500_000
+        ]
+        return median_price(values)
+
+    values = [
+        value for value in (
+            parse_number(match.group(1))
+            for match in re.finditer(r"([0-9][0-9.\s\u00a0]{2,})\s*€", text)
+        ) if value and 700 <= value <= 500_000
+    ]
+    return median_price(values)
+
+
 def fetch_doviz_sell_rates() -> dict[str, float]:
-    res = requests.get(
-        DOVIZ_URL,
-        impersonate="chrome",
-        timeout=TIMEOUT,
-        headers={"Accept-Language": "tr-TR,tr;q=0.9,en;q=0.7"},
-    )
+    res = requests.get(DOVIZ_URL, impersonate="chrome", timeout=TIMEOUT, headers={"Accept-Language": "tr-TR,tr;q=0.9,en;q=0.7"})
     res.raise_for_status()
     soup = BeautifulSoup(res.text, "html.parser")
     rates: dict[str, float] = {}
@@ -239,49 +245,24 @@ def fetch_doviz_sell_rates() -> dict[str, float]:
     return rates
 
 
-def source_page_price(item: dict) -> Tuple[Optional[float], Optional[str]]:
-    url = str(item.get("sourceUrl") or "").strip()
-    if not url:
-        raise RuntimeError(f"{item.get('brand')}:{item.get('id')} sourceUrl missing")
-    pricing_html = fetch_page(url)
-    verify_source_identity(item, pricing_html)
-    host = urlparse(url).netloc.lower()
-    if host.endswith("chrono24.com") or ".chrono24.com" in host:
-        amount = chrono24_live_price(pricing_html)
-        if not amount:
-            raise RuntimeError(f"{item.get('brand')}:{item.get('id')} Chrono24 live USD listing price could not be parsed")
-        return amount, "USD"
-
-    soup = BeautifulSoup(pricing_html, "html.parser")
-    for node in soup.find_all("script", type="application/ld+json"):
-        raw = node.string or node.get_text() or ""
-        if not raw.strip():
-            continue
+def source_page_price(item: dict) -> Tuple[float, str, str]:
+    canonical_url = str(item.get("sourceUrl") or "").strip()
+    source_ref = str(item.get("sourceReference") or item.get("reference") or "").strip()
+    errors: list[str] = []
+    for url in marketplace_candidates(canonical_url):
         try:
-            data = json.loads(raw)
-        except Exception:
-            continue
-        stack = data if isinstance(data, list) else [data]
-        while stack:
-            obj = stack.pop()
-            if isinstance(obj, list):
-                stack.extend(obj)
-                continue
-            if not isinstance(obj, dict):
-                continue
-            graph = obj.get("@graph")
-            if isinstance(graph, list):
-                stack.extend(graph)
-            offers = obj.get("offers")
-            if isinstance(offers, list):
-                offers = offers[0] if offers else None
-            if not isinstance(offers, dict):
-                continue
-            amount = parse_number(offers.get("price") or offers.get("lowPrice") or offers.get("highPrice"))
-            currency = str(offers.get("priceCurrency") or "").upper().strip()
-            if amount and currency in {"USD", "EUR"}:
-                return amount, currency
-    raise RuntimeError(f"{item.get('brand')}:{item.get('id')} live source price could not be parsed")
+            pricing_html = fetch_page(url)
+            if not contains_reference(pricing_html, source_ref):
+                raise RuntimeError(f"pricing source does not contain {source_ref}")
+            verify_exact_identity(item, pricing_html)
+            currency = "EUR" if "chrono24.de" in urlparse(url).netloc.lower() else "USD"
+            amount = chrono24_live_price(pricing_html, currency)
+            if not amount:
+                raise RuntimeError(f"live {currency} listing price could not be parsed")
+            return amount, currency, url
+        except Exception as exc:
+            errors.append(str(exc))
+    raise RuntimeError(" | ".join(errors))
 
 
 def rebuild_paytr(elite: list[dict], watches: list[dict]) -> None:
@@ -325,13 +306,14 @@ def update_prices() -> None:
         try:
             item = mapped_item(original, source_map)
             brand = str(item.get("brand") or "").strip()
-            amount, currency = source_page_price(item)
-            if not amount or currency not in rates:
-                raise RuntimeError("live source price/currency missing")
-
+            amount, currency, verified_url = source_page_price(item)
+            if currency not in rates:
+                raise RuntimeError(f"unsupported source currency {currency}")
             fx_rate = rates[currency]
             base_try = int(round(amount * fx_rate))
             final_try = int(round(base_try * MARKUP_MULTIPLIER))
+            item["sourceUrl"] = verified_url
+            item["sourcePriceKind"] = f"LIVE_LISTING_MEDIAN_{currency}"
             item["originalPrice"] = base_try
             item["calculatedPrice"] = final_try
             item["price"] = fmt_try(final_try)
@@ -348,7 +330,7 @@ def update_prices() -> None:
             item["category"] = "Elit Kategori"
             item["catalogTier"] = "elite"
             updated.append(item)
-            print(f"SOURCE_OK {brand}:{item.get('id')} ref={item.get('reference')} {currency} {amount:.0f}")
+            print(f"SOURCE_OK {brand}:{item.get('id')} ref={item.get('reference')} {currency} {amount:.0f} {verified_url}")
         except Exception as exc:
             failures.append(f"{original.get('brand')}:{original.get('id')} {exc}")
 
@@ -369,7 +351,7 @@ def update_prices() -> None:
     report["rolexCartierFxSource"] = "doviz.com"
     report["rolexCartierFxSide"] = "sell"
     report["rolexCartierSourceProvider"] = "Chrono24"
-    report["rolexCartierSourcePriceKind"] = "LIVE_LISTING_MEDIAN_USD"
+    report["rolexCartierSourcePriceKind"] = "LIVE_LISTING_MEDIAN_USD_OR_EUR"
     report["rolexCartierLiveSourceVerifiedCount"] = len(updated)
     report["fxRates"] = rates
     report["rolexCartierPricingUpdatedAt"] = now
