@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { verifyVipToken } from '@/lib/vip-token';
+import { assertVipLinkActive } from '@/lib/vip-link-store';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,6 +11,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const token = String(body.token || '');
     const vip = verifyVipToken(token);
+    await assertVipLinkActive(vip, token);
 
     const customerName = String(body.custName || '').trim().slice(0, 150);
     const customerPhone = String(body.custPhone || '').trim().slice(0, 50);
@@ -24,8 +26,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ status: 'error', message: 'Zorunlu sözleşme ve teslim koşulları onaylanmalıdır.' }, { status: 400 });
     }
 
-    // Sağlayıcı Saatchi tarafında sabitlenmez. Ortam değişkeni tanımlıysa o sağlayıcı,
-    // tanımlı değilse Belgin ödeme motorunun merkezdeki aktif/default sağlayıcısı kullanılır.
     const configuredProvider = String(process.env.SAATCHI_PAYMENT_PROVIDER || '').trim().toUpperCase();
     const idempotencyKey = `SAATCHI:${vip.id}`;
     const forwardedFor = request.headers.get('x-forwarded-for') || '';
