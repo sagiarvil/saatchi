@@ -15,7 +15,10 @@ export async function generateStaticParams() {
   let allWatches: any[] = [];
   if (fs.existsSync(saatlerPath)) allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(saatlerPath, 'utf8'))];
   if (fs.existsSync(elitPath)) allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(elitPath, 'utf8'))];
-  slugs = [...slugs, ...allWatches.map((w: any) => String(w.seoUrl || '').split('/').pop()).filter(Boolean)];
+  const watchSlugs = allWatches
+    .map((w: any) => String(w.seoUrl || '').split('/').pop())
+    .filter((slug): slug is string => typeof slug === 'string' && slug.length > 0);
+  slugs = [...slugs, ...watchSlugs];
   return slugs.map((slug) => ({ slug }));
 }
 
