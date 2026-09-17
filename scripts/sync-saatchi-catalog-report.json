@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-09-17T15:36:07+0300",
+  "timestamp": "2026-09-17T17:49:55+0300",
   "markup": 1.5,
   "maxPublicPrice": 1799000,
   "eliteCount": 533,
-  "standardCount": 1653,
+  "standardCount": 1652,
   "sourceCounts": {
     "TAG Heuer": 124,
     "Rado": 378,
     "Tissot": 125,
     "Carren": 446,
-    "Calvin Klein": 402,
+    "Calvin Klein": 403,
     "Michael Kors": 420,
-    "Versace": 260
+    "Versace": 258
   },
   "eliteBrandCounts": {
     "Rolex": 13,
@@ -22,12 +22,20 @@
   "watchBrandCounts": {
     "Tissot": 125,
     "Carren": 446,
-    "Calvin Klein": 402,
+    "Calvin Klein": 403,
     "Michael Kors": 420,
-    "Versace": 260
+    "Versace": 258
   },
   "errors": [],
-  "elapsedSeconds": 1196.56,
+  "elapsedSeconds": 472.97,
+  "rolexCartierMarkupMultiplier": 2.5,
+  "rolexCartierFxSource": "doviz.com",
+  "rolexCartierFxSide": "sell",
+  "fxRates": {
+    "USD": 48.6752,
+    "EUR": 56.0786
+  },
+  "rolexCartierPricingUpdatedAt": "2026-09-17T17:49:55+0300",
   "carrenFixedPrice": 19990,
   "carrenGenderCounts": {
     "Erkek": 175,
