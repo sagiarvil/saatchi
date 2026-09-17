@@ -1,0 +1,83 @@
+name: Konyali Brand-Safe Catalog Repair
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/sync-konyali-brand-safe.py'
+      - '.github/workflows/konyali-brand-repair.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: saatchi-konyali-brand-repair
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout current main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install scraper dependencies
+        run: python3 -m pip install -q curl_cffi beautifulsoup4
+
+      - name: Run brand-safe Konyali sync
+        run: python3 scripts/sync-konyali-brand-safe.py
+
+      - name: Verify no Konyali brand contamination
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          from pathlib import Path
+          root=Path.cwd()
+          elite=json.loads((root/'src/data/elit-saatler.json').read_text(encoding='utf-8'))
+          watch=json.loads((root/'src/data/saatler.json').read_text(encoding='utf-8'))
+          report=json.loads((root/'scripts/sync-saatchi-catalog-report.json').read_text(encoding='utf-8'))
+          groups={
+              'TAG Heuer':([x for x in elite if x.get('brand')=='TAG Heuer'],'tag heuer'),
+              'Rado':([x for x in elite if x.get('brand')=='Rado'],'rado'),
+              'Tissot':([x for x in watch if x.get('brand')=='Tissot'],'tissot'),
+          }
+          failures=[]
+          for brand,(items,token) in groups.items():
+              if not items:
+                  failures.append(f'{brand}:empty')
+                  continue
+              for item in items:
+                  model=' '.join(str(item.get('modelName') or '').lower().replace('ı','i').split())
+                  url=str(item.get('sourceUrl') or '').lower()
+                  identity=token in model or token.replace(' ','-') in url
+                  if not identity or 'konyalisaat.com.tr' not in url or item.get('pricingRule')!='SOURCE_X_1_50':
+                      failures.append(f"{brand}:{item.get('id')}")
+          if report.get('konyaliBrandIdentityVerified') is not True:
+              failures.append('report:not-verified')
+          if failures:
+              print('KONYALI_BRAND_INTEGRITY_FAILED', failures[:20])
+              sys.exit(1)
+          print('KONYALI_BRAND_INTEGRITY_OK', report.get('konyaliVerifiedCounts'))
+          PY
+
+      - name: Commit repaired catalog data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/elit-saatler.json src/data/saatler.json src/data/saatler_paytr.json scripts/sync-saatchi-catalog-report.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: repair Konyali brand identity in catalog"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          else
+            echo "Konyali catalog already brand-safe; no data commit required."
+          fi
