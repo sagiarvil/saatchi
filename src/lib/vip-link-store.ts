@@ -2,6 +2,7 @@ import crypto from 'crypto';
 import type { VipTokenPayload } from '@/lib/vip-token';
 
 const COLLECTION = 'saatchiVipLinks';
+const EXPECTED_PROJECT_ID = 'studio-7658156126-ffb8e';
 let cachedAccessToken: { token: string; expiresAt: number } | null = null;
 
 type FirestoreValue =
@@ -24,13 +25,18 @@ export type VipLinkRecord = {
 };
 
 function projectId() {
-  if (process.env.GOOGLE_CLOUD_PROJECT) return process.env.GOOGLE_CLOUD_PROJECT;
-  if (process.env.GCLOUD_PROJECT) return process.env.GCLOUD_PROJECT;
-  try {
-    const parsed = JSON.parse(process.env.FIREBASE_CONFIG || '{}');
-    if (parsed.projectId) return String(parsed.projectId);
-  } catch {}
-  return 'studio-7658156126-ffb8e';
+  let resolved = '';
+  if (process.env.GOOGLE_CLOUD_PROJECT) resolved = process.env.GOOGLE_CLOUD_PROJECT;
+  else if (process.env.GCLOUD_PROJECT) resolved = process.env.GCLOUD_PROJECT;
+  else {
+    try {
+      const parsed = JSON.parse(process.env.FIREBASE_CONFIG || '{}');
+      if (parsed.projectId) resolved = String(parsed.projectId);
+    } catch {}
+  }
+  if (!resolved) throw new Error('Firestore proje kimliği çalışma ortamında bulunamadı.');
+  if (resolved !== EXPECTED_PROJECT_ID) throw new Error(`Beklenmeyen Firestore proje kimliği: ${resolved}.`);
+  return resolved;
 }
 
 function databaseRoot() {
@@ -123,11 +129,32 @@ export function hashVipToken(token: string) {
   return crypto.createHash('sha256').update(String(token || ''), 'utf8').digest('hex');
 }
 
+function safeEqualHex(left: string, right: string) {
+  try {
+    const a = Buffer.from(left, 'hex');
+    const b = Buffer.from(right, 'hex');
+    return a.length === b.length && a.length > 0 && crypto.timingSafeEqual(a, b);
+  } catch {
+    return false;
+  }
+}
+
+export function validateVipLinkRecord(record: VipLinkRecord | null, payload: VipTokenPayload, token: string, now = Date.now()) {
+  if (!record) throw new Error('VIP ödeme linki aktif kayıtla eşleşmiyor.');
+  if (record.id !== payload.id) throw new Error('VIP ödeme linki kayıt kimliği uyuşmuyor.');
+  if (record.state !== 'active' || record.revokedAt > 0) throw new Error('VIP ödeme linki iptal edilmiş.');
+  if (record.expiresAt <= now || payload.exp <= now) throw new Error('VIP ödeme linkinin süresi dolmuş.');
+  if (record.expiresAt !== payload.exp) throw new Error('VIP ödeme linki süre bütünlüğü doğrulanamadı.');
+  if (!safeEqualHex(record.tokenHash, hashVipToken(token))) throw new Error('VIP ödeme linki kayıt bütünlüğü doğrulanamadı.');
+  if (record.name !== payload.name || record.price !== Math.round(payload.price)) throw new Error('VIP ödeme linki kayıt içeriği uyuşmuyor.');
+  return record;
+}
+
 export async function createVipLinkRecord(payload: VipTokenPayload, token: string) {
   const record: VipLinkRecord = {
     id: payload.id,
     name: payload.name,
-    price: payload.price,
+    price: Math.round(payload.price),
     tokenHash: hashVipToken(token),
     state: 'active',
     createdAt: payload.iat,
@@ -179,12 +206,7 @@ export async function listVipLinkRecords(limit = 50) {
 
 export async function assertVipLinkActive(payload: VipTokenPayload, token: string) {
   const record = await getVipLinkRecord(payload.id);
-  if (!record) throw new Error('VIP ödeme linki aktif kayıtla eşleşmiyor.');
-  if (record.state !== 'active' || record.revokedAt > 0) throw new Error('VIP ödeme linki iptal edilmiş.');
-  if (record.expiresAt <= Date.now()) throw new Error('VIP ödeme linkinin süresi dolmuş.');
-  if (record.tokenHash !== hashVipToken(token)) throw new Error('VIP ödeme linki kayıt bütünlüğü doğrulanamadı.');
-  if (record.name !== payload.name || record.price !== Math.round(payload.price)) throw new Error('VIP ödeme linki kayıt içeriği uyuşmuyor.');
-  return record;
+  return validateVipLinkRecord(record, payload, token);
 }
 
 export async function revokeVipLink(id: string) {
