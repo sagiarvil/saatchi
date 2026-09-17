@@ -25,6 +25,9 @@ DOVIZ_URL = "https://kur.doviz.com/"
 TARGET_BRANDS = {"Rolex", "Cartier"}
 MARKUP_MULTIPLIER = 2.50
 TIMEOUT = 30
+_PAGE_CACHE: dict[str, str] = {}
+_SESSION = requests.Session(impersonate="chrome")
+_LAST_MARKETPLACE_FETCH = 0.0
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -111,25 +114,51 @@ def mapped_item(item: dict, source_map: dict[str, dict]) -> dict:
     result["identitySourceUrl"] = row.get("identitySourceUrl") or row["sourceUrl"]
     result["sourceProvider"] = "Chrono24"
     result["sourcePriceKind"] = "LIVE_LISTING_MEDIAN_USD"
+    if row.get("modelName"):
+        result["modelName"] = str(row["modelName"])
     return result
 
 
+def _rate_limit_marketplace(url: str) -> None:
+    global _LAST_MARKETPLACE_FETCH
+    host = urlparse(url).netloc.lower()
+    if "chrono24.com" not in host:
+        return
+    wait_for = 1.35 - (time.monotonic() - _LAST_MARKETPLACE_FETCH)
+    if wait_for > 0:
+        time.sleep(wait_for)
+    _LAST_MARKETPLACE_FETCH = time.monotonic()
+
+
 def fetch_page(url: str) -> str:
-    response = requests.get(
-        url,
-        impersonate="chrome",
-        timeout=TIMEOUT,
-        headers={
-            "Accept-Language": "en-US,en;q=0.9",
-            "Cache-Control": "no-cache",
-        },
-    )
-    if response.status_code != 200:
-        raise RuntimeError(f"source HTTP {response.status_code}: {url}")
-    text = response.text or ""
-    if len(text) < 1000:
-        raise RuntimeError(f"source response too small: {url}")
-    return text
+    if url in _PAGE_CACHE:
+        return _PAGE_CACHE[url]
+
+    last_status = 0
+    for attempt in range(5):
+        _rate_limit_marketplace(url)
+        try:
+            response = _SESSION.get(
+                url,
+                timeout=TIMEOUT,
+                headers={
+                    "Accept-Language": "en-US,en;q=0.9",
+                    "Cache-Control": "no-cache",
+                    "Referer": "https://www.google.com/",
+                },
+            )
+            last_status = response.status_code
+            if response.status_code == 200 and len(response.text or "") >= 1000:
+                _PAGE_CACHE[url] = response.text
+                return response.text
+            if response.status_code not in {403, 429, 503}:
+                break
+        except Exception:
+            last_status = 0
+        if attempt < 4:
+            time.sleep(2.5 * (attempt + 1))
+
+    raise RuntimeError(f"source HTTP {last_status or 'error'} after retries: {url}")
 
 
 def contains_reference(text: str, reference: str) -> bool:
