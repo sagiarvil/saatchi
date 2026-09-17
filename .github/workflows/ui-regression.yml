@@ -15,7 +15,7 @@ concurrency:
 jobs:
   verify-main:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,6 +37,9 @@ jobs:
       - name: Python syntax guards
         run: python3 -m py_compile scripts/update_prices.py scripts/update_prices_resilient.py scripts/sync-konyali-brand-safe.py scripts/fix-carren-catalog.py
 
+      - name: Release shell syntax guard
+        run: bash -n scripts/publish-saatchi-catalog.sh
+
       - name: Hero autoplay guard
         run: npm run check:hero
 
@@ -48,6 +51,9 @@ jobs:
 
       - name: VIP behavioral security tests
         run: npm run test:vip
+
+      - name: ESLint
+        run: npm run lint
 
       - name: Production build
         run: npm run build
