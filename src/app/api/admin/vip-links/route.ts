@@ -1,0 +1,34 @@
+import { NextResponse } from 'next/server';
+import { assertAdminSession } from '@/lib/vip-admin-session';
+import { listVipLinkRecords } from '@/lib/vip-link-store';
+
+export const dynamic = 'force-dynamic';
+
+function noStore(response: NextResponse) {
+  response.headers.set('Cache-Control', 'no-store, max-age=0');
+  response.headers.set('Pragma', 'no-cache');
+  return response;
+}
+
+export async function GET(request: Request) {
+  try {
+    assertAdminSession(request);
+    const records = await listVipLinkRecords(75);
+    return noStore(NextResponse.json({
+      success: true,
+      links: records.map((record) => ({
+        id: record.id,
+        name: record.name,
+        price: record.price,
+        state: record.state,
+        createdAt: record.createdAt,
+        expiresAt: record.expiresAt,
+        revokedAt: record.revokedAt,
+      })),
+    }));
+  } catch (error: any) {
+    const message = String(error?.message || 'VIP link listesi alınamadı.');
+    const authError = message.includes('Yönetim oturumu');
+    return noStore(NextResponse.json({ success: false, message }, { status: authError ? 401 : 503 }));
+  }
+}
