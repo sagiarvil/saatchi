@@ -1,78 +1,73 @@
 import Link from 'next/link';
-import Image from "next/image";
+import Image from 'next/image';
 import saatlerData from '@/data/saatler.json';
 import elitSaatlerData from '@/data/elit-saatler.json';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
 
+const MAX_CATALOG_PRICE = 1799000;
+const ELITE_BRANDS = new Set(['Rolex', 'Cartier', 'TAG Heuer', 'Rado']);
+
+function brandSlug(value: string) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+}
+
+function allowedCatalog() {
+  return [...(saatlerData as any[]), ...(elitSaatlerData as any[])].filter((watch) =>
+    Number(watch.calculatedPrice || 0) > 0 && Number(watch.calculatedPrice || 0) <= MAX_CATALOG_PRICE
+  );
+}
+
 export async function generateStaticParams() {
-  let allWatches: any[] = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
-
   const brandsSet = new Set<string>();
-  allWatches.forEach(w => {
-    if (w.brand) {
-      brandsSet.add(w.brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));
-    }
+  allowedCatalog().forEach((watch) => {
+    if (watch.brand) brandsSet.add(brandSlug(String(watch.brand)));
   });
-
-  return Array.from(brandsSet).map(slug => ({ slug }));
+  return Array.from(brandsSet).map((slug) => ({ slug }));
 }
 
 export default async function BrandPage({ params }: { params: Promise<{ slug: string }> }) {
-  const resolvedParams = await params;
-  const slug = resolvedParams.slug;
-  
-  let allWatches: any[] = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
-
-  const brandWatches = allWatches.filter(w => 
-    w.brand && w.brand.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') === slug
-  );
-
-  const brandName = brandWatches.length > 0 ? brandWatches[0].brand : slug.toUpperCase();
+  const { slug } = await params;
+  const brandWatches = allowedCatalog().filter((watch) => watch.brand && brandSlug(String(watch.brand)) === slug);
+  const brandName = brandWatches.length > 0 ? String(brandWatches[0].brand) : slug.toUpperCase();
+  const tierLabel = ELITE_BRANDS.has(brandName) ? 'Elit Kategori' : 'Saat Kategorisi';
 
   return (
-    <div className="bg-background min-h-screen py-20 border-t border-surface-border">
+    <div className="bg-background min-h-screen py-14 md:py-20 border-t border-surface-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl md:text-5xl font-serif text-foreground mb-4 uppercase tracking-[0.2em] text-center">{brandName}</h1>
-        <p className="text-foreground/60 text-center mb-16 max-w-2xl mx-auto font-light">Bu markaya ait seçkin koleksiyonu keşfedin.</p>
-        
+        <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#8d5f62] text-center">SAATCHI / {tierLabel}</p>
+        <h1 className="mt-3 text-3xl md:text-5xl font-serif text-foreground mb-4 uppercase tracking-[0.16em] text-center">{brandName}</h1>
+        <p className="text-foreground/60 text-center mb-12 md:mb-16 max-w-2xl mx-auto font-light">Kaynak fiyatı doğrulanan ve SAATCHI katalog standardını karşılayan seçili modeller.</p>
+
         {brandWatches.length === 0 ? (
-          <div className="text-center text-foreground/50 py-20">Bu markaya ait ürün bulunamadı.</div>
+          <div className="text-center text-foreground/50 py-20">Bu marka için kaynak fiyatı doğrulanmış aktif model bulunamadı.</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {brandWatches.map((watch, idx) => {
-              const slugParts = watch.seoUrl.split('/');
-              const watchSlug = slugParts[slugParts.length - 1];
-              // Determine if it's elit or normal
-              const isElit = watch.category && watch.category.toLowerCase().includes('elit');
+              const watchSlug = String(watch.seoUrl || '').split('/').filter(Boolean).pop() || String(watch.id || idx);
+              const isElit = String(watch.category || '').toLowerCase().includes('elit') || ELITE_BRANDS.has(String(watch.brand || ''));
               const linkUrl = isElit ? `/elit-saat/${watchSlug}` : `/saatler/${watchSlug}`;
-              
+
               return (
-                <Link href={linkUrl} key={idx} className="group bg-surface rounded-2xl border border-surface-border overflow-hidden hover:shadow-xl hover:border-primary/40 transition-all duration-500 flex flex-col">
+                <Link href={linkUrl} key={String(watch.id || idx)} className="group bg-surface rounded-2xl border border-surface-border overflow-hidden hover:shadow-xl hover:border-primary/40 transition-all duration-500 flex flex-col">
                   <div className="w-full aspect-square relative overflow-hidden bg-[#FAFAFA] flex items-center justify-center">
-                    {watch.category && (
-                      <div className="absolute top-4 left-4 z-10 bg-[#846b32] text-white text-[9px] font-bold tracking-widest px-2 py-1 rounded shadow-sm uppercase">
-                        {watch.category}
-                      </div>
-                    )}
+                    <div className="absolute top-4 left-4 z-10 bg-[#846b32] text-white text-[9px] font-bold tracking-widest px-2 py-1 rounded shadow-sm uppercase">{isElit ? 'ELITE' : 'SAAT'}</div>
                     {watch.image ? (
                       <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain scale-[1.12] group-hover:scale-[1.16] transition-transform duration-700 ease-out" />
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center p-4 border border-surface-border group-hover:border-[#C2A768]/30 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-[#C2A768]/50 mb-3"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
-                        <span className="text-primary text-[10px] tracking-widest uppercase font-bold text-center">{watch.brand || 'LÜKS SAAT'}</span>
-                        <span className="text-foreground/40 font-serif text-xs mt-1 text-center">Görsel Hazırlanıyor</span>
+                        <span className="text-primary text-[10px] tracking-widest uppercase font-bold text-center">{watch.brand || 'SAATCHI'}</span>
+                        <span className="text-foreground/40 font-serif text-xs mt-1 text-center">Görsel Kaynakta Bekleniyor</span>
                       </div>
                     )}
                   </div>
                   <div className="text-center w-full p-6 flex flex-col flex-grow items-center justify-between">
                     <div>
                       <p className="text-primary text-[10px] tracking-[0.2em] uppercase mb-2">{watch.brand}</p>
-                      <h2 className="text-sm font-serif text-foreground mb-4 leading-relaxed group-hover:text-primary transition-colors line-clamp-2 min-h-[40px]">
-                        {watch.modelName}
-                      </h2>
+                      <h2 className="text-sm font-serif text-foreground mb-4 leading-relaxed group-hover:text-primary transition-colors line-clamp-2 min-h-[40px]">{watch.modelName}</h2>
                     </div>
                     <div>
-                      <div className="h-px w-8 bg-surface-border mx-auto mb-4 group-hover:bg-primary/50 group-hover:w-16 transition-all duration-500"></div>
+                      <div className="h-px w-8 bg-surface-border mx-auto mb-4 group-hover:bg-primary/50 group-hover:w-16 transition-all duration-500" />
                       <p className="text-lg font-serif text-foreground">{watch.price}</p>
                     </div>
                   </div>
