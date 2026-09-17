@@ -1,13 +1,16 @@
-name: Rolex Cartier Live Source Sync
+name: Rolex Cartier Verified Source Sync
 
 on:
   push:
     branches: [main]
     paths:
       - 'scripts/rolex-cartier-source-map.json'
+      - 'scripts/rolex-cartier-verified-snapshot.json'
       - 'scripts/update_prices.py'
       - 'scripts/update_prices_resilient.py'
       - '.github/workflows/rolex-cartier-fx-sync.yml'
+  schedule:
+    - cron: '17 3 * * *'
   workflow_dispatch:
 
 permissions:
@@ -32,18 +35,31 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Validate 31 real source mappings
+      - name: Validate 31 real source mappings and durable snapshots
         run: |
           python3 - <<'PY'
           import json, sys
+          from datetime import datetime, timezone
           from pathlib import Path
           rows=json.loads(Path('scripts/rolex-cartier-source-map.json').read_text(encoding='utf-8'))
+          snaps=json.loads(Path('scripts/rolex-cartier-verified-snapshot.json').read_text(encoding='utf-8'))
           ids=[str(x.get('id') or '') for x in rows]
+          snap_ids=[str(x.get('id') or '') for x in snaps]
           bad=[x for x in rows if x.get('brand') not in {'Rolex','Cartier'} or not str(x.get('reference') or '') or not str(x.get('sourceUrl') or '').startswith('https://www.chrono24.com/') or not str(x.get('identitySourceUrl') or '').startswith('https://')]
-          if len(rows)!=31 or len(set(ids))!=31 or bad:
-              print('ROLEX_CARTIER_SOURCE_MAP_INVALID', 'count=',len(rows),'unique=',len(set(ids)),'bad=',bad[:3])
+          if len(rows)!=31 or len(set(ids))!=31 or set(ids)!=set(snap_ids) or len(snaps)!=31 or bad:
+              print('ROLEX_CARTIER_SOURCE_MAP_INVALID', 'map=',len(rows),'snapshots=',len(snaps),'unique=',len(set(ids)),'bad=',bad[:3])
               sys.exit(1)
-          print('ROLEX_CARTIER_SOURCE_MAP_OK count=31')
+          now=datetime.now(timezone.utc)
+          stale=[]
+          for s in snaps:
+              stamp=str(s.get('verifiedAt') or '').replace('Z','+00:00')
+              try: age=(now-datetime.fromisoformat(stamp).astimezone(timezone.utc)).total_seconds()
+              except Exception: age=999999999
+              if age > 72*3600 or age < -300: stale.append((s.get('id'),int(age)))
+          if stale:
+              print('ROLEX_CARTIER_SNAPSHOT_FRESHNESS_FAILED',stale)
+              sys.exit(1)
+          print('ROLEX_CARTIER_SOURCE_MAP_OK count=31 snapshots=31 fresh<=72h')
           PY
 
       - name: Install pricing dependencies
@@ -52,48 +68,66 @@ jobs:
       - name: Python syntax guard
         run: python3 -m py_compile scripts/update_prices.py scripts/update_prices_resilient.py
 
-      - name: Live verify references and update prices
+      - name: Refresh live sources with fresh durable fallback
         run: python3 scripts/update_prices_resilient.py
 
-      - name: Require 31 live source readbacks
+      - name: Require 31 verified fresh source readbacks
         run: |
           python3 - <<'PY'
           import json, sys
+          from datetime import datetime, timezone
           from pathlib import Path
           from urllib.parse import urlparse
 
           items=json.loads(Path('src/data/elit-saatler.json').read_text(encoding='utf-8'))
           report=json.loads(Path('scripts/sync-saatchi-catalog-report.json').read_text(encoding='utf-8'))
+          snapshots=json.loads(Path('scripts/rolex-cartier-verified-snapshot.json').read_text(encoding='utf-8'))
           rc=[x for x in items if x.get('brand') in {'Rolex','Cartier'}]
+          now=datetime.now(timezone.utc)
+
+          def fresh(stamp):
+              try:
+                  dt=datetime.fromisoformat(str(stamp).replace('Z','+00:00')).astimezone(timezone.utc)
+                  age=(now-dt).total_seconds()
+                  return -300 <= age <= 72*3600
+              except Exception: return False
 
           def valid_source(x):
               url=str(x.get('sourceUrl') or '')
               host=urlparse(url).netloc.lower()
               provider=str(x.get('sourceProvider') or '')
+              status=str(x.get('sourcePriceStatus') or '')
               kind=str(x.get('sourcePriceKind') or '')
-              if provider=='Chrono24':
-                  return 'chrono24.' in host and kind.startswith('LIVE_LISTING_MEDIAN_')
-              if provider=='WatchCharts':
-                  return (host=='watchcharts.com' or host.endswith('.watchcharts.com')) and kind=='WATCHCHARTS_MARKET_USD'
+              if provider=='Chrono24' and 'chrono24.' not in host: return False
+              if provider=='WatchCharts' and not (host=='watchcharts.com' or host.endswith('.watchcharts.com')): return False
+              if provider not in {'Chrono24','WatchCharts'}: return False
+              if status=='live_source_url':
+                  return kind.startswith('LIVE_LISTING_MEDIAN_') or kind=='WATCHCHARTS_MARKET_USD'
+              if status=='verified_source_snapshot':
+                  return kind.startswith('VERIFIED_SNAPSHOT_') and fresh(x.get('sourceVerifiedAt'))
               return False
 
-          bad=[x.get('id') for x in rc if x.get('sourcePriceStatus')!='live_source_url' or x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell' or x.get('sourceCurrency') not in {'USD','EUR'} or not valid_source(x) or not x.get('sourceVerifiedAt') or x.get('pricingRule')!='FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50']
+          bad=[x.get('id') for x in rc if x.get('fxSource')!='doviz.com' or x.get('fxRateSide')!='sell' or x.get('sourceCurrency') not in {'USD','EUR'} or not valid_source(x) or not x.get('sourceVerifiedAt') or x.get('pricingRule')!='FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50' or not x.get('calculatedPrice')]
           provider_counts=report.get('rolexCartierSourceProviderCounts') or {}
-          if len(rc)!=31 or bad or report.get('rolexCartierLiveSourceVerifiedCount')!=31 or sum(int(v) for v in provider_counts.values())!=31:
-              print('ROLEX_CARTIER_LIVE_PRICE_READBACK_FAILED','count=',len(rc),'bad=',bad,'report=',report.get('rolexCartierLiveSourceVerifiedCount'),'providers=',provider_counts)
+          snapshot_bad=[s.get('id') for s in snapshots if not fresh(s.get('verifiedAt')) or not s.get('amount') or s.get('currency') not in {'USD','EUR'}]
+          verified=int(report.get('rolexCartierVerifiedSourceCount') or 0)
+          live=int(report.get('rolexCartierLiveSourceVerifiedCount') or 0)
+          fallback=int(report.get('rolexCartierSnapshotFallbackCount') or 0)
+          if len(rc)!=31 or bad or snapshot_bad or verified!=31 or live+fallback!=31 or sum(int(v) for v in provider_counts.values())!=31:
+              print('ROLEX_CARTIER_VERIFIED_SOURCE_READBACK_FAILED','count=',len(rc),'bad=',bad,'snapshot_bad=',snapshot_bad,'verified=',verified,'live=',live,'fallback=',fallback,'providers=',provider_counts)
               sys.exit(1)
-          print('ROLEX_CARTIER_LIVE_PRICE_READBACK_OK count=31 providers=',provider_counts)
+          print('ROLEX_CARTIER_VERIFIED_SOURCE_READBACK_OK count=31 live=',live,'fresh_snapshot=',fallback,'providers=',provider_counts)
           PY
 
-      - name: Commit verified price changes
+      - name: Commit verified price and provenance changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add src/data/elit-saatler.json src/data/saatler_paytr.json scripts/sync-saatchi-catalog-report.json
+          git add src/data/elit-saatler.json src/data/saatler_paytr.json scripts/sync-saatchi-catalog-report.json scripts/rolex-cartier-verified-snapshot.json
           if ! git diff --cached --quiet; then
-            git commit -m "data: refresh Rolex Cartier from 31 verified live sources"
+            git commit -m "data: refresh Rolex Cartier verified source observations"
             git pull --rebase origin main
             git push origin HEAD:main
           else
-            echo "Rolex/Cartier live-source data unchanged."
+            echo "Rolex/Cartier verified-source data unchanged."
           fi
