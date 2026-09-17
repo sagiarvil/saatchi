@@ -24,18 +24,41 @@ export async function POST(request: Request) {
       return NextResponse.json({ status: 'error', message: 'Zorunlu sözleşme ve teslim koşulları onaylanmalıdır.' }, { status: 400 });
     }
 
+    // Sağlayıcı Saatchi tarafında sabitlenmez. Ortam değişkeni tanımlıysa o sağlayıcı,
+    // tanımlı değilse Belgin ödeme motorunun merkezdeki aktif/default sağlayıcısı kullanılır.
     const configuredProvider = String(process.env.SAATCHI_PAYMENT_PROVIDER || '').trim().toUpperCase();
-    if (!configuredProvider) {
-      return NextResponse.json({
-        status: 'error',
-        code: 'PAYMENT_PROVIDER_NOT_CONFIGURED',
-        message: 'Ödeme kuruluşu henüz aktive edilmedi. Sistem sağlayıcıdan bağımsız olarak hazır; aktif kuruluş bilgisi tanımlanmalıdır.'
-      }, { status: 503 });
-    }
-
     const idempotencyKey = `SAATCHI:${vip.id}`;
     const forwardedFor = request.headers.get('x-forwarded-for') || '';
     const userAgent = request.headers.get('user-agent') || 'Saatchi VIP Checkout';
+
+    const paymentPayload: Record<string, unknown> = {
+      source: 'SAATCHI',
+      channel: 'saatchi.watch',
+      idempotencyKey,
+      isVipPayment: true,
+      vipToken: token,
+      vipTitle: vip.name,
+      title: vip.name,
+      productName: vip.name,
+      items: [{ id: vip.id, name: vip.name, qty: 1, isVipCustom: true }],
+      user_name: customerName,
+      user_phone: customerPhone,
+      email,
+      customerIdentity,
+      customerAddress,
+      deliveryMethod: 'showroom',
+      termsAccepted: true,
+      preInformationAccepted: true,
+      highValueDeliveryAccepted: true,
+      marketingConsent: body.marketingConsent === true,
+      legalPresentation: {
+        presentedAt: String(body.presentedAt || new Date().toISOString()),
+        acceptedAt: new Date().toISOString(),
+        source: 'SAATCHI-VIP'
+      }
+    };
+
+    if (configuredProvider) paymentPayload.provider = configuredProvider;
 
     const belginResponse = await fetch(BELGIN_CREATE_PAYMENT_URL, {
       method: 'POST',
@@ -45,38 +68,16 @@ export async function POST(request: Request) {
         ...(forwardedFor ? { 'X-Forwarded-For': forwardedFor } : {})
       },
       cache: 'no-store',
-      body: JSON.stringify({
-        source: 'SAATCHI',
-        channel: 'saatchi.watch',
-        provider: configuredProvider,
-        idempotencyKey,
-        isVipPayment: true,
-        vipToken: token,
-        vipTitle: vip.name,
-        title: vip.name,
-        productName: vip.name,
-        items: [{ id: vip.id, name: vip.name, qty: 1, isVipCustom: true }],
-        user_name: customerName,
-        user_phone: customerPhone,
-        email,
-        customerIdentity,
-        customerAddress,
-        deliveryMethod: 'showroom',
-        termsAccepted: true,
-        preInformationAccepted: true,
-        highValueDeliveryAccepted: true,
-        marketingConsent: body.marketingConsent === true,
-        legalPresentation: {
-          presentedAt: String(body.presentedAt || new Date().toISOString()),
-          acceptedAt: new Date().toISOString(),
-          source: 'SAATCHI-VIP'
-        }
-      })
+      body: JSON.stringify(paymentPayload)
     });
 
     const text = await belginResponse.text();
     let data: any;
-    try { data = JSON.parse(text); } catch { data = { success: false, message: text || 'Belgin ödeme servisi geçersiz yanıt verdi.' }; }
+    try {
+      data = JSON.parse(text);
+    } catch {
+      data = { success: false, message: text || 'Belgin ödeme servisi geçersiz yanıt verdi.' };
+    }
 
     if (!belginResponse.ok || data.success !== true) {
       return NextResponse.json({
