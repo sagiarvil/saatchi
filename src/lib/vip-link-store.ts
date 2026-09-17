@@ -10,7 +10,7 @@ type FirestoreValue =
   | { booleanValue: boolean };
 
 type FirestoreDocument = { fields?: Record<string, FirestoreValue> };
-type FirestoreListResponse = { documents?: FirestoreDocument[]; nextPageToken?: string };
+type FirestoreQueryRow = { document?: FirestoreDocument };
 
 export type VipLinkRecord = {
   id: string;
@@ -33,13 +33,16 @@ function projectId() {
   return 'studio-7658156126-ffb8e';
 }
 
-function collectionUrl(pageSize = 50) {
-  const safeSize = Math.min(100, Math.max(1, Math.floor(pageSize)));
-  return `https://firestore.googleapis.com/v1/projects/${encodeURIComponent(projectId())}/databases/(default)/documents/${COLLECTION}?pageSize=${safeSize}`;
+function databaseRoot() {
+  return `https://firestore.googleapis.com/v1/projects/${encodeURIComponent(projectId())}/databases/(default)/documents`;
 }
 
 function docUrl(id: string) {
-  return `https://firestore.googleapis.com/v1/projects/${encodeURIComponent(projectId())}/databases/(default)/documents/${COLLECTION}/${encodeURIComponent(id)}`;
+  return `${databaseRoot()}/${COLLECTION}/${encodeURIComponent(id)}`;
+}
+
+function runQueryUrl() {
+  return `${databaseRoot()}:runQuery`;
 }
 
 async function accessToken() {
@@ -151,14 +154,27 @@ export async function getVipLinkRecord(id: string) {
 }
 
 export async function listVipLinkRecords(limit = 50) {
-  const response = await firestoreFetch(collectionUrl(limit), { method: 'GET' });
-  if (!response.ok) throw new Error(`VIP link listesi okunamadı (${response.status}).`);
-  const data = await response.json() as FirestoreListResponse;
-  return (data.documents || [])
+  const safeLimit = Math.min(100, Math.max(1, Math.floor(limit)));
+  const response = await firestoreFetch(runQueryUrl(), {
+    method: 'POST',
+    body: JSON.stringify({
+      structuredQuery: {
+        from: [{ collectionId: COLLECTION }],
+        orderBy: [{ field: { fieldPath: 'createdAt' }, direction: 'DESCENDING' }],
+        limit: safeLimit,
+      },
+    }),
+  });
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`VIP link listesi okunamadı (${response.status}): ${text.slice(0, 180)}`);
+  }
+  const rows = await response.json() as FirestoreQueryRow[];
+  return (Array.isArray(rows) ? rows : [])
+    .map((row) => row.document)
+    .filter((doc): doc is FirestoreDocument => Boolean(doc))
     .map(decode)
-    .filter((record) => record.id.startsWith('VIP-SAATCHI-'))
-    .sort((a, b) => b.createdAt - a.createdAt)
-    .slice(0, Math.min(100, Math.max(1, Math.floor(limit))));
+    .filter((record) => record.id.startsWith('VIP-SAATCHI-'));
 }
 
 export async function assertVipLinkActive(payload: VipTokenPayload, token: string) {
