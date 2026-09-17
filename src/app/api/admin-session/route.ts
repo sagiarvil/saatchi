@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import {
   VIP_ADMIN_COOKIE,
   assertAdminSession,
+  assertSameOriginMutation,
   createAdminSession,
   verifyAdminKey,
 } from '@/lib/vip-admin-session';
@@ -16,6 +17,7 @@ function noStore(response: NextResponse) {
 
 export async function POST(request: Request) {
   try {
+    assertSameOriginMutation(request);
     const body = await request.json();
     const key = String(body?.key || '');
     if (!verifyAdminKey(key)) {
@@ -46,7 +48,12 @@ export async function GET(request: Request) {
   }
 }
 
-export async function DELETE() {
+export async function DELETE(request: Request) {
+  try {
+    assertSameOriginMutation(request);
+  } catch (error: any) {
+    return noStore(NextResponse.json({ success: false, message: error?.message || 'Oturum kapatılamadı.' }, { status: 403 }));
+  }
   const response = noStore(NextResponse.json({ success: true }));
   response.cookies.set(VIP_ADMIN_COOKIE, '', {
     httpOnly: true,
