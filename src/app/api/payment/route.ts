@@ -126,17 +126,26 @@ export function assertProviderSessionConsistency(
   if (!orderId) throw new Error('Ödeme sağlayıcısı mutabakat sipariş referansı döndürmedi.');
 
   const returnedAmount = data.amount ?? data.totalAmount;
-  if (returnedAmount !== undefined && Number(returnedAmount) !== expected.amount) {
+  if (returnedAmount === undefined || returnedAmount === null || returnedAmount === '') {
+    throw new Error('Ödeme sağlayıcısı doğrulanabilir işlem tutarı döndürmedi.');
+  }
+  if (!Number.isFinite(Number(returnedAmount)) || Number(returnedAmount) !== expected.amount) {
     throw new Error('Ödeme sağlayıcısı tutarı sipariş tutarıyla uyuşmuyor.');
   }
 
   const returnedCurrency = safeText(data.currency, 8).toUpperCase();
-  if (returnedCurrency && returnedCurrency !== expected.currency.toUpperCase()) {
+  if (!returnedCurrency) {
+    throw new Error('Ödeme sağlayıcısı doğrulanabilir para birimi döndürmedi.');
+  }
+  if (returnedCurrency !== expected.currency.toUpperCase()) {
     throw new Error('Ödeme sağlayıcısı para birimi siparişle uyuşmuyor.');
   }
 
   const returnedProvider = safeText(data.provider, 64).toUpperCase();
-  if (expected.provider && returnedProvider && returnedProvider !== expected.provider.toUpperCase()) {
+  if (expected.provider && !returnedProvider) {
+    throw new Error('Ödeme sağlayıcısı provider kimliği döndürmedi.');
+  }
+  if (expected.provider && returnedProvider !== expected.provider.toUpperCase()) {
     throw new Error('Ödeme sağlayıcısı beklenen provider ile uyuşmuyor.');
   }
 
