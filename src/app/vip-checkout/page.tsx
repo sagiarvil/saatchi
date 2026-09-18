@@ -42,17 +42,18 @@ function CheckoutContent() {
   }, [token]);
 
   function followProvider(data: any) {
-    const direct = data.url || data.paymentUrl;
-    if (data.htmlContent) {
-      document.open();
-      document.write(data.htmlContent);
-      document.close();
-      return;
-    }
+    const assertHttpsUrl = (value: unknown) => {
+      const url = new URL(String(value || ''));
+      if (url.protocol !== 'https:' || url.username || url.password) {
+        throw new Error('Ödeme kuruluşu güvenli yönlendirme bilgisi üretmedi.');
+      }
+      return url.toString();
+    };
+
     if (data.gatewayUrl && data.formData && typeof data.formData === 'object') {
       const paymentForm = document.createElement('form');
       paymentForm.method = 'POST';
-      paymentForm.action = data.gatewayUrl;
+      paymentForm.action = assertHttpsUrl(data.gatewayUrl);
       Object.entries(data.formData).forEach(([key, value]) => {
         const input = document.createElement('input');
         input.type = 'hidden';
@@ -64,10 +65,12 @@ function CheckoutContent() {
       paymentForm.submit();
       return;
     }
-    if (direct) {
-      window.location.assign(direct);
+
+    if (data.redirectUrl) {
+      window.location.assign(assertHttpsUrl(data.redirectUrl));
       return;
     }
+
     throw new Error('Ödeme kuruluşu yönlendirme bilgisi üretmedi.');
   }
 
