@@ -63,8 +63,10 @@ export async function GET(request: Request) {
 export async function DELETE(request: Request) {
   try {
     assertSameOriginMutation(request);
-  } catch (error: any) {
-    return noStore(NextResponse.json({ success: false, message: error?.message || 'Oturum kapatılamadı.' }, { status: 403 }));
+  } catch (error: unknown) {
+    const internalMessage = error instanceof Error ? error.message : 'Oturum kapatılamadı.';
+    console.error('[SAATCHI ADMIN SESSION DELETE]', internalMessage);
+    return noStore(NextResponse.json({ success: false, message: 'Oturum kapatma isteği doğrulanamadı.' }, { status: 403 }));
   }
   const response = noStore(NextResponse.json({ success: true }));
   response.cookies.set(VIP_ADMIN_COOKIE, '', {
