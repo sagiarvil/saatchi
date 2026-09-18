@@ -58,6 +58,14 @@ Repository code and CI cannot prove the bank/acquirer production environment. Be
 - Real bank test-merchant flow: approved transaction, declined transaction, 3DS failure/cancel, timeout/ambiguous result, repeat-click/idempotency, reconciliation and refund/void where applicable.
 - Production runtime readback of the exact deployed SHA and security headers.
 
+## Audit synchronization marker
+
+Latest main reviewed during strict closure pass: `9c22da36e4ad16537de43352a2aa7468e03c3b75`.
+
+The two main-only commits reviewed in this pass affect product filtering, hero media, product images and generated Tailwind output. They do not modify the VIP/payment/admin API files. The PR CI must nevertheless pass on GitHub's current-main merge ref before the PR can leave draft state.
+
+Live `saatchi.watch` runtime could not be independently fetched from the available web runtime in this session, so production header/endpoint verification remains explicitly BLOCKED until post-deploy readback is available.
+
 ## Release rule
 
 Do not bypass PR checks and do not manually deploy this branch. Keep the PR draft until external production parameters are available and verified. After an approved merge to `main`, the existing production workflow builds the exact verified main SHA, deploys it, reads back `build-info.json`, runs public runtime smoke checks and attempts automatic rollback to the previous live SHA if deployment verification fails.
