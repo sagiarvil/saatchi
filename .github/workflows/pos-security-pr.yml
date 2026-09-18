@@ -20,6 +20,7 @@ on:
       - 'public/js/vip-payment.js'
       - '.github/workflows/pos-security-pr.yml'
       - '.github/workflows/production-release.yml'
+      - '.github/workflows/ui-regression.yml'
 
 permissions:
   contents: read
