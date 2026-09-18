@@ -90,11 +90,13 @@ const provenanceLessRequest = new Request('https://saatchi.watch/api/vip-link', 
 expectThrow(() => session.assertSameOriginMutation(provenanceLessRequest), /kaynak doğrulamasından/i);
 
 process.env.NODE_ENV = 'production';
-assert.equal(session.expectedPublicOrigin(new Request('https://saatchi.watch/api/payment')), 'https://saatchi.watch');
+assert.equal(session.expectedPublicOrigin(new Request('https://evil.example/api/payment')), 'https://saatchi.watch');
+process.env.SAATCHI_PUBLIC_ORIGIN = 'https://evil.example';
 expectThrow(
-  () => session.expectedPublicOrigin(new Request('https://evil.example/api/payment')),
-  /Beklenmeyen production public origin|saatchi\.watch/i
+  () => session.expectedPublicOrigin(new Request('https://saatchi.watch/api/payment')),
+  /Beklenmeyen production public origin/i
 );
+delete process.env.SAATCHI_PUBLIC_ORIGIN;
 process.env.NODE_ENV = 'test';
 
 const allowlist = 'https://secure.example-bank.test,https://3ds.example-bank.test';
