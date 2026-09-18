@@ -17,9 +17,9 @@ This document intentionally separates repository evidence from production/bank e
 | Ambiguous timeout handling | VERIFIED_DONE | fail-closed `uncertain` state | Provider reconciliation/status test |
 | Reconciliation recovery | PARTIALLY_DONE | admin + same-origin + step-up TOTP + no-charge confirmation + audit ref | Real bank/provider no-charge reconciliation exercise |
 | Admin MFA | VERIFIED_DONE | admin key + TOTP, HttpOnly Secure SameSite session | Production secret provisioning and login runtime test |
-| Admin brute-force defense | PARTIALLY_DONE | application-layer 429 throttle | Edge/WAF distributed rate-limit configuration + runtime evidence |
+| Admin brute-force defense | PARTIALLY_DONE | production Firestore-backed distributed 429 throttle + long key + TOTP | Edge/WAF rate-limit configuration + production runtime evidence |
 | Security headers | PARTIALLY_DONE | Firebase HSTS/CSP/nosniff/referrer/permissions config | Live header readback and TLS scan |
-| Checkout CSP isolation | PARTIALLY_DONE | dedicated checkout CSP, frame-src none, no third-party scripts | Live CSP/readback and browser regression |
+| Checkout CSP isolation | PARTIALLY_DONE | dedicated checkout CSP, frame-src none, no third-party scripts; server-side HPP exact-origin validation | Replace broad static `form-action https:` with exact bank/provider HPP origins after onboarding, then live CSP/readback and browser regression |
 | Legal consent | VERIFIED_DONE | visible unchecked mandatory consents; server-owned document versions/timestamp | Production browser screenshot/flow |
 | Seller identity, contact, delivery, privacy, returns | VERIFIED_DONE | checkout/legal/contact routes and regression guard | Bank reviewer/live-site confirmation |
 | SSL/TLS | BLOCKED | HTTPS-only code/config assumptions | External live TLS scan proving supported protocols/certificate |
