@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { verifyVipToken } from '@/lib/vip-token';
 import { assertVipLinkActive, claimVipPaymentAttempt, finalizeVipPaymentAttempt } from '@/lib/vip-link-store';
 import { assertSameOriginMutation } from '@/lib/vip-admin-session';
-import { assertRequestBodySize, normalizePaymentHandoff } from '@/lib/payment-boundary';
+import { normalizePaymentHandoff, readBoundedJsonBody, readBoundedResponseText } from '@/lib/payment-boundary';
 import { LEGAL_DOCUMENT_VERSIONS } from '@/data/legal/legal-versions';
 
 export const dynamic = 'force-dynamic';
@@ -105,10 +105,9 @@ export async function POST(request: Request) {
   const requestId = crypto.randomUUID();
 
   try {
-    assertRequestBodySize(request);
     assertSameOriginMutation(request);
 
-    const body = await request.json();
+    const body = await readBoundedJsonBody(request);
     assertNoCardholderData(body);
     const token = safeText(body.token, 4096);
     const vip = verifyVipToken(token);
@@ -193,10 +192,11 @@ export async function POST(request: Request) {
       },
       cache: 'no-store',
       signal: AbortSignal.timeout(20_000),
+      redirect: 'error',
       body: JSON.stringify(paymentPayload),
     });
 
-      const text = await belginResponse.text();
+      const text = await readBoundedResponseText(belginResponse);
       let data: Record<string, unknown>;
       try {
         data = JSON.parse(text) as Record<string, unknown>;
