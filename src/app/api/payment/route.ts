@@ -6,7 +6,8 @@ import { assertRequestBodySize, normalizePaymentHandoff } from '@/lib/payment-bo
 
 export const dynamic = 'force-dynamic';
 
-const BELGIN_CREATE_PAYMENT_URL =
+const PAYMENT_CREATE_URL =
+  process.env.SAATCHI_PAYMENT_CREATE_URL ||
   process.env.BELGIN_PAYMENT_CREATE_URL ||
   'https://us-central1-carbon-web-1265b.cloudfunctions.net/createPayment';
 
@@ -97,7 +98,7 @@ export async function POST(request: Request) {
 
     if (configuredProvider) paymentPayload.provider = configuredProvider;
 
-    const upstreamUrl = new URL(BELGIN_CREATE_PAYMENT_URL);
+    const upstreamUrl = new URL(PAYMENT_CREATE_URL);
     if (upstreamUrl.protocol !== 'https:') {
       throw new Error('Ödeme servis adresi güvenli değil.');
     }
