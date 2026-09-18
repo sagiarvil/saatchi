@@ -88,6 +88,8 @@ const requirements = [
   ['public payment errors are sanitized', paymentRoute.includes('publicPaymentError') && paymentRoute.includes('Ödeme hizmeti şu anda kullanılamıyor')],
   ['public VIP verification errors are sanitized', vipRoute.includes('VIP bağlantısı şu anda doğrulanamıyor') && vipRoute.includes('VIP bağlantısı geçersiz, iptal edilmiş veya süresi dolmuş')],
   ['provider HTML is never injected into checkout', !checkout.includes('document.write') && !checkout.includes('htmlContent')],
+  ['checkout does not embed payment iframe', !checkout.includes('<iframe') && !checkout.includes('createElement(\'iframe\')],
+  ['checkout loads no third-party scripts', !checkout.includes('<script') && !checkout.includes('next/script') && !checkout.includes('googletagmanager') && !checkout.includes('clarity')],
   ['payment handoff requires HTTPS', boundary.includes("url.protocol !== 'https:'")],
   ['payment handoff supports explicit origin allowlist', boundary.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS') && boundary.includes('allowlist.has(url.origin)')],
   ['provider form data is bounded', boundary.includes('MAX_FORM_FIELDS') && boundary.includes('MAX_FORM_VALUE_LENGTH')],
@@ -107,6 +109,7 @@ const requirements = [
   ['handoff documents external bank test requirement', handoff.includes('Real bank test-merchant flow')],
   ['handoff documents ASV validation requirement', handoff.includes('ASV external scan')],
   ['legal acceptance versions are persisted', paymentRoute.includes('LEGAL_DOCUMENT_VERSIONS') && store.includes('legalAcceptedAt') && store.includes('legalDocumentVersions')],
+  ['legal timestamps are server-owned', paymentRoute.includes('const legalAcceptedAt = new Date().toISOString()') && !checkout.includes('presentedAt: new Date().toISOString()')],
 ];
 
 const failed = requirements.filter(([, ok]) => !ok);
