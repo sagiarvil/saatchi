@@ -70,6 +70,9 @@ assert.equal(store.assertVipPaymentStatePayable(activeRecord), true);
 expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'creating' }), /zaten oluşturuluyor/i);
 expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'ready' }), /daha önce oluşturuldu/i);
 expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'uncertain' }), /mutabakat/i);
+assert.equal(store.assertVipPaymentReconciliationResettable({ paymentState: 'uncertain' }), true);
+expectThrow(() => store.assertVipPaymentReconciliationResettable({ paymentState: 'ready' }), /Yalnız sonucu belirsiz/i);
+expectThrow(() => store.assertVipPaymentReconciliationResettable({ paymentState: 'creating' }), /Yalnız sonucu belirsiz/i);
 
 const sameOriginRequest = new Request('https://saatchi.watch/api/vip-link', {
   method: 'POST',
