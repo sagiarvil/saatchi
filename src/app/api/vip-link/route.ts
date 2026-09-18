@@ -3,7 +3,7 @@ import crypto from 'crypto';
 import { signVipToken, verifyVipToken } from '@/lib/vip-token';
 import { assertAdminSession, assertSameOriginMutation, expectedPublicOrigin } from '@/lib/vip-admin-session';
 import { readBoundedJsonBody } from '@/lib/payment-boundary';
-import { assertVipLinkActive, createVipLinkRecord, revokeVipLink } from '@/lib/vip-link-store';
+import { assertVipLinkActive, assertVipPaymentStatePayable, createVipLinkRecord, revokeVipLink } from '@/lib/vip-link-store';
 
 export const dynamic = 'force-dynamic';
 
@@ -57,7 +57,8 @@ export async function GET(request: Request) {
   try {
     const token = new URL(request.url).searchParams.get('token') || '';
     const payload = verifyVipToken(token);
-    await assertVipLinkActive(payload, token);
+    const record = await assertVipLinkActive(payload, token);
+    assertVipPaymentStatePayable(record);
     return noStore(NextResponse.json({
       success: true,
       payload: { id: payload.id, name: payload.name, price: payload.price, exp: payload.exp },
