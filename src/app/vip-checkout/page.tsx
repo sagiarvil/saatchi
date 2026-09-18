@@ -57,8 +57,10 @@ function CheckoutContent() {
   useEffect(() => {
     if (!tokenResolved || !token) return;
 
-    setLoadingSummary(true);
-    setError('');
+    queueMicrotask(() => {
+      setLoadingSummary(true);
+      setError('');
+    });
     let active = true;
     fetch('/api/vip-link/verify', {
       method: 'POST',
