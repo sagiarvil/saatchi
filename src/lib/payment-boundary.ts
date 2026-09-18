@@ -8,6 +8,54 @@ const MAX_FORM_FIELDS = 64;
 const MAX_FORM_VALUE_LENGTH = 4096;
 const SENSITIVE_PAYMENT_FIELD = /^(?:card_?(?:number|no|pan|cvv|cvc|expiry|expiredate|securitycode)|cc_?(?:number|num|no)|pan|cvv|cvc|security_?code|expiry|expiration|expiry_?(?:date|month|year)|expiration_?(?:date|month|year)|cardholderdata)$/i;
 
+const CARD_DATA_KEYS = new Set([
+  'cardnumber',
+  'card_number',
+  'cardno',
+  'card_no',
+  'ccnumber',
+  'cc_number',
+  'ccnum',
+  'pan',
+  'cardpan',
+  'cardcvc',
+  'card_cvc',
+  'cardcvv',
+  'card_cvv',
+  'cvv',
+  'cvc',
+  'securitycode',
+  'security_code',
+  'cardexpiry',
+  'card_expiry',
+  'expiry',
+  'expiration',
+  'expirydate',
+  'expiry_date',
+  'expirymonth',
+  'expiry_month',
+  'expiryyear',
+  'expiry_year',
+  'cardexpiredate',
+  'cardholderdata',
+]);
+
+export function assertNoCardholderData(value: unknown, depth = 0) {
+  if (!value || typeof value !== 'object' || depth > 6) return;
+  if (Array.isArray(value)) {
+    value.forEach((item) => assertNoCardholderData(item, depth + 1));
+    return;
+  }
+
+  for (const [key, nested] of Object.entries(value as Record<string, unknown>)) {
+    const normalizedKey = key.toLowerCase();
+    if (CARD_DATA_KEYS.has(normalizedKey) || SENSITIVE_PAYMENT_FIELD.test(key)) {
+      throw new Error('Kart numarası, CVV/CVC ve son kullanma tarihi SAATCHI sunucusuna gönderilemez.');
+    }
+    assertNoCardholderData(nested, depth + 1);
+  }
+}
+
 function parseAllowedOrigins(raw = process.env.SAATCHI_PAYMENT_ALLOWED_ORIGINS || '') {
   return new Set(
     raw
