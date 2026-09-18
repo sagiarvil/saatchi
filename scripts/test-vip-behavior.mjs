@@ -7,7 +7,8 @@ process.env.GOOGLE_CLOUD_PROJECT = 'studio-7658156126-ffb8e';
 
 const session = await import('../src/lib/vip-admin-session.ts');
 const tokenLib = await import('../src/lib/vip-token.ts');
-const store = await import('../src/lib/vip-link-store.ts');\nconst paymentBoundary = await import('../src/lib/payment-boundary.ts');
+const store = await import('../src/lib/vip-link-store.ts');
+const paymentBoundary = await import('../src/lib/payment-boundary.ts');
 
 function expectThrow(fn, pattern) {
   let thrown = null;
