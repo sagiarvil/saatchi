@@ -73,4 +73,8 @@ Do not bypass PR checks and do not manually deploy this branch. Keep the PR draf
 
 ## Admin brute-force protection
 
-Production admin login requires the long admin key plus TOTP. An application-layer throttle returns HTTP 429 after repeated failures as defense in depth. Because serverless instances can scale horizontally and client-IP headers are infrastructure-dependent, this throttle is **not** accepted as proof of an edge/WAF rate-limit. Before production acceptance, configure and verify a platform/edge rate-limit for `/api/admin-session` and retain the runtime evidence.
+Production admin login requires the long admin key plus TOTP. Failed-login throttle state is persisted in Firestore with optimistic concurrency, so process restart/autoscaling does not intentionally reset the application-layer counter. The API returns HTTP 429 after the threshold. This still does **not** replace an edge/WAF rate-limit because client-IP header trust and network-layer abuse controls remain infrastructure-dependent. Before production acceptance, configure and verify a platform/edge rate-limit for `/api/admin-session` and retain runtime evidence.
+
+## CSP payment-form lock
+
+The checkout currently performs server-side exact-origin validation for HPP/3DS handoff. The static Firebase checkout CSP still contains `form-action 'self' https:` because the approved bank/provider production origins are not yet known. Do not guess these domains. During onboarding, replace that broad directive with the exact approved HPP/3DS origins and verify the live CSP before release.
