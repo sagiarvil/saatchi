@@ -101,6 +101,7 @@ const requirements = [
   ['checkout loads no third-party scripts', !checkout.includes('<script') && !checkout.includes('next/script') && !checkout.includes('googletagmanager') && !checkout.includes('clarity')],
   ['payment handoff requires HTTPS', boundary.includes("url.protocol !== 'https:'")],
   ['payment handoff supports explicit origin allowlist', boundary.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS') && boundary.includes('allowlist.has(url.origin)')],
+  ['payment handoff configuration is non-recursive and executable', boundary.includes('const allowlist = parseAllowedOrigins(') && !boundary.includes('const allowlist = assertPaymentHandoffConfiguration(rawAllowlist)')],
   ['provider form data is bounded', boundary.includes('MAX_FORM_FIELDS') && boundary.includes('MAX_FORM_VALUE_LENGTH')],
   ['provider handoff rejects card-data fields', boundary.includes('SENSITIVE_PAYMENT_FIELD') && boundary.includes('merchant handoff üzerinden kart verisi')],
   ['security headers include HSTS', firebase.includes('Strict-Transport-Security')],
