@@ -9,7 +9,7 @@ let cachedAccessToken: { token: string; expiresAt: number } | null = null;
 
 function useMemoryThrottle() {
   return (
-    useMemoryThrottle() ||
+    process.env.NODE_ENV !== 'production' ||
     (process.env.CI === 'true' && process.env.SAATCHI_ADMIN_THROTTLE_TEST_MODE === 'true')
   );
 }
