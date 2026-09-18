@@ -107,7 +107,7 @@ const requirements = [
   ['public site root metadata is indexable', rootLayout.includes('index: true') && rootLayout.includes('follow: true')],
   ['CSP permits only explicit Firebase admin SDK origin', firebase.includes("script-src 'self' 'unsafe-inline' https://www.gstatic.com")],
   ['POS PRs run isolated regression workflow before merge', workflow.includes('pull_request:') && workflow.includes('npm run check:vip') && workflow.includes('npm run test:vip') && workflow.includes('npm run build')],
-  ['production deploy is main-only', productionRelease.includes("github.ref == 'refs/heads/main'") && productionRelease.includes('RELEASE_SHA_IS_CURRENT_MAIN')],
+  ['production deploy is regression-gated main-only', productionRelease.includes("github.event.workflow_run.head_branch == 'main'") && productionRelease.includes("github.event.workflow_run.conclusion == 'success'") && !productionRelease.includes('workflow_dispatch:') && productionRelease.includes('RELEASE_SHA_IS_CURRENT_MAIN')],
   ['production deploy uses lockfile Firebase CLI', productionRelease.includes('./node_modules/.bin/firebase deploy') && !productionRelease.includes('firebase-tools@latest')],
   ['production deploy requires rollback anchor', productionRelease.includes('ROLLBACK_ANCHOR_MISSING') && productionRelease.includes('ROLLBACK_ANCHOR_VERIFIED')],
   ['main regression repeats security and dependency gates', mainRegression.includes('npm audit --audit-level=high') && mainRegression.includes('npm audit --omit=dev --audit-level=moderate') && mainRegression.includes('npm run check:vip') && mainRegression.includes('npm run test:vip') && mainRegression.includes('node --check public/js/admin.js') && mainRegression.includes('npm run build')],
