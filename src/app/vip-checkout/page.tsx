@@ -153,6 +153,7 @@ function CheckoutContent() {
                 <ShieldCheck className="h-7 w-7 text-white" strokeWidth={1.5} />
               </div>
               <h1 className="text-2xl font-medium tracking-tight">Güvenli Ödeme Noktası</h1>
+              <p className="mt-3 text-sm font-medium text-white/85">{summary.name}</p>
               <p className="mt-4 text-5xl font-light tracking-tight">
                 {new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY', maximumFractionDigits: 0 }).format(summary.price)}
               </p>
@@ -171,6 +172,11 @@ function CheckoutContent() {
                 <input id="email" value={form.email} onChange={updateField} placeholder="E-posta" type="email" autoComplete="email" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
                 <textarea id="custAddress" value={form.custAddress} onChange={updateField} placeholder="Fatura / iletişim adresi" rows={3} autoComplete="street-address" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm sm:col-span-2" />
               </div>
+
+              <p className="mt-5 text-xs leading-5 text-gray-500">
+                Bu formda verdiğiniz kimlik ve iletişim bilgileri sipariş, ödeme güvenliği, faturalama ve teslim süreçleri için işlenir. Ayrıntılar için{' '}
+                <Link href="/kvkk-aydinlatma-metni" target="_blank" className="font-medium text-blue-700 underline underline-offset-2">KVKK Aydınlatma Metni</Link>.
+              </p>
 
               <div className="mt-7 space-y-3 border-t border-gray-100 pt-6 text-sm text-gray-600">
                 <label className="flex items-start gap-3">
