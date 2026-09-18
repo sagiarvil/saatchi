@@ -134,7 +134,6 @@ function CheckoutContent() {
           termsAccepted,
           preInformationAccepted,
           highValueDeliveryAccepted: highValueAccepted,
-          presentedAt: new Date().toISOString(),
         }),
       });
 
