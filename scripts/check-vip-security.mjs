@@ -76,6 +76,7 @@ const requirements = [
   ['payment external call has bounded timeout', paymentRoute.includes('AbortSignal.timeout(20_000)')],
   ['payment has request correlation id', paymentRoute.includes('requestId') && paymentRoute.includes('X-SAATCHI-Request-Id')],
   ['payment sends idempotency key header', paymentRoute.includes("'Idempotency-Key': idempotencyKey")],
+  ['payment amount and currency are server-owned', paymentRoute.includes('amount: vip.price') && paymentRoute.includes('totalAmount: vip.price') && paymentRoute.includes("currency: 'TRY'") && paymentRoute.includes('price: vip.price')],
   ['payment atomically claims single attempt', paymentRoute.includes('claimVipPaymentAttempt') && store.includes('currentDocument.updateTime') && store.includes("paymentState: 'creating'")],
   ['ambiguous payment result becomes uncertain', paymentRoute.includes("finalizeVipPaymentAttempt(vip.id, requestId, 'uncertain',") && store.includes("value === 'uncertain'") && store.includes("Önceki ödeme denemesinin sonucu belirsiz")],
   ['uncertain recovery is admin-only and explicit', reconcileRoute.includes('assertSameOriginMutation(request)') && reconcileRoute.includes('assertAdminSession(request)') && reconcileRoute.includes('confirmedNoCharge !== true') && store.includes("record.paymentState !== 'uncertain'")],
