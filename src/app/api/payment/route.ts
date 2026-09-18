@@ -5,6 +5,7 @@ import { assertSameOriginMutation } from '@/lib/vip-admin-session';
 import { assertAllowedObjectKeys, assertNoCardholderData, assertPaymentHandoffConfiguration, normalizePaymentHandoff, readBoundedJsonBody, readBoundedResponseText } from '@/lib/payment-boundary';
 import { LEGAL_DOCUMENT_VERSIONS } from '@/data/legal/legal-versions';
 import { assertProviderSessionConsistency } from '@/lib/payment-session-consistency';
+import { securityAudit } from '@/lib/security-audit-log';
 
 export const dynamic = 'force-dynamic';
 
@@ -238,6 +239,7 @@ export async function POST(request: Request) {
     const upstreamUrl = paymentCreateUrl();
 
     await claimVipPaymentAttempt(vip, token, requestId, LEGAL_DOCUMENT_VERSIONS);
+    securityAudit('payment.session.claimed', { requestId, vipId: vip.id, provider: configuredProvider || 'UNSET' });
 
     let upstreamCompleted = false;
     try {
@@ -287,6 +289,7 @@ export async function POST(request: Request) {
         providerOrderId: verifiedProviderOrderId,
         evidenceId: safeText(data.evidenceId, 160),
       });
+      securityAudit('payment.session.ready', { requestId, vipId: vip.id, provider: configuredProvider || 'UNSET' });
 
       return noStore({
         status: 'success',
@@ -306,6 +309,7 @@ export async function POST(request: Request) {
         await finalizeVipPaymentAttempt(vip.id, requestId, 'uncertain', {
           lastError: errorMessage(error, 'Ödeme sağlayıcısı sonucu doğrulanamadı.'),
         });
+        securityAudit('payment.session.uncertain', { requestId, vipId: vip.id, provider: configuredProvider || 'UNSET' });
       } catch (finalizeError) {
         console.error('[SAATCHI PAYMENT ATTEMPT FINALIZE]', requestId, errorMessage(finalizeError, 'unknown'));
       }
