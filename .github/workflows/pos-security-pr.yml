@@ -19,6 +19,7 @@ on:
       - 'public/js/admin.js'
       - 'public/js/vip-payment.js'
       - '.github/workflows/pos-security-pr.yml'
+      - '.github/workflows/production-release.yml'
 
 permissions:
   contents: read
