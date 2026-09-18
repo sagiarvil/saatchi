@@ -12,7 +12,7 @@ const paymentBoundary = await import('../src/lib/payment-boundary.ts');
 const vipInput = await import('../src/lib/vip-input.ts');
 const adminTotp = await import('../src/lib/vip-admin-totp.ts');
 const adminThrottle = await import('../src/lib/vip-admin-throttle.ts');
-const paymentRouteModule = await import('../src/app/api/payment/route.ts');
+const paymentSessionConsistency = await import('../src/lib/payment-session-consistency.ts');
 
 function expectThrow(fn, pattern) {
   let thrown = null;
@@ -73,28 +73,28 @@ expectThrow(() => paymentRouteModule.assertNoCardholderData({ cardNumber: '41111
 expectThrow(() => paymentRouteModule.assertNoCardholderData({ nested: { cvv: '123' } }), /Kart numarası/i);
 
 assert.equal(
-  paymentRouteModule.assertProviderSessionConsistency(
+  paymentSessionConsistency.assertProviderSessionConsistency(
     { merchant_oid: 'ORD-123', amount: 250000, currency: 'TRY', provider: 'KUVEYTTURK' },
     { amount: 250000, currency: 'TRY', provider: 'KUVEYTTURK' }
   ),
   'ORD-123'
 );
 expectThrow(
-  () => paymentRouteModule.assertProviderSessionConsistency(
+  () => paymentSessionConsistency.assertProviderSessionConsistency(
     { amount: 250000, currency: 'TRY' },
     { amount: 250000, currency: 'TRY' }
   ),
   /sipariş referansı/i
 );
 expectThrow(
-  () => paymentRouteModule.assertProviderSessionConsistency(
+  () => paymentSessionConsistency.assertProviderSessionConsistency(
     { merchant_oid: 'ORD-123', amount: 250001, currency: 'TRY' },
     { amount: 250000, currency: 'TRY' }
   ),
   /tutarı sipariş tutarıyla uyuşmuyor/i
 );
 expectThrow(
-  () => paymentRouteModule.assertProviderSessionConsistency(
+  () => paymentSessionConsistency.assertProviderSessionConsistency(
     { merchant_oid: 'ORD-123', amount: 250000, currency: 'USD' },
     { amount: 250000, currency: 'TRY' }
   ),
@@ -255,28 +255,28 @@ expectThrow(
 );
 
 assert.equal(
-  paymentRouteModule.assertProviderSessionConsistency(
+  paymentSessionConsistency.assertProviderSessionConsistency(
     { merchant_oid: 'BANK-001', amount: 123456, currency: 'TRY', provider: 'TESTBANK' },
     { amount: 123456, currency: 'TRY', provider: 'TESTBANK' }
   ),
   'BANK-001'
 );
 expectThrow(
-  () => paymentRouteModule.assertProviderSessionConsistency(
+  () => paymentSessionConsistency.assertProviderSessionConsistency(
     { merchant_oid: 'BANK-002', currency: 'TRY', provider: 'TESTBANK' },
     { amount: 123456, currency: 'TRY', provider: 'TESTBANK' }
   ),
   /işlem tutarı/i
 );
 expectThrow(
-  () => paymentRouteModule.assertProviderSessionConsistency(
+  () => paymentSessionConsistency.assertProviderSessionConsistency(
     { merchant_oid: 'BANK-003', amount: 123456, provider: 'TESTBANK' },
     { amount: 123456, currency: 'TRY', provider: 'TESTBANK' }
   ),
   /para birimi/i
 );
 expectThrow(
-  () => paymentRouteModule.assertProviderSessionConsistency(
+  () => paymentSessionConsistency.assertProviderSessionConsistency(
     { merchant_oid: 'BANK-004', amount: 123456, currency: 'TRY', provider: 'OTHERBANK' },
     { amount: 123456, currency: 'TRY', provider: 'TESTBANK' }
   ),
