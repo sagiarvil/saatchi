@@ -33,6 +33,10 @@ function statusForError(message: string) {
   return 400;
 }
 
+function errorMessage(error: unknown, fallback: string) {
+  return error instanceof Error && error.message ? error.message : fallback;
+}
+
 export async function POST(request: Request) {
   const requestId = crypto.randomUUID();
 
@@ -157,8 +161,8 @@ export async function POST(request: Request) {
       evidenceId: safeText(data.evidenceId, 160) || null,
       deliveryMethod: safeText(data.deliveryMethod, 80) || 'showroom',
     });
-  } catch (error: any) {
-    const message = String(error?.message || 'Ödeme oturumu oluşturulamadı.');
+  } catch (error: unknown) {
+    const message = errorMessage(error, 'Ödeme oturumu oluşturulamadı.');
     console.error('[SAATCHI PAYMENT]', requestId, message);
     return noStore(
       {
