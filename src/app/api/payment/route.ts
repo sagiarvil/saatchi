@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { verifyVipToken } from '@/lib/vip-token';
 import { assertVipLinkActive, claimVipPaymentAttempt, finalizeVipPaymentAttempt } from '@/lib/vip-link-store';
 import { assertSameOriginMutation } from '@/lib/vip-admin-session';
-import { assertNoCardholderData, assertPaymentHandoffConfiguration, normalizePaymentHandoff, readBoundedJsonBody, readBoundedResponseText } from '@/lib/payment-boundary';
+import { assertAllowedObjectKeys, assertNoCardholderData, assertPaymentHandoffConfiguration, normalizePaymentHandoff, readBoundedJsonBody, readBoundedResponseText } from '@/lib/payment-boundary';
 import { LEGAL_DOCUMENT_VERSIONS } from '@/data/legal/legal-versions';
 import { assertProviderSessionConsistency } from '@/lib/payment-session-consistency';
 
@@ -122,6 +122,18 @@ export async function POST(request: Request) {
     assertSameOriginMutation(request);
 
     const body = await readBoundedJsonBody(request);
+    assertAllowedObjectKeys(body, [
+      'token',
+      'custName',
+      'custPhone',
+      'custIdentity',
+      'email',
+      'custAddress',
+      'termsAccepted',
+      'preInformationAccepted',
+      'highValueDeliveryAccepted',
+      'marketingConsent',
+    ], 'Ödeme isteği');
     assertNoCardholderData(body);
     const token = safeText(body.token, 4096);
     const vip = verifyVipToken(token);
