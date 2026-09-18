@@ -13,6 +13,7 @@ const paymentRoute = read('src/app/api/payment/route.ts');
 const boundary = read('src/lib/payment-boundary.ts');
 const store = read('src/lib/vip-link-store.ts');
 const vipInput = read('src/lib/vip-input.ts');
+const vipAdminTotp = read('src/lib/vip-admin-totp.ts');
 const listRoute = read('src/app/api/admin/vip-links/route.ts');
 const reconcileRoute = read('src/app/api/admin/vip-payment-reconcile/route.ts');
 const firebase = read('firebase.json');
@@ -47,6 +48,8 @@ const requirements = [
   ['session v2 derives from current admin key', session.includes('saatchi:vip-admin-session:v2') && session.includes('adminKeyFingerprint')],
   ['admin key requires at least 32 characters', session.includes('key.length < 32')],
   ['production admin session secret is mandatory and independent', session.includes('VIP_ADMIN_SESSION_SECRET production ortamında') && session.includes('diğer ödeme/yönetim secret değerlerinden bağımsız')],
+  ['VIP admin production MFA is mandatory', sessionRoute.includes('verifyAdminTotp(otp)') && vipAdminTotp.includes('VIP_ADMIN_TOTP_SECRET production ortamında yapılandırılmamış') && vipAdminTotp.includes('timingSafeEqual')],
+  ['VIP admin UI asks for a six-digit OTP', page.includes('2 Adımlı Doğrulama') && page.includes('one-time-code') && page.includes('loginOtp')],
   ['mutations enforce same-origin', vipRoute.includes('assertSameOriginMutation(request)')],
   ['production origin is pinned to canonical Saatchi host', session.includes("SAATCHI_PUBLIC_ORIGIN || 'https://saatchi.watch'") && session.includes("origin !== 'https://saatchi.watch'")],
   ['provenance-less mutations fail closed', session.includes('Yönetim isteği kaynak doğrulamasından geçemedi.')],
