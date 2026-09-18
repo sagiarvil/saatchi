@@ -9,6 +9,7 @@ const session = await import('../src/lib/vip-admin-session.ts');
 const tokenLib = await import('../src/lib/vip-token.ts');
 const store = await import('../src/lib/vip-link-store.ts');
 const paymentBoundary = await import('../src/lib/payment-boundary.ts');
+const vipInput = await import('../src/lib/vip-input.ts');
 
 function expectThrow(fn, pattern) {
   let thrown = null;
@@ -29,6 +30,13 @@ process.env.VIP_ADMIN_KEY = 'admin-key-0002-rotated-32-chars-minimum';
 expectThrow(() => session.verifyAdminSessionToken(adminSession.token), /doğrulanamadı/i);
 process.env.VIP_ADMIN_KEY = 'admin-key-0001-strong-32-chars-minimum';
 assert.equal(session.verifyAdminSessionToken(adminSession.token).v, 2);
+
+assert.equal(vipInput.parseVipAmount(123456), 123456);
+assert.equal(vipInput.parseVipAmount('1.250.000'), 1250000);
+assert.ok(Number.isNaN(vipInput.parseVipAmount(123456.78)));
+assert.ok(Number.isNaN(vipInput.parseVipAmount('123.45')));
+assert.ok(Number.isNaN(vipInput.parseVipAmount('-100')));
+assert.equal(vipInput.normalizeVipTitle('  Rolex\u0000   Submariner  '), 'Rolex Submariner');
 
 const now = Date.now();
 const payload = {
