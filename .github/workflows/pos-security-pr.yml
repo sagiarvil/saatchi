@@ -24,6 +24,7 @@ on:
       - '.github/workflows/pos-security-pr.yml'
       - '.github/workflows/production-release.yml'
       - '.github/workflows/ui-regression.yml'
+      - '.github/workflows/live-runtime-smoke.yml'
 
 permissions:
   contents: read
