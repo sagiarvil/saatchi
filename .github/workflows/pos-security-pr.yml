@@ -36,6 +36,8 @@ jobs:
       - run: npm ci
       - name: Dependency audit (high/critical gate)
         run: npm audit --audit-level=high
+      - name: Production dependency audit (moderate+ gate)
+        run: npm audit --omit=dev --audit-level=moderate
       - run: npm run check:vip
       - run: npm run test:vip
       - name: Legacy admin syntax check
