@@ -21,10 +21,11 @@ function errorMessage(error: unknown, fallback: string) {
 
 function CheckoutContent() {
   const searchParams = useSearchParams();
-  const token = searchParams.get('token') || '';
+  const queryToken = searchParams.get('token') || '';
+  const [token, setToken] = useState(queryToken);
   const [summary, setSummary] = useState<VipSummary | null>(null);
-  const [loadingSummary, setLoadingSummary] = useState(Boolean(token));
-  const [error, setError] = useState(token ? '' : 'Geçersiz veya eksik VIP bağlantısı.');
+  const [loadingSummary, setLoadingSummary] = useState(true);
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({ custName: '', custPhone: '', custIdentity: '', email: '', custAddress: '' });
@@ -37,10 +38,24 @@ function CheckoutContent() {
   };
 
   useEffect(() => {
-    if (!token) return;
+    if (queryToken) {
+      setToken(queryToken);
+      return;
+    }
+    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+    const hashToken = hashParams.get('token') || '';
+    setToken(hashToken);
+  }, [queryToken]);
+
+  useEffect(() => {
+    if (!token) {
+      setError('Geçersiz veya eksik VIP bağlantısı.');
+      setLoadingSummary(false);
+      return;
+    }
 
     let active = true;
-    fetch(`/api/vip-link?token=${encodeURIComponent(token)}`, { cache: 'no-store' })
+    fetch(`/api/vip-link?token=${encodeURIComponent(token)}`, { cache: 'no-store', credentials: 'same-origin' })
       .then((res) => res.json().then((data) => ({ res, data })))
       .then(({ res, data }) => {
         if (!res.ok || !data.success) throw new Error(data.message || 'VIP bağlantısı geçersiz veya süresi dolmuş.');
