@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { signVipToken, verifyVipToken } from '@/lib/vip-token';
-import { assertAdminSession, assertSameOriginMutation } from '@/lib/vip-admin-session';
+import { assertAdminSession, assertSameOriginMutation, expectedPublicOrigin } from '@/lib/vip-admin-session';
+import { readBoundedJsonBody } from '@/lib/payment-boundary';
 import { assertVipLinkActive, createVipLinkRecord, revokeVipLink } from '@/lib/vip-link-store';
 
 export const dynamic = 'force-dynamic';
@@ -20,7 +21,7 @@ export async function POST(request: Request) {
   try {
     assertSameOriginMutation(request);
     assertAdminSession(request);
-    const body = await request.json();
+    const body = await readBoundedJsonBody(request, 8_192);
     const title = String(body.title || '').trim().slice(0, 180);
     const amount = Number(String(body.amount || '').replace(/[^0-9.,]/g, '').replace(/\./g, '').replace(',', '.'));
     if (!title) return noStore(NextResponse.json({ success: false, message: 'Ürün adı zorunludur.' }, { status: 400 }));
@@ -37,7 +38,7 @@ export async function POST(request: Request) {
     const token = signVipToken(payload);
     await createVipLinkRecord(payload, token);
 
-    const origin = new URL(request.url).origin;
+    const origin = expectedPublicOrigin(request);
     return noStore(NextResponse.json({
       success: true,
       id: payload.id,
@@ -70,7 +71,7 @@ export async function DELETE(request: Request) {
   try {
     assertSameOriginMutation(request);
     assertAdminSession(request);
-    const body = await request.json();
+    const body = await readBoundedJsonBody(request, 8_192);
     const id = String(body?.id || '').trim();
     if (!id.startsWith('VIP-SAATCHI-')) {
       return noStore(NextResponse.json({ success: false, message: 'Geçerli bir VIP link referansı girin.' }, { status: 400 }));
