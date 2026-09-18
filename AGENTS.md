@@ -63,8 +63,13 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-## 9. Rolex ve Cartier Görsel Senkronizasyon Kuralı (Ersan Diamonds)
-Rolex ve Cartier ürün görselleri (image) yalnızca `https://ersandiamonds.com/koleksiyon?brand=rolex` ve `?brand=cartier` adreslerinden, **SADECE TAM EŞLEŞMELİ** (exact match) ürün adları bulunarak alınacaktır. Uydurma, tahmini veya bulanık (fuzzy) eşleştirme ile görsel atanması kesinlikle yasaktır. Bu işlem `scripts/sync-ersan-images.py` betiği ile otomatize edilmiştir.
+## 9. Rolex Görsel Senkronizasyon Kuralı (Ersan Diamonds)
+Rolex ürün görselleri (image) yalnızca `https://ersandiamonds.com/koleksiyon?brand=rolex` adresinden, **SADECE TAM EŞLEŞMELİ** (exact match) ürün adları bulunarak alınacaktır. Uydurma, tahmini veya bulanık (fuzzy) eşleştirme ile görsel atanması kesinlikle yasaktır. Bu işlem `scripts/sync-ersan-images.py` betiği ile otomatize edilmiştir.
 
 ## 10. Mega Menü & Tailwind CSS Kilit (DEĞİŞMEZ TASARIM KURALI)
 **KESİNLİKLE YASAKTIR:** Sitedeki "Mega Menü" tasarımı (`src/components/layout/Navbar.tsx`) ve bu tasarımın çalışmasını sağlayan Tailwind CSS sınıfları (`src/app/tailwind.css`) **KALICI OLARAK KİLİTLENMİŞTİR**. Hiçbir yapay zeka ajanı, ne sebeple olursa olsun bu dosyaları eski sürümlerine döndüremez, CSS build adımını ezemez veya tasarımı bozacak bir değişiklik yapamaz. Bu yapı `[KİLİTLİ]` kabul edilecek ve dokunulmayacaktır.
+
+## 11. Cartier Fiyatlama ve Kaynak Kuralı (YENİ KURAL)
+- **Veri Kaynağı:** Cartier saatlerin tüm model adları, görselleri ve kaynak fiyatları SADECE `https://www.cartier.com/tr-tr/saatler/koleksiyonlar/` adresinden alınacaktır. Chrono24, Ersan Diamonds veya başka bir kaynak Cartier için KULLANILAMAZ.
+- **Fiyatlama Formülü:** Cartier Türkiye resmi sitesinden alınan orijinal TL (₺) fiyatının üzerine doğrudan **2.5 katı** (x2.5) artış yansıtılarak Saatchi satış fiyatı hesaplanacaktır.
+- **Fiyat Tavanı (Max Limit):** Satış fiyatı 1.700.000 TL'yi aşan HİÇBİR Cartier saat web sitemize eklenmeyecektir (Kaynak fiyatı en fazla 680.000 TL olabilir).
