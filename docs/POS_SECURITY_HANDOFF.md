@@ -70,3 +70,7 @@ Live `saatchi.watch` runtime could not be independently fetched from the availab
 ## Release rule
 
 Do not bypass PR checks and do not manually deploy this branch. Keep the PR draft until external production parameters are available and verified. After an approved merge to `main`, the existing production workflow builds the exact verified main SHA, deploys it, reads back `build-info.json`, runs public runtime smoke checks and attempts automatic rollback to the previous live SHA if deployment verification fails.
+
+## Admin brute-force protection
+
+Production admin login requires the long admin key plus TOTP. An application-layer throttle returns HTTP 429 after repeated failures as defense in depth. Because serverless instances can scale horizontally and client-IP headers are infrastructure-dependent, this throttle is **not** accepted as proof of an edge/WAF rate-limit. Before production acceptance, configure and verify a platform/edge rate-limit for `/api/admin-session` and retain the runtime evidence.
