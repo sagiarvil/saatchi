@@ -7,6 +7,13 @@ const EXPECTED_PROJECT_ID = 'studio-7658156126-ffb8e';
 const memoryBuckets = new Map<string, { failures: number; resetAt: number }>();
 let cachedAccessToken: { token: string; expiresAt: number } | null = null;
 
+function useMemoryThrottle() {
+  return (
+    useMemoryThrottle() ||
+    (process.env.CI === 'true' && process.env.SAATCHI_ADMIN_THROTTLE_TEST_MODE === 'true')
+  );
+}
+
 type DurableBucket = {
   failures: number;
   resetAt: number;
@@ -55,7 +62,7 @@ function docUrl(key: string) {
 }
 
 async function accessToken() {
-  if (process.env.NODE_ENV !== 'production') {
+  if (useMemoryThrottle()) {
     const explicit = String(process.env.FIRESTORE_ACCESS_TOKEN || '');
     if (explicit) return explicit;
   }
@@ -176,7 +183,7 @@ async function recordDurableFailure(key: string, now: number) {
 export async function assertAdminLoginNotThrottled(request: Request, now = Date.now()) {
   const key = clientKey(request);
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (useMemoryThrottle()) {
     const bucket = memoryBucket(key, now);
     if (bucket.failures >= MAX_FAILURES) throw throttleError(bucket.resetAt, now);
     return key;
@@ -191,7 +198,7 @@ export async function assertAdminLoginNotThrottled(request: Request, now = Date.
 export async function recordAdminLoginFailure(request: Request, now = Date.now()) {
   const key = clientKey(request);
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (useMemoryThrottle()) {
     const bucket = memoryBucket(key, now);
     bucket.failures += 1;
     return { failures: bucket.failures, resetAt: bucket.resetAt };
@@ -203,7 +210,7 @@ export async function recordAdminLoginFailure(request: Request, now = Date.now()
 export async function clearAdminLoginFailures(request: Request) {
   const key = clientKey(request);
 
-  if (process.env.NODE_ENV !== 'production') {
+  if (useMemoryThrottle()) {
     memoryBuckets.delete(key);
     return;
   }
