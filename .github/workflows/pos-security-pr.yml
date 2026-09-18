@@ -15,6 +15,9 @@ on:
       - 'scripts/test-vip-behavior.mjs'
       - 'firebase.json'
       - 'docs/POS_SECURITY_HANDOFF.md'
+      - 'public/admin.html'
+      - 'public/js/admin.js'
+      - 'public/js/vip-payment.js'
       - '.github/workflows/pos-security-pr.yml'
 
 permissions:
@@ -35,6 +38,8 @@ jobs:
         run: npm audit --audit-level=high
       - run: npm run check:vip
       - run: npm run test:vip
+      - name: Legacy admin syntax check
+        run: node --check public/js/admin.js
       - name: Lint changed POS surface
         run: npx eslint src/app/api/payment/route.ts src/app/api/vip-link/route.ts src/app/api/admin/vip-links/route.ts src/app/api/admin/vip-payment-reconcile/route.ts src/app/vip-checkout/page.tsx src/lib/payment-boundary.ts src/lib/vip-link-store.ts src/lib/vip-input.ts
       - run: npm run build
