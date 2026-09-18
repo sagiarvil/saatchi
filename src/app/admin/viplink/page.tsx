@@ -36,6 +36,7 @@ export default function VipLinkGenerator() {
   const [authLoading, setAuthLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
   const [loginKey, setLoginKey] = useState('');
+  const [loginOtp, setLoginOtp] = useState('');
   const [loginLoading, setLoginLoading] = useState(false);
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
@@ -96,8 +97,8 @@ export default function VipLinkGenerator() {
   async function login(event: React.FormEvent) {
     event.preventDefault();
     setError('');
-    if (!loginKey) {
-      setError('Yönetim anahtarı zorunludur.');
+    if (!loginKey || !/^\d{6}$/.test(loginOtp)) {
+      setError('Yönetim anahtarı ve 6 haneli doğrulama kodu zorunludur.');
       return;
     }
     setLoginLoading(true);
@@ -106,11 +107,12 @@ export default function VipLinkGenerator() {
         method: 'POST',
         credentials: 'same-origin',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ key: loginKey }),
+        body: JSON.stringify({ key: loginKey, otp: loginOtp }),
       });
       const data = await response.json();
       if (!response.ok || !data.success) throw new Error(data.message || 'Yönetim doğrulaması başarısız.');
       setLoginKey('');
+      setLoginOtp('');
       setAuthenticated(true);
       await loadLinks();
     } catch (e: unknown) {
@@ -213,6 +215,8 @@ export default function VipLinkGenerator() {
           <form onSubmit={login} className="mt-8">
             <label className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#6f6862]">Yönetim Doğrulaması</label>
             <div className="flex items-center border border-[#d9d3cb] bg-[#fbfaf8] px-4 focus-within:border-[#846b32]"><KeyRound className="mr-3 h-4 w-4 text-[#8d8379]" /><input type="password" value={loginKey} onChange={(e) => setLoginKey(e.target.value)} autoComplete="off" spellCheck={false} maxLength={256} className="w-full bg-transparent py-4 text-sm outline-none" placeholder="Yönetim anahtarı" /></div>
+            <label className="mb-2 mt-4 block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#6f6862]">2 Adımlı Doğrulama</label>
+            <input type="text" value={loginOtp} onChange={(e) => setLoginOtp(e.target.value.replace(/\D/g, '').slice(0, 6))} inputMode="numeric" autoComplete="one-time-code" maxLength={6} className="w-full border border-[#d9d3cb] bg-[#fbfaf8] px-4 py-4 text-center font-mono text-lg tracking-[0.35em] outline-none focus:border-[#846b32]" placeholder="000000" />
             {error && <div className="mt-4 border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{error}</div>}
             <button disabled={loginLoading} className="mt-5 w-full bg-[#171615] px-5 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-black disabled:opacity-50">{loginLoading ? 'Doğrulanıyor…' : 'Güvenli Oturum Aç'}</button>
           </form>
