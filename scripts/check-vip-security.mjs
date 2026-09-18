@@ -77,6 +77,7 @@ const requirements = [
   ['payment API redirects are disabled', paymentRoute.includes("redirect: 'error'")],
   ['payment external call has bounded timeout', paymentRoute.includes('AbortSignal.timeout(20_000)')],
   ['payment has request correlation id', paymentRoute.includes('requestId') && paymentRoute.includes('X-SAATCHI-Request-Id')],
+  ['VIP bearer token is not forwarded upstream', !paymentRoute.includes('vipToken: token')],
   ['payment sends idempotency key header', paymentRoute.includes("'Idempotency-Key': idempotencyKey")],
   ['payment amount and currency are server-owned', paymentRoute.includes('amount: vip.price') && paymentRoute.includes('totalAmount: vip.price') && paymentRoute.includes("currency: 'TRY'") && paymentRoute.includes('price: vip.price')],
   ['payment atomically claims single attempt', paymentRoute.includes('claimVipPaymentAttempt') && store.includes('currentDocument.updateTime') && store.includes("paymentState: 'creating'")],
