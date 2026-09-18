@@ -33,6 +33,8 @@ from dataclasses import dataclass
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 from urllib.parse import urljoin
 
+sys.path.append(os.path.dirname(__file__))
+
 try:
     from curl_cffi import requests
     from bs4 import BeautifulSoup
@@ -489,6 +491,8 @@ def main() -> None:
 
     try:
         carren = fetch_carren()
+        import carren_seo
+        carren = carren_seo.enrich_carren_catalog(carren)
         source_counts["Carren"] = len(carren)
         standard.extend(carren)
     except Exception as exc:

@@ -4,6 +4,8 @@ import json, re, sys
 from pathlib import Path
 from typing import Dict, List
 from urllib.parse import urljoin
+import sys, os
+sys.path.append(os.path.dirname(__file__))
 from bs4 import BeautifulSoup
 from curl_cffi import requests
 
@@ -135,7 +137,8 @@ def main() -> None:
     for item in carren:
         key = str(item.get("sourceUrl") or item.get("ref") or item.get("id") or "").lower()
         if key: dedup[key] = item
-    carren = list(dedup.values())
+    import carren_seo
+    carren = carren_seo.enrich_carren_catalog(list(dedup.values()))
     if not carren:
         print("CARREN_FIXED_PRICE_SYNC_FAILED: no products scraped", file=sys.stderr); sys.exit(1)
     watches = [x for x in watches if str(x.get("brand") or "").strip().lower() != "carren"] + carren
