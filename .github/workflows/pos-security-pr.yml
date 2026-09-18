@@ -19,7 +19,7 @@ on:
       - 'src/lib/payment-session-consistency.ts'
       - 'src/lib/vip-*.ts'
       - 'src/lib/vip-admin-totp.ts'
-      - 'src/lib/vip-admin-throttle.ts'
+      - 'src/lib/vip-admin-throttle.ts src/lib/security-audit-log.ts'
       - 'scripts/check-vip-security.mjs'
       - 'scripts/test-vip-behavior.mjs'
       - 'scripts/smoke-pos-runtime.mjs'
