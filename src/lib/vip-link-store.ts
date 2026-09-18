@@ -38,6 +38,8 @@ export type VipLinkRecord = {
   paymentProviderOrderId: string;
   paymentEvidenceId: string;
   paymentLastError: string;
+  legalAcceptedAt: number;
+  legalDocumentVersions: string;
 };
 
 function projectId() {
@@ -120,6 +122,8 @@ function encode(record: VipLinkRecord): FirestoreDocument {
       paymentProviderOrderId: { stringValue: record.paymentProviderOrderId },
       paymentEvidenceId: { stringValue: record.paymentEvidenceId },
       paymentLastError: { stringValue: record.paymentLastError },
+      legalAcceptedAt: { integerValue: String(record.legalAcceptedAt) },
+      legalDocumentVersions: { stringValue: record.legalDocumentVersions },
     },
   };
 }
@@ -160,6 +164,8 @@ function decode(doc: FirestoreDocument): VipLinkRecord {
     paymentProviderOrderId: fieldString(doc, 'paymentProviderOrderId'),
     paymentEvidenceId: fieldString(doc, 'paymentEvidenceId'),
     paymentLastError: fieldString(doc, 'paymentLastError'),
+    legalAcceptedAt: fieldNumber(doc, 'legalAcceptedAt'),
+    legalDocumentVersions: fieldString(doc, 'legalDocumentVersions'),
   };
 }
 
@@ -253,6 +259,8 @@ export async function createVipLinkRecord(payload: VipTokenPayload, token: strin
     paymentProviderOrderId: '',
     paymentEvidenceId: '',
     paymentLastError: '',
+    legalAcceptedAt: 0,
+    legalDocumentVersions: '',
   };
 
   const response = await firestoreFetch(withCreatePrecondition(record.id), {
@@ -303,7 +311,12 @@ export async function assertVipLinkActive(payload: VipTokenPayload, token: strin
   return validateVipLinkRecord(record, payload, token);
 }
 
-export async function claimVipPaymentAttempt(payload: VipTokenPayload, token: string, attemptId: string) {
+export async function claimVipPaymentAttempt(
+  payload: VipTokenPayload,
+  token: string,
+  attemptId: string,
+  legalDocumentVersions: Record<string, string>
+) {
   const snapshot = await getVipLinkSnapshot(payload.id);
   const record = validateVipLinkRecord(snapshot?.record || null, payload, token);
   if (!snapshot) throw new Error('VIP ödeme linki aktif kayıtla eşleşmiyor.');
@@ -316,6 +329,8 @@ export async function claimVipPaymentAttempt(payload: VipTokenPayload, token: st
     paymentAttemptId: attemptId,
     paymentAttemptAt: now,
     paymentUpdatedAt: now,
+    legalAcceptedAt: now,
+    legalDocumentVersions: JSON.stringify(legalDocumentVersions),
   };
 
   return conditionalWrite(
