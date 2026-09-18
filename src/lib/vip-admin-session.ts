@@ -18,7 +18,7 @@ function getPaymentSecret() {
 
 export function assertConfiguredAdminKey() {
   const key = process.env.VIP_ADMIN_KEY;
-  if (!key || key.length < 12) throw new Error('VIP_ADMIN_KEY yapılandırılmamış.');
+  if (!key || key.length < 32) throw new Error('VIP_ADMIN_KEY yapılandırılmamış veya yetersiz.');
   return key;
 }
 
