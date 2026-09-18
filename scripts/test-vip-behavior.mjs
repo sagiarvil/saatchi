@@ -41,13 +41,13 @@ const throttleRequest = new Request('https://saatchi.watch/api/admin-session', {
   method: 'POST',
   headers: { 'x-appengine-user-ip': '203.0.113.10' },
 });
-for (let index = 0; index < 5; index += 1) adminThrottle.recordAdminLoginFailure(throttleRequest, 1_900_000_000_000);
-expectThrow(
+for (let index = 0; index < 5; index += 1) await adminThrottle.recordAdminLoginFailure(throttleRequest, 1_900_000_000_000);
+await assert.rejects(
   () => adminThrottle.assertAdminLoginNotThrottled(throttleRequest, 1_900_000_000_001),
   /geçici olarak sınırlandı/i
 );
 adminThrottle.resetAdminLoginThrottleForTests();
-assert.doesNotThrow(() => adminThrottle.assertAdminLoginNotThrottled(throttleRequest, 1_900_000_000_001));
+await assert.doesNotReject(() => adminThrottle.assertAdminLoginNotThrottled(throttleRequest, 1_900_000_000_001));
 
 const [body, signature] = adminSession.token.split('.');
 const tamperedSignature = `${signature.slice(0, -1)}${signature.endsWith('a') ? 'b' : 'a'}`;
