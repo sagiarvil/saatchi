@@ -71,6 +71,32 @@ function safeText(value: unknown, maxLength: number) {
     .slice(0, maxLength);
 }
 
+function requestTextField(
+  body: Record<string, unknown>,
+  key: string,
+  maxLength: number,
+  required = false
+) {
+  const value = body[key];
+  if (value === undefined || value === null || value === '') {
+    if (required) throw new Error(`${key} alanı zorunludur.`);
+    return '';
+  }
+  if (typeof value !== 'string') {
+    throw new Error(`${key} alanı metin olmalıdır.`);
+  }
+  const normalized = safeText(value, maxLength);
+  if (required && !normalized) throw new Error(`${key} alanı zorunludur.`);
+  return normalized;
+}
+
+function assertOptionalBoolean(body: Record<string, unknown>, key: string) {
+  const value = body[key];
+  if (value !== undefined && typeof value !== 'boolean') {
+    throw new Error(`${key} alanı boolean olmalıdır.`);
+  }
+}
+
 function publicPaymentError(message: string) {
   if (message.includes('Çapraz kaynak') || message.includes('kaynak doğrulamasından')) {
     return { status: 403, message: 'İstek kaynağı doğrulanamadı.' };
@@ -86,7 +112,11 @@ function publicPaymentError(message: string) {
     message.includes('Content-Type') ||
     message.includes('Geçersiz JSON') ||
     message.includes('JSON nesnesi') ||
-    message.includes('Kart numarası')
+    message.includes('Kart numarası') ||
+    message.includes('alanı zorunludur') ||
+    message.includes('alanı metin olmalıdır') ||
+    message.includes('alanı boolean olmalıdır') ||
+    message.includes('beklenmeyen alan')
   ) {
     return { status: 400, message };
   }
@@ -135,15 +165,20 @@ export async function POST(request: Request) {
       'marketingConsent',
     ], 'Ödeme isteği');
     assertNoCardholderData(body);
-    const token = safeText(body.token, 4096);
+    assertOptionalBoolean(body, 'termsAccepted');
+    assertOptionalBoolean(body, 'preInformationAccepted');
+    assertOptionalBoolean(body, 'highValueDeliveryAccepted');
+    assertOptionalBoolean(body, 'marketingConsent');
+
+    const token = requestTextField(body, 'token', 4096, true);
     const vip = verifyVipToken(token);
     await assertVipLinkActive(vip, token);
 
-    const customerName = safeText(body.custName, 150);
-    const customerPhone = safeText(body.custPhone, 50);
-    const customerIdentity = safeText(body.custIdentity, 50);
-    const customerAddress = safeText(body.custAddress, 1000);
-    const email = safeText(body.email, 200);
+    const customerName = requestTextField(body, 'custName', 150, true);
+    const customerPhone = requestTextField(body, 'custPhone', 50, true);
+    const customerIdentity = requestTextField(body, 'custIdentity', 50, true);
+    const customerAddress = requestTextField(body, 'custAddress', 1000);
+    const email = requestTextField(body, 'email', 200);
     const phoneDigits = customerPhone.replace(/\D/g, '');
 
     if (phoneDigits.length < 10 || phoneDigits.length > 15) {
@@ -152,13 +187,6 @@ export async function POST(request: Request) {
 
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return noStore({ status: 'error', requestId, message: 'Geçerli bir e-posta adresi girin.' }, { status: 400 });
-    }
-
-    if (!customerName || !customerPhone || !customerIdentity) {
-      return noStore(
-        { status: 'error', requestId, message: 'Ad soyad, telefon ve kimlik bilgisi zorunludur.' },
-        { status: 400 }
-      );
     }
 
     if (body.termsAccepted !== true || body.preInformationAccepted !== true || body.highValueDeliveryAccepted !== true) {
