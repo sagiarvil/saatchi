@@ -18,6 +18,9 @@ const reconcileRoute = read('src/app/api/admin/vip-payment-reconcile/route.ts');
 const firebase = read('firebase.json');
 const workflow = read('.github/workflows/pos-security-pr.yml');
 const handoff = read('docs/POS_SECURITY_HANDOFF.md');
+const legacyAdminHtml = read('public/admin.html');
+const legacyAdminJs = read('public/js/admin.js');
+const publicVipPaymentExists = fs.existsSync(path.join(root, 'public/js/vip-payment.js'));
 const legacyPaymentDirExists = fs.existsSync(path.join(root, 'src/lib/payment_backend_ready'));
 const mockSuccessExists = fs.existsSync(path.join(root, 'src/app/test-success'));
 
@@ -69,6 +72,10 @@ const requirements = [
   ['test payment bypass is absent', !paymentRoute.includes('TEST_POS') && !paymentRoute.includes('/test-success') && !mockSuccessExists],
   ['dead direct-card backend is absent from runtime tree', !legacyPaymentDirExists],
   ['stale payment patch artifacts are absent', !fs.existsSync(path.join(root, 'patch_payment.js')) && !fs.existsSync(path.join(root, 'patch_checkout.js')) && !fs.existsSync(path.join(root, 'scripts/legacy_patches/patch_vip.js'))],
+  ['public legacy payment engine is removed', !publicVipPaymentExists && !legacyAdminHtml.includes('vip-payment.js')],
+  ['legacy admin has no hard-coded PIN fallback', !legacyAdminJs.includes('1999') && !legacyAdminHtml.includes('adminPinInput') && !legacyAdminHtml.includes('verifyPin')],
+  ['legacy admin sends no client admin-key credential', !legacyAdminJs.includes('x-admin-key') && !legacyAdminJs.includes('adminKey=') && !legacyAdminJs.includes('Saatchi_admin_pin')],
+  ['legacy admin VIP links use hardened Next route', legacyAdminHtml.includes('/admin/viplink') && legacyAdminJs.includes("window.open('/admin/viplink', '_blank')")],
   ['checkout legal consents default false', checkout.includes('useState(false)') && !checkout.includes('Hukuki metinler (Gizli)') && !checkout.includes('termsAccepted: true')],
   ['checkout exposes legal document links', checkout.includes('/on-bilgilendirme-formu') && checkout.includes('/mesafeli-satis-sozlesmesi') && checkout.includes('/yuksek-degerli-urun-teslimi')],
   ['checkout makes payment obligation explicit', checkout.includes('Ödeme Yükümlülüğü Doğuran')],
