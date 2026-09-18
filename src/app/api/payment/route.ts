@@ -56,11 +56,44 @@ function safeText(value: unknown, maxLength: number) {
     .slice(0, maxLength);
 }
 
-function statusForError(message: string) {
-  if (message.includes('Çapraz kaynak') || message.includes('kaynak doğrulamasından')) return 403;
-  if (message.includes('boyutu aşıyor')) return 413;
-  if (message.includes('izin listesi') || message.includes('yönlendirme')) return 502;
-  return 400;
+function publicPaymentError(message: string) {
+  if (message.includes('Çapraz kaynak') || message.includes('kaynak doğrulamasından')) {
+    return { status: 403, message: 'İstek kaynağı doğrulanamadı.' };
+  }
+  if (message.includes('boyutu aşıyor')) {
+    return { status: 413, message: 'İstek boyutu izin verilen sınırı aşıyor.' };
+  }
+  if (
+    message.includes('Geçerli bir telefon') ||
+    message.includes('Geçerli bir e-posta') ||
+    message.includes('Ad soyad') ||
+    message.includes('Zorunlu sözleşme') ||
+    message.includes('Content-Type') ||
+    message.includes('Geçersiz JSON') ||
+    message.includes('JSON nesnesi') ||
+    message.includes('Kart numarası')
+  ) {
+    return { status: 400, message };
+  }
+  if (
+    message.includes('zaten oluşturuluyor') ||
+    message.includes('daha önce oluşturuldu') ||
+    message.includes('mutabakatı gerekir') ||
+    message.includes('eşzamanlı başka')
+  ) {
+    return { status: 409, message };
+  }
+  if (
+    message.includes('VIP ödeme tokenı') ||
+    message.includes('VIP ödeme linki') ||
+    message.includes('süresi dolmuş')
+  ) {
+    return { status: 400, message: 'VIP ödeme bağlantısı geçersiz, kullanılmış, iptal edilmiş veya süresi dolmuş.' };
+  }
+  if (message.includes('yönlendirme') || message.includes('Ödeme sağlayıcısı')) {
+    return { status: 502, message: 'Ödeme kuruluşu ile güvenli oturum oluşturulamadı.' };
+  }
+  return { status: 503, message: 'Ödeme hizmeti şu anda kullanılamıyor. İşlem referansı ile destek ekibine başvurun.' };
 }
 
 function errorMessage(error: unknown, fallback: string) {
@@ -250,18 +283,12 @@ export async function POST(request: Request) {
       throw error;
     }
   } catch (error: unknown) {
-    const message = errorMessage(error, 'Ödeme oturumu oluşturulamadı.');
-    console.error('[SAATCHI PAYMENT]', requestId, message);
+    const internalMessage = errorMessage(error, 'Ödeme oturumu oluşturulamadı.');
+    const publicError = publicPaymentError(internalMessage);
+    console.error('[SAATCHI PAYMENT]', requestId, internalMessage);
     return noStore(
-      {
-        status: 'error',
-        requestId,
-        message:
-          statusForError(message) === 502
-            ? 'Ödeme kuruluşu yönlendirmesi güvenlik doğrulamasından geçemedi.'
-            : message,
-      },
-      { status: statusForError(message) }
+      { status: 'error', requestId, message: publicError.message },
+      { status: publicError.status }
     );
   }
 }
