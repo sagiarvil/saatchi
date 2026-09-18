@@ -1,20 +1,16 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
 import ZoomImage from '@/components/ZoomImage';
 import WatchTechnicalPanel from '@/components/WatchTechnicalPanel';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
+import saatlerData from '@/data/saatler.json';
+import elitSaatlerData from '@/data/elit-saatler.json';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export async function generateStaticParams() {
   let slugs = ['erkek', 'kadin', 'unisex'];
-  const saatlerPath = path.join(process.cwd(), 'src/data/saatler.json');
-  const elitPath = path.join(process.cwd(), 'src/data/elit-saatler.json');
-  let allWatches: any[] = [];
-  if (fs.existsSync(saatlerPath)) allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(saatlerPath, 'utf8'))];
-  if (fs.existsSync(elitPath)) allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(elitPath, 'utf8'))];
+  const allWatches = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
   const watchSlugs = allWatches
     .map((w: any) => String(w.seoUrl || '').split('/').pop())
     .filter((slug): slug is string => typeof slug === 'string' && slug.length > 0);
@@ -24,11 +20,7 @@ export async function generateStaticParams() {
 
 export default async function SaatlerPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const saatlerPath = path.join(process.cwd(), 'src/data/saatler.json');
-  const elitPath = path.join(process.cwd(), 'src/data/elit-saatler.json');
-  let allWatches: any[] = [];
-  if (fs.existsSync(saatlerPath)) allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(saatlerPath, 'utf8'))];
-  if (fs.existsSync(elitPath)) allWatches = [...allWatches, ...JSON.parse(fs.readFileSync(elitPath, 'utf8'))];
+  const allWatches = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
 
   const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug));
   if (!watch) {

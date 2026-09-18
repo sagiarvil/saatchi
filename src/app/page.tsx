@@ -29,17 +29,17 @@ export default function Home() {
         {/* ELEGANT FEATURED WATCHES */}
         <section className="w-full bg-surface py-32 px-4 sm:px-6 lg:px-8">
           <div className="w-full max-w-[1536px] mx-auto">
-            <div className="text-center mb-20">
+            <div className="text-center mb-12 md:mb-20">
               <h3 className="text-3xl md:text-[34px] font-bold text-[#846b32] mb-6" style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
                 Seçkin Modeller
               </h3>
               <div className="h-[1px] w-16 bg-[#846b32]/50 mx-auto"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-16">
               {featuredWatches.map((watch) => (
                 <Link href={watch.seoUrl} key={watch.id} className="group cursor-pointer flex flex-col items-center">
-                  <div className="w-full aspect-[4/5] bg-[#FAFAFA] mb-8 relative flex items-center justify-center transition-all duration-700 bg-surface rounded-2xl border border-surface-border overflow-hidden group-hover:border-[#C2A768]/40 group-hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)]">
+                  <div className="w-full aspect-[4/5] bg-[#FAFAFA] mb-4 md:mb-8 relative flex items-center justify-center transition-all duration-700 bg-surface rounded-2xl border border-surface-border overflow-hidden group-hover:border-[#C2A768]/40 group-hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.08)]">
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     
                     {/* Saat Görseli */}

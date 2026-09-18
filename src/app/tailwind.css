@@ -1555,9 +1555,6 @@
   .gap-12 {
     gap: calc(var(--spacing) * 12);
   }
-  .gap-16 {
-    gap: calc(var(--spacing) * 16);
-  }
   .gap-\[11px\] {
     gap: 11px;
   }
@@ -4462,6 +4459,9 @@
     .sm\:justify-end {
       justify-content: flex-end;
     }
+    .sm\:gap-5 {
+      gap: calc(var(--spacing) * 5);
+    }
     .sm\:self-auto {
       align-self: auto;
     }
@@ -4557,6 +4557,12 @@
     }
     .md\:mb-3 {
       margin-bottom: calc(var(--spacing) * 3);
+    }
+    .md\:mb-8 {
+      margin-bottom: calc(var(--spacing) * 8);
+    }
+    .md\:mb-20 {
+      margin-bottom: calc(var(--spacing) * 20);
     }
     .md\:block {
       display: block;
@@ -4680,6 +4686,9 @@
     }
     .md\:gap-10 {
       gap: calc(var(--spacing) * 10);
+    }
+    .md\:gap-16 {
+      gap: calc(var(--spacing) * 16);
     }
     .md\:gap-\[26px\] {
       gap: 26px;

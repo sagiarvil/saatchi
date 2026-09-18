@@ -44,7 +44,7 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
           <h1 className="mt-4 text-center text-4xl font-medium tracking-[-0.04em] sm:text-5xl">{categoryTitle}</h1>
           <p className="mx-auto mt-4 max-w-2xl text-center text-sm leading-7 text-[#948c85]">Seçili referanslar, kondisyon ve temin durumuna göre güncellenen özel koleksiyon.</p>
 
-          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
             {filteredWatches.slice(0, 24).map((watch, idx) => {
               const watchSlug = String(watch.seoUrl || '').split('/').pop();
               return (
