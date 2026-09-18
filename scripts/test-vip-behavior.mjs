@@ -110,6 +110,14 @@ expectThrow(
   () => paymentBoundary.normalizePaymentFormData({ '<script>': 'x' }),
   /geçersiz form alanı/i
 );
+expectThrow(
+  () => paymentBoundary.normalizePaymentFormData({ cardNumber: '4111111111111111' }),
+  /kart verisi/i
+);
+expectThrow(
+  () => paymentBoundary.normalizePaymentFormData({ cvv: '123' }),
+  /kart verisi/i
+);
 assert.deepEqual(
   paymentBoundary.normalizePaymentHandoff({
     gatewayUrl: 'https://3ds.example-bank.test/auth',
