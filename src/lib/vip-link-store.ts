@@ -35,6 +35,9 @@ export type VipLinkRecord = {
   reconciliationReference: string;
   reconciliationReason: string;
   reconciledAt: number;
+  paymentProviderOrderId: string;
+  paymentEvidenceId: string;
+  paymentLastError: string;
 };
 
 function projectId() {
@@ -114,6 +117,9 @@ function encode(record: VipLinkRecord): FirestoreDocument {
       reconciliationReference: { stringValue: record.reconciliationReference },
       reconciliationReason: { stringValue: record.reconciliationReason },
       reconciledAt: { integerValue: String(record.reconciledAt) },
+      paymentProviderOrderId: { stringValue: record.paymentProviderOrderId },
+      paymentEvidenceId: { stringValue: record.paymentEvidenceId },
+      paymentLastError: { stringValue: record.paymentLastError },
     },
   };
 }
@@ -151,6 +157,9 @@ function decode(doc: FirestoreDocument): VipLinkRecord {
     reconciliationReference: fieldString(doc, 'reconciliationReference'),
     reconciliationReason: fieldString(doc, 'reconciliationReason'),
     reconciledAt: fieldNumber(doc, 'reconciledAt'),
+    paymentProviderOrderId: fieldString(doc, 'paymentProviderOrderId'),
+    paymentEvidenceId: fieldString(doc, 'paymentEvidenceId'),
+    paymentLastError: fieldString(doc, 'paymentLastError'),
   };
 }
 
@@ -241,6 +250,9 @@ export async function createVipLinkRecord(payload: VipTokenPayload, token: strin
     reconciliationReference: '',
     reconciliationReason: '',
     reconciledAt: 0,
+    paymentProviderOrderId: '',
+    paymentEvidenceId: '',
+    paymentLastError: '',
   };
 
   const response = await firestoreFetch(withCreatePrecondition(record.id), {
@@ -316,7 +328,8 @@ export async function claimVipPaymentAttempt(payload: VipTokenPayload, token: st
 export async function finalizeVipPaymentAttempt(
   id: string,
   attemptId: string,
-  nextState: Extract<VipPaymentState, 'ready' | 'uncertain'>
+  nextState: Extract<VipPaymentState, 'ready' | 'uncertain'>,
+  metadata: { providerOrderId?: string; evidenceId?: string; lastError?: string } = {}
 ) {
   const snapshot = await getVipLinkSnapshot(id);
   if (!snapshot) throw new Error('VIP ödeme denemesi kaydı bulunamadı.');
@@ -329,6 +342,9 @@ export async function finalizeVipPaymentAttempt(
     ...current,
     paymentState: nextState,
     paymentUpdatedAt: Date.now(),
+    paymentProviderOrderId: String(metadata.providerOrderId || current.paymentProviderOrderId || '').slice(0, 160),
+    paymentEvidenceId: String(metadata.evidenceId || current.paymentEvidenceId || '').slice(0, 160),
+    paymentLastError: String(metadata.lastError || '').slice(0, 500),
   };
 
   return conditionalWrite(
@@ -370,6 +386,7 @@ export async function resetUncertainVipPaymentAttempt(
     reconciliationReference: reference,
     reconciliationReason: reason,
     reconciledAt: now,
+    paymentLastError: '',
   };
 
   return conditionalWrite(
