@@ -21,16 +21,16 @@ function noStore(response: NextResponse) {
 export async function POST(request: Request) {
   try {
     assertSameOriginMutation(request);
-    assertAdminLoginNotThrottled(request);
+    await assertAdminLoginNotThrottled(request);
     const body = await readBoundedJsonBody(request, 4_096);
     const key = String(body?.key || '');
     const otp = String(body?.otp || '');
     if (!verifyAdminKey(key) || !verifyAdminTotp(otp)) {
-      recordAdminLoginFailure(request);
+      await recordAdminLoginFailure(request);
       return noStore(NextResponse.json({ success: false, message: 'Yönetim doğrulaması başarısız.' }, { status: 401 }));
     }
 
-    clearAdminLoginFailures(request);
+    await clearAdminLoginFailures(request);
     const session = createAdminSession();
     const response = noStore(NextResponse.json({ success: true, expiresAt: session.expiresAt }));
     response.cookies.set(VIP_ADMIN_COOKIE, session.token, {
