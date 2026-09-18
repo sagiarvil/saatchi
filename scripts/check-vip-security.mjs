@@ -21,6 +21,7 @@ const handoff = read('docs/POS_SECURITY_HANDOFF.md');
 const legacyAdminHtml = read('public/admin.html');
 const legacyAdminJs = read('public/js/admin.js');
 const vipCheckoutLayout = read('src/app/vip-checkout/layout.tsx');
+const rootLayout = read('src/app/layout.tsx');
 const robots = read('public/robots.txt');
 const publicVipPaymentExists = fs.existsSync(path.join(root, 'public/js/vip-payment.js'));
 const legacyPaymentDirExists = fs.existsSync(path.join(root, 'src/lib/payment_backend_ready'));
@@ -97,6 +98,7 @@ const requirements = [
   ['VIP checkout is noindex/nocache', vipCheckoutLayout.includes('index: false') && vipCheckoutLayout.includes('nocache: true') && firebase.includes('"source": "/vip-checkout"') && firebase.includes('noindex, nofollow, noarchive, nosnippet')],
   ['admin surfaces are no-store/noindex', firebase.includes('"source": "/admin/**"') && firebase.includes('"source": "/admin.html"')],
   ['public crawl is not globally blocked', robots.includes('Allow: /') && !robots.includes('Disallow: /\n') && robots.includes('Disallow: /vip-checkout') && robots.includes('Disallow: /admin')],
+  ['public site root metadata is indexable', rootLayout.includes('index: true') && rootLayout.includes('follow: true')],
   ['CSP permits only explicit Firebase admin SDK origin', firebase.includes("script-src 'self' 'unsafe-inline' https://www.gstatic.com")],
   ['POS PRs run isolated regression workflow before merge', workflow.includes('pull_request:') && workflow.includes('npm run check:vip') && workflow.includes('npm run test:vip') && workflow.includes('npm run build')],
   ['PR gate checks dependency high/critical vulnerabilities', workflow.includes('npm audit --audit-level=high')],
