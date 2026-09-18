@@ -18,6 +18,7 @@ const reconcileRoute = read('src/app/api/admin/vip-payment-reconcile/route.ts');
 const firebase = read('firebase.json');
 const workflow = read('.github/workflows/pos-security-pr.yml');
 const productionRelease = read('.github/workflows/production-release.yml');
+const mainRegression = read('.github/workflows/ui-regression.yml');
 const handoff = read('docs/POS_SECURITY_HANDOFF.md');
 const legacyAdminHtml = read('public/admin.html');
 const legacyAdminJs = read('public/js/admin.js');
@@ -108,6 +109,7 @@ const requirements = [
   ['production deploy is main-only', productionRelease.includes("github.ref == 'refs/heads/main'") && productionRelease.includes('RELEASE_SHA_IS_CURRENT_MAIN')],
   ['production deploy uses lockfile Firebase CLI', productionRelease.includes('./node_modules/.bin/firebase deploy') && !productionRelease.includes('firebase-tools@latest')],
   ['production deploy requires rollback anchor', productionRelease.includes('ROLLBACK_ANCHOR_MISSING') && productionRelease.includes('ROLLBACK_ANCHOR_VERIFIED')],
+  ['main regression repeats security and dependency gates', mainRegression.includes('npm audit --audit-level=high') && mainRegression.includes('npm audit --omit=dev --audit-level=moderate') && mainRegression.includes('npm run check:vip') && mainRegression.includes('npm run test:vip') && mainRegression.includes('node --check public/js/admin.js') && mainRegression.includes('npm run build')],
   ['PR gate checks dependency high/critical vulnerabilities', workflow.includes('npm audit --audit-level=high')],
   ['handoff documents production payment API allowlist', handoff.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS')],
   ['handoff documents hosted-payment allowlist', handoff.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS')],
