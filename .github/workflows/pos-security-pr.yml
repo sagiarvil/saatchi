@@ -24,6 +24,7 @@ on:
       - 'scripts/test-vip-behavior.mjs'
       - 'firebase.json'
       - 'docs/POS_SECURITY_HANDOFF.md'
+      - 'docs/POS_BANK_REVIEW_EVIDENCE.md'
       - 'public/admin.html'
       - 'public/js/admin.js'
       - 'public/js/vip-payment.js'
