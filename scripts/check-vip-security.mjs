@@ -12,6 +12,7 @@ const vipRoute = read('src/app/api/vip-link/route.ts');
 const paymentRoute = read('src/app/api/payment/route.ts');
 const boundary = read('src/lib/payment-boundary.ts');
 const store = read('src/lib/vip-link-store.ts');
+const vipInput = read('src/lib/vip-input.ts');
 const listRoute = read('src/app/api/admin/vip-links/route.ts');
 const reconcileRoute = read('src/app/api/admin/vip-payment-reconcile/route.ts');
 const firebase = read('firebase.json');
@@ -46,7 +47,8 @@ const requirements = [
   ['Firestore project is fail-closed and pinned', store.includes("EXPECTED_PROJECT_ID = 'studio-7658156126-ffb8e'") && store.includes('Beklenmeyen Firestore proje kimliği')],
   ['VIP token is stored only as hash', store.includes('tokenHash') && store.includes("createHash('sha256')")],
   ['VIP hash comparison is timing safe', store.includes('safeEqualHex') && store.includes('timingSafeEqual')],
-  ['checkout verification checks durable state', vipRoute.includes('assertVipLinkActive(payload, token)')],
+  ['checkout verification checks durable state', vipRoute.includes('assertVipLinkActive(payload, token)') && vipRoute.includes('assertVipPaymentStatePayable(record)')],
+  ['VIP amount parser rejects ambiguous decimals', vipRoute.includes('parseVipAmount(body.amount)') && vipInput.includes('Number.isSafeInteger') && vipInput.includes('Decimal inputs are deliberately rejected')],
   ['payment checks durable state before and after provider', paymentActiveChecks >= 2],
   ['payment enforces same-origin mutation', paymentRoute.includes('assertSameOriginMutation(request)')],
   ['payment request body is bounded from actual bytes', paymentRoute.includes('readBoundedJsonBody(request)') && boundary.includes('new TextEncoder().encode(raw).byteLength')],
@@ -71,6 +73,8 @@ const requirements = [
   ['checkout makes payment obligation explicit', checkout.includes('Ödeme Yükümlülüğü Doğuran')],
   ['checkout visibly shows product identity', checkout.includes('{summary.name}')],
   ['checkout exposes KVKK notice at data collection', checkout.includes('/kvkk-aydinlatma-metni') && checkout.includes('kimlik ve iletişim bilgileri')],
+  ['public payment errors are sanitized', paymentRoute.includes('publicPaymentError') && paymentRoute.includes('Ödeme hizmeti şu anda kullanılamıyor')],
+  ['public VIP verification errors are sanitized', vipRoute.includes('VIP bağlantısı şu anda doğrulanamıyor') && vipRoute.includes('VIP bağlantısı geçersiz, iptal edilmiş veya süresi dolmuş')],
   ['provider HTML is never injected into checkout', !checkout.includes('document.write') && !checkout.includes('htmlContent')],
   ['payment handoff requires HTTPS', boundary.includes("url.protocol !== 'https:'")],
   ['payment handoff supports explicit origin allowlist', boundary.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS') && boundary.includes('allowlist.has(url.origin)')],
