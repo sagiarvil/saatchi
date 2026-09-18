@@ -3,6 +3,7 @@ import { assertAdminSession, assertSameOriginMutation } from '@/lib/vip-admin-se
 import { resetUncertainVipPaymentAttempt } from '@/lib/vip-link-store';
 import { assertAllowedObjectKeys, readBoundedJsonBody } from '@/lib/payment-boundary';
 import { verifyAdminTotp } from '@/lib/vip-admin-totp';
+import { securityAudit } from '@/lib/security-audit-log';
 
 export const dynamic = 'force-dynamic';
 
@@ -58,6 +59,7 @@ export async function POST(request: Request) {
     }
 
     const record = await resetUncertainVipPaymentAttempt(id, reconciliationReference, reconciliationReason);
+    securityAudit('payment.reconciliation.reset', { vipId: record.id, state: record.paymentState });
 
     return noStore({
       success: true,
