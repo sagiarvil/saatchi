@@ -249,6 +249,10 @@ assert.deepEqual(
     formData: { token: 'opaque-provider-token' },
   }
 );
+expectThrow(
+  () => paymentBoundary.normalizePaymentFormData({ securityCode: '123' }),
+  /kart verisi/i
+);
 
 // Firestore CAS race simulation: two concurrent payment claims must never both win.
 process.env.FIRESTORE_ACCESS_TOKEN = 'test-firestore-token';
