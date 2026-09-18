@@ -22,6 +22,7 @@ export function Footer() {
               <li>Müşteri Hizmetleri: <br/><span className="text-white">+90 539 823 41 41</span></li>
               <li>E-Posta: <br/><span className="text-white">info@saatchi.watch</span></li>
               <li><Link href="/iletisim" className="hover:text-white transition-colors">Showroom Adresimiz</Link></li>
+              <li className="pt-2 text-[11px] leading-5 text-gray-600">Şirinyer V.D. · VKN 7740298676<br/>Oda Sicil No 492956</li>
             </ul>
           </div>
 
@@ -30,6 +31,7 @@ export function Footer() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <ul className="space-y-3">
                 <li><Link href="/biz-kimiz" className="text-gray-500 hover:text-white transition-colors text-sm">Biz Kimiz (Kurumsal Profil)</Link></li>
+                <li><Link href="/odeme" className="text-gray-500 hover:text-white transition-colors text-sm">Güvenli Ödeme</Link></li>
                 <li><Link href="/mesafeli-satis-sozlesmesi" className="text-gray-500 hover:text-white transition-colors text-sm">Mesafeli Satış Sözleşmesi</Link></li>
                 <li><Link href="/on-bilgilendirme-formu" className="text-gray-500 hover:text-white transition-colors text-sm">Ön Bilgilendirme Formu</Link></li>
                 <li><Link href="/kvkk-aydinlatma-metni" className="text-gray-500 hover:text-white transition-colors text-sm">KVKK Aydınlatma Metni</Link></li>
@@ -50,7 +52,7 @@ export function Footer() {
         
         <div className="mt-16 pt-8 border-t border-white/10 text-center flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-600 text-[10px] tracking-widest uppercase">
-            &copy; {new Date().getFullYear()} SAATCHI SAAT - SEMİH SONBAHAR. Tüm Hakları Saklıdır.
+            &copy; {new Date().getFullYear()} SEMİH SONBAHAR - SAATCHI. Tüm Hakları Saklıdır.
           </p>
           <div className="flex gap-4">
             <span className="text-gray-700 text-xs font-mono">SECURE VIP CHECKOUT</span>
