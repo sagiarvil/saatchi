@@ -188,6 +188,19 @@ function CheckoutContent() {
             </div>
 
             <section className="p-6 sm:p-10">
+              <div className="mb-6 grid gap-3 border-b border-gray-100 pb-5 text-sm text-gray-600 sm:grid-cols-2">
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-gray-400">Satıcı</p>
+                  <p className="mt-1 font-medium text-gray-800">SAATCHI SAAT - SEMİH SONBAHAR</p>
+                  <p className="mt-1 text-xs leading-5">Menderes Caddesi No:231/B, Buca / İzmir</p>
+                </div>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-gray-400">Teslim Yöntemi</p>
+                  <p className="mt-1 font-medium text-gray-800">Showroom teslimi</p>
+                  <p className="mt-1 text-xs leading-5">Teslimde kimlik ve sipariş doğrulaması uygulanır.</p>
+                </div>
+              </div>
+
               <div className="mb-6 flex items-center gap-3 border-b border-gray-100 pb-5">
                 <UserRound className="h-5 w-5 text-blue-600" />
                 <h2 className="text-lg font-medium text-gray-800">Fatura ve İletişim Bilgileri</h2>
@@ -203,7 +216,9 @@ function CheckoutContent() {
 
               <p className="mt-5 text-xs leading-5 text-gray-500">
                 Bu formda verdiğiniz kimlik ve iletişim bilgileri sipariş, ödeme güvenliği, faturalama ve teslim süreçleri için işlenir. Ayrıntılar için{' '}
-                <Link href="/kvkk-aydinlatma-metni" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-700 underline underline-offset-2">KVKK Aydınlatma Metni</Link>.
+                <Link href="/kvkk-aydinlatma-metni" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-700 underline underline-offset-2">KVKK Aydınlatma Metni</Link>
+                {' '}ve{' '}
+                <Link href="/gizlilik-politikasi" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-700 underline underline-offset-2">Gizlilik Politikası</Link>.
               </p>
 
               <div className="mt-7 space-y-3 border-t border-gray-100 pt-6 text-sm text-gray-600">
@@ -219,6 +234,10 @@ function CheckoutContent() {
                   <input type="checkbox" checked={highValueAccepted} onChange={(e) => setHighValueAccepted(e.target.checked)} className="mt-1 h-4 w-4" />
                   <span><Link href="/yuksek-degerli-urun-teslimi" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-700 underline underline-offset-2">Yüksek Değerli Ürün Teslimi</Link> koşullarını kabul ediyorum.</span>
                 </label>
+                <p className="pl-7 text-xs leading-5 text-gray-500">
+                  <Link href="/iade-degisim-cayma" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-700 underline underline-offset-2">İade, Değişim ve Cayma Politikası</Link>
+                  {' '}ödeme öncesinde incelenebilir.
+                </p>
               </div>
 
               {error && <div className="mt-6 border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 rounded-md">{error}</div>}
