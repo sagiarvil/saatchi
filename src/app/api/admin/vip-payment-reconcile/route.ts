@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { assertAdminSession, assertSameOriginMutation } from '@/lib/vip-admin-session';
 import { resetUncertainVipPaymentAttempt } from '@/lib/vip-link-store';
 import { readBoundedJsonBody } from '@/lib/payment-boundary';
+import { verifyAdminTotp } from '@/lib/vip-admin-totp';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,6 +23,11 @@ export async function POST(request: Request) {
     assertAdminSession(request);
 
     const body = await readBoundedJsonBody(request, 8_192);
+    const otp = String(body.otp || '');
+    if (!verifyAdminTotp(otp)) {
+      return noStore({ success: false, message: 'Mutabakat için 2 adımlı doğrulama kodu geçersiz.' }, { status: 401 });
+    }
+
     if (body.confirmedNoCharge !== true) {
       return noStore(
         { success: false, message: 'Bankada tahsilat olmadığı açıkça doğrulanmadan yeniden deneme açılamaz.' },
