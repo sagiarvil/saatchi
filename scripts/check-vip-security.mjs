@@ -37,6 +37,7 @@ const requirements = [
   ['session v2 derives from current admin key', session.includes('saatchi:vip-admin-session:v2') && session.includes('adminKeyFingerprint')],
   ['admin key requires at least 32 characters', session.includes('key.length < 32')],
   ['mutations enforce same-origin', vipRoute.includes('assertSameOriginMutation(request)')],
+  ['production origin is pinned to canonical Saatchi host', session.includes("SAATCHI_PUBLIC_ORIGIN || 'https://saatchi.watch'") && session.includes("origin !== 'https://saatchi.watch'")],
   ['provenance-less mutations fail closed', session.includes('Yönetim isteği kaynak doğrulamasından geçemedi.')],
   ['VIP creation and revoke require admin session', vipAdminChecks >= 2],
   ['VIP admin list requires admin session', listRoute.includes('assertAdminSession(request)')],
@@ -48,7 +49,9 @@ const requirements = [
   ['checkout verification checks durable state', vipRoute.includes('assertVipLinkActive(payload, token)')],
   ['payment checks durable state before and after provider', paymentActiveChecks >= 2],
   ['payment enforces same-origin mutation', paymentRoute.includes('assertSameOriginMutation(request)')],
-  ['payment request body is bounded', paymentRoute.includes('assertRequestBodySize(request)')],
+  ['payment request body is bounded from actual bytes', paymentRoute.includes('readBoundedJsonBody(request)') && boundary.includes('new TextEncoder().encode(raw).byteLength')],
+  ['provider response body is bounded', paymentRoute.includes('readBoundedResponseText(belginResponse)') && boundary.includes('response.body.getReader()')],
+  ['payment API redirects are disabled', paymentRoute.includes("redirect: 'error'")],
   ['payment external call has bounded timeout', paymentRoute.includes('AbortSignal.timeout(20_000)')],
   ['payment has request correlation id', paymentRoute.includes('requestId') && paymentRoute.includes('X-SAATCHI-Request-Id')],
   ['payment sends idempotency key header', paymentRoute.includes("'Idempotency-Key': idempotencyKey")],
@@ -80,6 +83,7 @@ const requirements = [
   ['handoff documents hosted-payment allowlist', handoff.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS')],
   ['handoff documents external bank test requirement', handoff.includes('Real bank test-merchant flow')],
   ['handoff documents ASV validation requirement', handoff.includes('ASV external scan')],
+  ['legal acceptance versions are persisted', paymentRoute.includes('LEGAL_DOCUMENT_VERSIONS') && store.includes('legalAcceptedAt') && store.includes('legalDocumentVersions')],
 ];
 
 const failed = requirements.filter(([, ok]) => !ok);
