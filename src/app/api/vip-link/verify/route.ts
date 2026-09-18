@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { verifyVipToken } from '@/lib/vip-token';
 import { assertVipLinkActive, assertVipPaymentStatePayable } from '@/lib/vip-link-store';
 import { assertSameOriginMutation } from '@/lib/vip-admin-session';
-import { readBoundedJsonBody } from '@/lib/payment-boundary';
+import { assertAllowedObjectKeys, readBoundedJsonBody } from '@/lib/payment-boundary';
 
 export const dynamic = 'force-dynamic';
 
