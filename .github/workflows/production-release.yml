@@ -198,7 +198,7 @@ jobs:
           PY
           request admin_list GET "$SITE_URL/api/admin/vip-links" 401
           request invalid_token POST "$SITE_URL/api/vip-link/verify" 400 '{"token":"invalid"}'
-          request wrong_login POST "$SITE_URL/api/admin-session" 401 '{"key":"definitely-wrong-runtime-smoke-key"}'
+          request wrong_login POST "$SITE_URL/api/admin-session" 401 '{"key":"definitely-wrong-runtime-smoke-key","otp":"000000"}'
           request unauth_create POST "$SITE_URL/api/vip-link" 401 '{"title":"Runtime Smoke","amount":123456}'
           echo 'SAATCHI_LIVE_PUBLIC_RUNTIME_SMOKE_OK'
 
