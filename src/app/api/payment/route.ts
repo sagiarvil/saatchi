@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { verifyVipToken } from '@/lib/vip-token';
-import { assertVipLinkActive } from '@/lib/vip-link-store';
+import { assertVipLinkActive, claimVipPaymentAttempt, finalizeVipPaymentAttempt } from '@/lib/vip-link-store';
 import { assertSameOriginMutation } from '@/lib/vip-admin-session';
 import { assertRequestBodySize, normalizePaymentHandoff } from '@/lib/payment-boundary';
 
@@ -37,6 +37,40 @@ function errorMessage(error: unknown, fallback: string) {
   return error instanceof Error && error.message ? error.message : fallback;
 }
 
+const CARD_DATA_KEYS = new Set([
+  'cardnumber',
+  'card_number',
+  'pan',
+  'cardpan',
+  'cardcvc',
+  'card_cvc',
+  'cardcvv',
+  'card_cvv',
+  'cvv',
+  'cvc',
+  'cardexpiry',
+  'card_expiry',
+  'expiry',
+  'expiration',
+  'cardexpiredate',
+  'cardholderdata',
+]);
+
+function assertNoCardholderData(value: unknown, depth = 0) {
+  if (!value || typeof value !== 'object' || depth > 4) return;
+  if (Array.isArray(value)) {
+    value.forEach((item) => assertNoCardholderData(item, depth + 1));
+    return;
+  }
+
+  for (const [key, nested] of Object.entries(value as Record<string, unknown>)) {
+    if (CARD_DATA_KEYS.has(key.toLowerCase())) {
+      throw new Error('Kart numarası, CVV/CVC ve son kullanma tarihi SAATCHI sunucusuna gönderilemez.');
+    }
+    assertNoCardholderData(nested, depth + 1);
+  }
+}
+
 export async function POST(request: Request) {
   const requestId = crypto.randomUUID();
 
@@ -45,6 +79,7 @@ export async function POST(request: Request) {
     assertSameOriginMutation(request);
 
     const body = await request.json();
+    assertNoCardholderData(body);
     const token = safeText(body.token, 4096);
     const vip = verifyVipToken(token);
     await assertVipLinkActive(vip, token);
@@ -107,60 +142,71 @@ export async function POST(request: Request) {
       throw new Error('Ödeme servis adresi güvenli değil.');
     }
 
-    const belginResponse = await fetch(upstreamUrl, {
+    await claimVipPaymentAttempt(vip, token, requestId);
+
+    let upstreamCompleted = false;
+    try {
+      const belginResponse = await fetch(upstreamUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'User-Agent': userAgent,
         'X-SAATCHI-Request-Id': requestId,
+        'Idempotency-Key': idempotencyKey,
       },
       cache: 'no-store',
       signal: AbortSignal.timeout(20_000),
       body: JSON.stringify(paymentPayload),
     });
 
-    const text = await belginResponse.text();
-    let data: Record<string, unknown>;
-    try {
-      data = JSON.parse(text) as Record<string, unknown>;
-    } catch {
-      data = {};
-    }
+      const text = await belginResponse.text();
+      let data: Record<string, unknown>;
+      try {
+        data = JSON.parse(text) as Record<string, unknown>;
+      } catch {
+        data = {};
+      }
 
-    if (!belginResponse.ok || data.success !== true) {
-      console.error('[SAATCHI PAYMENT UPSTREAM]', requestId, {
-        status: belginResponse.status,
-        code: safeText(data.code, 80),
+      if (!belginResponse.ok || data.success !== true) {
+        console.error('[SAATCHI PAYMENT UPSTREAM]', requestId, {
+          status: belginResponse.status,
+          code: safeText(data.code, 80),
+        });
+        throw new Error('Ödeme sağlayıcısı oturum oluşturma isteğini onaylamadı.');
+      }
+
+      upstreamCompleted = true;
+
+      // A revoke racing with provider session creation must fail before handoff.
+      await assertVipLinkActive(vip, token);
+
+      const handoff = normalizePaymentHandoff(data);
+      await finalizeVipPaymentAttempt(vip.id, requestId, 'ready');
+
+      return noStore({
+        status: 'success',
+        requestId,
+        message: 'Güvenli ödeme oturumu oluşturuldu.',
+        orderId: safeText(data.merchant_oid, 160) || null,
+        provider: safeText(data.provider, 80) || null,
+        paymentType: safeText(data.paymentType, 80) || null,
+        redirectUrl: handoff.redirectUrl,
+        gatewayUrl: handoff.gatewayUrl,
+        formData: handoff.formData,
+        evidenceId: safeText(data.evidenceId, 160) || null,
+        deliveryMethod: safeText(data.deliveryMethod, 80) || 'showroom',
       });
-      return noStore(
-        {
-          status: 'error',
-          requestId,
-          code: safeText(data.code, 80) || 'PAYMENT_CREATE_FAILED',
-          message: 'Ödeme oturumu oluşturulamadı.',
-        },
-        { status: belginResponse.status >= 400 && belginResponse.status < 500 ? 400 : 502 }
-      );
+    } catch (error) {
+      try {
+        await finalizeVipPaymentAttempt(vip.id, requestId, 'uncertain');
+      } catch (finalizeError) {
+        console.error('[SAATCHI PAYMENT ATTEMPT FINALIZE]', requestId, errorMessage(finalizeError, 'unknown'));
+      }
+      if (upstreamCompleted) {
+        throw new Error('Ödeme sağlayıcısı yanıt verdi ancak oturum sonucu güvenle tamamlanamadı. Yeni deneme öncesi mutabakat gerekir.');
+      }
+      throw error;
     }
-
-    // A revoke racing with provider session creation must fail before handoff.
-    await assertVipLinkActive(vip, token);
-
-    const handoff = normalizePaymentHandoff(data);
-
-    return noStore({
-      status: 'success',
-      requestId,
-      message: 'Güvenli ödeme oturumu oluşturuldu.',
-      orderId: safeText(data.merchant_oid, 160) || null,
-      provider: safeText(data.provider, 80) || null,
-      paymentType: safeText(data.paymentType, 80) || null,
-      redirectUrl: handoff.redirectUrl,
-      gatewayUrl: handoff.gatewayUrl,
-      formData: handoff.formData,
-      evidenceId: safeText(data.evidenceId, 160) || null,
-      deliveryMethod: safeText(data.deliveryMethod, 80) || 'showroom',
-    });
   } catch (error: unknown) {
     const message = errorMessage(error, 'Ödeme oturumu oluşturulamadı.');
     console.error('[SAATCHI PAYMENT]', requestId, message);
