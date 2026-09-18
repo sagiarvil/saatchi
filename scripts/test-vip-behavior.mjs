@@ -86,6 +86,10 @@ expectThrow(() => store.validateVipLinkRecord({ ...activeRecord, tokenHash: '0'.
 expectThrow(() => store.validateVipLinkRecord({ ...activeRecord, expiresAt: payload.exp + 1 }, payload, token, now), /süre bütünlüğü/i);
 
 assert.equal(store.assertVipPaymentStatePayable(activeRecord), true);
+assert.equal(store.assertVipLinkRevocable({ paymentState: 'idle' }), true);
+expectThrow(() => store.assertVipLinkRevocable({ paymentState: 'creating' }), /mutabakatı olmadan doğrudan iptal/i);
+expectThrow(() => store.assertVipLinkRevocable({ paymentState: 'ready' }), /mutabakatı olmadan doğrudan iptal/i);
+expectThrow(() => store.assertVipLinkRevocable({ paymentState: 'uncertain' }), /mutabakatı olmadan doğrudan iptal/i);
 expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'creating' }), /zaten oluşturuluyor/i);
 expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'ready' }), /daha önce oluşturuldu/i);
 expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'uncertain' }), /mutabakat/i);
