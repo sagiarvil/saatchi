@@ -12,8 +12,11 @@ type VipLinkRow = {
   expiresAt: number;
   revokedAt: number;
   paymentState: 'idle' | 'creating' | 'ready' | 'uncertain';
+  paymentAttemptAt: number;
   paymentUpdatedAt: number;
   reconciledAt: number;
+  reconciliationReference: string;
+  reconciliationReason: string;
   paymentProviderOrderId: string;
   paymentEvidenceId: string;
   paymentLastError: string;
@@ -48,6 +51,11 @@ export default function VipLinkGenerator() {
   const [rows, setRows] = useState<VipLinkRow[]>([]);
   const [rowsLoading, setRowsLoading] = useState(false);
   const [revokingId, setRevokingId] = useState('');
+  const [reconcileId, setReconcileId] = useState('');
+  const [reconcileReference, setReconcileReference] = useState('');
+  const [reconcileReason, setReconcileReason] = useState('');
+  const [reconcileConfirmedNoCharge, setReconcileConfirmedNoCharge] = useState(false);
+  const [reconcileLoading, setReconcileLoading] = useState(false);
 
   const rawAmount = Number(amount.replace(/\D/g, '') || 0);
   const formattedAmount = rawAmount ? new Intl.NumberFormat('tr-TR').format(rawAmount) : '';
@@ -170,6 +178,46 @@ export default function VipLinkGenerator() {
     window.setTimeout(() => setCopied(false), 1800);
   }
 
+  async function reconcilePayment(row: VipLinkRow) {
+    if (!row.id || reconcileLoading) return;
+    if (!reconcileConfirmedNoCharge || reconcileReference.trim().length < 4 || reconcileReason.trim().length < 10) {
+      setError('Mutabakat için bankada tahsilat yok teyidi, referans ve açıklama zorunludur.');
+      return;
+    }
+
+    setReconcileLoading(true);
+    setError('');
+    try {
+      const response = await fetch('/api/admin/vip-payment-reconcile', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: row.id,
+          confirmedNoCharge: true,
+          reconciliationReference: reconcileReference.trim(),
+          reconciliationReason: reconcileReason.trim(),
+        }),
+      });
+      const data = await response.json();
+      if (response.status === 401) {
+        setAuthenticated(false);
+        throw new Error('Yönetim oturumunun süresi doldu. Yeniden giriş yapın.');
+      }
+      if (!response.ok || !data.success) throw new Error(data.message || 'Ödeme mutabakatı tamamlanamadı.');
+
+      setReconcileId('');
+      setReconcileReference('');
+      setReconcileReason('');
+      setReconcileConfirmedNoCharge(false);
+      await loadLinks();
+    } catch (e: unknown) {
+      setError(errorMessage(e, 'Ödeme mutabakatı tamamlanamadı.'));
+    } finally {
+      setReconcileLoading(false);
+    }
+  }
+
   async function revokeLink(id: string) {
     if (!id || revokingId) return;
     if (!window.confirm('Bu VIP ödeme linki kalıcı olarak iptal edilsin mi?')) return;
@@ -285,14 +333,43 @@ export default function VipLinkGenerator() {
                           : row.paymentState === 'uncertain'
                             ? 'Mutabakat gerekli'
                             : 'Aktif';
+                const staleCreating = row.paymentState === 'creating' && row.paymentAttemptAt > 0 && Date.now() - row.paymentAttemptAt >= 5 * 60 * 1000;
+                const canReconcile = row.state === 'active' && (row.paymentState === 'uncertain' || staleCreating);
                 return (
-                  <div key={row.id} className="grid gap-3 py-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
-                    <div className="min-w-0">
-                      <div className="flex flex-wrap items-center gap-2"><p className="truncate text-sm font-semibold">{row.name}</p><span className={`rounded-full px-2 py-1 text-[8px] font-bold uppercase tracking-[0.13em] ${active ? 'bg-emerald-50 text-emerald-700' : 'bg-[#f2eeea] text-[#776f67]'}`}>{stateLabel}</span></div>
-                      <p className="mt-1 truncate font-mono text-[9px] text-[#9b938b]">{row.id}</p>
-                      <p className="mt-1 text-[10px] text-[#8b837b]">Oluşturma: {dateTime(row.createdAt)} · Bitiş: {dateTime(row.expiresAt)}</p>
+                  <div key={row.id} className="py-4">
+                    <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
+                      <div className="min-w-0">
+                        <div className="flex flex-wrap items-center gap-2"><p className="truncate text-sm font-semibold">{row.name}</p><span className={`rounded-full px-2 py-1 text-[8px] font-bold uppercase tracking-[0.13em] ${active ? 'bg-emerald-50 text-emerald-700' : 'bg-[#f2eeea] text-[#776f67]'}`}>{stateLabel}</span></div>
+                        <p className="mt-1 truncate font-mono text-[9px] text-[#9b938b]">{row.id}</p>
+                        <p className="mt-1 text-[10px] text-[#8b837b]">Oluşturma: {dateTime(row.createdAt)} · Bitiş: {dateTime(row.expiresAt)}</p>
+                        {row.paymentState !== 'idle' && (
+                          <div className="mt-2 space-y-1 text-[10px] leading-4 text-[#756e67]">
+                            {row.paymentProviderOrderId && <p>Banka/sağlayıcı işlem ref: <span className="font-mono">{row.paymentProviderOrderId}</span></p>}
+                            {row.paymentEvidenceId && <p>Kanıt ref: <span className="font-mono">{row.paymentEvidenceId}</span></p>}
+                            {row.paymentLastError && <p className="text-red-700">Son hata: {row.paymentLastError}</p>}
+                            {row.reconciledAt > 0 && <p>Son mutabakat: {dateTime(row.reconciledAt)} · {row.reconciliationReference}</p>}
+                          </div>
+                        )}
+                      </div>
+                      <div className="flex flex-wrap items-center justify-between gap-3 sm:justify-end">
+                        <span className="text-sm font-semibold text-[#846b32]">{money(row.price)}</span>
+                        {active && <button onClick={() => revokeLink(row.id)} disabled={revokingId === row.id} className="inline-flex items-center gap-2 border border-red-200 bg-red-50 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.13em] text-red-700 disabled:opacity-50"><Trash2 className="h-3.5 w-3.5" /> {revokingId === row.id ? 'İptal…' : 'Linki İptal Et'}</button>}
+                        {canReconcile && <button onClick={() => setReconcileId(reconcileId === row.id ? '' : row.id)} className="inline-flex items-center gap-2 border border-amber-300 bg-amber-50 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.13em] text-amber-800"><RotateCcw className="h-3.5 w-3.5" /> Mutabakat</button>}
+                      </div>
                     </div>
-                    <div className="flex items-center justify-between gap-3 sm:justify-end"><span className="text-sm font-semibold text-[#846b32]">{money(row.price)}</span>{active && <button onClick={() => revokeLink(row.id)} disabled={revokingId === row.id} className="inline-flex items-center gap-2 border border-red-200 bg-red-50 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.13em] text-red-700 disabled:opacity-50"><Trash2 className="h-3.5 w-3.5" /> {revokingId === row.id ? 'İptal…' : 'Linki İptal Et'}</button>}</div>
+
+                    {reconcileId === row.id && canReconcile && (
+                      <div className="mt-4 border border-amber-200 bg-amber-50/60 p-4">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-amber-900">Banka / Sağlayıcı Mutabakatı</p>
+                        <p className="mt-2 text-xs leading-5 text-amber-900/75">Yalnız bankada tahsilat olmadığı bağımsız olarak doğrulandıysa bu ödeme linkini yeniden kullanılabilir duruma alın.</p>
+                        <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                          <input value={reconcileReference} onChange={(e) => setReconcileReference(e.target.value.slice(0, 160))} placeholder="Mutabakat / çağrı / işlem referansı" className="border border-amber-200 bg-white px-3 py-3 text-xs outline-none focus:border-amber-500" />
+                          <input value={reconcileReason} onChange={(e) => setReconcileReason(e.target.value.slice(0, 500))} placeholder="Tahsilat yok doğrulama açıklaması" className="border border-amber-200 bg-white px-3 py-3 text-xs outline-none focus:border-amber-500" />
+                        </div>
+                        <label className="mt-3 flex items-start gap-2 text-xs text-amber-950"><input type="checkbox" checked={reconcileConfirmedNoCharge} onChange={(e) => setReconcileConfirmedNoCharge(e.target.checked)} className="mt-0.5" /><span>Bankada/ödeme kuruluşunda tahsilat olmadığını doğruladım.</span></label>
+                        <button onClick={() => reconcilePayment(row)} disabled={reconcileLoading || !reconcileConfirmedNoCharge} className="mt-3 bg-amber-900 px-4 py-3 text-[9px] font-bold uppercase tracking-[0.14em] text-white disabled:opacity-40">{reconcileLoading ? 'Mutabakat işleniyor…' : 'Kontrollü Yeniden Aç'}</button>
+                      </div>
+                    )}
                   </div>
                 );
               })}
