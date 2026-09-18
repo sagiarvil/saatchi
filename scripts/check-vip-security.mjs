@@ -50,7 +50,7 @@ const requirements = [
   ['payment has request correlation id', paymentRoute.includes('requestId') && paymentRoute.includes('X-SAATCHI-Request-Id')],
   ['payment sends idempotency key header', paymentRoute.includes("'Idempotency-Key': idempotencyKey")],
   ['payment atomically claims single attempt', paymentRoute.includes('claimVipPaymentAttempt') && store.includes('currentDocument.updateTime') && store.includes("paymentState: 'creating'")],
-  ['ambiguous payment result becomes uncertain', paymentRoute.includes("finalizeVipPaymentAttempt(vip.id, requestId, 'uncertain')") && store.includes("paymentState === 'uncertain'")],
+  ['ambiguous payment result becomes uncertain', paymentRoute.includes("finalizeVipPaymentAttempt(vip.id, requestId, 'uncertain')") && store.includes("value === 'uncertain'") && store.includes("Önceki ödeme denemesinin sonucu belirsiz")],
   ['cardholder data is rejected by merchant API', paymentRoute.includes('assertNoCardholderData(body)') && paymentRoute.includes('CARD_DATA_KEYS')],
   ['production payment API has explicit origin allowlist', paymentRoute.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS') && paymentRoute.includes('allowedOrigins.has(url.origin)')],
   ['production payment endpoint has no legacy fallback', paymentRoute.includes("process.env.NODE_ENV !== 'production' ? process.env.BELGIN_PAYMENT_CREATE_URL : ''")],
