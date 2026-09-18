@@ -6,6 +6,7 @@ import {
   createAdminSession,
   verifyAdminKey,
 } from '@/lib/vip-admin-session';
+import { readBoundedJsonBody } from '@/lib/payment-boundary';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,7 +19,7 @@ function noStore(response: NextResponse) {
 export async function POST(request: Request) {
   try {
     assertSameOriginMutation(request);
-    const body = await request.json();
+    const body = await readBoundedJsonBody(request, 4_096);
     const key = String(body?.key || '');
     if (!verifyAdminKey(key)) {
       return noStore(NextResponse.json({ success: false, message: 'Yönetim doğrulaması başarısız.' }, { status: 401 }));
