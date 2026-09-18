@@ -11,6 +11,7 @@ const store = await import('../src/lib/vip-link-store.ts');
 const paymentBoundary = await import('../src/lib/payment-boundary.ts');
 const vipInput = await import('../src/lib/vip-input.ts');
 const adminTotp = await import('../src/lib/vip-admin-totp.ts');
+const adminThrottle = await import('../src/lib/vip-admin-throttle.ts');
 const paymentRouteModule = await import('../src/app/api/payment/route.ts');
 
 function expectThrow(fn, pattern) {
@@ -31,6 +32,19 @@ const validOtp = adminTotp.generateTotpForTest(totpSecret, totpNow);
 assert.equal(adminTotp.verifyAdminTotp(validOtp, totpNow), true);
 assert.equal(adminTotp.verifyAdminTotp('000000', totpNow), validOtp === '000000');
 assert.equal(adminTotp.verifyAdminTotp('12345', totpNow), false);
+
+adminThrottle.resetAdminLoginThrottleForTests();
+const throttleRequest = new Request('https://saatchi.watch/api/admin-session', {
+  method: 'POST',
+  headers: { 'x-appengine-user-ip': '203.0.113.10' },
+});
+for (let index = 0; index < 5; index += 1) adminThrottle.recordAdminLoginFailure(throttleRequest, 1_900_000_000_000);
+expectThrow(
+  () => adminThrottle.assertAdminLoginNotThrottled(throttleRequest, 1_900_000_000_001),
+  /geçici olarak sınırlandı/i
+);
+adminThrottle.resetAdminLoginThrottleForTests();
+assert.doesNotThrow(() => adminThrottle.assertAdminLoginNotThrottled(throttleRequest, 1_900_000_000_001));
 
 const [body, signature] = adminSession.token.split('.');
 const tamperedSignature = `${signature.slice(0, -1)}${signature.endsWith('a') ? 'b' : 'a'}`;
