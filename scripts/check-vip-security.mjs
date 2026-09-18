@@ -34,6 +34,7 @@ const requirements = [
   ['admin page has exact WhatsApp CTA', page.includes('WhatsApp ile Linki İlet')],
   ['admin page has durable revoke CTA', page.includes('Linki İptal Et')],
   ['admin page lists durable links', page.includes("fetch('/api/admin/vip-links'")],
+  ['Firebase-compatible admin cookie is used', session.includes("VIP_ADMIN_COOKIE = '__session'")],
   ['session cookie is HttpOnly', sessionRoute.includes('httpOnly: true')],
   ['session cookie is SameSite strict', sessionRoute.includes("sameSite: 'strict'")],
   ['session cookie is secure in production', sessionRoute.includes("secure: process.env.NODE_ENV === 'production'")],
