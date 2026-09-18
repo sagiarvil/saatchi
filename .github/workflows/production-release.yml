@@ -200,7 +200,7 @@ jobs:
           assert d.get('success') is True and d.get('authenticated') is False, d
           PY
           request admin_list GET "$SITE_URL/api/admin/vip-links" 401
-          request invalid_token GET "$SITE_URL/api/vip-link?token=invalid" 400
+          request invalid_token POST "$SITE_URL/api/vip-link/verify" 400 '{"token":"invalid"}'
           request wrong_login POST "$SITE_URL/api/admin-session" 401 '{"key":"definitely-wrong-runtime-smoke-key"}'
           request unauth_create POST "$SITE_URL/api/vip-link" 401 '{"title":"Runtime Smoke","amount":123456}'
           echo 'SAATCHI_LIVE_PUBLIC_RUNTIME_SMOKE_OK'
