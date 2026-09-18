@@ -44,6 +44,7 @@ Existing VIP secrets/session configuration must also be confirmed in the target 
 VIP_PAYMENT_SECRET=<strong production secret>
 VIP_ADMIN_KEY=<strong production admin key>
 VIP_ADMIN_SESSION_SECRET=<strong independent production session secret; mandatory>
+VIP_ADMIN_TOTP_SECRET=<base32 TOTP secret; minimum 160-bit; mandatory in production>
 ```
 
 ## External validation still required
