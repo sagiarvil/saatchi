@@ -173,4 +173,114 @@ assert.deepEqual(
   }
 );
 
-console.log('VIP/POS behavioral tests: PASS (session rotation, tamper, durable state, atomic payment-state gate, origin, HTTPS allowlist, provider handoff)');
+// Firestore CAS race simulation: two concurrent payment claims must never both win.
+process.env.FIRESTORE_ACCESS_TOKEN = 'test-firestore-token';
+const originalFetch = globalThis.fetch;
+let mockDoc = null;
+let mockVersion = 1;
+let pendingGets = 0;
+let releaseGets;
+const bothGetsReady = new Promise((resolve) => { releaseGets = resolve; });
+
+function makeFirestoreResponse(status, payload = {}) {
+  return new Response(JSON.stringify(payload), {
+    status,
+    headers: { 'content-type': 'application/json' },
+  });
+}
+
+globalThis.fetch = async (input, init = {}) => {
+  const url = new URL(String(input));
+  const method = String(init.method || 'GET').toUpperCase();
+
+  if (!url.hostname.includes('firestore.googleapis.com')) {
+    throw new Error('Unexpected network target in Firestore race test');
+  }
+
+  if (method === 'GET') {
+    if (!mockDoc) return makeFirestoreResponse(404, {});
+    const snapshot = JSON.parse(JSON.stringify(mockDoc));
+    pendingGets += 1;
+    if (pendingGets === 2) releaseGets();
+    await bothGetsReady;
+    return makeFirestoreResponse(200, { ...snapshot, updateTime: `v${mockVersion}` });
+  }
+
+  if (method === 'PATCH') {
+    const body = JSON.parse(String(init.body || '{}'));
+    if (url.searchParams.get('currentDocument.exists') === 'false') {
+      if (mockDoc) return makeFirestoreResponse(412, {});
+      mockDoc = body;
+      mockVersion += 1;
+      return makeFirestoreResponse(200, { ...mockDoc, updateTime: `v${mockVersion}` });
+    }
+
+    const expected = url.searchParams.get('currentDocument.updateTime');
+    if (expected !== `v${mockVersion}`) return makeFirestoreResponse(412, {});
+    mockDoc = body;
+    mockVersion += 1;
+    return makeFirestoreResponse(200, { ...mockDoc, updateTime: `v${mockVersion}` });
+  }
+
+  throw new Error(`Unexpected Firestore method: ${method}`);
+};
+
+try {
+  const raceNow = Date.now();
+  const racePayload = {
+    id: 'VIP-SAATCHI-RACE-0001',
+    name: 'Race Test Saat',
+    price: 250000,
+    iat: raceNow,
+    exp: raceNow + 60_000,
+  };
+  const raceToken = tokenLib.signVipToken(racePayload);
+
+  // Seed a Firestore-shaped durable record through the same production create function.
+  pendingGets = 2; // create does not GET; keep the barrier released for later explicit race setup.
+  releaseGets();
+  await store.createVipLinkRecord(racePayload, raceToken);
+
+  // Reset the GET barrier so both claims read the exact same updateTime before either PATCH.
+  pendingGets = 0;
+  let raceRelease;
+  const raceBarrier = new Promise((resolve) => { raceRelease = resolve; });
+  releaseGets = raceRelease;
+  // Rebind via closure-visible variable used by mock GET.
+  // eslint-disable-next-line no-global-assign
+  // bothGetsReady cannot be reassigned, so perform an explicit snapshot clone race below.
+  const originalRaceFetch = globalThis.fetch;
+  let raceGetCount = 0;
+  let releaseRaceReads;
+  const raceReads = new Promise((resolve) => { releaseRaceReads = resolve; });
+  globalThis.fetch = async (input, init = {}) => {
+    const url = new URL(String(input));
+    const method = String(init.method || 'GET').toUpperCase();
+    if (method === 'GET' && url.hostname.includes('firestore.googleapis.com')) {
+      if (!mockDoc) return makeFirestoreResponse(404, {});
+      const snapshot = JSON.parse(JSON.stringify(mockDoc));
+      const versionAtRead = mockVersion;
+      raceGetCount += 1;
+      if (raceGetCount === 2) releaseRaceReads();
+      await raceReads;
+      return makeFirestoreResponse(200, { ...snapshot, updateTime: `v${versionAtRead}` });
+    }
+    return originalRaceFetch(input, init);
+  };
+
+  const claims = await Promise.allSettled([
+    store.claimVipPaymentAttempt(racePayload, raceToken, 'attempt-A', { distanceSales: 'v1' }),
+    store.claimVipPaymentAttempt(racePayload, raceToken, 'attempt-B', { distanceSales: 'v1' }),
+  ]);
+  assert.equal(claims.filter((x) => x.status === 'fulfilled').length, 1);
+  assert.equal(claims.filter((x) => x.status === 'rejected').length, 1);
+  assert.match(
+    String(claims.find((x) => x.status === 'rejected')?.reason?.message || ''),
+    /eşzamanlı başka bir ödeme denemesi/i
+  );
+} finally {
+  globalThis.fetch = originalFetch;
+  delete process.env.FIRESTORE_ACCESS_TOKEN;
+}
+
+console.log('VIP/POS behavioral tests: PASS (session rotation, tamper, strict inputs, card-data rejection, durable state, CAS race, reconciliation gate, origin, HTTPS allowlist, provider handoff)');
