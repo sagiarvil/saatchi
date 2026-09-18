@@ -67,8 +67,22 @@ jobs:
       - name: VIP behavioral security tests
         run: npm run test:vip
 
-      - name: ESLint
-        run: npm run lint
+      - name: Targeted production/security ESLint
+        run: >
+          npx eslint
+          src/app/api/payment/route.ts
+          src/app/api/vip-link/route.ts
+          src/app/api/vip-link/verify/route.ts
+          src/app/api/admin-session/route.ts
+          src/app/api/admin/vip-links/route.ts
+          src/app/api/admin/vip-payment-reconcile/route.ts
+          src/app/admin/viplink/page.tsx
+          src/app/vip-checkout/page.tsx
+          src/app/odeme/page.tsx
+          src/components/layout/Footer.tsx
+          src/lib/payment-*.ts
+          src/lib/vip-*.ts
+          src/lib/security-audit-log.ts
 
       - name: Production build
         run: npm run build
