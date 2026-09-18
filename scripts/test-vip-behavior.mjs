@@ -254,6 +254,35 @@ expectThrow(
   /kart verisi/i
 );
 
+assert.equal(
+  paymentRouteModule.assertProviderSessionConsistency(
+    { merchant_oid: 'BANK-001', amount: 123456, currency: 'TRY', provider: 'TESTBANK' },
+    { amount: 123456, currency: 'TRY', provider: 'TESTBANK' }
+  ),
+  'BANK-001'
+);
+expectThrow(
+  () => paymentRouteModule.assertProviderSessionConsistency(
+    { merchant_oid: 'BANK-002', currency: 'TRY', provider: 'TESTBANK' },
+    { amount: 123456, currency: 'TRY', provider: 'TESTBANK' }
+  ),
+  /işlem tutarı/i
+);
+expectThrow(
+  () => paymentRouteModule.assertProviderSessionConsistency(
+    { merchant_oid: 'BANK-003', amount: 123456, provider: 'TESTBANK' },
+    { amount: 123456, currency: 'TRY', provider: 'TESTBANK' }
+  ),
+  /para birimi/i
+);
+expectThrow(
+  () => paymentRouteModule.assertProviderSessionConsistency(
+    { merchant_oid: 'BANK-004', amount: 123456, currency: 'TRY', provider: 'OTHERBANK' },
+    { amount: 123456, currency: 'TRY', provider: 'TESTBANK' }
+  ),
+  /provider ile uyuşmuyor/i
+);
+
 // Firestore CAS race simulation: two concurrent payment claims must never both win.
 process.env.FIRESTORE_ACCESS_TOKEN = 'test-firestore-token';
 const originalFetch = globalThis.fetch;
