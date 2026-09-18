@@ -188,6 +188,14 @@ delete process.env.SAATCHI_PUBLIC_ORIGIN;
 process.env.NODE_ENV = 'test';
 
 const allowlist = 'https://secure.example-bank.test,https://3ds.example-bank.test';
+const previousNodeEnvForHandoff = process.env.NODE_ENV;
+process.env.NODE_ENV = 'production';
+expectThrow(
+  () => paymentBoundary.assertPaymentHandoffConfiguration(''),
+  /izin listesi production ortamında yapılandırılmamış/i
+);
+assert.equal(paymentBoundary.assertPaymentHandoffConfiguration(allowlist).size, 2);
+process.env.NODE_ENV = previousNodeEnvForHandoff || 'test';
 assert.equal(
   paymentBoundary.assertPaymentUrlAllowed('https://secure.example-bank.test/pay/123', allowlist),
   'https://secure.example-bank.test/pay/123'
