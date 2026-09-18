@@ -179,6 +179,8 @@ export async function POST(request: Request) {
     const idempotencyKey = `SAATCHI:${vip.id}`;
     const userAgent = safeText(request.headers.get('user-agent') || 'Saatchi VIP Checkout', 512);
 
+    const legalAcceptedAt = new Date().toISOString();
+
     const paymentPayload: Record<string, unknown> = {
       source: 'SAATCHI',
       channel: 'saatchi.watch',
@@ -203,8 +205,8 @@ export async function POST(request: Request) {
       highValueDeliveryAccepted: true,
       marketingConsent: body.marketingConsent === true,
       legalPresentation: {
-        presentedAt: safeText(body.presentedAt || new Date().toISOString(), 50),
-        acceptedAt: new Date().toISOString(),
+        presentedAt: legalAcceptedAt,
+        acceptedAt: legalAcceptedAt,
         source: 'SAATCHI-VIP',
         documentVersions: LEGAL_DOCUMENT_VERSIONS,
       },
