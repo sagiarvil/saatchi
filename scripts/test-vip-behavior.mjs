@@ -143,6 +143,19 @@ assert.ok(Number.isNaN(vipInput.parseVipAmount('123.45')));
 assert.ok(Number.isNaN(vipInput.parseVipAmount('-100')));
 assert.equal(vipInput.normalizeVipTitle('  Rolex\u0000   Submariner  '), 'Rolex Submariner');
 assert.doesNotThrow(() => paymentBoundary.assertNoCardholderData({ token: 'opaque', custName: 'Test' }));
+assert.doesNotThrow(() => paymentBoundary.assertAllowedObjectKeys(
+  { token: 'opaque', custName: 'Test' },
+  ['token', 'custName'],
+  'Ödeme isteği'
+));
+expectThrow(
+  () => paymentBoundary.assertAllowedObjectKeys(
+    { token: 'opaque', arbitrary: '4111111111111111' },
+    ['token'],
+    'Ödeme isteği'
+  ),
+  /beklenmeyen alan/i
+);
 expectThrow(() => paymentBoundary.assertNoCardholderData({ cardNumber: '4111111111111111' }), /Kart numarası/i);
 expectThrow(() => paymentBoundary.assertNoCardholderData({ nested: { cvv: '123' } }), /Kart numarası/i);
 
