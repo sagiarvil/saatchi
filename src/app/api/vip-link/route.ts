@@ -12,6 +12,10 @@ function noStore(response: NextResponse) {
   return response;
 }
 
+function errorMessage(error: unknown, fallback: string) {
+  return error instanceof Error && error.message ? error.message : fallback;
+}
+
 export async function POST(request: Request) {
   try {
     assertSameOriginMutation(request);
@@ -40,8 +44,8 @@ export async function POST(request: Request) {
       expiresAt: payload.exp,
       url: `${origin}/vip-checkout?token=${encodeURIComponent(token)}`,
     }));
-  } catch (error: any) {
-    const message = String(error?.message || 'VIP link oluşturulamadı.');
+  } catch (error: unknown) {
+    const message = errorMessage(error, 'VIP link oluşturulamadı.');
     const authError = message.includes('Yönetim oturumu');
     const originError = message.includes('Çapraz kaynak');
     return noStore(NextResponse.json({ success: false, message }, { status: originError ? 403 : authError ? 401 : 503 }));
@@ -57,8 +61,8 @@ export async function GET(request: Request) {
       success: true,
       payload: { id: payload.id, name: payload.name, price: payload.price, exp: payload.exp },
     }));
-  } catch (error: any) {
-    return noStore(NextResponse.json({ success: false, message: error?.message || 'VIP link doğrulanamadı.' }, { status: 400 }));
+  } catch (error: unknown) {
+    return noStore(NextResponse.json({ success: false, message: errorMessage(error, 'VIP link doğrulanamadı.') }, { status: 400 }));
   }
 }
 
@@ -73,8 +77,8 @@ export async function DELETE(request: Request) {
     }
     const record = await revokeVipLink(id);
     return noStore(NextResponse.json({ success: true, id: record.id, revokedAt: record.revokedAt }));
-  } catch (error: any) {
-    const message = String(error?.message || 'VIP link iptal edilemedi.');
+  } catch (error: unknown) {
+    const message = errorMessage(error, 'VIP link iptal edilemedi.');
     const authError = message.includes('Yönetim oturumu');
     const originError = message.includes('Çapraz kaynak');
     return noStore(NextResponse.json({ success: false, message }, { status: originError ? 403 : authError ? 401 : 503 }));
