@@ -89,6 +89,14 @@ expectThrow(() => session.assertSameOriginMutation(crossOriginRequest), /Çapraz
 const provenanceLessRequest = new Request('https://saatchi.watch/api/vip-link', { method: 'POST' });
 expectThrow(() => session.assertSameOriginMutation(provenanceLessRequest), /kaynak doğrulamasından/i);
 
+process.env.NODE_ENV = 'production';
+assert.equal(session.expectedPublicOrigin(new Request('https://saatchi.watch/api/payment')), 'https://saatchi.watch');
+expectThrow(
+  () => session.expectedPublicOrigin(new Request('https://evil.example/api/payment')),
+  /Beklenmeyen production public origin|saatchi\.watch/i
+);
+process.env.NODE_ENV = 'test';
+
 const allowlist = 'https://secure.example-bank.test,https://3ds.example-bank.test';
 assert.equal(
   paymentBoundary.assertPaymentUrlAllowed('https://secure.example-bank.test/pay/123', allowlist),
@@ -118,6 +126,20 @@ expectThrow(
   () => paymentBoundary.normalizePaymentFormData({ cvv: '123' }),
   /kart verisi/i
 );
+const boundedRequest = new Request('https://saatchi.watch/api/payment', {
+  method: 'POST',
+  headers: { 'content-type': 'application/json' },
+  body: JSON.stringify({ ok: true }),
+});
+assert.deepEqual(await paymentBoundary.readBoundedJsonBody(boundedRequest, 100), { ok: true });
+
+const oversizedRequest = new Request('https://saatchi.watch/api/payment', {
+  method: 'POST',
+  headers: { 'content-type': 'application/json' },
+  body: JSON.stringify({ value: 'x'.repeat(200) }),
+});
+await assert.rejects(() => paymentBoundary.readBoundedJsonBody(oversizedRequest, 64), /boyutu aşıyor/i);
+
 assert.deepEqual(
   paymentBoundary.normalizePaymentHandoff({
     gatewayUrl: 'https://3ds.example-bank.test/auth',
