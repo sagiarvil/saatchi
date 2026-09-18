@@ -9,6 +9,7 @@ const checkout = read('src/app/vip-checkout/page.tsx');
 const session = read('src/lib/vip-admin-session.ts');
 const sessionRoute = read('src/app/api/admin-session/route.ts');
 const vipRoute = read('src/app/api/vip-link/route.ts');
+const vipVerifyRoute = read('src/app/api/vip-link/verify/route.ts');
 const paymentRoute = read('src/app/api/payment/route.ts');
 const boundary = read('src/lib/payment-boundary.ts');
 const paymentSessionConsistency = read('src/lib/payment-session-consistency.ts');
@@ -65,7 +66,7 @@ const requirements = [
   ['production forbids static Firestore bearer token', store.includes("NODE_ENV === 'production' && explicit") && store.includes('runtime service-account metadata kimliği kullanılmalıdır')],
   ['VIP token is stored only as hash', store.includes('tokenHash') && store.includes("createHash('sha256')")],
   ['VIP hash comparison is timing safe', store.includes('safeEqualHex') && store.includes('timingSafeEqual')],
-  ['checkout verification checks durable state', vipRoute.includes('assertVipLinkActive(payload, token)') && vipRoute.includes('assertVipPaymentStatePayable(record)')],
+  ['checkout verification checks durable state', vipVerifyRoute.includes('assertVipLinkActive(payload, token)') && vipVerifyRoute.includes('assertVipPaymentStatePayable(record)')],
   ['VIP amount parser rejects ambiguous decimals', vipRoute.includes('parseVipAmount(body.amount)') && vipInput.includes('Number.isSafeInteger') && vipInput.includes('Decimal inputs are deliberately rejected')],
   ['payment checks durable state before and after provider', paymentActiveChecks >= 2],
   ['payment enforces same-origin mutation', paymentRoute.includes('assertSameOriginMutation(request)')],
@@ -93,13 +94,14 @@ const requirements = [
   ['legacy admin has no hard-coded PIN fallback', !legacyAdminJs.includes('1999') && !legacyAdminHtml.includes('adminPinInput') && !legacyAdminHtml.includes('verifyPin')],
   ['legacy admin sends no client admin-key credential', !legacyAdminJs.includes('x-admin-key') && !legacyAdminJs.includes('adminKey=') && !legacyAdminJs.includes('Saatchi_admin_pin')],
   ['legacy admin VIP links use hardened Next route', legacyAdminHtml.includes('/admin/viplink') && legacyAdminJs.includes("window.open('/admin/viplink', '_blank')")],
+  ['VIP bearer token is kept out of verification URLs', vipRoute.includes('/vip-checkout#token=') && checkout.includes("fetch('/api/vip-link/verify'") && checkout.includes("window.history.replaceState(null, '', '/vip-checkout')") && !checkout.includes('/api/vip-link?token=')],
   ['checkout legal consents default false', checkout.includes('useState(false)') && !checkout.includes('Hukuki metinler (Gizli)') && !checkout.includes('termsAccepted: true')],
   ['checkout exposes legal document links', checkout.includes('/on-bilgilendirme-formu') && checkout.includes('/mesafeli-satis-sozlesmesi') && checkout.includes('/yuksek-degerli-urun-teslimi')],
   ['checkout makes payment obligation explicit', checkout.includes('Ödeme Yükümlülüğü Doğuran')],
   ['checkout visibly shows product identity', checkout.includes('{summary.name}')],
   ['checkout exposes KVKK notice at data collection', checkout.includes('/kvkk-aydinlatma-metni') && checkout.includes('kimlik ve iletişim bilgileri')],
   ['public payment errors are sanitized', paymentRoute.includes('publicPaymentError') && paymentRoute.includes('Ödeme hizmeti şu anda kullanılamıyor')],
-  ['public VIP verification errors are sanitized', vipRoute.includes('VIP bağlantısı şu anda doğrulanamıyor') && vipRoute.includes('VIP bağlantısı geçersiz, iptal edilmiş veya süresi dolmuş')],
+  ['public VIP verification errors are sanitized', vipVerifyRoute.includes('VIP bağlantısı şu anda doğrulanamıyor') && vipVerifyRoute.includes('VIP bağlantısı geçersiz, kullanılmış, iptal edilmiş veya süresi dolmuş')],
   ['provider HTML is never injected into checkout', !checkout.includes('document.write') && !checkout.includes('htmlContent')],
   ['checkout does not embed payment iframe', !checkout.includes('<iframe') && !checkout.includes("createElement('iframe')")],
   ['checkout loads no third-party scripts', !checkout.includes('<script') && !checkout.includes('next/script') && !checkout.includes('googletagmanager') && !checkout.includes('clarity')],
