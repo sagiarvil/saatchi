@@ -10,6 +10,7 @@ const tokenLib = await import('../src/lib/vip-token.ts');
 const store = await import('../src/lib/vip-link-store.ts');
 const paymentBoundary = await import('../src/lib/payment-boundary.ts');
 const vipInput = await import('../src/lib/vip-input.ts');
+const paymentRouteModule = await import('../src/app/api/payment/route.ts');
 
 function expectThrow(fn, pattern) {
   let thrown = null;
@@ -44,6 +45,9 @@ assert.ok(Number.isNaN(vipInput.parseVipAmount(123456.78)));
 assert.ok(Number.isNaN(vipInput.parseVipAmount('123.45')));
 assert.ok(Number.isNaN(vipInput.parseVipAmount('-100')));
 assert.equal(vipInput.normalizeVipTitle('  Rolex\u0000   Submariner  '), 'Rolex Submariner');
+assert.doesNotThrow(() => paymentRouteModule.assertNoCardholderData({ token: 'opaque', custName: 'Test' }));
+expectThrow(() => paymentRouteModule.assertNoCardholderData({ cardNumber: '4111111111111111' }), /Kart numarası/i);
+expectThrow(() => paymentRouteModule.assertNoCardholderData({ nested: { cvv: '123' } }), /Kart numarası/i);
 
 const now = Date.now();
 const payload = {
