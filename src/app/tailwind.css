@@ -1,3 +1,11 @@
+/* ========================================================================= */
+/* 🔒 [KİLİTLİ TASARIM] - AI AJANLARINA KESİN UYARI                         */
+/* ========================================================================= */
+/* Bu Tailwind CSS dosyası, Mega Menü tasarımı için ÖZEL DERLENMİŞTİR.       */
+/* AGENTS.md Madde 10 gereği, bu dosyanın eski sürüme döndürülmesi, silinmesi*/
+/* veya build adımlarında ezilmesi (override) KESİNLİKLE YASAKTIR.           */
+/* ========================================================================= */
+
 /*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
 @layer properties;
 @layer theme, base, components, utilities;

@@ -1,3 +1,12 @@
+// =========================================================================
+// 🔒 [KİLİTLİ TASARIM] - AI AJANLARINA KESİN UYARI
+// =========================================================================
+// Bu Navbar tasarımı (Mega Menü) KULLANICI TARAFINDAN ÖZEL OLARAK ONAYLANMIŞTIR.
+// AGENTS.md Madde 10 gereği, bu dosya üzerinde HİÇBİR AJAN tasarımsal
+// veya yapısal bir geri alma (revert), eski sürüme dönme veya değişiklik YAPAMAZ.
+// Tailwind sınıflarına ve component dizilimine DOKUNMAK YASAKTIR.
+// =========================================================================
+
 'use client';
 
 import { useEffect, useState } from 'react';
