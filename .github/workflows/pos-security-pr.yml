@@ -22,6 +22,7 @@ on:
       - 'src/lib/vip-admin-throttle.ts'
       - 'scripts/check-vip-security.mjs'
       - 'scripts/test-vip-behavior.mjs'
+      - 'scripts/smoke-pos-runtime.mjs'
       - 'firebase.json'
       - 'docs/POS_SECURITY_HANDOFF.md'
       - 'docs/POS_BANK_REVIEW_EVIDENCE.md'
@@ -58,3 +59,5 @@ jobs:
       - name: Lint changed POS surface
         run: npx eslint src/app/api/payment/route.ts src/app/api/vip-link/route.ts src/app/api/admin/vip-links/route.ts src/app/api/admin/vip-payment-reconcile/route.ts src/app/admin/viplink/page.tsx src/app/vip-checkout/page.tsx src/lib/payment-boundary.ts src/lib/payment-session-consistency.ts src/lib/vip-link-store.ts src/lib/vip-input.ts src/lib/vip-admin-totp.ts src/lib/vip-admin-throttle.ts
       - run: npm run build
+      - name: Built POS runtime smoke
+        run: node scripts/smoke-pos-runtime.mjs
