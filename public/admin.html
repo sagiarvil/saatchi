@@ -2844,13 +2844,13 @@
 </head>
 <body>
 
-<!-- GÜVENLİ YÖNETİCİ GOOGLE 2FA & PIN GİRİŞ KORUMASI -->
+<!-- GÜVENLİ YÖNETİCİ GOOGLE/FIREBASE GİRİŞ KORUMASI -->
 <div class="admin-auth-overlay" id="adminAuthGate">
   <div class="admin-auth-box">
     <div style="font-size:38px; margin-bottom:12px;">🛡️</div>
     <h2 style="font-family:'Playfair Display',serif; margin:0 0 8px; color:var(--admin-teal-dark); font-size:22px;">Saatchi Yönetici Girişi</h2>
     <p style="font-size:13px; color:var(--admin-muted); margin:0 0 20px; line-height:1.5;">
-      Bu yönetim paneli en üst düzey güvenlik standardı olan <strong>Google 2FA</strong> ve <strong>Yönetici PIN Doğrulaması</strong> ile korunmaktadır.
+      Bu yönetim paneline yalnızca yetkilendirilmiş Google/Firebase yönetici hesabı ile giriş yapılabilir.
     </p>
     
     <button type="button" id="btnGoogleAuth" class="btn-google-auth" onclick="AdminApp.loginWithGoogle()">
@@ -2859,22 +2859,6 @@
     </button>
 
     <div id="googleAuthError" style="color:#C81E1E; font-size:12px; font-weight:700; margin-top:14px; display:none; background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:10px 12px; text-align:left; line-height:1.4;"></div>
-
-    <div style="display:flex; align-items:center; margin:22px 0 16px; color:#94A3B8; font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px;">
-      <div style="flex:1; height:1px; background:#E2E8F0;"></div>
-      <span style="padding:0 12px;">VEYA YÖNETİCİ PIN KODU</span>
-      <div style="flex:1; height:1px; background:#E2E8F0;"></div>
-    </div>
-
-    <form onsubmit="event.preventDefault(); AdminApp.verifyPin();" style="display:flex; flex-direction:column; gap:10px;">
-      <input type="password" id="adminPinInput" placeholder="Yönetici PIN Kodu" maxlength="10" inputmode="numeric" pattern="[0-9]*" autocomplete="current-password" style="width:100%; padding:13px; border:1.5px solid #CBD5E1; border-radius:10px; font-size:18px; text-align:center; letter-spacing:6px; font-weight:800; box-sizing:border-box; background:#FFF; min-height:48px;">
-      <button type="submit" style="width:100%; min-height:48px; padding:12px; background:var(--admin-teal-dark, #084C47); color:#FFF; border:none; border-radius:10px; font-size:14.5px; font-weight:800; cursor:pointer; transition:all 0.2s; box-shadow:0 2px 8px rgba(8,76,71,0.25);">
-        🔒 PIN ile Giriş Yap
-      </button>
-      <div id="pinErrorMsg" style="color:#C81E1E; font-size:12px; font-weight:700; display:none; background:#FEF2F2; border:1px solid #FECACA; border-radius:8px; padding:8px 12px; line-height:1.4;">
-        ❌ Geçersiz PIN kodu. Lütfen tekrar deneyiniz.
-      </div>
-    </form>
   </div>
 </div>
 
@@ -2887,7 +2871,7 @@
 
   <div class="admin-nav-actions">
     <button type="button" onclick="AdminApp.switchTab('feasibility')" style="font-size:12px; font-weight:800; color:#FEF3C7; background:rgba(217,119,6,0.3); border:1px solid rgba(245,158,11,0.7); padding:5px 12px; border-radius:6px; cursor:pointer; display:inline-flex; align-items:center; gap:5px;" title="Öngörü ve Fizibilite Simülatörünü Aç"><span>📈 Öngörü & Fizibilite</span></button>
-    <a href="/odeme-linki.html" target="_blank" style="font-size:12px; font-weight:700; color:#F3E5AB; background:rgba(212,175,55,0.2); border:1px solid rgba(212,175,55,0.5); padding:5px 12px; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:5px;" title="VIP Ödeme Linki Oluşturucu"><span>🔗 VIP Link Paneli</span></a>
+    <a href="/admin/viplink" target="_blank" style="font-size:12px; font-weight:700; color:#F3E5AB; background:rgba(212,175,55,0.2); border:1px solid rgba(212,175,55,0.5); padding:5px 12px; border-radius:6px; text-decoration:none; display:inline-flex; align-items:center; gap:5px;" title="VIP Ödeme Linki Oluşturucu"><span>🔗 VIP Link Paneli</span></a>
     <span class="live-status-pill"><span class="live-pulse-dot"></span> Canlı</span>
     <span id="liveClock" style="font-size:12px; color:var(--admin-gold); font-weight:700; font-family:monospace;">--:--:--</span>
     <span id="adminUserBadge" style="display:none; font-size:11.5px; background:rgba(255,255,255,0.12); color:#FFF; padding:4px 10px; border-radius:6px; border:1px solid rgba(194,167,104,0.4); font-weight:600;"></span>
@@ -2916,7 +2900,7 @@
         <span>🧾 Toplu Fatura (SMS)</span>
         <span class="kbd-tag">S</span>
       </button>
-      <a href="/odeme-linki.html" target="_blank" class="btn-pro-action action-vip" title="VIP Ödeme Linki Oluşturucu (Kısayol: V)">
+      <a href="/admin/viplink" target="_blank" class="btn-pro-action action-vip" title="VIP Ödeme Linki Oluşturucu (Kısayol: V)">
         <span>🔗 VIP Link</span>
         <span class="kbd-tag">V</span>
       </a>
@@ -6053,7 +6037,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
 <script src="js/data.js"></script>
-<script src="js/vip-payment.js?v=2.8.8"></script>
 <script src="js/admin.js?v=20260915-v11-fixed"></script>
 </body>
 </html>
