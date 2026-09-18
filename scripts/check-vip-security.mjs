@@ -89,7 +89,7 @@ const requirements = [
   ['public payment errors are sanitized', paymentRoute.includes('publicPaymentError') && paymentRoute.includes('Ödeme hizmeti şu anda kullanılamıyor')],
   ['public VIP verification errors are sanitized', vipRoute.includes('VIP bağlantısı şu anda doğrulanamıyor') && vipRoute.includes('VIP bağlantısı geçersiz, iptal edilmiş veya süresi dolmuş')],
   ['provider HTML is never injected into checkout', !checkout.includes('document.write') && !checkout.includes('htmlContent')],
-  ['checkout does not embed payment iframe', !checkout.includes('<iframe') && !checkout.includes('createElement(\'iframe\')],
+  ['checkout does not embed payment iframe', !checkout.includes('<iframe') && !checkout.includes("createElement('iframe')")],
   ['checkout loads no third-party scripts', !checkout.includes('<script') && !checkout.includes('next/script') && !checkout.includes('googletagmanager') && !checkout.includes('clarity')],
   ['payment handoff requires HTTPS', boundary.includes("url.protocol !== 'https:'")],
   ['payment handoff supports explicit origin allowlist', boundary.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS') && boundary.includes('allowlist.has(url.origin)')],
