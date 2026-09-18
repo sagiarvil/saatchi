@@ -23,6 +23,7 @@ const firebase = read('firebase.json');
 const workflow = read('.github/workflows/pos-security-pr.yml');
 const productionRelease = read('.github/workflows/production-release.yml');
 const mainRegression = read('.github/workflows/ui-regression.yml');
+const runtimeSmokeScript = read('scripts/smoke-pos-runtime.mjs');
 const liveRuntimeSmoke = read('.github/workflows/live-runtime-smoke.yml');
 const handoff = read('docs/POS_SECURITY_HANDOFF.md');
 const bankEvidence = read('docs/POS_BANK_REVIEW_EVIDENCE.md');
@@ -130,7 +131,8 @@ const requirements = [
   ['production deploy requires rollback anchor', productionRelease.includes('ROLLBACK_ANCHOR_MISSING') && productionRelease.includes('ROLLBACK_ANCHOR_VERIFIED')],
   ['live runtime smoke runs after production release', liveRuntimeSmoke.includes('workflows: ["Saatchi Production Release"]') && !liveRuntimeSmoke.includes('push:\n    branches: [main]')],
   ['live runtime smoke verifies exact SHA and checkout security headers', liveRuntimeSmoke.includes('LIVE_DEPLOY_SHA_OK') && liveRuntimeSmoke.includes('strict-transport-security') && liveRuntimeSmoke.includes('x-content-type-options') && liveRuntimeSmoke.includes('content-security-policy') && liveRuntimeSmoke.includes('x-robots-tag')],
-  ['main regression repeats security and dependency gates', mainRegression.includes('npm audit --audit-level=high') && mainRegression.includes('npm audit --omit=dev --audit-level=moderate') && mainRegression.includes('npm run check:vip') && mainRegression.includes('npm run test:vip') && mainRegression.includes('node --check public/js/admin.js') && mainRegression.includes('npm run build')],
+  ['main regression repeats security and dependency gates', mainRegression.includes('npm audit --audit-level=high') && mainRegression.includes('npm audit --omit=dev --audit-level=moderate') && mainRegression.includes('npm run check:vip') && mainRegression.includes('npm run test:vip') && mainRegression.includes('node --check public/js/admin.js') && mainRegression.includes('npm run build') && mainRegression.includes('node scripts/smoke-pos-runtime.mjs')],
+  ['PR gate executes built runtime HTTP smoke', workflow.includes('node scripts/smoke-pos-runtime.mjs') && runtimeSmokeScript.includes('/api/vip-link/verify') && runtimeSmokeScript.includes('legacyQueryVerify.status, 405') && runtimeSmokeScript.includes('cardDataAttempt.response.status, 400')],
   ['GitHub Actions are pinned to immutable SHAs', workflow.includes('actions/checkout@11d5960a326750d5838078e36cf38b85af677262') && workflow.includes('actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020') && mainRegression.includes('actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065') && productionRelease.includes('actions/checkout@11d5960a326750d5838078e36cf38b85af677262')],
   ['PR gate checks dependency high/critical vulnerabilities', workflow.includes('npm audit --audit-level=high')],
   ['handoff documents production payment API allowlist', handoff.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS')],
