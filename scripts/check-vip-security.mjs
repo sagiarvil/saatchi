@@ -55,7 +55,7 @@ const requirements = [
   ['VIP revoke is durable', vipRoute.includes('revokeVipLink') && store.includes("state: 'revoked'") && store.includes('revokedAt: Date.now()')],
   ['VIP record is Firestore-backed', store.includes('firestore.googleapis.com') && store.includes("const COLLECTION = 'saatchiVipLinks'")],
   ['Firestore project is fail-closed and pinned', store.includes("EXPECTED_PROJECT_ID = 'studio-7658156126-ffb8e'") && store.includes('Beklenmeyen Firestore proje kimliği')],
-  ['production forbids static Firestore bearer token', store.includes("NODE_ENV === 'production' && explicit") && store.includes('workload identity kullanılmalıdır')],
+  ['production forbids static Firestore bearer token', store.includes("NODE_ENV === 'production' && explicit") && store.includes('runtime service-account metadata kimliği kullanılmalıdır')],
   ['VIP token is stored only as hash', store.includes('tokenHash') && store.includes("createHash('sha256')")],
   ['VIP hash comparison is timing safe', store.includes('safeEqualHex') && store.includes('timingSafeEqual')],
   ['checkout verification checks durable state', vipRoute.includes('assertVipLinkActive(payload, token)') && vipRoute.includes('assertVipPaymentStatePayable(record)')],
