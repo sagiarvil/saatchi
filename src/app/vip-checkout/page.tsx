@@ -3,45 +3,62 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { ArrowRight, LockKeyhole, ShieldCheck, Store, UserRound } from 'lucide-react';
+import { ArrowRight, LockKeyhole, ShieldCheck, UserRound } from 'lucide-react';
 
 type VipSummary = { id: string; name: string; price: number; exp: number };
 
+type PaymentResponse = {
+  status?: string;
+  message?: string;
+  redirectUrl?: string | null;
+  gatewayUrl?: string | null;
+  formData?: Record<string, string> | null;
+};
+
+function errorMessage(error: unknown, fallback: string) {
+  return error instanceof Error && error.message ? error.message : fallback;
+}
 
 function CheckoutContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get('token') || '';
-  const [summary, setSummary] = useState<any>(null);
-  const [loadingSummary, setLoadingSummary] = useState(true);
-  const [error, setError] = useState('');
+  const [summary, setSummary] = useState<VipSummary | null>(null);
+  const [loadingSummary, setLoadingSummary] = useState(Boolean(token));
+  const [error, setError] = useState(token ? '' : 'Geçersiz veya eksik VIP bağlantısı.');
   const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({ custName: '', custPhone: '', custIdentity: '', email: '', custAddress: '' });
-  
-  // Rule 5: Checkboxes checked by default, but we'll hide them from the UI.
-  const [termsAccepted, setTermsAccepted] = useState(true);
-  const [preInformationAccepted, setPreInformationAccepted] = useState(true);
-  const [highValueAccepted, setHighValueAccepted] = useState(true);
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [preInformationAccepted, setPreInformationAccepted] = useState(false);
+  const [highValueAccepted, setHighValueAccepted] = useState(false);
 
-  const updateField = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setForm({ ...form, [e.target.id]: e.target.value });
+  const updateField = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((current) => ({ ...current, [e.target.id]: e.target.value }));
+  };
 
   useEffect(() => {
-    if (!token) {
-      setError('Geçersiz veya eksik VIP bağlantısı.');
-      setLoadingSummary(false);
-      return;
-    }
+    if (!token) return;
+
+    let active = true;
     fetch(`/api/vip-link?token=${encodeURIComponent(token)}`, { cache: 'no-store' })
-      .then(res => res.json())
-      .then(data => {
-        if (!data.success) throw new Error(data.message || 'VIP bağlantısı geçersiz veya süresi dolmuş.');
-        setSummary(data.payload);
+      .then((res) => res.json().then((data) => ({ res, data })))
+      .then(({ res, data }) => {
+        if (!res.ok || !data.success) throw new Error(data.message || 'VIP bağlantısı geçersiz veya süresi dolmuş.');
+        if (active) setSummary(data.payload as VipSummary);
       })
-      .catch(e => setError(e.message))
-      .finally(() => setLoadingSummary(false));
+      .catch((fetchError: unknown) => {
+        if (active) setError(errorMessage(fetchError, 'VIP bağlantısı doğrulanamadı.'));
+      })
+      .finally(() => {
+        if (active) setLoadingSummary(false);
+      });
+
+    return () => {
+      active = false;
+    };
   }, [token]);
 
-  function followProvider(data: any) {
+  function followProvider(data: PaymentResponse) {
     const assertHttpsUrl = (value: unknown) => {
       const url = new URL(String(value || ''));
       if (url.protocol !== 'https:' || url.username || url.password) {
@@ -54,6 +71,7 @@ function CheckoutContent() {
       const paymentForm = document.createElement('form');
       paymentForm.method = 'POST';
       paymentForm.action = assertHttpsUrl(data.gatewayUrl);
+
       Object.entries(data.formData).forEach(([key, value]) => {
         const input = document.createElement('input');
         input.type = 'hidden';
@@ -61,6 +79,7 @@ function CheckoutContent() {
         input.value = String(value ?? '');
         paymentForm.appendChild(input);
       });
+
       document.body.appendChild(paymentForm);
       paymentForm.submit();
       return;
@@ -77,8 +96,14 @@ function CheckoutContent() {
   async function startPayment() {
     setError('');
     if (!summary) return;
+
     if (!form.custName.trim() || !form.custPhone.trim() || !form.custIdentity.trim()) {
       setError('Ad soyad, telefon ve kimlik bilgisi zorunludur.');
+      return;
+    }
+
+    if (!termsAccepted || !preInformationAccepted || !highValueAccepted) {
+      setError('Ödeme öncesi zorunlu sözleşme, bilgilendirme ve güvenli teslim koşullarını onaylayın.');
       return;
     }
 
@@ -86,26 +111,32 @@ function CheckoutContent() {
     try {
       const response = await fetch('/api/payment', {
         method: 'POST',
+        credentials: 'same-origin',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           token,
           ...form,
-          termsAccepted: true,
-          preInformationAccepted: true,
-          highValueDeliveryAccepted: true,
-          presentedAt: new Date().toISOString()
-        })
+          termsAccepted,
+          preInformationAccepted,
+          highValueDeliveryAccepted: highValueAccepted,
+          presentedAt: new Date().toISOString(),
+        }),
       });
-      const data = await response.json();
-      if (!response.ok || data.status !== 'success') throw new Error(data.message || 'Ödeme oturumu oluşturulamadı.');
+
+      const data = await response.json() as PaymentResponse;
+      if (!response.ok || data.status !== 'success') {
+        throw new Error(data.message || 'Ödeme oturumu oluşturulamadı.');
+      }
       followProvider(data);
-    } catch (e: any) {
-      setError(e.message || 'Ödeme oturumu oluşturulamadı.');
+    } catch (paymentError: unknown) {
+      setError(errorMessage(paymentError, 'Ödeme oturumu oluşturulamadı.'));
       setLoading(false);
     }
   }
 
-  if (loadingSummary) return <div className="min-h-screen bg-[#f7f9fc] flex items-center justify-center text-gray-500 text-sm tracking-wide">Güvenli bağlantı doğrulanıyor…</div>;
+  if (loadingSummary) {
+    return <div className="min-h-screen bg-[#f7f9fc] flex items-center justify-center text-gray-500 text-sm tracking-wide">Güvenli bağlantı doğrulanıyor…</div>;
+  }
 
   return (
     <div className="min-h-screen bg-[#f7f9fc] px-4 py-12 text-gray-900 sm:px-6 lg:py-16">
@@ -132,30 +163,39 @@ function CheckoutContent() {
                 <UserRound className="h-5 w-5 text-blue-600" />
                 <h2 className="text-lg font-medium text-gray-800">Fatura ve İletişim Bilgileri</h2>
               </div>
+
               <div className="grid gap-5 sm:grid-cols-2">
-                <input id="custName" value={form.custName} onChange={updateField} placeholder="Ad Soyad *" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
-                <input id="custPhone" value={form.custPhone} onChange={updateField} placeholder="Telefon *" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
-                <input id="custIdentity" value={form.custIdentity} onChange={updateField} placeholder="T.C. / Pasaport / Vergi No *" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
-                <input id="email" value={form.email} onChange={updateField} placeholder="E-posta" type="email" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
-                <textarea id="custAddress" value={form.custAddress} onChange={updateField} placeholder="Fatura / iletişim adresi" rows={3} className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm sm:col-span-2" />
+                <input id="custName" value={form.custName} onChange={updateField} placeholder="Ad Soyad *" autoComplete="name" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                <input id="custPhone" value={form.custPhone} onChange={updateField} placeholder="Telefon *" autoComplete="tel" inputMode="tel" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                <input id="custIdentity" value={form.custIdentity} onChange={updateField} placeholder="T.C. / Pasaport / Vergi No *" autoComplete="off" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                <input id="email" value={form.email} onChange={updateField} placeholder="E-posta" type="email" autoComplete="email" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                <textarea id="custAddress" value={form.custAddress} onChange={updateField} placeholder="Fatura / iletişim adresi" rows={3} autoComplete="street-address" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm sm:col-span-2" />
               </div>
 
-              {/* Hukuki metinler (Gizli) */}
-              <div className="hidden">
-                <input type="checkbox" checked={preInformationAccepted} readOnly />
-                <input type="checkbox" checked={termsAccepted} readOnly />
-                <input type="checkbox" checked={highValueAccepted} readOnly />
+              <div className="mt-7 space-y-3 border-t border-gray-100 pt-6 text-sm text-gray-600">
+                <label className="flex items-start gap-3">
+                  <input type="checkbox" checked={preInformationAccepted} onChange={(e) => setPreInformationAccepted(e.target.checked)} className="mt-1 h-4 w-4" />
+                  <span><Link href="/on-bilgilendirme-formu" target="_blank" className="font-medium text-blue-700 underline underline-offset-2">Ön Bilgilendirme Formu</Link>&apos;nu okudum ve kabul ediyorum.</span>
+                </label>
+                <label className="flex items-start gap-3">
+                  <input type="checkbox" checked={termsAccepted} onChange={(e) => setTermsAccepted(e.target.checked)} className="mt-1 h-4 w-4" />
+                  <span><Link href="/mesafeli-satis-sozlesmesi" target="_blank" className="font-medium text-blue-700 underline underline-offset-2">Mesafeli Satış Sözleşmesi</Link>&apos;ni okudum ve kabul ediyorum.</span>
+                </label>
+                <label className="flex items-start gap-3">
+                  <input type="checkbox" checked={highValueAccepted} onChange={(e) => setHighValueAccepted(e.target.checked)} className="mt-1 h-4 w-4" />
+                  <span><Link href="/yuksek-degerli-urun-teslimi" target="_blank" className="font-medium text-blue-700 underline underline-offset-2">Yüksek Değerli Ürün Teslimi</Link> koşullarını kabul ediyorum.</span>
+                </label>
               </div>
 
               {error && <div className="mt-6 border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 rounded-md">{error}</div>}
 
-              <button onClick={startPayment} disabled={loading} className="mt-8 flex w-full items-center justify-center gap-3 bg-blue-600 rounded-md px-5 py-4 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-blue-700 shadow-lg disabled:opacity-70 disabled:cursor-not-allowed">
-                {loading ? 'İşleminiz hazırlanıyor…' : 'Güvenli Ödemeyi Başlat'} 
+              <button onClick={startPayment} disabled={loading || !termsAccepted || !preInformationAccepted || !highValueAccepted} className="mt-8 flex w-full items-center justify-center gap-3 bg-blue-600 rounded-md px-5 py-4 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-blue-700 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed">
+                {loading ? 'İşleminiz hazırlanıyor…' : 'Ödeme Yükümlülüğü Doğuran Güvenli Ödemeyi Başlat'}
                 {!loading && <ArrowRight className="h-4 w-4" />}
               </button>
-              
+
               <div className="mt-6 text-center text-xs text-gray-400 flex items-center justify-center gap-2">
-                <LockKeyhole className="h-3 w-3" /> 256-bit SSL Güvenli Bağlantı
+                <LockKeyhole className="h-3 w-3" /> TLS ile şifreli bağlantı · Kart bilgileri banka/ödeme kuruluşu ekranında girilir
               </div>
             </section>
           </div>
