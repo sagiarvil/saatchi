@@ -6,7 +6,7 @@ export type PaymentHandoff = {
 
 const MAX_FORM_FIELDS = 64;
 const MAX_FORM_VALUE_LENGTH = 4096;
-const SENSITIVE_PAYMENT_FIELD = /^(?:card_?number|pan|cardpan|card_?(?:cvv|cvc)|cvv|cvc|card_?expiry|expiry|expiration|cardexpiredate)$/i;
+const SENSITIVE_PAYMENT_FIELD = /^(?:card_?(?:number|no|pan|cvv|cvc|expiry|expiredate|securitycode)|cc_?(?:number|num|no)|pan|cvv|cvc|security_?code|expiry|expiration|expiry_?(?:date|month|year)|expiration_?(?:date|month|year)|cardholderdata)$/i;
 
 function parseAllowedOrigins(raw = process.env.SAATCHI_PAYMENT_ALLOWED_ORIGINS || '') {
   return new Set(
