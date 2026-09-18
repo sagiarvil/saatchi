@@ -16,6 +16,7 @@ const listRoute = read('src/app/api/admin/vip-links/route.ts');
 const reconcileRoute = read('src/app/api/admin/vip-payment-reconcile/route.ts');
 const firebase = read('firebase.json');
 const workflow = read('.github/workflows/pos-security-pr.yml');
+const handoff = read('docs/POS_SECURITY_HANDOFF.md');
 const legacyPaymentDirExists = fs.existsSync(path.join(root, 'src/lib/payment_backend_ready'));
 const mockSuccessExists = fs.existsSync(path.join(root, 'src/app/test-success'));
 
@@ -72,6 +73,10 @@ const requirements = [
   ['checkout CSP is present', firebase.includes('Content-Security-Policy')],
   ['POS PRs run isolated regression workflow before merge', workflow.includes('pull_request:') && workflow.includes('npm run check:vip') && workflow.includes('npm run test:vip') && workflow.includes('npm run build')],
   ['PR gate checks dependency high/critical vulnerabilities', workflow.includes('npm audit --audit-level=high')],
+  ['handoff documents production payment API allowlist', handoff.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS')],
+  ['handoff documents hosted-payment allowlist', handoff.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS')],
+  ['handoff documents external bank test requirement', handoff.includes('Real bank test-merchant flow')],
+  ['handoff documents ASV validation requirement', handoff.includes('ASV external scan')],
 ];
 
 const failed = requirements.filter(([, ok]) => !ok);
