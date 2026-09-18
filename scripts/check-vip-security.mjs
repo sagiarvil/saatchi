@@ -14,6 +14,7 @@ const boundary = read('src/lib/payment-boundary.ts');
 const store = read('src/lib/vip-link-store.ts');
 const vipInput = read('src/lib/vip-input.ts');
 const vipAdminTotp = read('src/lib/vip-admin-totp.ts');
+const vipAdminThrottle = read('src/lib/vip-admin-throttle.ts');
 const listRoute = read('src/app/api/admin/vip-links/route.ts');
 const reconcileRoute = read('src/app/api/admin/vip-payment-reconcile/route.ts');
 const firebase = read('firebase.json');
@@ -50,6 +51,7 @@ const requirements = [
   ['production admin session secret is mandatory and independent', session.includes('VIP_ADMIN_SESSION_SECRET production ortamında') && session.includes('diğer ödeme/yönetim secret değerlerinden bağımsız')],
   ['VIP admin production MFA is mandatory', sessionRoute.includes('verifyAdminTotp(otp)') && vipAdminTotp.includes('VIP_ADMIN_TOTP_SECRET production ortamında yapılandırılmamış') && vipAdminTotp.includes('timingSafeEqual')],
   ['VIP admin UI asks for a six-digit OTP', page.includes('2 Adımlı Doğrulama') && page.includes('one-time-code') && page.includes('loginOtp')],
+  ['VIP admin repeated failures are throttled', sessionRoute.includes('assertAdminLoginNotThrottled(request)') && sessionRoute.includes('recordAdminLoginFailure(request)') && sessionRoute.includes("status: originError ? 403 : throttled ? 429") && vipAdminThrottle.includes('MAX_FAILURES = 5') && sessionRoute.includes("Retry-After")],
   ['mutations enforce same-origin', vipRoute.includes('assertSameOriginMutation(request)')],
   ['production origin is pinned to canonical Saatchi host', session.includes("SAATCHI_PUBLIC_ORIGIN || 'https://saatchi.watch'") && session.includes("origin !== 'https://saatchi.watch'")],
   ['provenance-less mutations fail closed', session.includes('Yönetim isteği kaynak doğrulamasından geçemedi.')],
@@ -104,6 +106,7 @@ const requirements = [
   ['security headers include HSTS', firebase.includes('Strict-Transport-Security')],
   ['security headers block MIME sniffing', firebase.includes('X-Content-Type-Options') && firebase.includes('nosniff')],
   ['checkout CSP is present', firebase.includes('Content-Security-Policy')],
+  ['VIP checkout has stricter CSP and browser isolation', firebase.includes("connect-src 'self'; frame-src 'none'") && firebase.includes('Cross-Origin-Resource-Policy') && firebase.includes('X-Permitted-Cross-Domain-Policies')],
   ['VIP checkout is noindex/nocache', vipCheckoutLayout.includes('index: false') && vipCheckoutLayout.includes('nocache: true') && firebase.includes('"source": "/vip-checkout"') && firebase.includes('noindex, nofollow, noarchive, nosnippet')],
   ['admin surfaces are no-store/noindex', firebase.includes('"source": "/admin/**"') && firebase.includes('"source": "/admin.html"')],
   ['public crawl is not globally blocked', robots.includes('Allow: /') && !robots.includes('Disallow: /\n') && robots.includes('Disallow: /vip-checkout') && robots.includes('Disallow: /admin')],
