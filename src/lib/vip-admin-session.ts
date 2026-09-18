@@ -23,9 +23,21 @@ export function assertConfiguredAdminKey() {
 }
 
 function getSessionSecret() {
-  const explicit = process.env.VIP_ADMIN_SESSION_SECRET;
-  const rootSecret = explicit && explicit.length >= 32 ? explicit : getPaymentSecret();
-  const adminKeyFingerprint = crypto.createHash('sha256').update(assertConfiguredAdminKey(), 'utf8').digest();
+  const explicit = String(process.env.VIP_ADMIN_SESSION_SECRET || '');
+  const paymentSecret = getPaymentSecret();
+  const adminKey = assertConfiguredAdminKey();
+
+  if (process.env.NODE_ENV === 'production') {
+    if (explicit.length < 32) {
+      throw new Error('VIP_ADMIN_SESSION_SECRET production ortamında yapılandırılmamış veya yetersiz.');
+    }
+    if (explicit === paymentSecret || explicit === adminKey) {
+      throw new Error('VIP_ADMIN_SESSION_SECRET diğer ödeme/yönetim secret değerlerinden bağımsız olmalıdır.');
+    }
+  }
+
+  const rootSecret = explicit.length >= 32 ? explicit : paymentSecret;
+  const adminKeyFingerprint = crypto.createHash('sha256').update(adminKey, 'utf8').digest();
   return crypto
     .createHmac('sha256', rootSecret)
     .update('saatchi:vip-admin-session:v2')
