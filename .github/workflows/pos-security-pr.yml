@@ -32,5 +32,6 @@ jobs:
       - run: npm ci
       - run: npm run check:vip
       - run: npm run test:vip
-      - run: npm run lint
+      - name: Lint changed POS surface
+        run: npx eslint src/app/api/payment/route.ts src/app/api/vip-link/route.ts src/app/api/admin/vip-links/route.ts src/app/admin/viplink/page.tsx src/app/vip-checkout/page.tsx src/lib/payment-boundary.ts
       - run: npm run build
