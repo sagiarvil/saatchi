@@ -63,9 +63,9 @@ function parseCookies(header: string | null) {
 }
 
 export function verifyAdminKey(candidate: string) {
-  const expected = Buffer.from(assertConfiguredAdminKey(), 'utf8');
-  const actual = Buffer.from(String(candidate || ''), 'utf8');
-  return expected.length === actual.length && crypto.timingSafeEqual(expected, actual);
+  const expected = crypto.createHash('sha256').update(assertConfiguredAdminKey(), 'utf8').digest();
+  const actual = crypto.createHash('sha256').update(String(candidate || ''), 'utf8').digest();
+  return crypto.timingSafeEqual(expected, actual);
 }
 
 export function expectedPublicOrigin(request: Request) {
