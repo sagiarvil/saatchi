@@ -69,6 +69,8 @@ const requirements = [
   ['checkout legal consents default false', checkout.includes('useState(false)') && !checkout.includes('Hukuki metinler (Gizli)') && !checkout.includes('termsAccepted: true')],
   ['checkout exposes legal document links', checkout.includes('/on-bilgilendirme-formu') && checkout.includes('/mesafeli-satis-sozlesmesi') && checkout.includes('/yuksek-degerli-urun-teslimi')],
   ['checkout makes payment obligation explicit', checkout.includes('Ödeme Yükümlülüğü Doğuran')],
+  ['checkout visibly shows product identity', checkout.includes('{summary.name}')],
+  ['checkout exposes KVKK notice at data collection', checkout.includes('/kvkk-aydinlatma-metni') && checkout.includes('kimlik ve iletişim bilgileri')],
   ['provider HTML is never injected into checkout', !checkout.includes('document.write') && !checkout.includes('htmlContent')],
   ['payment handoff requires HTTPS', boundary.includes("url.protocol !== 'https:'")],
   ['payment handoff supports explicit origin allowlist', boundary.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS') && boundary.includes('allowlist.has(url.origin)')],
