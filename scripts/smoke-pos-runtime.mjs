@@ -121,7 +121,16 @@ try {
   const checkout = await fetch(`${base}/vip-checkout`, { redirect: 'manual' });
   assert.equal(checkout.status, 200);
 
-  console.log('POS built-runtime smoke: PASS (routes, no-store, strict schemas, POST token verify, query-token disabled, card-data rejection)');
+  const paymentReview = await fetch(`${base}/odeme`, { redirect: 'manual' });
+  assert.equal(paymentReview.status, 200);
+  const paymentReviewHtml = await paymentReview.text();
+  assert.match(paymentReviewHtml, /SEMİH SONBAHAR - SAATCHI/);
+  assert.match(paymentReviewHtml, /7740298676/);
+  assert.match(paymentReviewHtml, /492956/);
+  assert.match(paymentReviewHtml, /Mesafeli Satış Sözleşmesi/);
+  assert.match(paymentReviewHtml, /İade, Değişim ve Cayma/);
+
+  console.log('POS built-runtime smoke: PASS (routes, public payment review, merchant identity, no-store, strict schemas, POST token verify, query-token disabled, card-data rejection)');
 } finally {
   server.kill('SIGTERM');
   await new Promise((resolve) => {
