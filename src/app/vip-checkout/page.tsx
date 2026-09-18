@@ -23,6 +23,7 @@ function CheckoutContent() {
   const searchParams = useSearchParams();
   const queryToken = searchParams.get('token') || '';
   const [token, setToken] = useState(queryToken);
+  const [tokenResolved, setTokenResolved] = useState(Boolean(queryToken));
   const [summary, setSummary] = useState<VipSummary | null>(null);
   const [loadingSummary, setLoadingSummary] = useState(true);
   const [error, setError] = useState('');
@@ -40,20 +41,25 @@ function CheckoutContent() {
   useEffect(() => {
     if (queryToken) {
       setToken(queryToken);
+      setTokenResolved(true);
       return;
     }
     const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
     const hashToken = hashParams.get('token') || '';
     setToken(hashToken);
+    setTokenResolved(true);
   }, [queryToken]);
 
   useEffect(() => {
+    if (!tokenResolved) return;
     if (!token) {
       setError('Geçersiz veya eksik VIP bağlantısı.');
       setLoadingSummary(false);
       return;
     }
 
+    setLoadingSummary(true);
+    setError('');
     let active = true;
     fetch(`/api/vip-link?token=${encodeURIComponent(token)}`, { cache: 'no-store', credentials: 'same-origin' })
       .then((res) => res.json().then((data) => ({ res, data })))
@@ -71,7 +77,7 @@ function CheckoutContent() {
     return () => {
       active = false;
     };
-  }, [token]);
+  }, [token, tokenResolved]);
 
   function followProvider(data: PaymentResponse) {
     const assertHttpsUrl = (value: unknown) => {
@@ -189,21 +195,21 @@ function CheckoutContent() {
 
               <p className="mt-5 text-xs leading-5 text-gray-500">
                 Bu formda verdiğiniz kimlik ve iletişim bilgileri sipariş, ödeme güvenliği, faturalama ve teslim süreçleri için işlenir. Ayrıntılar için{' '}
-                <Link href="/kvkk-aydinlatma-metni" target="_blank" className="font-medium text-blue-700 underline underline-offset-2">KVKK Aydınlatma Metni</Link>.
+                <Link href="/kvkk-aydinlatma-metni" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-700 underline underline-offset-2">KVKK Aydınlatma Metni</Link>.
               </p>
 
               <div className="mt-7 space-y-3 border-t border-gray-100 pt-6 text-sm text-gray-600">
                 <label className="flex items-start gap-3">
                   <input type="checkbox" checked={preInformationAccepted} onChange={(e) => setPreInformationAccepted(e.target.checked)} className="mt-1 h-4 w-4" />
-                  <span><Link href="/on-bilgilendirme-formu" target="_blank" className="font-medium text-blue-700 underline underline-offset-2">Ön Bilgilendirme Formu</Link>&apos;nu okudum ve kabul ediyorum.</span>
+                  <span><Link href="/on-bilgilendirme-formu" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-700 underline underline-offset-2">Ön Bilgilendirme Formu</Link>&apos;nu okudum ve kabul ediyorum.</span>
                 </label>
                 <label className="flex items-start gap-3">
                   <input type="checkbox" checked={termsAccepted} onChange={(e) => setTermsAccepted(e.target.checked)} className="mt-1 h-4 w-4" />
-                  <span><Link href="/mesafeli-satis-sozlesmesi" target="_blank" className="font-medium text-blue-700 underline underline-offset-2">Mesafeli Satış Sözleşmesi</Link>&apos;ni okudum ve kabul ediyorum.</span>
+                  <span><Link href="/mesafeli-satis-sozlesmesi" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-700 underline underline-offset-2">Mesafeli Satış Sözleşmesi</Link>&apos;ni okudum ve kabul ediyorum.</span>
                 </label>
                 <label className="flex items-start gap-3">
                   <input type="checkbox" checked={highValueAccepted} onChange={(e) => setHighValueAccepted(e.target.checked)} className="mt-1 h-4 w-4" />
-                  <span><Link href="/yuksek-degerli-urun-teslimi" target="_blank" className="font-medium text-blue-700 underline underline-offset-2">Yüksek Değerli Ürün Teslimi</Link> koşullarını kabul ediyorum.</span>
+                  <span><Link href="/yuksek-degerli-urun-teslimi" target="_blank" rel="noopener noreferrer" className="font-medium text-blue-700 underline underline-offset-2">Yüksek Değerli Ürün Teslimi</Link> koşullarını kabul ediyorum.</span>
                 </label>
               </div>
 
