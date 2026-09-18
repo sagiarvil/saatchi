@@ -1,6 +1,7 @@
 import crypto from 'crypto';
 
-export const VIP_ADMIN_COOKIE = 'saatchi_vip_admin';
+// Firebase Hosting forwards only the reserved __session cookie to dynamic backends.
+export const VIP_ADMIN_COOKIE = '__session';
 const SESSION_TTL_MS = 2 * 60 * 60 * 1000;
 
 type AdminSessionPayload = {
