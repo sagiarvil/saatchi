@@ -4,6 +4,7 @@ import type { VipTokenPayload } from '@/lib/vip-token';
 const COLLECTION = 'saatchiVipLinks';
 const EXPECTED_PROJECT_ID = 'studio-7658156126-ffb8e';
 let cachedAccessToken: { token: string; expiresAt: number } | null = null;
+const PAYMENT_ATTEMPT_STALE_MS = 5 * 60 * 1000;
 
 type FirestoreValue =
   | { stringValue: string }
@@ -369,9 +370,17 @@ export async function finalizeVipPaymentAttempt(
   );
 }
 
-export function assertVipPaymentReconciliationResettable(record: Pick<VipLinkRecord, 'paymentState'>) {
-  if (record.paymentState !== 'uncertain') {
-    throw new Error('Yalnız sonucu belirsiz ödeme denemeleri mutabakat sonrası yeniden açılabilir.');
+export function assertVipPaymentReconciliationResettable(
+  record: Pick<VipLinkRecord, 'paymentState' | 'paymentAttemptAt'>,
+  now = Date.now()
+) {
+  const staleCreating =
+    record.paymentState === 'creating' &&
+    record.paymentAttemptAt > 0 &&
+    now - record.paymentAttemptAt >= PAYMENT_ATTEMPT_STALE_MS;
+
+  if (record.paymentState !== 'uncertain' && !staleCreating) {
+    throw new Error('Yalnız sonucu belirsiz veya zaman aşımına uğramış ödeme denemeleri mutabakat sonrası yeniden açılabilir.');
   }
   return true;
 }
