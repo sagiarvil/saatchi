@@ -18,7 +18,11 @@ export async function POST(request: Request) {
   try {
     assertSameOriginMutation(request);
     const body = await readBoundedJsonBody(request, 8_192);
-    const token = String(body.token || '').trim().slice(0, 4096);
+    assertAllowedObjectKeys(body, ['token'], 'VIP doğrulama isteği');
+    if (typeof body.token !== 'string') {
+      return noStore({ success: false, message: 'Geçersiz VIP doğrulama isteği.' }, { status: 400 });
+    }
+    const token = body.token.trim().slice(0, 4096);
     const payload = verifyVipToken(token);
     const record = await assertVipLinkActive(payload, token);
     assertVipPaymentStatePayable(record);
