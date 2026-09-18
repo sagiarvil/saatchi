@@ -5,18 +5,24 @@ const root = process.cwd();
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
 
 const page = read('src/app/admin/viplink/page.tsx');
+const checkout = read('src/app/vip-checkout/page.tsx');
 const session = read('src/lib/vip-admin-session.ts');
 const sessionRoute = read('src/app/api/admin-session/route.ts');
 const vipRoute = read('src/app/api/vip-link/route.ts');
 const paymentRoute = read('src/app/api/payment/route.ts');
+const boundary = read('src/lib/payment-boundary.ts');
 const store = read('src/lib/vip-link-store.ts');
 const listRoute = read('src/app/api/admin/vip-links/route.ts');
+const firebase = read('firebase.json');
+const workflow = read('.github/workflows/ui-regression.yml');
 
 const paymentActiveChecks = paymentRoute.match(/assertVipLinkActive\(vip, token\)/g)?.length || 0;
+const vipAdminChecks = vipRoute.match(/assertAdminSession\(request\)/g)?.length || 0;
 
 const requirements = [
   ['admin page must not send raw admin key on VIP create', !page.includes('x-vip-admin-key')],
-  ['admin page uses session endpoint', true],
+  ['admin page uses session endpoint', page.includes("fetch('/api/admin-session'")],
+  ['admin page restores authenticated gate', page.includes('if (!authenticated)')],
   ['admin page has exact WhatsApp CTA', page.includes('WhatsApp ile Linki İlet')],
   ['admin page has durable revoke CTA', page.includes('Linki İptal Et')],
   ['admin page lists durable links', page.includes("fetch('/api/admin/vip-links'")],
@@ -25,9 +31,10 @@ const requirements = [
   ['session cookie is secure in production', sessionRoute.includes("secure: process.env.NODE_ENV === 'production'")],
   ['session is signed with HMAC', session.includes("createHmac('sha256'")],
   ['session v2 derives from current admin key', session.includes('saatchi:vip-admin-session:v2') && session.includes('adminKeyFingerprint')],
-  ['mutations enforce same-origin', true],
+  ['mutations enforce same-origin', vipRoute.includes('assertSameOriginMutation(request)')],
   ['provenance-less mutations fail closed', session.includes('Yönetim isteği kaynak doğrulamasından geçemedi.')],
-  ['VIP creation requires admin session', true],
+  ['VIP creation and revoke require admin session', vipAdminChecks >= 2],
+  ['VIP admin list requires admin session', listRoute.includes('assertAdminSession(request)')],
   ['VIP revoke is durable', vipRoute.includes('revokeVipLink') && store.includes("state: 'revoked'") && store.includes('revokedAt: Date.now()')],
   ['VIP record is Firestore-backed', store.includes('firestore.googleapis.com') && store.includes("const COLLECTION = 'saatchiVipLinks'")],
   ['Firestore project is fail-closed and pinned', store.includes("EXPECTED_PROJECT_ID = 'studio-7658156126-ffb8e'") && store.includes('Beklenmeyen Firestore proje kimliği')],
@@ -35,9 +42,19 @@ const requirements = [
   ['VIP hash comparison is timing safe', store.includes('safeEqualHex') && store.includes('timingSafeEqual')],
   ['checkout verification checks durable state', vipRoute.includes('assertVipLinkActive(payload, token)')],
   ['payment checks durable state before and after provider', paymentActiveChecks >= 2],
+  ['payment enforces same-origin mutation', paymentRoute.includes('assertSameOriginMutation(request)')],
+  ['payment request body is bounded', paymentRoute.includes('assertRequestBodySize(request)')],
   ['payment external call has bounded timeout', paymentRoute.includes('AbortSignal.timeout(20_000)')],
   ['payment has request correlation id', paymentRoute.includes('requestId') && paymentRoute.includes('X-SAATCHI-Request-Id')],
-  ['admin list requires admin session', true],
+  ['test payment bypass is absent', !paymentRoute.includes('TEST_POS') && !paymentRoute.includes('/test-success')],
+  ['provider HTML is never injected into checkout', !checkout.includes('document.write') && !checkout.includes('htmlContent')],
+  ['payment handoff requires HTTPS', boundary.includes("url.protocol !== 'https:'")],
+  ['payment handoff supports explicit origin allowlist', boundary.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS') && boundary.includes('allowlist.has(url.origin)')],
+  ['provider form data is bounded', boundary.includes('MAX_FORM_FIELDS') && boundary.includes('MAX_FORM_VALUE_LENGTH')],
+  ['security headers include HSTS', firebase.includes('Strict-Transport-Security')],
+  ['security headers block MIME sniffing', firebase.includes('X-Content-Type-Options') && firebase.includes('nosniff')],
+  ['checkout CSP is present', firebase.includes('Content-Security-Policy')],
+  ['PRs run regression workflow before merge', workflow.includes('pull_request:')],
 ];
 
 const failed = requirements.filter(([, ok]) => !ok);
@@ -47,4 +64,4 @@ if (failed.length) {
   process.exit(1);
 }
 
-console.log(`VIP security regression guard: PASS (${requirements.length}/${requirements.length})`);
+console.log(`VIP/POS security regression guard: PASS (${requirements.length}/${requirements.length})`);
