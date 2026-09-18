@@ -3,6 +3,7 @@ import path from 'node:path';
 
 const root = process.cwd();
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
+const compact = (value) => value.replace(/\s+/g, ' ');
 
 const page = read('src/app/admin/viplink/page.tsx');
 const checkout = read('src/app/vip-checkout/page.tsx');
@@ -99,7 +100,12 @@ const requirements = [
   ['provider session requires order id amount currency and provider consistency', paymentRoute.includes('assertProviderSessionConsistency') && paymentSessionConsistency.includes('doğrulanabilir işlem tutarı') && paymentSessionConsistency.includes('doğrulanabilir para birimi') && paymentSessionConsistency.includes('provider kimliği döndürmedi')],
   ['cardholder data is rejected by merchant API', paymentRoute.includes('assertNoCardholderData(body)') && paymentRoute.includes("assertNoCardholderData") && boundary.includes('CARD_DATA_KEYS') && boundary.includes('export function assertNoCardholderData')],
   ['payment request uses strict field allowlist', paymentRoute.includes('assertAllowedObjectKeys(body') && boundary.includes('export function assertAllowedObjectKeys') && paymentRoute.includes("'marketingConsent'")],
-  ['admin and VIP mutation routes use strict schemas', sessionRoute.includes("assertAllowedObjectKeys(body, ['key', 'otp']") && vipRoute.includes("assertAllowedObjectKeys(body, ['title', 'amount']") && vipRoute.includes("assertAllowedObjectKeys(body, ['id']") && vipVerifyRoute.includes("assertAllowedObjectKeys(body, ['token']") && reconcileRoute.includes('assertAllowedObjectKeys(')],
+  ['admin and VIP mutation routes use strict schemas',
+    compact(sessionRoute).includes("assertAllowedObjectKeys(body, ['key', 'otp']") &&
+    compact(vipRoute).includes("assertAllowedObjectKeys(body, ['title', 'amount']") &&
+    compact(vipRoute).includes("assertAllowedObjectKeys(body, ['id']") &&
+    compact(vipVerifyRoute).includes("assertAllowedObjectKeys(body, ['token']") &&
+    compact(reconcileRoute).includes("assertAllowedObjectKeys( body, ['id', 'confirmedNoCharge', 'reconciliationReference', 'reconciliationReason', 'otp']")],
   ['production payment API has explicit origin allowlist', paymentRoute.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS') && paymentRoute.includes('allowedOrigins.has(url.origin)')],
   ['production payment endpoint has no legacy fallback', paymentRoute.includes("process.env.NODE_ENV !== 'production' ? process.env.BELGIN_PAYMENT_CREATE_URL : ''")],
   ['test payment bypass is absent', !paymentRoute.includes('TEST_POS') && !paymentRoute.includes('/test-success') && !mockSuccessExists],
