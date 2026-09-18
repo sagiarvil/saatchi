@@ -100,6 +100,35 @@ function errorMessage(error: unknown, fallback: string) {
   return error instanceof Error && error.message ? error.message : fallback;
 }
 
+function providerOrderId(data: Record<string, unknown>) {
+  return safeText(data.merchant_oid || data.orderId || data.providerOrderId, 160);
+}
+
+export function assertProviderSessionConsistency(
+  data: Record<string, unknown>,
+  expected: { amount: number; currency: string; provider?: string }
+) {
+  const orderId = providerOrderId(data);
+  if (!orderId) throw new Error('Ödeme sağlayıcısı mutabakat sipariş referansı döndürmedi.');
+
+  const returnedAmount = data.amount ?? data.totalAmount;
+  if (returnedAmount !== undefined && Number(returnedAmount) !== expected.amount) {
+    throw new Error('Ödeme sağlayıcısı tutarı sipariş tutarıyla uyuşmuyor.');
+  }
+
+  const returnedCurrency = safeText(data.currency, 8).toUpperCase();
+  if (returnedCurrency && returnedCurrency !== expected.currency.toUpperCase()) {
+    throw new Error('Ödeme sağlayıcısı para birimi siparişle uyuşmuyor.');
+  }
+
+  const returnedProvider = safeText(data.provider, 64).toUpperCase();
+  if (expected.provider && returnedProvider && returnedProvider !== expected.provider.toUpperCase()) {
+    throw new Error('Ödeme sağlayıcısı beklenen provider ile uyuşmuyor.');
+  }
+
+  return orderId;
+}
+
 const CARD_DATA_KEYS = new Set([
   'cardnumber',
   'card_number',
@@ -252,12 +281,18 @@ export async function POST(request: Request) {
 
       upstreamCompleted = true;
 
+      const verifiedProviderOrderId = assertProviderSessionConsistency(data, {
+        amount: vip.price,
+        currency: 'TRY',
+        provider: configuredProvider || undefined,
+      });
+
       // A revoke racing with provider session creation must fail before handoff.
       await assertVipLinkActive(vip, token);
 
       const handoff = normalizePaymentHandoff(data);
       await finalizeVipPaymentAttempt(vip.id, requestId, 'ready', {
-        providerOrderId: safeText(data.merchant_oid, 160),
+        providerOrderId: verifiedProviderOrderId,
         evidenceId: safeText(data.evidenceId, 160),
       });
 
@@ -265,7 +300,7 @@ export async function POST(request: Request) {
         status: 'success',
         requestId,
         message: 'Güvenli ödeme oturumu oluşturuldu.',
-        orderId: safeText(data.merchant_oid, 160) || null,
+        orderId: verifiedProviderOrderId,
         provider: safeText(data.provider, 80) || null,
         paymentType: safeText(data.paymentType, 80) || null,
         redirectUrl: handoff.redirectUrl,
