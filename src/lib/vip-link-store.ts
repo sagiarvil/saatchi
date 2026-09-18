@@ -420,10 +420,18 @@ export async function resetUncertainVipPaymentAttempt(
   );
 }
 
+export function assertVipLinkRevocable(record: Pick<VipLinkRecord, 'paymentState'>) {
+  if (record.paymentState !== 'idle') {
+    throw new Error('Ödeme denemesi başlamış VIP link, banka/sağlayıcı mutabakatı olmadan doğrudan iptal edilemez.');
+  }
+  return true;
+}
+
 export async function revokeVipLink(id: string) {
   const snapshot = await getVipLinkSnapshot(id);
   if (!snapshot) throw new Error('İptal edilecek VIP link kaydı bulunamadı.');
   if (snapshot.record.state === 'revoked') return snapshot.record;
+  assertVipLinkRevocable(snapshot.record);
 
   const next: VipLinkRecord = {
     ...snapshot.record,
