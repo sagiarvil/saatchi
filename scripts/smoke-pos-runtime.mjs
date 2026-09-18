@@ -15,6 +15,7 @@ const server = spawn(process.execPath, ['node_modules/next/dist/bin/next', 'star
     VIP_ADMIN_TOTP_SECRET: 'JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP',
     GOOGLE_CLOUD_PROJECT: 'studio-7658156126-ffb8e',
     SAATCHI_PAYMENT_ENABLED: 'false',
+    SAATCHI_ADMIN_THROTTLE_TEST_MODE: 'true',
   },
 });
 
