@@ -13,6 +13,7 @@ const paymentRoute = read('src/app/api/payment/route.ts');
 const boundary = read('src/lib/payment-boundary.ts');
 const store = read('src/lib/vip-link-store.ts');
 const listRoute = read('src/app/api/admin/vip-links/route.ts');
+const reconcileRoute = read('src/app/api/admin/vip-payment-reconcile/route.ts');
 const firebase = read('firebase.json');
 const workflow = read('.github/workflows/pos-security-pr.yml');
 const legacyPaymentDirExists = fs.existsSync(path.join(root, 'src/lib/payment_backend_ready'));
@@ -51,11 +52,14 @@ const requirements = [
   ['payment sends idempotency key header', paymentRoute.includes("'Idempotency-Key': idempotencyKey")],
   ['payment atomically claims single attempt', paymentRoute.includes('claimVipPaymentAttempt') && store.includes('currentDocument.updateTime') && store.includes("paymentState: 'creating'")],
   ['ambiguous payment result becomes uncertain', paymentRoute.includes("finalizeVipPaymentAttempt(vip.id, requestId, 'uncertain')") && store.includes("value === 'uncertain'") && store.includes("Önceki ödeme denemesinin sonucu belirsiz")],
+  ['uncertain recovery is admin-only and explicit', reconcileRoute.includes('assertSameOriginMutation(request)') && reconcileRoute.includes('assertAdminSession(request)') && reconcileRoute.includes('confirmedNoCharge !== true') && store.includes("paymentState !== 'uncertain'")],
+  ['ready payments cannot be reset by recovery path', store.includes("paymentState !== 'uncertain'") && store.includes('assertVipPaymentReconciliationResettable')],
   ['cardholder data is rejected by merchant API', paymentRoute.includes('assertNoCardholderData(body)') && paymentRoute.includes('CARD_DATA_KEYS')],
   ['production payment API has explicit origin allowlist', paymentRoute.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS') && paymentRoute.includes('allowedOrigins.has(url.origin)')],
   ['production payment endpoint has no legacy fallback', paymentRoute.includes("process.env.NODE_ENV !== 'production' ? process.env.BELGIN_PAYMENT_CREATE_URL : ''")],
   ['test payment bypass is absent', !paymentRoute.includes('TEST_POS') && !paymentRoute.includes('/test-success') && !mockSuccessExists],
   ['dead direct-card backend is absent from runtime tree', !legacyPaymentDirExists],
+  ['stale payment patch artifacts are absent', !fs.existsSync(path.join(root, 'patch_payment.js')) && !fs.existsSync(path.join(root, 'patch_checkout.js')) && !fs.existsSync(path.join(root, 'scripts/legacy_patches/patch_vip.js'))],
   ['checkout legal consents default false', checkout.includes('useState(false)') && !checkout.includes('Hukuki metinler (Gizli)') && !checkout.includes('termsAccepted: true')],
   ['checkout exposes legal document links', checkout.includes('/on-bilgilendirme-formu') && checkout.includes('/mesafeli-satis-sozlesmesi') && checkout.includes('/yuksek-degerli-urun-teslimi')],
   ['checkout makes payment obligation explicit', checkout.includes('Ödeme Yükümlülüğü Doğuran')],
