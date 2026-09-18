@@ -32,6 +32,9 @@ export type VipLinkRecord = {
   paymentAttemptId: string;
   paymentAttemptAt: number;
   paymentUpdatedAt: number;
+  reconciliationReference: string;
+  reconciliationReason: string;
+  reconciledAt: number;
 };
 
 function projectId() {
@@ -108,6 +111,9 @@ function encode(record: VipLinkRecord): FirestoreDocument {
       paymentAttemptId: { stringValue: record.paymentAttemptId },
       paymentAttemptAt: { integerValue: String(record.paymentAttemptAt) },
       paymentUpdatedAt: { integerValue: String(record.paymentUpdatedAt) },
+      reconciliationReference: { stringValue: record.reconciliationReference },
+      reconciliationReason: { stringValue: record.reconciliationReason },
+      reconciledAt: { integerValue: String(record.reconciledAt) },
     },
   };
 }
@@ -142,6 +148,9 @@ function decode(doc: FirestoreDocument): VipLinkRecord {
     paymentAttemptId: fieldString(doc, 'paymentAttemptId'),
     paymentAttemptAt: fieldNumber(doc, 'paymentAttemptAt'),
     paymentUpdatedAt: fieldNumber(doc, 'paymentUpdatedAt'),
+    reconciliationReference: fieldString(doc, 'reconciliationReference'),
+    reconciliationReason: fieldString(doc, 'reconciliationReason'),
+    reconciledAt: fieldNumber(doc, 'reconciledAt'),
   };
 }
 
@@ -229,6 +238,9 @@ export async function createVipLinkRecord(payload: VipTokenPayload, token: strin
     paymentAttemptId: '',
     paymentAttemptAt: 0,
     paymentUpdatedAt: 0,
+    reconciliationReference: '',
+    reconciliationReason: '',
+    reconciledAt: 0,
   };
 
   const response = await firestoreFetch(withCreatePrecondition(record.id), {
@@ -323,6 +335,47 @@ export async function finalizeVipPaymentAttempt(
     next,
     snapshot.updateTime,
     'VIP ödeme denemesi eşzamanlı olarak değiştirildi.'
+  );
+}
+
+export function assertVipPaymentReconciliationResettable(record: Pick<VipLinkRecord, 'paymentState'>) {
+  if (record.paymentState !== 'uncertain') {
+    throw new Error('Yalnız sonucu belirsiz ödeme denemeleri mutabakat sonrası yeniden açılabilir.');
+  }
+  return true;
+}
+
+export async function resetUncertainVipPaymentAttempt(
+  id: string,
+  reconciliationReference: string,
+  reconciliationReason: string
+) {
+  const snapshot = await getVipLinkSnapshot(id);
+  if (!snapshot) throw new Error('Mutabakat yapılacak VIP link kaydı bulunamadı.');
+
+  const reference = String(reconciliationReference || '').trim().slice(0, 160);
+  const reason = String(reconciliationReason || '').trim().slice(0, 500);
+  if (reference.length < 4) throw new Error('Banka/sağlayıcı mutabakat referansı zorunludur.');
+  if (reason.length < 10) throw new Error('Mutabakat açıklaması zorunludur.');
+
+  assertVipPaymentReconciliationResettable(snapshot.record);
+
+  const now = Date.now();
+  const next: VipLinkRecord = {
+    ...snapshot.record,
+    paymentState: 'idle',
+    paymentAttemptId: '',
+    paymentAttemptAt: 0,
+    paymentUpdatedAt: now,
+    reconciliationReference: reference,
+    reconciliationReason: reason,
+    reconciledAt: now,
+  };
+
+  return conditionalWrite(
+    next,
+    snapshot.updateTime,
+    'VIP ödeme mutabakat kaydı eşzamanlı olarak değiştirildi.'
   );
 }
 
