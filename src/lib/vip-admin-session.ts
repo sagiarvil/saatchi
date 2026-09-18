@@ -55,8 +55,18 @@ export function verifyAdminKey(candidate: string) {
   return expected.length === actual.length && crypto.timingSafeEqual(expected, actual);
 }
 
+export function expectedPublicOrigin(request: Request) {
+  if (process.env.NODE_ENV !== 'production') return new URL(request.url).origin;
+  const configured = String(process.env.SAATCHI_PUBLIC_ORIGIN || 'https://saatchi.watch').trim();
+  const origin = new URL(configured).origin;
+  if (origin !== 'https://saatchi.watch') {
+    throw new Error('Beklenmeyen production public origin yapılandırması.');
+  }
+  return origin;
+}
+
 export function assertSameOriginMutation(request: Request) {
-  const expectedOrigin = new URL(request.url).origin;
+  const expectedOrigin = expectedPublicOrigin(request);
   const origin = request.headers.get('origin');
   const referer = request.headers.get('referer');
   const fetchSite = request.headers.get('sec-fetch-site');
