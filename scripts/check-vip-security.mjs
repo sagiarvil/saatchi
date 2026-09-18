@@ -14,7 +14,7 @@ const boundary = read('src/lib/payment-boundary.ts');
 const store = read('src/lib/vip-link-store.ts');
 const listRoute = read('src/app/api/admin/vip-links/route.ts');
 const firebase = read('firebase.json');
-const workflow = read('.github/workflows/ui-regression.yml');
+const workflow = read('.github/workflows/pos-security-pr.yml');
 
 const paymentActiveChecks = paymentRoute.match(/assertVipLinkActive\(vip, token\)/g)?.length || 0;
 const vipAdminChecks = vipRoute.match(/assertAdminSession\(request\)/g)?.length || 0;
@@ -54,7 +54,7 @@ const requirements = [
   ['security headers include HSTS', firebase.includes('Strict-Transport-Security')],
   ['security headers block MIME sniffing', firebase.includes('X-Content-Type-Options') && firebase.includes('nosniff')],
   ['checkout CSP is present', firebase.includes('Content-Security-Policy')],
-  ['PRs run regression workflow before merge', workflow.includes('pull_request:')],
+  ['POS PRs run isolated regression workflow before merge', workflow.includes('pull_request:') && workflow.includes('npm run check:vip') && workflow.includes('npm run test:vip') && workflow.includes('npm run build')],
 ];
 
 const failed = requirements.filter(([, ok]) => !ok);
