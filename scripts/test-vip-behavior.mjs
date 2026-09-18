@@ -54,6 +54,10 @@ const activeRecord = {
   createdAt: payload.iat,
   expiresAt: payload.exp,
   revokedAt: 0,
+  paymentState: 'idle',
+  paymentAttemptId: '',
+  paymentAttemptAt: 0,
+  paymentUpdatedAt: 0,
 };
 assert.equal(store.validateVipLinkRecord(activeRecord, payload, token, now).id, payload.id);
 expectThrow(() => store.validateVipLinkRecord({ ...activeRecord, state: 'revoked', revokedAt: now }, payload, token, now), /iptal/i);
@@ -61,6 +65,11 @@ expectThrow(() => store.validateVipLinkRecord({ ...activeRecord, expiresAt: now 
 expectThrow(() => store.validateVipLinkRecord({ ...activeRecord, price: payload.price + 1 }, payload, token, now), /içeriği uyuşmuyor/i);
 expectThrow(() => store.validateVipLinkRecord({ ...activeRecord, tokenHash: '0'.repeat(64) }, payload, token, now), /bütünlüğü/i);
 expectThrow(() => store.validateVipLinkRecord({ ...activeRecord, expiresAt: payload.exp + 1 }, payload, token, now), /süre bütünlüğü/i);
+
+assert.equal(store.assertVipPaymentStatePayable(activeRecord), true);
+expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'creating' }), /zaten oluşturuluyor/i);
+expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'ready' }), /daha önce oluşturuldu/i);
+expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'uncertain' }), /mutabakat/i);
 
 const sameOriginRequest = new Request('https://saatchi.watch/api/vip-link', {
   method: 'POST',
@@ -110,4 +119,4 @@ assert.deepEqual(
   }
 );
 
-console.log('VIP/POS behavioral tests: PASS (session rotation, tamper, durable state, origin, HTTPS allowlist, provider handoff)');
+console.log('VIP/POS behavioral tests: PASS (session rotation, tamper, durable state, atomic payment-state gate, origin, HTTPS allowlist, provider handoff)');
