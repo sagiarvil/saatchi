@@ -78,7 +78,7 @@ jobs:
           assert d.get('success') is False, d
           PY
 
-          request invalid_token GET "$BASE/api/vip-link?token=invalid" 400
+          request invalid_token POST "$BASE/api/vip-link/verify" 400 '{"token":"invalid"}'
           python3 - "$TMP/invalid_token.body" <<'PY'
           import json,sys
           d=json.load(open(sys.argv[1]))
