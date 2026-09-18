@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { signVipToken } from '@/lib/vip-token';
 import { assertAdminSession, assertSameOriginMutation, expectedPublicOrigin } from '@/lib/vip-admin-session';
-import { readBoundedJsonBody } from '@/lib/payment-boundary';
+import { assertAllowedObjectKeys, readBoundedJsonBody } from '@/lib/payment-boundary';
 import { createVipLinkRecord, revokeVipLink } from '@/lib/vip-link-store';
 import { normalizeVipTitle, parseVipAmount } from '@/lib/vip-input';
 
@@ -23,6 +23,10 @@ export async function POST(request: Request) {
     assertSameOriginMutation(request);
     assertAdminSession(request);
     const body = await readBoundedJsonBody(request, 8_192);
+    assertAllowedObjectKeys(body, ['title', 'amount'], 'VIP link oluşturma isteği');
+    if (typeof body.title !== 'string' || !['string', 'number'].includes(typeof body.amount)) {
+      return noStore(NextResponse.json({ success: false, message: 'Geçersiz VIP link oluşturma isteği.' }, { status: 400 }));
+    }
     const title = normalizeVipTitle(body.title);
     const amount = parseVipAmount(body.amount);
     if (!title) return noStore(NextResponse.json({ success: false, message: 'Ürün adı zorunludur.' }, { status: 400 }));
@@ -59,7 +63,11 @@ export async function DELETE(request: Request) {
     assertSameOriginMutation(request);
     assertAdminSession(request);
     const body = await readBoundedJsonBody(request, 8_192);
-    const id = String(body?.id || '').trim();
+    assertAllowedObjectKeys(body, ['id'], 'VIP link iptal isteği');
+    if (typeof body.id !== 'string') {
+      return noStore(NextResponse.json({ success: false, message: 'Geçerli bir VIP link referansı girin.' }, { status: 400 }));
+    }
+    const id = body.id.trim();
     if (!id.startsWith('VIP-SAATCHI-')) {
       return noStore(NextResponse.json({ success: false, message: 'Geçerli bir VIP link referansı girin.' }, { status: 400 }));
     }
