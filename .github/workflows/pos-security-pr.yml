@@ -10,6 +10,7 @@ on:
       - 'src/app/admin/viplink/**'
       - 'src/app/vip-checkout/**'
       - 'src/lib/payment-boundary.ts'
+      - 'src/lib/payment-session-consistency.ts'
       - 'src/lib/vip-*.ts'
       - 'src/lib/vip-admin-totp.ts'
       - 'src/lib/vip-admin-throttle.ts'
@@ -47,5 +48,5 @@ jobs:
       - name: Legacy admin syntax check
         run: node --check public/js/admin.js
       - name: Lint changed POS surface
-        run: npx eslint src/app/api/payment/route.ts src/app/api/vip-link/route.ts src/app/api/admin/vip-links/route.ts src/app/api/admin/vip-payment-reconcile/route.ts src/app/admin/viplink/page.tsx src/app/vip-checkout/page.tsx src/lib/payment-boundary.ts src/lib/vip-link-store.ts src/lib/vip-input.ts src/lib/vip-admin-totp.ts src/lib/vip-admin-throttle.ts
+        run: npx eslint src/app/api/payment/route.ts src/app/api/vip-link/route.ts src/app/api/admin/vip-links/route.ts src/app/api/admin/vip-payment-reconcile/route.ts src/app/admin/viplink/page.tsx src/app/vip-checkout/page.tsx src/lib/payment-boundary.ts src/lib/payment-session-consistency.ts src/lib/vip-link-store.ts src/lib/vip-input.ts src/lib/vip-admin-totp.ts src/lib/vip-admin-throttle.ts
       - run: npm run build
