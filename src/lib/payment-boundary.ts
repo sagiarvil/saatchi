@@ -25,7 +25,9 @@ function parseAllowedOrigins(raw = process.env.SAATCHI_PAYMENT_ALLOWED_ORIGINS |
 }
 
 export function assertPaymentHandoffConfiguration(rawAllowlist?: string) {
-  const allowlist = assertPaymentHandoffConfiguration(rawAllowlist);
+  const allowlist = parseAllowedOrigins(
+    rawAllowlist === undefined ? process.env.SAATCHI_PAYMENT_ALLOWED_ORIGINS || '' : rawAllowlist
+  );
   if (process.env.NODE_ENV === 'production' && allowlist.size === 0) {
     throw new Error('Ödeme yönlendirme izin listesi production ortamında yapılandırılmamış.');
   }
