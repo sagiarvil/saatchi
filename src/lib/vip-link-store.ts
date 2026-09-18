@@ -84,6 +84,9 @@ function runQueryUrl() {
 
 async function accessToken() {
   const explicit = process.env.FIRESTORE_ACCESS_TOKEN;
+  if (process.env.NODE_ENV === 'production' && explicit) {
+    throw new Error('FIRESTORE_ACCESS_TOKEN production ortamında kullanılamaz; workload identity kullanılmalıdır.');
+  }
   if (explicit) return explicit;
   if (cachedAccessToken && cachedAccessToken.expiresAt > Date.now() + 60_000) return cachedAccessToken.token;
 
