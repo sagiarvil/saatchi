@@ -70,6 +70,36 @@ try {
   assert.equal(invalidVerify.response.status, 400);
   assert.equal(invalidVerify.body.success, false);
 
+  const malformedAdmin = await jsonRequest('/api/admin-session', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      referer: 'https://saatchi.watch/admin/viplink',
+    },
+    body: JSON.stringify({ key: { nested: true }, otp: '000000' }),
+  });
+  assert.equal(malformedAdmin.response.status, 400);
+
+  const unknownVerifyField = await jsonRequest('/api/vip-link/verify', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      referer: 'https://saatchi.watch/vip-checkout',
+    },
+    body: JSON.stringify({ token: 'invalid', unexpected: 'value' }),
+  });
+  assert.equal(unknownVerifyField.response.status, 400);
+
+  const unknownPaymentField = await jsonRequest('/api/payment', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      referer: 'https://saatchi.watch/vip-checkout',
+    },
+    body: JSON.stringify({ token: 'invalid', arbitrary: '4111111111111111' }),
+  });
+  assert.equal(unknownPaymentField.response.status, 400);
+
   const legacyQueryVerify = await fetch(`${base}/api/vip-link?token=invalid`, { redirect: 'manual' });
   assert.equal(legacyQueryVerify.status, 405);
 
@@ -91,7 +121,7 @@ try {
   const checkout = await fetch(`${base}/vip-checkout`, { redirect: 'manual' });
   assert.equal(checkout.status, 200);
 
-  console.log('POS built-runtime smoke: PASS (routes, no-store, POST token verify, query-token disabled, card-data rejection)');
+  console.log('POS built-runtime smoke: PASS (routes, no-store, strict schemas, POST token verify, query-token disabled, card-data rejection)');
 } finally {
   server.kill('SIGTERM');
   await new Promise((resolve) => {
