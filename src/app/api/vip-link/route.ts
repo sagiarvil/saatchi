@@ -44,7 +44,7 @@ export async function POST(request: Request) {
       success: true,
       id: payload.id,
       expiresAt: payload.exp,
-      url: `${origin}/vip-checkout?token=${encodeURIComponent(token)}`,
+      url: `${origin}/vip-checkout#token=${encodeURIComponent(token)}`,
     }));
   } catch (error: unknown) {
     const message = errorMessage(error, 'VIP link oluşturulamadı.');
