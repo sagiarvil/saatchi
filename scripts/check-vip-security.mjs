@@ -70,6 +70,7 @@ const requirements = [
   ['payment handoff requires HTTPS', boundary.includes("url.protocol !== 'https:'")],
   ['payment handoff supports explicit origin allowlist', boundary.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS') && boundary.includes('allowlist.has(url.origin)')],
   ['provider form data is bounded', boundary.includes('MAX_FORM_FIELDS') && boundary.includes('MAX_FORM_VALUE_LENGTH')],
+  ['provider handoff rejects card-data fields', boundary.includes('SENSITIVE_PAYMENT_FIELD') && boundary.includes('merchant handoff üzerinden kart verisi')],
   ['security headers include HSTS', firebase.includes('Strict-Transport-Security')],
   ['security headers block MIME sniffing', firebase.includes('X-Content-Type-Options') && firebase.includes('nosniff')],
   ['checkout CSP is present', firebase.includes('Content-Security-Policy')],
