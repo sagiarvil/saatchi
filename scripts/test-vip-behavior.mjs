@@ -49,6 +49,77 @@ await assert.rejects(
 adminThrottle.resetAdminLoginThrottleForTests();
 await assert.doesNotReject(() => adminThrottle.assertAdminLoginNotThrottled(throttleRequest, 1_900_000_000_001));
 
+// Production durable throttle simulation: metadata identity + Firestore CAS must preserve failures.
+const throttleOriginalFetch = globalThis.fetch;
+const throttleOriginalEnv = process.env.NODE_ENV;
+let throttleDoc = null;
+let throttleVersion = 1;
+globalThis.fetch = async (input, init = {}) => {
+  const url = new URL(String(input));
+  const method = String(init.method || 'GET').toUpperCase();
+
+  if (url.hostname === 'metadata.google.internal') {
+    return new Response(JSON.stringify({ access_token: 'runtime-service-account-token', expires_in: 300 }), {
+      status: 200,
+      headers: { 'content-type': 'application/json' },
+    });
+  }
+
+  if (url.hostname === 'firestore.googleapis.com') {
+    if (method === 'GET') {
+      if (!throttleDoc) return new Response('{}', { status: 404 });
+      return new Response(JSON.stringify({ ...throttleDoc, updateTime: `v${throttleVersion}` }), {
+        status: 200,
+        headers: { 'content-type': 'application/json' },
+      });
+    }
+
+    if (method === 'PATCH') {
+      const expected = url.searchParams.get('currentDocument.updateTime');
+      const createOnly = url.searchParams.get('currentDocument.exists') === 'false';
+      if (createOnly && throttleDoc) return new Response('{}', { status: 412 });
+      if (expected && expected !== `v${throttleVersion}`) return new Response('{}', { status: 412 });
+      throttleDoc = JSON.parse(String(init.body || '{}'));
+      throttleVersion += 1;
+      return new Response(JSON.stringify({ ...throttleDoc, updateTime: `v${throttleVersion}` }), {
+        status: 200,
+        headers: { 'content-type': 'application/json' },
+      });
+    }
+
+    if (method === 'DELETE') {
+      throttleDoc = null;
+      throttleVersion += 1;
+      return new Response('', { status: 204 });
+    }
+  }
+
+  throw new Error(`Unexpected durable throttle target: ${url.toString()}`);
+};
+
+try {
+  process.env.NODE_ENV = 'production';
+  delete process.env.FIRESTORE_ACCESS_TOKEN;
+  adminThrottle.resetAdminLoginThrottleForTests();
+
+  for (let index = 0; index < 5; index += 1) {
+    await adminThrottle.recordAdminLoginFailure(throttleRequest, 1_900_000_100_000);
+  }
+  await assert.rejects(
+    () => adminThrottle.assertAdminLoginNotThrottled(throttleRequest, 1_900_000_100_001),
+    /geçici olarak sınırlandı/i
+  );
+
+  await adminThrottle.clearAdminLoginFailures(throttleRequest);
+  await assert.doesNotReject(
+    () => adminThrottle.assertAdminLoginNotThrottled(throttleRequest, 1_900_000_100_002)
+  );
+} finally {
+  globalThis.fetch = throttleOriginalFetch;
+  process.env.NODE_ENV = throttleOriginalEnv || 'test';
+  adminThrottle.resetAdminLoginThrottleForTests();
+}
+
 const [body, signature] = adminSession.token.split('.');
 const tamperedSignature = `${signature.slice(0, -1)}${signature.endsWith('a') ? 'b' : 'a'}`;
 expectThrow(() => session.verifyAdminSessionToken(`${body}.${tamperedSignature}`), /doğrulanamadı/i);
