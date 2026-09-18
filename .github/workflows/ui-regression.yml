@@ -72,3 +72,6 @@ jobs:
 
       - name: Production build
         run: npm run build
+
+      - name: Built POS runtime smoke
+        run: node scripts/smoke-pos-runtime.mjs
