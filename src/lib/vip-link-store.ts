@@ -10,8 +10,14 @@ type FirestoreValue =
   | { integerValue: string }
   | { booleanValue: boolean };
 
-type FirestoreDocument = { fields?: Record<string, FirestoreValue> };
+type FirestoreDocument = {
+  fields?: Record<string, FirestoreValue>;
+  updateTime?: string;
+};
+
 type FirestoreQueryRow = { document?: FirestoreDocument };
+
+export type VipPaymentState = 'idle' | 'creating' | 'ready' | 'uncertain';
 
 export type VipLinkRecord = {
   id: string;
@@ -22,6 +28,10 @@ export type VipLinkRecord = {
   createdAt: number;
   expiresAt: number;
   revokedAt: number;
+  paymentState: VipPaymentState;
+  paymentAttemptId: string;
+  paymentAttemptAt: number;
+  paymentUpdatedAt: number;
 };
 
 function projectId() {
@@ -45,6 +55,18 @@ function databaseRoot() {
 
 function docUrl(id: string) {
   return `${databaseRoot()}/${COLLECTION}/${encodeURIComponent(id)}`;
+}
+
+function withUpdateTimePrecondition(id: string, updateTime: string) {
+  const url = new URL(docUrl(id));
+  url.searchParams.set('currentDocument.updateTime', updateTime);
+  return url.toString();
+}
+
+function withCreatePrecondition(id: string) {
+  const url = new URL(docUrl(id));
+  url.searchParams.set('currentDocument.exists', 'false');
+  return url.toString();
 }
 
 function runQueryUrl() {
@@ -82,6 +104,10 @@ function encode(record: VipLinkRecord): FirestoreDocument {
       createdAt: { integerValue: String(record.createdAt) },
       expiresAt: { integerValue: String(record.expiresAt) },
       revokedAt: { integerValue: String(record.revokedAt) },
+      paymentState: { stringValue: record.paymentState },
+      paymentAttemptId: { stringValue: record.paymentAttemptId },
+      paymentAttemptAt: { integerValue: String(record.paymentAttemptAt) },
+      paymentUpdatedAt: { integerValue: String(record.paymentUpdatedAt) },
     },
   };
 }
@@ -96,6 +122,11 @@ function fieldNumber(doc: FirestoreDocument, key: string) {
   return value && 'integerValue' in value ? Number(value.integerValue || 0) : 0;
 }
 
+function decodePaymentState(doc: FirestoreDocument): VipPaymentState {
+  const value = fieldString(doc, 'paymentState');
+  return value === 'creating' || value === 'ready' || value === 'uncertain' ? value : 'idle';
+}
+
 function decode(doc: FirestoreDocument): VipLinkRecord {
   const state = fieldString(doc, 'state');
   return {
@@ -107,12 +138,16 @@ function decode(doc: FirestoreDocument): VipLinkRecord {
     createdAt: fieldNumber(doc, 'createdAt'),
     expiresAt: fieldNumber(doc, 'expiresAt'),
     revokedAt: fieldNumber(doc, 'revokedAt'),
+    paymentState: decodePaymentState(doc),
+    paymentAttemptId: fieldString(doc, 'paymentAttemptId'),
+    paymentAttemptAt: fieldNumber(doc, 'paymentAttemptAt'),
+    paymentUpdatedAt: fieldNumber(doc, 'paymentUpdatedAt'),
   };
 }
 
 async function firestoreFetch(url: string, init: RequestInit) {
   const token = await accessToken();
-  const response = await fetch(url, {
+  return fetch(url, {
     ...init,
     headers: {
       Authorization: `Bearer ${token}`,
@@ -122,7 +157,30 @@ async function firestoreFetch(url: string, init: RequestInit) {
     cache: 'no-store',
     signal: AbortSignal.timeout(5000),
   });
-  return response;
+}
+
+async function getVipLinkSnapshot(id: string) {
+  const response = await firestoreFetch(docUrl(id), { method: 'GET' });
+  if (response.status === 404) return null;
+  if (!response.ok) throw new Error(`VIP link durumu okunamadı (${response.status}).`);
+  const document = await response.json() as FirestoreDocument;
+  if (!document.updateTime) throw new Error('VIP link sürüm bilgisi alınamadı.');
+  return { record: decode(document), updateTime: document.updateTime };
+}
+
+async function conditionalWrite(record: VipLinkRecord, updateTime: string, conflictMessage: string) {
+  const response = await firestoreFetch(withUpdateTimePrecondition(record.id, updateTime), {
+    method: 'PATCH',
+    body: JSON.stringify(encode(record)),
+  });
+  if (response.status === 409 || response.status === 412) {
+    throw new Error(conflictMessage);
+  }
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`VIP link durumu güncellenemedi (${response.status}): ${text.slice(0, 180)}`);
+  }
+  return record;
 }
 
 export function hashVipToken(token: string) {
@@ -150,6 +208,13 @@ export function validateVipLinkRecord(record: VipLinkRecord | null, payload: Vip
   return record;
 }
 
+export function assertVipPaymentStatePayable(record: Pick<VipLinkRecord, 'paymentState'>) {
+  if (record.paymentState === 'idle') return true;
+  if (record.paymentState === 'creating') throw new Error('Bu VIP link için ödeme oturumu zaten oluşturuluyor.');
+  if (record.paymentState === 'ready') throw new Error('Bu VIP link için ödeme oturumu daha önce oluşturuldu.');
+  throw new Error('Önceki ödeme denemesinin sonucu belirsiz. Yeni tahsilat öncesi banka işlemi mutabakatı gerekir.');
+}
+
 export async function createVipLinkRecord(payload: VipTokenPayload, token: string) {
   const record: VipLinkRecord = {
     id: payload.id,
@@ -160,12 +225,19 @@ export async function createVipLinkRecord(payload: VipTokenPayload, token: strin
     createdAt: payload.iat,
     expiresAt: payload.exp,
     revokedAt: 0,
+    paymentState: 'idle',
+    paymentAttemptId: '',
+    paymentAttemptAt: 0,
+    paymentUpdatedAt: 0,
   };
 
-  const response = await firestoreFetch(docUrl(record.id), {
+  const response = await firestoreFetch(withCreatePrecondition(record.id), {
     method: 'PATCH',
     body: JSON.stringify(encode(record)),
   });
+  if (response.status === 409 || response.status === 412) {
+    throw new Error('VIP link kimliği daha önce kullanılmış.');
+  }
   if (!response.ok) {
     const text = await response.text();
     throw new Error(`VIP link kalıcı kaydı oluşturulamadı (${response.status}): ${text.slice(0, 240)}`);
@@ -174,10 +246,8 @@ export async function createVipLinkRecord(payload: VipTokenPayload, token: strin
 }
 
 export async function getVipLinkRecord(id: string) {
-  const response = await firestoreFetch(docUrl(id), { method: 'GET' });
-  if (response.status === 404) return null;
-  if (!response.ok) throw new Error(`VIP link durumu okunamadı (${response.status}).`);
-  return decode(await response.json() as FirestoreDocument);
+  const snapshot = await getVipLinkSnapshot(id);
+  return snapshot?.record || null;
 }
 
 export async function listVipLinkRecords(limit = 50) {
@@ -209,18 +279,68 @@ export async function assertVipLinkActive(payload: VipTokenPayload, token: strin
   return validateVipLinkRecord(record, payload, token);
 }
 
-export async function revokeVipLink(id: string) {
-  const current = await getVipLinkRecord(id);
-  if (!current) throw new Error('İptal edilecek VIP link kaydı bulunamadı.');
-  if (current.state === 'revoked') return current;
-  const next: VipLinkRecord = { ...current, state: 'revoked', revokedAt: Date.now() };
-  const response = await firestoreFetch(docUrl(id), {
-    method: 'PATCH',
-    body: JSON.stringify(encode(next)),
-  });
-  if (!response.ok) {
-    const text = await response.text();
-    throw new Error(`VIP link iptal kaydı yazılamadı (${response.status}): ${text.slice(0, 240)}`);
+export async function claimVipPaymentAttempt(payload: VipTokenPayload, token: string, attemptId: string) {
+  const snapshot = await getVipLinkSnapshot(payload.id);
+  const record = validateVipLinkRecord(snapshot?.record || null, payload, token);
+  if (!snapshot) throw new Error('VIP ödeme linki aktif kayıtla eşleşmiyor.');
+  assertVipPaymentStatePayable(record);
+
+  const now = Date.now();
+  const next: VipLinkRecord = {
+    ...record,
+    paymentState: 'creating',
+    paymentAttemptId: attemptId,
+    paymentAttemptAt: now,
+    paymentUpdatedAt: now,
+  };
+
+  return conditionalWrite(
+    next,
+    snapshot.updateTime,
+    'Bu VIP link için eşzamanlı başka bir ödeme denemesi başlatıldı.'
+  );
+}
+
+export async function finalizeVipPaymentAttempt(
+  id: string,
+  attemptId: string,
+  nextState: Extract<VipPaymentState, 'ready' | 'uncertain'>
+) {
+  const snapshot = await getVipLinkSnapshot(id);
+  if (!snapshot) throw new Error('VIP ödeme denemesi kaydı bulunamadı.');
+  const current = snapshot.record;
+  if (current.paymentAttemptId !== attemptId || current.paymentState !== 'creating') {
+    throw new Error('VIP ödeme denemesi sürüm bütünlüğü doğrulanamadı.');
   }
-  return next;
+
+  const next: VipLinkRecord = {
+    ...current,
+    paymentState: nextState,
+    paymentUpdatedAt: Date.now(),
+  };
+
+  return conditionalWrite(
+    next,
+    snapshot.updateTime,
+    'VIP ödeme denemesi eşzamanlı olarak değiştirildi.'
+  );
+}
+
+export async function revokeVipLink(id: string) {
+  const snapshot = await getVipLinkSnapshot(id);
+  if (!snapshot) throw new Error('İptal edilecek VIP link kaydı bulunamadı.');
+  if (snapshot.record.state === 'revoked') return snapshot.record;
+
+  const next: VipLinkRecord = {
+    ...snapshot.record,
+    state: 'revoked',
+    revokedAt: Date.now(),
+    paymentUpdatedAt: Date.now(),
+  };
+
+  return conditionalWrite(
+    next,
+    snapshot.updateTime,
+    'VIP link durumu eşzamanlı olarak değiştirildi; tekrar okuyup deneyin.'
+  );
 }
