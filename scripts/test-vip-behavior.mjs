@@ -7,7 +7,7 @@ process.env.GOOGLE_CLOUD_PROJECT = 'studio-7658156126-ffb8e';
 
 const session = await import('../src/lib/vip-admin-session.ts');
 const tokenLib = await import('../src/lib/vip-token.ts');
-const store = await import('../src/lib/vip-link-store.ts');
+const store = await import('../src/lib/vip-link-store.ts');\nconst paymentBoundary = await import('../src/lib/payment-boundary.ts');
 
 function expectThrow(fn, pattern) {
   let thrown = null;
@@ -76,4 +76,37 @@ expectThrow(() => session.assertSameOriginMutation(crossOriginRequest), /Çapraz
 const provenanceLessRequest = new Request('https://saatchi.watch/api/vip-link', { method: 'POST' });
 expectThrow(() => session.assertSameOriginMutation(provenanceLessRequest), /kaynak doğrulamasından/i);
 
-console.log('VIP behavioral tests: PASS (session rotation, tamper, signed price, durable revoke, expiry, integrity, origin)');
+const allowlist = 'https://secure.example-bank.test,https://3ds.example-bank.test';
+assert.equal(
+  paymentBoundary.assertPaymentUrlAllowed('https://secure.example-bank.test/pay/123', allowlist),
+  'https://secure.example-bank.test/pay/123'
+);
+expectThrow(
+  () => paymentBoundary.assertPaymentUrlAllowed('http://secure.example-bank.test/pay/123', allowlist),
+  /güvenli olmayan/i
+);
+expectThrow(
+  () => paymentBoundary.assertPaymentUrlAllowed('https://evil.example/pay/123', allowlist),
+  /izin verilmeyen/i
+);
+assert.deepEqual(
+  paymentBoundary.normalizePaymentFormData({ orderId: 'ABC', amount: 12345, threeDS: true }),
+  { orderId: 'ABC', amount: '12345', threeDS: 'true' }
+);
+expectThrow(
+  () => paymentBoundary.normalizePaymentFormData({ '<script>': 'x' }),
+  /geçersiz form alanı/i
+);
+assert.deepEqual(
+  paymentBoundary.normalizePaymentHandoff({
+    gatewayUrl: 'https://3ds.example-bank.test/auth',
+    formData: { token: 'opaque-provider-token' },
+  }, allowlist),
+  {
+    redirectUrl: null,
+    gatewayUrl: 'https://3ds.example-bank.test/auth',
+    formData: { token: 'opaque-provider-token' },
+  }
+);
+
+console.log('VIP/POS behavioral tests: PASS (session rotation, tamper, durable state, origin, HTTPS allowlist, provider handoff)');
