@@ -40,7 +40,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#8d5f62] text-center">SAATCHI / {tierLabel}</p>
         <h1 className="mt-3 text-3xl md:text-5xl font-serif text-foreground mb-4 uppercase tracking-[0.16em] text-center">{brandName}</h1>
-        <p className="text-foreground/60 text-center mb-12 md:mb-16 max-w-2xl mx-auto font-light">Kaynak fiyatı doğrulanan ve SAATCHI katalog standardını karşılayan seçili modeller.</p>
+
 
         {brandWatches.length === 0 ? (
           <div className="text-center text-foreground/50 py-20">Bu marka için kaynak fiyatı doğrulanmış aktif model bulunamadı.</div>
