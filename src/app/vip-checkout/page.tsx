@@ -7,46 +7,45 @@ import { ArrowRight, LockKeyhole, ShieldCheck, Store, UserRound } from 'lucide-r
 
 type VipSummary = { id: string; name: string; price: number; exp: number };
 
+
 function CheckoutContent() {
-  const params = useSearchParams();
-  const token = params.get('token') || '';
-  const [summary, setSummary] = useState<VipSummary | null>(null);
+  const searchParams = useSearchParams();
+  const token = searchParams.get('token') || '';
+  const [summary, setSummary] = useState<any>(null);
   const [loadingSummary, setLoadingSummary] = useState(true);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [form, setForm] = useState({ custName: '', custPhone: '', custIdentity: '', custAddress: '', email: '' });
-  const [termsAccepted, setTermsAccepted] = useState(false);
-  const [preInformationAccepted, setPreInformationAccepted] = useState(false);
-  const [highValueAccepted, setHighValueAccepted] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const [form, setForm] = useState({ custName: '', custPhone: '', custIdentity: '', email: '', custAddress: '' });
+  
+  // Rule 5: Checkboxes checked by default, but we'll hide them from the UI.
+  const [termsAccepted, setTermsAccepted] = useState(true);
+  const [preInformationAccepted, setPreInformationAccepted] = useState(true);
+  const [highValueAccepted, setHighValueAccepted] = useState(true);
+
+  const updateField = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setForm({ ...form, [e.target.id]: e.target.value });
 
   useEffect(() => {
-    let active = true;
-    async function load() {
-      try {
-        if (!token) throw new Error('Geçerli bir VIP ödeme bağlantısı gerekli.');
-        const response = await fetch(`/api/vip-link?token=${encodeURIComponent(token)}`, { cache: 'no-store' });
-        const data = await response.json();
-        if (!response.ok || !data.success) throw new Error(data.message || 'VIP bağlantısı doğrulanamadı.');
-        if (active) setSummary(data.payload);
-      } catch (e: any) {
-        if (active) setError(e.message || 'VIP bağlantısı doğrulanamadı.');
-      } finally {
-        if (active) setLoadingSummary(false);
-      }
+    if (!token) {
+      setError('Geçersiz veya eksik VIP bağlantısı.');
+      setLoadingSummary(false);
+      return;
     }
-    load();
-    return () => { active = false; };
+    fetch(`/api/vip-link?token=${encodeURIComponent(token)}`, { cache: 'no-store' })
+      .then(res => res.json())
+      .then(data => {
+        if (!data.success) throw new Error(data.message || 'VIP bağlantısı geçersiz veya süresi dolmuş.');
+        setSummary(data.payload);
+      })
+      .catch(e => setError(e.message))
+      .finally(() => setLoadingSummary(false));
   }, [token]);
 
-  function updateField(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    setForm((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  }
-
   function followProvider(data: any) {
-    const direct = data.redirectUrl || data.iframeUrl || data.gatewayUrl;
-    if (data.formHtml) {
+    const direct = data.url || data.paymentUrl;
+    if (data.htmlContent) {
       document.open();
-      document.write(data.formHtml);
+      document.write(data.htmlContent);
       document.close();
       return;
     }
@@ -79,10 +78,6 @@ function CheckoutContent() {
       setError('Ad soyad, telefon ve kimlik bilgisi zorunludur.');
       return;
     }
-    if (!termsAccepted || !preInformationAccepted || !highValueAccepted) {
-      setError('Zorunlu hukuki bilgilendirmeler ve güvenli teslim koşulu onaylanmalıdır.');
-      return;
-    }
 
     setLoading(true);
     try {
@@ -92,9 +87,9 @@ function CheckoutContent() {
         body: JSON.stringify({
           token,
           ...form,
-          termsAccepted,
-          preInformationAccepted,
-          highValueDeliveryAccepted: highValueAccepted,
+          termsAccepted: true,
+          preInformationAccepted: true,
+          highValueDeliveryAccepted: true,
           presentedAt: new Date().toISOString()
         })
       });
@@ -107,53 +102,58 @@ function CheckoutContent() {
     }
   }
 
-  if (loadingSummary) return <div className="min-h-screen bg-[#0d0c0b] flex items-center justify-center text-[#c2a768] text-xs uppercase tracking-[0.25em]">VIP bağlantısı doğrulanıyor…</div>;
+  if (loadingSummary) return <div className="min-h-screen bg-[#f7f9fc] flex items-center justify-center text-gray-500 text-sm tracking-wide">Güvenli bağlantı doğrulanıyor…</div>;
 
   return (
-    <div className="min-h-screen bg-[#0d0c0b] px-4 py-12 text-[#f5f0e8] sm:px-6 lg:py-16">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-10 text-center">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-[#b98284]">SAATCHI / Secure Collection</p>
-          <h1 className="mt-4 text-3xl font-medium tracking-[-0.035em] sm:text-4xl">VIP Ödeme Noktası</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-[#948d86]">Kart veriniz SAATCHI tarafından kalıcı olarak tutulmaz. Ödeme, aktif banka veya yetkili ödeme kuruluşunun güvenli akışında tamamlanır.</p>
-        </div>
-
+    <div className="min-h-screen bg-[#f7f9fc] px-4 py-12 text-gray-900 sm:px-6 lg:py-16">
+      <style>{`
+        header, nav, footer, .premium-back-button { display: none !important; }
+      `}</style>
+      <div className="mx-auto max-w-2xl">
         {!summary ? (
-          <div className="mx-auto max-w-xl border border-red-900/40 bg-red-950/20 p-6 text-center text-sm text-red-200">{error || 'VIP bağlantısı geçersiz.'}</div>
+          <div className="mx-auto border border-red-200 bg-red-50 p-6 text-center text-sm text-red-600 rounded-md shadow-sm">{error || 'Bağlantı geçersiz.'}</div>
         ) : (
-          <div className="grid gap-6 lg:grid-cols-[.9fr_1.1fr]">
-            <aside className="border border-white/10 bg-[linear-gradient(145deg,#181513_0%,#12100f_62%,#1b0d0f_100%)] p-7 sm:p-8">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#7f262b]/60 bg-[#7f262b]/10"><ShieldCheck className="h-5 w-5 text-[#c2a768]" strokeWidth={1.2} /></div>
-              <p className="mt-8 text-[10px] uppercase tracking-[0.22em] text-[#837b74]">Tahsilat konusu</p>
-              <h2 className="mt-3 text-2xl font-medium leading-tight">{summary.name}</h2>
-              <p className="mt-6 text-4xl font-light tracking-[-0.04em]">{new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY', maximumFractionDigits: 0 }).format(summary.price)}</p>
-              <div className="mt-8 border-t border-white/10 pt-6 text-xs leading-6 text-[#89827b]">
-                <p>Referans: <span className="text-[#c9c0b7]">{summary.id}</span></p>
-                <p className="mt-2 flex items-center gap-2"><Store className="h-4 w-4 text-[#c2a768]" /> Güvenli showroom teslim zinciri</p>
-                <p className="mt-2 flex items-center gap-2"><LockKeyhole className="h-4 w-4 text-[#c2a768]" /> Belgin merkezli ödeme kayıt altyapısı</p>
+          <div className="bg-white shadow-xl rounded-xl overflow-hidden border border-gray-100">
+            <div className="bg-blue-600 px-8 py-10 text-center text-white">
+              <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-white/20 mb-4 backdrop-blur-sm">
+                <ShieldCheck className="h-7 w-7 text-white" strokeWidth={1.5} />
               </div>
-            </aside>
+              <h1 className="text-2xl font-medium tracking-tight">Güvenli Ödeme Noktası</h1>
+              <p className="mt-4 text-5xl font-light tracking-tight">
+                {new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY', maximumFractionDigits: 0 }).format(summary.price)}
+              </p>
+            </div>
 
-            <section className="border border-white/10 bg-[#121110] p-6 sm:p-8">
-              <div className="mb-6 flex items-center gap-3 border-b border-white/10 pb-5"><UserRound className="h-5 w-5 text-[#c2a768]" /><h2 className="text-lg font-medium">Fatura ve teslim bilgileri</h2></div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <input id="custName" value={form.custName} onChange={updateField} placeholder="Ad Soyad *" className="border border-white/10 bg-black/25 px-4 py-3.5 text-sm outline-none focus:border-[#8b4a4d]" />
-                <input id="custPhone" value={form.custPhone} onChange={updateField} placeholder="Telefon *" className="border border-white/10 bg-black/25 px-4 py-3.5 text-sm outline-none focus:border-[#8b4a4d]" />
-                <input id="custIdentity" value={form.custIdentity} onChange={updateField} placeholder="T.C. / Pasaport / Vergi No *" className="border border-white/10 bg-black/25 px-4 py-3.5 text-sm outline-none focus:border-[#8b4a4d]" />
-                <input id="email" value={form.email} onChange={updateField} placeholder="E-posta" type="email" className="border border-white/10 bg-black/25 px-4 py-3.5 text-sm outline-none focus:border-[#8b4a4d]" />
-                <textarea id="custAddress" value={form.custAddress} onChange={updateField} placeholder="Fatura / iletişim adresi" rows={3} className="border border-white/10 bg-black/25 px-4 py-3.5 text-sm outline-none focus:border-[#8b4a4d] sm:col-span-2" />
+            <section className="p-6 sm:p-10">
+              <div className="mb-6 flex items-center gap-3 border-b border-gray-100 pb-5">
+                <UserRound className="h-5 w-5 text-blue-600" />
+                <h2 className="text-lg font-medium text-gray-800">Fatura ve İletişim Bilgileri</h2>
               </div>
-
-              <div className="mt-6 space-y-3 border-t border-white/10 pt-5 text-xs leading-5 text-[#a39b93]">
-                <label className="flex items-start gap-3"><input type="checkbox" checked={preInformationAccepted} onChange={(e) => setPreInformationAccepted(e.target.checked)} className="mt-1" /><span><Link href="/on-bilgilendirme-formu" target="_blank" className="text-[#d5b8b9] underline">Ön Bilgilendirme Formu</Link>nu okudum.</span></label>
-                <label className="flex items-start gap-3"><input type="checkbox" checked={termsAccepted} onChange={(e) => setTermsAccepted(e.target.checked)} className="mt-1" /><span><Link href="/mesafeli-satis-sozlesmesi" target="_blank" className="text-[#d5b8b9] underline">Mesafeli Satış Sözleşmesi</Link>ni okudum ve kabul ediyorum.</span></label>
-                <label className="flex items-start gap-3"><input type="checkbox" checked={highValueAccepted} onChange={(e) => setHighValueAccepted(e.target.checked)} className="mt-1" /><span><Link href="/yuksek-degerli-urun-teslimi" target="_blank" className="text-[#d5b8b9] underline">Yüksek değerli ürün teslim ve kimlik doğrulama koşullarını</Link> kabul ediyorum.</span></label>
+              <div className="grid gap-5 sm:grid-cols-2">
+                <input id="custName" value={form.custName} onChange={updateField} placeholder="Ad Soyad *" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                <input id="custPhone" value={form.custPhone} onChange={updateField} placeholder="Telefon *" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                <input id="custIdentity" value={form.custIdentity} onChange={updateField} placeholder="T.C. / Pasaport / Vergi No *" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                <input id="email" value={form.email} onChange={updateField} placeholder="E-posta" type="email" className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm" />
+                <textarea id="custAddress" value={form.custAddress} onChange={updateField} placeholder="Fatura / iletişim adresi" rows={3} className="border border-gray-300 bg-white rounded-md px-4 py-3.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all shadow-sm sm:col-span-2" />
               </div>
 
-              {error && <div className="mt-5 border border-red-900/40 bg-red-950/25 px-4 py-3 text-sm text-red-200">{error}</div>}
+              {/* Hukuki metinler (Gizli) */}
+              <div className="hidden">
+                <input type="checkbox" checked={preInformationAccepted} readOnly />
+                <input type="checkbox" checked={termsAccepted} readOnly />
+                <input type="checkbox" checked={highValueAccepted} readOnly />
+              </div>
 
-              <button onClick={startPayment} disabled={loading} className="mt-6 flex w-full items-center justify-center gap-3 bg-[#f3eee6] px-5 py-4 text-[11px] font-bold uppercase tracking-[0.19em] text-[#171311] transition-colors hover:bg-white disabled:opacity-50">{loading ? 'Güvenli oturum hazırlanıyor…' : 'Güvenli ödemeye geç'} {!loading && <ArrowRight className="h-4 w-4" />}</button>
-              <p className="mt-4 text-center text-[10px] leading-5 text-[#6f6862]">Ödeme kuruluşu SAATCHI ekranında sabitlenmez; aktif sağlayıcı Belgin ödeme motorundan yönetilir.</p>
+              {error && <div className="mt-6 border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 rounded-md">{error}</div>}
+
+              <button onClick={startPayment} disabled={loading} className="mt-8 flex w-full items-center justify-center gap-3 bg-blue-600 rounded-md px-5 py-4 text-sm font-semibold tracking-wide text-white transition-colors hover:bg-blue-700 shadow-lg disabled:opacity-70 disabled:cursor-not-allowed">
+                {loading ? 'İşleminiz hazırlanıyor…' : 'Güvenli Ödemeyi Başlat'} 
+                {!loading && <ArrowRight className="h-4 w-4" />}
+              </button>
+              
+              <div className="mt-6 text-center text-xs text-gray-400 flex items-center justify-center gap-2">
+                <LockKeyhole className="h-3 w-3" /> 256-bit SSL Güvenli Bağlantı
+              </div>
             </section>
           </div>
         )}
@@ -163,5 +163,5 @@ function CheckoutContent() {
 }
 
 export default function VIPCheckout() {
-  return <React.Suspense fallback={<div className="min-h-screen bg-[#0d0c0b]" />}><CheckoutContent /></React.Suspense>;
+  return <React.Suspense fallback={<div className="min-h-screen bg-[#f7f9fc]" />}><CheckoutContent /></React.Suspense>;
 }

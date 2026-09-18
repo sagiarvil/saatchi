@@ -15,7 +15,7 @@ export type LegalPageDefinition = {
 };
 
 export const sellerIdentity = {
-  operator: 'BELGİN KUYUMCULUK - SEMİH SONBAHAR',
+  operator: 'SAATCHI SAAT - SEMİH SONBAHAR',
   brand: 'SAATCHI',
   channel: 'saatchi.watch',
   address: 'Menderes Caddesi No:231/B, Buca / İzmir',
@@ -43,7 +43,7 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '1. Marka ve İşletmeci',
         paragraphs: [
-          'SAATCHI, saatchi.watch alan adı üzerinden seçili lüks saatlerin sunumunu, satışını ve satış sonrası müşteri süreçlerini yürüten ticari markadır. Site üzerindeki satış ve sözleşme süreçlerinin işletmecisi BELGİN KUYUMCULUK - SEMİH SONBAHAR’dır.',
+          'SAATCHI, saatchi.watch alan adı üzerinden seçili lüks saatlerin sunumunu, satışını ve satış sonrası müşteri süreçlerini yürüten ticari markadır. Site üzerindeki satış ve sözleşme süreçlerinin işletmecisi SAATCHI SAAT - SEMİH SONBAHAR’dır.',
           'SAATCHI ayrı bir tüzel kişilik iddiasında bulunmaz. Sipariş, tahsilat, faturalama, teslim, müşteri tanıma ve hukuki kayıt zinciri işletmeci nezdinde yürütülür.'
         ]
       },
@@ -98,7 +98,7 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '1. Taraflar ve Satıcı Bilgileri',
         paragraphs: [
-          'İşbu sözleşme, satış kanalı SAATCHI / saatchi.watch olan BELGİN KUYUMCULUK - SEMİH SONBAHAR (“Satıcı”) ile elektronik ortamda sipariş veren tüketici (“Alıcı”) arasında kurulur.',
+          'İşbu sözleşme, satış kanalı SAATCHI / saatchi.watch olan SAATCHI SAAT - SEMİH SONBAHAR (“Satıcı”) ile elektronik ortamda sipariş veren tüketici (“Alıcı”) arasında kurulur.',
           'Satıcı adresi Menderes Caddesi No:231/B, Buca / İzmir; iletişim telefonu +90 541 930 53 72; elektronik posta adresi info@saatchi.watch’tır.'
         ]
       },
@@ -192,7 +192,7 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '1. Satıcı ve İletişim Bilgileri',
         bullets: [
-          'Satıcı: BELGİN KUYUMCULUK - SEMİH SONBAHAR',
+          'Satıcı: SAATCHI SAAT - SEMİH SONBAHAR',
           'Satış kanalı: SAATCHI / saatchi.watch',
           'Adres: Menderes Caddesi No:231/B, Buca / İzmir',
           'Telefon: +90 541 930 53 72',
@@ -255,7 +255,7 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '1. Veri Sorumlusu',
         paragraphs: [
-          '6698 sayılı Kanun kapsamında veri sorumlusu BELGİN KUYUMCULUK - SEMİH SONBAHAR’dır. SAATCHI / saatchi.watch veri sorumlusunun dijital satış kanalıdır. Bu metin açık rıza metni değildir; aydınlatma yükümlülüğünün yerine getirilmesi amacıyla hazırlanmıştır.'
+          '6698 sayılı Kanun kapsamında veri sorumlusu SAATCHI SAAT - SEMİH SONBAHAR’dır. SAATCHI / saatchi.watch veri sorumlusunun dijital satış kanalıdır. Bu metin açık rıza metni değildir; aydınlatma yükümlülüğünün yerine getirilmesi amacıyla hazırlanmıştır.'
         ]
       },
       {
