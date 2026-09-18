@@ -4,6 +4,7 @@ import { signVipToken, verifyVipToken } from '@/lib/vip-token';
 import { assertAdminSession, assertSameOriginMutation, expectedPublicOrigin } from '@/lib/vip-admin-session';
 import { readBoundedJsonBody } from '@/lib/payment-boundary';
 import { assertVipLinkActive, assertVipPaymentStatePayable, createVipLinkRecord, revokeVipLink } from '@/lib/vip-link-store';
+import { normalizeVipTitle, parseVipAmount } from '@/lib/vip-input';
 
 export const dynamic = 'force-dynamic';
 
@@ -22,8 +23,8 @@ export async function POST(request: Request) {
     assertSameOriginMutation(request);
     assertAdminSession(request);
     const body = await readBoundedJsonBody(request, 8_192);
-    const title = String(body.title || '').trim().slice(0, 180);
-    const amount = Number(String(body.amount || '').replace(/[^0-9.,]/g, '').replace(/\./g, '').replace(',', '.'));
+    const title = normalizeVipTitle(body.title);
+    const amount = parseVipAmount(body.amount);
     if (!title) return noStore(NextResponse.json({ success: false, message: 'Ürün adı zorunludur.' }, { status: 400 }));
     if (!Number.isFinite(amount) || amount <= 0) return noStore(NextResponse.json({ success: false, message: 'Geçerli bir tutar girin.' }, { status: 400 }));
 
@@ -31,7 +32,7 @@ export async function POST(request: Request) {
     const payload = {
       id: `VIP-SAATCHI-${now}-${crypto.randomBytes(4).toString('hex').toUpperCase()}`,
       name: title,
-      price: Math.round(amount),
+      price: amount,
       iat: now,
       exp: now + 7 * 24 * 60 * 60 * 1000,
     };
