@@ -75,7 +75,7 @@ const requirements = [
   ['VIP amount parser rejects ambiguous decimals', vipRoute.includes('parseVipAmount(body.amount)') && vipInput.includes('Number.isSafeInteger') && vipInput.includes('Decimal inputs are deliberately rejected')],
   ['payment checks durable state before and after provider', paymentActiveChecks >= 2],
   ['payment enforces same-origin mutation', paymentRoute.includes('assertSameOriginMutation(request)')],
-  ['payment request body is bounded from actual bytes', paymentRoute.includes('readBoundedJsonBody(request)') && boundary.includes('new TextEncoder().encode(raw).byteLength')],
+  ['payment request body is streaming-bounded from actual bytes', paymentRoute.includes('readBoundedJsonBody(request)') && boundary.includes('readBoundedRequestText') && boundary.includes('request.body.getReader()') && boundary.includes('total > maxBytes')],
   ['provider response body is bounded', paymentRoute.includes('readBoundedResponseText(belginResponse)') && boundary.includes('response.body.getReader()')],
   ['payment API redirects are disabled', paymentRoute.includes("redirect: 'error'")],
   ['payment external call has bounded timeout', paymentRoute.includes('AbortSignal.timeout(20_000)')],
