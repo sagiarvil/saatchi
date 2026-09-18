@@ -2,17 +2,9 @@ name: Saatchi Live Runtime Smoke
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'src/app/api/admin-session/**'
-      - 'src/app/api/admin/vip-links/**'
-      - 'src/app/api/vip-link/**'
-      - 'src/app/api/payment/**'
-      - 'src/lib/vip-**'
-      - 'scripts/write-build-id.mjs'
-      - 'package.json'
-      - '.github/workflows/live-runtime-smoke.yml'
+  workflow_run:
+    workflows: ["Saatchi Production Release"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -23,13 +15,16 @@ concurrency:
 
 jobs:
   public-runtime:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - name: Verify public VIP runtime boundaries and deployed commit
         shell: bash
         env:
-          EXPECTED_SHA: ${{ github.sha }}
+          EXPECTED_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
         run: |
           set -euo pipefail
           BASE='https://saatchi.watch'
@@ -68,6 +63,14 @@ jobs:
           PY
           grep -Eiq '^cache-control:.*no-store' "$TMP/session.headers"
 
+          request checkout_headers GET "$BASE/vip-checkout?token=invalid" 200
+          grep -Eiq '^strict-transport-security:.*max-age=' "$TMP/checkout_headers.headers"
+          grep -Eiq '^x-content-type-options:.*nosniff' "$TMP/checkout_headers.headers"
+          grep -Eiq '^referrer-policy:.*no-referrer' "$TMP/checkout_headers.headers"
+          grep -Eiq '^x-robots-tag:.*noindex' "$TMP/checkout_headers.headers"
+          grep -Eiq '^cache-control:.*no-store' "$TMP/checkout_headers.headers"
+          grep -Eiq '^content-security-policy:.*frame-src .none.' "$TMP/checkout_headers.headers"
+
           request admin_list GET "$BASE/api/admin/vip-links" 401
           python3 - "$TMP/admin_list.body" <<'PY'
           import json,sys
@@ -75,7 +78,7 @@ jobs:
           assert d.get('success') is False, d
           PY
 
-          request invalid_token GET "$BASE/api/vip-link?token=invalid" 400
+          request invalid_token POST "$BASE/api/vip-link/verify" 400 '{"token":"invalid"}'
           python3 - "$TMP/invalid_token.body" <<'PY'
           import json,sys
           d=json.load(open(sys.argv[1]))

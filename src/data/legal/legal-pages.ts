@@ -1,3 +1,5 @@
+import { LEGAL_DOCUMENT_VERSIONS } from './legal-versions';
+
 export type LegalSection = {
   title: string;
   paragraphs?: string[];
@@ -15,7 +17,7 @@ export type LegalPageDefinition = {
 };
 
 export const sellerIdentity = {
-  operator: 'SAATCHI SAAT - SEMİH SONBAHAR',
+  operator: 'SEMİH SONBAHAR - SAATCHI',
   brand: 'SAATCHI',
   channel: 'saatchi.watch',
   address: 'Menderes Caddesi No:231/B, Buca / İzmir',
@@ -23,6 +25,8 @@ export const sellerIdentity = {
   supportPhone: '+90 539 823 41 41',
   email: 'info@saatchi.watch',
   taxOffice: 'Şirinyer V.D.',
+  taxNumber: '7740298676',
+  chamberRegistryNumber: '492956',
 };
 
 const commonReferences = [
@@ -43,7 +47,7 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '1. Marka ve İşletmeci',
         paragraphs: [
-          'SAATCHI, saatchi.watch alan adı üzerinden seçili lüks saatlerin sunumunu, satışını ve satış sonrası müşteri süreçlerini yürüten ticari markadır. Site üzerindeki satış ve sözleşme süreçlerinin işletmecisi SAATCHI SAAT - SEMİH SONBAHAR’dır.',
+          'SAATCHI, saatchi.watch alan adı üzerinden seçili lüks saatlerin sunumunu, satışını ve satış sonrası müşteri süreçlerini yürüten ticari markadır. Site üzerindeki satış ve sözleşme süreçlerinin işletmecisi SEMİH SONBAHAR - SAATCHI’dır.',
           'SAATCHI ayrı bir tüzel kişilik iddiasında bulunmaz. Sipariş, tahsilat, faturalama, teslim, müşteri tanıma ve hukuki kayıt zinciri işletmeci nezdinde yürütülür.'
         ]
       },
@@ -76,13 +80,15 @@ export const legalPages: LegalPageDefinition[] = [
           'VIP WhatsApp: +90 541 930 53 72',
           'Müşteri temsilcisi: +90 539 823 41 41',
           'E-posta: info@saatchi.watch',
+          'Vergi Dairesi / VKN: Şirinyer V.D. / 7740298676',
+          'Oda Sicil No: 492956',
           'Adres: Menderes Caddesi No:231/B, Buca / İzmir'
         ]
       },
       {
         title: '6. Resmî Kayıt Bilgileri',
         paragraphs: [
-          'Vergi dairesi Şirinyer V.D.’dir. Vergi numarası, varsa MERSİS/ETBİS ve diğer resmî kayıt numaraları fatura, sipariş belgesi ve doğrulanmış resmî işletme kayıtlarında güncel halleriyle gösterilir. Doğrulanmamış veya örnek kayıt numarası kullanılmaz.'
+          'İşletmeci: SEMİH SONBAHAR - SAATCHI. Vergi Dairesi: Şirinyer V.D. VKN: 7740298676. Oda Sicil No: 492956. MERSİS/ETBİS gibi diğer kayıt numaraları yalnız doğrulanmış resmî kayıtlara dayanılarak ayrıca gösterilir; örnek veya doğrulanmamış numara kullanılmaz.'
         ]
       }
     ]
@@ -92,14 +98,14 @@ export const legalPages: LegalPageDefinition[] = [
     title: 'Mesafeli Satış Sözleşmesi',
     eyebrow: 'T.C. Tüketici Hukuku / Sözleşme',
     summary: 'Saatchi üzerinden kurulan mesafeli satışlarda tarafların hak ve yükümlülüklerini, ödeme, teslim, cayma, ayıplı mal ve kayıt düzenini belirler.',
-    version: '17.09.2026 · v1.0',
+    version: LEGAL_DOCUMENT_VERSIONS.distanceSales,
     references: commonReferences,
     sections: [
       {
         title: '1. Taraflar ve Satıcı Bilgileri',
         paragraphs: [
-          'İşbu sözleşme, satış kanalı SAATCHI / saatchi.watch olan SAATCHI SAAT - SEMİH SONBAHAR (“Satıcı”) ile elektronik ortamda sipariş veren tüketici (“Alıcı”) arasında kurulur.',
-          'Satıcı adresi Menderes Caddesi No:231/B, Buca / İzmir; iletişim telefonu +90 541 930 53 72; elektronik posta adresi info@saatchi.watch’tır.'
+          'İşbu sözleşme, satış kanalı SAATCHI / saatchi.watch olan SEMİH SONBAHAR - SAATCHI (“Satıcı”) ile elektronik ortamda sipariş veren tüketici (“Alıcı”) arasında kurulur.',
+          'Satıcı adresi Menderes Caddesi No:231/B, Buca / İzmir; iletişim telefonu +90 541 930 53 72; elektronik posta adresi info@saatchi.watch’tır. Vergi Dairesi Şirinyer V.D., VKN 7740298676 ve Oda Sicil No 492956’dır.'
         ]
       },
       {
@@ -186,13 +192,13 @@ export const legalPages: LegalPageDefinition[] = [
     title: 'Mesafeli Sözleşme Ön Bilgilendirme Formu',
     eyebrow: 'Ödeme Öncesi Zorunlu Bilgilendirme',
     summary: 'Müşterinin ödeme yükümlülüğü altına girmeden önce ürün, satıcı, toplam fiyat, teslim, cayma ve uyuşmazlık yolları hakkında bilgilendirilmesine ilişkin çerçevedir.',
-    version: '17.09.2026 · v1.0',
+    version: LEGAL_DOCUMENT_VERSIONS.preInformation,
     references: commonReferences,
     sections: [
       {
         title: '1. Satıcı ve İletişim Bilgileri',
         bullets: [
-          'Satıcı: SAATCHI SAAT - SEMİH SONBAHAR',
+          'Satıcı: SEMİH SONBAHAR - SAATCHI',
           'Satış kanalı: SAATCHI / saatchi.watch',
           'Adres: Menderes Caddesi No:231/B, Buca / İzmir',
           'Telefon: +90 541 930 53 72',
@@ -255,7 +261,7 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '1. Veri Sorumlusu',
         paragraphs: [
-          '6698 sayılı Kanun kapsamında veri sorumlusu SAATCHI SAAT - SEMİH SONBAHAR’dır. SAATCHI / saatchi.watch veri sorumlusunun dijital satış kanalıdır. Bu metin açık rıza metni değildir; aydınlatma yükümlülüğünün yerine getirilmesi amacıyla hazırlanmıştır.'
+          '6698 sayılı Kanun kapsamında veri sorumlusu SEMİH SONBAHAR - SAATCHI’dır. SAATCHI / saatchi.watch veri sorumlusunun dijital satış kanalıdır. Bu metin açık rıza metni değildir; aydınlatma yükümlülüğünün yerine getirilmesi amacıyla hazırlanmıştır.'
         ]
       },
       {
@@ -420,7 +426,7 @@ export const legalPages: LegalPageDefinition[] = [
     title: 'Yüksek Değerli Saat Teslimat Politikası',
     eyebrow: 'Güvenlik / Teslim',
     summary: 'Yüksek değerli saatlerde mağazadan teslim, sigortalı lojistik, kimlik doğrulama ve üçüncü kişiye teslim kontrollerinin temel esaslarını açıklar.',
-    version: '17.09.2026 · v1.0',
+    version: LEGAL_DOCUMENT_VERSIONS.highValueDelivery,
     references: ['6502 sayılı Tüketicinin Korunması Hakkında Kanun', 'Mesafeli Sözleşmeler Yönetmeliği', '6698 sayılı Kişisel Verilerin Korunması Kanunu'],
     sections: [
       {

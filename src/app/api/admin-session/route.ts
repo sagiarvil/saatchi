@@ -6,6 +6,10 @@ import {
   createAdminSession,
   verifyAdminKey,
 } from '@/lib/vip-admin-session';
+import { assertAllowedObjectKeys, readBoundedJsonBody } from '@/lib/payment-boundary';
+import { verifyAdminTotp } from '@/lib/vip-admin-totp';
+import { assertAdminLoginNotThrottled, clearAdminLoginFailures, recordAdminLoginFailure } from '@/lib/vip-admin-throttle';
+import { securityAudit } from '@/lib/security-audit-log';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,12 +22,22 @@ function noStore(response: NextResponse) {
 export async function POST(request: Request) {
   try {
     assertSameOriginMutation(request);
-    const body = await request.json();
-    const key = String(body?.key || '');
-    if (!verifyAdminKey(key)) {
+    await assertAdminLoginNotThrottled(request);
+    const body = await readBoundedJsonBody(request, 4_096);
+    assertAllowedObjectKeys(body, ['key', 'otp'], 'Yönetim isteği');
+    if (typeof body.key !== 'string' || typeof body.otp !== 'string') {
+      return noStore(NextResponse.json({ success: false, message: 'Geçersiz yönetim isteği.' }, { status: 400 }));
+    }
+    const key = body.key;
+    const otp = body.otp;
+    if (!verifyAdminKey(key) || !verifyAdminTotp(otp)) {
+      await recordAdminLoginFailure(request);
+      securityAudit('admin.login.failure', { outcome: 'denied' });
       return noStore(NextResponse.json({ success: false, message: 'Yönetim doğrulaması başarısız.' }, { status: 401 }));
     }
 
+    await clearAdminLoginFailures(request);
+    securityAudit('admin.login.success', { outcome: 'allowed' });
     const session = createAdminSession();
     const response = noStore(NextResponse.json({ success: true, expiresAt: session.expiresAt }));
     response.cookies.set(VIP_ADMIN_COOKIE, session.token, {
@@ -34,8 +48,26 @@ export async function POST(request: Request) {
       maxAge: session.maxAgeSeconds,
     });
     return response;
-  } catch (error: any) {
-    return noStore(NextResponse.json({ success: false, message: error?.message || 'Yönetim oturumu açılamadı.' }, { status: 503 }));
+  } catch (error: unknown) {
+    const internalMessage = error instanceof Error ? error.message : 'Yönetim oturumu açılamadı.';
+    console.error('[SAATCHI ADMIN SESSION]', internalMessage);
+    const originError = internalMessage.includes('Çapraz kaynak') || internalMessage.includes('kaynak doğrulamasından');
+    const throttled = internalMessage.includes('geçici olarak sınırlandı');
+    const requestError =
+      internalMessage.includes('Content-Type') ||
+      internalMessage.includes('Geçersiz JSON') ||
+      internalMessage.includes('JSON nesnesi') ||
+      internalMessage.includes('boyutu aşıyor');
+    const response = noStore(NextResponse.json(
+      { success: false, message: originError ? 'İstek kaynağı doğrulanamadı.' : throttled ? 'Çok fazla başarısız giriş denemesi. Daha sonra tekrar deneyin.' : requestError ? 'Geçersiz yönetim isteği.' : 'Yönetim oturumu açılamadı.' },
+      { status: originError ? 403 : throttled ? 429 : requestError ? 400 : 503 }
+    ));
+    if (throttled) {
+      securityAudit('admin.login.throttled', { outcome: 'denied' });
+      const retryAfter = Number((error as Error & { retryAfterSeconds?: number }).retryAfterSeconds || 60);
+      response.headers.set('Retry-After', String(Math.max(1, Math.min(300, retryAfter))));
+    }
+    return response;
   }
 }
 
@@ -51,8 +83,10 @@ export async function GET(request: Request) {
 export async function DELETE(request: Request) {
   try {
     assertSameOriginMutation(request);
-  } catch (error: any) {
-    return noStore(NextResponse.json({ success: false, message: error?.message || 'Oturum kapatılamadı.' }, { status: 403 }));
+  } catch (error: unknown) {
+    const internalMessage = error instanceof Error ? error.message : 'Oturum kapatılamadı.';
+    console.error('[SAATCHI ADMIN SESSION DELETE]', internalMessage);
+    return noStore(NextResponse.json({ success: false, message: 'Oturum kapatma isteği doğrulanamadı.' }, { status: 403 }));
   }
   const response = noStore(NextResponse.json({ success: true }));
   response.cookies.set(VIP_ADMIN_COOKIE, '', {

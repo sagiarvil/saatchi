@@ -24,8 +24,11 @@ export function signVipToken(payload: VipTokenPayload) {
 
 export function verifyVipToken(token: string): VipTokenPayload {
   if (!token || typeof token !== 'string') throw new Error('VIP ödeme tokenı eksik.');
-  const [body, signature] = token.split('.');
-  if (!body || !signature) throw new Error('VIP ödeme tokenı geçersiz.');
+  if (token.length > 4096) throw new Error('VIP ödeme tokenı geçersiz.');
+  const parts = token.split('.');
+  if (parts.length !== 2) throw new Error('VIP ödeme tokenı geçersiz.');
+  const [body, signature] = parts;
+  if (!body || !signature || !/^[A-Fa-f0-9]{64}$/.test(signature)) throw new Error('VIP ödeme tokenı geçersiz.');
 
   const expected = crypto.createHmac('sha256', getSecret()).update(body).digest('hex');
   const actualBuffer = Buffer.from(signature, 'utf8');
@@ -34,11 +37,36 @@ export function verifyVipToken(token: string): VipTokenPayload {
     throw new Error('VIP ödeme tokenı doğrulanamadı.');
   }
 
-  const payload = JSON.parse(Buffer.from(body, 'base64url').toString('utf8')) as VipTokenPayload;
-  if (!payload.id || !payload.name || !Number.isFinite(Number(payload.price)) || Number(payload.price) <= 0) {
+  let payload: VipTokenPayload;
+  try {
+    payload = JSON.parse(Buffer.from(body, 'base64url').toString('utf8')) as VipTokenPayload;
+  } catch {
     throw new Error('VIP ödeme tokenı içeriği geçersiz.');
   }
-  if (!payload.exp || Date.now() > payload.exp) throw new Error('VIP ödeme linkinin süresi dolmuş.');
 
-  return { ...payload, price: Number(payload.price) };
+  const now = Date.now();
+  if (
+    !/^VIP-SAATCHI-[A-Za-z0-9-]{8,120}$/.test(String(payload.id || '')) ||
+    typeof payload.name !== 'string' ||
+    payload.name.length < 1 ||
+    payload.name.length > 180 ||
+    !Number.isSafeInteger(Number(payload.price)) ||
+    Number(payload.price) <= 0 ||
+    !Number.isSafeInteger(Number(payload.iat)) ||
+    !Number.isSafeInteger(Number(payload.exp)) ||
+    payload.iat > now + 60_000 ||
+    payload.exp <= payload.iat ||
+    payload.exp - payload.iat > 7 * 24 * 60 * 60 * 1000 + 60_000
+  ) {
+    throw new Error('VIP ödeme tokenı içeriği geçersiz.');
+  }
+  if (now > payload.exp) throw new Error('VIP ödeme linkinin süresi dolmuş.');
+
+  return {
+    id: payload.id,
+    name: payload.name,
+    price: Number(payload.price),
+    iat: Number(payload.iat),
+    exp: Number(payload.exp),
+  };
 }

@@ -1,0 +1,64 @@
+name: Saatchi POS Security PR
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/app/api/payment/**'
+      - 'src/app/api/vip-link/**'
+      - 'src/app/api/admin/**'
+      - 'src/app/admin/viplink/**'
+      - 'src/app/vip-checkout/**'
+      - 'src/app/(legal)/**'
+      - 'src/app/iletisim/**'
+      - 'src/app/layout.tsx'
+      - 'src/components/layout/Footer.tsx'
+      - 'src/data/legal/**'
+      - 'public/robots.txt'
+      - 'src/lib/payment-boundary.ts'
+      - 'src/lib/payment-session-consistency.ts'
+      - 'src/lib/vip-*.ts'
+      - 'src/lib/vip-admin-totp.ts'
+      - 'src/lib/vip-admin-throttle.ts'
+      - 'src/lib/security-audit-log.ts'
+      - 'scripts/check-vip-security.mjs'
+      - 'scripts/test-vip-behavior.mjs'
+      - 'scripts/smoke-pos-runtime.mjs'
+      - 'firebase.json'
+      - 'docs/POS_SECURITY_HANDOFF.md'
+      - 'docs/POS_BANK_REVIEW_EVIDENCE.md'
+      - 'public/admin.html'
+      - 'public/js/admin.js'
+      - 'public/js/vip-payment.js'
+      - '.github/workflows/pos-security-pr.yml'
+      - '.github/workflows/production-release.yml'
+      - '.github/workflows/ui-regression.yml'
+      - '.github/workflows/live-runtime-smoke.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  security-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Dependency audit (high/critical gate)
+        run: npm audit --audit-level=high
+      - name: Production dependency audit (moderate+ gate)
+        run: npm audit --omit=dev --audit-level=moderate
+      - run: npm run check:vip
+      - run: npm run test:vip
+      - name: Legacy admin syntax check
+        run: node --check public/js/admin.js
+      - name: Lint changed POS surface
+        run: npx eslint src/app/api/payment/route.ts src/app/api/vip-link/route.ts src/app/api/vip-link/verify/route.ts src/app/api/admin-session/route.ts src/app/api/admin/vip-links/route.ts src/app/api/admin/vip-payment-reconcile/route.ts src/app/admin/viplink/page.tsx src/app/vip-checkout/page.tsx src/lib/payment-*.ts src/lib/vip-*.ts src/lib/security-audit-log.ts
+      - run: npm run build
+      - name: Built POS runtime smoke
+        run: node scripts/smoke-pos-runtime.mjs

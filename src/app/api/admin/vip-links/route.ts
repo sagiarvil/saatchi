@@ -10,13 +10,17 @@ function noStore(response: NextResponse) {
   return response;
 }
 
+function errorMessage(error: unknown, fallback: string) {
+  return error instanceof Error && error.message ? error.message : fallback;
+}
+
 export async function GET(request: Request) {
   try {
-    // removed assertAdminSession
-    
+    assertAdminSession(request);
     const records = await listVipLinkRecords(75);
     return noStore(NextResponse.json({
       success: true,
+      serverNow: Date.now(),
       links: records.map((record) => ({
         id: record.id,
         name: record.name,
@@ -25,10 +29,19 @@ export async function GET(request: Request) {
         createdAt: record.createdAt,
         expiresAt: record.expiresAt,
         revokedAt: record.revokedAt,
+        paymentState: record.paymentState,
+        paymentAttemptAt: record.paymentAttemptAt,
+        paymentUpdatedAt: record.paymentUpdatedAt,
+        reconciledAt: record.reconciledAt,
+        reconciliationReference: record.reconciliationReference,
+        reconciliationReason: record.reconciliationReason,
+        paymentProviderOrderId: record.paymentProviderOrderId,
+        paymentEvidenceId: record.paymentEvidenceId,
+        paymentLastError: record.paymentLastError,
       })),
     }));
-  } catch (error: any) {
-    const message = String(error?.message || 'VIP link listesi alınamadı.');
+  } catch (error: unknown) {
+    const message = errorMessage(error, 'VIP link listesi alınamadı.');
     const authError = message.includes('Yönetim oturumu');
     return noStore(NextResponse.json({ success: false, message }, { status: authError ? 401 : 503 }));
   }
