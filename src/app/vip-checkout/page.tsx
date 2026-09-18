@@ -39,26 +39,23 @@ function CheckoutContent() {
   };
 
   useEffect(() => {
-    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
-    const hashToken = hashParams.get('token') || '';
-    const resolvedToken = hashToken || queryToken;
+    queueMicrotask(() => {
+      const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+      const hashToken = hashParams.get('token') || '';
+      const resolvedToken = hashToken || queryToken;
 
-    setToken(resolvedToken);
-    setTokenResolved(true);
+      setToken(resolvedToken);
+      setTokenResolved(true);
 
-    // Bearer token yalnız ilk açılışta okunur; browser history/address bar yüzeyinden hemen silinir.
-    if (resolvedToken && (window.location.search || window.location.hash)) {
-      window.history.replaceState(null, '', '/vip-checkout');
-    }
+      // Bearer token yalnız ilk açılışta okunur; browser history/address bar yüzeyinden hemen silinir.
+      if (resolvedToken && (window.location.search || window.location.hash)) {
+        window.history.replaceState(null, '', '/vip-checkout');
+      }
+    });
   }, [queryToken]);
 
   useEffect(() => {
-    if (!tokenResolved) return;
-    if (!token) {
-      setError('Geçersiz veya eksik VIP bağlantısı.');
-      setLoadingSummary(false);
-      return;
-    }
+    if (!tokenResolved || !token) return;
 
     setLoadingSummary(true);
     setError('');
@@ -162,8 +159,12 @@ function CheckoutContent() {
     }
   }
 
-  if (loadingSummary) {
+  if (!tokenResolved || loadingSummary) {
     return <div className="min-h-screen bg-[#f7f9fc] flex items-center justify-center text-gray-500 text-sm tracking-wide">Güvenli bağlantı doğrulanıyor…</div>;
+  }
+
+  if (!token) {
+    return <div className="min-h-screen bg-[#f7f9fc] px-4 py-12 text-gray-900"><div className="mx-auto max-w-2xl border border-red-200 bg-red-50 p-6 text-center text-sm text-red-600 rounded-md shadow-sm">Geçersiz veya eksik VIP bağlantısı.</div></div>;
   }
 
   return (
