@@ -153,6 +153,9 @@ export async function POST(request: Request) {
     assertSameOriginMutation(request);
 
     const body = await readBoundedJsonBody(request);
+    // Card data is rejected explicitly before the generic schema gate so runtime evidence
+    // proves the merchant boundary refuses PAN/CVV/expiry rather than merely unknown keys.
+    assertNoCardholderData(body);
     assertAllowedObjectKeys(body, [
       'token',
       'custName',
@@ -165,7 +168,6 @@ export async function POST(request: Request) {
       'highValueDeliveryAccepted',
       'marketingConsent',
     ], 'Ödeme isteği');
-    assertNoCardholderData(body);
     assertOptionalBoolean(body, 'termsAccepted');
     assertOptionalBoolean(body, 'preInformationAccepted');
     assertOptionalBoolean(body, 'highValueDeliveryAccepted');
