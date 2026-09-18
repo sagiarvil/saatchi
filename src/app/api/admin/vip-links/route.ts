@@ -31,6 +31,9 @@ export async function GET(request: Request) {
         paymentState: record.paymentState,
         paymentUpdatedAt: record.paymentUpdatedAt,
         reconciledAt: record.reconciledAt,
+        paymentProviderOrderId: record.paymentProviderOrderId,
+        paymentEvidenceId: record.paymentEvidenceId,
+        paymentLastError: record.paymentLastError,
       })),
     }));
   } catch (error: unknown) {
