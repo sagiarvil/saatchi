@@ -11,7 +11,17 @@ type VipLinkRow = {
   createdAt: number;
   expiresAt: number;
   revokedAt: number;
+  paymentState: 'idle' | 'creating' | 'ready' | 'uncertain';
+  paymentUpdatedAt: number;
+  reconciledAt: number;
+  paymentProviderOrderId: string;
+  paymentEvidenceId: string;
+  paymentLastError: string;
 };
+
+function errorMessage(error: unknown, fallback: string) {
+  return error instanceof Error && error.message ? error.message : fallback;
+}
 
 function money(value: number) {
   return new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY', maximumFractionDigits: 0 }).format(value || 0);
@@ -40,7 +50,10 @@ export default function VipLinkGenerator() {
 
   const rawAmount = Number(amount.replace(/\D/g, '') || 0);
   const formattedAmount = rawAmount ? new Intl.NumberFormat('tr-TR').format(rawAmount) : '';
-  const activeCount = useMemo(() => rows.filter((row) => row.state === 'active' && row.expiresAt > Date.now()).length, [rows]);
+  const activeCount = useMemo(
+    () => rows.filter((row) => row.state === 'active' && row.expiresAt > Date.now() && row.paymentState === 'idle').length,
+    [rows]
+  );
 
   const loadLinks = useCallback(async () => {
     setRowsLoading(true);
@@ -54,8 +67,8 @@ export default function VipLinkGenerator() {
       }
       if (!response.ok || !data.success) throw new Error(data.message || 'VIP link listesi alınamadı.');
       setRows(Array.isArray(data.links) ? data.links : []);
-    } catch (e: any) {
-      setError(e.message || 'VIP link listesi alınamadı.');
+    } catch (e: unknown) {
+      setError(errorMessage(e, 'VIP link listesi alınamadı.'));
     } finally {
       setRowsLoading(false);
     }
@@ -100,8 +113,8 @@ export default function VipLinkGenerator() {
       setLoginKey('');
       setAuthenticated(true);
       await loadLinks();
-    } catch (e: any) {
-      setError(e.message || 'Yönetim doğrulaması başarısız.');
+    } catch (e: unknown) {
+      setError(errorMessage(e, 'Yönetim doğrulaması başarısız.'));
     } finally {
       setLoginLoading(false);
     }
@@ -141,8 +154,8 @@ export default function VipLinkGenerator() {
       setGeneratedLink(data.url);
       setGeneratedId(data.id);
       await loadLinks();
-    } catch (e: any) {
-      setError(e.message || 'VIP link oluşturulamadı.');
+    } catch (e: unknown) {
+      setError(errorMessage(e, 'VIP link oluşturulamadı.'));
     } finally {
       setLoading(false);
     }
@@ -178,8 +191,8 @@ export default function VipLinkGenerator() {
         setGeneratedId('');
       }
       await loadLinks();
-    } catch (e: any) {
-      setError(e.message || 'VIP link iptal edilemedi.');
+    } catch (e: unknown) {
+      setError(errorMessage(e, 'VIP link iptal edilemedi.'));
     } finally {
       setRevokingId('');
     }
@@ -199,7 +212,7 @@ export default function VipLinkGenerator() {
           <p className="mt-3 text-sm leading-6 text-[#716b64]">Yönetim anahtarı yalnız bu oturumu açmak için kullanılır; tarayıcıda kalıcı olarak saklanmaz. Oturum HttpOnly güvenli çerez ile devam eder.</p>
           <form onSubmit={login} className="mt-8">
             <label className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#6f6862]">Yönetim Doğrulaması</label>
-            <div className="flex items-center border border-[#d9d3cb] bg-[#fbfaf8] px-4 focus-within:border-[#846b32]"><KeyRound className="mr-3 h-4 w-4 text-[#8d8379]" /><input type="password" value={loginKey} onChange={(e) => setLoginKey(e.target.value)} autoComplete="current-password" className="w-full bg-transparent py-4 text-sm outline-none" placeholder="Yönetim anahtarı" /></div>
+            <div className="flex items-center border border-[#d9d3cb] bg-[#fbfaf8] px-4 focus-within:border-[#846b32]"><KeyRound className="mr-3 h-4 w-4 text-[#8d8379]" /><input type="password" value={loginKey} onChange={(e) => setLoginKey(e.target.value)} autoComplete="off" spellCheck={false} maxLength={256} className="w-full bg-transparent py-4 text-sm outline-none" placeholder="Yönetim anahtarı" /></div>
             {error && <div className="mt-4 border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{error}</div>}
             <button disabled={loginLoading} className="mt-5 w-full bg-[#171615] px-5 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-black disabled:opacity-50">{loginLoading ? 'Doğrulanıyor…' : 'Güvenli Oturum Aç'}</button>
           </form>
@@ -255,11 +268,23 @@ export default function VipLinkGenerator() {
               {!rowsLoading && rows.length === 0 && <p className="py-10 text-center text-sm text-[#8a837c]">Henüz kalıcı VIP link kaydı yok.</p>}
               {rows.map((row) => {
                 const expired = row.expiresAt <= Date.now();
-                const active = row.state === 'active' && !expired;
+                const active = row.state === 'active' && !expired && row.paymentState === 'idle';
+                const stateLabel =
+                  row.state === 'revoked'
+                    ? 'İptal edildi'
+                    : expired
+                      ? 'Süresi doldu'
+                      : row.paymentState === 'creating'
+                        ? 'Ödeme hazırlanıyor'
+                        : row.paymentState === 'ready'
+                          ? 'Ödeme oturumu açıldı'
+                          : row.paymentState === 'uncertain'
+                            ? 'Mutabakat gerekli'
+                            : 'Aktif';
                 return (
                   <div key={row.id} className="grid gap-3 py-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
                     <div className="min-w-0">
-                      <div className="flex flex-wrap items-center gap-2"><p className="truncate text-sm font-semibold">{row.name}</p><span className={`rounded-full px-2 py-1 text-[8px] font-bold uppercase tracking-[0.13em] ${active ? 'bg-emerald-50 text-emerald-700' : 'bg-[#f2eeea] text-[#776f67]'}`}>{row.state === 'revoked' ? 'İptal edildi' : expired ? 'Süresi doldu' : 'Aktif'}</span></div>
+                      <div className="flex flex-wrap items-center gap-2"><p className="truncate text-sm font-semibold">{row.name}</p><span className={`rounded-full px-2 py-1 text-[8px] font-bold uppercase tracking-[0.13em] ${active ? 'bg-emerald-50 text-emerald-700' : 'bg-[#f2eeea] text-[#776f67]'}`}>{stateLabel}</span></div>
                       <p className="mt-1 truncate font-mono text-[9px] text-[#9b938b]">{row.id}</p>
                       <p className="mt-1 text-[10px] text-[#8b837b]">Oluşturma: {dateTime(row.createdAt)} · Bitiş: {dateTime(row.expiresAt)}</p>
                     </div>
