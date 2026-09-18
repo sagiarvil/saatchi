@@ -56,6 +56,19 @@ export function assertNoCardholderData(value: unknown, depth = 0) {
   }
 }
 
+export function assertAllowedObjectKeys(
+  value: Record<string, unknown>,
+  allowedKeys: readonly string[],
+  label = 'İstek'
+) {
+  const allowed = new Set(allowedKeys);
+  for (const key of Object.keys(value)) {
+    if (!allowed.has(key)) {
+      throw new Error(`${label} beklenmeyen alan içeriyor.`);
+    }
+  }
+}
+
 function parseAllowedOrigins(raw = process.env.SAATCHI_PAYMENT_ALLOWED_ORIGINS || '') {
   return new Set(
     raw
