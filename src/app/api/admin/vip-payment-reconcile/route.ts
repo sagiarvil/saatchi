@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { assertAdminSession, assertSameOriginMutation } from '@/lib/vip-admin-session';
 import { resetUncertainVipPaymentAttempt } from '@/lib/vip-link-store';
+import { readBoundedJsonBody } from '@/lib/payment-boundary';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,7 +21,7 @@ export async function POST(request: Request) {
     assertSameOriginMutation(request);
     assertAdminSession(request);
 
-    const body = await request.json() as Record<string, unknown>;
+    const body = await readBoundedJsonBody(request, 8_192);
     if (body.confirmedNoCharge !== true) {
       return noStore(
         { success: false, message: 'Bankada tahsilat olmadığı açıkça doğrulanmadan yeniden deneme açılamaz.' },
