@@ -73,7 +73,7 @@ const requirements = [
   ['uncertain recovery is admin-only and explicit', reconcileRoute.includes('assertSameOriginMutation(request)') && reconcileRoute.includes('assertAdminSession(request)') && reconcileRoute.includes('confirmedNoCharge !== true') && store.includes("record.paymentState !== 'uncertain'")],
   ['stale creating recovery requires explicit reconciliation', store.includes('PAYMENT_ATTEMPT_STALE_MS') && store.includes('staleCreating') && reconcileRoute.includes('confirmedNoCharge !== true')],
   ['ready payments cannot be reset by recovery path', store.includes("record.paymentState !== 'uncertain'") && store.includes('assertVipPaymentReconciliationResettable')],
-  ['payment state persists provider evidence', store.includes('paymentProviderOrderId') && store.includes('paymentEvidenceId') && store.includes('paymentLastError') && paymentRoute.includes('providerOrderId: safeText(data.merchant_oid')],
+  ['payment state persists provider evidence', store.includes('paymentProviderOrderId') && store.includes('paymentEvidenceId') && store.includes('paymentLastError') && paymentRoute.includes('providerOrderId: verifiedProviderOrderId')],
   ['cardholder data is rejected by merchant API', paymentRoute.includes('assertNoCardholderData(body)') && paymentRoute.includes('CARD_DATA_KEYS')],
   ['production payment API has explicit origin allowlist', paymentRoute.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS') && paymentRoute.includes('allowedOrigins.has(url.origin)')],
   ['production payment endpoint has no legacy fallback', paymentRoute.includes("process.env.NODE_ENV !== 'production' ? process.env.BELGIN_PAYMENT_CREATE_URL : ''")],
