@@ -35,8 +35,19 @@ export async function POST(request: Request) {
       maxAge: session.maxAgeSeconds,
     });
     return response;
-  } catch (error: any) {
-    return noStore(NextResponse.json({ success: false, message: error?.message || 'Yönetim oturumu açılamadı.' }, { status: 503 }));
+  } catch (error: unknown) {
+    const internalMessage = error instanceof Error ? error.message : 'Yönetim oturumu açılamadı.';
+    console.error('[SAATCHI ADMIN SESSION]', internalMessage);
+    const originError = internalMessage.includes('Çapraz kaynak') || internalMessage.includes('kaynak doğrulamasından');
+    const requestError =
+      internalMessage.includes('Content-Type') ||
+      internalMessage.includes('Geçersiz JSON') ||
+      internalMessage.includes('JSON nesnesi') ||
+      internalMessage.includes('boyutu aşıyor');
+    return noStore(NextResponse.json(
+      { success: false, message: originError ? 'İstek kaynağı doğrulanamadı.' : requestError ? 'Geçersiz yönetim isteği.' : 'Yönetim oturumu açılamadı.' },
+      { status: originError ? 403 : requestError ? 400 : 503 }
+    ));
   }
 }
 
