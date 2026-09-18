@@ -31,6 +31,13 @@ expectThrow(() => session.verifyAdminSessionToken(adminSession.token), /doğrula
 process.env.VIP_ADMIN_KEY = 'admin-key-0001-strong-32-chars-minimum';
 assert.equal(session.verifyAdminSessionToken(adminSession.token).v, 2);
 
+const originalNodeEnv = process.env.NODE_ENV;
+process.env.NODE_ENV = 'production';
+process.env.VIP_ADMIN_SESSION_SECRET = process.env.VIP_PAYMENT_SECRET;
+expectThrow(() => session.createAdminSession(), /bağımsız olmalıdır/i);
+process.env.VIP_ADMIN_SESSION_SECRET = 'S'.repeat(64);
+process.env.NODE_ENV = originalNodeEnv || 'test';
+
 assert.equal(vipInput.parseVipAmount(123456), 123456);
 assert.equal(vipInput.parseVipAmount('1.250.000'), 1250000);
 assert.ok(Number.isNaN(vipInput.parseVipAmount(123456.78)));
