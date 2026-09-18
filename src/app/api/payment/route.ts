@@ -6,10 +6,39 @@ import { assertRequestBodySize, normalizePaymentHandoff } from '@/lib/payment-bo
 
 export const dynamic = 'force-dynamic';
 
-const PAYMENT_CREATE_URL =
-  process.env.SAATCHI_PAYMENT_CREATE_URL ||
-  process.env.BELGIN_PAYMENT_CREATE_URL ||
-  'https://us-central1-carbon-web-1265b.cloudfunctions.net/createPayment';
+function paymentCreateUrl() {
+  const raw =
+    process.env.SAATCHI_PAYMENT_CREATE_URL ||
+    (process.env.NODE_ENV !== 'production' ? process.env.BELGIN_PAYMENT_CREATE_URL : '') ||
+    '';
+
+  if (!raw) {
+    throw new Error('SAATCHI_PAYMENT_CREATE_URL production ortamında yapılandırılmamış.');
+  }
+
+  const url = new URL(raw);
+  if (url.protocol !== 'https:' || url.username || url.password) {
+    throw new Error('Ödeme servis adresi güvenli değil.');
+  }
+
+  const allowedOrigins = new Set(
+    String(process.env.SAATCHI_PAYMENT_API_ALLOWED_ORIGINS || '')
+      .split(',')
+      .map((value) => value.trim())
+      .filter(Boolean)
+      .map((value) => new URL(value).origin)
+  );
+
+  if (process.env.NODE_ENV === 'production' && allowedOrigins.size === 0) {
+    throw new Error('Ödeme API izin listesi production ortamında yapılandırılmamış.');
+  }
+
+  if (allowedOrigins.size > 0 && !allowedOrigins.has(url.origin)) {
+    throw new Error('Ödeme API adresi izin verilen origin listesinde değil.');
+  }
+
+  return url;
+}
 
 function noStore(payload: unknown, init?: ResponseInit) {
   const response = NextResponse.json(payload, init);
@@ -89,6 +118,15 @@ export async function POST(request: Request) {
     const customerIdentity = safeText(body.custIdentity, 50);
     const customerAddress = safeText(body.custAddress, 1000);
     const email = safeText(body.email, 200);
+    const phoneDigits = customerPhone.replace(/\D/g, '');
+
+    if (phoneDigits.length < 10 || phoneDigits.length > 15) {
+      return noStore({ status: 'error', requestId, message: 'Geçerli bir telefon numarası girin.' }, { status: 400 });
+    }
+
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return noStore({ status: 'error', requestId, message: 'Geçerli bir e-posta adresi girin.' }, { status: 400 });
+    }
 
     if (!customerName || !customerPhone || !customerIdentity) {
       return noStore(
@@ -137,10 +175,7 @@ export async function POST(request: Request) {
 
     if (configuredProvider) paymentPayload.provider = configuredProvider;
 
-    const upstreamUrl = new URL(PAYMENT_CREATE_URL);
-    if (upstreamUrl.protocol !== 'https:') {
-      throw new Error('Ödeme servis adresi güvenli değil.');
-    }
+    const upstreamUrl = paymentCreateUrl();
 
     await claimVipPaymentAttempt(vip, token, requestId);
 
