@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 
 process.env.VIP_PAYMENT_SECRET = 'P'.repeat(64);
 process.env.VIP_ADMIN_SESSION_SECRET = 'S'.repeat(64);
-process.env.VIP_ADMIN_KEY = 'admin-key-0001-strong';
+process.env.VIP_ADMIN_KEY = 'admin-key-0001-strong-32-chars-minimum';
 process.env.GOOGLE_CLOUD_PROJECT = 'studio-7658156126-ffb8e';
 
 const session = await import('../src/lib/vip-admin-session.ts');
@@ -25,9 +25,9 @@ const [body, signature] = adminSession.token.split('.');
 const tamperedSignature = `${signature.slice(0, -1)}${signature.endsWith('a') ? 'b' : 'a'}`;
 expectThrow(() => session.verifyAdminSessionToken(`${body}.${tamperedSignature}`), /doğrulanamadı/i);
 
-process.env.VIP_ADMIN_KEY = 'admin-key-0002-rotated';
+process.env.VIP_ADMIN_KEY = 'admin-key-0002-rotated-32-chars-minimum';
 expectThrow(() => session.verifyAdminSessionToken(adminSession.token), /doğrulanamadı/i);
-process.env.VIP_ADMIN_KEY = 'admin-key-0001-strong';
+process.env.VIP_ADMIN_KEY = 'admin-key-0001-strong-32-chars-minimum';
 assert.equal(session.verifyAdminSessionToken(adminSession.token).v, 2);
 
 const now = Date.now();
