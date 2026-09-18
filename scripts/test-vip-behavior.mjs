@@ -13,6 +13,7 @@ const vipInput = await import('../src/lib/vip-input.ts');
 const adminTotp = await import('../src/lib/vip-admin-totp.ts');
 const adminThrottle = await import('../src/lib/vip-admin-throttle.ts');
 const paymentSessionConsistency = await import('../src/lib/payment-session-consistency.ts');
+const securityAuditLog = await import('../src/lib/security-audit-log.ts');
 
 function expectThrow(fn, pattern) {
   let thrown = null;
@@ -142,6 +143,26 @@ assert.ok(Number.isNaN(vipInput.parseVipAmount(123456.78)));
 assert.ok(Number.isNaN(vipInput.parseVipAmount('123.45')));
 assert.ok(Number.isNaN(vipInput.parseVipAmount('-100')));
 assert.equal(vipInput.normalizeVipTitle('  Rolex\u0000   Submariner  '), 'Rolex Submariner');
+const originalConsoleInfo = console.info;
+let auditLine = '';
+console.info = (value) => { auditLine = String(value); };
+try {
+  securityAuditLog.securityAudit('payment.test', {
+    requestId: 'REQ-1',
+    vipId: 'VIP-1',
+    token: 'must-not-log',
+    cardNumber: '4111111111111111',
+    customerIdentity: '11111111111',
+    email: 'secret@example.test',
+    phone: '5555555555',
+  });
+} finally {
+  console.info = originalConsoleInfo;
+}
+assert.match(auditLine, /"event":"payment\.test"/);
+assert.match(auditLine, /"requestId":"REQ-1"/);
+assert.doesNotMatch(auditLine, /must-not-log|4111111111111111|11111111111|secret@example\.test|5555555555/);
+
 assert.doesNotThrow(() => paymentBoundary.assertNoCardholderData({ token: 'opaque', custName: 'Test' }));
 assert.doesNotThrow(() => paymentBoundary.assertAllowedObjectKeys(
   { token: 'opaque', custName: 'Test' },
