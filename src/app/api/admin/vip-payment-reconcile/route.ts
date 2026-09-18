@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { assertAdminSession, assertSameOriginMutation } from '@/lib/vip-admin-session';
 import { resetUncertainVipPaymentAttempt } from '@/lib/vip-link-store';
-import { readBoundedJsonBody } from '@/lib/payment-boundary';
+import { assertAllowedObjectKeys, readBoundedJsonBody } from '@/lib/payment-boundary';
 import { verifyAdminTotp } from '@/lib/vip-admin-totp';
 
 export const dynamic = 'force-dynamic';
@@ -23,7 +23,21 @@ export async function POST(request: Request) {
     assertAdminSession(request);
 
     const body = await readBoundedJsonBody(request, 8_192);
-    const otp = String(body.otp || '');
+    assertAllowedObjectKeys(
+      body,
+      ['id', 'confirmedNoCharge', 'reconciliationReference', 'reconciliationReason', 'otp'],
+      'Mutabakat isteği'
+    );
+    if (
+      typeof body.id !== 'string' ||
+      typeof body.confirmedNoCharge !== 'boolean' ||
+      typeof body.reconciliationReference !== 'string' ||
+      typeof body.reconciliationReason !== 'string' ||
+      typeof body.otp !== 'string'
+    ) {
+      return noStore({ success: false, message: 'Geçersiz mutabakat isteği.' }, { status: 400 });
+    }
+    const otp = body.otp;
     if (!verifyAdminTotp(otp)) {
       return noStore({ success: false, message: 'Mutabakat için 2 adımlı doğrulama kodu geçersiz.' }, { status: 401 });
     }
@@ -35,9 +49,9 @@ export async function POST(request: Request) {
       );
     }
 
-    const id = String(body.id || '').trim();
-    const reconciliationReference = String(body.reconciliationReference || '').trim();
-    const reconciliationReason = String(body.reconciliationReason || '').trim();
+    const id = body.id.trim();
+    const reconciliationReference = body.reconciliationReference.trim();
+    const reconciliationReason = body.reconciliationReason.trim();
 
     if (!id.startsWith('VIP-SAATCHI-')) {
       return noStore({ success: false, message: 'Geçerli VIP link referansı zorunludur.' }, { status: 400 });
