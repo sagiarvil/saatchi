@@ -119,7 +119,7 @@ const CARD_DATA_KEYS = new Set([
   'cardholderdata',
 ]);
 
-function assertNoCardholderData(value: unknown, depth = 0) {
+export function assertNoCardholderData(value: unknown, depth = 0) {
   if (!value || typeof value !== 'object' || depth > 4) return;
   if (Array.isArray(value)) {
     value.forEach((item) => assertNoCardholderData(item, depth + 1));
@@ -188,7 +188,10 @@ export async function POST(request: Request) {
       vipTitle: vip.name,
       title: vip.name,
       productName: vip.name,
-      items: [{ id: vip.id, name: vip.name, qty: 1, isVipCustom: true }],
+      amount: vip.price,
+      totalAmount: vip.price,
+      currency: 'TRY',
+      items: [{ id: vip.id, name: vip.name, qty: 1, price: vip.price, isVipCustom: true }],
       user_name: customerName,
       user_phone: customerPhone,
       email,
