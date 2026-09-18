@@ -115,39 +115,6 @@ jobs:
           set -euo pipefail
           ./node_modules/.bin/firebase experiments:enable webframeworks
 
-      - name: Ensure deployer can attach the framework runtime service account
-        shell: bash
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
-          RUNTIME_SERVICE_ACCOUNT: 390979735373-compute@developer.gserviceaccount.com
-        run: |
-          set -euo pipefail
-          command -v gcloud >/dev/null 2>&1 || {
-            echo 'GCLOUD_CLI_MISSING: cannot establish least-privilege runtime service-account binding.' >&2
-            exit 1
-          }
-          DEPLOYER_EMAIL="$(python3 - "$GOOGLE_APPLICATION_CREDENTIALS" <<'PY'
-          import json,sys
-          d=json.load(open(sys.argv[1]))
-          value=str(d.get('client_email') or '').strip()
-          if not value.endswith('.iam.gserviceaccount.com'):
-              raise SystemExit(1)
-          print(value)
-          PY
-          )"
-          gcloud auth activate-service-account "$DEPLOYER_EMAIL" --key-file="$GOOGLE_APPLICATION_CREDENTIALS" --project="$PROJECT_ID" --quiet >/dev/null
-          gcloud iam service-accounts add-iam-policy-binding "$RUNTIME_SERVICE_ACCOUNT" \
-            --project "$PROJECT_ID" \
-            --member "serviceAccount:$DEPLOYER_EMAIL" \
-            --role roles/iam.serviceAccountUser \
-            --quiet >/dev/null
-          gcloud iam service-accounts get-iam-policy "$RUNTIME_SERVICE_ACCOUNT" \
-            --project "$PROJECT_ID" \
-            --flatten='bindings[].members' \
-            --filter="bindings.role:roles/iam.serviceAccountUser AND bindings.members:serviceAccount:$DEPLOYER_EMAIL" \
-            --format='value(bindings.role)' | grep -qx 'roles/iam.serviceAccountUser'
-          echo 'RUNTIME_SERVICE_ACCOUNT_ACTAS_VERIFIED'
-
       - name: Snapshot current Firebase live release for rollback
         shell: bash
         env:
