@@ -6,7 +6,7 @@ import {
   createAdminSession,
   verifyAdminKey,
 } from '@/lib/vip-admin-session';
-import { readBoundedJsonBody } from '@/lib/payment-boundary';
+import { assertAllowedObjectKeys, readBoundedJsonBody } from '@/lib/payment-boundary';
 import { verifyAdminTotp } from '@/lib/vip-admin-totp';
 import { assertAdminLoginNotThrottled, clearAdminLoginFailures, recordAdminLoginFailure } from '@/lib/vip-admin-throttle';
 
@@ -23,8 +23,12 @@ export async function POST(request: Request) {
     assertSameOriginMutation(request);
     await assertAdminLoginNotThrottled(request);
     const body = await readBoundedJsonBody(request, 4_096);
-    const key = String(body?.key || '');
-    const otp = String(body?.otp || '');
+    assertAllowedObjectKeys(body, ['key', 'otp'], 'Yönetim isteği');
+    if (typeof body.key !== 'string' || typeof body.otp !== 'string') {
+      return noStore(NextResponse.json({ success: false, message: 'Geçersiz yönetim isteği.' }, { status: 400 }));
+    }
+    const key = body.key;
+    const otp = body.otp;
     if (!verifyAdminKey(key) || !verifyAdminTotp(otp)) {
       await recordAdminLoginFailure(request);
       return noStore(NextResponse.json({ success: false, message: 'Yönetim doğrulaması başarısız.' }, { status: 401 }));
