@@ -17,6 +17,7 @@ const store = read('src/lib/vip-link-store.ts');
 const vipInput = read('src/lib/vip-input.ts');
 const vipAdminTotp = read('src/lib/vip-admin-totp.ts');
 const vipAdminThrottle = read('src/lib/vip-admin-throttle.ts');
+const securityAuditLog = read('src/lib/security-audit-log.ts');
 const listRoute = read('src/app/api/admin/vip-links/route.ts');
 const reconcileRoute = read('src/app/api/admin/vip-payment-reconcile/route.ts');
 const firebase = read('firebase.json');
@@ -91,6 +92,8 @@ const requirements = [
   ['stale creating recovery requires explicit reconciliation', store.includes('PAYMENT_ATTEMPT_STALE_MS') && store.includes('staleCreating') && reconcileRoute.includes('confirmedNoCharge !== true')],
   ['ready payments cannot be reset by recovery path', store.includes("record.paymentState !== 'uncertain' && !staleCreating") && store.includes('assertVipPaymentReconciliationResettable')],
   ['payment state persists provider evidence', store.includes('paymentProviderOrderId') && store.includes('paymentEvidenceId') && store.includes('paymentLastError') && paymentRoute.includes('providerOrderId: verifiedProviderOrderId')],
+  ['security audit log filters sensitive fields', securityAuditLog.includes('BLOCKED_FIELD') && securityAuditLog.includes('token|secret|password') && behaviorTest.includes('assert.doesNotMatch(auditLine')],
+  ['critical auth/payment transitions emit structured audit events', sessionRoute.includes("securityAudit('admin.login.") && paymentRoute.includes("securityAudit('payment.session.") && reconcileRoute.includes("securityAudit('payment.reconciliation.reset'")],
   ['provider session requires order id amount currency and provider consistency', paymentRoute.includes('assertProviderSessionConsistency') && paymentSessionConsistency.includes('doğrulanabilir işlem tutarı') && paymentSessionConsistency.includes('doğrulanabilir para birimi') && paymentSessionConsistency.includes('provider kimliği döndürmedi')],
   ['cardholder data is rejected by merchant API', paymentRoute.includes('assertNoCardholderData(body)') && paymentRoute.includes("assertNoCardholderData") && boundary.includes('CARD_DATA_KEYS') && boundary.includes('export function assertNoCardholderData')],
   ['payment request uses strict field allowlist', paymentRoute.includes('assertAllowedObjectKeys(body') && boundary.includes('export function assertAllowedObjectKeys') && paymentRoute.includes("'marketingConsent'")],
