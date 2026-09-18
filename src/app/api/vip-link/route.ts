@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
-import { signVipToken, verifyVipToken } from '@/lib/vip-token';
+import { signVipToken } from '@/lib/vip-token';
 import { assertAdminSession, assertSameOriginMutation, expectedPublicOrigin } from '@/lib/vip-admin-session';
 import { readBoundedJsonBody } from '@/lib/payment-boundary';
-import { assertVipLinkActive, assertVipPaymentStatePayable, createVipLinkRecord, revokeVipLink } from '@/lib/vip-link-store';
+import { createVipLinkRecord, revokeVipLink } from '@/lib/vip-link-store';
 import { normalizeVipTitle, parseVipAmount } from '@/lib/vip-input';
 
 export const dynamic = 'force-dynamic';
@@ -51,35 +51,6 @@ export async function POST(request: Request) {
     const authError = message.includes('Yönetim oturumu');
     const originError = message.includes('Çapraz kaynak');
     return noStore(NextResponse.json({ success: false, message }, { status: originError ? 403 : authError ? 401 : 503 }));
-  }
-}
-
-export async function GET(request: Request) {
-  try {
-    const token = new URL(request.url).searchParams.get('token') || '';
-    const payload = verifyVipToken(token);
-    const record = await assertVipLinkActive(payload, token);
-    assertVipPaymentStatePayable(record);
-    return noStore(NextResponse.json({
-      success: true,
-      payload: { id: payload.id, name: payload.name, price: payload.price, exp: payload.exp },
-    }));
-  } catch (error: unknown) {
-    const internalMessage = errorMessage(error, 'VIP link doğrulanamadı.');
-    console.error('[SAATCHI VIP VERIFY]', internalMessage);
-    const unavailable =
-      internalMessage.includes('Firestore') ||
-      internalMessage.includes('yapılandırılmamış') ||
-      internalMessage.includes('proje kimliği');
-    return noStore(NextResponse.json(
-      {
-        success: false,
-        message: unavailable
-          ? 'VIP bağlantısı şu anda doğrulanamıyor.'
-          : 'VIP bağlantısı geçersiz, iptal edilmiş veya süresi dolmuş.',
-      },
-      { status: unavailable ? 503 : 400 }
-    ));
   }
 }
 
