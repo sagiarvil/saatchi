@@ -10,6 +10,7 @@ const tokenLib = await import('../src/lib/vip-token.ts');
 const store = await import('../src/lib/vip-link-store.ts');
 const paymentBoundary = await import('../src/lib/payment-boundary.ts');
 const vipInput = await import('../src/lib/vip-input.ts');
+const adminTotp = await import('../src/lib/vip-admin-totp.ts');
 const paymentRouteModule = await import('../src/app/api/payment/route.ts');
 
 function expectThrow(fn, pattern) {
@@ -22,6 +23,14 @@ function expectThrow(fn, pattern) {
 const adminSession = session.createAdminSession();
 assert.ok(adminSession.token.includes('.'));
 assert.equal(session.verifyAdminSessionToken(adminSession.token).v, 2);
+
+const totpSecret = 'JBSWY3DPEHPK3PXPJBSWY3DPEHPK3PXP';
+process.env.VIP_ADMIN_TOTP_SECRET = totpSecret;
+const totpNow = 1_900_000_000_000;
+const validOtp = adminTotp.generateTotpForTest(totpSecret, totpNow);
+assert.equal(adminTotp.verifyAdminTotp(validOtp, totpNow), true);
+assert.equal(adminTotp.verifyAdminTotp('000000', totpNow), validOtp === '000000');
+assert.equal(adminTotp.verifyAdminTotp('12345', totpNow), false);
 
 const [body, signature] = adminSession.token.split('.');
 const tamperedSignature = `${signature.slice(0, -1)}${signature.endsWith('a') ? 'b' : 'a'}`;
