@@ -8,6 +8,7 @@ import {
 } from '@/lib/vip-admin-session';
 import { readBoundedJsonBody } from '@/lib/payment-boundary';
 import { verifyAdminTotp } from '@/lib/vip-admin-totp';
+import { assertAdminLoginNotThrottled, clearAdminLoginFailures, recordAdminLoginFailure } from '@/lib/vip-admin-throttle';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,13 +21,16 @@ function noStore(response: NextResponse) {
 export async function POST(request: Request) {
   try {
     assertSameOriginMutation(request);
+    assertAdminLoginNotThrottled(request);
     const body = await readBoundedJsonBody(request, 4_096);
     const key = String(body?.key || '');
     const otp = String(body?.otp || '');
     if (!verifyAdminKey(key) || !verifyAdminTotp(otp)) {
+      recordAdminLoginFailure(request);
       return noStore(NextResponse.json({ success: false, message: 'Yönetim doğrulaması başarısız.' }, { status: 401 }));
     }
 
+    clearAdminLoginFailures(request);
     const session = createAdminSession();
     const response = noStore(NextResponse.json({ success: true, expiresAt: session.expiresAt }));
     response.cookies.set(VIP_ADMIN_COOKIE, session.token, {
@@ -41,14 +45,15 @@ export async function POST(request: Request) {
     const internalMessage = error instanceof Error ? error.message : 'Yönetim oturumu açılamadı.';
     console.error('[SAATCHI ADMIN SESSION]', internalMessage);
     const originError = internalMessage.includes('Çapraz kaynak') || internalMessage.includes('kaynak doğrulamasından');
+    const throttled = internalMessage.includes('geçici olarak sınırlandı');
     const requestError =
       internalMessage.includes('Content-Type') ||
       internalMessage.includes('Geçersiz JSON') ||
       internalMessage.includes('JSON nesnesi') ||
       internalMessage.includes('boyutu aşıyor');
     return noStore(NextResponse.json(
-      { success: false, message: originError ? 'İstek kaynağı doğrulanamadı.' : requestError ? 'Geçersiz yönetim isteği.' : 'Yönetim oturumu açılamadı.' },
-      { status: originError ? 403 : requestError ? 400 : 503 }
+      { success: false, message: originError ? 'İstek kaynağı doğrulanamadı.' : throttled ? 'Çok fazla başarısız giriş denemesi. Daha sonra tekrar deneyin.' : requestError ? 'Geçersiz yönetim isteği.' : 'Yönetim oturumu açılamadı.' },
+      { status: originError ? 403 : throttled ? 429 : requestError ? 400 : 503 }
     ));
   }
 }
