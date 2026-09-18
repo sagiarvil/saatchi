@@ -32,6 +32,9 @@ const validOtp = adminTotp.generateTotpForTest(totpSecret, totpNow);
 assert.equal(adminTotp.verifyAdminTotp(validOtp, totpNow), true);
 assert.equal(adminTotp.verifyAdminTotp('000000', totpNow), validOtp === '000000');
 assert.equal(adminTotp.verifyAdminTotp('12345', totpNow), false);
+process.env.VIP_ADMIN_TOTP_SECRET = 'INVALID!SECRET';
+expectThrow(() => adminTotp.verifyAdminTotp('123456', totpNow), /base32 formatı geçersiz/i);
+process.env.VIP_ADMIN_TOTP_SECRET = totpSecret;
 
 adminThrottle.resetAdminLoginThrottleForTests();
 const throttleRequest = new Request('https://saatchi.watch/api/admin-session', {
