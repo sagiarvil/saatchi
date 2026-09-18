@@ -49,6 +49,35 @@ assert.doesNotThrow(() => paymentRouteModule.assertNoCardholderData({ token: 'op
 expectThrow(() => paymentRouteModule.assertNoCardholderData({ cardNumber: '4111111111111111' }), /Kart numarası/i);
 expectThrow(() => paymentRouteModule.assertNoCardholderData({ nested: { cvv: '123' } }), /Kart numarası/i);
 
+assert.equal(
+  paymentRouteModule.assertProviderSessionConsistency(
+    { merchant_oid: 'ORD-123', amount: 250000, currency: 'TRY', provider: 'KUVEYTTURK' },
+    { amount: 250000, currency: 'TRY', provider: 'KUVEYTTURK' }
+  ),
+  'ORD-123'
+);
+expectThrow(
+  () => paymentRouteModule.assertProviderSessionConsistency(
+    { amount: 250000, currency: 'TRY' },
+    { amount: 250000, currency: 'TRY' }
+  ),
+  /sipariş referansı/i
+);
+expectThrow(
+  () => paymentRouteModule.assertProviderSessionConsistency(
+    { merchant_oid: 'ORD-123', amount: 250001, currency: 'TRY' },
+    { amount: 250000, currency: 'TRY' }
+  ),
+  /tutarı sipariş tutarıyla uyuşmuyor/i
+);
+expectThrow(
+  () => paymentRouteModule.assertProviderSessionConsistency(
+    { merchant_oid: 'ORD-123', amount: 250000, currency: 'USD' },
+    { amount: 250000, currency: 'TRY' }
+  ),
+  /para birimi/i
+);
+
 const now = Date.now();
 const payload = {
   id: 'VIP-SAATCHI-TEST-001',
