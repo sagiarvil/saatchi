@@ -145,9 +145,9 @@ export default function CartierFilterClient({ initialWatches }: { initialWatches
 
               return (
                 <Link href={linkUrl} key={String(watch.id || idx)} className="group bg-surface rounded-xl border border-surface-border overflow-hidden hover:shadow-lg hover:border-[#8d5f62]/40 transition-all duration-500 flex flex-col">
-                  <div className="w-full aspect-square relative overflow-hidden bg-[#FAFAFA] flex items-center justify-center p-6">
+                  <div className="w-full aspect-[4/5] relative overflow-hidden bg-[#FAFAFA] flex items-center justify-center">
                     {watch.image ? (
-                      <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-4 group-hover:scale-105 transition-transform duration-700 ease-out mix-blend-multiply" />
+                      <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-8 md:p-12 group-hover:scale-[1.04] transition-transform duration-700 ease-out mix-blend-multiply drop-shadow-sm" />
                     ) : (
                       <div className="w-full h-full flex flex-col items-center justify-center p-4">
                         <span className="text-[#8d5f62] text-[10px] tracking-widest uppercase font-bold text-center">Cartier</span>

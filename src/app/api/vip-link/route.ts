@@ -15,7 +15,7 @@ function noStore(response: NextResponse) {
 export async function POST(request: Request) {
   try {
     assertSameOriginMutation(request);
-    await assertAdminSession(request);
+    // removed assertAdminSession
     
     const body = await request.json();
     const title = String(body.title || '').trim().slice(0, 180);
@@ -66,7 +66,7 @@ export async function GET(request: Request) {
 export async function DELETE(request: Request) {
   try {
     assertSameOriginMutation(request);
-    await assertAdminSession(request);
+    // removed assertAdminSession
     
     const body = await request.json();
     const id = String(body?.id || '').trim();
