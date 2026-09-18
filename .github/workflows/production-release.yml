@@ -33,7 +33,7 @@ jobs:
           echo "sha=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_OUTPUT"
 
       - name: Checkout exact verified commit
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ steps.release.outputs.sha }}
           fetch-depth: 0
@@ -53,7 +53,7 @@ jobs:
           echo "RELEASE_SHA_IS_CURRENT_MAIN=$RELEASE_SHA"
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
           cache: npm
