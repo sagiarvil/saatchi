@@ -49,6 +49,7 @@ export default function VipLinkGenerator() {
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
   const [rows, setRows] = useState<VipLinkRow[]>([]);
+  const [serverNow, setServerNow] = useState(0);
   const [rowsLoading, setRowsLoading] = useState(false);
   const [revokingId, setRevokingId] = useState('');
   const [reconcileId, setReconcileId] = useState('');
@@ -61,8 +62,8 @@ export default function VipLinkGenerator() {
   const rawAmount = Number(amount.replace(/\D/g, '') || 0);
   const formattedAmount = rawAmount ? new Intl.NumberFormat('tr-TR').format(rawAmount) : '';
   const activeCount = useMemo(
-    () => rows.filter((row) => row.state === 'active' && row.expiresAt > Date.now() && row.paymentState === 'idle').length,
-    [rows]
+    () => rows.filter((row) => row.state === 'active' && row.expiresAt > serverNow && row.paymentState === 'idle').length,
+    [rows, serverNow]
   );
 
   const loadLinks = useCallback(async () => {
@@ -77,6 +78,7 @@ export default function VipLinkGenerator() {
       }
       if (!response.ok || !data.success) throw new Error(data.message || 'VIP link listesi alınamadı.');
       setRows(Array.isArray(data.links) ? data.links : []);
+      setServerNow(Number(data.serverNow || 0));
     } catch (e: unknown) {
       setError(errorMessage(e, 'VIP link listesi alınamadı.'));
     } finally {
@@ -322,7 +324,7 @@ export default function VipLinkGenerator() {
             <div className="mt-3 max-h-[640px] divide-y divide-[#eee9e3] overflow-y-auto">
               {!rowsLoading && rows.length === 0 && <p className="py-10 text-center text-sm text-[#8a837c]">Henüz kalıcı VIP link kaydı yok.</p>}
               {rows.map((row) => {
-                const expired = row.expiresAt <= Date.now();
+                const expired = row.expiresAt <= serverNow;
                 const active = row.state === 'active' && !expired && row.paymentState === 'idle';
                 const stateLabel =
                   row.state === 'revoked'
@@ -336,7 +338,7 @@ export default function VipLinkGenerator() {
                           : row.paymentState === 'uncertain'
                             ? 'Mutabakat gerekli'
                             : 'Aktif';
-                const staleCreating = row.paymentState === 'creating' && row.paymentAttemptAt > 0 && Date.now() - row.paymentAttemptAt >= 5 * 60 * 1000;
+                const staleCreating = row.paymentState === 'creating' && row.paymentAttemptAt > 0 && serverNow - row.paymentAttemptAt >= 5 * 60 * 1000;
                 const canReconcile = row.state === 'active' && (row.paymentState === 'uncertain' || staleCreating);
                 return (
                   <div key={row.id} className="py-4">
