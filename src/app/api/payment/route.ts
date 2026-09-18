@@ -216,7 +216,10 @@ export async function POST(request: Request) {
       await assertVipLinkActive(vip, token);
 
       const handoff = normalizePaymentHandoff(data);
-      await finalizeVipPaymentAttempt(vip.id, requestId, 'ready');
+      await finalizeVipPaymentAttempt(vip.id, requestId, 'ready', {
+        providerOrderId: safeText(data.merchant_oid, 160),
+        evidenceId: safeText(data.evidenceId, 160),
+      });
 
       return noStore({
         status: 'success',
@@ -233,7 +236,9 @@ export async function POST(request: Request) {
       });
     } catch (error) {
       try {
-        await finalizeVipPaymentAttempt(vip.id, requestId, 'uncertain');
+        await finalizeVipPaymentAttempt(vip.id, requestId, 'uncertain', {
+          lastError: errorMessage(error, 'Ödeme sağlayıcısı sonucu doğrulanamadı.'),
+        });
       } catch (finalizeError) {
         console.error('[SAATCHI PAYMENT ATTEMPT FINALIZE]', requestId, errorMessage(finalizeError, 'unknown'));
       }
