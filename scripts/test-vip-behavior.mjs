@@ -89,9 +89,22 @@ assert.equal(store.assertVipPaymentStatePayable(activeRecord), true);
 expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'creating' }), /zaten oluşturuluyor/i);
 expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'ready' }), /daha önce oluşturuldu/i);
 expectThrow(() => store.assertVipPaymentStatePayable({ paymentState: 'uncertain' }), /mutabakat/i);
-assert.equal(store.assertVipPaymentReconciliationResettable({ paymentState: 'uncertain' }), true);
-expectThrow(() => store.assertVipPaymentReconciliationResettable({ paymentState: 'ready' }), /Yalnız sonucu belirsiz/i);
-expectThrow(() => store.assertVipPaymentReconciliationResettable({ paymentState: 'creating' }), /Yalnız sonucu belirsiz/i);
+assert.equal(store.assertVipPaymentReconciliationResettable({ paymentState: 'uncertain', paymentAttemptAt: now }), true);
+assert.equal(
+  store.assertVipPaymentReconciliationResettable(
+    { paymentState: 'creating', paymentAttemptAt: now - 6 * 60 * 1000 },
+    now
+  ),
+  true
+);
+expectThrow(
+  () => store.assertVipPaymentReconciliationResettable({ paymentState: 'ready', paymentAttemptAt: now }, now),
+  /Yalnız sonucu belirsiz veya zaman aşımına uğramış/i
+);
+expectThrow(
+  () => store.assertVipPaymentReconciliationResettable({ paymentState: 'creating', paymentAttemptAt: now - 60_000 }, now),
+  /Yalnız sonucu belirsiz veya zaman aşımına uğramış/i
+);
 
 const sameOriginRequest = new Request('https://saatchi.watch/api/vip-link', {
   method: 'POST',
