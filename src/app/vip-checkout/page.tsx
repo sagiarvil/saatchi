@@ -39,15 +39,17 @@ function CheckoutContent() {
   };
 
   useEffect(() => {
-    if (queryToken) {
-      setToken(queryToken);
-      setTokenResolved(true);
-      return;
-    }
     const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
     const hashToken = hashParams.get('token') || '';
-    setToken(hashToken);
+    const resolvedToken = hashToken || queryToken;
+
+    setToken(resolvedToken);
     setTokenResolved(true);
+
+    // Bearer token yalnız ilk açılışta okunur; browser history/address bar yüzeyinden hemen silinir.
+    if (resolvedToken && (window.location.search || window.location.hash)) {
+      window.history.replaceState(null, '', '/vip-checkout');
+    }
   }, [queryToken]);
 
   useEffect(() => {
@@ -61,7 +63,13 @@ function CheckoutContent() {
     setLoadingSummary(true);
     setError('');
     let active = true;
-    fetch(`/api/vip-link?token=${encodeURIComponent(token)}`, { cache: 'no-store', credentials: 'same-origin' })
+    fetch('/api/vip-link/verify', {
+      method: 'POST',
+      cache: 'no-store',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token }),
+    })
       .then((res) => res.json().then((data) => ({ res, data })))
       .then(({ res, data }) => {
         if (!res.ok || !data.success) throw new Error(data.message || 'VIP bağlantısı geçersiz veya süresi dolmuş.');
