@@ -1,3 +1,5 @@
+import { LEGAL_DOCUMENT_VERSIONS } from './legal-versions';
+
 export type LegalSection = {
   title: string;
   paragraphs?: string[];
@@ -92,7 +94,7 @@ export const legalPages: LegalPageDefinition[] = [
     title: 'Mesafeli Satış Sözleşmesi',
     eyebrow: 'T.C. Tüketici Hukuku / Sözleşme',
     summary: 'Saatchi üzerinden kurulan mesafeli satışlarda tarafların hak ve yükümlülüklerini, ödeme, teslim, cayma, ayıplı mal ve kayıt düzenini belirler.',
-    version: '17.09.2026 · v1.0',
+    version: LEGAL_DOCUMENT_VERSIONS.distanceSales,
     references: commonReferences,
     sections: [
       {
@@ -186,7 +188,7 @@ export const legalPages: LegalPageDefinition[] = [
     title: 'Mesafeli Sözleşme Ön Bilgilendirme Formu',
     eyebrow: 'Ödeme Öncesi Zorunlu Bilgilendirme',
     summary: 'Müşterinin ödeme yükümlülüğü altına girmeden önce ürün, satıcı, toplam fiyat, teslim, cayma ve uyuşmazlık yolları hakkında bilgilendirilmesine ilişkin çerçevedir.',
-    version: '17.09.2026 · v1.0',
+    version: LEGAL_DOCUMENT_VERSIONS.preInformation,
     references: commonReferences,
     sections: [
       {
@@ -420,7 +422,7 @@ export const legalPages: LegalPageDefinition[] = [
     title: 'Yüksek Değerli Saat Teslimat Politikası',
     eyebrow: 'Güvenlik / Teslim',
     summary: 'Yüksek değerli saatlerde mağazadan teslim, sigortalı lojistik, kimlik doğrulama ve üçüncü kişiye teslim kontrollerinin temel esaslarını açıklar.',
-    version: '17.09.2026 · v1.0',
+    version: LEGAL_DOCUMENT_VERSIONS.highValueDelivery,
     references: ['6502 sayılı Tüketicinin Korunması Hakkında Kanun', 'Mesafeli Sözleşmeler Yönetmeliği', '6698 sayılı Kişisel Verilerin Korunması Kanunu'],
     sections: [
       {
