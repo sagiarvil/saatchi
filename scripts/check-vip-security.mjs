@@ -25,6 +25,7 @@ const productionRelease = read('.github/workflows/production-release.yml');
 const mainRegression = read('.github/workflows/ui-regression.yml');
 const liveRuntimeSmoke = read('.github/workflows/live-runtime-smoke.yml');
 const handoff = read('docs/POS_SECURITY_HANDOFF.md');
+const bankEvidence = read('docs/POS_BANK_REVIEW_EVIDENCE.md');
 const legacyAdminHtml = read('public/admin.html');
 const legacyAdminJs = read('public/js/admin.js');
 const vipCheckoutLayout = read('src/app/vip-checkout/layout.tsx');
@@ -136,6 +137,8 @@ const requirements = [
   ['handoff documents hosted-payment allowlist', handoff.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS')],
   ['handoff documents external bank test requirement', handoff.includes('Real bank test-merchant flow')],
   ['handoff documents ASV validation requirement', handoff.includes('ASV external scan')],
+  ['bank evidence matrix preserves external blockers', bankEvidence.includes('3-D Secure | BLOCKED') && bankEvidence.includes('Callback/status verification | BLOCKED') && bankEvidence.includes('PCI ASV scan | BLOCKED') && bankEvidence.includes('Live exact SHA | BLOCKED') && bankEvidence.includes('GitHub main protection | BLOCKED')],
+  ['bank evidence matrix forbids code-to-production equivalence', bankEvidence.includes('CODE != RUNTIME') && bankEvidence.includes('COMMIT != DEPLOY') && bankEvidence.includes('TEST != PRODUCTION')],
   ['legal acceptance versions are persisted', paymentRoute.includes('LEGAL_DOCUMENT_VERSIONS') && store.includes('legalAcceptedAt') && store.includes('legalDocumentVersions')],
   ['legal timestamps are server-owned', paymentRoute.includes('const legalAcceptedAt = new Date().toISOString()') && !checkout.includes('presentedAt: new Date().toISOString()')],
 ];
