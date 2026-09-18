@@ -20,6 +20,7 @@ export async function GET(request: Request) {
     const records = await listVipLinkRecords(75);
     return noStore(NextResponse.json({
       success: true,
+      serverNow: Date.now(),
       links: records.map((record) => ({
         id: record.id,
         name: record.name,
