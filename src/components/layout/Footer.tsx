@@ -9,7 +9,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
           
           <div className="flex flex-col items-center md:items-start">
-            <Image src="/logo.png" alt="Saatchi & Saatchi" width={180} height={48} className="h-12 w-auto mb-6 object-contain invert brightness-0" />
+            <Image src="/logo.png" alt="SAATCHI" width={180} height={48} className="h-12 w-auto mb-6 object-contain invert brightness-0" />
             <p className="text-gray-500 text-sm leading-relaxed">
               Mükemmellik ve zarafetin buluştuğu lüks saat koleksiyonları.
             </p>
@@ -50,7 +50,7 @@ export function Footer() {
         
         <div className="mt-16 pt-8 border-t border-white/10 text-center flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-600 text-[10px] tracking-widest uppercase">
-            &copy; {new Date().getFullYear()} SAATCHI - SEMİH SONBAHAR. Tüm Hakları Saklıdır.
+            &copy; {new Date().getFullYear()} SAATCHI SAAT - SEMİH SONBAHAR. Tüm Hakları Saklıdır.
           </p>
           <div className="flex gap-4">
             <span className="text-gray-700 text-xs font-mono">SECURE VIP CHECKOUT</span>
