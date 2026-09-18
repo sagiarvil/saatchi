@@ -7,6 +7,7 @@ import {
   verifyAdminKey,
 } from '@/lib/vip-admin-session';
 import { readBoundedJsonBody } from '@/lib/payment-boundary';
+import { verifyAdminTotp } from '@/lib/vip-admin-totp';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,7 +22,8 @@ export async function POST(request: Request) {
     assertSameOriginMutation(request);
     const body = await readBoundedJsonBody(request, 4_096);
     const key = String(body?.key || '');
-    if (!verifyAdminKey(key)) {
+    const otp = String(body?.otp || '');
+    if (!verifyAdminKey(key) || !verifyAdminTotp(otp)) {
       return noStore(NextResponse.json({ success: false, message: 'Yönetim doğrulaması başarısız.' }, { status: 401 }));
     }
 
