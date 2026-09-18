@@ -34,6 +34,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Dependency audit (high/critical gate)
+        run: npm audit --audit-level=high
+
+      - name: Production dependency audit (moderate+ gate)
+        run: npm audit --omit=dev --audit-level=moderate
+
+      - name: Legacy admin syntax check
+        run: node --check public/js/admin.js
+
       - name: Install pricing test dependencies
         run: python3 -m pip install -q curl_cffi beautifulsoup4
 
