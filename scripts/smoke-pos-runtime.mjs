@@ -112,8 +112,7 @@ try {
     },
     body: JSON.stringify({
       token: 'invalid',
-      cardNumber: '4111111111111111',
-      cvv: '123',
+      custName: { cardNumber: '4111111111111111', cvv: '123' },
     }),
   });
   assert.equal(cardDataAttempt.response.status, 400);
