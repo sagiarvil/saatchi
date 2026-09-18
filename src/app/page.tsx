@@ -46,7 +46,7 @@ export default function Home() {
                     <div className="absolute inset-0 w-full h-full z-0">
                         {watch.image ? (
                           
-                          <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-6 group-hover:scale-110 transition-transform duration-700 ease-out" />
+                          <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-6 group-hover:scale-110 transition-transform duration-700 ease-out mix-blend-multiply drop-shadow-sm" />
                         ) : (
                           <div className="w-full h-full bg-surface flex flex-col items-center justify-center text-[#C2A768]/30">
                             <Watch className="w-12 h-12 mb-2 opacity-50" />

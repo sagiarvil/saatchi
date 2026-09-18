@@ -128,7 +128,7 @@ export default function ZoomImage({
         alt={alt}
         draggable={false}
         decoding="async"
-        className={`absolute inset-0 w-full h-full object-contain p-4 md:p-8 select-none transition-opacity duration-200 ${
+        className={`absolute inset-0 w-full h-full object-contain p-4 md:p-8 select-none mix-blend-multiply drop-shadow-sm transition-opacity duration-200 ${
           isActive ? 'opacity-35' : 'opacity-100'
         }`}
       />
