@@ -17,6 +17,7 @@ const listRoute = read('src/app/api/admin/vip-links/route.ts');
 const reconcileRoute = read('src/app/api/admin/vip-payment-reconcile/route.ts');
 const firebase = read('firebase.json');
 const workflow = read('.github/workflows/pos-security-pr.yml');
+const productionRelease = read('.github/workflows/production-release.yml');
 const handoff = read('docs/POS_SECURITY_HANDOFF.md');
 const legacyAdminHtml = read('public/admin.html');
 const legacyAdminJs = read('public/js/admin.js');
@@ -104,6 +105,9 @@ const requirements = [
   ['public site root metadata is indexable', rootLayout.includes('index: true') && rootLayout.includes('follow: true')],
   ['CSP permits only explicit Firebase admin SDK origin', firebase.includes("script-src 'self' 'unsafe-inline' https://www.gstatic.com")],
   ['POS PRs run isolated regression workflow before merge', workflow.includes('pull_request:') && workflow.includes('npm run check:vip') && workflow.includes('npm run test:vip') && workflow.includes('npm run build')],
+  ['production deploy is main-only', productionRelease.includes("github.ref == 'refs/heads/main'") && productionRelease.includes('RELEASE_SHA_IS_CURRENT_MAIN')],
+  ['production deploy uses lockfile Firebase CLI', productionRelease.includes('./node_modules/.bin/firebase deploy') && !productionRelease.includes('firebase-tools@latest')],
+  ['production deploy requires rollback anchor', productionRelease.includes('ROLLBACK_ANCHOR_MISSING') && productionRelease.includes('ROLLBACK_ANCHOR_VERIFIED')],
   ['PR gate checks dependency high/critical vulnerabilities', workflow.includes('npm audit --audit-level=high')],
   ['handoff documents production payment API allowlist', handoff.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS')],
   ['handoff documents hosted-payment allowlist', handoff.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS')],
