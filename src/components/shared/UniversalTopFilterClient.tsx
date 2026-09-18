@@ -118,7 +118,7 @@ export default function UniversalTopFilterClient({ initialWatches, isBrandPage =
                   <div className="absolute top-[120%] left-0 w-64 bg-surface border border-surface-border rounded-xl shadow-2xl p-5 z-50 animate-in fade-in slide-in-from-top-2">
                     <div className="flex flex-col gap-3 max-h-64 overflow-y-auto">
                       {availableBrands.map(b => (
-                        <label key={b as string} className="flex items-center gap-3 cursor-pointer group">
+                        <label key={b as string} onClick={() => toggleFilter(setFilterBrand, b as string, filterBrand)} className="flex items-center gap-3 cursor-pointer group">
                           <div className={`w-4 h-4 border flex items-center justify-center rounded-[3px] transition-colors ${filterBrand.includes(b as string) ? 'bg-primary border-primary' : 'border-surface-border group-hover:border-primary/50'}`}>
                             {filterBrand.includes(b as string) && <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>}
                           </div>
@@ -138,7 +138,7 @@ export default function UniversalTopFilterClient({ initialWatches, isBrandPage =
                   <div className="absolute top-[120%] left-0 w-64 bg-surface border border-surface-border rounded-xl shadow-2xl p-5 z-50 animate-in fade-in slide-in-from-top-2">
                     <div className="flex flex-col gap-3 max-h-64 overflow-y-auto pr-2">
                       {availableCollections.map(c => (
-                        <label key={c as string} className="flex items-center gap-3 cursor-pointer group">
+                        <label key={c as string} onClick={() => toggleFilter(setFilterCollection, c as string, filterCollection)} className="flex items-center gap-3 cursor-pointer group">
                           <div className={`w-4 h-4 border flex items-center justify-center rounded-[3px] transition-colors ${filterCollection.includes(c as string) ? 'bg-primary border-primary' : 'border-surface-border group-hover:border-primary/50'}`}>
                             {filterCollection.includes(c as string) && <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>}
                           </div>
@@ -157,7 +157,7 @@ export default function UniversalTopFilterClient({ initialWatches, isBrandPage =
                 <div className="absolute top-[120%] left-0 w-64 bg-surface border border-surface-border rounded-xl shadow-2xl p-5 z-50 animate-in fade-in slide-in-from-top-2">
                   <div className="flex flex-col gap-4">
                     {[ {l: 'low', t: '250.000 ₺ altı'}, {l: 'mid', t: '250.000 ₺ - 750.000 ₺'}, {l: 'high', t: '750.000 ₺ üzeri'} ].map(p => (
-                      <label key={p.l} className="flex items-center gap-3 cursor-pointer group">
+                      <label key={p.l} onClick={() => toggleFilter(setFilterPrice, p.l, filterPrice)} className="flex items-center gap-3 cursor-pointer group">
                         <div className={`w-4 h-4 border flex items-center justify-center rounded-[3px] transition-colors ${filterPrice.includes(p.l) ? 'bg-primary border-primary' : 'border-surface-border group-hover:border-primary/50'}`}>
                           {filterPrice.includes(p.l) && <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>}
                         </div>
@@ -248,7 +248,7 @@ export default function UniversalTopFilterClient({ initialWatches, isBrandPage =
                 <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/50 mb-5">Marka</h3>
                 <div className="flex flex-col gap-4">
                   {availableBrands.map(b => (
-                    <label key={b as string} className="flex items-center gap-4 cursor-pointer group">
+                    <label key={b as string} onClick={() => toggleFilter(setFilterBrand, b as string, filterBrand)} className="flex items-center gap-4 cursor-pointer group">
                       <div className={`w-5 h-5 border flex items-center justify-center rounded-[4px] transition-colors ${filterBrand.includes(b as string) ? 'bg-primary border-primary' : 'border-surface-border group-hover:border-primary/50'}`}>
                         {filterBrand.includes(b as string) && <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>}
                       </div>
@@ -264,7 +264,7 @@ export default function UniversalTopFilterClient({ initialWatches, isBrandPage =
                 <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/50 mb-5">Koleksiyon</h3>
                 <div className="flex flex-col gap-4">
                   {availableCollections.map(c => (
-                    <label key={c as string} className="flex items-center gap-4 cursor-pointer group">
+                    <label key={c as string} onClick={() => toggleFilter(setFilterCollection, c as string, filterCollection)} className="flex items-center gap-4 cursor-pointer group">
                       <div className={`w-5 h-5 border flex items-center justify-center rounded-[4px] transition-colors ${filterCollection.includes(c as string) ? 'bg-primary border-primary' : 'border-surface-border group-hover:border-primary/50'}`}>
                         {filterCollection.includes(c as string) && <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>}
                       </div>
@@ -279,7 +279,7 @@ export default function UniversalTopFilterClient({ initialWatches, isBrandPage =
               <h3 className="text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/50 mb-5">Fiyat</h3>
               <div className="flex flex-col gap-4">
                 {[ {l: 'low', t: '250.000 ₺ altı'}, {l: 'mid', t: '250.000 ₺ - 750.000 ₺'}, {l: 'high', t: '750.000 ₺ üzeri'} ].map(p => (
-                  <label key={p.l} className="flex items-center gap-4 cursor-pointer group">
+                  <label key={p.l} onClick={() => toggleFilter(setFilterPrice, p.l, filterPrice)} className="flex items-center gap-4 cursor-pointer group">
                     <div className={`w-5 h-5 border flex items-center justify-center rounded-[4px] transition-colors ${filterPrice.includes(p.l) ? 'bg-primary border-primary' : 'border-surface-border group-hover:border-primary/50'}`}>
                       {filterPrice.includes(p.l) && <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>}
                     </div>
