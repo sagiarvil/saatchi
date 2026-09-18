@@ -51,10 +51,15 @@ export async function POST(request: Request) {
       internalMessage.includes('Geçersiz JSON') ||
       internalMessage.includes('JSON nesnesi') ||
       internalMessage.includes('boyutu aşıyor');
-    return noStore(NextResponse.json(
+    const response = noStore(NextResponse.json(
       { success: false, message: originError ? 'İstek kaynağı doğrulanamadı.' : throttled ? 'Çok fazla başarısız giriş denemesi. Daha sonra tekrar deneyin.' : requestError ? 'Geçersiz yönetim isteği.' : 'Yönetim oturumu açılamadı.' },
       { status: originError ? 403 : throttled ? 429 : requestError ? 400 : 503 }
     ));
+    if (throttled) {
+      const retryAfter = Number((error as Error & { retryAfterSeconds?: number }).retryAfterSeconds || 60);
+      response.headers.set('Retry-After', String(Math.max(1, Math.min(300, retryAfter))));
+    }
+    return response;
   }
 }
 
