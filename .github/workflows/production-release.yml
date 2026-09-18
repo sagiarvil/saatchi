@@ -16,7 +16,7 @@ concurrency:
 jobs:
   deploy-production:
     if: >-
-      github.event_name == 'workflow_dispatch' ||
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
       (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -42,6 +42,20 @@ jobs:
         with:
           ref: ${{ steps.release.outputs.sha }}
           fetch-depth: 0
+
+      - name: Prove release SHA belongs to current main
+        shell: bash
+        env:
+          RELEASE_SHA: ${{ steps.release.outputs.sha }}
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags --prune
+          MAIN_SHA="$(git rev-parse origin/main)"
+          test "$RELEASE_SHA" = "$MAIN_SHA" || {
+            echo "RELEASE_SHA_NOT_CURRENT_MAIN release=$RELEASE_SHA main=$MAIN_SHA" >&2
+            exit 1
+          }
+          echo "RELEASE_SHA_IS_CURRENT_MAIN=$RELEASE_SHA"
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -102,6 +116,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Verify rollback anchor before production mutation
+        shell: bash
+        env:
+          PREVIOUS_SHA: ${{ steps.previous.outputs.sha }}
+        run: |
+          set -euo pipefail
+          test -n "$PREVIOUS_SHA" || {
+            echo 'ROLLBACK_ANCHOR_MISSING: live build-info.json did not expose a valid previous SHA; refusing production mutation.' >&2
+            exit 1
+          }
+          git cat-file -e "$PREVIOUS_SHA^{commit}" || {
+            echo "ROLLBACK_ANCHOR_NOT_IN_GIT: $PREVIOUS_SHA" >&2
+            exit 1
+          }
+          echo "ROLLBACK_ANCHOR_VERIFIED=$PREVIOUS_SHA"
+
       - name: Build exact verified commit
         env:
           GITHUB_SHA: ${{ steps.release.outputs.sha }}
@@ -129,7 +159,7 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
         run: |
           set -euo pipefail
-          npx -y firebase-tools@latest deploy --only "hosting:$HOSTING_TARGET" --project "$PROJECT_ID" --non-interactive
+          ./node_modules/.bin/firebase deploy --only "hosting:$HOSTING_TARGET" --project "$PROJECT_ID" --non-interactive
 
       - name: Runtime readback and public security smoke
         id: runtime
@@ -194,7 +224,7 @@ jobs:
           git checkout --force "$PREVIOUS_SHA"
           npm ci
           GITHUB_SHA="$PREVIOUS_SHA" npm run build
-          npx -y firebase-tools@latest deploy --only "hosting:$HOSTING_TARGET" --project "$PROJECT_ID" --non-interactive
+          ./node_modules/.bin/firebase deploy --only "hosting:$HOSTING_TARGET" --project "$PROJECT_ID" --non-interactive
           ok=0
           for attempt in $(seq 1 18); do
             if curl -fsS --connect-timeout 8 --max-time 20 -H 'Cache-Control: no-cache' "$SITE_URL/build-info.json?rollback=$attempt" -o "$RUNNER_TEMP/rollback.json" 2>/dev/null; then
