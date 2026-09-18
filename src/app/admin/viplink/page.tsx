@@ -23,6 +23,10 @@ function dateTime(value: number) {
 }
 
 export default function VipLinkGenerator() {
+  const [authLoading, setAuthLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
+  const [loginKey, setLoginKey] = useState('');
+  const [loginLoading, setLoginLoading] = useState(false);
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [generatedLink, setGeneratedLink] = useState('');
@@ -43,6 +47,11 @@ export default function VipLinkGenerator() {
     try {
       const response = await fetch('/api/admin/vip-links', { cache: 'no-store', credentials: 'same-origin' });
       const data = await response.json();
+      if (response.status === 401) {
+        setAuthenticated(false);
+        setRows([]);
+        return;
+      }
       if (!response.ok || !data.success) throw new Error(data.message || 'VIP link listesi alınamadı.');
       setRows(Array.isArray(data.links) ? data.links : []);
     } catch (e: any) {
@@ -53,8 +62,59 @@ export default function VipLinkGenerator() {
   }, []);
 
   useEffect(() => {
-    loadLinks();
+    let active = true;
+    (async () => {
+      try {
+        const response = await fetch('/api/admin-session', { cache: 'no-store', credentials: 'same-origin' });
+        const data = await response.json();
+        if (!active) return;
+        const ok = Boolean(response.ok && data.authenticated);
+        setAuthenticated(ok);
+        if (ok) await loadLinks();
+      } catch {
+        if (active) setAuthenticated(false);
+      } finally {
+        if (active) setAuthLoading(false);
+      }
+    })();
+    return () => { active = false; };
   }, [loadLinks]);
+
+  async function login(event: React.FormEvent) {
+    event.preventDefault();
+    setError('');
+    if (!loginKey) {
+      setError('Yönetim anahtarı zorunludur.');
+      return;
+    }
+    setLoginLoading(true);
+    try {
+      const response = await fetch('/api/admin-session', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key: loginKey }),
+      });
+      const data = await response.json();
+      if (!response.ok || !data.success) throw new Error(data.message || 'Yönetim doğrulaması başarısız.');
+      setLoginKey('');
+      setAuthenticated(true);
+      await loadLinks();
+    } catch (e: any) {
+      setError(e.message || 'Yönetim doğrulaması başarısız.');
+    } finally {
+      setLoginLoading(false);
+    }
+  }
+
+  async function logout() {
+    await fetch('/api/admin-session', { method: 'DELETE', credentials: 'same-origin' }).catch(() => undefined);
+    setAuthenticated(false);
+    setRows([]);
+    setGeneratedLink('');
+    setGeneratedId('');
+    setError('');
+  }
 
   async function generateLink() {
     setError('');
@@ -74,7 +134,7 @@ export default function VipLinkGenerator() {
       });
       const data = await response.json();
       if (response.status === 401) {
-        // setAuthenticated(false);
+        setAuthenticated(false);
         throw new Error('Yönetim oturumunun süresi doldu. Yeniden giriş yapın.');
       }
       if (!response.ok || !data.success) throw new Error(data.message || 'VIP link oluşturulamadı.');
@@ -109,7 +169,7 @@ export default function VipLinkGenerator() {
       });
       const data = await response.json();
       if (response.status === 401) {
-        // setAuthenticated(false);
+        setAuthenticated(false);
         throw new Error('Yönetim oturumunun süresi doldu. Yeniden giriş yapın.');
       }
       if (!response.ok || !data.success) throw new Error(data.message || 'VIP link iptal edilemedi.');
@@ -125,6 +185,29 @@ export default function VipLinkGenerator() {
     }
   }
 
+  if (authLoading) {
+    return <div className="flex min-h-screen items-center justify-center bg-[#f7f5f1] text-[11px] font-semibold uppercase tracking-[0.22em] text-[#846b32]">Güvenli yönetim oturumu doğrulanıyor…</div>;
+  }
+
+  if (!authenticated) {
+    return (
+      <main className="min-h-screen bg-[#f7f5f1] px-4 py-12 text-[#171615] sm:px-6 lg:py-20">
+        <div className="mx-auto max-w-md border border-[#ded8cf] bg-white p-7 shadow-[0_24px_80px_rgba(35,26,19,.08)] sm:p-9">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-[#846b32]/35 bg-[#846b32]/5"><ShieldCheck className="h-5 w-5 text-[#846b32]" strokeWidth={1.4} /></div>
+          <p className="mt-7 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#846b32]">SAATCHI / Private Office</p>
+          <h1 className="mt-3 text-3xl font-medium tracking-[-0.035em]">VIP Link Yönetimi</h1>
+          <p className="mt-3 text-sm leading-6 text-[#716b64]">Yönetim anahtarı yalnız bu oturumu açmak için kullanılır; tarayıcıda kalıcı olarak saklanmaz. Oturum HttpOnly güvenli çerez ile devam eder.</p>
+          <form onSubmit={login} className="mt-8">
+            <label className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.18em] text-[#6f6862]">Yönetim Doğrulaması</label>
+            <div className="flex items-center border border-[#d9d3cb] bg-[#fbfaf8] px-4 focus-within:border-[#846b32]"><KeyRound className="mr-3 h-4 w-4 text-[#8d8379]" /><input type="password" value={loginKey} onChange={(e) => setLoginKey(e.target.value)} autoComplete="current-password" className="w-full bg-transparent py-4 text-sm outline-none" placeholder="Yönetim anahtarı" /></div>
+            {error && <div className="mt-4 border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{error}</div>}
+            <button disabled={loginLoading} className="mt-5 w-full bg-[#171615] px-5 py-4 text-[11px] font-bold uppercase tracking-[0.18em] text-white transition-colors hover:bg-black disabled:opacity-50">{loginLoading ? 'Doğrulanıyor…' : 'Güvenli Oturum Aç'}</button>
+          </form>
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="min-h-screen bg-[#f7f5f1] px-4 py-10 text-[#171615] sm:px-6 lg:py-14">
       <div className="mx-auto max-w-6xl">
@@ -134,6 +217,7 @@ export default function VipLinkGenerator() {
             <h1 className="mt-2 text-3xl font-medium tracking-[-0.035em] sm:text-4xl">VIP tahsilat linki</h1>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#746e67]">Link fiyatı HMAC ile imzalanır, Firestore kaydıyla eşleştirilir ve iptal edildiği anda checkout ile ödeme oluşturma akışında reddedilir.</p>
           </div>
+          <button onClick={logout} className="inline-flex items-center gap-2 border border-[#d2cbc1] bg-white px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.15em] text-[#5f5953] hover:border-[#9e948a]"><LogOut className="h-4 w-4" /> Oturumu Kapat</button>
         </header>
 
         <div className="mt-8 grid gap-7 lg:grid-cols-[0.85fr_1.15fr]">
