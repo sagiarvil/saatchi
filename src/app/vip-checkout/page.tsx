@@ -194,8 +194,9 @@ function CheckoutContent() {
               <div className="mb-6 grid gap-3 border-b border-gray-100 pb-5 text-sm text-gray-600 sm:grid-cols-2">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-gray-400">Satıcı</p>
-                  <p className="mt-1 font-medium text-gray-800">SAATCHI SAAT - SEMİH SONBAHAR</p>
+                  <p className="mt-1 font-medium text-gray-800">SEMİH SONBAHAR - SAATCHI</p>
                   <p className="mt-1 text-xs leading-5">Menderes Caddesi No:231/B, Buca / İzmir</p>
+                  <p className="mt-1 text-[11px] leading-5 text-gray-500">Şirinyer V.D. · VKN 7740298676 · Oda Sicil No 492956</p>
                 </div>
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-gray-400">Teslim Yöntemi</p>
