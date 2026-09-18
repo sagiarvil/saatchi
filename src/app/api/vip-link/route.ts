@@ -63,7 +63,21 @@ export async function GET(request: Request) {
       payload: { id: payload.id, name: payload.name, price: payload.price, exp: payload.exp },
     }));
   } catch (error: unknown) {
-    return noStore(NextResponse.json({ success: false, message: errorMessage(error, 'VIP link doğrulanamadı.') }, { status: 400 }));
+    const internalMessage = errorMessage(error, 'VIP link doğrulanamadı.');
+    console.error('[SAATCHI VIP VERIFY]', internalMessage);
+    const unavailable =
+      internalMessage.includes('Firestore') ||
+      internalMessage.includes('yapılandırılmamış') ||
+      internalMessage.includes('proje kimliği');
+    return noStore(NextResponse.json(
+      {
+        success: false,
+        message: unavailable
+          ? 'VIP bağlantısı şu anda doğrulanamıyor.'
+          : 'VIP bağlantısı geçersiz, iptal edilmiş veya süresi dolmuş.',
+      },
+      { status: unavailable ? 503 : 400 }
+    ));
   }
 }
 
