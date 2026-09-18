@@ -2,10 +2,24 @@ import { NextResponse } from 'next/server';
 import { verifyVipToken } from '@/lib/vip-token';
 import { assertVipLinkActive, claimVipPaymentAttempt, finalizeVipPaymentAttempt } from '@/lib/vip-link-store';
 import { assertSameOriginMutation } from '@/lib/vip-admin-session';
-import { normalizePaymentHandoff, readBoundedJsonBody, readBoundedResponseText } from '@/lib/payment-boundary';
+import { assertPaymentHandoffConfiguration, normalizePaymentHandoff, readBoundedJsonBody, readBoundedResponseText } from '@/lib/payment-boundary';
 import { LEGAL_DOCUMENT_VERSIONS } from '@/data/legal/legal-versions';
 
 export const dynamic = 'force-dynamic';
+
+function configuredPaymentProvider() {
+  const provider = safeText(process.env.SAATCHI_PAYMENT_PROVIDER, 64).toUpperCase();
+  if (process.env.NODE_ENV === 'production' && process.env.SAATCHI_PAYMENT_ENABLED !== 'true') {
+    throw new Error('SAATCHI ödeme sistemi production ortamında devre dışı.');
+  }
+  if (process.env.NODE_ENV === 'production' && !provider) {
+    throw new Error('SAATCHI_PAYMENT_PROVIDER production ortamında yapılandırılmamış.');
+  }
+  if (provider && !/^[A-Z0-9_-]{2,64}$/.test(provider)) {
+    throw new Error('SAATCHI_PAYMENT_PROVIDER değeri geçersiz.');
+  }
+  return provider;
+}
 
 function paymentCreateUrl() {
   const raw =
@@ -204,7 +218,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const configuredProvider = safeText(process.env.SAATCHI_PAYMENT_PROVIDER, 64).toUpperCase();
+    const configuredProvider = configuredPaymentProvider();
+    assertPaymentHandoffConfiguration();
     const idempotencyKey = `SAATCHI:${vip.id}`;
     const userAgent = safeText(request.headers.get('user-agent') || 'Saatchi VIP Checkout', 512);
 
