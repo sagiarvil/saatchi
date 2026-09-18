@@ -83,7 +83,7 @@ const requirements = [
   ['ready payments cannot be reset by recovery path', store.includes("record.paymentState !== 'uncertain'") && store.includes('assertVipPaymentReconciliationResettable')],
   ['payment state persists provider evidence', store.includes('paymentProviderOrderId') && store.includes('paymentEvidenceId') && store.includes('paymentLastError') && paymentRoute.includes('providerOrderId: verifiedProviderOrderId')],
   ['provider session requires order id amount currency and provider consistency', paymentRoute.includes('assertProviderSessionConsistency') && paymentSessionConsistency.includes('doğrulanabilir işlem tutarı') && paymentSessionConsistency.includes('doğrulanabilir para birimi') && paymentSessionConsistency.includes('provider kimliği döndürmedi')],
-  ['cardholder data is rejected by merchant API', paymentRoute.includes('assertNoCardholderData(body)') && paymentRoute.includes('CARD_DATA_KEYS')],
+  ['cardholder data is rejected by merchant API', paymentRoute.includes('assertNoCardholderData(body)') && paymentRoute.includes("assertNoCardholderData") && boundary.includes('CARD_DATA_KEYS') && boundary.includes('export function assertNoCardholderData')],
   ['production payment API has explicit origin allowlist', paymentRoute.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS') && paymentRoute.includes('allowedOrigins.has(url.origin)')],
   ['production payment endpoint has no legacy fallback', paymentRoute.includes("process.env.NODE_ENV !== 'production' ? process.env.BELGIN_PAYMENT_CREATE_URL : ''")],
   ['test payment bypass is absent', !paymentRoute.includes('TEST_POS') && !paymentRoute.includes('/test-success') && !mockSuccessExists],
