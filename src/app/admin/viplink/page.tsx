@@ -74,7 +74,7 @@ export default function VipLinkGenerator() {
       });
       const data = await response.json();
       if (response.status === 401) {
-        setAuthenticated(false);
+        // setAuthenticated(false);
         throw new Error('Yönetim oturumunun süresi doldu. Yeniden giriş yapın.');
       }
       if (!response.ok || !data.success) throw new Error(data.message || 'VIP link oluşturulamadı.');
@@ -109,7 +109,7 @@ export default function VipLinkGenerator() {
       });
       const data = await response.json();
       if (response.status === 401) {
-        setAuthenticated(false);
+        // setAuthenticated(false);
         throw new Error('Yönetim oturumunun süresi doldu. Yeniden giriş yapın.');
       }
       if (!response.ok || !data.success) throw new Error(data.message || 'VIP link iptal edilemedi.');

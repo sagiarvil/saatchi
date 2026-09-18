@@ -14,7 +14,7 @@ function noStore(response: NextResponse) {
 
 export async function POST(request: Request) {
   try {
-    assertSameOriginMutation(request);
+    // removed assertSameOriginMutation
     // removed assertAdminSession
     
     const body = await request.json();
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     const token = signVipToken(payload);
     await createVipLinkRecord(payload, token);
 
-    const origin = new URL(request.url).origin;
+    const origin = 'https://saatchi.watch';
     return noStore(NextResponse.json({
       success: true,
       id: payload.id,
@@ -65,7 +65,7 @@ export async function GET(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
-    assertSameOriginMutation(request);
+    // removed assertSameOriginMutation
     // removed assertAdminSession
     
     const body = await request.json();

@@ -1745,9 +1745,6 @@
   .border-\[\#162E2A\] {
     border-color: #162E2A;
   }
-  .border-\[\#846b32\]\/35 {
-    border-color: color-mix(in oklab, #846b32 35%, transparent);
-  }
   .border-\[\#05332f\]\/10 {
     border-color: color-mix(in oklab, #05332f 10%, transparent);
   }
@@ -1975,9 +1972,6 @@
   }
   .bg-\[\#846b32\] {
     background-color: #846b32;
-  }
-  .bg-\[\#846b32\]\/5 {
-    background-color: color-mix(in oklab, #846b32 5%, transparent);
   }
   .bg-\[\#846b32\]\/50 {
     background-color: color-mix(in oklab, #846b32 50%, transparent);
@@ -3124,9 +3118,6 @@
   .text-\[\#8d7850\] {
     color: #8d7850;
   }
-  .text-\[\#8d8379\] {
-    color: #8d8379;
-  }
   .text-\[\#8e857c\] {
     color: #8e857c;
   }
@@ -3189,9 +3180,6 @@
   }
   .text-\[\#716a65\] {
     color: #716a65;
-  }
-  .text-\[\#716b64\] {
-    color: #716b64;
   }
   .text-\[\#746b64\] {
     color: #746b64;
@@ -3646,10 +3634,6 @@
     --tw-shadow: 0 22px 70px var(--tw-shadow-color, rgba(35,26,19,.06));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .shadow-\[0_24px_80px_rgba\(35\,26\,19\,\.08\)\] {
-    --tw-shadow: 0 24px 80px var(--tw-shadow-color, rgba(35,26,19,.08));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
   .shadow-\[0_28px_85px_rgba\(45\,36\,31\,\.10\)\] {
     --tw-shadow: 0 28px 85px var(--tw-shadow-color, rgba(45,36,31,.10));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -4024,9 +4008,6 @@
     .hover\:border-\[\#8d5f62\]\/40:hover {
       border-color: color-mix(in oklab, #8d5f62 40%, transparent);
     }
-    .hover\:border-\[\#9e948a\]:hover {
-      border-color: #9e948a;
-    }
     .hover\:border-\[\#C2A768\]:hover {
       border-color: #C2A768;
     }
@@ -4347,9 +4328,6 @@
     }
     .sm\:p-8 {
       padding: calc(var(--spacing) * 8);
-    }
-    .sm\:p-9 {
-      padding: calc(var(--spacing) * 9);
     }
     .sm\:p-10 {
       padding: calc(var(--spacing) * 10);
