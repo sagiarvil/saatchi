@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { verifyVipToken } from '@/lib/vip-token';
 import { assertVipLinkActive, claimVipPaymentAttempt, finalizeVipPaymentAttempt } from '@/lib/vip-link-store';
 import { assertSameOriginMutation } from '@/lib/vip-admin-session';
-import { assertPaymentHandoffConfiguration, normalizePaymentHandoff, readBoundedJsonBody, readBoundedResponseText } from '@/lib/payment-boundary';
+import { assertNoCardholderData, assertPaymentHandoffConfiguration, normalizePaymentHandoff, readBoundedJsonBody, readBoundedResponseText } from '@/lib/payment-boundary';
 import { LEGAL_DOCUMENT_VERSIONS } from '@/data/legal/legal-versions';
 import { assertProviderSessionConsistency } from '@/lib/payment-session-consistency';
 
@@ -113,40 +113,6 @@ function publicPaymentError(message: string) {
 
 function errorMessage(error: unknown, fallback: string) {
   return error instanceof Error && error.message ? error.message : fallback;
-}
-
-const CARD_DATA_KEYS = new Set([
-  'cardnumber',
-  'card_number',
-  'pan',
-  'cardpan',
-  'cardcvc',
-  'card_cvc',
-  'cardcvv',
-  'card_cvv',
-  'cvv',
-  'cvc',
-  'cardexpiry',
-  'card_expiry',
-  'expiry',
-  'expiration',
-  'cardexpiredate',
-  'cardholderdata',
-]);
-
-export function assertNoCardholderData(value: unknown, depth = 0) {
-  if (!value || typeof value !== 'object' || depth > 4) return;
-  if (Array.isArray(value)) {
-    value.forEach((item) => assertNoCardholderData(item, depth + 1));
-    return;
-  }
-
-  for (const [key, nested] of Object.entries(value as Record<string, unknown>)) {
-    if (CARD_DATA_KEYS.has(key.toLowerCase())) {
-      throw new Error('Kart numarası, CVV/CVC ve son kullanma tarihi SAATCHI sunucusuna gönderilemez.');
-    }
-    assertNoCardholderData(nested, depth + 1);
-  }
 }
 
 export async function POST(request: Request) {
