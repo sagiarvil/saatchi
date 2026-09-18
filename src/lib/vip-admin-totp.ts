@@ -5,8 +5,12 @@ const TOTP_DIGITS = 6;
 
 function decodeBase32(input: string) {
   const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-  const normalized = String(input || '').toUpperCase().replace(/[^A-Z2-7]/g, '');
-  if (!normalized) return Buffer.alloc(0);
+  const raw = String(input || '').trim().toUpperCase().replace(/=+$/g, '');
+  if (!raw) return Buffer.alloc(0);
+  if (!/^[A-Z2-7]+$/.test(raw)) {
+    throw new Error('VIP_ADMIN_TOTP_SECRET base32 formatı geçersiz.');
+  }
+  const normalized = raw;
 
   let bits = '';
   for (const char of normalized) {
