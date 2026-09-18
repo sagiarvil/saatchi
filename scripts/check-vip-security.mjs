@@ -111,6 +111,7 @@ const requirements = [
   ['production deploy uses lockfile Firebase CLI', productionRelease.includes('./node_modules/.bin/firebase deploy') && !productionRelease.includes('firebase-tools@latest')],
   ['production deploy requires rollback anchor', productionRelease.includes('ROLLBACK_ANCHOR_MISSING') && productionRelease.includes('ROLLBACK_ANCHOR_VERIFIED')],
   ['main regression repeats security and dependency gates', mainRegression.includes('npm audit --audit-level=high') && mainRegression.includes('npm audit --omit=dev --audit-level=moderate') && mainRegression.includes('npm run check:vip') && mainRegression.includes('npm run test:vip') && mainRegression.includes('node --check public/js/admin.js') && mainRegression.includes('npm run build')],
+  ['GitHub Actions are pinned to immutable SHAs', workflow.includes('actions/checkout@11d5960a326750d5838078e36cf38b85af677262') && workflow.includes('actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020') && mainRegression.includes('actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065') && productionRelease.includes('actions/checkout@11d5960a326750d5838078e36cf38b85af677262')],
   ['PR gate checks dependency high/critical vulnerabilities', workflow.includes('npm audit --audit-level=high')],
   ['handoff documents production payment API allowlist', handoff.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS')],
   ['handoff documents hosted-payment allowlist', handoff.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS')],
