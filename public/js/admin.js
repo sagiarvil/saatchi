@@ -66,7 +66,7 @@ const BANK_POS_ERROR_MAP = Object.freeze({
 });
 
 const AdminApp = {
-  adminPin: null,
+  authMarker: null,
   adminToken: null,
   adminUser: null,
   orders: [],
@@ -168,9 +168,6 @@ const AdminApp = {
       'Content-Type': 'application/json',
       ...extraHeaders
     };
-    if (this.adminPin) {
-      headers['x-admin-key'] = this.adminPin;
-    }
     if (this.adminToken) {
       headers['Authorization'] = `Bearer ${this.adminToken}`;
     }
@@ -279,13 +276,13 @@ const AdminApp = {
             if (ALLOWED_ADMIN_EMAILS.includes(email)) {
               this.adminToken = await user.getIdToken();
               this.adminUser = { email: user.email, displayName: user.displayName, photoURL: user.photoURL };
-              this.adminPin = '1999';
+              this.authMarker = true;
               this.onAuthenticated();
               return;
             } else {
               await firebase.auth().signOut();
               this.showAuthGate();
-              this.showGoogleAuthError(`❌ Yetkisiz Google Hesabı (${email}). Lütfen yetkili yönetici hesabınız ile giriş yapınız veya 1999 PIN kodu ile giriniz.`);
+              this.showGoogleAuthError(`❌ Yetkisiz Google Hesabı (${email}). Lütfen yetkili yönetici hesabınız ile giriş yapınız.`);
             }
           }
         }).catch((err) => {
@@ -302,20 +299,18 @@ const AdminApp = {
             if (ALLOWED_ADMIN_EMAILS.includes(email)) {
               this.adminToken = await user.getIdToken();
               this.adminUser = { email: user.email, displayName: user.displayName, photoURL: user.photoURL };
-              this.adminPin = '1999';
+              this.authMarker = true;
               this.onAuthenticated();
               return;
             } else {
               await firebase.auth().signOut();
               this.showAuthGate();
-              this.showGoogleAuthError(`❌ Yetkisiz Google Hesabı (${email}). Lütfen yetkili yönetici hesabınız ile giriş yapınız veya 1999 PIN kodu ile giriniz.`);
+              this.showGoogleAuthError(`❌ Yetkisiz Google Hesabı (${email}). Lütfen yetkili yönetici hesabınız ile giriş yapınız.`);
               return;
             }
           }
           // Oturum yoksa gate açık kalsın
-          if (!this.adminPin) {
-            this.showAuthGate();
-          }
+          if (!this.adminToken) { this.showAuthGate(); }
         });
         return;
       } catch (e) {
@@ -371,13 +366,13 @@ const AdminApp = {
 
       if (!ALLOWED_ADMIN_EMAILS.includes(email)) {
         await firebase.auth().signOut();
-        this.showGoogleAuthError(`❌ Yetkisiz Google Hesabı (${email}). Lütfen yetkili yönetici hesabınız ile giriş yapınız veya 1999 PIN kodu ile giriniz.`);
+        this.showGoogleAuthError(`❌ Yetkisiz Google Hesabı (${email}). Lütfen yetkili yönetici hesabınız ile giriş yapınız.`);
         return;
       }
 
       this.adminToken = await user.getIdToken();
       this.adminUser = { email: user.email, displayName: user.displayName, photoURL: user.photoURL };
-      this.adminPin = '1999';
+      this.authMarker = true;
       this.onAuthenticated();
     } catch (err) {
       console.warn('Google Popup Auth Notice:', err);
@@ -481,7 +476,7 @@ const AdminApp = {
   },
 
   async pollNewOrders() {
-    if (!this.adminPin || document.getElementById('adminAuthGate')?.style.display === 'flex') return;
+    if (!this.adminToken || document.getElementById('adminAuthGate')?.style.display === 'flex') return;
 
     try {
       const startDate = document.getElementById('startDate')?.value || '';
@@ -606,31 +601,6 @@ const AdminApp = {
     if (main) main.style.setProperty('display', 'block', 'important');
   },
 
-  verifyPin() {
-    const input = document.getElementById('adminPinInput');
-    const val = (input ? input.value : '').trim();
-    const err = document.getElementById('pinErrorMsg');
-
-    if (val === '1999') {
-      this.adminPin = '1999';
-      if (err) err.style.display = 'none';
-      const userBadge = document.getElementById('adminUserBadge');
-      if (userBadge) {
-        userBadge.innerHTML = '🛡️ Yönetici (PIN Onaylı)';
-        userBadge.style.display = 'inline-block';
-      }
-      this.onAuthenticated();
-    } else {
-      this.adminPin = null;
-      if (err) err.style.display = 'block';
-      if (input) {
-        input.value = '';
-        input.focus();
-      }
-      this.showAuthGate();
-    }
-  },
-
   async logout() {
     try {
       if (typeof firebase !== 'undefined' && firebase.auth) {
@@ -638,7 +608,7 @@ const AdminApp = {
       }
     } catch (_) {}
 
-    this.adminPin = null;
+    this.authMarker = null;
     this.adminToken = null;
     this.adminUser = null;
     if (this.pollTimer) {
@@ -1057,7 +1027,7 @@ const AdminApp = {
       // [V] -> VIP Ödeme Linki Aç
       else if (key === 'v') {
         e.preventDefault();
-        window.open('/odeme-linki.html', '_blank');
+        window.open('/admin/viplink', '_blank');
       }
       // [W] -> Muhasebe WhatsApp
       else if (key === 'w') {
@@ -1671,11 +1641,10 @@ const AdminApp = {
 
   // HUKUKİ DELİL & SÖZLEŞME ÇIKTISI AÇ (10/10 BANKA-READY)
   printLegalDocument(orderId, tab = null) {
-    const adminKey = this.adminPin || sessionStorage.getItem('Saatchi_admin_pin') || localStorage.getItem('Saatchi_admin_pin') || '';
     const order = (this.orders || []).find(o => o.orderId === orderId) ||
                   (this.filteredOrders || []).find(o => o.orderId === orderId) ||
                   (this.storeInvoices || []).find(o => o && (o.orderId === orderId || o.id === orderId));
-    let url = `/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}&adminKey=${encodeURIComponent(adminKey)}`;
+    let url = `/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}`;
     const isEft = order && (order.isManualEft || order.source === 'MANUAL_EFT' || order.paymentMethod === 'HAVALE_EFT' || String(order.orderId || '').startsWith('BLG-EFT-') || !!order.bankEft || (order.isStoreManual && order.paymentMethod !== 'KREDI_KARTI'));
     if (isEft) {
       url += `&paymentMethod=HAVALE_EFT`;
@@ -1686,17 +1655,15 @@ const AdminApp = {
 
   // CHARGEBACK SAVUNMA PAKETİ ÇIKTISI AÇ (10.4 veya 13.1)
   printChargebackPack(orderId, reasonCode = '10.4') {
-    const adminKey = this.adminPin || sessionStorage.getItem('Saatchi_admin_pin') || localStorage.getItem('Saatchi_admin_pin') || '';
-    window.open(`/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}&reasonPack=${encodeURIComponent(reasonCode)}&adminKey=${encodeURIComponent(adminKey)}`, '_blank');
+    window.open(`/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}&reasonPack=${encodeURIComponent(reasonCode)}`, '_blank');
   },
 
   // ÜRÜN TESLİM, KONTROL VE ÖDEME İŞLEMİ TEYİT BEYANI AÇ
   printDeliveryStatement(orderId) {
-    const adminKey = this.adminPin || sessionStorage.getItem('Saatchi_admin_pin') || localStorage.getItem('Saatchi_admin_pin') || '';
     const order = (this.orders || []).find(o => o.orderId === orderId) ||
                   (this.filteredOrders || []).find(o => o.orderId === orderId) ||
                   (this.storeInvoices || []).find(o => o && (o.orderId === orderId || o.id === orderId));
-    let url = `/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}&tab=delivery-statement&adminKey=${encodeURIComponent(adminKey)}`;
+    let url = `/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}&tab=delivery-statement`;
     const isEft = order && (order.isManualEft || order.source === 'MANUAL_EFT' || order.paymentMethod === 'HAVALE_EFT' || String(order.orderId || '').startsWith('BLG-EFT-') || !!order.bankEft || (order.isStoreManual && order.paymentMethod !== 'KREDI_KARTI'));
     if (isEft) {
       url += `&paymentMethod=HAVALE_EFT`;
@@ -1942,7 +1909,7 @@ const AdminApp = {
           fetch('/api/admin/store-invoices/create', {
             method: 'POST',
             headers: this.getAuthHeaders(),
-            body: JSON.stringify({ ...storeInv, adminKey: this.adminPin })
+            body: JSON.stringify({ ...storeInv })
           }).catch(() => {});
         } catch (_) {}
       }
@@ -2023,8 +1990,7 @@ const AdminApp = {
       } catch (_) {}
     }
 
-    const adminKey = this.adminPin || sessionStorage.getItem('Saatchi_admin_pin') || localStorage.getItem('Saatchi_admin_pin') || '';
-    window.open(`/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}&tab=declaration&adminKey=${encodeURIComponent(adminKey)}`, '_blank');
+    window.open(`/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}&tab=declaration`, '_blank');
   },
 
   // SİPARİŞ DETAY MODALI
@@ -2291,7 +2257,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         headers: this.getAuthHeaders(),
         body: JSON.stringify({
           orderId,
-          adminKey: this.adminPin
+
         })
       });
 
@@ -2334,7 +2300,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
           status: 'FAILED',
           paymentStatus: 'FAILED',
           reason: 'Yönetici tarafından mükerrer/ödenmemiş olarak işaretlendi',
-          adminKey: this.adminPin
+
         })
       });
 
@@ -2386,7 +2352,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
           status: newStatus,
           paymentStatus: newStatus,
           reason: `Yönetici tarafından durum '${newStatus}' olarak değiştirildi`,
-          adminKey: this.adminPin
+
         })
       });
 
@@ -2482,7 +2448,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         headers: this.getAuthHeaders(),
         body: JSON.stringify({
           orderIds: pendingOrders.map(o => o.orderId),
-          adminKey: this.adminPin
+
         })
       });
 
@@ -2915,7 +2881,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         customerEmail: order.customerEmail || '',
         items: this.activeCustomInvoiceItems,
         customBreakdown: this.activeCustomInvoiceBreakdown,
-        adminKey: this.adminPin
+
       };
 
       const res = await fetch('/api/admin/invoice/preview', {
@@ -3092,7 +3058,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         unvan: effectiveUnvan,
         taxOffice: effectiveTaxOffice,
         customerAddress: effectiveAddress,
-        adminKey: this.adminPin
+
       };
 
       if (customItems) payload.items = customItems;
@@ -3117,7 +3083,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       if (submitBtn) submitBtn.innerHTML = '<span>✅ Doğrula & Faturayı İmzala</span>';
 
       if (summaryBox) {
-        const previewUrl = `/api/admin/invoice/view?orderId=${encodeURIComponent(order.orderId)}&uuid=${encodeURIComponent(draftData.invoiceUuid)}&adminKey=${encodeURIComponent(this.adminPin)}`;
+        const previewUrl = `/api/admin/invoice/view?orderId=${encodeURIComponent(order.orderId)}&uuid=${encodeURIComponent(draftData.invoiceUuid)}`;
         summaryBox.innerHTML += `
           <div style="margin-top:10px; padding-top:8px; border-top:1px dashed #CBD5E1; text-align:center;">
             <a href="${previewUrl}" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; gap:6px; background:#064E3B; color:#FFF; padding:7px 14px; border-radius:6px; font-weight:800; font-size:12px; text-decoration:none; box-shadow:0 2px 6px rgba(0,0,0,0.15);">
@@ -3170,7 +3136,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         headers: this.getAuthHeaders(),
         body: JSON.stringify({
           orderId: this.activeInvoiceOrderId,
-          adminKey: this.adminPin
+
         })
       });
 
@@ -3234,7 +3200,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
             items: this.batchDraftItems || [],
             oid: this.activeInvoiceOid || '',
             smsCode: smsCode,
-            adminKey: this.adminPin
+
           })
         });
 
@@ -3272,10 +3238,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
         const res = await fetch('/api/admin/invoice/sign', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-admin-key': this.adminPin
-          },
+          headers: this.getAuthHeaders(),
           body: JSON.stringify({
             orderId: this.activeInvoiceOrderId,
             invoiceUuid: this.activeInvoiceUuid,
@@ -3283,7 +3246,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
             smsCode: smsCode,
             invoiceDate: invoiceDateForSign,
             orderData: targetStoreInv ? { ...targetStoreInv, invoiceDate: invoiceDateForSign } : null,
-            adminKey: this.adminPin
+
           })
         });
 
@@ -3354,7 +3317,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       this.openOrderInvoiceModal(orderId);
       return;
     }
-    const url = `/api/admin/invoice/view?uuid=${encodeURIComponent(invoiceUuid || '')}&orderId=${encodeURIComponent(orderId || '')}&adminKey=${encodeURIComponent(this.adminPin)}`;
+    const url = `/api/admin/invoice/view?uuid=${encodeURIComponent(invoiceUuid || '')}&orderId=${encodeURIComponent(orderId || '')}`;
     window.open(url, '_blank');
   },
 
@@ -3372,7 +3335,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     if (phone.startsWith('0')) phone = '90' + phone.substring(1);
     if (!phone.startsWith('90')) phone = '90' + phone;
 
-    const invoiceUrl = `https://www.SaatchiSaatçilik.com/api/admin/invoice/view?uuid=${encodeURIComponent(order.invoiceUuid || '')}&orderId=${encodeURIComponent(order.orderId || '')}&print=1&adminKey=1999`;
+    const invoiceUrl = `https://www.SaatchiSaatçilik.com/api/admin/invoice/view?uuid=${encodeURIComponent(order.invoiceUuid || '')}&orderId=${encodeURIComponent(order.orderId || '')}&print=1`;
     const customerName = order.customerName || order.customer?.name || 'Değerli Müşterimiz';
     const amount = Number(order.totalAmount || order.total || 0).toLocaleString('tr-TR', { minimumFractionDigits: 2 });
     const invoiceNo = order.invoiceNumber || 'GİB e-Arşiv Faturanız';
@@ -3391,7 +3354,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       fetch('/api/admin/invoice/force-logout', {
         method: 'POST',
         headers: this.getAuthHeaders(),
-        body: JSON.stringify({ adminKey: this.adminPin })
+        body: JSON.stringify({ })
       }).catch(() => {});
     }
     this.activeInvoiceOrderId = null;
@@ -3472,7 +3435,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         method: 'POST',
         headers: this.getAuthHeaders(),
         body: JSON.stringify({
-          adminKey: this.adminPin,
+
           orderId: orderId,
           invoiceUuid: invoiceUuid,
           reason: reason
@@ -3516,7 +3479,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       const res = await fetch('/api/admin/orders/confirm', {
         method: 'POST',
         headers: this.getAuthHeaders(),
-        body: JSON.stringify({ orderId, adminKey: this.adminPin })
+        body: JSON.stringify({ orderId })
       });
 
       const data = await res.json();
@@ -3549,7 +3512,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         method: 'POST',
         headers: this.getAuthHeaders(),
         body: JSON.stringify({
-          adminKey: this.adminPin,
+
           amount: 120000
         })
       });
@@ -4069,7 +4032,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
           </div>
           <div style="text-align:right;">
             <div style="font-weight:800; color:#15803D; font-size:13px;">₺${Number(o.totalAmount || 0).toLocaleString('tr-TR', { minimumFractionDigits: 2 })}</div>
-            <a href="https://SaatchiSaatçilik.com/api/admin/invoice/view?uuid=${o.invoiceUuid || ''}&adminKey=1999" target="_blank" style="font-size:10.5px; color:#0284C7; font-weight:700; text-decoration:none;">📄 Faturayı Aç</a>
+            <a href="https://SaatchiSaatçilik.com/api/admin/invoice/view?uuid=${o.invoiceUuid || ''}" target="_blank" style="font-size:10.5px; color:#0284C7; font-weight:700; text-decoration:none;">📄 Faturayı Aç</a>
           </div>
         </div>
       `).join('');
@@ -4102,7 +4065,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       const invNo = o.invoiceNumber || o.orderId;
       const prodName = o.productName || (o.invoiceBreakdown && o.invoiceBreakdown.productName) || 'Saatçilik Ürünü';
       const amtFormatted = Number(o.totalAmount || o.total || 0).toLocaleString('tr-TR', { minimumFractionDigits: 2 });
-      const invUrl = `https://www.SaatchiSaatçilik.com/api/admin/invoice/view?uuid=${encodeURIComponent(o.invoiceUuid || '')}&orderId=${encodeURIComponent(o.orderId || '')}&print=1&adminKey=1999`;
+      const invUrl = `https://www.SaatchiSaatçilik.com/api/admin/invoice/view?uuid=${encodeURIComponent(o.invoiceUuid || '')}&orderId=${encodeURIComponent(o.orderId || '')}&print=1`;
 
       return `${idx + 1}️⃣ *${custName}*\n• *TCKN / VKN:* ${tckn}\n• *Fatura No:* ${invNo}\n• *Ürün:* ${prodName} (Özel Matrah)\n• *Tutar:* ₺${amtFormatted}\n• *Resmi Fatura (PDF İndir):*\n${invUrl}`;
     }).join('\n\n');
@@ -4297,7 +4260,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
 
   // 3. EKSTRE CANLI VERİLERİNİ ÇEK VE HESAPLA
   async loadStatement() {
-    if (!this.adminPin) return;
+    if (!this.adminToken) return;
 
     let start = document.getElementById('stmtStartDate')?.value || '';
     let end = document.getElementById('stmtEndDate')?.value || '';
@@ -7619,8 +7582,6 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
   // MAĞAZA YASAL DOKÜMANTASYON & HUKUKİ EVRAK İNDİRME / YAZDIRMA
   printStoreFormDoc(docType = 'delivery-tutanak', targetOrderId = null) {
     let orderId = targetOrderId || this.editingStoreOrderId;
-    const adminKey = this.adminPin || sessionStorage.getItem('Saatchi_admin_pin') || localStorage.getItem('Saatchi_admin_pin') || '';
-
     let invoiceData = null;
     if (orderId) {
       invoiceData = (this.storeInvoices || []).find(i => i.orderId === orderId || i.id === orderId);
@@ -7706,7 +7667,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     else if (docType === 'summary') tabParam = 'summary';
     else if (docType === 'full-packet') tabParam = 'all';
 
-    const url = `/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}&tab=${encodeURIComponent(tabParam)}&paymentMethod=${encodeURIComponent(payMethod)}&adminKey=${encodeURIComponent(adminKey)}`;
+    const url = `/hukuki-evrak-yazdir.html?orderId=${encodeURIComponent(orderId)}&tab=${encodeURIComponent(tabParam)}&paymentMethod=${encodeURIComponent(payMethod)}`;
     window.open(url, '_blank');
   },
 
@@ -9457,7 +9418,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
         headers: this.getAuthHeaders(),
         body: JSON.stringify({
           ...invoiceDoc,
-          adminKey: this.adminPin
+
         })
       });
 
@@ -9565,7 +9526,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       await fetch('/api/admin/store-invoices/create', {
         method: 'POST',
         headers: this.getAuthHeaders(),
-        body: JSON.stringify({ ...inv, adminKey: this.adminPin })
+        body: JSON.stringify({ ...inv })
       });
     } catch (_) {}
   },
@@ -10087,7 +10048,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
           ...cleanOrderData,
           invoiceDate: invoiceDateVal
         },
-        adminKey: this.adminPin
+
       };
 
       const draftRes = await fetch('/api/admin/invoice/draft', {
@@ -10111,7 +10072,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       if (submitBtn) submitBtn.innerHTML = '<span>✅ Doğrula & Faturayı İmzala</span>';
 
       if (summaryBox) {
-        const previewUrl = `/api/admin/invoice/view?orderId=${encodeURIComponent(inv.orderId)}&uuid=${encodeURIComponent(draftData.invoiceUuid)}&adminKey=${encodeURIComponent(this.adminPin)}`;
+        const previewUrl = `/api/admin/invoice/view?orderId=${encodeURIComponent(inv.orderId)}&uuid=${encodeURIComponent(draftData.invoiceUuid)}`;
         summaryBox.innerHTML += `
           <div style="margin-top:10px; padding-top:8px; border-top:1px dashed #CBD5E1; text-align:center;">
             <a href="${previewUrl}" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; gap:6px; background:#064E3B; color:#FFF; padding:7px 14px; border-radius:6px; font-weight:800; font-size:12px; text-decoration:none; box-shadow:0 2px 6px rgba(0,0,0,0.15);">
@@ -10170,7 +10131,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       const draftRes = await fetch('/api/admin/invoice/batch-draft', {
         method: 'POST',
         headers: this.getAuthHeaders(),
-        body: JSON.stringify({ orderIds, adminKey: this.adminPin })
+        body: JSON.stringify({ orderIds })
       });
 
       const draftData = await draftRes.json();
@@ -10191,7 +10152,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
   },
 
   viewStoreInvoice(invoiceUuid, orderId) {
-    const url = `/api/admin/invoice/view?uuid=${encodeURIComponent(invoiceUuid || '')}&orderId=${encodeURIComponent(orderId || '')}&adminKey=${encodeURIComponent(this.adminPin)}`;
+    const url = `/api/admin/invoice/view?uuid=${encodeURIComponent(invoiceUuid || '')}&orderId=${encodeURIComponent(orderId || '')}`;
     window.open(url, '_blank');
   },
 
@@ -10232,7 +10193,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
       const res = await fetch('/api/admin/store-invoices/delete', {
         method: 'POST',
         headers: this.getAuthHeaders(),
-        body: JSON.stringify({ invoiceId: orderId, orderId: orderId, adminKey: this.adminPin })
+        body: JSON.stringify({ invoiceId: orderId, orderId: orderId })
       });
 
       const rawText = await res.text();
