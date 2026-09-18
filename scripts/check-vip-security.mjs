@@ -20,6 +20,8 @@ const workflow = read('.github/workflows/pos-security-pr.yml');
 const handoff = read('docs/POS_SECURITY_HANDOFF.md');
 const legacyAdminHtml = read('public/admin.html');
 const legacyAdminJs = read('public/js/admin.js');
+const vipCheckoutLayout = read('src/app/vip-checkout/layout.tsx');
+const robots = read('public/robots.txt');
 const publicVipPaymentExists = fs.existsSync(path.join(root, 'public/js/vip-payment.js'));
 const legacyPaymentDirExists = fs.existsSync(path.join(root, 'src/lib/payment_backend_ready'));
 const mockSuccessExists = fs.existsSync(path.join(root, 'src/app/test-success'));
@@ -92,6 +94,10 @@ const requirements = [
   ['security headers include HSTS', firebase.includes('Strict-Transport-Security')],
   ['security headers block MIME sniffing', firebase.includes('X-Content-Type-Options') && firebase.includes('nosniff')],
   ['checkout CSP is present', firebase.includes('Content-Security-Policy')],
+  ['VIP checkout is noindex/nocache', vipCheckoutLayout.includes('index: false') && vipCheckoutLayout.includes('nocache: true') && firebase.includes('"source": "/vip-checkout"') && firebase.includes('noindex, nofollow, noarchive, nosnippet')],
+  ['admin surfaces are no-store/noindex', firebase.includes('"source": "/admin/**"') && firebase.includes('"source": "/admin.html"')],
+  ['public crawl is not globally blocked', robots.includes('Allow: /') && !robots.includes('Disallow: /\n') && robots.includes('Disallow: /vip-checkout') && robots.includes('Disallow: /admin')],
+  ['CSP permits only explicit Firebase admin SDK origin', firebase.includes("script-src 'self' 'unsafe-inline' https://www.gstatic.com")],
   ['POS PRs run isolated regression workflow before merge', workflow.includes('pull_request:') && workflow.includes('npm run check:vip') && workflow.includes('npm run test:vip') && workflow.includes('npm run build')],
   ['PR gate checks dependency high/critical vulnerabilities', workflow.includes('npm audit --audit-level=high')],
   ['handoff documents production payment API allowlist', handoff.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS')],
