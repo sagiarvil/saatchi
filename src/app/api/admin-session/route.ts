@@ -9,6 +9,7 @@ import {
 import { assertAllowedObjectKeys, readBoundedJsonBody } from '@/lib/payment-boundary';
 import { verifyAdminTotp } from '@/lib/vip-admin-totp';
 import { assertAdminLoginNotThrottled, clearAdminLoginFailures, recordAdminLoginFailure } from '@/lib/vip-admin-throttle';
+import { securityAudit } from '@/lib/security-audit-log';
 
 export const dynamic = 'force-dynamic';
 
@@ -31,10 +32,12 @@ export async function POST(request: Request) {
     const otp = body.otp;
     if (!verifyAdminKey(key) || !verifyAdminTotp(otp)) {
       await recordAdminLoginFailure(request);
+      securityAudit('admin.login.failure', { outcome: 'denied' });
       return noStore(NextResponse.json({ success: false, message: 'Yönetim doğrulaması başarısız.' }, { status: 401 }));
     }
 
     await clearAdminLoginFailures(request);
+    securityAudit('admin.login.success', { outcome: 'allowed' });
     const session = createAdminSession();
     const response = noStore(NextResponse.json({ success: true, expiresAt: session.expiresAt }));
     response.cookies.set(VIP_ADMIN_COOKIE, session.token, {
@@ -60,6 +63,7 @@ export async function POST(request: Request) {
       { status: originError ? 403 : throttled ? 429 : requestError ? 400 : 503 }
     ));
     if (throttled) {
+      securityAudit('admin.login.throttled', { outcome: 'denied' });
       const retryAfter = Number((error as Error & { retryAfterSeconds?: number }).retryAfterSeconds || 60);
       response.headers.set('Retry-After', String(Math.max(1, Math.min(300, retryAfter))));
     }
