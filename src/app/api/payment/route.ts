@@ -3,6 +3,7 @@ import { verifyVipToken } from '@/lib/vip-token';
 import { assertVipLinkActive, claimVipPaymentAttempt, finalizeVipPaymentAttempt } from '@/lib/vip-link-store';
 import { assertSameOriginMutation } from '@/lib/vip-admin-session';
 import { assertRequestBodySize, normalizePaymentHandoff } from '@/lib/payment-boundary';
+import { LEGAL_DOCUMENT_VERSIONS } from '@/data/legal/legal-versions';
 
 export const dynamic = 'force-dynamic';
 
@@ -170,6 +171,7 @@ export async function POST(request: Request) {
         presentedAt: safeText(body.presentedAt || new Date().toISOString(), 50),
         acceptedAt: new Date().toISOString(),
         source: 'SAATCHI-VIP',
+        documentVersions: LEGAL_DOCUMENT_VERSIONS,
       },
     };
 
@@ -177,7 +179,7 @@ export async function POST(request: Request) {
 
     const upstreamUrl = paymentCreateUrl();
 
-    await claimVipPaymentAttempt(vip, token, requestId);
+    await claimVipPaymentAttempt(vip, token, requestId, LEGAL_DOCUMENT_VERSIONS);
 
     let upstreamCompleted = false;
     try {
