@@ -43,7 +43,7 @@ Existing VIP secrets/session configuration must also be confirmed in the target 
 ```text
 VIP_PAYMENT_SECRET=<strong production secret>
 VIP_ADMIN_KEY=<strong production admin key>
-VIP_ADMIN_SESSION_SECRET=<strong independent session secret preferred>
+VIP_ADMIN_SESSION_SECRET=<strong independent production session secret; mandatory>
 ```
 
 ## External validation still required
