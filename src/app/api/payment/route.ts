@@ -168,7 +168,6 @@ export async function POST(request: Request) {
       channel: 'saatchi.watch',
       idempotencyKey,
       isVipPayment: true,
-      vipToken: token,
       vipTitle: vip.name,
       title: vip.name,
       productName: vip.name,
