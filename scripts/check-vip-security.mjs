@@ -37,6 +37,7 @@ const requirements = [
   ['session is signed with HMAC', session.includes("createHmac('sha256'")],
   ['session v2 derives from current admin key', session.includes('saatchi:vip-admin-session:v2') && session.includes('adminKeyFingerprint')],
   ['admin key requires at least 32 characters', session.includes('key.length < 32')],
+  ['production admin session secret is mandatory and independent', session.includes('VIP_ADMIN_SESSION_SECRET production ortamında') && session.includes('diğer ödeme/yönetim secret değerlerinden bağımsız')],
   ['mutations enforce same-origin', vipRoute.includes('assertSameOriginMutation(request)')],
   ['production origin is pinned to canonical Saatchi host', session.includes("SAATCHI_PUBLIC_ORIGIN || 'https://saatchi.watch'") && session.includes("origin !== 'https://saatchi.watch'")],
   ['provenance-less mutations fail closed', session.includes('Yönetim isteği kaynak doğrulamasından geçemedi.')],
