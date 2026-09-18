@@ -10,6 +10,10 @@ function noStore(response: NextResponse) {
   return response;
 }
 
+function errorMessage(error: unknown, fallback: string) {
+  return error instanceof Error && error.message ? error.message : fallback;
+}
+
 export async function GET(request: Request) {
   try {
     assertAdminSession(request);
@@ -26,8 +30,8 @@ export async function GET(request: Request) {
         revokedAt: record.revokedAt,
       })),
     }));
-  } catch (error: any) {
-    const message = String(error?.message || 'VIP link listesi alınamadı.');
+  } catch (error: unknown) {
+    const message = errorMessage(error, 'VIP link listesi alınamadı.');
     const authError = message.includes('Yönetim oturumu');
     return noStore(NextResponse.json({ success: false, message }, { status: authError ? 401 : 503 }));
   }
