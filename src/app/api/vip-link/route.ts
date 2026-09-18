@@ -14,9 +14,8 @@ function noStore(response: NextResponse) {
 
 export async function POST(request: Request) {
   try {
-    // removed assertSameOriginMutation
-    // removed assertAdminSession
-    
+    assertSameOriginMutation(request);
+    assertAdminSession(request);
     const body = await request.json();
     const title = String(body.title || '').trim().slice(0, 180);
     const amount = Number(String(body.amount || '').replace(/[^0-9.,]/g, '').replace(/\./g, '').replace(',', '.'));
@@ -34,7 +33,7 @@ export async function POST(request: Request) {
     const token = signVipToken(payload);
     await createVipLinkRecord(payload, token);
 
-    const origin = 'https://saatchi.watch';
+    const origin = new URL(request.url).origin;
     return noStore(NextResponse.json({
       success: true,
       id: payload.id,
@@ -65,9 +64,8 @@ export async function GET(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
-    // removed assertSameOriginMutation
-    // removed assertAdminSession
-    
+    assertSameOriginMutation(request);
+    assertAdminSession(request);
     const body = await request.json();
     const id = String(body?.id || '').trim();
     if (!id.startsWith('VIP-SAATCHI-')) {
