@@ -28,6 +28,9 @@ export async function GET(request: Request) {
         createdAt: record.createdAt,
         expiresAt: record.expiresAt,
         revokedAt: record.revokedAt,
+        paymentState: record.paymentState,
+        paymentUpdatedAt: record.paymentUpdatedAt,
+        reconciledAt: record.reconciledAt,
       })),
     }));
   } catch (error: unknown) {
