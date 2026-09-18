@@ -24,6 +24,7 @@ const workflow = read('.github/workflows/pos-security-pr.yml');
 const productionRelease = read('.github/workflows/production-release.yml');
 const mainRegression = read('.github/workflows/ui-regression.yml');
 const runtimeSmokeScript = read('scripts/smoke-pos-runtime.mjs');
+const behaviorTest = read('scripts/test-vip-behavior.mjs');
 const liveRuntimeSmoke = read('.github/workflows/live-runtime-smoke.yml');
 const handoff = read('docs/POS_SECURITY_HANDOFF.md');
 const bankEvidence = read('docs/POS_BANK_REVIEW_EVIDENCE.md');
@@ -55,6 +56,7 @@ const requirements = [
   ['admin key requires at least 32 characters', session.includes('key.length < 32')],
   ['production admin session secret is mandatory and independent', session.includes('VIP_ADMIN_SESSION_SECRET production ortamında') && session.includes('diğer ödeme/yönetim secret değerlerinden bağımsız')],
   ['production admin throttle is Firestore durable', vipAdminThrottle.includes("const COLLECTION = 'saatchiAdminLoginThrottle'") && vipAdminThrottle.includes("process.env.NODE_ENV !== 'production'") && vipAdminThrottle.includes('currentDocument.updateTime')],
+  ['behavior tests exercise production durable throttle', behaviorTest.includes('Production durable throttle simulation') && behaviorTest.includes('metadata.google.internal') && behaviorTest.includes('firestore.googleapis.com')],
   ['VIP admin production MFA is mandatory', sessionRoute.includes('verifyAdminTotp(otp)') && vipAdminTotp.includes('VIP_ADMIN_TOTP_SECRET production ortamında yapılandırılmamış') && vipAdminTotp.includes('timingSafeEqual')],
   ['VIP admin UI asks for a six-digit OTP', page.includes('2 Adımlı Doğrulama') && page.includes('one-time-code') && page.includes('loginOtp')],
   ['VIP admin repeated failures are throttled', sessionRoute.includes('assertAdminLoginNotThrottled(request)') && sessionRoute.includes('recordAdminLoginFailure(request)') && sessionRoute.includes("status: originError ? 403 : throttled ? 429") && vipAdminThrottle.includes('MAX_FAILURES = 5') && sessionRoute.includes("Retry-After")],
