@@ -7,6 +7,9 @@ const compact = (value) => value.replace(/\s+/g, ' ');
 
 const page = read('src/app/admin/viplink/page.tsx');
 const checkout = read('src/app/vip-checkout/page.tsx');
+const paymentReview = read('src/app/odeme/page.tsx');
+const footer = read('src/components/layout/Footer.tsx');
+const legalPages = read('src/data/legal/legal-pages.ts');
 const session = read('src/lib/vip-admin-session.ts');
 const sessionRoute = read('src/app/api/admin-session/route.ts');
 const vipRoute = read('src/app/api/vip-link/route.ts');
@@ -120,7 +123,9 @@ const requirements = [
   ['checkout exposes legal document links', checkout.includes('/on-bilgilendirme-formu') && checkout.includes('/mesafeli-satis-sozlesmesi') && checkout.includes('/yuksek-degerli-urun-teslimi')],
   ['checkout makes payment obligation explicit', checkout.includes('Ödeme Yükümlülüğü Doğuran')],
   ['checkout visibly shows product identity', checkout.includes('{summary.name}')],
-  ['checkout visibly shows seller identity and delivery method', checkout.includes('SAATCHI SAAT - SEMİH SONBAHAR') && checkout.includes('Menderes Caddesi No:231/B') && checkout.includes('Showroom teslimi')],
+  ['checkout visibly shows seller identity and delivery method', checkout.includes('SEMİH SONBAHAR - SAATCHI') && checkout.includes('Menderes Caddesi No:231/B') && checkout.includes('Showroom teslimi')],
+  ['verified merchant registration details are visible', legalPages.includes("taxNumber: '7740298676'") && legalPages.includes("chamberRegistryNumber: '492956'") && checkout.includes('VKN 7740298676') && checkout.includes('Oda Sicil No 492956')],
+  ['public bank-reviewable payment page exists', paymentReview.includes('Güvenli Ödeme') && paymentReview.includes('7740298676') && paymentReview.includes('492956') && paymentReview.includes('/mesafeli-satis-sozlesmesi') && paymentReview.includes('/iade-degisim-cayma') && paymentReview.includes('Kart numarası, CVV/CVC') && footer.includes('href="/odeme"')],
   ['checkout exposes KVKK and privacy notice at data collection', checkout.includes('/kvkk-aydinlatma-metni') && checkout.includes('/gizlilik-politikasi') && checkout.includes('kimlik ve iletişim bilgileri')],
   ['checkout exposes return and withdrawal policy', checkout.includes('/iade-degisim-cayma') && checkout.includes('İade, Değişim ve Cayma Politikası')],
   ['public payment errors are sanitized', paymentRoute.includes('publicPaymentError') && paymentRoute.includes('Ödeme hizmeti şu anda kullanılamıyor')],
