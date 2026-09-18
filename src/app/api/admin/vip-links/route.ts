@@ -12,7 +12,8 @@ function noStore(response: NextResponse) {
 
 export async function GET(request: Request) {
   try {
-    assertAdminSession(request);
+    await assertAdminSession(request);
+    
     const records = await listVipLinkRecords(75);
     return noStore(NextResponse.json({
       success: true,

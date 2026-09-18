@@ -15,7 +15,8 @@ function noStore(response: NextResponse) {
 export async function POST(request: Request) {
   try {
     assertSameOriginMutation(request);
-    assertAdminSession(request);
+    await assertAdminSession(request);
+    
     const body = await request.json();
     const title = String(body.title || '').trim().slice(0, 180);
     const amount = Number(String(body.amount || '').replace(/[^0-9.,]/g, '').replace(/\./g, '').replace(',', '.'));
@@ -65,7 +66,8 @@ export async function GET(request: Request) {
 export async function DELETE(request: Request) {
   try {
     assertSameOriginMutation(request);
-    assertAdminSession(request);
+    await assertAdminSession(request);
+    
     const body = await request.json();
     const id = String(body?.id || '').trim();
     if (!id.startsWith('VIP-SAATCHI-')) {

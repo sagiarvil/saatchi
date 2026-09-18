@@ -3,6 +3,7 @@ import Image from 'next/image';
 import saatlerData from '@/data/saatler.json';
 import elitSaatlerData from '@/data/elit-saatler.json';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
+import CartierFilterClient from '@/components/cartier/CartierFilterClient';
 
 const MAX_CATALOG_PRICE = 1_700_000;
 const ELITE_BRANDS = new Set(['Rolex', 'Cartier', 'TAG Heuer', 'Rado']);
@@ -44,7 +45,12 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
 
         {brandWatches.length === 0 ? (
           <div className="text-center text-foreground/50 py-20">Bu marka için kaynak fiyatı doğrulanmış aktif model bulunamadı.</div>
+        ) : slug === 'cartier' ? (
+          <div className="mt-8">
+            <CartierFilterClient initialWatches={brandWatches} />
+          </div>
         ) : (
+
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {brandWatches.map((watch, idx) => {
               const watchSlug = String(watch.seoUrl || '').split('/').filter(Boolean).pop() || String(watch.id || idx);

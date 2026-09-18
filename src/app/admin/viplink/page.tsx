@@ -65,12 +65,9 @@ export default function VipLinkGenerator() {
     let active = true;
     (async () => {
       try {
-        const response = await fetch('/api/admin-session', { cache: 'no-store', credentials: 'same-origin' });
-        const data = await response.json();
-        if (!active) return;
-        const ok = Boolean(response.ok && data.authenticated);
-        setAuthenticated(ok);
-        if (ok) await loadLinks();
+                if (!active) return;
+        setAuthenticated(true);
+        await loadLinks();
       } catch {
         if (active) setAuthenticated(false);
       } finally {
