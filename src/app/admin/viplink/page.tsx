@@ -55,6 +55,7 @@ export default function VipLinkGenerator() {
   const [reconcileReference, setReconcileReference] = useState('');
   const [reconcileReason, setReconcileReason] = useState('');
   const [reconcileConfirmedNoCharge, setReconcileConfirmedNoCharge] = useState(false);
+  const [reconcileOtp, setReconcileOtp] = useState('');
   const [reconcileLoading, setReconcileLoading] = useState(false);
 
   const rawAmount = Number(amount.replace(/\D/g, '') || 0);
@@ -180,8 +181,8 @@ export default function VipLinkGenerator() {
 
   async function reconcilePayment(row: VipLinkRow) {
     if (!row.id || reconcileLoading) return;
-    if (!reconcileConfirmedNoCharge || reconcileReference.trim().length < 4 || reconcileReason.trim().length < 10) {
-      setError('Mutabakat için bankada tahsilat yok teyidi, referans ve açıklama zorunludur.');
+    if (!reconcileConfirmedNoCharge || reconcileReference.trim().length < 4 || reconcileReason.trim().length < 10 || !/^\d{6}$/.test(reconcileOtp)) {
+      setError('Mutabakat için bankada tahsilat yok teyidi, referans, açıklama ve 6 haneli doğrulama kodu zorunludur.');
       return;
     }
 
@@ -197,6 +198,7 @@ export default function VipLinkGenerator() {
           confirmedNoCharge: true,
           reconciliationReference: reconcileReference.trim(),
           reconciliationReason: reconcileReason.trim(),
+          otp: reconcileOtp,
         }),
       });
       const data = await response.json();
@@ -210,6 +212,7 @@ export default function VipLinkGenerator() {
       setReconcileReference('');
       setReconcileReason('');
       setReconcileConfirmedNoCharge(false);
+      setReconcileOtp('');
       await loadLinks();
     } catch (e: unknown) {
       setError(errorMessage(e, 'Ödeme mutabakatı tamamlanamadı.'));
@@ -366,6 +369,7 @@ export default function VipLinkGenerator() {
                           <input value={reconcileReference} onChange={(e) => setReconcileReference(e.target.value.slice(0, 160))} placeholder="Mutabakat / çağrı / işlem referansı" className="border border-amber-200 bg-white px-3 py-3 text-xs outline-none focus:border-amber-500" />
                           <input value={reconcileReason} onChange={(e) => setReconcileReason(e.target.value.slice(0, 500))} placeholder="Tahsilat yok doğrulama açıklaması" className="border border-amber-200 bg-white px-3 py-3 text-xs outline-none focus:border-amber-500" />
                         </div>
+                        <input value={reconcileOtp} onChange={(e) => setReconcileOtp(e.target.value.replace(/\D/g, '').slice(0, 6))} inputMode="numeric" autoComplete="one-time-code" maxLength={6} placeholder="2FA kodu" className="mt-3 w-full border border-amber-200 bg-white px-3 py-3 text-center font-mono text-sm tracking-[0.3em] outline-none focus:border-amber-500" />
                         <label className="mt-3 flex items-start gap-2 text-xs text-amber-950"><input type="checkbox" checked={reconcileConfirmedNoCharge} onChange={(e) => setReconcileConfirmedNoCharge(e.target.checked)} className="mt-0.5" /><span>Bankada/ödeme kuruluşunda tahsilat olmadığını doğruladım.</span></label>
                         <button onClick={() => reconcilePayment(row)} disabled={reconcileLoading || !reconcileConfirmedNoCharge} className="mt-3 bg-amber-900 px-4 py-3 text-[9px] font-bold uppercase tracking-[0.14em] text-white disabled:opacity-40">{reconcileLoading ? 'Mutabakat işleniyor…' : 'Kontrollü Yeniden Aç'}</button>
                       </div>
