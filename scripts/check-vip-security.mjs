@@ -58,6 +58,7 @@ const requirements = [
   ['production admin session secret is mandatory and independent', session.includes('VIP_ADMIN_SESSION_SECRET production ortamında') && session.includes('diğer ödeme/yönetim secret değerlerinden bağımsız')],
   ['production admin throttle is Firestore durable', vipAdminThrottle.includes("const COLLECTION = 'saatchiAdminLoginThrottle'") && vipAdminThrottle.includes('currentDocument.updateTime')],
   ['throttle memory override is CI-only', vipAdminThrottle.includes("process.env.CI === 'true'") && vipAdminThrottle.includes("SAATCHI_ADMIN_THROTTLE_TEST_MODE === 'true'") && runtimeSmokeScript.includes("SAATCHI_ADMIN_THROTTLE_TEST_MODE: 'true'")],
+  ['throttle helper is non-recursive', vipAdminThrottle.includes("process.env.NODE_ENV !== 'production'") && !vipAdminThrottle.includes("return (\n    useMemoryThrottle() ||")],
   ['behavior tests exercise production durable throttle', behaviorTest.includes('Production durable throttle simulation') && behaviorTest.includes('metadata.google.internal') && behaviorTest.includes('firestore.googleapis.com')],
   ['VIP admin production MFA is mandatory', sessionRoute.includes('verifyAdminTotp(otp)') && vipAdminTotp.includes('VIP_ADMIN_TOTP_SECRET production ortamında yapılandırılmamış') && vipAdminTotp.includes('timingSafeEqual')],
   ['VIP admin UI asks for a six-digit OTP', page.includes('2 Adımlı Doğrulama') && page.includes('one-time-code') && page.includes('loginOtp')],
