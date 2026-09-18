@@ -14,8 +14,22 @@ function parseAllowedOrigins(raw = process.env.SAATCHI_PAYMENT_ALLOWED_ORIGINS |
       .split(',')
       .map((value) => value.trim())
       .filter(Boolean)
-      .map((value) => new URL(value).origin)
+      .map((value) => {
+        const url = new URL(value);
+        if (url.protocol !== 'https:' || url.username || url.password) {
+          throw new Error('Ödeme yönlendirme izin listesinde yalnız güvenli HTTPS origin kullanılabilir.');
+        }
+        return url.origin;
+      })
   );
+}
+
+export function assertPaymentHandoffConfiguration(rawAllowlist?: string) {
+  const allowlist = assertPaymentHandoffConfiguration(rawAllowlist);
+  if (process.env.NODE_ENV === 'production' && allowlist.size === 0) {
+    throw new Error('Ödeme yönlendirme izin listesi production ortamında yapılandırılmamış.');
+  }
+  return allowlist;
 }
 
 export function assertPaymentUrlAllowed(value: unknown, rawAllowlist?: string) {
