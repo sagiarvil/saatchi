@@ -15,6 +15,8 @@ const store = read('src/lib/vip-link-store.ts');
 const listRoute = read('src/app/api/admin/vip-links/route.ts');
 const firebase = read('firebase.json');
 const workflow = read('.github/workflows/pos-security-pr.yml');
+const legacyPaymentDirExists = fs.existsSync(path.join(root, 'src/lib/payment_backend_ready'));
+const mockSuccessExists = fs.existsSync(path.join(root, 'src/app/test-success'));
 
 const paymentActiveChecks = paymentRoute.match(/assertVipLinkActive\(vip, token\)/g)?.length || 0;
 const vipAdminChecks = vipRoute.match(/assertAdminSession\(request\)/g)?.length || 0;
@@ -46,7 +48,17 @@ const requirements = [
   ['payment request body is bounded', paymentRoute.includes('assertRequestBodySize(request)')],
   ['payment external call has bounded timeout', paymentRoute.includes('AbortSignal.timeout(20_000)')],
   ['payment has request correlation id', paymentRoute.includes('requestId') && paymentRoute.includes('X-SAATCHI-Request-Id')],
-  ['test payment bypass is absent', !paymentRoute.includes('TEST_POS') && !paymentRoute.includes('/test-success')],
+  ['payment sends idempotency key header', paymentRoute.includes("'Idempotency-Key': idempotencyKey")],
+  ['payment atomically claims single attempt', paymentRoute.includes('claimVipPaymentAttempt') && store.includes('currentDocument.updateTime') && store.includes("paymentState: 'creating'")],
+  ['ambiguous payment result becomes uncertain', paymentRoute.includes("finalizeVipPaymentAttempt(vip.id, requestId, 'uncertain')") && store.includes("paymentState === 'uncertain'")],
+  ['cardholder data is rejected by merchant API', paymentRoute.includes('assertNoCardholderData(body)') && paymentRoute.includes('CARD_DATA_KEYS')],
+  ['production payment API has explicit origin allowlist', paymentRoute.includes('SAATCHI_PAYMENT_API_ALLOWED_ORIGINS') && paymentRoute.includes('allowedOrigins.has(url.origin)')],
+  ['production payment endpoint has no legacy fallback', paymentRoute.includes("process.env.NODE_ENV !== 'production' ? process.env.BELGIN_PAYMENT_CREATE_URL : ''")],
+  ['test payment bypass is absent', !paymentRoute.includes('TEST_POS') && !paymentRoute.includes('/test-success') && !mockSuccessExists],
+  ['dead direct-card backend is absent from runtime tree', !legacyPaymentDirExists],
+  ['checkout legal consents default false', checkout.includes('useState(false)') && !checkout.includes('Hukuki metinler (Gizli)') && !checkout.includes('termsAccepted: true')],
+  ['checkout exposes legal document links', checkout.includes('/on-bilgilendirme-formu') && checkout.includes('/mesafeli-satis-sozlesmesi') && checkout.includes('/yuksek-degerli-urun-teslimi')],
+  ['checkout makes payment obligation explicit', checkout.includes('Ödeme Yükümlülüğü Doğuran')],
   ['provider HTML is never injected into checkout', !checkout.includes('document.write') && !checkout.includes('htmlContent')],
   ['payment handoff requires HTTPS', boundary.includes("url.protocol !== 'https:'")],
   ['payment handoff supports explicit origin allowlist', boundary.includes('SAATCHI_PAYMENT_ALLOWED_ORIGINS') && boundary.includes('allowlist.has(url.origin)')],
@@ -55,6 +67,7 @@ const requirements = [
   ['security headers block MIME sniffing', firebase.includes('X-Content-Type-Options') && firebase.includes('nosniff')],
   ['checkout CSP is present', firebase.includes('Content-Security-Policy')],
   ['POS PRs run isolated regression workflow before merge', workflow.includes('pull_request:') && workflow.includes('npm run check:vip') && workflow.includes('npm run test:vip') && workflow.includes('npm run build')],
+  ['PR gate checks dependency high/critical vulnerabilities', workflow.includes('npm audit --audit-level=high')],
 ];
 
 const failed = requirements.filter(([, ok]) => !ok);
