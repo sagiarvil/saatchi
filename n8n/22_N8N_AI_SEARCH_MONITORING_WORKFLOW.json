@@ -1,0 +1,26 @@
+{
+  "name": "Master Suite v2 Evidence Gate",
+  "active": false,
+  "settings": {"executionOrder": "v1", "saveExecutionProgress": true, "saveManualExecutions": true},
+  "nodes": [
+    {"parameters":{"httpMethod":"POST","path":"master-suite-v2/evidence","responseMode":"responseNode","options":{}},"id":"suite-webhook","name":"Suite Webhook","type":"n8n-nodes-base.webhook","typeVersion":2,"position":[-900,0],"webhookId":"master-suite-v2-evidence"},
+    {"parameters":{"jsCode":"const body = $json.body ?? $json;\nreturn [{json:{requestId:String(body.requestId||''), contract:body.contract||null, evidence:body.evidence||null, receivedAt:new Date().toISOString()}}];"},"id":"normalize-task","name":"Normalize Task","type":"n8n-nodes-base.code","typeVersion":2,"position":[-680,0]},
+    {"parameters":{"jsCode":"const c=$json.contract; const errors=[];\nif(!c||typeof c!=='object') errors.push('contract_missing');\nif(!String(c?.objective||'').trim()) errors.push('objective_missing');\nif(!Array.isArray(c?.allowedFiles)||c.allowedFiles.length===0) errors.push('allowed_files_missing');\nif(!Array.isArray(c?.acceptance)||c.acceptance.length===0) errors.push('acceptance_missing');\nif(c?.allowExternalWrites===true) errors.push('external_writes_forbidden');\nreturn [{json:{...$json, contractValid:errors.length===0, contractErrors:errors}}];"},"id":"contract-gate","name":"Contract Gate","type":"n8n-nodes-base.code","typeVersion":2,"position":[-460,0]},
+    {"parameters":{"conditions":{"options":{"caseSensitive":true,"leftValue":"","typeValidation":"strict"},"conditions":[{"id":"contract-ok","leftValue":"={{ $json.contractValid }}","rightValue":true,"operator":{"type":"boolean","operation":"true","singleValue":true}}],"combinator":"and"},"options":{}},"id":"contract-valid","name":"Contract Valid?","type":"n8n-nodes-base.if","typeVersion":2.2,"position":[-240,0]},
+    {"parameters":{"jsCode":"const e=$json.evidence; const errors=[];\nif(!e||typeof e!=='object') errors.push('evidence_missing');\nif(!Array.isArray(e?.changedFiles)) errors.push('changed_files_missing');\nif(e?.diffCheck?.status!==0) errors.push('diff_check_failed');\nif(!Array.isArray(e?.tests)||e.tests.length===0) errors.push('tests_missing');\nif(Array.isArray(e?.tests)&&e.tests.some(t=>Number(t.status)!==0)) errors.push('test_failed');\nif($json.contract?.runtime?.required===true && (!e?.runtime || Number(e.runtime.status)!==Number($json.contract.runtime.expectedStatus||0))) errors.push('runtime_readback_failed');\nreturn [{json:{...$json, evidenceValid:errors.length===0, evidenceErrors:errors}}];"},"id":"evidence-gate","name":"Evidence Gate","type":"n8n-nodes-base.code","typeVersion":2,"position":[0,-100]},
+    {"parameters":{"conditions":{"options":{"caseSensitive":true,"leftValue":"","typeValidation":"strict"},"conditions":[{"id":"evidence-ok","leftValue":"={{ $json.evidenceValid }}","rightValue":true,"operator":{"type":"boolean","operation":"true","singleValue":true}}],"combinator":"and"},"options":{}},"id":"evidence-valid","name":"Evidence Valid?","type":"n8n-nodes-base.if","typeVersion":2.2,"position":[220,-100]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ { ok:true, requestId:$json.requestId, status:'PASS', receivedAt:$json.receivedAt } }}","options":{"responseCode":200}},"id":"pass-response","name":"Pass Response","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[460,-180]},
+    {"parameters":{"respondWith":"json","responseBody":"={{ { ok:false, requestId:$json.requestId, status:'FAIL', contractErrors:$json.contractErrors||[], evidenceErrors:$json.evidenceErrors||[] } }}","options":{"responseCode":422}},"id":"fail-response","name":"Fail Response","type":"n8n-nodes-base.respondToWebhook","typeVersion":1.4,"position":[460,120]}
+  ],
+  "connections": {
+    "Suite Webhook":{"main":[[{"node":"Normalize Task","type":"main","index":0}]]},
+    "Normalize Task":{"main":[[{"node":"Contract Gate","type":"main","index":0}]]},
+    "Contract Gate":{"main":[[{"node":"Contract Valid?","type":"main","index":0}]]},
+    "Contract Valid?":{"main":[[{"node":"Evidence Gate","type":"main","index":0}],[{"node":"Fail Response","type":"main","index":0}]]},
+    "Evidence Gate":{"main":[[{"node":"Evidence Valid?","type":"main","index":0}]]},
+    "Evidence Valid?":{"main":[[{"node":"Pass Response","type":"main","index":0}],[{"node":"Fail Response","type":"main","index":0}]]}
+  },
+  "pinData": {},
+  "meta": {"templateCredsSetupCompleted": true},
+  "tags": []
+}
