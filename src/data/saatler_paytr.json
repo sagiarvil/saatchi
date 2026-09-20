@@ -192,14 +192,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-wby1161ft8086-kol-saati"
   },
   {
-    "id": "SRC-TAG-HEUER-WBY1165-FT8115",
-    "modelName": "TAG Heuer Formula 1 Solargraph 38MM WBY1165.FT8115",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 167100,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/formula-1-solargraph-38mm"
-  },
-  {
     "id": "SRC-TAG-HEUER-WBY1163-FT8113",
     "modelName": "TAG Heuer WBY1163.FT8113 Kol Saati",
     "brand": "TAG Heuer",
@@ -238,14 +230,6 @@
     "calculatedPrice": 176100,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-wby1111ba0042-kol-saati"
-  },
-  {
-    "id": "SRC-TAG-HEUER-WAZ1110-BA0875",
-    "modelName": "TAG Heuer Formula 1 WAZ1110.BA0875 Kol Saati",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 176100,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-waz1110ba0875-formula-1-kol-saati"
   },
   {
     "id": "SRC-TAG-HEUER-CAZ1010-FT8024",
@@ -288,14 +272,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-war1311ba0778-kol-saati"
   },
   {
-    "id": "SRC-TAG-HEUER-WAZ111A-BA0875",
-    "modelName": "TAG Heuer Formula 1 WAZ111A.BA0875 Kol Saati",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 194250,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-waz111aba0875-formula-1-kol-saati"
-  },
-  {
     "id": "SRC-TAG-HEUER-CAZ1010-BA0842",
     "modelName": "TAG Heuer Formula 1 CAZ1010.BA0842 Kol Saati",
     "brand": "TAG Heuer",
@@ -304,28 +280,12 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-caz1010ba0842-formula-1-kol-saati"
   },
   {
-    "id": "SRC-TAG-HEUER-CAZ1014-BA0842",
-    "modelName": "TAG Heuer Formula 1 CAZ1014.BA0842 Kol Saati",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 203250,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-caz1014ba0842-formula-1-kol-saati"
-  },
-  {
     "id": "SRC-TAG-HEUER-CAZ101E-BA0842",
     "modelName": "TAG Heuer Formula 1 CAZ101E.BA0842 Kol Saati",
     "brand": "TAG Heuer",
     "calculatedPrice": 212250,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-caz101eba0842-formula-1-kol-saati"
-  },
-  {
-    "id": "SRC-TAG-HEUER-WBC1310-BA0600",
-    "modelName": "TAG Heuer Link WBC1310.BA0600 Kol Saati",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 212250,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-wbc1310ba0600-kol-saati"
   },
   {
     "id": "SRC-TAG-HEUER-WBP1315-BA0005",
@@ -488,14 +448,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-aquaracer-professional-100-solargraph-28mm-wbp141hba0049"
   },
   {
-    "id": "SRC-TAG-HEUER-WBP2115-BA0627",
-    "modelName": "TAG Heuer Aquaracer WBP2115.BA0627 Kol Saati",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 284550,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-wbp2115ba0627-kol-saati"
-  },
-  {
     "id": "SRC-TAG-HEUER-WBD1320-BB0320",
     "modelName": "TAG Heuer Aquaracer WBD1320.BB0320 Kol Saati",
     "brand": "TAG Heuer",
@@ -648,14 +600,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-aquaracer-wbp1121bb0003-kol-saati"
   },
   {
-    "id": "SRC-TAG-HEUER-WDA2112-BA0043",
-    "modelName": "TAG Heuer Carrera WDA2112.BA0043 Kol Saati",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 379350,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-wda2112ba0043-kol-saati"
-  },
-  {
     "id": "SRC-TAG-HEUER-WDA2115-BA0043",
     "modelName": "TAG Heuer WDA2115.BA0043 Kol Saati",
     "brand": "TAG Heuer",
@@ -670,14 +614,6 @@
     "calculatedPrice": 388350,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-wbp5110ba0013-kol-saati"
-  },
-  {
-    "id": "SRC-TAG-HEUER-WBP5116-BA0013",
-    "modelName": "TAG Heuer Aquaracer WBP5116.BA0013 Kol Saati",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 388350,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-wbp5116ba0013-kol-saati"
   },
   {
     "id": "SRC-TAG-HEUER-WBP5111-BA0013",
@@ -718,14 +654,6 @@
     "calculatedPrice": 420000,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-wbp208bbf0631-aquaracer-kol-saati"
-  },
-  {
-    "id": "SRC-TAG-HEUER-WBX2110-BA0044",
-    "modelName": "TAG Heuer Carrera Astronomer WBX2110.BA0044 Kol Saati",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 420000,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-wbx2110ba0044-kol-saati"
   },
   {
     "id": "SRC-TAG-HEUER-WBP5114-BA0013",
@@ -824,14 +752,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-carrera-cbm2112ba0651-kol-saati"
   },
   {
-    "id": "SRC-TAG-HEUER-CBZ208B-BF0009",
-    "modelName": "TAG Heuer Formula 1 Chronograph x Gulf CBZ208B.BF0009 Kol Saati",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 537450,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-formula-1-chronograph-x-gulf-cbz208bbf0009-kol-saati"
-  },
-  {
     "id": "SRC-TAG-HEUER-CDB2111-BA0054",
     "modelName": "TAG Heuer Carrera Chronograph Sport CDB2111.BA0054 Kol Saati",
     "brand": "TAG Heuer",
@@ -926,14 +846,6 @@
     "calculatedPrice": 677550,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-cbg2010ft6144-kol-saati"
-  },
-  {
-    "id": "SRC-TAG-HEUER-CBL2113-BA0644",
-    "modelName": "TAG Heuer Monaco CBL2113.BA0644 Kol Saati",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 677550,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-cbl2113ba0644-kol-saati"
   },
   {
     "id": "SRC-TAG-HEUER-WBN2350-BD0000",
@@ -1032,28 +944,12 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-cr5090fn6001-kol-saati"
   },
   {
-    "id": "SRC-RADO-R32502203",
-    "modelName": "Rado Hyperchrome R32502203 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 84240,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r32502203-kol-saati"
-  },
-  {
     "id": "SRC-RADO-R48913023",
     "modelName": "Rado Florence Classic R48913023 Kol Saati",
     "brand": "Rado",
     "calculatedPrice": 90300,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r48913023-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R48912153",
-    "modelName": "Rado Florence R48912153 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 90300,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-florence-r48912153-kol-saati"
   },
   {
     "id": "SRC-RADO-R48912163",
@@ -1182,14 +1078,6 @@
     "calculatedPrice": 115350,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r48913733-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R32259173",
-    "modelName": "Rado Hyperchrome Chronograph R32259173 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 116662,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r32259173-kol-saati"
   },
   {
     "id": "SRC-RADO-R22876015",
@@ -1424,14 +1312,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-hyperchrome-r32283313-kol-saati"
   },
   {
-    "id": "SRC-RADO-R30021152",
-    "modelName": "Rado R30021152 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 140400,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r30021152-kol-saati"
-  },
-  {
     "id": "SRC-RADO-R48904013",
     "modelName": "Rado Florence Automatic 39mm R48904013 Kol Saati",
     "brand": "Rado",
@@ -1454,14 +1334,6 @@
     "calculatedPrice": 145500,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-hyperchrome-r32259313-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R30134162",
-    "modelName": "Rado Centrix R30134162 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 146700,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-centrix-r30134162-kol-saati"
   },
   {
     "id": "SRC-RADO-R14068036",
@@ -1488,22 +1360,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r20613712-kol-saati"
   },
   {
-    "id": "SRC-RADO-R30178152",
-    "modelName": "Rado Centrix R30178152 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 152520,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r30178152-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R20140712",
-    "modelName": "Rado Integral R20140712 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 154560,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/integral"
-  },
-  {
     "id": "SRC-RADO-R30023012",
     "modelName": "Rado Centrix R30023012 Kol Saati",
     "brand": "Rado",
@@ -1520,14 +1376,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r48903733-kol-saati"
   },
   {
-    "id": "SRC-RADO-R32259323",
-    "modelName": "Rado Hyperchrome Chronograph R32259323 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 155550,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r32259323-kol-saati"
-  },
-  {
     "id": "SRC-RADO-R32259163",
     "modelName": "Rado Hyperchrome R32259163 Kol Saati",
     "brand": "Rado",
@@ -1542,14 +1390,6 @@
     "calculatedPrice": 155550,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r27059712-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R27072012",
-    "modelName": "Rado True Square R27072012 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 155550,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r27072012-kol-saati"
   },
   {
     "id": "SRC-RADO-R27080172",
@@ -1608,14 +1448,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-coupole-classic-r22879215-kol-saati"
   },
   {
-    "id": "SRC-RADO-R22894163",
-    "modelName": "Rado Coupole Classic R22894163 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 160500,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r22894163-kol-saati"
-  },
-  {
     "id": "SRC-RADO-R12161253",
     "modelName": "Rado DiaStar Original R12161253 Kol Saati",
     "brand": "Rado",
@@ -1646,14 +1478,6 @@
     "calculatedPrice": 168000,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r27057102-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R20206712",
-    "modelName": "Rado Integral R20206712 Kol Saatii",
-    "brand": "Rado",
-    "calculatedPrice": 168600,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r20206712-kol-saati"
   },
   {
     "id": "SRC-RADO-R20612712",
@@ -1694,14 +1518,6 @@
     "calculatedPrice": 170550,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r30025712-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R30038712",
-    "modelName": "Rado Centrix R30038712 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 170550,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r30038712-kol-saati"
   },
   {
     "id": "SRC-RADO-R30039712",
@@ -1750,14 +1566,6 @@
     "calculatedPrice": 170550,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r27054162-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R27126012",
-    "modelName": "Rado True Square Automatic Skeleton R27126012 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 175560,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r27126012-kol-saati"
   },
   {
     "id": "SRC-RADO-R27047902",
@@ -1886,14 +1694,6 @@
     "calculatedPrice": 200700,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r30022742-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R30023732",
-    "modelName": "Rado Centrix Diamonds R30023732 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 200700,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r30023732-kol-saati"
   },
   {
     "id": "SRC-RADO-R30024732",
@@ -2040,14 +1840,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r27242732-kol-saati"
   },
   {
-    "id": "SRC-RADO-R27056732",
-    "modelName": "Rado True R27056732 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 205650,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-true-r27056732-kol-saati"
-  },
-  {
     "id": "SRC-RADO-R30012152",
     "modelName": "Rado Centrix Automatic Open Heart R30012152 Kol Saati",
     "brand": "Rado",
@@ -2070,14 +1862,6 @@
     "calculatedPrice": 210750,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r12161733-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R12171713",
-    "modelName": "Rado DiaStar Original R12171713 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 210750,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r12171713-kol-saati"
   },
   {
     "id": "SRC-RADO-R12164153",
@@ -2206,14 +1990,6 @@
     "calculatedPrice": 215700,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r30212402-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R32044902",
-    "modelName": "Rado HyperChrome R32044902 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 218250,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r32044902-kol-saati"
   },
   {
     "id": "SRC-RADO-R30018742",
@@ -2448,14 +2224,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r32222108-kol-saati"
   },
   {
-    "id": "SRC-RADO-R30017732",
-    "modelName": "Rado Centrix Automatic Diamonds R30017732 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 235800,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r30017732-kol-saati"
-  },
-  {
     "id": "SRC-RADO-R30019732",
     "modelName": "Rado Centrix Automatic Diamonds R30019732 Kol Saati",
     "brand": "Rado",
@@ -2494,22 +2262,6 @@
     "calculatedPrice": 240750,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r27086172-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R32139708",
-    "modelName": "Rado Captain Cook Marina Hoermanseder R32139708",
-    "brand": "Rado",
-    "calculatedPrice": 245850,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-captain-cook-r32139708-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R32500718",
-    "modelName": "Rado R32500718 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 245850,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r32500718-kol-saati"
   },
   {
     "id": "SRC-RADO-R32193018",
@@ -2558,14 +2310,6 @@
     "calculatedPrice": 260850,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r22243703-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R32171205",
-    "modelName": "Rado Hyperchrome 1616 R32171205 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 265650,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r32171205-kol-saati"
   },
   {
     "id": "SRC-RADO-R22240703",
@@ -2704,14 +2448,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-true-square-r27073702-kol-saati"
   },
   {
-    "id": "SRC-RADO-R27112312",
-    "modelName": "Rado True Thinline Anima R27112312 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 280950,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r27112312-kol-saati"
-  },
-  {
     "id": "SRC-RADO-R32127156",
     "modelName": "Rado Captain Cook R32127156 Kol Saati",
     "brand": "Rado",
@@ -2838,14 +2574,6 @@
     "calculatedPrice": 331050,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r32144202-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-R32118102",
-    "modelName": "Rado Hyperchrome R32118102 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 350880,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-r32118102-kol-saati"
   },
   {
     "id": "SRC-RADO-R30227702",
@@ -3064,14 +2792,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-anatom-r10260712-kol-saati"
   },
   {
-    "id": "SRC-RADO-R10261712",
-    "modelName": "RADO Anatom R10261712 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 431400,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado-anatom-r10261712"
-  },
-  {
     "id": "SRC-RADO-R32157152",
     "modelName": "Rado HyperChrome Automatic Diamonds R32157152 Kol Saati",
     "brand": "Rado",
@@ -3128,46 +2848,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r10204712-kol-saati"
   },
   {
-    "id": "SRC-TISSOT-T0581093703600",
-    "modelName": "Tissot Lovely T0581093703600",
-    "brand": "Tissot",
-    "calculatedPrice": 16492,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-lovely-square-t0581093703600-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1432101709100",
-    "modelName": "Tissot Everytime 34mm T1432101709100",
-    "brand": "Tissot",
-    "calculatedPrice": 18120,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1432101709100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1166171603700",
-    "modelName": "Tissot Chrono XL Classic T1166171603700",
-    "brand": "Tissot",
-    "calculatedPrice": 18900,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1166171603700-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1164101104700",
-    "modelName": "Tissot Gent XL Classic T1164101104700",
-    "brand": "Tissot",
-    "calculatedPrice": 19935,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1164101104700-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1016171603100",
-    "modelName": "Tissot PR 100 Sport Gent Chronograph T1016171603100",
-    "brand": "Tissot",
-    "calculatedPrice": 22149,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-pr-100-sport-gent-t1016171603100"
-  },
-  {
     "id": "SRC-TISSOT-T1294101601300",
     "modelName": "Tissot Classic Dream 42mm T1294101601300",
     "brand": "Tissot",
@@ -3182,30 +2862,6 @@
     "calculatedPrice": 22650,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-classic-dream-t1294101605300-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T0554171104700",
-    "modelName": "Tissot PRC 200 Chronograph T0554171104700",
-    "brand": "Tissot",
-    "calculatedPrice": 23138,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t0554171104700-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T0554171105700",
-    "modelName": "Tissot PRC 200 Chronograph T0554171105700",
-    "brand": "Tissot",
-    "calculatedPrice": 23138,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t0554171105700-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T0581091104100",
-    "modelName": "Tissot Lovely Square 20x20mm T0581091104100",
-    "brand": "Tissot",
-    "calculatedPrice": 23922,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t0581091104100-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T1504101601100",
@@ -3280,22 +2936,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/t82655013"
   },
   {
-    "id": "SRC-TISSOT-T1019101103600",
-    "modelName": "Tissot PR 100 Sport Chic T1019101103600",
-    "brand": "Tissot",
-    "calculatedPrice": 25398,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-pr-100-sport-chic-t1019101103600-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1354173705105",
-    "modelName": "Tissot T-Race Cycling Tour de France 2023 T1354173705105",
-    "brand": "Tissot",
-    "calculatedPrice": 25598,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t-race-cycling-tour-de-france-2023-t1354173705105-kol-saati"
-  },
-  {
     "id": "SRC-TISSOT-T1432101101101",
     "modelName": "Tissot Everytime 34mm T1432101101101",
     "brand": "Tissot",
@@ -3310,14 +2950,6 @@
     "calculatedPrice": 25605,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-everytime-34mm-t1432101104100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1122103305100",
-    "modelName": "Tissot T-Wave T1122103305100",
-    "brand": "Tissot",
-    "calculatedPrice": 25695,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1122103305100-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T1502101103100",
@@ -3438,14 +3070,6 @@
     "calculatedPrice": 26580,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1370101135100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T0636101103800",
-    "modelName": "Tissot Tradition 42mm T0636101103800",
-    "brand": "Tissot",
-    "calculatedPrice": 26775,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t0636101103800-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T1504102204100",
@@ -3704,22 +3328,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-srv-t1601101642300-kol-saati"
   },
   {
-    "id": "SRC-TISSOT-T1256172105100",
-    "modelName": "Tissot Supersport Chrono T1256172105100",
-    "brand": "Tissot",
-    "calculatedPrice": 30324,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-supersport-chrono-t1256172105100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T0636173603700",
-    "modelName": "Tissot Tradition Chronograph T0636173603700",
-    "brand": "Tissot",
-    "calculatedPrice": 30324,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t0636173603700-kol-saati"
-  },
-  {
     "id": "SRC-TISSOT-T1294102203100",
     "modelName": "Tissot Classic Dream 42mm T1294102203100",
     "brand": "Tissot",
@@ -3750,14 +3358,6 @@
     "calculatedPrice": 30525,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-prx-t1374101701100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1204171104100",
-    "modelName": "Tissot Seastar 1000 Chronograph T1204171104100",
-    "brand": "Tissot",
-    "calculatedPrice": 31014,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1204171104100-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T1502102111100",
@@ -3824,14 +3424,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-chrono-xl-classic-t1166171609200-kol-saati"
   },
   {
-    "id": "SRC-TISSOT-T1166171604200",
-    "modelName": "Tissot Chrono XL Vintage 45mm T1166171604200",
-    "brand": "Tissot",
-    "calculatedPrice": 31500,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-chrono-xl-vintage-t1166171604200-kol-saati"
-  },
-  {
     "id": "SRC-TISSOT-T1504102201100",
     "modelName": "Tissot PR 100 40mm T1504102201100",
     "brand": "Tissot",
@@ -3840,28 +3432,12 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-pr-100-quartz-t1504102201100-kol-saati"
   },
   {
-    "id": "SRC-TISSOT-T1019102211100",
-    "modelName": "Tissot PR 100 Sport Chic 36mm T1019102211100",
-    "brand": "Tissot",
-    "calculatedPrice": 32219,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-pr-100-sport-chic-t1019102211100-kol-saati"
-  },
-  {
     "id": "SRC-TISSOT-T1204102705100",
     "modelName": "Tissot Seastar 1000 40mm T1204102705100",
     "brand": "Tissot",
     "calculatedPrice": 32219,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1204102705100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1256171605100",
-    "modelName": "Tissot Supersport Chrono 45.5mm T1256171605100",
-    "brand": "Tissot",
-    "calculatedPrice": 32219,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-supersport-chrono-t1256171605100-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T0581093303100",
@@ -4038,14 +3614,6 @@
     "calculatedPrice": 32985,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1374101142100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1400093311100",
-    "modelName": "Tissot Lovely Round 19.5mm T1400093311100",
-    "brand": "Tissot",
-    "calculatedPrice": 33224,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1400093311100-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T1562102203100",
@@ -4408,22 +3976,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1504173705700"
   },
   {
-    "id": "SRC-TISSOT-T1294071105100",
-    "modelName": "Tissot Classic Dream Swissmatic T1294071105100",
-    "brand": "Tissot",
-    "calculatedPrice": 36822,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-classic-dream-swissmatic-t1294071105100"
-  },
-  {
-    "id": "SRC-TISSOT-T1154172705100",
-    "modelName": "Tissot T-Race Chronograph T1154172705100",
-    "brand": "Tissot",
-    "calculatedPrice": 36866,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1154172705100-kol-saati"
-  },
-  {
     "id": "SRC-TISSOT-T1520102211800",
     "modelName": "Tissot Desir 28mm T1520102211800",
     "brand": "Tissot",
@@ -4478,14 +4030,6 @@
     "calculatedPrice": 36915,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-srv-t1601103612600--kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1019173311601",
-    "modelName": "Tissot PR 100 Sport Chic Chronograph T1019173311601",
-    "brand": "Tissot",
-    "calculatedPrice": 37215,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-pr-100-sport-chic-t1019173311601-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T1564103305100",
@@ -4664,14 +4208,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1204101105100-kol-saati"
   },
   {
-    "id": "SRC-TISSOT-T1204101109100",
-    "modelName": "Tissot Seastar 1000 40mm T1204101109100",
-    "brand": "Tissot",
-    "calculatedPrice": 38895,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1204101109100"
-  },
-  {
     "id": "SRC-TISSOT-T1584073626100",
     "modelName": "TIssot Classic Dream 40mm T1584073626100",
     "brand": "Tissot",
@@ -4737,7 +4273,7 @@
   },
   {
     "id": "SRC-TISSOT-T1374171103100",
-    "modelName": "Tissot PRX 40mm T1374171103100 Kol Saati",
+    "modelName": "Tissot PRX 41mm T1374171103100 Kol Saati",
     "brand": "Tissot",
     "calculatedPrice": 39375,
     "stock": 1,
@@ -4856,14 +4392,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1014173305100-kol-saati"
   },
   {
-    "id": "SRC-TISSOT-T1254172705100",
-    "modelName": "Tissot Supersport Chrono 42mm T1254172705100",
-    "brand": "Tissot",
-    "calculatedPrice": 40365,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-supersporrt-chrono-42mm"
-  },
-  {
     "id": "SRC-TISSOT-T1520103311800",
     "modelName": "Tissot Desir 28mm T1520103311800",
     "brand": "Tissot",
@@ -4918,22 +4446,6 @@
     "calculatedPrice": 40860,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1256173706700-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1522231149600",
-    "modelName": "Tissot Desir 29.6mm T1522231149600",
-    "brand": "Tissot",
-    "calculatedPrice": 41130,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-desir-296mm-t1522231149600"
-  },
-  {
-    "id": "SRC-TISSOT-T0994071604800",
-    "modelName": "Tissot Chemin des Tourelles Powermatic 80 T0994071604800",
-    "brand": "Tissot",
-    "calculatedPrice": 41346,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t0994071604800-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T1584072203100",
@@ -5000,14 +4512,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1514221104100-kol-saati"
   },
   {
-    "id": "SRC-TISSOT-T1514221109100",
-    "modelName": "Tissot PRC 100 Solar 39mm T1514221109100 Kol Saati",
-    "brand": "Tissot",
-    "calculatedPrice": 41355,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/prc-100-solar-39mm"
-  },
-  {
     "id": "SRC-TISSOT-T1514221135100",
     "modelName": "Tissot PRC 100 Solar 39mm T1514221135100",
     "brand": "Tissot",
@@ -5022,14 +4526,6 @@
     "calculatedPrice": 41355,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1202102211100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1256173705101",
-    "modelName": "Tissot Supersport Chrono 45.5mm T1256173705101",
-    "brand": "Tissot",
-    "calculatedPrice": 41355,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-supersport-chrono-t1256173705101-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T1260102201301",
@@ -5064,14 +4560,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1208521105100-kol-saati"
   },
   {
-    "id": "SRC-TISSOT-T1254171104100",
-    "modelName": "Tissot Supersport Chrono 42mm T1254171104100",
-    "brand": "Tissot",
-    "calculatedPrice": 41850,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-supersport-chrono-42mm"
-  },
-  {
     "id": "SRC-TISSOT-T1254171135100",
     "modelName": "Tissot Supersport Chrono 42mm T1254171135100",
     "brand": "Tissot",
@@ -5094,22 +4582,6 @@
     "calculatedPrice": 41850,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-supersport-chrono-t1256171105100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1019172203100",
-    "modelName": "Tissot PR 100 Sport Chic 38mm T1019172203100",
-    "brand": "Tissot",
-    "calculatedPrice": 42093,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-pr-100-sport-chic-t1019172203100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1019171104600",
-    "modelName": "Tissot PR 100 Sport Chic 38mm T1019171104600",
-    "brand": "Tissot",
-    "calculatedPrice": 42132,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1019171104600-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T1522232203600",
@@ -5256,14 +4728,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1202173306100-kol-saati"
   },
   {
-    "id": "SRC-TISSOT-T0992071104800",
-    "modelName": "Tissot Chemin des Tourelles Powermatic 80 Lady T0992071104800",
-    "brand": "Tissot",
-    "calculatedPrice": 44892,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t0992071104800-kol-saati"
-  },
-  {
     "id": "SRC-TISSOT-T1274104404100",
     "modelName": "Tissot Gentleman 40mm T1274104404100",
     "brand": "Tissot",
@@ -5310,14 +4774,6 @@
     "calculatedPrice": 45285,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1202171704100"
-  },
-  {
-    "id": "SRC-TISSOT-T1204173705100",
-    "modelName": "Tissot Seastar 1000 Chronograph T1204173705100",
-    "brand": "Tissot",
-    "calculatedPrice": 45288,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1204173705100-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T1208522205100",
@@ -5656,14 +5112,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-le-locle-39mm-t0064071604300-kol-saati"
   },
   {
-    "id": "SRC-TISSOT-T0194301104100",
-    "modelName": "Tissot Heritage Visodate Automatic T0194301104100",
-    "brand": "Tissot",
-    "calculatedPrice": 55377,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-heritage-visodate-automatic-t0194301104100"
-  },
-  {
     "id": "SRC-TISSOT-T1372071109101",
     "modelName": "Tissot PRX 35mm T1372071109101",
     "brand": "Tissot",
@@ -5984,14 +5432,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/seastar-1000-powermatic-80-t1204071108101-kol-saat"
   },
   {
-    "id": "SRC-TISSOT-T0064071103303",
-    "modelName": "Tissot Le Locle 20th Anniversary 39.3mm T0064071103303 (Yedek Deri Kayışlı)",
-    "brand": "Tissot",
-    "calculatedPrice": 63945,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t0064071103303-kol-saati"
-  },
-  {
     "id": "SRC-TISSOT-T41218333",
     "modelName": "Tissot Le Locle 25.3mm T41218333",
     "brand": "Tissot",
@@ -6014,14 +5454,6 @@
     "calculatedPrice": 64980,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1372071111100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1374071111100",
-    "modelName": "Tissot PRX 40mm T1374071111100",
-    "brand": "Tissot",
-    "calculatedPrice": 64980,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-prx-40mm"
   },
   {
     "id": "SRC-TISSOT-T1574071603100",
@@ -6632,14 +6064,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1209073705100"
   },
   {
-    "id": "SRC-TISSOT-T1534204705101",
-    "modelName": "Tissot T-Touch Connect Sport 43.75mm T1534204705101",
-    "brand": "Tissot",
-    "calculatedPrice": 86625,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/t-touch-connect-sport-43-75mm-t1534204705101"
-  },
-  {
     "id": "SRC-TISSOT-T1379079720100",
     "modelName": "Tissot PRX Carbon 40.5mm T1379079720100",
     "brand": "Tissot",
@@ -6694,14 +6118,6 @@
     "calculatedPrice": 121284,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-glendora-18k-gold-t9292104104600-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T9300074104600",
-    "modelName": "Tissot T-My Lady Gold 29mm T9300074104600",
-    "brand": "Tissot",
-    "calculatedPrice": 121284,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t-my-lady-automatic-18k-gold-bezel-t9300074104600-kol-saati"
   },
   {
     "id": "SRC-TISSOT-T9292104111600",
@@ -6782,14 +6198,6 @@
     "calculatedPrice": 164400,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-prx-t1374271109100-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T1374271104101",
-    "modelName": "Tissot PRX Chronograph 40mm 42mm T1374271104101",
-    "brand": "Tissot",
-    "calculatedPrice": 164400,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-prx-42mm"
   },
   {
     "id": "SRC-TISSOT-T9312074103101",

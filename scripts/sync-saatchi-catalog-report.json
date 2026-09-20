@@ -2,29 +2,29 @@
   "timestamp": "2026-09-17T17:49:55+0300",
   "markup": 1.5,
   "maxPublicPrice": 1799000,
-  "eliteCount": 406,
-  "standardCount": 2039,
+  "eliteCount": 356,
+  "standardCount": 1524,
   "sourceCounts": {
-    "TAG Heuer": 108,
-    "Rado": 267,
-    "Tissot": 513,
+    "TAG Heuer": 96,
+    "Rado": 238,
+    "Tissot": 428,
     "Carren": 446,
     "Calvin Klein": 403,
     "Michael Kors": 420,
     "Versace": 258
   },
   "eliteBrandCounts": {
-    "Rolex": 13,
-    "Cartier": 18,
-    "TAG Heuer": 108,
-    "Rado": 267
+    "Rolex": 6,
+    "Cartier": 16,
+    "TAG Heuer": 96,
+    "Rado": 238
   },
   "watchBrandCounts": {
-    "Tissot": 513,
+    "Tissot": 428,
     "Carren": 445,
-    "Calvin Klein": 403,
-    "Michael Kors": 420,
-    "Versace": 258
+    "Calvin Klein": 172,
+    "Michael Kors": 229,
+    "Versace": 250
   },
   "errors": [],
   "elapsedSeconds": 472.97,
@@ -43,9 +43,9 @@
   },
   "konyaliBrandIdentityVerified": true,
   "konyaliVerifiedCounts": {
-    "TAG Heuer": 108,
-    "Rado": 267,
-    "Tissot": 513
+    "TAG Heuer": 96,
+    "Rado": 238,
+    "Tissot": 428
   },
   "rolexCartierSourceProvider": "Chrono24 primary; WatchCharts exact-model fallback; durable <=72h verified snapshot",
   "rolexCartierSourcePriceKind": "LIVE_OR_FRESH_VERIFIED_MARKET_REFERENCE_USD_OR_EUR",
