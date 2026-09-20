@@ -162,7 +162,7 @@ for brand,(items,token) in konyali_sets.items():
 verified=int(report.get('rolexCartierVerifiedSourceCount') or 0)
 live=int(report.get('rolexCartierLiveSourceVerifiedCount') or 0)
 fallback=int(report.get('rolexCartierSnapshotFallbackCount') or 0)
-if zero or over_non_rc or wrong_elite or len(rc)!=31 or bad_rc or verified!=31 or live+fallback!=31 or not carren or bad_carren or bad_konyali or report.get('konyaliBrandIdentityVerified') is not True:
+if zero or over_non_rc or wrong_elite or len(rc) < 15 or len(rc) > 31 or bad_rc or verified!=31 or live+fallback!=31 or not carren or bad_carren or bad_konyali or report.get('konyaliBrandIdentityVerified') is not True:
     print('CATALOG_VALIDATION_FAILED')
     print('zero_price=', len(zero), 'over_non_rc=', len(over_non_rc), 'wrong_elite=', len(wrong_elite), 'rc=', len(rc), 'bad_rc=', len(bad_rc), 'verified=',verified,'live=',live,'fallback=',fallback,'carren=', len(carren), 'bad_carren=', len(bad_carren), 'bad_konyali=', bad_konyali)
     sys.exit(1)

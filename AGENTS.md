@@ -81,6 +81,15 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - **Lifestyle ve Alakasız Görsel Yasağı:** Kadın/erkek mankenlerin üzerinde çekilmiş lifestyle fotoğraflar, kutu açılış videolarından alınma bulanık kareler veya saatin sadece kayışını/tokasını gösteren açılı fotoğraflar KESİNLİKLE YASAKTIR.
 - **Alternatif Kaynak İzni:** Eğer belirtilen ana veri kaynağında (ör. cartier.com) model adıyla tam eşleşen, beyaz/transparan arka planlı ve profesyonel kalitede bir packshot bulunamıyorsa; ajan insiyatif alarak modeli Chrono24, Jomashop, WatchBox gibi diğer güvenilir lüks saat platformlarından arayacak ve en kusursuz (pro) görseli sisteme ekleyecektir. Yanlış veya amatör bir görsel koymaktansa, doğru saatin başka bir güvenilir platformdaki profesyonel görseli tercih edilecektir.
 
+## 14. Katalog Bütünlüğü, Fiyat İnvariantları & Sürekli Koruma Kapısı (DEĞİŞMEZ KALICI KURAL)
+1. **check:catalog Kapısı:** `npm run build` ve CI/CD süreçlerinde `node scripts/check-catalog-integrity.mjs` testi koşulsuz devreye girer. Bu kapı geçilmeden derleme tamamlanamaz ve canlı dağıtım başlatılamaz.
+2. **Saat Dışı Ürün Yasağı:** Katalogda (`saatler.json` ve `elit-saatler.json`) tek başına satılan kolye, bileklik, küpe, yüzük, cüzdan, parfüm, saat kayışı veya aksesuarlar kesinlikle barındırılamaz. Yalnızca orijinal kol saatleri listelenebilir.
+3. **Fiyat İnvariant Kilidi:**
+   - **Carren:** İstisnasız sabit 19.990 TL'dir.
+   - **Rolex & Cartier:** Döviz.com satış kuru ve 2.50 katsayısı (%150 marj) ile hesaplanır; 1.700.000 TL tavanını aşanlar sitede listelenmez.
+   - **Konyalı Saat & Saat&Saat:** Kaynak TL fiyatının 1.50 katıdır. İsviçre markalarında (TAG Heuer, Rado, Tissot) 10.000 TL altında ürün barındırılamaz.
+4. **Otomatik Senkronizasyon:** `npm run sync:pricing` komutu katalogdaki tüm fiyat formatlarını (`price` string'i ile `calculatedPrice` değerini) ve PayTR tablosunu sıfır sapmayla senkronize eder.
+
 
 ## 🎛️ /suiteN Komutu — NVIDIA NIM AI Entegrasyonu (ChatGPT & Tüm AI Modelleri)
 - **Komut Formatı:** `/suiteN [kod, soru, analiz veya log]`

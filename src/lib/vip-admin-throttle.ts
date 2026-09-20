@@ -189,7 +189,16 @@ export async function assertAdminLoginNotThrottled(request: Request, now = Date.
     return key;
   }
 
-  const bucket = await readDurableBucket(key);
+  let bucket: DurableBucket | null = null;
+  try {
+    bucket = await readDurableBucket(key);
+  } catch (err) {
+    console.warn('[SAATCHI ADMIN THROTTLE] Firestore okunamadı, bellek koruması devrede:', err);
+    const memBucket = memoryBucket(key, now);
+    if (memBucket.failures >= MAX_FAILURES) throw throttleError(memBucket.resetAt, now);
+    return key;
+  }
+
   if (!bucket || bucket.resetAt <= now) return key;
   if (bucket.failures >= MAX_FAILURES) throw throttleError(bucket.resetAt, now);
   return key;
@@ -204,7 +213,14 @@ export async function recordAdminLoginFailure(request: Request, now = Date.now()
     return { failures: bucket.failures, resetAt: bucket.resetAt };
   }
 
-  return recordDurableFailure(key, now);
+  try {
+    return await recordDurableFailure(key, now);
+  } catch (err) {
+    console.warn('[SAATCHI ADMIN THROTTLE] Firestore yazılamadı, bellek koruması devrede:', err);
+    const bucket = memoryBucket(key, now);
+    bucket.failures += 1;
+    return { failures: bucket.failures, resetAt: bucket.resetAt };
+  }
 }
 
 export async function clearAdminLoginFailures(request: Request) {

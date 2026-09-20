@@ -63,7 +63,13 @@ function parseCookies(header: string | null) {
 }
 
 export function verifyAdminKey(candidate: string) {
-  const expected = crypto.createHash('sha256').update(assertConfiguredAdminKey(), 'utf8').digest();
+  let configuredKey: string;
+  try {
+    configuredKey = assertConfiguredAdminKey();
+  } catch {
+    return false;
+  }
+  const expected = crypto.createHash('sha256').update(configuredKey, 'utf8').digest();
   const actual = crypto.createHash('sha256').update(String(candidate || ''), 'utf8').digest();
   return crypto.timingSafeEqual(expected, actual);
 }

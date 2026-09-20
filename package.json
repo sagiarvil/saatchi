@@ -5,10 +5,12 @@
   "scripts": {
     "check:hero": "node scripts/check-hero-autoplay.mjs",
     "check:premium-ui": "node scripts/check-premium-ui-regressions.mjs",
+    "check:catalog": "node scripts/check-catalog-integrity.mjs",
     "check:vip": "node scripts/check-vip-security.mjs",
+    "sync:pricing": "node scripts/enforce-pricing-invariants.mjs",
     "test:vip": "node --experimental-strip-types scripts/test-vip-behavior.mjs",
     "build:id": "node scripts/write-build-id.mjs",
-    "build": "rm -rf .next && npm run build:id && npm run check:hero && npm run check:premium-ui && npm run check:vip && npm run test:vip && npx @tailwindcss/cli -i src/app/globals.css -o src/app/tailwind.css && next build && echo '{\"sortedMiddleware\":[],\"middleware\":{},\"functions\":{},\"version\":2}' > .next/server/middleware-manifest.json",
+    "build": "rm -rf .next && npm run sync:pricing && npm run build:id && npm run check:hero && npm run check:premium-ui && npm run check:catalog && npm run check:vip && npm run test:vip && npx @tailwindcss/cli -i src/app/globals.css -o src/app/tailwind.css && next build && echo '{\"sortedMiddleware\":[],\"middleware\":{},\"functions\":{},\"version\":2}' > .next/server/middleware-manifest.json",
     "dev": "next dev",
     "start": "next start",
     "lint": "eslint",
