@@ -22,6 +22,9 @@
 /build
 /public/build-info.json
 
+# master suite runtime state
+/.suite/
+
 # misc
 .DS_Store
 *.pem
