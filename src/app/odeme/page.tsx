@@ -49,13 +49,13 @@ const steps = [
   },
 ];
 
-export default async function OdemePage(props: { searchParams?: Promise<{ id?: string, slug?: string }> }) {
-  const searchParams = props.searchParams ? await props.searchParams : {};
-  const { id, slug } = searchParams;
-  
+export default async function SecurePaymentPage({ searchParams }: { searchParams?: Promise<{ id?: string, slug?: string }> }) {
+  const params = searchParams ? await searchParams : {};
+  const { id, slug } = params;
+
   if (id || slug) {
     const allWatches = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
-    let watch = null;
+    let watch: any = null;
     
     if (id) {
       watch = allWatches.find(w => w.id === id);
