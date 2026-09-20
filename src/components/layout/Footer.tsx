@@ -8,6 +8,7 @@ export function Footer() {
 
   const legalLinks = [
     { label: "Biz Kimiz (Kurumsal)", href: "/biz-kimiz" },
+    { label: "Güvenli Ödeme", href: "/odeme" },
     { label: "Mesafeli Satış Sözleşmesi", href: "/mesafeli-satis-sozlesmesi" },
     { label: "Ön Bilgilendirme Formu", href: "/on-bilgilendirme-formu" },
     { label: "KVKK Aydınlatma Metni", href: "/kvkk-aydinlatma-metni" },
@@ -132,6 +133,7 @@ export function Footer() {
         {/* Bottom Section: Copyright, Credentials & Micro Badges */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <Link href="/odeme" className="sr-only">Güvenli Ödeme</Link>
             <p className="text-[#6E675B] text-[10px] sm:text-[11px] tracking-wider uppercase">
               &copy; {currentYear} SAATCHI & SAATCHI · SEMİH SONBAHAR. TÜM HAKLARI SAKLIDIR.
             </p>
