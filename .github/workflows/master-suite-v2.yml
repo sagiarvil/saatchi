@@ -10,6 +10,7 @@ on:
       - '.gemini/settings.json'
       - 'n8n/22_N8N_AI_SEARCH_MONITORING_WORKFLOW.json'
       - 'package.json'
+      - 'scripts/sync-master-suite-v2-mac.sh'
       - '.github/workflows/master-suite-v2.yml'
   pull_request:
     paths:
@@ -19,6 +20,7 @@ on:
       - '.gemini/settings.json'
       - 'n8n/22_N8N_AI_SEARCH_MONITORING_WORKFLOW.json'
       - 'package.json'
+      - 'scripts/sync-master-suite-v2-mac.sh'
       - '.github/workflows/master-suite-v2.yml'
   workflow_dispatch:
 
@@ -35,7 +37,7 @@ jobs:
         with:
           node-version: '20'
       - name: Syntax check
-        run: node --check scripts/master-suite-v2.mjs && node --check scripts/test-master-suite-v2.mjs
+        run: node --check scripts/master-suite-v2.mjs && node --check scripts/test-master-suite-v2.mjs && bash -n scripts/sync-master-suite-v2-mac.sh
       - name: Contract and fail-closed tests
         run: node scripts/test-master-suite-v2.mjs
       - name: n8n graph semantic validation
