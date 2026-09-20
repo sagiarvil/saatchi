@@ -1,0 +1,48 @@
+{
+  "hooksConfig": {
+    "enabled": true,
+    "notifications": false
+  },
+  "hooks": {
+    "BeforeAgent": [
+      {
+        "sequential": true,
+        "hooks": [
+          {
+            "type": "command",
+            "name": "master-suite-v2-before-agent",
+            "command": "node scripts/master-suite-v2.mjs hook before-agent",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "BeforeTool": [
+      {
+        "matcher": "(write_file|replace|edit_file|apply_patch|delete_file|move_file|run_shell_command)",
+        "sequential": true,
+        "hooks": [
+          {
+            "type": "command",
+            "name": "master-suite-v2-before-tool",
+            "command": "node scripts/master-suite-v2.mjs hook before-tool",
+            "timeout": 10000
+          }
+        ]
+      }
+    ],
+    "AfterAgent": [
+      {
+        "sequential": true,
+        "hooks": [
+          {
+            "type": "command",
+            "name": "master-suite-v2-after-agent",
+            "command": "node scripts/master-suite-v2.mjs hook after-agent",
+            "timeout": 300000
+          }
+        ]
+      }
+    ]
+  }
+}
