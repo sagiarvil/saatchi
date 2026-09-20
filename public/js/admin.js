@@ -7816,7 +7816,7 @@ ${this.escapeHtml(JSON.stringify(diagnosis.rawPaymentDetails, null, 2))}
     const rawQuery = (val || '').trim();
     const normQuery = this.normalizeTr(rawQuery);
 
-    // Kapsamlı ve Zırhlı Müşteri Hafıza Havuzu
+    // Kapsamlı ve Güvenli Müşteri Hafıza Havuzu
     const customerMap = new Map();
     const addCust = (name, identity, compName, taxOffice, address, phone, email) => {
       if (!name || typeof name !== 'string') return;

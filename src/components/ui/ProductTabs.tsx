@@ -116,8 +116,8 @@ export default function ProductTabs({ watch }: { watch: any }) {
                 <li className="flex items-start">
                   <div className="flex-shrink-0 mt-1"><Truck className="w-5 h-5 text-primary" /></div>
                   <div className="ml-4">
-                    <h5 className="font-bold text-sm text-foreground uppercase tracking-widest mb-1">Aynı Gün Zırhlı Transfer</h5>
-                    <p className="text-xs text-foreground/70 leading-relaxed">Saat 15:00'e kadar onaylanan ödemelerde, değerli kargonuz özel zırhlı araç ağı veya Loomis/Brinks gibi partner kuryelerle %100 sigortalı şekilde yola çıkar.</p>
+                    <h5 className="font-bold text-sm text-foreground uppercase tracking-widest mb-1">Aynı Gün Sigortalı Transfer</h5>
+                    <p className="text-xs text-foreground/70 leading-relaxed">Saat 15:00'e kadar onaylanan ödemelerde, değerli kargonuz özel kurye ağıyla %100 tam değer sigortalı şekilde yola çıkar.</p>
                   </div>
                 </li>
                 <li className="flex items-start">

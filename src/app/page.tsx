@@ -65,7 +65,7 @@ export default function Home() {
                 <span className="text-xs font-mono text-[#846b32] font-bold tracking-widest block mb-2">03 / GÜVENLİK</span>
                 <h4 className="text-base font-serif font-bold text-[#1A1814] mb-2">Sigortalı Transfer</h4>
                 <p className="text-xs text-[#736B5E] leading-relaxed">
-                  Zırhlı lojistik transferi ve tam kasko teminatı ile elden teslim VIP lojistik güvencesi.
+                  Tam kasko teminatı ve elden teslim VIP lojistik güvencesi.
                 </p>
               </div>
 

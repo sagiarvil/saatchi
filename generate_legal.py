@@ -35,7 +35,7 @@ pages = [
     {
         "slug": "yuksek-degerli-urun-teslimi",
         "title": "Yüksek Değerli Teslimat Politikası",
-        "content": "<h2>1. Kurye ve Sigorta</h2><p>Lüks saat kargoları, tam sigortalı olarak VIP zırhlı kurye veya özel güvenlikli lojistik firmalarıyla teslim edilir. Teslimat yalnızca kimlik ibrazı ve imza karşılığı asıl alıcıya yapılır.</p>"
+        "content": "<h2>1. Kurye ve Sigorta</h2><p>Lüks saat kargoları, tam sigortalı olarak VIP özel kurye veya güvenlikli lojistik firmalarıyla teslim edilir. Teslimat yalnızca kimlik ibrazı ve imza karşılığı asıl alıcıya yapılır.</p>"
     },
     {
         "slug": "iade-degisim-cayma",

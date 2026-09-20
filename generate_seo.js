@@ -33,7 +33,7 @@ Saatchi'de yer alan tüm saat fiyatları küresel Chrono24 endeksi üzerinden T�
 
 ## İletişim & Güvenlik
 VIP Ödeme linki ile güvenli ödeme.
-Siparişler zırhlı kurye veya özel teslimat ile sigortalı gönderilir.
+Siparişler özel kurye veya tam kasko teminatı ile sigortalı gönderilir.
 `;
 fs.writeFileSync('public/llms.txt', llmsTxt);
 

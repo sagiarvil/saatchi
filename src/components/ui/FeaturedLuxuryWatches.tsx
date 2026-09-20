@@ -248,7 +248,7 @@ export function FeaturedLuxuryWatches({ allWatches }: Props) {
             </div>
             <div className="text-left sm:text-center">
               <h5 className="text-xs sm:text-sm font-bold text-[#1F2421] tracking-wide uppercase">
-                Zırhlı & Sigortalı Teslimat
+                Özel Güvenlikli & Sigortalı Teslimat
               </h5>
               <p className="text-[11px] sm:text-xs text-[#736B5E] mt-0.5">
                 Kapınıza kadar tam değer sigortalı özel lüks lojistik transferi

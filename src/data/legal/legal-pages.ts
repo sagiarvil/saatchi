@@ -444,7 +444,7 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '3. Özel / Sigortalı Teslim',
         paragraphs: [
-          'Ürün bazında mağaza dışı teslim sunuluyorsa, uygun sigorta ve izlenebilirlik sağlayan lojistik yöntemi tercih edilir. Teslim sağlayıcısı ve güvenlik seviyesi siparişin koşullarına göre değişebilir; her sipariş için zırhlı kurye garantisi verilmez.'
+          'Ürün bazında mağaza dışı teslim sunuluyorsa, uygun sigorta ve izlenebilirlik sağlayan lojistik yöntemi tercih edilir. Teslim sağlayıcısı ve güvenlik seviyesi siparişin koşullarına göre değişebilir; her sipariş için özel VIP kurye garantisi verilmez.'
         ]
       },
       {
