@@ -169,11 +169,11 @@ async function afterAgent(input) {
   state.attempts += 1;
   state.lastVerification = { at:new Date().toISOString(), ...result };
   saveState(state);
-  if (result.ok) return jsonOut({ suppressOutput:true, decision:'allow' });
+  if (result.ok) { state.active = false; saveState(state); return jsonOut({ suppressOutput:true, decision:'allow' }); }
   const max = Number(state.contract?.maxRepairAttempts ?? 2);
   const message = `MASTER_SUITE_V2 verification failed:\n- ${result.failures.join('\n- ')}\nRepair only within the contract and rerun verification.`;
   if (state.attempts <= max && input.stop_hook_active !== true) return jsonOut({ decision:'deny', reason:message, suppressOutput:true });
-  return jsonOut({ continue:false, stopReason:`MASTER_SUITE_V2 STOP: verification still failing after ${state.attempts} attempt(s).`, suppressOutput:false });
+  state.active = false; saveState(state);\n  return jsonOut({ continue:false, stopReason:`MASTER_SUITE_V2 STOP: verification still failing after ${state.attempts} attempt(s).`, suppressOutput:false });
 }
 
 async function registerContract(file) {
