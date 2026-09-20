@@ -1,31 +1,24 @@
-# 🎛️ GEMINI MASTER SUITE & PROJE YÖNETİCİSİ ANAYASASI — SAATCHI
+# SAATCHI — MASTER SUITE v2 RUNTIME CONTRACT
 
-> **Proje:** saatchi (Luxury Watches E-Commerce)  
-> **Varsayılan Master Paket:** `gemini-master-suite` (v1.7.0)  
-> **Mutlak Baş Yönetici & Kodlayıcı:** `project-manager` (Lead Orchestrator & Coding Director)  
-> **Standartlar:** Karpathy Cerrahi Disiplini · 4/4 Kalite Kapısı · Minimal Diff · %100 Türkçe Çıktı
+## Source of truth
+Project business invariants live in `AGENTS.md`. `/suite` execution invariants live in code, not prose:
+- `.gemini/commands/suite.toml` — real Gemini CLI `/suite` entry point.
+- `.gemini/settings.json` — synchronous enforcement hooks.
+- `scripts/master-suite-v2.mjs` — contract, scope, fail-closed and verification engine.
+- `scripts/test-master-suite-v2.mjs` — permanent regression tests.
+- `n8n/22_N8N_AI_SEARCH_MONITORING_WORKFLOW.json` — importable evidence/observability gate.
+- `.github/workflows/master-suite-v2.yml` — independent CI gate.
 
----
+## /suite semantics
+`/suite <task>` is accepted as complete only when the runtime verifier proves all applicable conditions:
+1. A valid execution contract was registered before mutation.
+2. Every new changed file is inside `allowedFiles` and outside `forbiddenFiles`.
+3. `git diff --check` passes.
+4. Every deterministic test in the contract exits 0.
+5. Runtime readback passes when `runtime.required=true`.
+6. External writes/deploys/pushes are not performed by `/suite`.
 
-## 👑 1. MUTLAK BAŞ YÖNETİCİ VE KODLAYICI AJAN PROTOKOLÜ (ALWAYS-ACTIVE)
-1. **Kesintisiz Aktif Görev (Always-Active Lead Orchestrator):** Bu projede tüm geliştirme, mimari, kodlama, hata ayıklama ve test süreçlerini doğrudan `project-manager` (Proje Yöneticisi) yönetir. Hiçbir operasyon `project-manager` denetimi dışında yürütülemez.
-2. **Karpathy Cerrahi Kırılımı:** Gelen tüm talepler atomik, sıralı ve bağımsız adımlara bölünür.
-3. **Uzman Ajan Sevkıyatı (Task Routing):**
-   - **Frontend & UI/UX:** ➔ `frontend-developer` & `elite-design-engineer` (Next.js 15, Tailwind v4, Sinematik Lüks Arayüz, WCAG 2.2 AA)
-   - **Backend & Servisler:** ➔ `backend-developer` & `database-expert` (Next.js API Routes, Server Actions, Chrono24 Borsa Akışı)
-   - **Fiyatlama Motoru:** ➔ `python-developer` / `node-developer` (Chrono24 API Entegrasyonu + %80 Marj)
-   - **Hata Avı & Bellek:** ➔ `bug-hunter` (Bellek sızıntıları, sınır durumlar, statik analiz)
-   - **Test Otomasyonu & QA:** ➔ `test-engineer`
-4. **Minimal Diff & Kapsam Koruma:** Yalnızca hedeflenen dosyalara cerrahi dokunuş yapılır. Yan dosyalara ve dokunulmayan çalışan kodlara müdahale kesinlikle yasaktır.
-5. **Kanıtsız Başarı İddiası Yasağı (Obra Rule):** Terminal çıktısı veya somut dosya kanıtı olmadan hiçbir görev "tamamlandı" olarak raporlanamaz.
+Unknown, missing or unverifiable evidence is FAIL, never PASS. The worker/model cannot self-certify completion. AfterAgent verification is the completion oracle and may trigger only the bounded repair attempts declared in the contract.
 
----
-
-## ⚡ 2. KOMUT MOTORU (/suite) VE SAATCHI STANDARTLARI
-Bu projede geliştirme, derleme, test ve denetim işlemleri evrensel `/suite` motoru üzerinden yürütülür. Saatchi, Belgin projesindeki tecrübelerle "Kusursuz Lüks E-Ticaret" altyapısına geçmiştir.
-- Hata ayıklama yaparken veya özellik eklerken asla "Sorma işini bırak" kuralını unutmayın.
-- YAGNI (You Aren't Gonna Need It) kuralına sadık kalın, gereksiz karmaşıklıktan kaçının.
-- **Tasarım:** Belgin'den farklı olarak, lüks saat satışı yapıldığı için "Teal/Gold" değil "Beyaz/Siyah/Lüks Altın (#846b32)" kullanılır.
-- **Fiyatlama:** Belgin'deki "İZKO/Harem Altın" motoru bu projede HİÇBİR ŞEKİLDE ÇALIŞMAZ. Fiyatlar tamamen **Chrono24 Küresel Fiyatı × USD Kuru × 2.50 (+%150 Gümrük/Kâr Marjı)** formülüyle çalışır.
-
-Tüm AI ajanları bu dosyayı ve `AGENTS.md` dosyasını sistemin mutlak anayasası olarak kabul edecektir.
+## Operational rule
+Use `/commands reload` after changing `.gemini/commands/suite.toml`. Gemini CLI hooks must remain enabled. Do not bypass the hooks to claim `/suite` completion.
