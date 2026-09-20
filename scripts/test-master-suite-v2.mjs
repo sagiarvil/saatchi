@@ -12,6 +12,7 @@ const goodContract = {
 assert.deepEqual(validateContract(goodContract), []);
 assert.ok(validateContract({...goodContract, allowedFiles:[]}).some(x=>x.includes('allowedFiles')));
 assert.ok(validateContract({...goodContract, tests:[{name:'bad',command:'rm -rf /'}]}).some(x=>x.includes('unsafe test command')));
+assert.ok(validateContract({...goodContract, tests:[{name:'chain',command:'node scripts/test-master-suite-v2.mjs && rm -rf /'}]}).some(x=>x.includes('unsafe test command')));
 assert.ok(validateContract({...goodContract, runtime:{required:true}}).some(x=>x.includes('runtime.required')));
 
 const wf = {
