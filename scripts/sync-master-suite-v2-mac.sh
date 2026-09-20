@@ -23,11 +23,12 @@ git fetch "$REMOTE" "$BRANCH"
 TARGET_SHA="$(git rev-parse "$REMOTE/$BRANCH")"
 [ -n "$TARGET_SHA" ] || fail "cannot resolve remote branch"
 
-git checkout "$BRANCH" 2>/dev/null || git checkout -b "$BRANCH" "$REMOTE/$BRANCH"
-git reset --ff-only "$REMOTE/$BRANCH" 2>/dev/null || {
-  LOCAL_SHA="$(git rev-parse HEAD)"
-  [ "$LOCAL_SHA" = "$TARGET_SHA" ] || fail "local branch diverged; refusing destructive reset"
-}
+if git show-ref --verify --quiet "refs/heads/$BRANCH"; then
+  git checkout "$BRANCH"
+  git merge --ff-only "$REMOTE/$BRANCH" || fail "local branch diverged; refusing destructive reset"
+else
+  git checkout --track -b "$BRANCH" "$REMOTE/$BRANCH"
+fi
 
 # Obsolete v1 false-pass artifacts must not survive the sync.
 rm -f deliverables/21_DARK_POOL_HALLUCINATION_MONITOR.py
