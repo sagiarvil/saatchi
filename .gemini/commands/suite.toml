@@ -1,0 +1,28 @@
+description = "Master Suite v2: contract-locked implementation with independent verification"
+prompt = """
+[MASTER_SUITE_V2]
+USER_TASK:
+{{args}}
+
+Execute the task, not a narrative about the task.
+
+MANDATORY RUNTIME CONTRACT:
+1. Inspect only enough repository context to localize the task.
+2. Before the first repository mutation, create `.suite/contract-input.json` with:
+   - objective
+   - allowedFiles
+   - forbiddenFiles
+   - acceptance
+   - tests [{name, command, timeoutMs?}]
+   - runtime {required, command|url, expectedStatus?, timeoutMs?}
+   - docsOnly
+   - maxRepairAttempts (0..3)
+   - allowExternalWrites: false
+3. Register it with `node scripts/master-suite-v2.mjs contract .suite/contract-input.json`.
+4. Change only files allowed by the registered contract. Use scoped file-edit tools; do not mutate files through shell redirection/cp/mv/rm/sed -i.
+5. Do not deploy, push, force-reset, clean, or modify external systems from `/suite`.
+6. Run the contract tests and obtain runtime evidence when required.
+7. Do not claim completion yourself. The AfterAgent verifier decides PASS/FAIL from git diff, tests and runtime readback.
+8. If verification rejects the response, repair only the reported failure inside the same contract. Respect the bounded retry limit.
+9. Final answer: concise result + concrete evidence only. Never claim success if the verifier has not accepted the turn.
+"""
