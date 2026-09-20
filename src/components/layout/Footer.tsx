@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MessageSquare, Phone, MapPin, ShieldCheck, FileText, ExternalLink } from 'lucide-react';
+import { MessageSquare, Phone, MapPin, FileText } from 'lucide-react';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();

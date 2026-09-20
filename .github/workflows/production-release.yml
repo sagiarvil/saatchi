@@ -4,7 +4,6 @@ on:
   workflow_run:
     workflows: ["Saatchi Main Regression"]
     types: [completed]
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,9 +14,7 @@ concurrency:
 
 jobs:
   deploy-production:
-    if: >-
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:
@@ -31,20 +28,30 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "sha=${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
-          else
-            echo "sha=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_OUTPUT"
-          fi
+          echo "sha=${{ github.event.workflow_run.head_sha }}" >> "$GITHUB_OUTPUT"
 
       - name: Checkout exact verified commit
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ steps.release.outputs.sha }}
           fetch-depth: 0
 
+      - name: Prove release SHA belongs to current main
+        shell: bash
+        env:
+          RELEASE_SHA: ${{ steps.release.outputs.sha }}
+        run: |
+          set -euo pipefail
+          git fetch origin main --no-tags --prune
+          MAIN_SHA="$(git rev-parse origin/main)"
+          test "$RELEASE_SHA" = "$MAIN_SHA" || {
+            echo "RELEASE_SHA_NOT_CURRENT_MAIN release=$RELEASE_SHA main=$MAIN_SHA" >&2
+            exit 1
+          }
+          echo "RELEASE_SHA_IS_CURRENT_MAIN=$RELEASE_SHA"
+
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
           cache: npm
@@ -102,6 +109,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Enable Firebase framework-aware Hosting
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./node_modules/.bin/firebase experiments:enable webframeworks
+
+      - name: Snapshot current Firebase live release for rollback
+        shell: bash
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
+        run: |
+          set -euo pipefail
+          ./node_modules/.bin/firebase hosting:clone "$HOSTING_TARGET:live" "$HOSTING_TARGET:predeploy-rollback" --project "$PROJECT_ID" --non-interactive
+          echo "ROLLBACK_SNAPSHOT_VERIFIED=$HOSTING_TARGET:predeploy-rollback"
+
       - name: Build exact verified commit
         env:
           GITHUB_SHA: ${{ steps.release.outputs.sha }}
@@ -129,7 +151,7 @@ jobs:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
         run: |
           set -euo pipefail
-          npx -y firebase-tools@latest deploy --only "hosting:$HOSTING_TARGET" --project "$PROJECT_ID" --non-interactive
+          ./node_modules/.bin/firebase deploy --only "hosting:$HOSTING_TARGET" --project "$PROJECT_ID" --non-interactive
 
       - name: Runtime readback and public security smoke
         id: runtime
@@ -175,41 +197,40 @@ jobs:
           assert d.get('success') is True and d.get('authenticated') is False, d
           PY
           request admin_list GET "$SITE_URL/api/admin/vip-links" 401
-          request invalid_token GET "$SITE_URL/api/vip-link?token=invalid" 400
-          request wrong_login POST "$SITE_URL/api/admin-session" 401 '{"key":"definitely-wrong-runtime-smoke-key"}'
+          request invalid_token POST "$SITE_URL/api/vip-link/verify" 400 '{"token":"invalid"}'
+          request wrong_login POST "$SITE_URL/api/admin-session" 401 '{"key":"definitely-wrong-runtime-smoke-key","otp":"000000"}'
           request unauth_create POST "$SITE_URL/api/vip-link" 401 '{"title":"Runtime Smoke","amount":123456}'
           echo 'SAATCHI_LIVE_PUBLIC_RUNTIME_SMOKE_OK'
 
       - name: Roll back automatically if post-deploy verification fails
-        if: >-
-          (steps.deploy.outcome != 'success' || steps.runtime.outcome != 'success') &&
-          steps.previous.outputs.sha != ''
+        if: steps.deploy.outcome != 'success' || steps.runtime.outcome != 'success'
         shell: bash
         env:
           GOOGLE_APPLICATION_CREDENTIALS: ${{ runner.temp }}/firebase-sa.json
           PREVIOUS_SHA: ${{ steps.previous.outputs.sha }}
         run: |
           set -euo pipefail
-          echo "ROLLBACK_START previous=$PREVIOUS_SHA"
-          git checkout --force "$PREVIOUS_SHA"
-          npm ci
-          GITHUB_SHA="$PREVIOUS_SHA" npm run build
-          npx -y firebase-tools@latest deploy --only "hosting:$HOSTING_TARGET" --project "$PROJECT_ID" --non-interactive
-          ok=0
-          for attempt in $(seq 1 18); do
-            if curl -fsS --connect-timeout 8 --max-time 20 -H 'Cache-Control: no-cache' "$SITE_URL/build-info.json?rollback=$attempt" -o "$RUNNER_TEMP/rollback.json" 2>/dev/null; then
-              if python3 - "$RUNNER_TEMP/rollback.json" "$PREVIOUS_SHA" <<'PY'
+          echo "ROLLBACK_START snapshot=$HOSTING_TARGET:predeploy-rollback previous_sha=${PREVIOUS_SHA:-UNKNOWN}"
+          ./node_modules/.bin/firebase hosting:clone "$HOSTING_TARGET:predeploy-rollback" "$HOSTING_TARGET:live" --project "$PROJECT_ID" --non-interactive
+          if [ -n "$PREVIOUS_SHA" ]; then
+            ok=0
+            for attempt in $(seq 1 18); do
+              if curl -fsS --connect-timeout 8 --max-time 20 -H 'Cache-Control: no-cache' "$SITE_URL/build-info.json?rollback=$attempt" -o "$RUNNER_TEMP/rollback.json" 2>/dev/null; then
+                if python3 - "$RUNNER_TEMP/rollback.json" "$PREVIOUS_SHA" <<'PY'
           import json,sys
           try: d=json.load(open(sys.argv[1]))
           except Exception: raise SystemExit(1)
           raise SystemExit(0 if d.get('gitSha')==sys.argv[2] else 1)
           PY
-              then ok=1; break; fi
-            fi
-            sleep 10
-          done
-          test "$ok" = 1
-          echo "ROLLBACK_VERIFIED_SHA=$PREVIOUS_SHA"
+                then ok=1; break; fi
+              fi
+              sleep 10
+            done
+            test "$ok" = 1
+            echo "ROLLBACK_VERIFIED_SHA=$PREVIOUS_SHA"
+          else
+            echo "ROLLBACK_VERIFIED_BY_FIREBASE_SNAPSHOT"
+          fi
 
       - name: Enforce verified production result
         if: always()

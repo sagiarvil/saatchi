@@ -1,6 +1,7 @@
 import crypto from 'crypto';
 
-export const VIP_ADMIN_COOKIE = 'saatchi_vip_admin';
+// Firebase Hosting forwards only the reserved __session cookie to dynamic backends.
+export const VIP_ADMIN_COOKIE = '__session';
 const SESSION_TTL_MS = 2 * 60 * 60 * 1000;
 
 type AdminSessionPayload = {
@@ -18,14 +19,26 @@ function getPaymentSecret() {
 
 export function assertConfiguredAdminKey() {
   const key = process.env.VIP_ADMIN_KEY;
-  if (!key || key.length < 12) throw new Error('VIP_ADMIN_KEY yapılandırılmamış.');
+  if (!key || key.length < 32) throw new Error('VIP_ADMIN_KEY yapılandırılmamış veya yetersiz.');
   return key;
 }
 
 function getSessionSecret() {
-  const explicit = process.env.VIP_ADMIN_SESSION_SECRET;
-  const rootSecret = explicit && explicit.length >= 32 ? explicit : getPaymentSecret();
-  const adminKeyFingerprint = crypto.createHash('sha256').update(assertConfiguredAdminKey(), 'utf8').digest();
+  const explicit = String(process.env.VIP_ADMIN_SESSION_SECRET || '');
+  const paymentSecret = getPaymentSecret();
+  const adminKey = assertConfiguredAdminKey();
+
+  if (process.env.NODE_ENV === 'production') {
+    if (explicit.length < 32) {
+      throw new Error('VIP_ADMIN_SESSION_SECRET production ortamında yapılandırılmamış veya yetersiz.');
+    }
+    if (explicit === paymentSecret || explicit === adminKey) {
+      throw new Error('VIP_ADMIN_SESSION_SECRET diğer ödeme/yönetim secret değerlerinden bağımsız olmalıdır.');
+    }
+  }
+
+  const rootSecret = explicit.length >= 32 ? explicit : paymentSecret;
+  const adminKeyFingerprint = crypto.createHash('sha256').update(adminKey, 'utf8').digest();
   return crypto
     .createHmac('sha256', rootSecret)
     .update('saatchi:vip-admin-session:v2')
@@ -50,13 +63,23 @@ function parseCookies(header: string | null) {
 }
 
 export function verifyAdminKey(candidate: string) {
-  const expected = Buffer.from(assertConfiguredAdminKey(), 'utf8');
-  const actual = Buffer.from(String(candidate || ''), 'utf8');
-  return expected.length === actual.length && crypto.timingSafeEqual(expected, actual);
+  const expected = crypto.createHash('sha256').update(assertConfiguredAdminKey(), 'utf8').digest();
+  const actual = crypto.createHash('sha256').update(String(candidate || ''), 'utf8').digest();
+  return crypto.timingSafeEqual(expected, actual);
+}
+
+export function expectedPublicOrigin(request: Request) {
+  if (process.env.NODE_ENV !== 'production') return new URL(request.url).origin;
+  const configured = String(process.env.SAATCHI_PUBLIC_ORIGIN || 'https://saatchi.watch').trim();
+  const origin = new URL(configured).origin;
+  if (origin !== 'https://saatchi.watch') {
+    throw new Error('Beklenmeyen production public origin yapılandırması.');
+  }
+  return origin;
 }
 
 export function assertSameOriginMutation(request: Request) {
-  const expectedOrigin = new URL(request.url).origin;
+  const expectedOrigin = expectedPublicOrigin(request);
   const origin = request.headers.get('origin');
   const referer = request.headers.get('referer');
   const fetchSite = request.headers.get('sec-fetch-site');

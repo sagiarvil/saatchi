@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /vip-checkout
+Disallow: /api/payment
+Disallow: /api/vip-link
+Disallow: /api/admin-session
+Disallow: /api/admin/
+
+Sitemap: https://saatchi.watch/sitemap.xml
