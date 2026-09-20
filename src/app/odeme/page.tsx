@@ -49,13 +49,19 @@ const steps = [
   },
 ];
 
+type WatchItemRecord = {
+  id?: string;
+  seoUrl?: string;
+  [key: string]: unknown;
+};
+
 export default async function SecurePaymentPage({ searchParams }: { searchParams?: Promise<{ id?: string, slug?: string }> }) {
   const params = searchParams ? await searchParams : {};
   const { id, slug } = params;
 
   if (id || slug) {
-    const allWatches = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
-    let watch: any = null;
+    const allWatches: WatchItemRecord[] = [...(saatlerData as WatchItemRecord[]), ...(elitSaatlerData as WatchItemRecord[])];
+    let watch: WatchItemRecord | undefined;
     
     if (id) {
       watch = allWatches.find(w => w.id === id);
