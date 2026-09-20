@@ -1,0 +1,46 @@
+name: Master Suite v2 Runtime Gate
+
+on:
+  push:
+    branches: [main, feat/master-suite-v2-runtime]
+    paths:
+      - 'scripts/master-suite-v2.mjs'
+      - 'scripts/test-master-suite-v2.mjs'
+      - '.gemini/commands/suite.toml'
+      - '.gemini/settings.json'
+      - 'n8n/22_N8N_AI_SEARCH_MONITORING_WORKFLOW.json'
+      - 'package.json'
+      - '.github/workflows/master-suite-v2.yml'
+  pull_request:
+    paths:
+      - 'scripts/master-suite-v2.mjs'
+      - 'scripts/test-master-suite-v2.mjs'
+      - '.gemini/commands/suite.toml'
+      - '.gemini/settings.json'
+      - 'n8n/22_N8N_AI_SEARCH_MONITORING_WORKFLOW.json'
+      - 'package.json'
+      - '.github/workflows/master-suite-v2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  runtime-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '20'
+      - name: Syntax check
+        run: node --check scripts/master-suite-v2.mjs && node --check scripts/test-master-suite-v2.mjs
+      - name: Contract and fail-closed tests
+        run: node scripts/test-master-suite-v2.mjs
+      - name: n8n graph semantic validation
+        run: node scripts/master-suite-v2.mjs validate-workflow n8n/22_N8N_AI_SEARCH_MONITORING_WORKFLOW.json
+      - name: Empty-workflow regression guard
+        run: test -s n8n/22_N8N_AI_SEARCH_MONITORING_WORKFLOW.json
+      - name: Diff hygiene
+        run: git diff --check HEAD^ HEAD || git diff --check
