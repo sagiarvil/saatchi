@@ -35,7 +35,7 @@ export function validateContract(c) {
   if (c.docsOnly !== true && (!Array.isArray(c.tests) || c.tests.length === 0)) errors.push('at least one deterministic test required');
   for (const t of c.tests || []) {
     if (!t || typeof t !== 'object' || !String(t.name || '').trim() || !String(t.command || '').trim()) errors.push('each test needs name and command');
-    if (t?.command && !/^(npm( |$)|npx( |$)|node( |$)|python3?( |$)|git diff --check$)/.test(t.command)) errors.push(`unsafe test command: ${t.command}`);
+    if (t?.command && (!/^(npm( |$)|npx( |$)|node( |$)|python3?( |$)|git diff --check$)/.test(t.command) || /[;&|><`$()]/.test(t.command))) errors.push(`unsafe test command: ${t.command}`);
   }
   if (!c.runtime || typeof c.runtime !== 'object') errors.push('runtime object required');
   if (c.runtime?.required === true && !c.runtime.command && !c.runtime.url) errors.push('runtime.required needs command or url');
@@ -84,7 +84,9 @@ async function beforeAgent(input) {
   if (!prompt.includes('[MASTER_SUITE_V2]')) return jsonOut({ suppressOutput: true });
   const baselineSha = run('git rev-parse HEAD').stdout.trim();
   if (!/^[0-9a-f]{40}$/.test(baselineSha)) return jsonOut({ decision:'deny', reason:'MASTER_SUITE_V2 requires a git repository with a valid HEAD.' });
-  const state = { version:2, sessionId: input.session_id, active:true, promptHash:sha256(prompt), baselineSha, baselineDirty:parseStatus(run('git status --porcelain').stdout), attempts:0, contract:null, startedAt:new Date().toISOString() };
+  const baselineDirty = parseStatus(run('git status --porcelain').stdout);
+  if (baselineDirty.length) return jsonOut({ decision:'deny', reason:'MASTER_SUITE_V2 requires a clean git worktree before execution.' });
+  const state = { version:2, sessionId: input.session_id, active:true, promptHash:sha256(prompt), baselineSha, baselineDirty:[], attempts:0, contract:null, startedAt:new Date().toISOString() };
   saveState(state);
   return jsonOut({ suppressOutput:true, hookSpecificOutput:{ additionalContext:[
     'MASTER_SUITE_V2 ACTIVE. Fail-closed enforcement is enabled.',
@@ -173,7 +175,8 @@ async function afterAgent(input) {
   const max = Number(state.contract?.maxRepairAttempts ?? 2);
   const message = `MASTER_SUITE_V2 verification failed:\n- ${result.failures.join('\n- ')}\nRepair only within the contract and rerun verification.`;
   if (state.attempts <= max && input.stop_hook_active !== true) return jsonOut({ decision:'deny', reason:message, suppressOutput:true });
-  state.active = false; saveState(state);\n  return jsonOut({ continue:false, stopReason:`MASTER_SUITE_V2 STOP: verification still failing after ${state.attempts} attempt(s).`, suppressOutput:false });
+  state.active = false; saveState(state);
+  return jsonOut({ continue:false, stopReason:`MASTER_SUITE_V2 STOP: verification still failing after ${state.attempts} attempt(s).`, suppressOutput:false });
 }
 
 async function registerContract(file) {
