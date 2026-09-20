@@ -19,7 +19,7 @@ import elitSaatlerData from '@/data/elit-saatler.json';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
 
 const MAX_CATALOG_PRICE = 1_700_000;
-const allWatches = [...saatlerData, ...elitSaatlerData].filter(w => Number(w.calculatedPrice || 0) <= MAX_CATALOG_PRICE);
+const allWatches = [...elitSaatlerData, ...saatlerData].filter(w => Number(w.calculatedPrice || 0) <= MAX_CATALOG_PRICE);
 const menuItems = [
   { no: '01', name: 'Rolex', href: '/markalar/rolex', note: 'Referans seçkisi' },
   { no: '02', name: 'Cartier', href: '/markalar/cartier', note: 'Maison seçkisi' },

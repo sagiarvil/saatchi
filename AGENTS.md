@@ -80,3 +80,9 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - **Profesyonel Görsel Zorunluluğu:** Sitede sergilenen tüm saat görselleri %100 profesyonel, önden çekilmiş, yüksek çözünürlüklü ve sadece saate odaklanan ürün (packshot) görselleri olmak ZORUNDADIR. 
 - **Lifestyle ve Alakasız Görsel Yasağı:** Kadın/erkek mankenlerin üzerinde çekilmiş lifestyle fotoğraflar, kutu açılış videolarından alınma bulanık kareler veya saatin sadece kayışını/tokasını gösteren açılı fotoğraflar KESİNLİKLE YASAKTIR.
 - **Alternatif Kaynak İzni:** Eğer belirtilen ana veri kaynağında (ör. cartier.com) model adıyla tam eşleşen, beyaz/transparan arka planlı ve profesyonel kalitede bir packshot bulunamıyorsa; ajan insiyatif alarak modeli Chrono24, Jomashop, WatchBox gibi diğer güvenilir lüks saat platformlarından arayacak ve en kusursuz (pro) görseli sisteme ekleyecektir. Yanlış veya amatör bir görsel koymaktansa, doğru saatin başka bir güvenilir platformdaki profesyonel görseli tercih edilecektir.
+
+
+## 🎛️ /suiteN Komutu — NVIDIA NIM AI Entegrasyonu (ChatGPT & Tüm AI Modelleri)
+- **Komut Formatı:** `/suiteN [kod, soru, analiz veya log]`
+- **Evrensel Tanıma:** ChatGPT (GPT-4/GPT-4o), Claude ve Antigravity dahil tüm modeller bu komutu doğrudan tanır.
+- **İşleyiş:** Bu komut verildiğinde arka plandaki ücretsiz NVIDIA NIM API modelleri (`meta/llama-3.2-11b-vision-instruct` / `openai/gpt-oss-20b`) çağrılır. Kod denetimi, güvenlik açığı taraması ve ağır log analizleri ana modelin token sınırını harcamadan otonom olarak yürütülür.

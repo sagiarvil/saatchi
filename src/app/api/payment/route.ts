@@ -78,7 +78,7 @@ export async function POST(request: Request) {
       orderId: 'TEST-' + crypto.randomUUID(),
       provider: 'TEST_POS',
       paymentType: 'CREDIT_CARD',
-      redirectUrl: '/test-success?token=' + encodeURIComponent(token), // Fake success page
+      url: '/test-success?token=' + encodeURIComponent(token), // Fake success page
       gatewayUrl: null,
       iframeUrl: null,
       formHtml: null,

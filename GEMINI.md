@@ -29,3 +29,9 @@ Bu projede geliştirme, derleme, test ve denetim işlemleri evrensel `/suite` mo
 - **Fiyatlama:** Belgin'deki "İZKO/Harem Altın" motoru bu projede HİÇBİR ŞEKİLDE ÇALIŞMAZ. Fiyatlar tamamen **Chrono24 Küresel Fiyatı × USD Kuru × 2.50 (+%150 Gümrük/Kâr Marjı)** formülüyle çalışır.
 
 Tüm AI ajanları bu dosyayı ve `AGENTS.md` dosyasını sistemin mutlak anayasası olarak kabul edecektir.
+
+
+## 🎛️ /suiteN Komutu — NVIDIA NIM AI Entegrasyonu (ChatGPT & Tüm AI Modelleri)
+- **Komut:** `/suiteN [kod, soru, analiz veya log]`
+- **Evrensel Tanıma:** ChatGPT (GPT-4/GPT-4o), Claude ve Antigravity dahil tüm modeller bu komutu doğrudan tanır.
+- **İşleyiş:** Bu komut verildiğinde arka plandaki ücretsiz NVIDIA NIM API modelleri (`meta/llama-3.2-11b-vision-instruct` / `openai/gpt-oss-20b`) çağrılır. Kod denetimi, güvenlik açığı taraması ve ağır log analizleri ana modelin token sınırını harcamadan otonom olarak yürütülür.

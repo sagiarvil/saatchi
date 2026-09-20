@@ -54,12 +54,8 @@ export default function CartierFilterClient({ initialWatches }: { initialWatches
     });
   }, [watchesWithAttr, selectedKoleksiyon, selectedMekanizma, selectedMateryal]);
 
-  const toggleFilter = (setter: any, value: string, current: string[]) => {
-    if (current.includes(value)) {
-      setter(current.filter((v: string) => v !== value));
-    } else {
-      setter([...current, value]);
-    }
+  const toggleFilter = (setter: React.Dispatch<React.SetStateAction<string[]>>, value: string) => {
+    setter(prev => prev.includes(value) ? prev.filter((v: string) => v !== value) : [...prev, value]);
   };
 
   return (
@@ -80,12 +76,12 @@ export default function CartierFilterClient({ initialWatches }: { initialWatches
               <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/60 mb-5">Koleksiyonlar</h4>
               <div className="space-y-4">
                 {koleksiyonlar.map(k => (
-                  <label key={k} onClick={() => toggleFilter(setSelectedKoleksiyon, k, selectedKoleksiyon)} className="flex items-center gap-4 cursor-pointer group">
+                  <div role="button" key={k} onClick={() => toggleFilter(setSelectedKoleksiyon, k)} className="flex items-center gap-4 cursor-pointer group">
                     <div className={`w-4 h-4 border flex items-center justify-center transition-colors ${selectedKoleksiyon.includes(k) ? 'bg-[#8d5f62] border-[#8d5f62]' : 'border-surface-border bg-transparent group-hover:border-[#8d5f62]'}`}>
                       {selectedKoleksiyon.includes(k) && <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>}
                     </div>
                     <span className={`text-[13px] transition-colors ${selectedKoleksiyon.includes(k) ? 'text-foreground font-medium' : 'text-foreground/70 group-hover:text-foreground'}`}>{k}</span>
-                  </label>
+                  </div>
                 ))}
               </div>
             </div>
@@ -97,12 +93,12 @@ export default function CartierFilterClient({ initialWatches }: { initialWatches
               <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/60 mb-5">Saat Mekanizması</h4>
               <div className="space-y-4">
                 {mekanizmalar.map(m => (
-                  <label key={m} onClick={() => toggleFilter(setSelectedMekanizma, m, selectedMekanizma)} className="flex items-center gap-4 cursor-pointer group">
+                  <div role="button" key={m} onClick={() => toggleFilter(setSelectedMekanizma, m)} className="flex items-center gap-4 cursor-pointer group">
                     <div className={`w-4 h-4 border flex items-center justify-center transition-colors ${selectedMekanizma.includes(m) ? 'bg-[#8d5f62] border-[#8d5f62]' : 'border-surface-border bg-transparent group-hover:border-[#8d5f62]'}`}>
                       {selectedMekanizma.includes(m) && <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>}
                     </div>
                     <span className={`text-[13px] transition-colors ${selectedMekanizma.includes(m) ? 'text-foreground font-medium' : 'text-foreground/70 group-hover:text-foreground'}`}>{m}</span>
-                  </label>
+                  </div>
                 ))}
               </div>
             </div>
@@ -114,12 +110,12 @@ export default function CartierFilterClient({ initialWatches }: { initialWatches
               <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-foreground/60 mb-5">Kasa Malzemesi</h4>
               <div className="space-y-4">
                 {materyaller.map(mat => (
-                  <label key={mat} onClick={() => toggleFilter(setSelectedMateryal, mat, selectedMateryal)} className="flex items-center gap-4 cursor-pointer group">
+                  <div role="button" key={mat} onClick={() => toggleFilter(setSelectedMateryal, mat)} className="flex items-center gap-4 cursor-pointer group">
                     <div className={`w-4 h-4 border flex items-center justify-center transition-colors ${selectedMateryal.includes(mat) ? 'bg-[#8d5f62] border-[#8d5f62]' : 'border-surface-border bg-transparent group-hover:border-[#8d5f62]'}`}>
                       {selectedMateryal.includes(mat) && <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>}
                     </div>
                     <span className={`text-[13px] transition-colors ${selectedMateryal.includes(mat) ? 'text-foreground font-medium' : 'text-foreground/70 group-hover:text-foreground'}`}>{mat}</span>
-                  </label>
+                  </div>
                 ))}
               </div>
             </div>

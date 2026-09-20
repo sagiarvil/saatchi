@@ -228,6 +228,8 @@ def collect_product_links(base_url: str, brand_hint: str, max_pages: int = 30) -
                     continue
                 if href.rstrip("/") == base_url.rstrip("/"):
                     continue
+                if "?" in href or "page=" in href or "/page/" in href:
+                    continue
                 if href not in seen:
                     seen.add(href)
                     links.append(href)
@@ -242,6 +244,8 @@ def collect_product_links(base_url: str, brand_hint: str, max_pages: int = 30) -
 
 
 def parse_product_page(url: str, brand: str, category: str, gender: str = "Unisex") -> Optional[dict]:
+    if "?" in url or "page=" in url:
+        return None
     html = request_html(url)
     if not html:
         return None
@@ -255,6 +259,18 @@ def parse_product_page(url: str, brand: str, category: str, gender: str = "Unise
         name = " ".join(h1.stripped_strings) if h1 else ""
     if not name:
         return None
+
+    name_low = name.lower()
+    if any(bad in name_low for bad in ["kordon", "kayış", "kayis", "yüzük saat", "yuzuk saat", "kolye ve küpe", "bileklik ve küpe", "bileklik seti", "cuir camel"]):
+        return None
+
+    offers = pld.get("offers")
+    if isinstance(offers, list):
+        offers = offers[0] if offers else {}
+    if isinstance(offers, dict):
+        avail = str(offers.get("availability") or "").lower()
+        if "outofstock" in avail or "discontinued" in avail:
+            return None
 
     source_price = price_from_product_ld(pld)
     if not source_price:
@@ -391,6 +407,9 @@ def fetch_saatvesaat_brand(cfg: dict) -> List[dict]:
             continue
         sku = str(p.get("sku") or p.get("url_key") or "").strip()
         name = str(p.get("name") or sku or "Kol Saati").strip()
+        name_low = name.lower()
+        if any(bad in name_low for bad in ["yüzük", "yuzuk", "kolye", "küpe", "kupe", "bileklik"]):
+            continue
         main_img = str(p.get("image") or "").strip()
         if main_img and not main_img.startswith("http"):
             main_img = "https://cdn.saatvesaat.com.tr/mnresize/800/-/media/catalog/product" + ("" if main_img.startswith("/") else "/") + main_img

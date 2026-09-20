@@ -48,6 +48,11 @@ next-env.d.ts
 # wrangler files
 .wrangler
 .dev.vars*
+
+cron.log
+__pycache__/
+*.pyc
+
 !.dev.vars.example
 
 !.env.example

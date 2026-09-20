@@ -5,7 +5,7 @@
     "brand": "Rolex",
     "calculatedPrice": 1099982,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-124270.htm"
+    "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
   },
   {
     "id": "5018",
@@ -13,7 +13,7 @@
     "brand": "Rolex",
     "calculatedPrice": 1280610,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-124300.htm"
+    "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
   },
   {
     "id": "5019",
@@ -21,7 +21,7 @@
     "brand": "Rolex",
     "calculatedPrice": 1340980,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-126000.htm"
+    "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
   },
   {
     "id": "5015",
@@ -29,79 +29,23 @@
     "brand": "Rolex",
     "calculatedPrice": 1506850,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-226570.htm"
+    "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
   },
   {
     "id": "5020",
     "modelName": "Rolex Sea-Dweller 43mm Oystersteel & Siyah Kadran Kırmızı Yazı",
     "brand": "Rolex",
-    "calculatedPrice": 1646498,
+    "calculatedPrice": 1646497,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-126600.htm"
+    "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
   },
   {
     "id": "5011",
     "modelName": "Rolex Submariner No-Date 41mm Oystersteel",
     "brand": "Rolex",
-    "calculatedPrice": 1687478,
+    "calculatedPrice": 1687477,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-124060.htm"
-  },
-  {
-    "id": "5008",
-    "modelName": "Rolex Datejust 36mm Mavi Fluted Motif Kadran",
-    "brand": "Rolex",
-    "calculatedPrice": 1737848,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-126234.htm"
-  },
-  {
-    "id": "5007",
-    "modelName": "Rolex Datejust 41mm Wimbledon Yeşil Romen Rakamlı",
-    "brand": "Rolex",
-    "calculatedPrice": 1927012,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-126334.htm"
-  },
-  {
-    "id": "5006",
-    "modelName": "Rolex Datejust 41mm Yivli Bezel & Mavi Kadran Jubilee",
-    "brand": "Rolex",
-    "calculatedPrice": 1927012,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-126334.htm"
-  },
-  {
-    "id": "5012",
-    "modelName": "Rolex Submariner Date 41mm 'Kermit / Starbucks' Yeşil Bezel",
-    "brand": "Rolex",
-    "calculatedPrice": 1967990,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-126610lv.htm"
-  },
-  {
-    "id": "5001",
-    "modelName": "Rolex Submariner Date 41mm Siyah Kadran & Cerachrom Bezel",
-    "brand": "Rolex",
-    "calculatedPrice": 2017265,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-126610.htm"
-  },
-  {
-    "id": "5004",
-    "modelName": "Rolex GMT-Master II 40mm 'Batman' Oyster Bilezik",
-    "brand": "Rolex",
-    "calculatedPrice": 2195330,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-126710blnr.htm"
-  },
-  {
-    "id": "5005",
-    "modelName": "Rolex GMT-Master II 'Sprite' Sol Tepe Yeşil/Siyah",
-    "brand": "Rolex",
-    "calculatedPrice": 2561218,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/rolex/ref-126720vtnr.htm"
+    "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
   },
   {
     "id": "5104",
@@ -109,7 +53,7 @@
     "brand": "Cartier",
     "calculatedPrice": 390280,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsta0041.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5114",
@@ -117,15 +61,15 @@
     "brand": "Cartier",
     "calculatedPrice": 451995,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsrn0032.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5107",
-    "modelName": "Cartier Tank Française Medium Model Paslanmaz Çelik Bilezik",
+    "modelName": "Cartier Tank Française Medium Model Paslanmaz Çelik Kordon",
     "brand": "Cartier",
-    "calculatedPrice": 511028,
+    "calculatedPrice": 511027,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.de/cartier/ref-wsta0065.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5108",
@@ -133,7 +77,7 @@
     "brand": "Cartier",
     "calculatedPrice": 522245,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsbb0025.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5111",
@@ -141,7 +85,7 @@
     "brand": "Cartier",
     "calculatedPrice": 553955,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wspa0009.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5105",
@@ -149,7 +93,7 @@
     "brand": "Cartier",
     "calculatedPrice": 602862,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsta0040.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5120",
@@ -157,7 +101,7 @@
     "brand": "Cartier",
     "calculatedPrice": 803002,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wspa0027.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5102",
@@ -165,7 +109,7 @@
     "brand": "Cartier",
     "calculatedPrice": 804955,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wssa0029.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5113",
@@ -173,15 +117,15 @@
     "brand": "Cartier",
     "calculatedPrice": 813492,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wsta0083.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5101",
     "modelName": "Cartier Santos de Cartier Large Model Çelik Gümüş Kadran",
     "brand": "Cartier",
-    "calculatedPrice": 987288,
+    "calculatedPrice": 987287,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wssa0018.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5115",
@@ -189,7 +133,7 @@
     "brand": "Cartier",
     "calculatedPrice": 1019852,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wssa0017.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5106",
@@ -197,15 +141,15 @@
     "brand": "Cartier",
     "calculatedPrice": 1134252,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wgta0010.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5110",
     "modelName": "Cartier Panthère de Cartier Medium Model 18K Sarı Altın & Çelik",
     "brand": "Cartier",
-    "calculatedPrice": 1280488,
+    "calculatedPrice": 1280487,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-w2pn0007.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5117",
@@ -213,7 +157,7 @@
     "brand": "Cartier",
     "calculatedPrice": 1339272,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.de/cartier/ref-wgba0007.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5118",
@@ -221,31 +165,15 @@
     "brand": "Cartier",
     "calculatedPrice": 1506972,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-w2sa0016.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "5116",
     "modelName": "Cartier Ballon Bleu de Cartier 42mm 18K Pembe Altın",
     "brand": "Cartier",
-    "calculatedPrice": 1610518,
+    "calculatedPrice": 1610517,
     "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wgbb0030.htm"
-  },
-  {
-    "id": "5109",
-    "modelName": "Cartier Ballon Bleu de Cartier 36mm 18K Pembe Altın ve Çelik Pırlantalı",
-    "brand": "Cartier",
-    "calculatedPrice": 1819440,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-w3bb0024.htm"
-  },
-  {
-    "id": "5112",
-    "modelName": "Cartier Santos-Dumont Extra-Large 18K Pembe Altın Manuel Kurmalı",
-    "brand": "Cartier",
-    "calculatedPrice": 2007750,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com/cartier/ref-wgsa0032.htm"
+    "sourceUrl": "https://www.cartier.com/tr-tr/saatler/koleksiyonlar/"
   },
   {
     "id": "SRC-TAG-HEUER-WAZ1110-FT8023",
@@ -1040,14 +968,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer-monaco-cbl2115fc6494-kol-saati"
   },
   {
-    "id": "SRC-TAG-HEUER-HEUER",
-    "modelName": "TAG Heuer Monaco CAW211P.FC6356 Kol Saati",
-    "brand": "TAG Heuer",
-    "calculatedPrice": 731700,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tag-heuer?page=2"
-  },
-  {
     "id": "SRC-TAG-HEUER-CAW211P-FC6356",
     "modelName": "TAG Heuer Monaco CAW211P.FC6356 Kol Saati",
     "brand": "TAG Heuer",
@@ -1582,14 +1502,6 @@
     "calculatedPrice": 154560,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/integral"
-  },
-  {
-    "id": "SRC-RADO-CENTRIX",
-    "modelName": "Rado Centrix R30023012 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 155550,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado?page=5"
   },
   {
     "id": "SRC-RADO-R30023012",
@@ -2168,14 +2080,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r12171713-kol-saati"
   },
   {
-    "id": "SRC-RADO-DIASTAR",
-    "modelName": "Rado DiaStar Original Skeleton R12164153 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 210750,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado?page=3"
-  },
-  {
     "id": "SRC-RADO-R12164153",
     "modelName": "Rado DiaStar Original Skeleton R12164153 Kol Saati",
     "brand": "Rado",
@@ -2576,14 +2480,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r30032742-kol-saati"
   },
   {
-    "id": "SRC-RADO-R30037744",
-    "modelName": "Rado R30037744 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 235800,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado?page=11"
-  },
-  {
     "id": "SRC-RADO-R27183012",
     "modelName": "Rado True Round R27183012 Kol Saati",
     "brand": "Rado",
@@ -2702,14 +2598,6 @@
     "calculatedPrice": 270900,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r27196152-kol-saati"
-  },
-  {
-    "id": "SRC-RADO-SQUARE",
-    "modelName": "Rado True Square R27197152 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 270900,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado?page=9"
   },
   {
     "id": "SRC-RADO-R27197152",
@@ -3024,14 +2912,6 @@
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-captain-cook-r32128202-kol-saati"
   },
   {
-    "id": "SRC-RADO-CAPTAIN",
-    "modelName": "Rado Captain Cook R32129168 Kol Saati",
-    "brand": "Rado",
-    "calculatedPrice": 361200,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/rado?page=7"
-  },
-  {
     "id": "SRC-RADO-R32129168",
     "modelName": "Rado Captain Cook R32129168 Kol Saati",
     "brand": "Rado",
@@ -3246,366 +3126,6 @@
     "calculatedPrice": 802650,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/rado-r10204712-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-T852046752",
-    "modelName": "Tissot T852046752 Bej Tekstil Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 2865,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852046752-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852046754",
-    "modelName": "Tissot T852046754 Mavi Tekstil Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 2865,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852046754-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852046756",
-    "modelName": "Tissot T852046756 Haki Tekstil Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 2865,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852046756-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852046769",
-    "modelName": "Tissot T852046769 Siyah Tekstil Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 2865,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852046769-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852046771",
-    "modelName": "Tissot T852046771 Haki Tekstil Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 2865,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852046771-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852046783",
-    "modelName": "Tissot T852046783 Mavi Tekstil Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 2865,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852046783-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852048150",
-    "modelName": "Tissot T852048150 Mavi Sentetik Kayış (18 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 2865,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852048150-mavi-sentetik-kayis-18-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852048152",
-    "modelName": "Tissot T852048152 Kırmızı Sentetik Kayış (18 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 2865,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852048152-kirmizi-sentetik-kayis-18-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852048181",
-    "modelName": "Tissot T852048181 Kahve Kumaş Kayış (21 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 2865,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/t852048181-kahve-kumas-21-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852048183",
-    "modelName": "Tissot T852048183 Antrasit Deri Kayış (21 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 2865,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852048183-antrasit-deri-kayis-21-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852047920",
-    "modelName": "Tissot T852047920 Kırmızı Silikon Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3660,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047920-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-CAMEL",
-    "modelName": "CUIR CAMEL 21/18",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot?page=20"
-  },
-  {
-    "id": "SRC-TISSOT-T852051025",
-    "modelName": "Tissot Official Blue Leather Lugs 22mm T852051025 Kayış",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/official-blue-leather-lugs-22mm"
-  },
-  {
-    "id": "SRC-TISSOT-T603042599",
-    "modelName": "Tissot T603042599 Kayış",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t603042599-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852041534",
-    "modelName": "Tissot T852041534 Mavi Deri Kayış (20 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852041534-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852041653",
-    "modelName": "Tissot T852041653 Kahve Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/t852041653-kahve-deri-22-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852041655",
-    "modelName": "Tissot T852041655 Kahverengi Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852041655-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852043042",
-    "modelName": "Tissot T852043042 Kahve Deri Kayış (15 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852043042-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852043159",
-    "modelName": "Tissot T852043159 Siyah Deri Kayış (9 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852043159-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852043622",
-    "modelName": "Tissot T852043622 Siyah Deri Kayış (15 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852043622-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852046765",
-    "modelName": "Tissot T852046765 Mavi Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852046765-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852046767",
-    "modelName": "Tissot T852046767 Kahve Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852046767-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852046785",
-    "modelName": "Tissot T852046785 Mavi Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852046785-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852046787",
-    "modelName": "Tissot T852046787 Yeşil Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852046787-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852046840",
-    "modelName": "Tissot T852046840 Mavi Deri Kayış (20 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/t852046840-mavi-deri-20-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852046842",
-    "modelName": "Tissot T852046842 Kahve Deri Kayış (20 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852046842-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852047129",
-    "modelName": "Tissot T852047129 Gri Deri Kayış (16 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047129-gri-deri-kayis-19-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852047175",
-    "modelName": "Tissot T852047175 Mavi Slikon Kayış (22mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047175-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852047177",
-    "modelName": "Tissot T852047177 Yeşil Slikon Kayış (22mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047177-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852047179",
-    "modelName": "Tissot T852047179 Siyah Silikon Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047179-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852047455",
-    "modelName": "Tissot T852047455 Siyah Silikon Kayış (18 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047455-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852047512",
-    "modelName": "Tissot T852047512 NBA Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047512-nba-deri-kayis-22-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852047514",
-    "modelName": "Tissot T852047514 NBA Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047514-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852047518",
-    "modelName": "Tissot T852047518 NBA Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047518-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852047534",
-    "modelName": "Tissot T852047534 NBA Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047534-nba-deri-kayis-22-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852047538",
-    "modelName": "Tissot T852047538 NBA Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047538-nba-deri-kayis-22-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852047777",
-    "modelName": "Tissot T852047777 NBA Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047777-nba-deri-kayis-22-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852047779",
-    "modelName": "Tissot T852047779 NBA Deri Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047779-nba-deri-kayis-22-mm"
-  },
-  {
-    "id": "SRC-TISSOT-T852047918",
-    "modelName": "Tissot T852047918 Turuncu Silikon Kayış (22 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852047918-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852048227",
-    "modelName": "Tissot T852048227 Kayış",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/t852048227"
-  },
-  {
-    "id": "SRC-TISSOT-T852050323",
-    "modelName": "Tissot T852050323 Kayış",
-    "brand": "Tissot",
-    "calculatedPrice": 3840,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/t852050323"
-  },
-  {
-    "id": "SRC-TISSOT-T852049990",
-    "modelName": "Tissot T852049990 Kayış",
-    "brand": "Tissot",
-    "calculatedPrice": 5820,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/t852049990"
-  },
-  {
-    "id": "SRC-TISSOT-T852032781",
-    "modelName": "Tissot T852032781 Deri Kayış",
-    "brand": "Tissot",
-    "calculatedPrice": 7395,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852032781-deri-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852045750",
-    "modelName": "Tissot T852045750 Gri Deri Kayış (21 mm)",
-    "brand": "Tissot",
-    "calculatedPrice": 7395,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t852045750-kayis"
-  },
-  {
-    "id": "SRC-TISSOT-T852047971",
-    "modelName": "Tissot T852047971 Kayış",
-    "brand": "Tissot",
-    "calculatedPrice": 8775,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/t852047971"
   },
   {
     "id": "SRC-TISSOT-T0581093703600",
@@ -6910,14 +6430,6 @@
     "calculatedPrice": 77280,
     "stock": 1,
     "sourceUrl": "https://www.konyalisaat.com.tr/tissot-t1274071104101-kol-saati"
-  },
-  {
-    "id": "SRC-TISSOT-TISSOT",
-    "modelName": "Tissot Gentleman Open Heart 40mm T1274071108100",
-    "brand": "Tissot",
-    "calculatedPrice": 77280,
-    "stock": 1,
-    "sourceUrl": "https://www.konyalisaat.com.tr/tissot?page=2"
   },
   {
     "id": "SRC-TISSOT-T1274071108100",
@@ -10912,236 +10424,12 @@
     "sourceUrl": "https://carren.com.tr/index.php/urun/9869-lsr/"
   },
   {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000758",
-    "modelName": "CKJ35000758 Kalpli Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 3200,
-    "stock": 132,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000758"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000759",
-    "modelName": "CKJ35000759 Kalpli Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 3446,
-    "stock": 54,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000759"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000757",
-    "modelName": "CKJ35000757 Kalpli Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 3756,
-    "stock": 92,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000757"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000837",
-    "modelName": "CKJ35000837 Bileklik Seti",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 3994,
-    "stock": 3353,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-bileklik-seti-p-ckj35000837"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100059",
-    "modelName": "CKJ35100059 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 4045,
-    "stock": 35,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100059"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100060",
-    "modelName": "CKJ35100060 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 4045,
-    "stock": 17,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100060"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100061",
-    "modelName": "CKJ35100061 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 4045,
-    "stock": 44,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100061"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35700003",
-    "modelName": "CKJ35700003 Bileklik Seti",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 4049,
-    "stock": 11609,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-bileklik-seti-p-ckj35700003"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35700022",
-    "modelName": "CKJ35700022 Bileklik Seti",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 4049,
-    "stock": 5589,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-bileklik-p-ckj35700022"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35700016",
-    "modelName": "CKJ35700016 Kadın Kolye ve Küpe Seti",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 4569,
-    "stock": 43,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-kupe-p-ckj35700016"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000443C",
-    "modelName": "CKJ35000443C Kadın Yüzük (54 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 5274,
-    "stock": 15,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000443c"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000083",
-    "modelName": "CKJ35000083 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 5328,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000083"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000249",
-    "modelName": "CKJ35000249 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 5328,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000249"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000245",
-    "modelName": "CKJ35000245 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 5355,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000245"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000306",
-    "modelName": "CKJ35000306 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6039,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000306"
-  },
-  {
     "id": "SVS-CALVIN-KLEIN-CK25200471",
     "modelName": "CK25200471 Erkek Kol Saati",
     "brand": "Calvin Klein",
     "calculatedPrice": 6062,
     "stock": 24,
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kol-saati-p-ck25200471"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000143",
-    "modelName": "CKJ35000143 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6102,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000143"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000192B",
-    "modelName": "CKJ35000192B Kadın Yüzük (52 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6102,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000192b"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000192C",
-    "modelName": "CKJ35000192C Kadın Yüzük (54 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6102,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000192c"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000192D",
-    "modelName": "CKJ35000192D Kadın Yüzük (56 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6102,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000192d"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000199B",
-    "modelName": "CKJ35000199B Kadın Yüzük (52 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6216,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000199b"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000199C",
-    "modelName": "CKJ35000199C Kadın Yüzük (54 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6216,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000199c"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000200B",
-    "modelName": "CKJ35000200B Kadın Yüzük (52 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6216,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000200b"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000200C",
-    "modelName": "CKJ35000200C Kadın Yüzük (54 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6216,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000200c"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000247",
-    "modelName": "CKJ35000247 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6216,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000247"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000261",
-    "modelName": "CKJ35000261 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6216,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000261"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000958",
-    "modelName": "CKJ35000958 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6510,
-    "stock": 27,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000958"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000959",
-    "modelName": "CKJ35000959 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6510,
-    "stock": 24,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000959"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000187C",
-    "modelName": "CKJ35000187C Kadın Yüzük (54 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6540,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000187c"
   },
   {
     "id": "SVS-CALVIN-KLEIN-CK25200470",
@@ -11160,38 +10448,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kol-saati-p-ck25100129"
   },
   {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000429",
-    "modelName": "CKJ35000429 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6795,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000429"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000211",
-    "modelName": "CKJ35000211 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6849,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000211"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000228",
-    "modelName": "CKJ35000228 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6849,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000228"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000259",
-    "modelName": "CKJ35000259 Erkek Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 6849,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kolye-p-ckj35000259"
-  },
-  {
     "id": "SVS-CALVIN-KLEIN-CK25300014",
     "modelName": "CK25300014 Kadın Kol Saati",
     "brand": "Calvin Klein",
@@ -11206,30 +10462,6 @@
     "calculatedPrice": 7074,
     "stock": 19,
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kol-saati-p-ck25300015"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000134",
-    "modelName": "CKJ35000134 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7119,
-    "stock": 12,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000134"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000182",
-    "modelName": "CKJ35000182 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7119,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000182"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000185",
-    "modelName": "CKJ35000185 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7119,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000185"
   },
   {
     "id": "SVS-CALVIN-KLEIN-CK25200276",
@@ -11256,180 +10488,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kol-saati-p-ck25200342"
   },
   {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000786",
-    "modelName": "CKJ35000786 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7830,
-    "stock": 21,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000786"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000788",
-    "modelName": "CKJ35000788 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7830,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000788"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000946",
-    "modelName": "CKJ35000946 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7845,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000946"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000947",
-    "modelName": "CKJ35000947 Kadın Bileklik Seti",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7845,
-    "stock": 30,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000947"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000994",
-    "modelName": "CKJ35000994 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7845,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000994"
-  },
-  {
     "id": "SVS-CALVIN-KLEIN-CK25200149",
     "modelName": "CK25200149 Kadın Kol Saati",
     "brand": "Calvin Klein",
     "calculatedPrice": 7866,
     "stock": 15,
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kol-saati-p-ck25200149"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000654",
-    "modelName": "CKJ35000654 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7890,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000654"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000680C",
-    "modelName": "CKJ35000680C Kadın Yüzük (54 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7890,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000680c"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000689",
-    "modelName": "CKJ35000689 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7890,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000689"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000307",
-    "modelName": "CKJ35000307 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7928,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000307"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000357",
-    "modelName": "CKJ35000357 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7950,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000357"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000081",
-    "modelName": "CKJ35000081 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7990,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000081"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000086",
-    "modelName": "CKJ35000086 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7990,
-    "stock": 11,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000086"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000135",
-    "modelName": "CKJ35000135 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7990,
-    "stock": 12,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000135"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000139",
-    "modelName": "CKJ35000139 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7990,
-    "stock": 13,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000139"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000145",
-    "modelName": "CKJ35000145 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7990,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000145"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000149",
-    "modelName": "CKJ35000149 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7990,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000149"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000277",
-    "modelName": "CKJ35000277 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 7990,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000277"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000035",
-    "modelName": "CKJ35000035 Kalpli Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 8040,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000035"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000038",
-    "modelName": "CKJ35000038 Kalpli Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 8040,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000038"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000041",
-    "modelName": "CKJ35000041 Kalpli Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 8040,
-    "stock": 12,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000041"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000356",
-    "modelName": "CKJ35000356 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 8316,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000356"
   },
   {
     "id": "SVS-CALVIN-KLEIN-CK25100205",
@@ -11480,196 +10544,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kol-saati-p-ck25200517"
   },
   {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000819",
-    "modelName": "CKJ35000819 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9135,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000819"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000772",
-    "modelName": "CKJ35000772 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9150,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000772"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100068",
-    "modelName": "CKJ35100068 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9150,
-    "stock": 31,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100068"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100094",
-    "modelName": "CKJ35100094 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9150,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100094"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000768",
-    "modelName": "CKJ35000768 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9165,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000768"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000815",
-    "modelName": "CKJ35000815 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9165,
-    "stock": 14,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000815"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000996",
-    "modelName": "CKJ35000996 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9165,
-    "stock": 20,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000996"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100049",
-    "modelName": "CKJ35100049 Erkek Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9165,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kolye-p-ckj35100049"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000635",
-    "modelName": "CKJ35000635 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9210,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000635"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000450",
-    "modelName": "CKJ35000450 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9225,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000450"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000662",
-    "modelName": "CKJ35000662 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9225,
-    "stock": 11,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000662"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000677",
-    "modelName": "CKJ35000677 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9225,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000677"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000688",
-    "modelName": "CKJ35000688 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9225,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000688"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000764",
-    "modelName": "CKJ35000764 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9225,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000764"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100047",
-    "modelName": "CKJ35100047 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9225,
-    "stock": 14,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100047"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000042",
-    "modelName": "CKJ35000042 Kalpli Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9330,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000042"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000043",
-    "modelName": "CKJ35000043 Kalpli Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9330,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000043"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000076",
-    "modelName": "CKJ35000076 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9330,
-    "stock": 22,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000076"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000080",
-    "modelName": "CKJ35000080 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9330,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000080"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000137",
-    "modelName": "CKJ35000137 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9330,
-    "stock": 20,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000137"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000183",
-    "modelName": "CKJ35000183 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9330,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000183"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000260",
-    "modelName": "CKJ35000260 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9330,
-    "stock": 12,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000260"
-  },
-  {
     "id": "SVS-CALVIN-KLEIN-CK25200450",
     "modelName": "CK25200450 Erkek Kol Saati",
     "brand": "Calvin Klein",
     "calculatedPrice": 9450,
     "stock": 28,
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kol-saati-p-ck25200450"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000428",
-    "modelName": "CKJ35000428 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 9702,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000428"
   },
   {
     "id": "SVS-CALVIN-KLEIN-CK25200272",
@@ -11710,430 +10590,6 @@
     "calculatedPrice": 10238,
     "stock": 2,
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kol-saati-p-ck25200516"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000770",
-    "modelName": "CKJ35000770 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10485,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000770"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000773",
-    "modelName": "CKJ35000773 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10485,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000773"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100096",
-    "modelName": "CKJ35100096 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10485,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100096"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000784",
-    "modelName": "CKJ35000784 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10500,
-    "stock": 17,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000784"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000787",
-    "modelName": "CKJ35000787 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10500,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000787"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000948",
-    "modelName": "CKJ35000948 Kadın Bileklik Seti",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10500,
-    "stock": 30,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000948"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100098",
-    "modelName": "CKJ35100098 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10500,
-    "stock": 30,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100098"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100103",
-    "modelName": "CKJ35100103 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10500,
-    "stock": 50,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100103"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000338",
-    "modelName": "CKJ35000338 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000338"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000451",
-    "modelName": "CKJ35000451 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000451"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000502",
-    "modelName": "CKJ35000502 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000502"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000555",
-    "modelName": "CKJ35000555 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000555"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000577",
-    "modelName": "CKJ35000577 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 12,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000577"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000653",
-    "modelName": "CKJ35000653 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 64,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000653"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000660",
-    "modelName": "CKJ35000660 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000660"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000676",
-    "modelName": "CKJ35000676 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000676"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000678",
-    "modelName": "CKJ35000678 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000678"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000685",
-    "modelName": "CKJ35000685 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 15,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000685"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000765",
-    "modelName": "CKJ35000765 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000765"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100035",
-    "modelName": "CKJ35100035 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100035"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100042",
-    "modelName": "CKJ35100042 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100042"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100045",
-    "modelName": "CKJ35100045 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100045"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100046",
-    "modelName": "CKJ35100046 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 19,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100046"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100054",
-    "modelName": "CKJ35100054 Erkek Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kolye-p-ckj35100054"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100055",
-    "modelName": "CKJ35100055 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 17,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100055"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100064",
-    "modelName": "CKJ35100064 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100064"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100065",
-    "modelName": "CKJ35100065 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10530,
-    "stock": 15,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100065"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000563",
-    "modelName": "CKJ35000563 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10560,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000563"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000570",
-    "modelName": "CKJ35000570 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10560,
-    "stock": 11,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000570"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000582",
-    "modelName": "CKJ35000582 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10560,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000582"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000583",
-    "modelName": "CKJ35000583 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10560,
-    "stock": 20,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000583"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000610",
-    "modelName": "CKJ35000610 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10560,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000610"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100006",
-    "modelName": "CKJ35100006 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10560,
-    "stock": 50,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100006"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100025",
-    "modelName": "CKJ35100025 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10560,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100025"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000405",
-    "modelName": "CKJ35000405 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10575,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000405"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000434",
-    "modelName": "CKJ35000434 Kadın Bileklik Seti",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10575,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000434"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000006",
-    "modelName": "CKJ35000006 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 13,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000006"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000036",
-    "modelName": "CKJ35000036 Kalpli Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000036"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000037",
-    "modelName": "CKJ35000037 Kalpli Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000037"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000039",
-    "modelName": "CKJ35000039 Kalpli Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000039"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000040",
-    "modelName": "CKJ35000040 Kalpli Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000040"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000048",
-    "modelName": "CKJ35000048 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 47,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000048"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000097",
-    "modelName": "CKJ35000097 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 26,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000097"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000098",
-    "modelName": "CKJ35000098 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 11,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000098"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000163",
-    "modelName": "CKJ35000163 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 14,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000163"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000201B",
-    "modelName": "CKJ35000201B Kadın Yüzük (52 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000201b"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000201C",
-    "modelName": "CKJ35000201C Kadın Yüzük (54 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000201c"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000210",
-    "modelName": "CKJ35000210 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000210"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000218",
-    "modelName": "CKJ35000218 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000218"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000219",
-    "modelName": "CKJ35000219 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000219"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000223",
-    "modelName": "CKJ35000223 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000223"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000240",
-    "modelName": "CKJ35000240 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000240"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000268",
-    "modelName": "CKJ35000268 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 10680,
-    "stock": 12,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000268"
   },
   {
     "id": "SVS-CALVIN-KLEIN-CK25200348",
@@ -12192,94 +10648,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kol-saati-p-ck25200321"
   },
   {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000992",
-    "modelName": "CKJ35000992 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11820,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000992"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100063",
-    "modelName": "CKJ35100063 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11820,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100063"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100105",
-    "modelName": "CKJ35100105 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11820,
-    "stock": 22,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100105"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000806",
-    "modelName": "CKJ35000806 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11835,
-    "stock": 23,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000806"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000525",
-    "modelName": "CKJ35000525 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11880,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000525"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000568",
-    "modelName": "CKJ35000568 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11880,
-    "stock": 15,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000568"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000598",
-    "modelName": "CKJ35000598 Kalpli Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11880,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000598"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000616C",
-    "modelName": "CKJ35000616C Kadın Yüzük (54 mm)",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11880,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-yuzuk-p-ckj35000616c"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000631",
-    "modelName": "CKJ35000631 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11880,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000631"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000684",
-    "modelName": "CKJ35000684 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11880,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000684"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000687",
-    "modelName": "CKJ35000687 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11880,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000687"
-  },
-  {
     "id": "SVS-CALVIN-KLEIN-CK25200269",
     "modelName": "CK25200269 Kadın Kol Saati",
     "brand": "Calvin Klein",
@@ -12288,244 +10656,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kol-saati-p-ck25200269"
   },
   {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000278",
-    "modelName": "CKJ35000278 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11895,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000278"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000406",
-    "modelName": "CKJ35000406 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11895,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000406"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000501",
-    "modelName": "CKJ35000501 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11895,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000501"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000747",
-    "modelName": "CKJ35000747 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11895,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000747"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000760",
-    "modelName": "CKJ35000760 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11895,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000760"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000762",
-    "modelName": "CKJ35000762 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11895,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000762"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100039",
-    "modelName": "CKJ35100039 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11895,
-    "stock": 14,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100039"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100040",
-    "modelName": "CKJ35100040 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11895,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100040"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100041",
-    "modelName": "CKJ35100041 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11895,
-    "stock": 13,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100041"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100043",
-    "modelName": "CKJ35100043 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11895,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100043"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100044",
-    "modelName": "CKJ35100044 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11895,
-    "stock": 11,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100044"
-  },
-  {
     "id": "SVS-CALVIN-KLEIN-CK25200213",
     "modelName": "CK25200213 Erkek Kol Saati",
     "brand": "Calvin Klein",
     "calculatedPrice": 11900,
     "stock": 30,
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kol-saati-p-ck25200213"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000003",
-    "modelName": "CKJ35000003 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000003"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000005",
-    "modelName": "CKJ35000005 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000005"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000008",
-    "modelName": "CKJ35000008 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 14,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000008"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000056",
-    "modelName": "CKJ35000056 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000056"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000077",
-    "modelName": "CKJ35000077 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000077"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000078",
-    "modelName": "CKJ35000078 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000078"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000136",
-    "modelName": "CKJ35000136 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000136"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000138",
-    "modelName": "CKJ35000138 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000138"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000144",
-    "modelName": "CKJ35000144 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 14,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000144"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000148",
-    "modelName": "CKJ35000148 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000148"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000164",
-    "modelName": "CKJ35000164 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000164"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000205",
-    "modelName": "CKJ35000205 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000205"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000209",
-    "modelName": "CKJ35000209 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000209"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000255",
-    "modelName": "CKJ35000255 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000255"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000269",
-    "modelName": "CKJ35000269 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000269"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000270",
-    "modelName": "CKJ35000270 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000270"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000282",
-    "modelName": "CKJ35000282 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000282"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000283",
-    "modelName": "CKJ35000283 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 11985,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000283"
   },
   {
     "id": "SVS-CALVIN-KLEIN-CK25200174",
@@ -12552,260 +10688,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kol-saati-p-ck25200545"
   },
   {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000220",
-    "modelName": "CKJ35000220 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 12548,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000220"
-  },
-  {
     "id": "SVS-CALVIN-KLEIN-CK25200538",
     "modelName": "CK25200538 Erkek Kol Saati",
     "brand": "Calvin Klein",
     "calculatedPrice": 12758,
     "stock": 20,
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kol-saati-p-ck25200538"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000814",
-    "modelName": "CKJ35000814 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13140,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000814"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000785",
-    "modelName": "CKJ35000785 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13155,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000785"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000807",
-    "modelName": "CKJ35000807 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13155,
-    "stock": 11,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000807"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100067",
-    "modelName": "CKJ35100067 Erkek Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13155,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kolye-p-ckj35100067"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000280",
-    "modelName": "CKJ35000280 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 12,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000280"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000510",
-    "modelName": "CKJ35000510 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 19,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000510"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000533",
-    "modelName": "CKJ35000533 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000533"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000554",
-    "modelName": "CKJ35000554 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000554"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000564",
-    "modelName": "CKJ35000564 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000564"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000565",
-    "modelName": "CKJ35000565 Erkek Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kolye-p-ckj35000565"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000566",
-    "modelName": "CKJ35000566 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35000566"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000578",
-    "modelName": "CKJ35000578 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 11,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000578"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000579",
-    "modelName": "CKJ35000579 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000579"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000617",
-    "modelName": "CKJ35000617 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000617"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000659",
-    "modelName": "CKJ35000659 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000659"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000686",
-    "modelName": "CKJ35000686 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000686"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000720",
-    "modelName": "CKJ35000720 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000720"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000748",
-    "modelName": "CKJ35000748 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000748"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000761",
-    "modelName": "CKJ35000761 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000761"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000763",
-    "modelName": "CKJ35000763 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000763"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100034",
-    "modelName": "CKJ35100034 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100034"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100038",
-    "modelName": "CKJ35100038 Erkek Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kolye-p-ckj35100038"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100056",
-    "modelName": "CKJ35100056 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13215,
-    "stock": 20,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100056"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000836",
-    "modelName": "CKJ35000836 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13230,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000836"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100104",
-    "modelName": "CKJ35100104 Erkek Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13230,
-    "stock": 12,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-bileklik-p-ckj35100104"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000087",
-    "modelName": "CKJ35000087 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13335,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000087"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000241",
-    "modelName": "CKJ35000241 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13335,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000241"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000243",
-    "modelName": "CKJ35000243 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13335,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000243"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000088",
-    "modelName": "CKJ35000088 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13410,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000088"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000160",
-    "modelName": "CKJ35000160 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 13410,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000160"
   },
   {
     "id": "SVS-CALVIN-KLEIN-CK25200035",
@@ -12904,78 +10792,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kol-saati-p-ck25100065"
   },
   {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100069",
-    "modelName": "CKJ35100069 Erkek Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 14475,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kolye-p-ckj35100069"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000756",
-    "modelName": "CKJ35000756 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 14490,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000756"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000993",
-    "modelName": "CKJ35000993 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 14490,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000993"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35100097",
-    "modelName": "CKJ35100097 Erkek Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 14490,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kolye-p-ckj35100097"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000526",
-    "modelName": "CKJ35000526 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 14520,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000526"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000534",
-    "modelName": "CKJ35000534 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 14520,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000534"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000515",
-    "modelName": "CKJ35000515 Kadın Küpe",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 14535,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kupe-p-ckj35000515"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000674",
-    "modelName": "CKJ35000674 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 14535,
-    "stock": 19,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000674"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000229",
-    "modelName": "CKJ35000229 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 14685,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000229"
-  },
-  {
     "id": "SVS-CALVIN-KLEIN-CK25200033",
     "modelName": "CK25200033 Kol Saati",
     "brand": "Calvin Klein",
@@ -13056,22 +10872,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kol-saati-p-ck25200034"
   },
   {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000753",
-    "modelName": "CKJ35000753 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 15810,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000753"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000804",
-    "modelName": "CKJ35000804 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 15810,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000804"
-  },
-  {
     "id": "SVS-CALVIN-KLEIN-CK25200151",
     "modelName": "CK25200151 Kadın Kol Saati",
     "brand": "Calvin Klein",
@@ -13086,54 +10886,6 @@
     "calculatedPrice": 15867,
     "stock": 8,
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kol-saati-p-ck25200229"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000552",
-    "modelName": "CKJ35000552 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 15885,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000552"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000657",
-    "modelName": "CKJ35000657 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 15885,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000657"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000675",
-    "modelName": "CKJ35000675 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 15885,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000675"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000683",
-    "modelName": "CKJ35000683 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 15885,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000683"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35700006",
-    "modelName": "CKJ35700006 Kadın Kolye ve Bileklik Seti",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 16005,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35700006"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000012",
-    "modelName": "CKJ35000012 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 16110,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000012"
   },
   {
     "id": "SVS-CALVIN-KLEIN-CK25100186",
@@ -13198,30 +10950,6 @@
     "calculatedPrice": 16668,
     "stock": 25,
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kol-saati-p-ck25100052"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000511",
-    "modelName": "CKJ35000511 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 17220,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000511"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000626",
-    "modelName": "CKJ35000626 Kadın Kolye Seti",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 17220,
-    "stock": 13,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000626"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000673",
-    "modelName": "CKJ35000673 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 17220,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000673"
   },
   {
     "id": "SVS-CALVIN-KLEIN-CK25200301",
@@ -13304,14 +11032,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kol-saati-p-ck25200172"
   },
   {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000830",
-    "modelName": "CKJ35000830 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 18450,
-    "stock": 14,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000830"
-  },
-  {
     "id": "SVS-CALVIN-KLEIN-CK25200265",
     "modelName": "CK25200265 Erkek Kol Saati",
     "brand": "Calvin Klein",
@@ -13392,30 +11112,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kol-saati-p-ck25100053"
   },
   {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000805",
-    "modelName": "CKJ35000805 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 19800,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000805"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000531",
-    "modelName": "CKJ35000531 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 19875,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000531"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000433",
-    "modelName": "CKJ35000433 Kadın Kolye Seti",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 19905,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000433"
-  },
-  {
     "id": "SVS-CALVIN-KLEIN-CK25300004",
     "modelName": "CK25300004 Erkek Kol Saati",
     "brand": "Calvin Klein",
@@ -13478,30 +11174,6 @@
     "calculatedPrice": 20805,
     "stock": 15,
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kol-saati-p-ck25200032"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000652",
-    "modelName": "CKJ35000652 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 21210,
-    "stock": 12,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000652"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000718",
-    "modelName": "CKJ35000718 Kadın Bileklik",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 21210,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-bileklik-p-ckj35000718"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000745",
-    "modelName": "CKJ35000745 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 21210,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000745"
   },
   {
     "id": "SVS-CALVIN-KLEIN-CK25300005",
@@ -13710,14 +11382,6 @@
     "calculatedPrice": 23610,
     "stock": 77,
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kol-saati-p-ck25200138"
-  },
-  {
-    "id": "SVS-CALVIN-KLEIN-CKJ35000746",
-    "modelName": "CKJ35000746 Kadın Kolye",
-    "brand": "Calvin Klein",
-    "calculatedPrice": 23745,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-kadin-kolye-p-ckj35000746"
   },
   {
     "id": "SVS-CALVIN-KLEIN-CK25300017",
@@ -14136,254 +11800,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/calvin-klein-erkek-kol-saati-p-ck25000026"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC173900-040",
-    "modelName": "MKC173900-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 3200,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc173900-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC173900-710",
-    "modelName": "MKC173900-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 3200,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc173900-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8606-040",
-    "modelName": "MKJ8606-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 3665,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8606-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ7979-710",
-    "modelName": "MKJ7979-710 Kalpli Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 3694,
-    "stock": 17,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj7979-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8614-710",
-    "modelName": "MKJ8614-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 3910,
-    "stock": 57,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8614-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8683-710",
-    "modelName": "MKJ8683-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 4104,
-    "stock": 20,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8683-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8659-040",
-    "modelName": "MKJ8659-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 4154,
-    "stock": 19,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8659-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8659-710",
-    "modelName": "MKJ8659-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 4154,
-    "stock": 27,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8659-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8660-710",
-    "modelName": "MKJ8660-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 4154,
-    "stock": 19,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8660-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8682-040",
-    "modelName": "MKJ8682-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 4154,
-    "stock": 39,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8682-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC164300-710",
-    "modelName": "MKC164300-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 4268,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc164300-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1762CZ-710",
-    "modelName": "MKC1762CZ-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 4590,
-    "stock": 50,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1762cz-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8656-040",
-    "modelName": "MKJ8656-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 4682,
-    "stock": 17,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8656-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8656-710",
-    "modelName": "MKJ8656-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 4682,
-    "stock": 24,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8656-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8679-710",
-    "modelName": "MKJ8679-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 4815,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8679-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1657CZ-040",
-    "modelName": "MKC1657CZ-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 5138,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1657cz-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1738CZ-710",
-    "modelName": "MKC1738CZ-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 5598,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1738cz-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8649-040",
-    "modelName": "MKJ8649-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 5730,
-    "stock": 18,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8649-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8649-710",
-    "modelName": "MKJ8649-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 5730,
-    "stock": 26,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8649-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8677-710",
-    "modelName": "MKJ8677-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 5790,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8677-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1727CZ-710",
-    "modelName": "MKC1727CZ-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 5880,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1727cz-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8082-040",
-    "modelName": "MKJ8082-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 6174,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8082-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1599AA-040",
-    "modelName": "MKC1599AA-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 6273,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1599aa-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1033AN-040",
-    "modelName": "MKC1033AN-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 6345,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1033an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1033AN-791",
-    "modelName": "MKC1033AN-791 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 6345,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1033an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1035A2-791",
-    "modelName": "MKC1035A2-791 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 6345,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1035a2-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1177AN-710",
-    "modelName": "MKC1177AN-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 6345,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1177an-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1177AN-040",
-    "modelName": "MKC1177AN-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 6372,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1177an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1243AN-710",
-    "modelName": "MKC1243AN-710 Kalpli Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 6372,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1243an-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1120AN-040",
-    "modelName": "MKC1120AN-040 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 6750,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1120an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1120AN-791",
-    "modelName": "MKC1120AN-791 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 6750,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1120an-791"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK7586",
     "modelName": "MK7586 Kadın Kol Saati",
     "brand": "Michael Kors",
@@ -14408,62 +11824,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kol-saati-p-mk8584"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1514AN-791",
-    "modelName": "MKC1514AN-791 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7185,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1514an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1035AN-791",
-    "modelName": "MKC1035AN-791 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7192,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1035an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1501AN-791",
-    "modelName": "MKC1501AN-791 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7192,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1501an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1504AN-791",
-    "modelName": "MKC1504AN-791 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7192,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1504an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1477AN-040",
-    "modelName": "MKC1477AN-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7238,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1477an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC164200-710",
-    "modelName": "MKC164200-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7425,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc164200-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1655CZ-040",
-    "modelName": "MKC1655CZ-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7492,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1655cz-040"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK7572",
     "modelName": "MK7572 Kadın Kol Saati",
     "brand": "Michael Kors",
@@ -14480,124 +11840,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7573"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1645CE-040",
-    "modelName": "MKC1645CE-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7650,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1645ce-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8554-710",
-    "modelName": "MKJ8554-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7755,
-    "stock": 22,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8554-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8652-040",
-    "modelName": "MKJ8652-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7770,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8652-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8652-710",
-    "modelName": "MKJ8652-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7770,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8652-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8666-040506",
-    "modelName": "MKJ8666-040506 Kadın Yüzük (55 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7770,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkj8666-040506"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8666-710506",
-    "modelName": "MKJ8666-710506 Kadın Yüzük (55 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7770,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkj8666-710506"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8626-710",
-    "modelName": "MKJ8626-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 7785,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8626-710"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK3178",
     "modelName": "MK3178 Kol Saati",
     "brand": "Michael Kors",
     "calculatedPrice": 7926,
     "stock": 164,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk3178"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1244AN-791",
-    "modelName": "MKC1244AN-791 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8055,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1244an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1244AN-040",
-    "modelName": "MKC1244AN-040 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8073,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1244an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1628AN-040",
-    "modelName": "MKC1628AN-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8073,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1628an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1628AN-710",
-    "modelName": "MKC1628AN-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8073,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1628an-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1628AN-791",
-    "modelName": "MKC1628AN-791 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8073,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1628an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1633AN-040",
-    "modelName": "MKC1633AN-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8073,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1633an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1346AN-710506",
-    "modelName": "MKC1346AN-710506 Kadın Yüzük (55 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8091,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkc1346an-710506"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK7543",
@@ -14624,46 +11872,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4965"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1726CZ-040",
-    "modelName": "MKC1726CZ-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8516,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1726cz-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ842200-040",
-    "modelName": "MKJ842200-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8516,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj842200-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1579BN-710",
-    "modelName": "MKC1579BN-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8676,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1579bn-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1608BN-710",
-    "modelName": "MKC1608BN-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8676,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1608bn-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1337AH-040",
-    "modelName": "MKC1337AH-040 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8685,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1337ah-040"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK8988",
     "modelName": "MK8988 Kol Saati",
     "brand": "Michael Kors",
@@ -14678,78 +11886,6 @@
     "calculatedPrice": 8752,
     "stock": 69,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-erkek-kol-saati-p-mk9255"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8675-710",
-    "modelName": "MKJ8675-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8760,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8675-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1824-040",
-    "modelName": "MKC1824-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8775,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1824-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1825-710",
-    "modelName": "MKC1825-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8775,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1825-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8520-040",
-    "modelName": "MKJ8520-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8775,
-    "stock": 30,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8520-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8567-710",
-    "modelName": "MKJ8567-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8775,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8567-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1727CZ-040",
-    "modelName": "MKC1727CZ-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8820,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1727cz-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1727CZ-791",
-    "modelName": "MKC1727CZ-791 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8820,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1727cz-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1673CZ-931",
-    "modelName": "MKC1673CZ-931 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8991,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1673cz-931"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1729CZ-040",
-    "modelName": "MKC1729CZ-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 8991,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-product-definition-p-mkc1729cz-040"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK7553",
@@ -14768,124 +11904,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7508"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1554AN-040",
-    "modelName": "MKC1554AN-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9180,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1554an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1346AN-040508",
-    "modelName": "MKC1346AN-040508 Kadın Yüzük (56 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9188,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkc1346an-040508"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1730CZ-040",
-    "modelName": "MKC1730CZ-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9188,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-product-definition-p-mkc1730cz-040"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK2747",
     "modelName": "MK2747 Kadın Kol Saati",
     "brand": "Michael Kors",
     "calculatedPrice": 9191,
     "stock": 25,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk2747"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8063-710506",
-    "modelName": "MKJ8063-710506 Kadın Yüzük (55 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9198,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkj8063-710506"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8063-710508",
-    "modelName": "MKJ8063-710508 Kadın Yüzük (56 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9198,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkj8063-710508"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1629AN-791",
-    "modelName": "MKC1629AN-791 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9207,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1629an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1007AA-040",
-    "modelName": "MKC1007AA-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9243,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1007aa-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1528AN-791",
-    "modelName": "MKC1528AN-791 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9243,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1528an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1540A2-791",
-    "modelName": "MKC1540A2-791 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9243,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1540a2-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1563A6-040",
-    "modelName": "MKC1563A6-040 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9243,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1563a6-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8596-710",
-    "modelName": "MKJ8596-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9735,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8596-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8665-040",
-    "modelName": "MKJ8665-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9735,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8665-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8665-710",
-    "modelName": "MKJ8665-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9735,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8665-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8502-710",
-    "modelName": "MKJ8502-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 9765,
-    "stock": 37,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8502-710"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK4989",
@@ -14936,14 +11960,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4956"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1641AN-931",
-    "modelName": "MKC1641AN-931 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10490,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1641an-931"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK4906",
     "modelName": "MK4906 Kadın Kol Saati",
     "brand": "Michael Kors",
@@ -14968,284 +11984,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4339"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1568AN-791",
-    "modelName": "MKC1568AN-791 Kalpli Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10575,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1568an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1569AN-791",
-    "modelName": "MKC1569AN-791 Kalpli Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10575,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1569an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1570AN-791",
-    "modelName": "MKC1570AN-791 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10575,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1570an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8478-710",
-    "modelName": "MKJ8478-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10710,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8478-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8482-710504",
-    "modelName": "MKJ8482-710504 Kadın Yüzük (52 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10710,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkj8482-710504"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8482-710506",
-    "modelName": "MKJ8482-710506 Kadın Yüzük (55 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10710,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkj8482-710506"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8483-710504",
-    "modelName": "MKJ8483-710504 Kadın Yüzük (52 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10710,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkj8483-710504"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8484-710504",
-    "modelName": "MKJ8484-710504 Kadın Yüzük (52 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10710,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkj8484-710504"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8487-710",
-    "modelName": "MKJ8487-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10710,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8487-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8530-931",
-    "modelName": "MKJ8530-931 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10710,
-    "stock": 132,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8530-931"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8627-710",
-    "modelName": "MKJ8627-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10710,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8627-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8472-710",
-    "modelName": "MKJ8472-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 19,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8472-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8473-710",
-    "modelName": "MKJ8473-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8473-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8474-710",
-    "modelName": "MKJ8474-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8474-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8476-710",
-    "modelName": "MKJ8476-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8476-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8477-710",
-    "modelName": "MKJ8477-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8477-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8488-710",
-    "modelName": "MKJ8488-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 49,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8488-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8510-931",
-    "modelName": "MKJ8510-931 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8510-931"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8563-710",
-    "modelName": "MKJ8563-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8563-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8578-710",
-    "modelName": "MKJ8578-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 12,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8578-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8664-040",
-    "modelName": "MKJ8664-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8664-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8664-710",
-    "modelName": "MKJ8664-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 16,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8664-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8673-710",
-    "modelName": "MKJ8673-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10725,
-    "stock": 26,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8673-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1108AN-791",
-    "modelName": "MKC1108AN-791 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10784,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1108an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1035AN-040",
-    "modelName": "MKC1035AN-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10785,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1035an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1035AN-710",
-    "modelName": "MKC1035AN-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10785,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1035an-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1206AN-040",
-    "modelName": "MKC1206AN-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10785,
-    "stock": 11,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1206an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1206AN-791",
-    "modelName": "MKC1206AN-791 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10785,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1206an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1246AN-040",
-    "modelName": "MKC1246AN-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10785,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1246an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1405AN-040",
-    "modelName": "MKC1405AN-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10785,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1405an-040"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK4988",
     "modelName": "MK4988 Kadın Kol Saati",
     "brand": "Michael Kors",
     "calculatedPrice": 10796,
     "stock": 186,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4988"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1519A2-791",
-    "modelName": "MKC1519A2-791 Kalpli Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10800,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1519a2-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1750CZ-040",
-    "modelName": "MKC1750CZ-040 Kalpli Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10800,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1750cz-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1750CZ-791",
-    "modelName": "MKC1750CZ-791 Kalpli Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10800,
-    "stock": 18,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1750cz-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8359CZ-040",
-    "modelName": "MKJ8359CZ-040  Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 10800,
-    "stock": 35,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8359cz-040"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK7547",
@@ -15280,22 +12024,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7635"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1519AN-040",
-    "modelName": "MKC1519AN-040 Kalpli Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 11100,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1519an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ842000-040",
-    "modelName": "MKJ842000-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 11259,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj842000-040"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK7509",
     "modelName": "MK7509 Kadın Kol Saati",
     "brand": "Michael Kors",
@@ -15318,22 +12046,6 @@
     "calculatedPrice": 11482,
     "stock": 193,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7616"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1634CE-040",
-    "modelName": "MKC1634CE-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 11493,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1634ce-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1648CZ-040",
-    "modelName": "MKC1648CZ-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 11493,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1648cz-040"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK6804",
@@ -15384,14 +12096,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-erkek-kol-saati-p-mk9230"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MK7613",
-    "modelName": "MK7613 Kadın Yüzük Saat",
-    "brand": "Michael Kors",
-    "calculatedPrice": 12056,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-saat-p-mk7613"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK6359",
     "modelName": "MK6359 Kadın Kol Saati",
     "brand": "Michael Kors",
@@ -15400,92 +12104,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk6359"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKJ8623-931",
-    "modelName": "MKJ8623-931 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 12675,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8623-931"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ0237-710B",
-    "modelName": "MKJ0237-710B Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 12690,
-    "stock": 28,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj0237-710b"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ0241-040B",
-    "modelName": "MKJ0241-040B Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 12690,
-    "stock": 134,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj0241-040b"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ0241-710B",
-    "modelName": "MKJ0241-710B Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 12690,
-    "stock": 129,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj0241-710b"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ0244-040B",
-    "modelName": "MKJ0244-040B Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 12690,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj0244-040b"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ0244-710B",
-    "modelName": "MKJ0244-710B Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 12690,
-    "stock": 29,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj0244-710b"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8650-040",
-    "modelName": "MKJ8650-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 12690,
-    "stock": 20,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8650-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1716CZ-040",
-    "modelName": "MKC1716CZ-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 12780,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1716cz-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1716CZ-710",
-    "modelName": "MKC1716CZ-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 12780,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1716cz-710"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK9256",
     "modelName": "MK9256 Erkek Kol Saati",
     "brand": "Michael Kors",
     "calculatedPrice": 12800,
     "stock": 10,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-erkek-kol-saati-p-mk9256"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC173200-710",
-    "modelName": "MKC173200-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13136,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc173200-710"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK4941",
@@ -15536,156 +12160,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-erkek-kol-saati-p-mk9193"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKJ8527-931",
-    "modelName": "MKJ8527-931 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13650,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8527-931"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8539-931",
-    "modelName": "MKJ8539-931 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13650,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8539-931"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1769-040",
-    "modelName": "MKC1769-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13665,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1769-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1769-710",
-    "modelName": "MKC1769-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13665,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1769-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8672-710",
-    "modelName": "MKJ8672-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13665,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8672-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8547-931",
-    "modelName": "MKJ8547-931 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13740,
-    "stock": 14,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8547-931"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MKO1079",
     "modelName": "MKO1079 Erkek Kol Saati",
     "brand": "Michael Kors",
     "calculatedPrice": 13784,
     "stock": 50,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-erkek-kol-saati-p-mko1079"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1208AN-040",
-    "modelName": "MKC1208AN-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13785,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1208an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1208AN-710",
-    "modelName": "MKC1208AN-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13785,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1208an-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1208AN-791",
-    "modelName": "MKC1208AN-791 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13785,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1208an-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1404AN-040",
-    "modelName": "MKC1404AN-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13785,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1404an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1631AN-710",
-    "modelName": "MKC1631AN-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13785,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1631an-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1730CZ-710",
-    "modelName": "MKC1730CZ-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13785,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-product-definition-p-mkc1730cz-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1747CZ-040",
-    "modelName": "MKC1747CZ-040 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13785,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1747cz-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1555AN-040506",
-    "modelName": "MKC1555AN-040506 Kadın Yüzük (55 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13800,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkc1555an-040506"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1555AN-791504",
-    "modelName": "MKC1555AN-791504 Kadın Yüzük (52 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13800,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkc1555an-791504"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1555AN-791506",
-    "modelName": "MKC1555AN-791506 Kadın Yüzük (55 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13800,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkc1555an-791506"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1555AN-791508",
-    "modelName": "MKC1555AN-791508 Kadın Yüzük (56 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13800,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkc1555an-791508"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MK4849SET",
-    "modelName": "MK4849SET Kadın Kol Saati Kolye ve Küpe Seti",
-    "brand": "Michael Kors",
-    "calculatedPrice": 13860,
-    "stock": 98,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4849set"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK4900",
@@ -15704,30 +12184,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk2991"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1518A2-791",
-    "modelName": "MKC1518A2-791 Kalpli Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 14085,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1518a2-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1518AN-040",
-    "modelName": "MKC1518AN-040 Kalpli Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 14100,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1518an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1520AN-040",
-    "modelName": "MKC1520AN-040 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 14100,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1520an-040"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK9196",
     "modelName": "MK9196 Erkek Kol Saati",
     "brand": "Michael Kors",
@@ -15742,14 +12198,6 @@
     "calculatedPrice": 14469,
     "stock": 2,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-erkek-kol-saati-p-mk9223"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC170700-710",
-    "modelName": "MKC170700-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 14480,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc170700-710"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK5605",
@@ -15800,100 +12248,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk6475"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKJ8466-710",
-    "modelName": "MKJ8466-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15645,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8466-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1714CZ-040",
-    "modelName": "MKC1714CZ-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15660,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1714cz-040"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK9240",
     "modelName": "MK9240 Erkek Kol Saati",
     "brand": "Michael Kors",
     "calculatedPrice": 15719,
     "stock": 13,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-erkek-kol-saati-p-mk9240"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1641AN-710",
-    "modelName": "MKC1641AN-710 Kalpli Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15735,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1641an-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1655CZ-791",
-    "modelName": "MKC1655CZ-791 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15735,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1655cz-791"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1674CZ-931508",
-    "modelName": "MKC1674CZ-931508 Kadın Yüzük (56 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15735,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkc1674cz-931508"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1729CZ-710",
-    "modelName": "MKC1729CZ-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15735,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-product-definition-p-mkc1729cz-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC174400-040",
-    "modelName": "MKC174400-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15750,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc174400-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC174400-710",
-    "modelName": "MKC174400-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15750,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc174400-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8415CZ-710",
-    "modelName": "MKJ8415CZ-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15750,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8415cz-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8416CZ-710",
-    "modelName": "MKJ8416CZ-710 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15750,
-    "stock": 9,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkj8416cz-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ841800-040",
-    "modelName": "MKJ841800-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15786,
-    "stock": 5,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj841800-040"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK3221",
@@ -15918,62 +12278,6 @@
     "calculatedPrice": 15939,
     "stock": 8,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7393"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MK4847",
-    "modelName": "MK4847 Kadın Yüzük Saat",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15948,
-    "stock": 6,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-saat-p-mk4847"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MK4873",
-    "modelName": "MK4873 Kadın Yüzük Saat",
-    "brand": "Michael Kors",
-    "calculatedPrice": 15948,
-    "stock": 17,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4873"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1554AN-710",
-    "modelName": "MKC1554AN-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 16065,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1554an-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1108AN-040",
-    "modelName": "MKC1108AN-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 16170,
-    "stock": 11,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1108an-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ835700-040",
-    "modelName": "MKJ835700-040  Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 16755,
-    "stock": 19,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj835700-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ835700-710",
-    "modelName": "MKJ835700-710  Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 16755,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj835700-710"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8277CZ-040",
-    "modelName": "MKJ8277CZ-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 16770,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8277cz-040"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK9252",
@@ -16024,28 +12328,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk2663"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MK1065SET",
-    "modelName": "MK1065SET Kadın Kol Saati Bileklik ve Küpe Seti",
-    "brand": "Michael Kors",
-    "calculatedPrice": 18018,
-    "stock": 50,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk1065set"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK3898",
     "modelName": "MK3898 Kadın Kol Saati",
     "brand": "Michael Kors",
     "calculatedPrice": 18564,
     "stock": 10,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk3898"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MK4884",
-    "modelName": "MK4884 Kadın Yüzük Saat",
-    "brand": "Michael Kors",
-    "calculatedPrice": 18564,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-saat-p-mk4884"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK4623",
@@ -16104,36 +12392,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk3514"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1811-040",
-    "modelName": "MKC1811-040 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 19575,
-    "stock": 4,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1811-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1813-040",
-    "modelName": "MKC1813-040 Kadın Küpe",
-    "brand": "Michael Kors",
-    "calculatedPrice": 19575,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kupe-p-mkc1813-040"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK9259",
     "modelName": "MK9259 Erkek Kol Saati",
     "brand": "Michael Kors",
     "calculatedPrice": 19717,
     "stock": 28,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-erkek-kol-saati-p-mk9259"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1630AN-710",
-    "modelName": "MKC1630AN-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 20145,
-    "stock": 11,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1630an-710"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK4827",
@@ -16190,14 +12454,6 @@
     "calculatedPrice": 20646,
     "stock": 36,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4841"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MK4848",
-    "modelName": "MK4848 Kadın Yüzük Saat",
-    "brand": "Michael Kors",
-    "calculatedPrice": 20646,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-saat-p-mk4848"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK6731",
@@ -16272,38 +12528,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7264"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1429AN-040504",
-    "modelName": "MKC1429AN-040504 Kadın Yüzük (52 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 21720,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkc1429an-040504"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKC1429AN-040506",
-    "modelName": "MKC1429AN-040506 Kadın Yüzük (55 mm)",
-    "brand": "Michael Kors",
-    "calculatedPrice": 21720,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-yuzuk-p-mkc1429an-040506"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8066-040",
-    "modelName": "MKJ8066-040 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 21720,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkj8066-040"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8414CZ-710",
-    "modelName": "MKJ8414CZ-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 21720,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8414cz-710"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK8947",
     "modelName": "MK8947 Erkek Kol Saati",
     "brand": "Michael Kors",
@@ -16374,14 +12598,6 @@
     "calculatedPrice": 23090,
     "stock": 3,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk3969"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MKJ8059-710",
-    "modelName": "MKJ8059-710 Kadın Kolye",
-    "brand": "Michael Kors",
-    "calculatedPrice": 23139,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkj8059-710"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK7520",
@@ -16704,14 +12920,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4634"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1548AN-710",
-    "modelName": "MKC1548AN-710 Kadın Bileklik",
-    "brand": "Michael Kors",
-    "calculatedPrice": 29610,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-bileklik-p-mkc1548an-710"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK7567",
     "modelName": "MK7567 Kadın Kol Saati",
     "brand": "Michael Kors",
@@ -16824,36 +13032,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4843"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MK4948SET",
-    "modelName": "MK4948SET Kadın Kol Saati ve Bileklik Seti",
-    "brand": "Michael Kors",
-    "calculatedPrice": 31815,
-    "stock": 88,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4948set"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MK7510SET",
-    "modelName": "MK7510SET Kadın Kol Saati ve Bileklik Seti",
-    "brand": "Michael Kors",
-    "calculatedPrice": 31815,
-    "stock": 17,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7510set"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MKO9005SET",
     "modelName": "MKO9005SET Kadın Kol Saati ve Kolye Seti",
     "brand": "Michael Kors",
     "calculatedPrice": 33390,
     "stock": 24,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mko9005set"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MK4839SET",
-    "modelName": "MK4839SET Kadın Kol Saati Bileklik ve Küpe Seti",
-    "brand": "Michael Kors",
-    "calculatedPrice": 34230,
-    "stock": 2,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4839set"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK7190",
@@ -17232,28 +13416,12 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7235"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MKC1699SET",
-    "modelName": "MKC1699SET Kadın Kolye ve Küpe Seti",
-    "brand": "Michael Kors",
-    "calculatedPrice": 39495,
-    "stock": 11,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kolye-p-mkc1699set"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK7390",
     "modelName": "MK7390 Kadın Kol Saati",
     "brand": "Michael Kors",
     "calculatedPrice": 41160,
     "stock": 1,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7390"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MK4992SET",
-    "modelName": "MK4992SET Kadın Kol Saati ve Bileklik Seti",
-    "brand": "Michael Kors",
-    "calculatedPrice": 41820,
-    "stock": 120,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4992set"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK9265",
@@ -17270,14 +13438,6 @@
     "calculatedPrice": 41865,
     "stock": 59,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7540"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MK7561SET",
-    "modelName": "MK7561SET Kadın Kol Saati Bileklik ve Küpe Seti",
-    "brand": "Michael Kors",
-    "calculatedPrice": 41865,
-    "stock": 27,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7561set"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK8344",
@@ -17312,14 +13472,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-erkek-kol-saati-p-mk8858"
   },
   {
-    "id": "SVS-MICHAEL-KORS-MK4815SET",
-    "modelName": "MK4815SET Kadın Kol Saati ve Bileklik Seti",
-    "brand": "Michael Kors",
-    "calculatedPrice": 41955,
-    "stock": 343,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk4815set"
-  },
-  {
     "id": "SVS-MICHAEL-KORS-MK7386",
     "modelName": "MK7386 Kadın Kol Saati",
     "brand": "Michael Kors",
@@ -17350,22 +13502,6 @@
     "calculatedPrice": 44160,
     "stock": 7,
     "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7640"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MK7655SET",
-    "modelName": "MK7655SET Kadın Kol Saati ve Bileklik Seti",
-    "brand": "Michael Kors",
-    "calculatedPrice": 44160,
-    "stock": 149,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk7655set"
-  },
-  {
-    "id": "SVS-MICHAEL-KORS-MK1062SET",
-    "modelName": "MK1062SET Kadın Kol Saati ve Bileklik Seti",
-    "brand": "Michael Kors",
-    "calculatedPrice": 44340,
-    "stock": 1,
-    "sourceUrl": "https://www.saatvesaat.com.tr/michael-kors-kadin-kol-saati-p-mk1062set"
   },
   {
     "id": "SVS-MICHAEL-KORS-MK9189",
@@ -17512,38 +13648,6 @@
     "sourceUrl": "https://www.saatvesaat.com.tr/versace-kol-saati-p-vrscve9200425"
   },
   {
-    "id": "SVS-VERSACE-VP-VRVX00225",
-    "modelName": "VP-VRVX00225 NXY Roller Kalem",
-    "brand": "Versace",
-    "calculatedPrice": 28740,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/versace-kalem-p-vp-vrvx00225"
-  },
-  {
-    "id": "SVS-VERSACE-VP-VRSC00224",
-    "modelName": "VP-VRSC00224 Reve Tükenmez Kalem",
-    "brand": "Versace",
-    "calculatedPrice": 28755,
-    "stock": 20,
-    "sourceUrl": "https://www.saatvesaat.com.tr/versace-tukenmez-kalem-p-vp-vrsc00224"
-  },
-  {
-    "id": "SVS-VERSACE-VP-VRSC00524",
-    "modelName": "VP-VRSC00524 Reve Tükenmez Kalem",
-    "brand": "Versace",
-    "calculatedPrice": 30045,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/versace-tukenmez-kalem-p-vp-vrsc00524"
-  },
-  {
-    "id": "SVS-VERSACE-VP-VRTC00124",
-    "modelName": "VP-VRTC00124 Honos Roller Kalem",
-    "brand": "Versace",
-    "calculatedPrice": 30045,
-    "stock": 12,
-    "sourceUrl": "https://www.saatvesaat.com.tr/versace-roller-kalem-p-vp-vrtc00124"
-  },
-  {
     "id": "SVS-VERSACE-VRSCVE8J00124",
     "modelName": "VRSCVE8J00124 Kadın Kol Saati",
     "brand": "Versace",
@@ -17606,38 +13710,6 @@
     "calculatedPrice": 30600,
     "stock": 30,
     "sourceUrl": "https://www.saatvesaat.com.tr/versace-kol-saati-p-vrscve6g00823"
-  },
-  {
-    "id": "SVS-VERSACE-VP-VRWJ00125",
-    "modelName": "VP-VRWJ00125 Helius Roller Kalem",
-    "brand": "Versace",
-    "calculatedPrice": 32670,
-    "stock": 8,
-    "sourceUrl": "https://www.saatvesaat.com.tr/versace-kalem-p-vp-vrwj00125"
-  },
-  {
-    "id": "SVS-VERSACE-VP-VRTC00324",
-    "modelName": "VP-VRTC00324 Honos Roller Kalem",
-    "brand": "Versace",
-    "calculatedPrice": 32685,
-    "stock": 3,
-    "sourceUrl": "https://www.saatvesaat.com.tr/versace-roller-kalem-p-vp-vrtc00324"
-  },
-  {
-    "id": "SVS-VERSACE-VP-VRVZ00125",
-    "modelName": "VP-VRVZ00125 Checkerboard Roller Kalem",
-    "brand": "Versace",
-    "calculatedPrice": 33975,
-    "stock": 7,
-    "sourceUrl": "https://www.saatvesaat.com.tr/versace-kalem-p-vp-vrvz00125"
-  },
-  {
-    "id": "SVS-VERSACE-VP-VRWJ00325",
-    "modelName": "VP-VRWJ00325 Helius Roller Kalem",
-    "brand": "Versace",
-    "calculatedPrice": 35280,
-    "stock": 10,
-    "sourceUrl": "https://www.saatvesaat.com.tr/versace-kalem-p-vp-vrwj00325"
   },
   {
     "id": "SVS-VERSACE-VRSCVE8J00424",

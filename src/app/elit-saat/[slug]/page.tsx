@@ -105,7 +105,7 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
               <p className="mt-6 text-sm leading-7 text-[#625a54]">{description}</p>
 
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                <Link href="/iletisim" className="flex min-h-[52px] items-center justify-center bg-[#171514] px-5 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#7f262b]">Satın alma talebi</Link>
+                <Link href={`/odeme?slug=${slug}`} className="flex min-h-[52px] items-center justify-center bg-[#171514] px-5 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#7f262b]">Satın Al</Link>
                 <a href="https://wa.me/905419305372" target="_blank" rel="noopener noreferrer" className="flex min-h-[52px] items-center justify-center border border-[#bcaea3] bg-white px-5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#382f2a] transition-colors hover:border-[#7f262b] hover:text-[#7f262b]">WhatsApp</a>
               </div>
             </div>

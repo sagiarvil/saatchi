@@ -43,8 +43,12 @@ def normalized(text: str) -> str:
 
 
 def brand_matches(item: dict, expected: str) -> bool:
-    model = normalized(item.get("modelName"))
     source = normalized(item.get("sourceUrl"))
+    if "?" in source or "page=" in source:
+        return False
+    model = normalized(item.get("modelName"))
+    if any(ak in model for ak in ["kordon", "kayis", "kayış", "cuir", "toka", "strap", "aksesuar"]):
+        return False
     if expected == "tag heuer":
         identity_ok = "tag heuer" in model or "tag-heuer" in source
     else:
