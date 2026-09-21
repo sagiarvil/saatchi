@@ -8,6 +8,22 @@
     "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
   },
   {
+    "id": "5004",
+    "modelName": "Rolex GMT-Master II 40mm 'Batman' Oyster Bilezik",
+    "brand": "Rolex",
+    "calculatedPrice": 1975000,
+    "stock": 1,
+    "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
+  },
+  {
+    "id": "5005",
+    "modelName": "Rolex GMT-Master II 40mm 'Sprite' Sol Tepe Yeşil/Siyah",
+    "brand": "Rolex",
+    "calculatedPrice": 1987500,
+    "stock": 1,
+    "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
+  },
+  {
     "id": "5006",
     "modelName": "Rolex Datejust 41mm Yivli Bezel & Mavi Kadran Jubilee",
     "brand": "Rolex",
@@ -73,7 +89,7 @@
   },
   {
     "id": "5019",
-    "modelName": "Rolex Oyster Perpetual 36mm Siyah Kadran",
+    "modelName": "Rolex Oyster Perpetual 36mm Parlak Siyah Kadran",
     "brand": "Rolex",
     "calculatedPrice": 1340980,
     "stock": 1,
@@ -144,14 +160,6 @@
     "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
   },
   {
-    "id": "5028",
-    "modelName": "Rolex Datejust 36mm Palm Motif Yeşil Kadran Jubilee",
-    "brand": "Rolex",
-    "calculatedPrice": 1775000,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
-  },
-  {
     "id": "5029",
     "modelName": "Rolex Datejust 36mm Siyah Kadran Fluted Bezel Jubilee",
     "brand": "Rolex",
@@ -180,14 +188,6 @@
     "modelName": "Rolex Oyster Perpetual 41mm Gümüş Kadran",
     "brand": "Rolex",
     "calculatedPrice": 1050000,
-    "stock": 1,
-    "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
-  },
-  {
-    "id": "5033",
-    "modelName": "Rolex Oyster Perpetual 36mm Kutlama 'Celebration' Kadran",
-    "brand": "Rolex",
-    "calculatedPrice": 1470000,
     "stock": 1,
     "sourceUrl": "https://www.chrono24.com.tr/rolex/index.htm"
   },
