@@ -68,7 +68,7 @@ const requirements = [
   ['VIP admin UI asks for a six-digit OTP', page.includes('2 Adımlı Doğrulama') && page.includes('one-time-code') && page.includes('loginOtp')],
   ['VIP admin repeated failures are throttled', sessionRoute.includes('assertAdminLoginNotThrottled(request)') && sessionRoute.includes('recordAdminLoginFailure(request)') && sessionRoute.includes("status: originError ? 403 : throttled ? 429") && vipAdminThrottle.includes('MAX_FAILURES = 5') && sessionRoute.includes("Retry-After")],
   ['mutations enforce same-origin', vipRoute.includes('assertSameOriginMutation(request)')],
-  ['production origin is pinned to canonical Saatchi host', session.includes("SAATCHI_PUBLIC_ORIGIN || 'https://saatchi.watch'") && session.includes("origin !== 'https://saatchi.watch'")],
+  ['production origin is pinned to canonical Saatchi host', session.includes("SAATCHI_PUBLIC_ORIGIN || 'https://saatchi.com.tr'") && session.includes("origin !== 'https://saatchi.com.tr'")],
   ['provenance-less mutations fail closed', session.includes('Yönetim isteği kaynak doğrulamasından geçemedi.')],
   ['VIP creation and revoke require admin session', vipAdminChecks >= 2],
   ['VIP admin list requires admin session', listRoute.includes('assertAdminSession(request)')],

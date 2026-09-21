@@ -53,7 +53,7 @@ try {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      referer: 'https://saatchi.watch/admin/viplink',
+      referer: 'https://saatchi.com.tr/admin/viplink',
     },
     body: JSON.stringify({ key: 'wrong-admin-key', otp: '000000' }),
   });
@@ -64,7 +64,7 @@ try {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      referer: 'https://saatchi.watch/vip-checkout',
+      referer: 'https://saatchi.com.tr/vip-checkout',
     },
     body: JSON.stringify({ token: 'invalid' }),
   });
@@ -75,7 +75,7 @@ try {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      referer: 'https://saatchi.watch/admin/viplink',
+      referer: 'https://saatchi.com.tr/admin/viplink',
     },
     body: JSON.stringify({ key: { nested: true }, otp: '000000' }),
   });
@@ -85,7 +85,7 @@ try {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      referer: 'https://saatchi.watch/vip-checkout',
+      referer: 'https://saatchi.com.tr/vip-checkout',
     },
     body: JSON.stringify({ token: 'invalid', unexpected: 'value' }),
   });
@@ -95,7 +95,7 @@ try {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      referer: 'https://saatchi.watch/vip-checkout',
+      referer: 'https://saatchi.com.tr/vip-checkout',
     },
     body: JSON.stringify({ token: 'invalid', arbitrary: '4111111111111111' }),
   });
@@ -108,7 +108,7 @@ try {
     method: 'POST',
     headers: {
       'content-type': 'application/json',
-      referer: 'https://saatchi.watch/vip-checkout',
+      referer: 'https://saatchi.com.tr/vip-checkout',
     },
     body: JSON.stringify({
       token: 'invalid',

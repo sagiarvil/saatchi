@@ -23,7 +23,7 @@ const merchant = {
   address: 'Menderes Caddesi No:231/B, Buca / İzmir',
   phone: '+90 541 930 53 72',
   supportPhone: '+90 539 823 41 41',
-  email: 'info@saatchi.watch',
+  email: 'info@saatchi.com.tr',
 };
 
 const steps = [

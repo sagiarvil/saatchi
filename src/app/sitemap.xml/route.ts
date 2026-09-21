@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const BASE_URL = 'https://saatchi.watch';
+  const BASE_URL = 'https://saatchi.com.tr';
   
   // A sitemapindex should ideally have lastmod. 
   // We use the current date (start of day) to avoid constant cache invalidation 

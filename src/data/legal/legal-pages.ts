@@ -19,11 +19,11 @@ export type LegalPageDefinition = {
 export const sellerIdentity = {
   operator: 'SEMİH SONBAHAR - SAATCHI',
   brand: 'SAATCHI',
-  channel: 'saatchi.watch',
+  channel: 'saatchi.com.tr',
   address: 'Menderes Caddesi No:231/B, Buca / İzmir',
   phone: '+90 541 930 53 72',
   supportPhone: '+90 539 823 41 41',
-  email: 'info@saatchi.watch',
+  email: 'info@saatchi.com.tr',
   taxOffice: 'Şirinyer V.D.',
   taxNumber: '7740298676',
   chamberRegistryNumber: '492956',
@@ -47,7 +47,7 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '1. Marka ve İşletmeci',
         paragraphs: [
-          'SAATCHI, saatchi.watch alan adı üzerinden seçili lüks saatlerin sunumunu, satışını ve satış sonrası müşteri süreçlerini yürüten ticari markadır. Site üzerindeki satış ve sözleşme süreçlerinin işletmecisi SEMİH SONBAHAR - SAATCHI’dır.',
+          'SAATCHI, saatchi.com.tr alan adı üzerinden seçili lüks saatlerin sunumunu, satışını ve satış sonrası müşteri süreçlerini yürüten ticari markadır. Site üzerindeki satış ve sözleşme süreçlerinin işletmecisi SEMİH SONBAHAR - SAATCHI’dır.',
           'SAATCHI ayrı bir tüzel kişilik iddiasında bulunmaz. Sipariş, tahsilat, faturalama, teslim, müşteri tanıma ve hukuki kayıt zinciri işletmeci nezdinde yürütülür.'
         ]
       },
@@ -79,7 +79,7 @@ export const legalPages: LegalPageDefinition[] = [
         bullets: [
           'VIP WhatsApp: +90 541 930 53 72',
           'Müşteri temsilcisi: +90 539 823 41 41',
-          'E-posta: info@saatchi.watch',
+          'E-posta: info@saatchi.com.tr',
           'Vergi Dairesi / VKN: Şirinyer V.D. / 7740298676',
           'Oda Sicil No: 492956',
           'Adres: Menderes Caddesi No:231/B, Buca / İzmir'
@@ -104,8 +104,8 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '1. Taraflar ve Satıcı Bilgileri',
         paragraphs: [
-          'İşbu sözleşme, satış kanalı SAATCHI / saatchi.watch olan SEMİH SONBAHAR - SAATCHI (“Satıcı”) ile elektronik ortamda sipariş veren tüketici (“Alıcı”) arasında kurulur.',
-          'Satıcı adresi Menderes Caddesi No:231/B, Buca / İzmir; iletişim telefonu +90 541 930 53 72; elektronik posta adresi info@saatchi.watch’tır. Vergi Dairesi Şirinyer V.D., VKN 7740298676 ve Oda Sicil No 492956’dır.'
+          'İşbu sözleşme, satış kanalı SAATCHI / saatchi.com.tr olan SEMİH SONBAHAR - SAATCHI (“Satıcı”) ile elektronik ortamda sipariş veren tüketici (“Alıcı”) arasında kurulur.',
+          'Satıcı adresi Menderes Caddesi No:231/B, Buca / İzmir; iletişim telefonu +90 541 930 53 72; elektronik posta adresi info@saatchi.com.tr’tır. Vergi Dairesi Şirinyer V.D., VKN 7740298676 ve Oda Sicil No 492956’dır.'
         ]
       },
       {
@@ -199,10 +199,10 @@ export const legalPages: LegalPageDefinition[] = [
         title: '1. Satıcı ve İletişim Bilgileri',
         bullets: [
           'Satıcı: SEMİH SONBAHAR - SAATCHI',
-          'Satış kanalı: SAATCHI / saatchi.watch',
+          'Satış kanalı: SAATCHI / saatchi.com.tr',
           'Adres: Menderes Caddesi No:231/B, Buca / İzmir',
           'Telefon: +90 541 930 53 72',
-          'E-posta: info@saatchi.watch'
+          'E-posta: info@saatchi.com.tr'
         ]
       },
       {
@@ -261,7 +261,7 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '1. Veri Sorumlusu',
         paragraphs: [
-          '6698 sayılı Kanun kapsamında veri sorumlusu SEMİH SONBAHAR - SAATCHI’dır. SAATCHI / saatchi.watch veri sorumlusunun dijital satış kanalıdır. Bu metin açık rıza metni değildir; aydınlatma yükümlülüğünün yerine getirilmesi amacıyla hazırlanmıştır.'
+          '6698 sayılı Kanun kapsamında veri sorumlusu SEMİH SONBAHAR - SAATCHI’dır. SAATCHI / saatchi.com.tr veri sorumlusunun dijital satış kanalıdır. Bu metin açık rıza metni değildir; aydınlatma yükümlülüğünün yerine getirilmesi amacıyla hazırlanmıştır.'
         ]
       },
       {
@@ -316,7 +316,7 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '8. İlgili Kişinin Hakları ve Başvuru',
         paragraphs: [
-          'İlgili kişiler Kanunun 11’inci maddesindeki haklarına ilişkin taleplerini veri sorumlusuna iletebilir. Başvurular kimliğin doğrulanmasına elverişli bilgiyle info@saatchi.watch üzerinden veya Menderes Caddesi No:231/B, Buca / İzmir adresine yöneltilebilir. Başvurular yürürlükteki usul ve süreler içinde sonuçlandırılır.'
+          'İlgili kişiler Kanunun 11’inci maddesindeki haklarına ilişkin taleplerini veri sorumlusuna iletebilir. Başvurular kimliğin doğrulanmasına elverişli bilgiyle info@saatchi.com.tr üzerinden veya Menderes Caddesi No:231/B, Buca / İzmir adresine yöneltilebilir. Başvurular yürürlükteki usul ve süreler içinde sonuçlandırılır.'
         ]
       },
       {
@@ -645,7 +645,7 @@ export const legalPages: LegalPageDefinition[] = [
     slug: 'kullanim-kosullari',
     title: 'Web Sitesi Kullanım Koşulları',
     eyebrow: 'SAATCHI Dijital Kullanım',
-    summary: 'saatchi.watch kullanımına, ürün sunumlarına, fikri haklara, güvenli kullanıma ve site üzerinden kurulan işlemlere ilişkin genel koşullardır.',
+    summary: 'saatchi.com.tr kullanımına, ürün sunumlarına, fikri haklara, güvenli kullanıma ve site üzerinden kurulan işlemlere ilişkin genel koşullardır.',
     version: '17.09.2026 · v1.0',
     references: ['6102 sayılı Türk Ticaret Kanunu', '6502 sayılı Tüketicinin Korunması Hakkında Kanun', '5651 sayılı Kanun ve uygulanabilir ikincil düzenlemeler'],
     sections: [
@@ -724,7 +724,7 @@ export const legalPages: LegalPageDefinition[] = [
       {
         title: '6. Güvenli İletişim',
         paragraphs: [
-          'SAATCHI personeli müşteriden mesaj, telefon veya e-posta yoluyla tek kullanımlık banka doğrulama kodu ya da CVV paylaşmasını istemez. Ödeme konusunda şüphe hâlinde yalnız saatchi.watch üzerindeki resmî iletişim kanalları kullanılmalıdır.'
+          'SAATCHI personeli müşteriden mesaj, telefon veya e-posta yoluyla tek kullanımlık banka doğrulama kodu ya da CVV paylaşmasını istemez. Ödeme konusunda şüphe hâlinde yalnız saatchi.com.tr üzerindeki resmî iletişim kanalları kullanılmalıdır.'
         ]
       }
     ]

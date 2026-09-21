@@ -9,8 +9,8 @@ function replace(file, search, replaceStr) {
 let vipRoute = fs.readFileSync('src/app/api/vip-link/route.ts', 'utf8');
 vipRoute = vipRoute.replace(/assertSameOriginMutation\(request\);/g, '// removed assertSameOriginMutation');
 
-// Fix the generated URL to use headers or hardcoded saatchi.watch since Firebase messes up request.url
-vipRoute = vipRoute.replace('const origin = new URL(request.url).origin;', "const origin = 'https://saatchi.watch';");
+// Fix the generated URL to use headers or hardcoded saatchi.com.tr since Firebase messes up request.url
+vipRoute = vipRoute.replace('const origin = new URL(request.url).origin;', "const origin = 'https://saatchi.com.tr';");
 
 fs.writeFileSync('src/app/api/vip-link/route.ts', vipRoute);
 

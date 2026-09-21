@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import saatlerData from '@/data/saatler.json';
 
 export async function GET() {
-  const BASE_URL = 'https://saatchi.watch';
+  const BASE_URL = 'https://saatchi.com.tr';
   
   // Prepend root /saatler
   const rootUrl = `${BASE_URL}/saatler`;

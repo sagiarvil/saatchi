@@ -22,7 +22,7 @@ export function Footer() {
             <ul className="space-y-4 text-gray-500 text-sm">
               <li>VIP WhatsApp: <br/><span className="text-white">+90 541 930 53 72</span></li>
               <li>Müşteri Hizmetleri: <br/><span className="text-white">+90 539 823 41 41</span></li>
-              <li>E-Posta: <br/><span className="text-white">info@saatchi.watch</span></li>
+              <li>E-Posta: <br/><span className="text-white">info@saatchi.com.tr</span></li>
               <li><Link href="/iletisim" className="hover:text-white transition-colors">Showroom Adresimiz</Link></li>
             </ul>
           </div>

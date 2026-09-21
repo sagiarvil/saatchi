@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const BASE_URL = 'https://saatchi.watch';
+  const BASE_URL = 'https://saatchi.com.tr';
   const routes = [
     '',
     '/kurumsal',

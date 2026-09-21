@@ -4,7 +4,7 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
-SITE_URL="https://saatchi.watch"
+SITE_URL="https://saatchi.com.tr"
 PROJECT_ID="studio-7658156126-ffb8e"
 HOSTING_TARGET="saatchi"
 

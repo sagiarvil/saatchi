@@ -8,4 +8,4 @@ Disallow: /api/vip-link
 Disallow: /api/admin-session
 Disallow: /api/admin/
 
-Sitemap: https://saatchi.watch/sitemap.xml
+Sitemap: https://saatchi.com.tr/sitemap.xml

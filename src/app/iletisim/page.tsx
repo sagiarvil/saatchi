@@ -84,8 +84,8 @@ export default function IletisimPage() {
               <p className="mt-8 text-[10px] font-semibold uppercase tracking-[0.23em] text-[#8c837b]">Müşteri Temsilcisi</p>
               <a href="tel:+905398234141" className="mt-3 block text-2xl font-light tracking-[-0.02em] text-[#f4f0e8] transition-colors hover:text-white">+90 539 823 41 41</a>
               <p className="mt-4 min-h-[84px] text-sm leading-7 text-[#a69f97]">Sipariş durumu, teslim koordinasyonu ve satış sonrası konular için doğrudan destek.</p>
-              <a href="mailto:info@saatchi.watch" className="mt-7 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#e0d5c9] transition-colors group-hover:text-white">
-                info@saatchi.watch <ArrowUpRight className="h-4 w-4" />
+              <a href="mailto:info@saatchi.com.tr" className="mt-7 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#e0d5c9] transition-colors group-hover:text-white">
+                info@saatchi.com.tr <ArrowUpRight className="h-4 w-4" />
               </a>
             </article>
           </div>

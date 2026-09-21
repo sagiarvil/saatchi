@@ -65,7 +65,7 @@ Latest main reviewed during strict closure pass: `9c22da36e4ad16537de43352a2aa74
 
 The two main-only commits reviewed in this pass affect product filtering, hero media, product images and generated Tailwind output. They do not modify the VIP/payment/admin API files. The PR CI must nevertheless pass on GitHub's current-main merge ref before the PR can leave draft state.
 
-Live `saatchi.watch` runtime could not be independently fetched from the available web runtime in this session, so production header/endpoint verification remains explicitly BLOCKED until post-deploy readback is available.
+Live `saatchi.com.tr` runtime could not be independently fetched from the available web runtime in this session, so production header/endpoint verification remains explicitly BLOCKED until post-deploy readback is available.
 
 ## Release rule
 

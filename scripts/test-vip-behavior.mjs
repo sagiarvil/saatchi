@@ -38,7 +38,7 @@ expectThrow(() => adminTotp.verifyAdminTotp('123456', totpNow), /base32 formatı
 process.env.VIP_ADMIN_TOTP_SECRET = totpSecret;
 
 adminThrottle.resetAdminLoginThrottleForTests();
-const throttleRequest = new Request('https://saatchi.watch/api/admin-session', {
+const throttleRequest = new Request('https://saatchi.com.tr/api/admin-session', {
   method: 'POST',
   headers: { 'x-appengine-user-ip': '203.0.113.10' },
 });
@@ -270,26 +270,26 @@ expectThrow(
   /Yalnız sonucu belirsiz veya zaman aşımına uğramış/i
 );
 
-const sameOriginRequest = new Request('https://saatchi.watch/api/vip-link', {
+const sameOriginRequest = new Request('https://saatchi.com.tr/api/vip-link', {
   method: 'POST',
-  headers: { origin: 'https://saatchi.watch', 'sec-fetch-site': 'same-origin' },
+  headers: { origin: 'https://saatchi.com.tr', 'sec-fetch-site': 'same-origin' },
 });
 assert.doesNotThrow(() => session.assertSameOriginMutation(sameOriginRequest));
 
-const crossOriginRequest = new Request('https://saatchi.watch/api/vip-link', {
+const crossOriginRequest = new Request('https://saatchi.com.tr/api/vip-link', {
   method: 'POST',
   headers: { origin: 'https://attacker.example', 'sec-fetch-site': 'cross-site' },
 });
 expectThrow(() => session.assertSameOriginMutation(crossOriginRequest), /Çapraz kaynak/i);
 
-const provenanceLessRequest = new Request('https://saatchi.watch/api/vip-link', { method: 'POST' });
+const provenanceLessRequest = new Request('https://saatchi.com.tr/api/vip-link', { method: 'POST' });
 expectThrow(() => session.assertSameOriginMutation(provenanceLessRequest), /kaynak doğrulamasından/i);
 
 process.env.NODE_ENV = 'production';
-assert.equal(session.expectedPublicOrigin(new Request('https://evil.example/api/payment')), 'https://saatchi.watch');
+assert.equal(session.expectedPublicOrigin(new Request('https://evil.example/api/payment')), 'https://saatchi.com.tr');
 process.env.SAATCHI_PUBLIC_ORIGIN = 'https://evil.example';
 expectThrow(
-  () => session.expectedPublicOrigin(new Request('https://saatchi.watch/api/payment')),
+  () => session.expectedPublicOrigin(new Request('https://saatchi.com.tr/api/payment')),
   /Beklenmeyen production public origin/i
 );
 delete process.env.SAATCHI_PUBLIC_ORIGIN;
@@ -332,14 +332,14 @@ expectThrow(
   () => paymentBoundary.normalizePaymentFormData({ cvv: '123' }),
   /kart verisi/i
 );
-const boundedRequest = new Request('https://saatchi.watch/api/payment', {
+const boundedRequest = new Request('https://saatchi.com.tr/api/payment', {
   method: 'POST',
   headers: { 'content-type': 'application/json' },
   body: JSON.stringify({ ok: true }),
 });
 assert.deepEqual(await paymentBoundary.readBoundedJsonBody(boundedRequest, 100), { ok: true });
 
-const oversizedRequest = new Request('https://saatchi.watch/api/payment', {
+const oversizedRequest = new Request('https://saatchi.com.tr/api/payment', {
   method: 'POST',
   headers: { 'content-type': 'application/json' },
   body: JSON.stringify({ value: 'x'.repeat(200) }),

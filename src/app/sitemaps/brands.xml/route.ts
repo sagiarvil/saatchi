@@ -9,7 +9,7 @@ function brandSlug(value: string) {
 }
 
 export async function GET() {
-  const BASE_URL = 'https://saatchi.watch';
+  const BASE_URL = 'https://saatchi.com.tr';
   
   const rootUrl = `${BASE_URL}/markalar`;
   let xmlUrls = `  <url>

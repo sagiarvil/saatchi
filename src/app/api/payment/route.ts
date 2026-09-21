@@ -208,7 +208,7 @@ export async function POST(request: Request) {
 
     const paymentPayload: Record<string, unknown> = {
       source: 'SAATCHI',
-      channel: 'saatchi.watch',
+      channel: 'saatchi.com.tr',
       idempotencyKey,
       isVipPayment: true,
       vipTitle: vip.name,

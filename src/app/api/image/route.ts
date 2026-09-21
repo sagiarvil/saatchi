@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
   try {
     const response = await fetch(url, {
       headers: {
-        'User-Agent': 'SaatchiWatch/1.0',
+        'User-Agent': 'Saatchi/1.0',
         'Accept': 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8'
       }
     });

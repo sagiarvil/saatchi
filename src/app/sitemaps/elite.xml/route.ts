@@ -4,7 +4,7 @@ import elitSaatlerData from '@/data/elit-saatler.json';
 const ELITE_BRANDS = new Set(['Rolex', 'Cartier', 'TAG Heuer', 'Rado']);
 
 export async function GET() {
-  const BASE_URL = 'https://saatchi.watch';
+  const BASE_URL = 'https://saatchi.com.tr';
   
   const rootUrl = `${BASE_URL}/elit-saat`;
   let xmlUrls = `  <url>

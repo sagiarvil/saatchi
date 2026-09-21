@@ -20,7 +20,7 @@ jobs:
     env:
       PROJECT_ID: studio-7658156126-ffb8e
       HOSTING_TARGET: saatchi
-      SITE_URL: https://saatchi.watch
+      SITE_URL: https://saatchi.com.tr
       FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_STUDIO_7658156126_FFB8E || secrets.FIREBASE_SERVICE_ACCOUNT || secrets.GCP_SERVICE_ACCOUNT_JSON }}
     steps:
       - name: Resolve exact release SHA
@@ -182,7 +182,7 @@ jobs:
             local name="$1" method="$2" url="$3" expected="$4" body="${5:-}"
             local args=(-sS -X "$method" --connect-timeout 10 --max-time 25 -o "$RUNNER_TEMP/$name.json" -w '%{http_code}')
             if [ -n "$body" ]; then
-              args+=(-H 'Content-Type: application/json' -H 'Origin: https://saatchi.watch' --data "$body")
+              args+=(-H 'Content-Type: application/json' -H 'Origin: https://saatchi.com.tr' --data "$body")
             fi
             local status
             status="$(curl "${args[@]}" "$url")"

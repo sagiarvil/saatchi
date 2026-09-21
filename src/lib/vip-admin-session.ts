@@ -76,9 +76,9 @@ export function verifyAdminKey(candidate: string) {
 
 export function expectedPublicOrigin(request: Request) {
   if (process.env.NODE_ENV !== 'production') return new URL(request.url).origin;
-  const configured = String(process.env.SAATCHI_PUBLIC_ORIGIN || 'https://saatchi.watch').trim();
+  const configured = String(process.env.SAATCHI_PUBLIC_ORIGIN || 'https://saatchi.com.tr').trim();
   const origin = new URL(configured).origin;
-  if (origin !== 'https://saatchi.watch') {
+  if (origin !== 'https://saatchi.com.tr') {
     throw new Error('Beklenmeyen production public origin yapılandırması.');
   }
   return origin;

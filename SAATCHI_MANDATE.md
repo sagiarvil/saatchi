@@ -1,7 +1,7 @@
 # SAATCHI PREMIUM COMMERCE EXPERIENCE MANDATE
 Version: 1.0
 Status: MANDATORY / NON-NEGOTIABLE
-Scope: saatchi.watch
+Scope: saatchi.com.tr
 Reference UX Architecture: Belgin Kuyumculuk
 Visual Identity: SAATCHI
 
@@ -1136,4 +1136,4 @@ SAATCHI WATCH PRODUCT INTELLIGENCE
 ×
 SAATCHI PREMIUM VISUAL IDENTITY
 =
-SAATCHI.WATCH
+SAATCHI.COM.TR

@@ -27,7 +27,7 @@ jobs:
           EXPECTED_SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
         run: |
           set -euo pipefail
-          BASE='https://saatchi.watch'
+          BASE='https://saatchi.com.tr'
           TMP="$(mktemp -d)"
           trap 'rm -rf "$TMP"' EXIT
 
@@ -35,7 +35,7 @@ jobs:
             local name="$1" method="$2" url="$3" expected="$4" body="${5:-}"
             local args=(-sS -X "$method" -D "$TMP/$name.headers" -o "$TMP/$name.body" -w '%{http_code}' --connect-timeout 10 --max-time 25)
             if [ -n "$body" ]; then
-              args+=(-H 'Content-Type: application/json' -H 'Origin: https://saatchi.watch' --data "$body")
+              args+=(-H 'Content-Type: application/json' -H 'Origin: https://saatchi.com.tr' --data "$body")
             fi
             local status
             status="$(curl "${args[@]}" "$url")"

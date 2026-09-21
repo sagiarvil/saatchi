@@ -43,7 +43,7 @@ export default function VipLinkGenerator() {
     };
     
     const token = btoa(encodeURIComponent(JSON.stringify(payload)));
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://saatchi.watch';
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://saatchi.com.tr';
     
     // vip-checkout'a parametreleri base64 olarak (p) veya düz yollayabiliriz. 
     // Şimdilik düz okunan amount ve orderId kullanıyoruz (Saatchi stili)
