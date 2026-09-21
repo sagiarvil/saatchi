@@ -20,6 +20,7 @@ const PURE_ACCESSORY_PATTERNS = [
 const SWISS_BRANDS = ['TAG Heuer', 'Rado', 'Tissot'];
 const KONYALI_SVS_BRANDS = ['TAG Heuer', 'Rado', 'Tissot', 'Calvin Klein', 'Michael Kors', 'Versace'];
 const MAX_CATALOG_PRICE = 1_700_000;
+const MAX_ROLEX_PRICE = 2_000_000;
 const CARREN_FIXED_PRICE = 19_990;
 
 const failures = [];
@@ -46,20 +47,39 @@ for (const item of carrenItems) {
   }
 }
 
-// 3. ROLEX & CARTIER INVARIANTS (2.50 Katsayısı + 1.7M Tavan)
-const rcItems = allItems.filter(x => x.brand === 'Rolex' || x.brand === 'Cartier');
-if (rcItems.length < 15) {
-  failures.push(`[ROLEX/CARTIER COUNT LOW] En az 15 adet tavan altı Rolex/Cartier olmalı, bulunan: ${rcItems.length}`);
+// 3. ROLEX & CARTIER INVARIANTS (2.50 Katsayısı | Rolex 2M Tavan, Cartier 1.7M Tavan)
+const rolexItems = allItems.filter(x => x.brand === 'Rolex');
+const cartierItems = allItems.filter(x => x.brand === 'Cartier');
+const rcItems = [...rolexItems, ...cartierItems];
+
+if (rolexItems.length < 15) {
+  failures.push(`[ROLEX COUNT LOW] En az 15 adet Rolex olmalı, bulunan: ${rolexItems.length}`);
 }
-for (const item of rcItems) {
-  if (item.pricingRule !== 'FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50') {
-    failures.push(`[RC RULE INVALID] ID: ${item.id} | Rule: ${item.pricingRule}`);
+if (cartierItems.length < 10) {
+  failures.push(`[CARTIER COUNT LOW] En az 10 adet Cartier olmalı, bulunan: ${cartierItems.length}`);
+}
+
+for (const item of rolexItems) {
+  if (item.pricingRule !== 'FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50' && item.pricingRule !== 'CHRONO24_TR_X_2_50') {
+    failures.push(`[ROLEX RULE INVALID] ID: ${item.id} | Rule: ${item.pricingRule}`);
   }
-  if (item.calculatedPrice > MAX_CATALOG_PRICE) {
-    failures.push(`[RC CEILING EXCEEDED] ID: ${item.id} | Fiyat: ${item.calculatedPrice} > ${MAX_CATALOG_PRICE}`);
+  if (item.calculatedPrice > MAX_ROLEX_PRICE) {
+    failures.push(`[ROLEX CEILING EXCEEDED] ID: ${item.id} | Fiyat: ${item.calculatedPrice} > ${MAX_ROLEX_PRICE}`);
   }
   if (item.calculatedPrice < 250_000) {
-    failures.push(`[RC SUSPICIOUS LOW PRICE] ID: ${item.id} | Fiyat çok düşük: ${item.calculatedPrice}`);
+    failures.push(`[ROLEX SUSPICIOUS LOW PRICE] ID: ${item.id} | Fiyat çok düşük: ${item.calculatedPrice}`);
+  }
+}
+
+for (const item of cartierItems) {
+  if (item.pricingRule !== 'FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50' && item.pricingRule !== 'CARTIER_TR_X_2_50') {
+    failures.push(`[CARTIER RULE INVALID] ID: ${item.id} | Rule: ${item.pricingRule}`);
+  }
+  if (item.calculatedPrice > MAX_CATALOG_PRICE) {
+    failures.push(`[CARTIER CEILING EXCEEDED] ID: ${item.id} | Fiyat: ${item.calculatedPrice} > ${MAX_CATALOG_PRICE}`);
+  }
+  if (item.calculatedPrice < 200_000) {
+    failures.push(`[CARTIER SUSPICIOUS LOW PRICE] ID: ${item.id} | Fiyat çok düşük: ${item.calculatedPrice}`);
   }
 }
 

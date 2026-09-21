@@ -71,10 +71,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - **Fiyatlama Formülü:** Cartier Türkiye resmi sitesinden alınan orijinal TL (₺) fiyatının üzerine doğrudan **2.5 katı** (x2.5) artış yansıtılarak Saatchi satış fiyatı hesaplanacaktır.
 - **Fiyat Tavanı (Max Limit):** Satış fiyatı 1.700.000 TL'yi aşan HİÇBİR Cartier saat web sitemize eklenmeyecektir (Kaynak fiyatı en fazla 680.000 TL olabilir).
 
-## 12. Rolex Fiyatlama ve Kaynak Kuralı (YENİ KURAL)
-- **Veri Kaynağı:** Rolex saatlerin fiyatları, görselleri ve model bilgileri SADECE `https://www.chrono24.com.tr/rolex/index.htm` adresinden alınacaktır. Ersan Diamonds veya eski kaynaklar tamamen iptal edilmiştir.
-- **Fiyatlama Formülü:** Chrono24'ten alınan Türkiye fiyatının üzerine doğrudan **2.5 katı** (x2.5) artış yansıtılarak Saatchi satış fiyatı hesaplanacaktır.
-- **Fiyat Tavanı (Max Limit):** Tüm markalarda olduğu gibi, Rolex için de satış fiyatı 1.700.000 TL'yi aşan HİÇBİR saat web sitemize eklenmeyecektir. Limit üstü saatler listeden çıkarılır.
+## 12. Rolex Fiyatlama ve Kaynak Kuralı (GÜNCEL KURAL)
+- **Veri Kaynağı:** Rolex saatlerin fiyatları, görselleri ve model bilgileri SADECE `https://www.chrono24.com.tr/rolex/index.htm` adresinden alınacaktır.
+- **Fiyatlama Formülü:** Chrono24'ten alınan fiyatın üzerine doğrudan **2.5 katı** (x2.5) artış yansıtılarak Saatchi satış fiyatı hesaplanacaktır.
+- **Fiyat Tavanı (Max Limit):** Rolex için 2.5 kat arttırılmış satış fiyatı 2.000.000 TL'yi aşan HİÇBİR saat web sitemize eklenmeyecektir (Kaynak fiyatı en fazla 800.000 TL olabilir). 2.000.000 TL üstü saatler listeden çıkarılır.
 
 ## 13. Gerçek ve Profesyonel Ürün Görseli Kuralı (YENİ KURAL)
 - **Profesyonel Görsel Zorunluluğu:** Sitede sergilenen tüm saat görselleri %100 profesyonel, önden çekilmiş, yüksek çözünürlüklü ve sadece saate odaklanan ürün (packshot) görselleri olmak ZORUNDADIR. 
@@ -86,7 +86,8 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 2. **Saat Dışı Ürün Yasağı:** Katalogda (`saatler.json` ve `elit-saatler.json`) tek başına satılan kolye, bileklik, küpe, yüzük, cüzdan, parfüm, saat kayışı veya aksesuarlar kesinlikle barındırılamaz. Yalnızca orijinal kol saatleri listelenebilir.
 3. **Fiyat İnvariant Kilidi:**
    - **Carren:** İstisnasız sabit 19.990 TL'dir.
-   - **Rolex & Cartier:** Döviz.com satış kuru ve 2.50 katsayısı (%150 marj) ile hesaplanır; 1.700.000 TL tavanını aşanlar sitede listelenmez.
+   - **Rolex:** Chrono24 Türkiye (https://www.chrono24.com.tr/rolex/index.htm) kaynaklı fiyatın 2.50 katıdır (x2.5 artış); 2.000.000 TL tavanını aşanlar sitede listelenmez.
+   - **Cartier:** Cartier Türkiye resmi sitesi fiyatının 2.50 katıdır; 1.700.000 TL tavanını aşanlar sitede listelenmez.
    - **Konyalı Saat & Saat&Saat:** Kaynak TL fiyatının 1.50 katıdır. İsviçre markalarında (TAG Heuer, Rado, Tissot) 10.000 TL altında ürün barındırılamaz.
 4. **Otomatik Senkronizasyon:** `npm run sync:pricing` komutu katalogdaki tüm fiyat formatlarını (`price` string'i ile `calculatedPrice` değerini) ve PayTR tablosunu sıfır sapmayla senkronize eder.
 

@@ -5,6 +5,7 @@ import "./tailwind.css";
 import { PremiumBackButton } from "@/components/ui/PremiumBackButton";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://saatchi.com.tr"),
   icons: {
     icon: '/favicon.svg?v=2',
     shortcut: '/favicon.svg?v=2',
