@@ -3,6 +3,7 @@ import saatlerData from '@/data/saatler.json';
 import elitSaatlerData from '@/data/elit-saatler.json';
 
 const MAX_CATALOG_PRICE = 1700000;
+const MAX_ROLEX_PRICE = 2000000;
 
 function brandSlug(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -18,9 +19,11 @@ export async function GET() {
     <xhtml:link rel="alternate" hreflang="tr" href="${rootUrl}" />
   </url>\n`;
 
-  const allWatches = [...(saatlerData as any[]), ...(elitSaatlerData as any[])].filter(w => 
-    Number(w.calculatedPrice || 0) > 0 && Number(w.calculatedPrice || 0) <= MAX_CATALOG_PRICE
-  );
+  const allWatches = [...(saatlerData as any[]), ...(elitSaatlerData as any[])].filter(w => {
+    const p = Number(w.calculatedPrice || 0);
+    if (p <= 0) return false;
+    return w.brand === 'Rolex' ? p <= MAX_ROLEX_PRICE : p <= MAX_CATALOG_PRICE;
+  });
 
   const brandsSet = new Set<string>();
   allWatches.forEach(w => {
