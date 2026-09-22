@@ -150,6 +150,7 @@ if (failures.length > 0) {
 
 console.log(`✅ SAATCHI CATALOG INTEGRITY GUARD: PASS (${allItems.length} ürün eksiksiz doğrulandı)`);
 console.log(`   - Carren: ${carrenItems.length} adet (19.990 ₺ sabit KORUNDU)`);
-console.log(`   - Rolex/Cartier: ${rcItems.length} adet (x2.50 marj + 1.7M tavan KORUNDU)`);
+console.log(`   - Rolex: ${rolexItems.length} adet (x2.50 marj + 2.000.000 ₺ tavan KORUNDU)`);
+console.log(`   - Cartier: ${cartierItems.length} adet (x2.50 marj + 1.700.000 ₺ tavan KORUNDU)`);
 console.log(`   - Konyalı/Saat&Saat: ${allItems.length - carrenItems.length - rcItems.length} adet (x1.50 marj KORUNDU)`);
 console.log(`   - PayTR & Fiyat Formatları: %100 Senkronize`);
