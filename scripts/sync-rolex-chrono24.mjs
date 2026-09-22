@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
- * SAATCHI — Chrono24 Rolex Catalog & Verified Packshot Synchronizer
+ * SAATCHI — Chrono24 Rolex Catalog & Local Verified Packshot Synchronizer
  * 
  * Veri Kaynağı: https://www.chrono24.com.tr/rolex/index.htm
  * Fiyat Formülü: Chrono24 Fiyatı x 2.50 (+%150 Artış)
  * Fiyat Tavanı: Maksimum 2.000.000 TL (2.000.000 TL üzeri filtrelenir)
- * Görsel Standardı: Her modelin BİREBİR kendi referansına, kadran rengine ve bileziğine ait %100 profesyonel packshot
+ * Görsel Standardı: Yerel sunucudan (/images/products/elite/rolex-*.jpg) %100 BİREBİR stüdyo packshot
  */
 
 import fs from 'node:fs';
@@ -17,38 +17,50 @@ const CHRONO24_ROLEX_URL = 'https://www.chrono24.com.tr/rolex/index.htm';
 const MAX_ROLEX_PRICE = 2_000_000;
 const MARKUP = 2.50;
 
-// %100 Model-Kadran-Bezel Eşleşmesi Doğrulanmış Rolex Modelleri
+// %100 Yerel Dosyası Mevcut ve Birebir Eşleşen Rolex Modelleri
 const CHRONO24_ROLEX_MODELS = [
   {
     id: '5001',
     ref: '126610LN',
     modelName: 'Rolex Submariner Date 41mm Siyah Kadran & Cerachrom Bezel',
     originalPrice: 775000,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-126610ln-5001.jpg',
+    image: '/images/products/elite/rolex-126610ln-5001.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
     condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: 'Chrono24 Türkiye pazarının en popüler dalgıç modeli: 41mm Oystersteel kasa, siyah Cerachrom bezel, siyah kadran ve 3235 kalibre mekanizma.'
+    description: 'Chrono24 Türkiye pazarının en popüler dalgıç saati: 41mm Oystersteel kasa, siyah Cerachrom seramik bezel ve 3235 kalibre mekanizma.'
   },
   {
     id: '5004',
     ref: '126710BLNR',
     modelName: 'Rolex GMT-Master II 40mm \'Batman\' Oyster Bilezik',
     originalPrice: 790000,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-126710blnr-5004.jpg',
+    image: '/images/products/elite/rolex-126710blnr-5004.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
     condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: 'Mavi ve siyah iki renkli Cerachrom 24 saat bezel, siyah kadran, bağımsız 24 saat GMT ibresi ve üç parçalı Oyster bilezik.'
+    description: 'Mavi ve siyah iki renkli Cerachrom seramik 24 saat bezel, siyah kadran, bağımsız 24 saat GMT ibresi ve üç parçalı Oyster bilezik.'
+  },
+  {
+    id: '5212',
+    ref: '126710BLNR-0002',
+    modelName: 'Rolex GMT-Master II 40mm \'Batgirl\' Jubilee Bilezik',
+    originalPrice: 790000,
+    image: '/images/products/elite/rolex-126710blnr-0002-5212.jpg',
+    gender: 'Erkek',
+    category: 'Elit Kategori',
+    stock: 1,
+    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
+    description: 'Mavi-siyah Cerachrom bezelin beş parçalı konforlu Jubilee bilezik ile birleşimi olan efsanevi Batgirl GMT-Master II.'
   },
   {
     id: '5005',
     ref: '126720VTNR',
     modelName: 'Rolex GMT-Master II 40mm \'Sprite\' Sol Tepe Yeşil/Siyah',
     originalPrice: 795000,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-126720vtnr-5005.jpg',
+    image: '/images/products/elite/rolex-126720vtnr-5005.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
@@ -56,11 +68,23 @@ const CHRONO24_ROLEX_MODELS = [
     description: 'Sol tarafa konumlandırılmış kurma kolu (Destro), yeşil ve siyah Cerachrom seramik çerçeve ve Jubilee bilezik.'
   },
   {
+    id: '5215',
+    ref: '126710GRNR',
+    modelName: 'Rolex GMT-Master II 40mm \'Bruce Wayne\' Siyah/Gri Cerachrom Bezel Jubilee',
+    originalPrice: 798000,
+    image: '/images/products/elite/rolex-126710grnr-5215.jpg',
+    gender: 'Erkek',
+    category: 'Elit Kategori',
+    stock: 1,
+    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
+    description: 'Yeni nesil gri-siyah Cerachrom bezel, parlak siyah kadran, yeşil GMT ibresi ve Jubilee bilezikli Bruce Wayne.'
+  },
+  {
     id: '5006',
-    ref: '126334',
+    ref: '126334-0002',
     modelName: 'Rolex Datejust 41mm Yivli Bezel & Mavi Kadran Jubilee',
     originalPrice: 768000,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-126334-0002-5006.jpg',
+    image: '/images/products/elite/rolex-126334-0002-5006.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
@@ -69,10 +93,10 @@ const CHRONO24_ROLEX_MODELS = [
   },
   {
     id: '5007',
-    ref: '126334',
+    ref: '126334-0014',
     modelName: 'Rolex Datejust 41mm Wimbledon Yeşil Romen Rakamlı',
     originalPrice: 768000,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-126334-0014-5007.jpg',
+    image: '/images/products/elite/rolex-126334-0014-5007.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
@@ -80,23 +104,95 @@ const CHRONO24_ROLEX_MODELS = [
     description: 'İkonik Wimbledon kadranı: arduvaz gri zemin üzerine yeşil çerçeveli siyah Romen rakamları, beyaz altın yivli bezel ve Jubilee bilezik.'
   },
   {
+    id: '5218',
+    ref: '126334-0028',
+    modelName: 'Rolex Datejust 41mm Yivli Bezel Nane Yeşili Kadran Jubilee',
+    originalPrice: 780000,
+    image: '/images/products/elite/rolex-126334-0028-5218.jpg',
+    gender: 'Erkek',
+    category: 'Elit Kategori',
+    stock: 1,
+    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
+    description: 'Güneş ışını desenli nane yeşili (mint green) kadran, 18 ayar beyaz altın yivli bezel ve Jubilee bilezik.'
+  },
+  {
+    id: '5219',
+    ref: '126334-0004',
+    modelName: 'Rolex Datejust 41mm Yivli Bezel Rhodium Gri Kadran Jubilee',
+    originalPrice: 760000,
+    image: '/images/products/elite/rolex-126334-0004-5219.jpg',
+    gender: 'Erkek',
+    category: 'Elit Kategori',
+    stock: 1,
+    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
+    description: 'Arduvaz rodyum gri güneş ışını kadran, 18 ayar beyaz altın yivli bezel ve Jubilee bilezik.'
+  },
+  {
+    id: '5220',
+    ref: '126300-0001',
+    modelName: 'Rolex Datejust 41mm Düz Bezel Parlak Mavi Kadran Oyster',
+    originalPrice: 540000,
+    image: '/images/products/elite/rolex-126300-0001-5220.jpg',
+    gender: 'Erkek',
+    category: 'Elit Kategori',
+    stock: 1,
+    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
+    description: 'Düz parlatılmış çelik bezel, parlak mavi güneş ışını kadran ve sağlam Oyster bilezik.'
+  },
+  {
     id: '5008',
-    ref: '126234',
-    modelName: 'Rolex Datejust 36mm Mavi Fluted Motif Kadran Jubilee',
-    originalPrice: 695139,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-126234-0050-5008.jpg',
+    ref: '126234-0050',
+    modelName: 'Rolex Datejust 36mm Palm Motiv Yeşil Kadran Jubilee',
+    originalPrice: 710000,
+    image: '/images/products/elite/rolex-126234-0050-5008.jpg',
     gender: 'Unisex',
     category: 'Elit Kategori',
     stock: 1,
     condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: '36mm klasik kasa ölçüsü, yivli motife sahip derin mavi kadran, beyaz altın yivli bezel ve konforlu Jubilee bilezik.'
+    description: 'Zeytin yeşili palmiye yaprağı lazer motifli özel kadran, beyaz altın yivli bezel ve Jubilee bilezik.'
+  },
+  {
+    id: '5223',
+    ref: '126234-0051',
+    modelName: 'Rolex Datejust 36mm Mavi Yivli Motif Kadran Jubilee',
+    originalPrice: 695000,
+    image: '/images/products/elite/rolex-126234-0051-5223.jpg',
+    gender: 'Unisex',
+    category: 'Elit Kategori',
+    stock: 1,
+    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
+    description: '36mm kasa, yivli motife sahip derin mavi kadran, beyaz altın yivli bezel ve Jubilee bilezik.'
+  },
+  {
+    id: '5224',
+    ref: '126234-0045',
+    modelName: 'Rolex Datejust 36mm Pembe Kadran Elmas İndeks Jubilee',
+    originalPrice: 720000,
+    image: '/images/products/elite/rolex-126234-0045-5224.jpg',
+    gender: 'Kadın',
+    category: 'Elit Kategori',
+    stock: 1,
+    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
+    description: 'Pudra pembe kadran üzerinde pırlanta elmas saat indeksleri, beyaz altın yivli bezel ve Jubilee bilezik.'
+  },
+  {
+    id: '5225',
+    ref: '126200-0020',
+    modelName: 'Rolex Datejust 36mm Klasik Yeşil Kadran Oyster',
+    originalPrice: 490000,
+    image: '/images/products/elite/rolex-126200-0020-5225.jpg',
+    gender: 'Unisex',
+    category: 'Elit Kategori',
+    stock: 1,
+    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
+    description: '36mm düz çelik bezel, güneş ışını nane yeşili kadran ve konforlu Oyster bilezik.'
   },
   {
     id: '5011',
     ref: '124060',
     modelName: 'Rolex Submariner No-Date 41mm Oystersteel',
     originalPrice: 674991,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-submariner-automatic-chronometer-black-dial-mens-watch-124060bkso-m1240600001_1.jpg',
+    image: '/images/products/elite/rolex-124060-5011.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
@@ -108,7 +204,7 @@ const CHRONO24_ROLEX_MODELS = [
     ref: '126610LV',
     modelName: 'Rolex Submariner Date 41mm \'Kermit / Starbucks\' Yeşil Bezel',
     originalPrice: 786000,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-126610lv-5012.jpg',
+    image: '/images/products/elite/rolex-126610lv-5012.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
@@ -120,7 +216,7 @@ const CHRONO24_ROLEX_MODELS = [
     ref: '124270',
     modelName: 'Rolex Explorer 36mm Oystersteel Siyah Kadran',
     originalPrice: 439993,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-124270-5014.jpg',
+    image: '/images/products/elite/rolex-124270-5014.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
@@ -128,11 +224,23 @@ const CHRONO24_ROLEX_MODELS = [
     description: '36mm orijinal miras boyutu, Chromalight 3-6-9 rakamlı siyah kadran ve dayanıklı Oystersteel kasa.'
   },
   {
+    id: '5236',
+    ref: '224270',
+    modelName: 'Rolex Explorer 40mm Oystersteel Siyah Kadran',
+    originalPrice: 472000,
+    image: '/images/products/elite/rolex-224270-5236.jpg',
+    gender: 'Erkek',
+    category: 'Elit Kategori',
+    stock: 1,
+    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
+    description: 'Genişletilmiş 40mm kasa formatı, Chromalight 3-6-9 rakamları ve güçlü ergonomik bilek duruşu.'
+  },
+  {
     id: '5015',
-    ref: '226570',
+    ref: '226570-0001',
     modelName: 'Rolex Explorer II 42mm Beyaz \'Polar\' Kadran',
     originalPrice: 602740,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-226570-0001-5015.jpg',
+    image: '/images/products/elite/rolex-226570-0001-5015.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
@@ -140,71 +248,11 @@ const CHRONO24_ROLEX_MODELS = [
     description: '42mm kasa, mat beyaz Polar kadran, turuncu 24 saat GMT ibresi ve 24 saat dereceli sabit çelik bezel.'
   },
   {
-    id: '5018',
-    ref: '124300',
-    modelName: 'Rolex Oyster Perpetual 41mm Turkuaz Mavi \'Tiffany\' Kadran',
-    originalPrice: 512244,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-124300-0006-5018.jpg',
-    gender: 'Unisex',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: 'İkonik Turkuaz Mavi (Tiffany) lakeli kadran, 41mm paslanmaz çelik Oyster kasa ve 3230 kalibre mekanizma.'
-  },
-  {
-    id: '5019',
-    ref: '126000',
-    modelName: 'Rolex Oyster Perpetual 36mm Parlak Siyah Kadran',
-    originalPrice: 536392,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-126000-0014-5019.jpg',
-    gender: 'Unisex',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: '36mm zamansız gövde yapısı, parlak güneş ışını siyah kadran ve Oysterlock güvenlik tokalı çelik bilezik.'
-  },
-  {
-    id: '5020',
-    ref: '126600',
-    modelName: 'Rolex Sea-Dweller 43mm Oystersteel & Siyah Kadran Kırmızı Yazı',
-    originalPrice: 658599,
-    image: 'https://www.belginkuyumculuk.com/images/products/elite/rolex-126600-5020.jpg',
-    gender: 'Erkek',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: '43mm profesyonel derin deniz saati, kırmızı Sea-Dweller kabartma yazısı, helyum vanası ve 1.220 metre su geçirmezlik.'
-  },
-  {
-    id: '5021',
-    ref: '126900',
-    modelName: 'Rolex Air-King 40mm Oystersteel Siyah Kadran',
-    originalPrice: 448000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-air-king-automatic-chronometer-black-dial-mens-watch-126900-0001_1.jpg',
-    gender: 'Erkek',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: 'Havacılık mirasını yaşatan 40mm Oystersteel kasa, kurma kolu koruyucuları ve yeşil Rolex logolu karakteristik siyah kokpit kadranı.'
-  },
-  {
-    id: '5022',
-    ref: '224270',
-    modelName: 'Rolex Explorer 40mm Oystersteel Siyah Kadran',
-    originalPrice: 472000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-explorer-automatic-chronometer-black-dial-mens-watch-224270bkso.jpg',
-    gender: 'Erkek',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: '40mm geniş kasa formatı, Chromalight dolgulu 3-6-9 rakamları ve güçlü ergonomik bilek duruşu.'
-  },
-  {
-    id: '5023',
-    ref: '226570',
-    modelName: 'Rolex Explorer II 42mm Siyah Kadran',
+    id: '5237',
+    ref: '226570-0002',
+    modelName: 'Rolex Explorer II 42mm Siyah Kadran Turuncu GMT İbre',
     originalPrice: 590000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-explorer-ii-automatic-black-dial-mens-watch-226570bkso.jpg',
+    image: '/images/products/elite/rolex-226570-0002-5237.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
@@ -212,95 +260,59 @@ const CHRONO24_ROLEX_MODELS = [
     description: 'Mat siyah kadran, turuncu 24 saat ibresi, 24 saat dereceli çelik sabit bezel ve çift zaman dilimi.'
   },
   {
-    id: '5024',
-    ref: '126300',
-    modelName: 'Rolex Datejust 41mm Düz Bezel Rodyum Gri Kadran Oyster',
-    originalPrice: 530000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-datejust-41-slate-dial-stainless-steel-oyster-mens-watch-126300sso.jpg',
+    id: '5020',
+    ref: '126600',
+    modelName: 'Rolex Sea-Dweller 43mm Oystersteel & Siyah Kadran Kırmızı Yazı',
+    originalPrice: 658599,
+    image: '/images/products/elite/rolex-126600-5020.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
     condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: 'Düz parlatılmış çelik bezel, arduvaz gri güneş ışını kadran ve sağlam Oyster bilezik.'
+    description: '43mm profesyonel derin deniz saati, kırmızı Sea-Dweller kabartma yazısı, helyum vanası ve 1.220 metre su geçirmezlik.'
   },
   {
-    id: '5025',
-    ref: '126300',
-    modelName: 'Rolex Datejust 41mm Düz Bezel Siyah Kadran Jubilee',
-    originalPrice: 550000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-datejust-41-black-dial-stainless-steel-jubilee-mens-watch-126300bkso.jpg',
-    gender: 'Erkek',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: 'Düz bezelin modern hatları ile Jubilee bileziğin zarif dokusunu buluşturan siyah kadranlı Datejust 41.'
-  },
-  {
-    id: '5026',
-    ref: '126300',
-    modelName: 'Rolex Datejust 41mm Düz Bezel Beyaz Kadran Oyster',
-    originalPrice: 520000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-datejust-41-white-dial-stainless-steel-oyster-mens-watch-126300wso.jpg',
-    gender: 'Erkek',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: 'Optik beyaz zemin kadran, parlatılmış düz çelik bezel ve Oyster bilezik ile kusursuz okunabilirlik.'
-  },
-  {
-    id: '5027',
-    ref: '126200',
-    modelName: 'Rolex Datejust 36mm Gümüş Kadran Düz Bezel Oyster',
-    originalPrice: 460000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-datejust-36-silver-dial-stainless-steel-oyster-mens-watch-126200sso.jpg',
+    id: '5018',
+    ref: '124300-0006',
+    modelName: 'Rolex Oyster Perpetual 41mm Turkuaz Mavi \'Tiffany\' Kadran',
+    originalPrice: 512244,
+    image: '/images/products/elite/rolex-124300-0006-5018.jpg',
     gender: 'Unisex',
     category: 'Elit Kategori',
     stock: 1,
     condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: '36mm klasik kasa proporsiyonları, zamansız gümüş güneş ışını kadran ve düz çelik bezel.'
+    description: 'İkonik Turkuaz Mavi (Tiffany) lakeli kadran, 41mm paslanmaz çelik Oyster kasa ve 3230 kalibre mekanizma.'
   },
   {
-    id: '5029',
-    ref: '126234',
-    modelName: 'Rolex Datejust 36mm Siyah Kadran Fluted Bezel Jubilee',
-    originalPrice: 660000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-datejust-36-black-dial-stainless-steel-jubilee-mens-watch-126234bkso.jpg',
-    gender: 'Unisex',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: '36mm Datejust geleneği: 18 ayar beyaz altın yivli bezel, derin siyah kadran ve Jubilee bilezik.'
-  },
-  {
-    id: '5030',
-    ref: '124300',
-    modelName: 'Rolex Oyster Perpetual 41mm Parlak Yeşil Kadran',
+    id: '5231',
+    ref: '124300-0005',
+    modelName: 'Rolex Oyster Perpetual 41mm Yeşil Kadran Oyster',
     originalPrice: 480000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-oyster-perpetual-41-green-dial-stainless-steel-mens-watch-124300gnso.jpg',
+    image: '/images/products/elite/rolex-124300-0005-5231.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
     condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: 'Rolex\'in imza yeşil kadranı, 41mm paslanmaz çelik Oyster kasa ve 70 saat güç rezervi.'
+    description: 'Rolex\'in imza koyu yeşil kadranı, 41mm paslanmaz çelik Oyster kasa ve 70 saat güç rezervi.'
   },
   {
-    id: '5031',
-    ref: '124300',
-    modelName: 'Rolex Oyster Perpetual 41mm Parlak Siyah Kadran',
-    originalPrice: 430000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-oyster-perpetual-41-black-dial-stainless-steel-mens-watch-124300bkso.jpg',
+    id: '5232',
+    ref: '124300-0003',
+    modelName: 'Rolex Oyster Perpetual 41mm Parlak Mavi Kadran',
+    originalPrice: 440000,
+    image: '/images/products/elite/rolex-124300-0003-5232.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
     condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: 'Güneş ışını desenli parlak siyah kadran, kromalight indeksler ve 41mm Oystersteel kasa.'
+    description: 'Güneş ışını desenli okyanus mavisi kadran, kromalight indeksler ve 41mm Oystersteel kasa.'
   },
   {
-    id: '5032',
-    ref: '124300',
-    modelName: 'Rolex Oyster Perpetual 41mm Gümüş Kadran',
+    id: '5233',
+    ref: '124300-0001',
+    modelName: 'Rolex Oyster Perpetual 41mm Gümüş Kadran Altın İndeks',
     originalPrice: 420000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-oyster-perpetual-41-silver-dial-stainless-steel-mens-watch-124300sso.jpg',
+    image: '/images/products/elite/rolex-124300-0001-5233.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
@@ -308,23 +320,35 @@ const CHRONO24_ROLEX_MODELS = [
     description: 'Sıcak sarı altın ibre ve indekslere sahip zarif gümüş kadranlı Oyster Perpetual 41.'
   },
   {
-    id: '5034',
-    ref: '126000',
-    modelName: 'Rolex Oyster Perpetual 36mm Turkuaz Mavi Kadran',
-    originalPrice: 490000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-oyster-perpetual-36-automatic-chronometer-tiffany-blue-dial-watch-126000tqblso-m1260000006.jpg',
+    id: '5019',
+    ref: '126000-0014',
+    modelName: 'Rolex Oyster Perpetual 36mm Parlak Siyah Kadran',
+    originalPrice: 536392,
+    image: '/images/products/elite/rolex-126000-0014-5019.jpg',
     gender: 'Unisex',
     category: 'Elit Kategori',
     stock: 1,
     condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: '36mm boyutta efsanevi Turkuaz Tiffany kadran, otomatik 3230 kalibre mekanizma.'
+    description: '36mm zamansız gövde yapısı, parlak güneş ışını siyah kadran ve Oysterlock güvenlik tokalı çelik bilezik.'
   },
   {
-    id: '5035',
-    ref: '126000',
-    modelName: 'Rolex Oyster Perpetual 36mm Pembe \'Candy Pink\' Kadran',
+    id: '5234',
+    ref: '126000-0007',
+    modelName: 'Rolex Oyster Perpetual 36mm Turkuaz Mavi Kadran',
+    originalPrice: 490000,
+    image: '/images/products/elite/rolex-126000-0007-5234.jpg',
+    gender: 'Unisex',
+    category: 'Elit Kategori',
+    stock: 1,
+    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
+    description: '36mm kasa boyutu, canlı lake Turkuaz Mavi (Tiffany) kadran ve 3230 kalibre mekanizma.'
+  },
+  {
+    id: '5235',
+    ref: '126000-0005',
+    modelName: 'Rolex Oyster Perpetual 36mm Şeker Pembesi \'Candy Pink\' Kadran',
     originalPrice: 520000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-oyster-perpetual-36-candy-pink-dial-stainless-steel-mens-watch-126000pkso.jpg',
+    image: '/images/products/elite/rolex-126000-0005-5235.jpg',
     gender: 'Unisex',
     category: 'Elit Kategori',
     stock: 1,
@@ -332,47 +356,23 @@ const CHRONO24_ROLEX_MODELS = [
     description: 'Popüler Candy Pink lake pembe kadran, 36mm Oystersteel kasa ve Oysterlock güvenlik tokası.'
   },
   {
-    id: '5036',
-    ref: '124200',
-    modelName: 'Rolex Oyster Perpetual 34mm Gümüş Kadran',
-    originalPrice: 360000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-oyster-perpetual-34-silver-dial-stainless-steel-unisex-watch-124200sso.jpg',
-    gender: 'Unisex',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: '34mm kompakt kasa boyutu, altın detaylı zarif gümüş kadran ve konforlu bilek ergonomisi.'
-  },
-  {
-    id: '5037',
-    ref: '277200',
-    modelName: 'Rolex Oyster Perpetual 31mm Turkuaz Mavi Kadran',
-    originalPrice: 390000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-oyster-perpetual-31-turquoise-dial-stainless-steel-unisex-watch-277200tqso.jpg',
-    gender: 'Kadın',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: '31mm zarif kadın kasasında canlı Turkuaz Mavi lakeli kadran, Oystersteel dayanıklılığı ve 2232 mekanizma.'
-  },
-  {
-    id: '5038',
-    ref: '116400GV',
-    modelName: 'Rolex Milgauss 40mm Z-Blue Kadran Yeşil Safir Cam',
-    originalPrice: 560000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/p/r/preowned-rolex-milgauss-automatic-blue-dial-mens-watch-116400gvblso.jpg',
+    id: '5245',
+    ref: '126900',
+    modelName: 'Rolex Air-King 40mm Oystersteel Tepe Korumalı Yeni Kasa',
+    originalPrice: 448000,
+    image: '/images/products/elite/rolex-126900-5245.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
     condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: 'Manyetik alanlara dirençli bilim saati: Yeşil safir kristal cam, elektrik mavisi Z-Blue kadran ve turuncu şimşek ibre.'
+    description: 'Havacılık kokpit göstergelerinden esinlenen yeni nesil kurma kolu korumalı 40mm Air-King.'
   },
   {
-    id: '5039',
-    ref: '126622',
-    modelName: 'Rolex Yacht-Master 40 Platin Bezel Rodyum Gri Kadran',
+    id: '5238',
+    ref: '126622-0001',
+    modelName: 'Rolex Yacht-Master 40mm Platin Bezel & Rhodium Gri Kadran Mavi Saniye',
     originalPrice: 720000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-yacht-master-40-slate-dial-stainless-steel-and-platinum-mens-watch-126622sso.jpg',
+    image: '/images/products/elite/rolex-126622-0001-5238.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
@@ -380,40 +380,16 @@ const CHRONO24_ROLEX_MODELS = [
     description: '950 ayar som platin kabartmalı çift yönlü döner bezel, arduvaz gri kadran ve deniz mavisi saniye ibresi.'
   },
   {
-    id: '5040',
-    ref: '126622',
-    modelName: 'Rolex Yacht-Master 40 Platin Bezel Mavi Kadran',
+    id: '5239',
+    ref: '126622-0002',
+    modelName: 'Rolex Yacht-Master 40mm Platin Bezel & Parlak Mavi Kadran Kırmızı Saniye',
     originalPrice: 710000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-yacht-master-40-blue-dial-stainless-steel-and-platinum-mens-watch-126622blso.jpg',
+    image: '/images/products/elite/rolex-126622-0002-5239.jpg',
     gender: 'Erkek',
     category: 'Elit Kategori',
     stock: 1,
     condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: 'Güneş ışını desenli okyanus mavisi kadran, platin bezel ve kırmızı Yacht-Master yazı detayı.'
-  },
-  {
-    id: '5041',
-    ref: '279174',
-    modelName: 'Rolex Lady-Datejust 28mm Çelik/Beyaz Altın Pembe Kadran Jubilee',
-    originalPrice: 490000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-lady-datejust-28-pink-dial-stainless-steel-and-18k-white-gold-jubilee-ladies-watch-279174pso.jpg',
-    gender: 'Kadın',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: '28mm zarif kadın kasası, 18 ayar beyaz altın yivli bezel, güneş ışını pudra pembe kadran ve Jubilee bilezik.'
-  },
-  {
-    id: '5042',
-    ref: '279160',
-    modelName: 'Rolex Lady-Datejust 28mm Çelik Gümüş Kadran Oyster',
-    originalPrice: 360000,
-    image: 'https://cdn2.jomashop.com/media/catalog/product/cache/9d6243d99187096e972f05545e39058c/r/o/rolex-lady-datejust-28-silver-dial-stainless-steel-oyster-ladies-watch-279160sso.jpg',
-    gender: 'Kadın',
-    category: 'Elit Kategori',
-    stock: 1,
-    condition: 'Sıfır Ayarında (Kutusunda Sertifikalı)',
-    description: '28mm modern çelik düz bezel, zamansız gümüş kadran ve konforlu Oyster bilezik.'
+    description: 'Güneş ışını desenli okyanus mavisi kadran, 950 platin bezel ve kırmızı saniye ibreli Yacht-Master 40.'
   }
 ];
 
@@ -431,7 +407,7 @@ function fmtTry(val) {
 }
 
 export function syncRolexCatalog() {
-  console.log('🔄 SAATCHI: Doğrulanmış Chrono24 Rolex kataloğu senkronize ediliyor...');
+  console.log('🔄 SAATCHI: Doğrulanmış yerel packshot Rolex kataloğu senkronize ediliyor...');
 
   const elite = JSON.parse(fs.readFileSync(elitePath, 'utf8'));
   const nonRolex = elite.filter(w => w.brand !== 'Rolex');
@@ -447,6 +423,13 @@ export function syncRolexCatalog() {
       console.warn(`⚠️ [TAVAN AŞILDI] ${m.modelName} (Hesaplanan: ₺${calc.toLocaleString('tr-TR')} > ₺2.000.000) listeye alınmadı.`);
       skippedCount++;
       continue;
+    }
+
+    // Yerel görselin varlığını teyit et
+    const localImagePath = path.join(root, 'public', m.image.replace(/^\//, ''));
+    if (!fs.existsSync(localImagePath)) {
+      console.error(`❌ [GÖRSEL EKSİK] ${m.modelName}: ${localImagePath} bulunamadı!`);
+      process.exit(1);
     }
 
     const slug = slugify(m.modelName);
@@ -491,12 +474,12 @@ export function syncRolexCatalog() {
   fs.writeFileSync(elitePath, JSON.stringify(updatedElite, null, 2) + '\n', 'utf8');
 
   console.log(`✅ Chrono24 Rolex Senkronizasyonu Başarıyla Tamamlandı!`);
-  console.log(`   - %100 Birebir Doğrulanmış Rolex: ${processedRolex.length} adet`);
+  console.log(`   - %100 Yerel Doğrulanmış Rolex: ${processedRolex.length} adet`);
   console.log(`   - Tavanı Aşan (Elenen): ${skippedCount} adet`);
   console.log(`   - Fiyatlama Kuralı: Chrono24 Fiyatı x 2.50`);
   console.log(`   - Fiyat Tavanı: <= 2.000.000 TL`);
   console.log(`   - Kaynak Linki: ${CHRONO24_ROLEX_URL}`);
-  console.log(`   - Görsel Kalitesi: %100 Orijinal Model Packshot`);
+  console.log(`   - Görseller: Tamamı yerel /images/products/elite/ (Sıfır kırık link / Sıfır JS placeholder)`);
 }
 
 // Doğrudan çalıştırıldığında
