@@ -91,6 +91,11 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
    - **Konyalı Saat & Saat&Saat:** Kaynak TL fiyatının 1.50 katıdır. İsviçre markalarında (TAG Heuer, Rado, Tissot) 10.000 TL altında ürün barındırılamaz.
 4. **Otomatik Senkronizasyon:** `npm run sync:pricing` komutu katalogdaki tüm fiyat formatlarını (`price` string'i ile `calculatedPrice` değerini) ve PayTR tablosunu sıfır sapmayla senkronize eder.
 
+## 15. 10.000 TL Taban Fiyat Kilidi (DEĞİŞMEZ KESİN KURAL)
+- **Tüm Markalar İçin 10.000 TL Tabanı:** Saatchi web sitesindeki istisnasız TÜM saatler için taban satış fiyatı **10.000 TL**'dir. Satış fiyatı (`calculatedPrice`) 10.000 TL'nin altında olan hiçbir saat web sitesinde barındırılamaz, yayınlanamaz ve yeni güncellemelerde kataloğa eklenemez.
+- **Fail-Closed Otomatik Filtre:** `enforce-pricing-invariants.mjs` ve tüm senkronizasyon motorları 10.000 TL altındaki modelleri koşulsuz olarak filtreler ve eler.
+- **check:catalog Denetimi:** `scripts/check-catalog-integrity.mjs` kalite kapısı tüm katalogda (`saatler.json`, `elit-saatler.json`, `saatler_paytr.json`) 10.000 TL tabanını denetler; 10.000 TL altında tek bir saat bulunması durumunda derleme ve dağıtım fail-closed olarak durdurulur.
+
 
 ## 🎛️ /suiteN Komutu — NVIDIA NIM AI Entegrasyonu (ChatGPT & Tüm AI Modelleri)
 - **Komut Formatı:** `/suiteN [kod, soru, analiz veya log]`

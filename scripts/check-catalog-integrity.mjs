@@ -107,13 +107,12 @@ for (const brand of KONYALI_SVS_BRANDS) {
   }
 }
 
-// 5. SWISS WATCH BASELINE (Minimum 10.000 TL)
-for (const brand of SWISS_BRANDS) {
-  const items = allItems.filter(x => x.brand === brand);
-  for (const item of items) {
-    if (item.calculatedPrice < 10_000) {
-      failures.push(`[SWISS WATCH ANOMALY (< 10.000 TL)] ${brand} | ID: ${item.id} | ${item.modelName} | Fiyat: ${item.calculatedPrice}`);
-    }
+// 5. ALL WATCHES BASELINE (Minimum 10.000 TL Tabanı - DEĞİŞMEZ KALICI KURAL)
+const MIN_CATALOG_FLOOR = 10_000;
+for (const item of allItems) {
+  const calc = Number(item.calculatedPrice || 0);
+  if (calc < MIN_CATALOG_FLOOR) {
+    failures.push(`[UNDER 10K FLOOR VIOLATION] ${item.brand} | ID: ${item.id} | ${item.modelName} | Fiyat: ${calc} < 10.000 TL (10.000 TL altı ürün barındırılamaz)`);
   }
 }
 
