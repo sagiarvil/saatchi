@@ -118,7 +118,12 @@ export default function WatchListClient({ initialWatches, initialGender = '' }: 
             </div>
             <div className="flex flex-col flex-1 px-[10px] py-[14px] text-left items-start justify-between">
               <div className="w-full">
-                <h3 className="text-[10px] md:text-[11px] font-bold tracking-[0.15em] md:tracking-[0.2em] uppercase text-[#8A7039] mb-1">{watch.brand}</h3>
+                <div className="flex items-center justify-between gap-1 mb-1">
+                  <h3 className="text-[10px] md:text-[11px] font-bold tracking-[0.15em] md:tracking-[0.2em] uppercase text-[#8A7039]">{watch.brand}</h3>
+                  {!['Rolex', 'Cartier', 'TAG Heuer', 'Rado'].includes(String(watch.brand || '')) && (
+                    <span className="text-[9px] font-semibold text-[#846b32] bg-[#fbf5e8] px-1.5 py-0.5 rounded border border-[#846b32]/30">Stok Sorunuz</span>
+                  )}
+                </div>
                 <p className="text-[13px] md:text-[15.5px] font-semibold text-[#1C1917] leading-snug mb-1 md:mb-2 line-clamp-2 min-h-[36px] md:min-h-[44px]">{watch.modelName}</p>
                 <p className="text-[10.5px] md:text-[11.5px] font-medium text-[#9CA3AF] mb-3 truncate">{watch.id}</p>
               </div>

@@ -1,13 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ArrowRight, Lock, ShieldCheck, Check } from 'lucide-react';
+import { ArrowRight, Lock, ShieldCheck, Check, AlertCircle, MessageCircle } from 'lucide-react';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
 
 export default function OdemeClient({ watch }: { watch: any }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+
+  const isElite = ['Rolex', 'Cartier', 'TAG Heuer', 'Rado'].includes(String(watch?.brand || ''));
+  const waStokMessage = encodeURIComponent(`Merhaba, ${watch?.brand || ''} ${watch?.modelName || ''} için sipariş öncesi stok durumunu öğrenmek istiyorum.`);
   
   const [form, setForm] = useState({ custName: '', custPhone: '', custIdentity: '', email: '', custAddress: '' });
   const updateField = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setForm({ ...form, [e.target.id]: e.target.value });
@@ -49,6 +52,39 @@ export default function OdemeClient({ watch }: { watch: any }) {
             <img src="/logo-ampersand.png" alt="&" className="h-12 md:h-16 object-contain mb-4 mix-blend-multiply opacity-90" />
          </div>
 
+         {/* Elit saatler dışındaki modeller için en üstte görünür dikkat bandı */}
+         {!isElite && (
+            <div className="mb-6 rounded-2xl border-2 border-[#b78a38] bg-gradient-to-r from-[#fefbf6] via-[#fbf5e8] to-[#fbf0d9] p-5 shadow-[0_8px_24px_rgba(183,138,56,0.12)]">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-start gap-3.5">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#846b32]/15 text-[#846b32]">
+                    <AlertCircle className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="inline-block h-2 w-2 rounded-full bg-[#846b32] animate-pulse"></span>
+                      <p className="text-[12px] font-bold uppercase tracking-[0.18em] text-[#846b32]">
+                        Lütfen Sipariş Öncesi Stok Sorunuz
+                      </p>
+                    </div>
+                    <p className="mt-1 text-xs leading-5 text-[#5c4a22]">
+                      Bu model için sipariş oluşturmadan önce WhatsApp hattımız üzerinden güncel stok teyidi almanız önemle rica olunur.
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href={`https://wa.me/905419305372?text=${waStokMessage}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex shrink-0 items-center justify-center gap-2 rounded-lg bg-[#25D366] px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm hover:bg-[#20ba59] transition-all hover:scale-[1.02]"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  WhatsApp ile Stok Sor
+                </a>
+              </div>
+            </div>
+         )}
+
          <div className="rounded-[22px] border border-[#e5ddd2] bg-[#fffdfa] shadow-[0_18px_60px_rgba(36,25,18,.06)] overflow-hidden flex flex-col lg:flex-row">
             
             {/* Left Side: Order Summary & Watch Details */}
@@ -79,6 +115,18 @@ export default function OdemeClient({ watch }: { watch: any }) {
                      {watch.price}
                   </span>
                </div>
+
+               {!isElite && (
+                 <div className="mb-6 rounded-xl border border-[#b78a38]/60 bg-[#fbf5e8] p-4 text-[#846b32]">
+                   <div className="flex items-center gap-2 font-bold text-xs uppercase tracking-wider mb-1">
+                     <AlertCircle className="w-4 h-4 shrink-0 text-[#846b32]" />
+                     <span>Stok Teyidi Gereklidir</span>
+                   </div>
+                   <p className="text-[11px] leading-relaxed text-[#5c4a22]">
+                     Bu model için işlem öncesinde WhatsApp hattımızdan güncel stok ve temin süresi sorulmalıdır.
+                   </p>
+                 </div>
+               )}
 
                <div className="mt-auto space-y-4 pt-6 border-t border-[#e5ddd2]">
                   <div className="flex items-center gap-4 text-[#625a54] text-xs">
@@ -135,7 +183,14 @@ export default function OdemeClient({ watch }: { watch: any }) {
                   <p className="mt-2 text-xs leading-6 text-[#665e58]">Fiyat, stok ve temin bilgileri piyasa koşullarına göre değişebilir. Bu form bir ön sipariş talebidir; nihai ürün kapsamı, teslim yöntemi ve varsa garanti/sertifika detayları müşteri temsilcimiz tarafından sizinle ödeme öncesinde yazılı olarak teyit edilecektir.</p>
                </div>
 
-               <button onClick={startPayment} disabled={loading} className="mt-10 flex min-h-[56px] w-full items-center justify-center gap-3 bg-[#171514] px-5 text-[12px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#7f262b] disabled:opacity-70 disabled:cursor-not-allowed rounded-md">
+               {!isElite && (
+                 <div className="mt-6 flex items-center gap-2 rounded-xl border border-[#b78a38]/60 bg-[#fbf5e8] px-4 py-3 text-xs text-[#846b32]">
+                   <AlertCircle className="h-4 w-4 shrink-0 text-[#846b32]" />
+                   <span>Lütfen satın alma talebini göndermeden önce WhatsApp üzerinden stok durumunu sorunuz.</span>
+                 </div>
+               )}
+
+               <button onClick={startPayment} disabled={loading} className="mt-6 flex min-h-[56px] w-full items-center justify-center gap-3 bg-[#171514] px-5 text-[12px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#7f262b] disabled:opacity-70 disabled:cursor-not-allowed rounded-md">
                   {loading ? (
                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                   ) : (

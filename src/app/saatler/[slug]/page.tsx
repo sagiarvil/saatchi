@@ -4,6 +4,7 @@ import WatchTechnicalPanel from '@/components/WatchTechnicalPanel';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
 import saatlerData from '@/data/saatler.json';
 import elitSaatlerData from '@/data/elit-saatler.json';
+import { AlertCircle, MessageCircle } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -27,9 +28,13 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
     return <div className="flex min-h-[70vh] items-center justify-center bg-[#f6f3ef]"><h1 className="text-3xl font-medium text-[#171514]">Saat Bulunamadı</h1></div>;
   }
 
+  const isElite = ['Rolex', 'Cartier', 'TAG Heuer', 'Rado'].includes(String(watch.brand || ''));
+
   const description = watch.description?.trim()
     ? watch.description
     : `${watch.modelName} için referans, kondisyon, kutu/belge kapsamı ve teknik bilgiler satış öncesinde ürün bazında teyit edilir.`;
+
+  const waStokMessage = encodeURIComponent(`Merhaba, ${watch.brand} ${watch.modelName} için sipariş öncesi stok durumunu öğrenmek istiyorum.`);
 
   return (
     <div className="min-h-screen border-t border-[#e8e1d7] bg-[#f6f3ef] py-8 sm:py-12">
@@ -52,15 +57,48 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
               <p className="mt-3 text-xs leading-6 text-[#7a716b]">Ref: {watch.ref || watch.id || 'Ürün bazında teyit'} · Kondisyon: {watch.condition || 'Ürün bazında teyit'}</p>
               <div className="mt-6 text-3xl font-semibold tracking-[-0.03em] text-[#171514]">{watch.price}</div>
 
-              <div className="mt-6 border-l-2 border-[#7f262b] bg-[#f7f1ed] px-5 py-4 text-sm leading-6 text-[#625a54]">
-                Ürün stok ve temin durumu satış öncesinde teyit edilir. Teknik özellikler katalogda kayıtlı değilse varsayım yapılmaz.
-              </div>
+              {/* Elit saatler dışındaki modeller için belirgin stok sorunuz bandı */}
+              {!isElite ? (
+                <div className="mt-6 rounded-2xl border-2 border-[#b78a38]/80 bg-gradient-to-r from-[#fefbf6] via-[#fbf5e8] to-[#fbf0d9] p-5 shadow-[0_8px_24px_rgba(183,138,56,0.12)]">
+                  <div className="flex items-start gap-3.5">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#846b32]/15 text-[#846b32]">
+                      <AlertCircle className="h-5 w-5" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="inline-block h-2 w-2 rounded-full bg-[#846b32] animate-pulse"></span>
+                        <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#846b32]">
+                          Lütfen Sipariş Öncesi Stok Sorunuz
+                        </p>
+                      </div>
+                      <p className="mt-1.5 text-xs leading-5 text-[#5c4a22]">
+                        Bu model için anlık stok, teslimat ve temin durumu sipariş öncesinde teyit edilmelidir. Lütfen satın alma / sipariş adımından önce WhatsApp hattımız üzerinden stok durumunu sorunuz.
+                      </p>
+                      <div className="mt-3">
+                        <a
+                          href={`https://wa.me/905419305372?text=${waStokMessage}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-sm hover:bg-[#20ba59] transition-all hover:scale-[1.02]"
+                        >
+                          <MessageCircle className="h-4 w-4" />
+                          WhatsApp ile Stok Sor
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="mt-6 border-l-2 border-[#7f262b] bg-[#f7f1ed] px-5 py-4 text-sm leading-6 text-[#625a54]">
+                  Ürün stok ve temin durumu satış öncesinde teyit edilir. Teknik özellikler katalogda kayıtlı değilse varsayım yapılmaz.
+                </div>
+              )}
 
               <p className="mt-6 text-sm leading-7 text-[#625a54]">{description}</p>
 
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
                 <Link href={`/odeme?slug=${slug}`} className="flex min-h-[52px] items-center justify-center bg-[#171514] px-5 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#7f262b]">Satın Al</Link>
-                <a href="https://wa.me/905419305372" target="_blank" rel="noopener noreferrer" className="flex min-h-[52px] items-center justify-center border border-[#bcaea3] bg-white px-5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#382f2a] transition-colors hover:border-[#7f262b] hover:text-[#7f262b]">WhatsApp</a>
+                <a href={`https://wa.me/905419305372?text=${waStokMessage}`} target="_blank" rel="noopener noreferrer" className="flex min-h-[52px] items-center justify-center border border-[#bcaea3] bg-white px-5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#382f2a] transition-colors hover:border-[#7f262b] hover:text-[#7f262b]">WhatsApp ile Stok Sor</a>
               </div>
             </div>
           </div>

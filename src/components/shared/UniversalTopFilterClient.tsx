@@ -330,7 +330,12 @@ export default function UniversalTopFilterClient({ initialWatches, isBrandPage =
                 </div>
                 <div className="text-center p-5 md:p-6 flex flex-col flex-grow items-center justify-between">
                   <div className="w-full">
-                    <p className="text-primary text-[10px] md:text-[11px] font-bold tracking-[0.25em] uppercase mb-2 md:mb-3">{watch.brand}</p>
+                    <div className="flex items-center justify-center gap-1.5 mb-2 md:mb-3">
+                      <p className="text-primary text-[10px] md:text-[11px] font-bold tracking-[0.25em] uppercase">{watch.brand}</p>
+                      {!isElit && (
+                        <span className="text-[8px] font-semibold text-[#846b32] bg-[#fbf5e8] px-1.5 py-0.5 rounded border border-[#846b32]/30">Stok Sorunuz</span>
+                      )}
+                    </div>
                     <h2 className="text-xs md:text-[15px] font-serif font-medium text-foreground/90 mb-4 leading-relaxed group-hover:text-primary transition-colors line-clamp-2 min-h-[36px] md:min-h-[46px]">{watch.modelName}</h2>
                   </div>
                   <div className="w-full pt-4 border-t border-surface-border/60 mt-auto">
