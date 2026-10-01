@@ -319,7 +319,9 @@ export default function UniversalTopFilterClient({ initialWatches, isBrandPage =
             return (
               <Link href={linkUrl} key={String(watch.id || idx)} className="group bg-surface rounded-xl md:rounded-2xl border border-surface-border overflow-hidden hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:border-primary/30 transition-all duration-500 flex flex-col relative">
                 <div className="w-full aspect-[4/5] relative overflow-hidden bg-[#FAFAFA] flex items-center justify-center border-b border-surface-border/50">
-                  <div className="absolute top-4 left-4 z-10 bg-foreground text-background text-[9px] font-bold tracking-[0.25em] px-2.5 py-1 rounded-[3px] uppercase opacity-90">{isElit ? 'ELITE' : 'SAAT'}</div>
+                  <div className={`absolute top-4 left-4 z-10 text-[9px] font-bold tracking-[0.2em] px-2.5 py-1 rounded-[3px] uppercase ${isElit ? 'bg-[#1C1917] text-[#C5A059] border border-[#C5A059]/40' : 'bg-stone-100 text-stone-600 border border-stone-300'}`}>
+                    {isElit ? '2. EL' : 'STOKTA YOK'}
+                  </div>
                   {watch.image ? (
                     <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-contain p-6 md:p-10 group-hover:scale-[1.05] transition-transform duration-700 ease-out mix-blend-multiply drop-shadow-sm" />
                   ) : (
@@ -332,8 +334,10 @@ export default function UniversalTopFilterClient({ initialWatches, isBrandPage =
                   <div className="w-full">
                     <div className="flex items-center justify-center gap-1.5 mb-2 md:mb-3">
                       <p className="text-primary text-[10px] md:text-[11px] font-bold tracking-[0.25em] uppercase">{watch.brand}</p>
-                      {!isElit && (
-                        <span className="text-[8px] font-semibold text-[#846b32] bg-[#fbf5e8] px-1.5 py-0.5 rounded border border-[#846b32]/30">Stok Sorunuz</span>
+                      {isElit ? (
+                        <span className="text-[8px] font-bold text-[#846b32] bg-[#fbf5e8] px-1.5 py-0.5 rounded border border-[#846b32]/40">2. El</span>
+                      ) : (
+                        <span className="text-[8px] font-semibold text-stone-600 bg-stone-100 px-1.5 py-0.5 rounded border border-stone-200">Stokta Yok</span>
                       )}
                     </div>
                     <h2 className="text-xs md:text-[15px] font-serif font-medium text-foreground/90 mb-4 leading-relaxed group-hover:text-primary transition-colors line-clamp-2 min-h-[36px] md:min-h-[46px]">{watch.modelName}</h2>

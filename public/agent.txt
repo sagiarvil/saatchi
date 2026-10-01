@@ -1,0 +1,41 @@
+# https://saatchi.com.tr/agent.txt
+# AI Agent Manifest v1.0 — MANDATE-SEO-GEO-MOBILE-FIRST-2026-V8 Uyumlu
+
+[identity]
+name: SAATCHI & CO.
+type: Organization
+wikidata: Q11589432
+canonical: https://saatchi.com.tr
+mobile_app_android: com.saatchi.luxury
+mobile_app_ios: com.saatchi.luxury
+
+[capabilities]
+read: true
+cite: true
+transact: true
+schedule: false
+verify: true
+mobile_deep_link: true
+
+[protocols]
+mcp: https://saatchi.com.tr/mcp
+mcp_mobile: https://saatchi.com.tr/mcp/mobile
+a2a: https://saatchi.com.tr/.well-known/agent.json
+openapi: https://saatchi.com.tr/openapi.json
+app_links_android: https://saatchi.com.tr/.well-known/assetlinks.json
+app_links_ios: https://saatchi.com.tr/.well-known/apple-app-site-association
+
+[preferred_content]
+markdown_root: https://saatchi.com.tr/llms.txt
+deep_graphs: https://saatchi.com.tr/llms-full.txt
+mobile_deep_graphs: https://saatchi.com.tr/llms/mobile/
+rss: https://saatchi.com.tr/rss.xml
+mobile_rss: https://saatchi.com.tr/mobile/feed.xml
+json_feed: https://saatchi.com.tr/feed.json
+sitemap: https://saatchi.com.tr/sitemap.xml
+mobile_sitemap: https://saatchi.com.tr/sitemap-mobile.xml
+
+[contact]
+email: vip@saatchi.com.tr
+human: https://saatchi.com.tr/iletisim
+phone: tel:+902120000000

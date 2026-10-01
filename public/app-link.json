@@ -1,0 +1,32 @@
+{
+  "host": "saatchi.com.tr",
+  "app_name": "SAATCHI & CO. Lüks Saatler",
+  "package_name": "com.saatchi.luxury",
+  "bundle_id": "com.saatchi.luxury",
+  "deep_link_routes": [
+    {
+      "web_url": "https://saatchi.com.tr/",
+      "app_url": "saatchi://home"
+    },
+    {
+      "web_url": "https://saatchi.com.tr/markalar",
+      "app_url": "saatchi://brands"
+    },
+    {
+      "web_url": "https://saatchi.com.tr/elit-saat/:slug",
+      "app_url": "saatchi://elite/:slug"
+    },
+    {
+      "web_url": "https://saatchi.com.tr/saatler/:slug",
+      "app_url": "saatchi://watch/:slug"
+    },
+    {
+      "web_url": "https://saatchi.com.tr/saat-degerleme",
+      "app_url": "saatchi://valuation"
+    },
+    {
+      "web_url": "https://saatchi.com.tr/karsilastir",
+      "app_url": "saatchi://compare"
+    }
+  ]
+}

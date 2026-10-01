@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "Saatchi & Co.",
+  "description": "Türkiye'nin öncü sertifikalı lüks saat, ikinci el Rolex, Cartier ve İsviçre saatleri platformu.",
+  "url": "https://saatchi.com.tr",
+  "version": "1.0.0",
+  "capabilities": {
+    "productSearch": {
+      "endpoint": "https://saatchi.com.tr/sitemap.xml",
+      "format": "application/xml"
+    },
+    "knowledgeBase": {
+      "endpoint": "https://saatchi.com.tr/llms.txt",
+      "format": "text/markdown"
+    },
+    "deepKnowledgeBase": {
+      "endpoint": "https://saatchi.com.tr/llms-full.txt",
+      "format": "text/markdown"
+    }
+  },
+  "contact": {
+    "platform": "Saatchi Luxury Horology",
+    "country": "TR"
+  }
+}

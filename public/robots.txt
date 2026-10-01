@@ -1,3 +1,7 @@
+# ==============================================================================
+# SAATCHI & CO. — Lüks Saatler Resmi Robots.txt Yapılandırması
+# ==============================================================================
+
 User-agent: *
 Allow: /
 Disallow: /admin
@@ -8,4 +12,57 @@ Disallow: /api/vip-link
 Disallow: /api/admin-session
 Disallow: /api/admin/
 
+# AI & LLM Arama ve İndeks Motorları (SearchGPT, Perplexity, Claude, Gemini)
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /vip-checkout
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /vip-checkout
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /vip-checkout
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /vip-checkout
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /vip-checkout
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /vip-checkout
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /vip-checkout
+Disallow: /api/
+
+# Sitemaps & Knowledge Vault
 Sitemap: https://saatchi.com.tr/sitemap.xml
+# LLM Knowledge Vault: https://saatchi.com.tr/llms.txt
+# Agent Protocol: https://saatchi.com.tr/.well-known/agent-card.json

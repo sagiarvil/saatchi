@@ -37,7 +37,7 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
   const waStokMessage = encodeURIComponent(`Merhaba, ${watch.brand} ${watch.modelName} için sipariş öncesi stok durumunu öğrenmek istiyorum.`);
 
   return (
-    <div className="min-h-screen border-t border-[#e8e1d7] bg-[#f6f3ef] py-8 sm:py-12">
+    <div className="min-h-screen border-t border-[#e8e1d7] bg-[#f6f3ef] py-8 sm:py-12 pb-28 md:pb-12">
       <main className="mx-auto max-w-[1220px] px-4 sm:px-6 lg:px-8">
         <article className="rounded-[22px] border border-[#e5ddd2] bg-[#fffdfa] p-5 text-[#211d1a] shadow-[0_18px_60px_rgba(36,25,18,.06)] sm:p-7 lg:p-9">
           <nav className="mb-6 text-xs text-[#847b74]">
@@ -79,7 +79,7 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
                           href={`https://wa.me/905419305372?text=${waStokMessage}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-sm hover:bg-[#20ba59] transition-all hover:scale-[1.02]"
+                          className="inline-flex min-h-[44px] items-center gap-2 rounded-lg bg-[#25D366] px-4 py-2 text-xs font-bold uppercase tracking-wider text-white shadow-sm hover:bg-[#20ba59] transition-all hover:scale-[1.02]"
                         >
                           <MessageCircle className="h-4 w-4" />
                           WhatsApp ile Stok Sor
@@ -97,8 +97,8 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
               <p className="mt-6 text-sm leading-7 text-[#625a54]">{description}</p>
 
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
-                <Link href={`/odeme?slug=${slug}`} className="flex min-h-[52px] items-center justify-center bg-[#171514] px-5 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#7f262b]">Satın Al</Link>
-                <a href={`https://wa.me/905419305372?text=${waStokMessage}`} target="_blank" rel="noopener noreferrer" className="flex min-h-[52px] items-center justify-center border border-[#bcaea3] bg-white px-5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#382f2a] transition-colors hover:border-[#7f262b] hover:text-[#7f262b]">WhatsApp ile Stok Sor</a>
+                <Link href={`/odeme?slug=${slug}`} className="flex min-h-[52px] items-center justify-center rounded-md bg-[#171514] px-5 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition-colors hover:bg-[#7f262b]">Satın Al</Link>
+                <a href={`https://wa.me/905419305372?text=${waStokMessage}`} target="_blank" rel="noopener noreferrer" className="flex min-h-[52px] items-center justify-center rounded-md border border-[#bcaea3] bg-white px-5 text-[11px] font-bold uppercase tracking-[0.16em] text-[#382f2a] transition-colors hover:border-[#7f262b] hover:text-[#7f262b]">WhatsApp ile Stok Sor</a>
               </div>
             </div>
           </div>
@@ -111,6 +111,34 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
           </div>
         </article>
       </main>
+
+      {/* MOBİL CONVERSION-FIRST STICKY ACTION BAR (SADECE MOBİL) */}
+      <aside aria-label="Hızlı Sipariş ve Danışmanlık" className="fixed bottom-0 left-0 right-0 z-40 border-t border-[#846b32]/35 bg-[#141211]/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-12px_30px_rgba(0,0,0,0.45)] backdrop-blur-xl md:hidden">
+        <div className="mx-auto flex max-w-lg items-center justify-between gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#c9ad68] truncate">{watch.brand}</p>
+            <p className="text-base font-bold tracking-tight text-white">{watch.price}</p>
+          </div>
+          <div className="flex shrink-0 items-center gap-2">
+            <a
+              href={`https://wa.me/905419305372?text=${waStokMessage}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp Danışmanı"
+              className="flex h-[46px] items-center justify-center rounded-lg bg-[#25D366] px-3.5 text-xs font-bold text-white shadow-md active:scale-95 transition-all"
+            >
+              <MessageCircle className="h-4 w-4 mr-1.5" />
+              <span>WhatsApp</span>
+            </a>
+            <Link
+              href={`/odeme?slug=${slug}`}
+              className="flex h-[46px] items-center justify-center rounded-lg bg-white px-5 text-xs font-bold uppercase tracking-wider text-[#171514] shadow-md hover:bg-[#e8e2d5] active:scale-95 transition-all"
+            >
+              Satın Al
+            </Link>
+          </div>
+        </div>
+      </aside>
     </div>
   );
 }

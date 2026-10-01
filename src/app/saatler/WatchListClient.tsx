@@ -110,6 +110,17 @@ export default function WatchListClient({ initialWatches, initialGender = '' }: 
         {filtered.map(watch => (
           <Link key={watch.id} href={watch.seoUrl} className="group relative flex flex-col bg-[#FFFFFF] border border-[#E1DCD2]/90 rounded-[12px] md:rounded-[14px] overflow-hidden transition-all duration-[450ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:shadow-[0_16px_36px_-4px_rgba(28,43,38,0.10),0_0_0_1px_rgba(197,160,89,0.55)] hover:-translate-y-[6px] hover:border-[#C5A059]/60 shadow-[0_4px_14px_rgba(0,0,0,0.04)]">
             <div className="relative w-full aspect-[4/5] bg-[radial-gradient(circle_at_50%_50%,#ffffff_30%,#f7f5f0_100%)] border-b border-[#F0ECE4]/85 overflow-hidden">
+              <div className="absolute top-2 left-2 md:top-3 md:left-3 z-10">
+                {watch.category === 'Elit Kategori' || ['Rolex', 'Cartier', 'TAG Heuer', 'Rado'].includes(String(watch.brand || '')) ? (
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-[4px] text-[9px] md:text-[10px] font-bold tracking-wider uppercase bg-[#1C1917]/90 text-[#C5A059] border border-[#C5A059]/40 shadow-xs backdrop-blur-xs">
+                    2. El
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center px-2 py-0.5 rounded-[4px] text-[9px] md:text-[10px] font-bold tracking-wider uppercase bg-stone-100 text-stone-600 border border-stone-300 shadow-xs">
+                    Stokta Yok
+                  </span>
+                )}
+              </div>
               {watch.image ? (
                 <img src={getProxiedImageUrl(watch.image)} alt={watch.modelName} loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-contain p-4 md:p-6 transition-transform duration-500 ease-out group-hover:scale-105 mix-blend-multiply drop-shadow-sm" />
               ) : (
@@ -120,8 +131,10 @@ export default function WatchListClient({ initialWatches, initialGender = '' }: 
               <div className="w-full">
                 <div className="flex items-center justify-between gap-1 mb-1">
                   <h3 className="text-[10px] md:text-[11px] font-bold tracking-[0.15em] md:tracking-[0.2em] uppercase text-[#8A7039]">{watch.brand}</h3>
-                  {!['Rolex', 'Cartier', 'TAG Heuer', 'Rado'].includes(String(watch.brand || '')) && (
-                    <span className="text-[9px] font-semibold text-[#846b32] bg-[#fbf5e8] px-1.5 py-0.5 rounded border border-[#846b32]/30">Stok Sorunuz</span>
+                  {watch.category === 'Elit Kategori' || ['Rolex', 'Cartier', 'TAG Heuer', 'Rado'].includes(String(watch.brand || '')) ? (
+                    <span className="text-[9px] font-bold text-[#846b32] bg-[#fbf5e8] px-1.5 py-0.5 rounded border border-[#846b32]/30">2. El</span>
+                  ) : (
+                    <span className="text-[9px] font-semibold text-stone-600 bg-stone-100 px-1.5 py-0.5 rounded border border-stone-200">Stokta Yok</span>
                   )}
                 </div>
                 <p className="text-[13px] md:text-[15.5px] font-semibold text-[#1C1917] leading-snug mb-1 md:mb-2 line-clamp-2 min-h-[36px] md:min-h-[44px]">{watch.modelName}</p>

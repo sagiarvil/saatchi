@@ -127,8 +127,11 @@ export function FeaturedLuxuryWatches({ allWatches }: Props) {
                   {/* Subtle radial ambient reflection on hover */}
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(194,167,104,0.18),transparent_65%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-                  {/* Top Badge: Certified Authentic */}
-                  <div className="absolute top-2 left-2 sm:top-3 sm:left-3 z-10">
+                  {/* Top Badge: 2. El & Certified Authentic */}
+                  <div className="absolute top-2 left-2 sm:top-3 sm:left-3 z-10 flex items-center gap-1.5">
+                    <span className="inline-flex items-center gap-1 text-[8px] sm:text-[9px] tracking-wider uppercase font-bold text-[#C5A059] bg-[#1C1917]/90 backdrop-blur-md px-2 py-0.5 rounded-full border border-[#C5A059]/40 shadow-xs">
+                      2. El
+                    </span>
                     <span className="inline-flex items-center gap-1 text-[8px] sm:text-[9px] tracking-wider uppercase font-semibold text-[#846b32] bg-white/95 backdrop-blur-md px-2 py-0.5 rounded-full border border-[#846b32]/25 shadow-xs">
                       <Award className="w-2.5 h-2.5 text-[#846b32]" />
                       Sertifikalı

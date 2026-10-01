@@ -142,6 +142,11 @@ export default function CartierFilterClient({ initialWatches }: { initialWatches
               return (
                 <Link href={linkUrl} key={String(watch.id || idx)} className="group bg-surface rounded-xl border border-surface-border overflow-hidden hover:shadow-lg hover:border-[#8d5f62]/40 transition-all duration-500 flex flex-col">
                   <div className="w-full aspect-[4/5] relative overflow-hidden bg-[#FAFAFA] flex items-center justify-center">
+                    <div className="absolute top-3 left-3 z-10">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded-[4px] text-[9px] font-bold tracking-wider uppercase bg-[#1C1917]/90 text-[#C5A059] border border-[#C5A059]/40 shadow-xs">
+                        2. El
+                      </span>
+                    </div>
                     {watch.image ? (
                       <Image unoptimized src={getProxiedImageUrl(watch.image)} alt={watch.modelName} fill sizes="(max-width: 768px) 100vw, 33vw" className="object-contain p-8 md:p-12 group-hover:scale-[1.04] transition-transform duration-700 ease-out mix-blend-multiply drop-shadow-sm" />
                     ) : (

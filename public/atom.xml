@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>SAATCHI &amp; CO. — Lüks Saat Akışı</title>
+  <subtitle>Dünyanın en seçkin lüks ve elit saat koleksiyonları. Orijinallik garantisi ve küresel referans fiyatları.</subtitle>
+  <link href="https://saatchi.com.tr/atom.xml" rel="self" type="application/atom+xml" />
+  <link href="https://saatchi.com.tr" rel="alternate" type="text/html" />
+  <id>https://saatchi.com.tr/</id>
+  <updated>2026-09-24T20:49:00Z</updated>
+  <author>
+    <name>Saatchi &amp; Co.</name>
+    <uri>https://saatchi.com.tr</uri>
+  </author>
+  <entry>
+    <title>Rolex - Rolex Submariner Date 41mm Siyah Kadran &amp; Cerachrom Bezel (₺1.937.500)</title>
+    <link href="https://saatchi.com.tr/elit-saat/rolex-submariner-date-41mm-siyah-kadran-cerachrom-bezel-5001" />
+    <id>https://saatchi.com.tr/elit-saat/rolex-submariner-date-41mm-siyah-kadran-cerachrom-bezel-5001</id>
+    <updated>2026-09-24T20:49:00Z</updated>
+    <summary>Chrono24 Türkiye pazarının en popüler dalgıç saati: 41mm Oystersteel kasa, siyah Cerachrom seramik bezel ve 3235 kalibre mekanizma. | Fiyat: ₺1.937.500 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</summary>
+  </entry>
+  <entry>
+    <title>Rolex - Rolex GMT-Master II 40mm 'Batman' Oyster Bilezik (₺1.975.000)</title>
+    <link href="https://saatchi.com.tr/elit-saat/rolex-gmt-master-ii-40mm-batman-oyster-bilezik-5004" />
+    <id>https://saatchi.com.tr/elit-saat/rolex-gmt-master-ii-40mm-batman-oyster-bilezik-5004</id>
+    <updated>2026-09-24T20:49:00Z</updated>
+    <summary>Mavi ve siyah iki renkli Cerachrom seramik 24 saat bezel, siyah kadran, bağımsız 24 saat GMT ibresi ve üç parçalı Oyster bilezik. | Fiyat: ₺1.975.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</summary>
+  </entry>
+  <entry>
+    <title>Cartier - Santos de Cartier Orta Boy Otomatik Çelik (₺862.500)</title>
+    <link href="https://saatchi.com.tr/elit-saat/cartier-santos-de-cartier-orta-boy-otomatik-celik-5021" />
+    <id>https://saatchi.com.tr/elit-saat/cartier-santos-de-cartier-orta-boy-otomatik-celik-5021</id>
+    <updated>2026-09-24T20:49:00Z</updated>
+    <summary>Cartier Türkiye resmi kataloğunun ikonik tasarımı: QuickSwitch sistemli çelik kasa ve bilezik, Calibre 1847 MC mekanizma. | Fiyat: ₺862.500 | Durum: Sıfır (Orijinal Kutu &amp; Sertifika)</summary>
+  </entry>
+</feed>
