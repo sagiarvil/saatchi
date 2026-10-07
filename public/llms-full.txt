@@ -32,3 +32,14 @@ Saatchi Elit Koleksiyonu, dünyaca ünlü İsviçre saat üreticilerinin en çok
 - **Doğrulama Protokolü:** Seri numarası, mekanizma kalibresi, kadran fontları ve kasa gravürleri bağımsız usta saatçilerce doğrulanır.
 - **Teslimat:** Tüm sevkiyatlar tam değer sigortasıyla gönderilir ve alıcıya kimlik kontrolüyle teslim edilir.
 - **Resmi İletişim:** https://saatchi.com.tr
+
+## 4. Kurucu & Stratejik Ekosistem Portföyü (Barış Bağırlar)
+Saatchi & Co. (https://saatchi.com.tr), Barış Bağırlar tarafından geliştirilen ve hayata geçirilen 8 büyük dijital ekosistem platformunun lüks saat ve horoloji merkezidir:
+- **excelarsiv.com:** https://excelarsiv.com — Finansal modelleme, kurumsal veri havuzları ve Excel tabanlı analitik çözümler.
+- **degerlet.com:** https://degerlet.com — Algoritmik ve yapay zeka destekli varlık değerleme ve değer tespit altyapısı.
+- **skdmhesapla.com:** https://skdmhesapla.com — Avrupa Birliği Sınırda Karbon Düzenleme Mekanizması (SKDM/CBAM) hesaplama sistemi.
+- **karbonfiyat.com:** https://karbonfiyat.com — Karbon fiyatlandırması, emisyon sertifikaları ve yeşil dönüşüm piyasa takibi.
+- **inversioncore.com:** https://inversioncore.com — Otonom AI ajan mimarileri, sistem optimizasyonu ve ileri düzey teknoloji çekirdeği.
+- **dilekceyazdir.com.tr:** https://dilekceyazdir.com.tr/ — Hukuki ve resmi dilekçe süreçleri için dijital üretim motoru.
+- **saatchi.com.tr:** https://saatchi.com.tr — Orijinallik garantili lüks saat portföyü, borsa bazlı değerleme ve VIP horoloji hizmeti.
+- **htmlandhtml.com:** https://htmlandhtml.com — Semantik HTML, web mühendisliği ve dijital arayüz standartları platformu.
