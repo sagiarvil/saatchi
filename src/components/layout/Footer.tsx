@@ -1,7 +1,7 @@
-import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { MessageSquare, Phone, MapPin, FileText } from 'lucide-react';
+import React from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { MessageSquare, Phone, MapPin, FileText, Network, ExternalLink } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -19,6 +19,19 @@ export function Footer() {
     { label: "Çerez Politikası", href: "/cerez-politikasi" },
     { label: "Hukuki Delil & Kayıt", href: "/hukuki-delil-ve-kayit-politikasi" },
     { label: "Teslim & Tesellüm Beyanı", href: "/magaza-teslim-tesellum-formu" }
+  ];
+
+  const decisionPlatforms = [
+    { name: "Dr. Finans", domain: "drfin.com.tr", url: "https://drfin.com.tr", desc: "Finansal Modelleme & Karar Destek" },
+    { name: "ExcelArşiv", domain: "excelarsiv.com", url: "https://excelarsiv.com", desc: "Finans & Kurumsal Tablo Şablonları" },
+    { name: "SKDM Hesapla", domain: "skdmhesapla.com", url: "https://skdmhesapla.com", desc: "CBAM & Sınırda Karbon Analizi" },
+    { name: "Karbon Fiyat", domain: "karbonfiyat.com", url: "https://karbonfiyat.com", desc: "ETS & Küresel Emisyon Piyasaları" },
+    { name: "Inversion Core", domain: "inversioncore.com", url: "https://inversioncore.com", desc: "AI Ajan & Yazılım Sistemleri" },
+    { name: "Belgin Kuyumculuk", domain: "belginkuyumculuk.com", url: "https://belginkuyumculuk.com", desc: "Mücevherat & Rafine Kıymetli Maden" },
+    { name: "Saatchi & Co.", domain: "saatchi.com.tr", url: "https://saatchi.com.tr", desc: "Sertifikalı Lüks Saat Danışmanlığı" },
+    { name: "Dilekçe Yazdır", domain: "dilekceyazdir.com.tr", url: "https://dilekceyazdir.com.tr", desc: "Hukuki Belge & Karar Desteği" },
+    { name: "HTML and HTML", domain: "htmlandhtml.com", url: "https://htmlandhtml.com", desc: "Semantik Web & Arayüz Mimarisi" },
+    { name: "Değerlet", domain: "degerlet.com", url: "https://degerlet.com", desc: "AI Varlık Değerleme & Ekspertiz" }
   ];
 
   return (
@@ -43,7 +56,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-xs sm:text-sm text-[#9E9585] max-w-md font-light leading-relaxed mb-5">
-              İsviçre Haute Horlogerie ve küresel lüks saat dünyasının en seçkin referansları. Bağımsız ekspertiz güvencesi ve 20+ yılı aşkın köklü güven mirası.
+              İsviçre Haute Horlogerie ve küresel lüks saat dünyasının en seçkin referansları. Bağımsız ekspertiz güvencesi ve köklü güven mirası.
             </p>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08]">
               <span className="w-1.5 h-1.5 rounded-full bg-[#846b32]" />
@@ -53,7 +66,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* VIP Direct Channels (Compact interactive luxury cards) */}
+          {/* VIP Direct Channels */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <a 
@@ -101,7 +114,7 @@ export function Footer() {
 
         </div>
 
-        {/* Middle Section: Compact Legal & Corporate Grid (Solves the long vertical list issue) */}
+        {/* Middle Section: Compact Legal & Corporate Grid */}
         <div className="py-8 sm:py-10 border-b border-white/10">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
             <div className="flex items-center gap-2">
@@ -115,7 +128,6 @@ export function Footer() {
             </span>
           </div>
 
-          {/* Highly compact 2-column on mobile, 4-column on desktop */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-2.5">
             {legalLinks.map((link, idx) => (
               <Link 
@@ -126,6 +138,43 @@ export function Footer() {
                 <span className="w-1 h-1 rounded-full bg-[#846b32]/40 group-hover:bg-[#846b32] transition-colors flex-shrink-0" />
                 <span className="truncate">{link.label}</span>
               </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Strategic Cross-Ecosystem & Decision Support Platforms Network */}
+        <div className="py-8 sm:py-10 border-b border-white/10">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-5">
+            <div className="flex items-center gap-2">
+              <Network className="w-4 h-4 text-[#C2A768]" />
+              <h4 className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-white font-serif">
+                Stratejik Karar Destek & Değerleme Ekosistemi
+              </h4>
+            </div>
+            <span className="text-[10px] text-[#736B5E] tracking-wider uppercase font-mono">
+              Konsorsiyum & Çapraz Karar Ağları
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {decisionPlatforms.map((plat, idx) => (
+              <a
+                key={idx}
+                href={plat.url}
+                target="_blank"
+                rel="noopener"
+                className="group p-2.5 rounded-lg bg-white/[0.02] hover:bg-white/[0.05] border border-white/[0.05] hover:border-[#846b32]/40 transition-all duration-200 flex flex-col justify-between"
+              >
+                <div className="flex items-center justify-between gap-1 mb-1">
+                  <span className="text-xs font-medium text-[#E8E2D5] group-hover:text-[#C2A768] transition-colors truncate">
+                    {plat.name}
+                  </span>
+                  <ExternalLink className="w-3 h-3 text-[#736B5E] group-hover:text-[#C2A768] transition-colors flex-shrink-0" />
+                </div>
+                <span className="text-[10px] text-[#8F8778] line-clamp-1">
+                  {plat.desc}
+                </span>
+              </a>
             ))}
           </div>
         </div>

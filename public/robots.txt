@@ -1,5 +1,6 @@
 # ==============================================================================
 # SAATCHI & CO. — Lüks Saatler Resmi Robots.txt Yapılandırması
+# Standart: MANDATE-SEO-GEO-MOBILE-FIRST-2026-V9 ($10M Tier Matrix)
 # ==============================================================================
 
 User-agent: *
@@ -12,57 +13,132 @@ Disallow: /api/vip-link
 Disallow: /api/admin-session
 Disallow: /api/admin/
 
-# AI & LLM Arama ve İndeks Motorları (SearchGPT, Perplexity, Claude, Gemini)
+# 1. OpenAI (SearchGPT, GPT-4o, ChatGPT-User, o1/o3/o4)
 User-agent: GPTBot
 Allow: /
 Disallow: /admin
-Disallow: /admin.html
 Disallow: /vip-checkout
 Disallow: /api/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /admin
-Disallow: /admin.html
 Disallow: /vip-checkout
 Disallow: /api/
 
-User-agent: PerplexityBot
-Allow: /
-Disallow: /admin
-Disallow: /admin.html
-Disallow: /vip-checkout
-Disallow: /api/
-
+# 2. Anthropic (Claude 3.7 / 3.5 Sonnet / Haiku / Opus)
 User-agent: ClaudeBot
 Allow: /
 Disallow: /admin
-Disallow: /admin.html
 Disallow: /vip-checkout
 Disallow: /api/
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /admin
-Disallow: /admin.html
+Disallow: /vip-checkout
+Disallow: /api/
+
+# 3. Perplexity AI (Pro Search & Sonar)
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /vip-checkout
+Disallow: /api/
+
+# 4. Google (Alexandria Mobile-First, Gemini Live & Nano)
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /vip-checkout
+Disallow: /api/
+
+User-agent: Googlebot-Smartphone
+Allow: /
+Disallow: /admin
 Disallow: /vip-checkout
 Disallow: /api/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /admin
-Disallow: /admin.html
+Disallow: /vip-checkout
+Disallow: /api/
+
+# 5. Apple Intelligence (On-Device & Private Cloud Compute)
+User-agent: Applebot
+Allow: /
+Disallow: /admin
 Disallow: /vip-checkout
 Disallow: /api/
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /admin
-Disallow: /admin.html
 Disallow: /vip-checkout
 Disallow: /api/
 
-# Sitemaps & Knowledge Vault
+# 6. Microsoft Copilot & Bing IndexEngine
+User-agent: Bingbot
+Allow: /
+Disallow: /admin
+Disallow: /vip-checkout
+Disallow: /api/
+
+# 7. Meta AI & Llama Discovery
+User-agent: Meta-ExternalAgent
+Allow: /
+Disallow: /admin
+Disallow: /vip-checkout
+Disallow: /api/
+
+User-agent: FacebookBot
+Allow: /
+Disallow: /admin
+Disallow: /vip-checkout
+Disallow: /api/
+
+# 8. Yandex & Seznam Engine
+User-agent: Yandex
+Allow: /
+Disallow: /admin
+Disallow: /vip-checkout
+Disallow: /api/
+
+# 9. Syndication, RSS & RAG Crawlers
+User-agent: Feedly
+Allow: /
+
+User-agent: Inoreader
+Allow: /
+
+# 10. Research & Foundation Knowledge Bots
+User-agent: CCBot
+Allow: /
+Disallow: /admin
+Disallow: /vip-checkout
+Disallow: /api/
+
+User-agent: Diffbot
+Allow: /
+Disallow: /admin
+Disallow: /vip-checkout
+Disallow: /api/
+
+User-agent: Bytespider
+Allow: /
+Disallow: /admin
+Disallow: /vip-checkout
+Disallow: /api/
+
+User-agent: Amazonbot
+Allow: /
+Disallow: /admin
+Disallow: /vip-checkout
+Disallow: /api/
+
+# Canonical Sitemap & Protocols
 Sitemap: https://saatchi.com.tr/sitemap.xml
-# LLM Knowledge Vault: https://saatchi.com.tr/llms.txt
-# Agent Protocol: https://saatchi.com.tr/.well-known/agent-card.json
+# AI Knowledge Graph: https://saatchi.com.tr/llms.txt
+# AI Agent Protocol: https://saatchi.com.tr/agent.txt
+# MCP Mobile: https://saatchi.com.tr/mcp/mobile

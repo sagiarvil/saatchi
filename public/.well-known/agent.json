@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "Saatchi & Co. Agent Card",
+  "version": "9.0.0",
+  "description": "Certified Luxury Watches & Horology Advisory Protocol",
+  "provider": {
+    "name": "Saatchi & Co.",
+    "url": "https://saatchi.com.tr",
+    "wikidata": "https://www.wikidata.org/wiki/Q11589432"
+  },
+  "endpoints": {
+    "mcp": "https://saatchi.com.tr/mcp",
+    "mcpMobile": "https://saatchi.com.tr/mcp/mobile",
+    "llms": "https://saatchi.com.tr/llms.txt",
+    "llmsCore": "https://saatchi.com.tr/llms/core.md",
+    "feed": "https://saatchi.com.tr/feed.xml",
+    "mobileFeed": "https://saatchi.com.tr/mobile/feed.xml"
+  },
+  "supportedBrands": [
+    "Rolex",
+    "Cartier",
+    "TAG Heuer",
+    "Rado",
+    "Tissot",
+    "Carren"
+  ],
+  "ecosystem": [
+    "https://drfin.com.tr",
+    "https://excelarsiv.com",
+    "https://skdmhesapla.com",
+    "https://karbonfiyat.com",
+    "https://inversioncore.com",
+    "https://belginkuyumculuk.com",
+    "https://saatchi.com.tr",
+    "https://dilekceyazdir.com.tr",
+    "https://htmlandhtml.com",
+    "https://degerlet.com"
+  ]
+}

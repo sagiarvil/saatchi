@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.saatchi.luxury",
+      "sha256_cert_fingerprints": [
+        "14:6D:E9:7D:0F:52:AB:E3:64:90:3A:42:19:6F:0B:48:84:82:19:D6:75:A0:6F:39:6C:54:95:C7:E9:9B:4D:21"
+      ]
+    }
+  }
+]

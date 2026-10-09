@@ -1,0 +1,23 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Saatchi & Co. Lüks Saat Koleksiyonu",
+  "home_page_url": "https://saatchi.com.tr/",
+  "feed_url": "https://saatchi.com.tr/feed.json",
+  "description": "Sertifikalı Rolex, Cartier, TAG Heuer ve İsviçre lüks saatleri akışı.",
+  "items": [
+    {
+      "id": "https://saatchi.com.tr/saatler/rolex",
+      "url": "https://saatchi.com.tr/saatler/rolex",
+      "title": "Rolex Saat Koleksiyonu",
+      "content_text": "Submariner, Daytona, Datejust ve GMT-Master II canlı Chrono24 borsa endeksli modeller.",
+      "date_published": "2026-01-01T00:00:00+03:00"
+    },
+    {
+      "id": "https://saatchi.com.tr/saatler/cartier",
+      "url": "https://saatchi.com.tr/saatler/cartier",
+      "title": "Cartier Saat Koleksiyonu",
+      "content_text": "Santos de Cartier, Tank Must, Panthère resmi liste endeksli zarafet modelleri.",
+      "date_published": "2026-01-01T00:00:00+03:00"
+    }
+  ]
+}

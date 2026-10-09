@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "TEAMID.com.saatchi.luxury",
+        "paths": [
+          "/saatler/*",
+          "/markalar/*",
+          "/vip/*"
+        ]
+      }
+    ]
+  }
+}

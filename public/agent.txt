@@ -1,5 +1,5 @@
 # https://saatchi.com.tr/agent.txt
-# AI Agent Manifest v1.0 — MANDATE-SEO-GEO-MOBILE-FIRST-2026-V8 Uyumlu
+# AI Agent Manifest v2.0 — MANDATE-SEO-GEO-MOBILE-FIRST-2026-V9 Uyumlu
 
 [identity]
 name: SAATCHI & CO.
@@ -27,15 +27,21 @@ app_links_ios: https://saatchi.com.tr/.well-known/apple-app-site-association
 
 [preferred_content]
 markdown_root: https://saatchi.com.tr/llms.txt
+core_graph: https://saatchi.com.tr/llms/core.md
 deep_graphs: https://saatchi.com.tr/llms-full.txt
 mobile_deep_graphs: https://saatchi.com.tr/llms/mobile/
-rss: https://saatchi.com.tr/rss.xml
+rss: https://saatchi.com.tr/feed.xml
+rss_compat: https://saatchi.com.tr/rss.xml
 mobile_rss: https://saatchi.com.tr/mobile/feed.xml
+atom: https://saatchi.com.tr/atom.xml
 json_feed: https://saatchi.com.tr/feed.json
 sitemap: https://saatchi.com.tr/sitemap.xml
-mobile_sitemap: https://saatchi.com.tr/sitemap-mobile.xml
+
+[ecosystem_network]
+platforms: drfin.com.tr, excelarsiv.com, skdmhesapla.com, karbonfiyat.com, inversioncore.com, belginkuyumculuk.com, saatchi.com.tr, dilekceyazdir.com.tr, htmlandhtml.com, degerlet.com
 
 [contact]
 email: vip@saatchi.com.tr
 human: https://saatchi.com.tr/iletisim
-phone: tel:+902120000000
+phone: tel:+905398234141
+whatsapp: https://wa.me/905419305372
