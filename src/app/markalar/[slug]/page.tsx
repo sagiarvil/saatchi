@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import saatlerData from '@/data/saatler.json';
 import elitSaatlerData from '@/data/elit-saatler.json';
@@ -25,6 +26,27 @@ function allowedCatalog() {
   });
 }
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const brandWatches = allowedCatalog().filter((watch) => watch.brand && brandSlug(String(watch.brand)) === slug);
+  const brandName = brandWatches.length > 0 ? String(brandWatches[0].brand) : slug.toUpperCase();
+
+  const title = `${brandName} Saat Modelleri & Koleksiyonu | Saatchi & Co.`;
+  const desc = `Sertifikalı ${brandName} kol saatleri. Küresel borsa endeksli şeffaf fiyatlar, bağımsız ekspertiz garantisi ve tam değer sigortalı VIP teslimatla.`;
+
+  return {
+    title,
+    description: desc,
+    alternates: { canonical: `https://saatchi.com.tr/markalar/${slug}` },
+    openGraph: {
+      title,
+      description: desc,
+      url: `https://saatchi.com.tr/markalar/${slug}`,
+      siteName: 'SAATCHI & CO.',
+    }
+  };
+}
+
 export async function generateStaticParams() {
   const brandsSet = new Set<string>();
   allowedCatalog().forEach((watch) => {
@@ -39,8 +61,50 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   const brandName = brandWatches.length > 0 ? String(brandWatches[0].brand) : slug.toUpperCase();
   const tierLabel = ELITE_BRANDS.has(brandName) ? 'Elit Kategori · 2. El' : 'Saat Kategorisi · Stokta Yok';
 
+  const brandSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "CollectionPage",
+        "@id": `https://saatchi.com.tr/markalar/${slug}#webpage`,
+        "url": `https://saatchi.com.tr/markalar/${slug}`,
+        "name": `${brandName} Saat Koleksiyonu`,
+        "description": `Sertifikalı ${brandName} kol saatleri. Küresel borsa endeksli şeffaf fiyatlar ve tam değer sigortalı VIP teslimat.`,
+        "inLanguage": "tr-TR"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `https://saatchi.com.tr/markalar/${slug}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Ana Sayfa",
+            "item": "https://saatchi.com.tr/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Markalar",
+            "item": "https://saatchi.com.tr/markalar"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": brandName,
+            "item": `https://saatchi.com.tr/markalar/${slug}`
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="bg-background min-h-screen py-14 md:py-20 border-t border-surface-border">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(brandSchema) }}
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-primary text-center">SAATCHI / {tierLabel}</p>
         <div className="flex items-center justify-center gap-3 mt-3 mb-4 flex-wrap">

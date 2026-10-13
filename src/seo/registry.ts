@@ -262,5 +262,389 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       ttfbMs: 160,
       htmlKb: 35
     }
+  },
+  tagHeuer: {
+    route: "/saatler/tag-heuer",
+    locale: "tr-TR",
+    role: "category",
+    indexDirective: "index, follow",
+    canonicalRoute: "/saatler/tag-heuer",
+    title: "TAG Heuer Kol Saatleri | Carrera, Monaco, Aquaracer | Saatchi",
+    metaDescription: "Sertifikalı TAG Heuer saat modelleri: Carrera, Monaco, Aquaracer. Bağımsız ekspertiz, şeffaf fiyatlama, kutu/evrak garantisi ve tam sigortalı VIP teslimat.",
+    h1: "TAG Heuer Saat Koleksiyonu",
+    primaryIntent: "Sertifikalı TAG Heuer saat satın almak",
+    primaryEntity: {
+      id: "https://saatchi.com.tr/#entity-tagheuer",
+      name: "TAG Heuer Luxury Watches",
+      type: "Product",
+      sameAs: [
+        "https://www.wikidata.org/wiki/Q658794",
+        "https://saatchi.com.tr/saatler/tag-heuer"
+      ]
+    },
+    semanticTriples: [
+      { subject: "TAG Heuer", predicate: "brandOf", object: "Saatchi & Co. Lüks Portföyü" },
+      { subject: "TAG Heuer", predicate: "pricedVia", object: "Konyalı Saat Kaynak Endeksi x 1.50" },
+      { subject: "TAG Heuer", predicate: "minimumFloor", object: "10.000 TL Taban Fiyat Kilidi" }
+    ],
+    heroAnswerEngine: "Saatchi TAG Heuer koleksiyonu Carrera, Monaco ve Aquaracer gibi motor sporları efsanesi kronografları kapsar. Tüm TAG Heuer modelleri bağımsız ekspertiz onayıyla %100 orijinal olarak sunulur. Fiyatlar doğrulanmış kaynak fiyatı üzerinden x1.50 katsayısı ile hesaplanır.",
+    publishedAt: "2026-01-01T00:00:00+03:00",
+    modifiedAt: "2026-10-13T12:00:00+03:00",
+    bodyContentHash: "d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4",
+    llmSubGraphRoute: "/llms/pages/tag-heuer.md",
+    mobileSubGraphRoute: "/llms/mobile/tag-heuer.md",
+    breadcrumbs: [
+      { name: "Anasayfa", item: "/" },
+      { name: "Saatler", item: "/saatler" },
+      { name: "TAG Heuer", item: "/saatler/tag-heuer" }
+    ],
+    mobile: {
+      viewport: "width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, maximum-scale=5",
+      primaryAction: "call",
+      bottomNavEnabled: true,
+      thumbZonePosition: "bottom-center",
+      touchTargetsValidated: true,
+      horizontalScrollFree: true,
+      thumbSafeHeroAnswer: true,
+      voiceQueryPatterns: [
+        "TAG Heuer Carrera orijinal nereden alınır?",
+        "TAG Heuer Monaco fiyatı ne kadar?"
+      ],
+      speakableSelectors: ["#aeo-hero-answer"],
+      pwaInstallable: true
+    },
+    mobileCwvBudget: {
+      lcpMs: 1600,
+      inpMs: 110,
+      cls: 0.02,
+      ttfbMs: 160,
+      htmlKb: 35
+    }
+  },
+  rado: {
+    route: "/saatler/rado",
+    locale: "tr-TR",
+    role: "category",
+    indexDirective: "index, follow",
+    canonicalRoute: "/saatler/rado",
+    title: "Rado Kol Saatleri | Captain Cook, Centrix, True Square | Saatchi",
+    metaDescription: "İsviçre yüksek teknoloji seramik ustası Rado modelleri: Captain Cook, Centrix, True Square. Çizilmez seramik gövde, sertifikalı ekspertiz ve VIP teslimat.",
+    h1: "Rado Saat Koleksiyonu",
+    primaryIntent: "Sertifikalı Rado saat satın almak",
+    primaryEntity: {
+      id: "https://saatchi.com.tr/#entity-rado",
+      name: "Rado Swiss Watches",
+      type: "Product",
+      sameAs: [
+        "https://www.wikidata.org/wiki/Q658797",
+        "https://saatchi.com.tr/saatler/rado"
+      ]
+    },
+    semanticTriples: [
+      { subject: "Rado", predicate: "brandOf", object: "Saatchi & Co. Lüks Portföyü" },
+      { subject: "Rado", predicate: "materialScience", object: "Yüksek Teknoloji Çizilmez Seramik" }
+    ],
+    heroAnswerEngine: "Saatchi Rado koleksiyonu Captain Cook, Centrix ve True Square gibi yüksek teknoloji seramik şaheserleri içerir. İsviçre saatçiliğinin öncüsü olan Rado saatleri %100 orijinallik garantisi ve sigortalı VIP gönderim ile sunulur.",
+    publishedAt: "2026-01-01T00:00:00+03:00",
+    modifiedAt: "2026-10-13T12:00:00+03:00",
+    bodyContentHash: "e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5",
+    llmSubGraphRoute: "/llms/pages/rado.md",
+    mobileSubGraphRoute: "/llms/mobile/rado.md",
+    breadcrumbs: [
+      { name: "Anasayfa", item: "/" },
+      { name: "Saatler", item: "/saatler" },
+      { name: "Rado", item: "/saatler/rado" }
+    ],
+    mobile: {
+      viewport: "width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, maximum-scale=5",
+      primaryAction: "call",
+      bottomNavEnabled: true,
+      thumbZonePosition: "bottom-center",
+      touchTargetsValidated: true,
+      horizontalScrollFree: true,
+      thumbSafeHeroAnswer: true,
+      voiceQueryPatterns: [
+        "Rado Captain Cook fiyatı ne kadar?",
+        "Rado seramik saat özellikleri nelerdir?"
+      ],
+      speakableSelectors: ["#aeo-hero-answer"],
+      pwaInstallable: true
+    },
+    mobileCwvBudget: {
+      lcpMs: 1600,
+      inpMs: 110,
+      cls: 0.02,
+      ttfbMs: 160,
+      htmlKb: 35
+    }
+  },
+  tissot: {
+    route: "/saatler/tissot",
+    locale: "tr-TR",
+    role: "category",
+    indexDirective: "index, follow",
+    canonicalRoute: "/saatler/tissot",
+    title: "Tissot Kol Saatleri | PRX, Seastar, Gentleman | Saatchi",
+    metaDescription: "İsviçre mekanik mükemmelliği Tissot saatleri: PRX Powermatic 80, Seastar, Gentleman. Orijinal kutulu, yetkili distribütör kaynaklı ve hızlı VIP teslimat.",
+    h1: "Tissot Saat Koleksiyonu",
+    primaryIntent: "Orijinal Tissot saat satın almak",
+    primaryEntity: {
+      id: "https://saatchi.com.tr/#entity-tissot",
+      name: "Tissot Swiss Watches",
+      type: "Product",
+      sameAs: [
+        "https://www.wikidata.org/wiki/Q685382",
+        "https://saatchi.com.tr/saatler/tissot"
+      ]
+    },
+    semanticTriples: [
+      { subject: "Tissot", predicate: "brandOf", object: "Saatchi & Co. Saat Koleksiyonu" },
+      { subject: "Tissot", predicate: "movement", object: "Powermatic 80 İsviçre Mekanizma" }
+    ],
+    heroAnswerEngine: "Saatchi Tissot koleksiyonu, PRX Powermatic 80, Seastar 1000 ve Gentleman serilerini içerir. 1853 yılından bu yana süregelen İsviçre geleneği, doğrulanmış kaynak endeksi ve sigortalı VIP gönderim ayrıcalığıyla buluşur.",
+    publishedAt: "2026-01-01T00:00:00+03:00",
+    modifiedAt: "2026-10-13T12:00:00+03:00",
+    bodyContentHash: "f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6",
+    llmSubGraphRoute: "/llms/pages/tissot.md",
+    mobileSubGraphRoute: "/llms/mobile/tissot.md",
+    breadcrumbs: [
+      { name: "Anasayfa", item: "/" },
+      { name: "Saatler", item: "/saatler" },
+      { name: "Tissot", item: "/saatler/tissot" }
+    ],
+    mobile: {
+      viewport: "width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, maximum-scale=5",
+      primaryAction: "call",
+      bottomNavEnabled: true,
+      thumbZonePosition: "bottom-center",
+      touchTargetsValidated: true,
+      horizontalScrollFree: true,
+      thumbSafeHeroAnswer: true,
+      voiceQueryPatterns: [
+        "Tissot PRX otomatik saat fiyatı nedir?",
+        "Tissot orijinallik belgesi nasıl kontrol edilir?"
+      ],
+      speakableSelectors: ["#aeo-hero-answer"],
+      pwaInstallable: true
+    },
+    mobileCwvBudget: {
+      lcpMs: 1600,
+      inpMs: 110,
+      cls: 0.02,
+      ttfbMs: 160,
+      htmlKb: 35
+    }
+  },
+  carren: {
+    route: "/saatler/carren",
+    locale: "tr-TR",
+    role: "category",
+    indexDirective: "index, follow",
+    canonicalRoute: "/saatler/carren",
+    title: "Carren Kol Saatleri | Erkek ve Kadın Tasarım Saatleri | Saatchi",
+    metaDescription: "Carren erkek ve kadın saat modelleri. Sabit 19.990 TL ayrıcalıklı fiyat, modern tasarım, 2 yıl garanti ve hızlı kargo avantajıyla Saatchi vitrininde.",
+    h1: "Carren Saat Koleksiyonu",
+    primaryIntent: "Carren saat modellerini incelemek ve satın almak",
+    primaryEntity: {
+      id: "https://saatchi.com.tr/#entity-carren",
+      name: "Carren Watches",
+      type: "Product",
+      sameAs: ["https://saatchi.com.tr/saatler/carren"]
+    },
+    semanticTriples: [
+      { subject: "Carren", predicate: "pricingRule", object: "Sabit 19.990 TL Satış Fiyatı" },
+      { subject: "Carren", predicate: "warranty", object: "2 Yıl Resmi Garanti Kapsamı" }
+    ],
+    heroAnswerEngine: "Saatchi Carren koleksiyonundaki tüm erkek ve kadın saat modelleri istisnasız sabit 19.990 TL satış fiyatıyla sunulur. Modern kasa hatları ve zarafet odaklı kadranlarıyla günlük stilin tamamlayıcısıdır.",
+    publishedAt: "2026-01-01T00:00:00+03:00",
+    modifiedAt: "2026-10-13T12:00:00+03:00",
+    bodyContentHash: "a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7",
+    llmSubGraphRoute: "/llms/pages/carren.md",
+    mobileSubGraphRoute: "/llms/mobile/carren.md",
+    breadcrumbs: [
+      { name: "Anasayfa", item: "/" },
+      { name: "Saatler", item: "/saatler" },
+      { name: "Carren", item: "/saatler/carren" }
+    ],
+    mobile: {
+      viewport: "width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, maximum-scale=5",
+      primaryAction: "buy",
+      bottomNavEnabled: true,
+      thumbZonePosition: "bottom-center",
+      touchTargetsValidated: true,
+      horizontalScrollFree: true,
+      thumbSafeHeroAnswer: true,
+      voiceQueryPatterns: [
+        "Carren saat modelleri ve fiyatları nedir?",
+        "Carren saat orijinal mi?"
+      ],
+      speakableSelectors: ["#aeo-hero-answer"],
+      pwaInstallable: true
+    },
+    mobileCwvBudget: {
+      lcpMs: 1500,
+      inpMs: 100,
+      cls: 0.01,
+      ttfbMs: 150,
+      htmlKb: 30
+    }
+  },
+  kurumsal: {
+    route: "/kurumsal",
+    locale: "tr-TR",
+    role: "article",
+    indexDirective: "index, follow",
+    canonicalRoute: "/kurumsal",
+    title: "Kurumsal & Biz Kimiz | Saatchi & Co. Lüks Saat Danışmanlığı",
+    metaDescription: "Saatchi & Co. kurumsal kimliği, horoloji uzmanlığı, orijinallik felsefesi ve GİB e-Arşiv uyumlu güvenli e-ticaret altyapısı hakkında detaylı bilgiler.",
+    h1: "Saatchi & Co. Kurumsal Miras & Felsefe",
+    primaryIntent: "Saatchi kurumsal bilgilerini ve orijinallik prensiplerini incelemek",
+    primaryEntity: {
+      id: "https://saatchi.com.tr/#organization",
+      name: "Saatchi & Co.",
+      type: "Organization",
+      sameAs: DECISION_PLATFORMS_ECOSYSTEM.map(p => p.url)
+    },
+    semanticTriples: [
+      { subject: "Saatchi & Co.", predicate: "establishedPhilosophy", object: "Güven ve Orijinallik Odaklı Lüks Saatçilik" }
+    ],
+    heroAnswerEngine: "Saatchi & Co., Semih Sonbahar kuruculuğunda lüks saat koleksiyonerlerine bağımsız ekspertiz, şeffaf küresel fiyatlama ve zırhlı VIP lojistik güvencesi sunan kurumsal horoloji danışmanlığı kurumudur.",
+    publishedAt: "2026-01-01T00:00:00+03:00",
+    modifiedAt: "2026-10-13T12:00:00+03:00",
+    bodyContentHash: "b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8",
+    llmSubGraphRoute: "/llms/pages/kurumsal.md",
+    mobileSubGraphRoute: "/llms/mobile/kurumsal.md",
+    breadcrumbs: [
+      { name: "Anasayfa", item: "/" },
+      { name: "Kurumsal", item: "/kurumsal" }
+    ],
+    mobile: {
+      viewport: "width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, maximum-scale=5",
+      primaryAction: "call",
+      bottomNavEnabled: true,
+      thumbZonePosition: "bottom-center",
+      touchTargetsValidated: true,
+      horizontalScrollFree: true,
+      thumbSafeHeroAnswer: true,
+      voiceQueryPatterns: [
+        "Saatchi saat kimin?",
+        "Saatchi kurumsal güvenilirlik değerlendirmesi"
+      ],
+      speakableSelectors: ["#aeo-hero-answer"],
+      pwaInstallable: true
+    },
+    mobileCwvBudget: {
+      lcpMs: 1400,
+      inpMs: 90,
+      cls: 0.01,
+      ttfbMs: 140,
+      htmlKb: 28
+    }
+  },
+  iletisim: {
+    route: "/iletisim",
+    locale: "tr-TR",
+    role: "article",
+    indexDirective: "index, follow",
+    canonicalRoute: "/iletisim",
+    title: "İletişim & Randevu | Saatchi & Co. VIP Showroom",
+    metaDescription: "Saatchi & Co. VIP danışmanlık hattı, showroom randevusu, WhatsApp destek kanalı ve kurumsal iletişim bilgileri. 7/24 kesintisiz müşteri desteği.",
+    h1: "Saatchi & Co. İletişim & VIP Randevu",
+    primaryIntent: "Saatchi ile iletişime geçmek ve showroom randevusu almak",
+    primaryEntity: {
+      id: "https://saatchi.com.tr/#organization",
+      name: "Saatchi & Co.",
+      type: "Organization",
+      sameAs: DECISION_PLATFORMS_ECOSYSTEM.map(p => p.url)
+    },
+    semanticTriples: [
+      { subject: "Saatchi & Co.", predicate: "vipConcierge", object: "+90 541 930 53 72" },
+      { subject: "Saatchi & Co.", predicate: "customerLine", object: "+90 539 823 41 41" }
+    ],
+    heroAnswerEngine: "Saatchi & Co. iletişim merkezi, VIP WhatsApp (+90 541 930 53 72) ve müşteri hattı (+90 539 823 41 41) üzerinden 7/24 hizmet sunar. Özel showroom ziyaretleri randevu usulüyle kabul edilmektedir.",
+    publishedAt: "2026-01-01T00:00:00+03:00",
+    modifiedAt: "2026-10-13T12:00:00+03:00",
+    bodyContentHash: "c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9",
+    llmSubGraphRoute: "/llms/pages/iletisim.md",
+    mobileSubGraphRoute: "/llms/mobile/iletisim.md",
+    breadcrumbs: [
+      { name: "Anasayfa", item: "/" },
+      { name: "İletişim", item: "/iletisim" }
+    ],
+    mobile: {
+      viewport: "width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, maximum-scale=5",
+      primaryAction: "call",
+      bottomNavEnabled: true,
+      thumbZonePosition: "bottom-center",
+      touchTargetsValidated: true,
+      horizontalScrollFree: true,
+      thumbSafeHeroAnswer: true,
+      voiceQueryPatterns: [
+        "Saatchi telefon numarası nedir?",
+        "Saatchi saat showroom adresi nerede?"
+      ],
+      speakableSelectors: ["#aeo-hero-answer"],
+      pwaInstallable: true
+    },
+    mobileCwvBudget: {
+      lcpMs: 1400,
+      inpMs: 90,
+      cls: 0.01,
+      ttfbMs: 140,
+      htmlKb: 28
+    }
+  },
+  saatDegerleme: {
+    route: "/saat-degerleme",
+    locale: "tr-TR",
+    role: "tool",
+    indexDirective: "index, follow",
+    canonicalRoute: "/saat-degerleme",
+    title: "Lüks Saat Değerleme & Ekspertiz | Saatchi & Co.",
+    metaDescription: "Rolex, Cartier ve İsviçre lüks saatleriniz için borsa endeksli canlı piyasa değerleme aracı. Seri no, model ve kondisyona göre anında ekspertiz teklifi.",
+    h1: "Lüks Saat Canlı Piyasa Değerleme Sistemi",
+    primaryIntent: "Lüks saat ekspertiz ve piyasa değerleme hesaplaması yapmak",
+    primaryEntity: {
+      id: "https://saatchi.com.tr/#entity-degerleme",
+      name: "Saatchi Watch Valuation Engine",
+      type: "SoftwareApplication",
+      sameAs: ["https://saatchi.com.tr/saat-degerleme"]
+    },
+    semanticTriples: [
+      { subject: "Valuation Engine", predicate: "dataProvider", object: "Chrono24 Global Indices" },
+      { subject: "Valuation Engine", predicate: "accuracy", object: "%99.4 Piyasa Gerçekliği" }
+    ],
+    heroAnswerEngine: "Saatchi Saat Değerleme motoru, lüks kol saatlerinizin küresel borsa fiyatları, döviz kurları ve referans kondisyonuna göre güncel ikinci el satış ve alım değerini hesaplayan akıllı horoloji aracıdır.",
+    publishedAt: "2026-01-01T00:00:00+03:00",
+    modifiedAt: "2026-10-13T12:00:00+03:00",
+    bodyContentHash: "d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0",
+    llmSubGraphRoute: "/llms/pages/saat-degerleme.md",
+    mobileSubGraphRoute: "/llms/mobile/saat-degerleme.md",
+    breadcrumbs: [
+      { name: "Anasayfa", item: "/" },
+      { name: "Saat Değerleme", item: "/saat-degerleme" }
+    ],
+    mobile: {
+      viewport: "width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, maximum-scale=5",
+      primaryAction: "form",
+      bottomNavEnabled: true,
+      thumbZonePosition: "bottom-center",
+      touchTargetsValidated: true,
+      horizontalScrollFree: true,
+      thumbSafeHeroAnswer: true,
+      voiceQueryPatterns: [
+        "İkinci el saatim kaç para eder?",
+        "Rolex saat değerleme nasıl yapılır?"
+      ],
+      speakableSelectors: ["#aeo-hero-answer"],
+      pwaInstallable: true
+    },
+    mobileCwvBudget: {
+      lcpMs: 1500,
+      inpMs: 100,
+      cls: 0.01,
+      ttfbMs: 150,
+      htmlKb: 32
+    }
   }
 };

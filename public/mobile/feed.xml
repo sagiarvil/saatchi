@@ -1,32 +1,911 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" 
-     xmlns:content="http://purl.org/rss/1.0/modules/content/" 
-     xmlns:atom="http://www.w3.org/2005/Atom"
-     xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
-    <title>SAATCHI &amp; CO. Lüks Saatler (Mobil &amp; Sesli Arama Feed)</title>
+    <title>SAATCHI &amp; CO. — Lüks Saat Koleksiyonu</title>
     <link>https://saatchi.com.tr</link>
-    <description>Rolex, Cartier, TAG Heuer, Rado ve İsviçre kol saatleri için mobil ve sesli arama optimize edilmiş veri akışı.</description>
-    <language>tr-TR</language>
-    <atom:link href="https://saatchi.com.tr/mobile/feed.xml" rel="self" type="application/rss+xml"/>
-    <lastBuildDate>2026-09-25T00:00:00+03:00</lastBuildDate>
+    <description>Rolex, Cartier, TAG Heuer, Rado ve dünyanın en seçkin İsviçre saat koleksiyonları. Orijinallik garantisi ve VIP teslimat ile SAATCHI'de.</description>
+    <language>tr-tr</language>
+    <lastBuildDate>Tue, 13 Oct 2026 14:19:37 GMT</lastBuildDate>
+    <atom:link href="https://saatchi.com.tr/rss.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Rolex ve Cartier Orijinal Saat Fiyatları ve Ekspertiz</title>
-      <link>https://saatchi.com.tr/markalar</link>
-      <guid isPermaLink="true">https://saatchi.com.tr/markalar</guid>
-      <description>Rolex ve Cartier lüks saatlerde güncel piyasa endeksleri ve sertifikalı orijinallik garantisi.</description>
-      <content:encoded><![CDATA[Saatchi & Co., Rolex ve Cartier lüks saatleri uluslararası piyasa endeksleri ve resmi sertifikalarıyla sunan Türkiye'nin öncü platformudur. 24 saatte tam sigortalı VIP teslimat güvencesi sağlanır.]]></content:encoded>
-      <pubDate>Fri, 25 Sep 2026 00:00:00 +0300</pubDate>
-      <category>Lüks Saatler</category>
+      <title>Rolex - Rolex Submariner Date 41mm Siyah Kadran &amp; Cerachrom Bezel (₺1.937.500)</title>
+      <link>https://saatchi.com.tr/elit-saat/5001</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5001</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Chrono24 Türkiye pazarının en popüler dalgıç saati: 41mm Oystersteel kasa, siyah Cerachrom seramik bezel ve 3235 kalibre mekanizma. | Fiyat: ₺1.937.500 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126610ln-5001.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126610ln-5001.jpg" medium="image" />
     </item>
     <item>
-      <title>Canlı Saat Değerleme ve Ekspertiz Robotu</title>
-      <link>https://saatchi.com.tr/saat-degerleme</link>
-      <guid isPermaLink="true">https://saatchi.com.tr/saat-degerleme</guid>
-      <description>Elinizdeki lüks saatin anlık piyasa değerini hesaplayın, uzman eksper teklifi alın.</description>
-      <content:encoded><![CDATA[Saatchi Saat Değerleme Motoru ile Rolex, Cartier, Omega ve TAG Heuer saatlerinizin kondisyon ve modeline göre anlık piyasa değerini öğrenin.]]></content:encoded>
-      <pubDate>Fri, 25 Sep 2026 00:00:00 +0300</pubDate>
-      <category>Değerleme</category>
+      <title>Rolex - Rolex GMT-Master II 40mm &apos;Batman&apos; Oyster Bilezik (₺1.975.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5004</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5004</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Mavi ve siyah iki renkli Cerachrom seramik 24 saat bezel, siyah kadran, bağımsız 24 saat GMT ibresi ve üç parçalı Oyster bilezik. | Fiyat: ₺1.975.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126710blnr-5004.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126710blnr-5004.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex GMT-Master II 40mm &apos;Batgirl&apos; Jubilee Bilezik (₺1.975.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5212</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5212</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Mavi-siyah Cerachrom bezelin beş parçalı konforlu Jubilee bilezik ile birleşimi olan efsanevi Batgirl GMT-Master II. | Fiyat: ₺1.975.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126710blnr-0002-5212.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126710blnr-0002-5212.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex GMT-Master II 40mm &apos;Sprite&apos; Sol Tepe Yeşil/Siyah (₺1.987.500)</title>
+      <link>https://saatchi.com.tr/elit-saat/5005</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5005</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Sol tarafa konumlandırılmış kurma kolu (Destro), yeşil ve siyah Cerachrom seramik çerçeve ve Jubilee bilezik. | Fiyat: ₺1.987.500 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126720vtnr-5005.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126720vtnr-5005.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex GMT-Master II 40mm &apos;Bruce Wayne&apos; Siyah/Gri Cerachrom Bezel Jubilee (₺1.995.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5215</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5215</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Yeni nesil gri-siyah Cerachrom bezel, parlak siyah kadran, yeşil GMT ibresi ve Jubilee bilezikli Bruce Wayne. | Fiyat: ₺1.995.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126710grnr-5215.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126710grnr-5215.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 41mm Yivli Bezel &amp; Mavi Kadran Jubilee (₺1.920.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5006</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5006</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>41mm Oystersteel kasa, 18 ayar beyaz altın yivli bezel, güneş ışını desenli parlak mavi kadran ve Jubilee bilezik. | Fiyat: ₺1.920.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126334-0002-5006.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126334-0002-5006.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 41mm Wimbledon Yeşil Romen Rakamlı (₺1.920.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5007</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5007</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>İkonik Wimbledon kadranı: arduvaz gri zemin üzerine yeşil çerçeveli siyah Romen rakamları, beyaz altın yivli bezel ve Jubilee bilezik. | Fiyat: ₺1.920.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126334-0014-5007.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126334-0014-5007.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 41mm Yivli Bezel Nane Yeşili Kadran Jubilee (₺1.950.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5218</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5218</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Güneş ışını desenli nane yeşili (mint green) kadran, 18 ayar beyaz altın yivli bezel ve Jubilee bilezik. | Fiyat: ₺1.950.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126334-0028-5218.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126334-0028-5218.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 41mm Yivli Bezel Rhodium Gri Kadran Jubilee (₺1.900.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5219</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5219</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Arduvaz rodyum gri güneş ışını kadran, 18 ayar beyaz altın yivli bezel ve Jubilee bilezik. | Fiyat: ₺1.900.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126334-0004-5219.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126334-0004-5219.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 41mm Düz Bezel Parlak Mavi Kadran Oyster (₺1.350.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5220</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5220</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Düz parlatılmış çelik bezel, parlak mavi güneş ışını kadran ve sağlam Oyster bilezik. | Fiyat: ₺1.350.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126300-0001-5220.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126300-0001-5220.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 36mm Palm Motiv Yeşil Kadran Jubilee (₺1.775.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5008</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5008</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Zeytin yeşili palmiye yaprağı lazer motifli özel kadran, beyaz altın yivli bezel ve Jubilee bilezik. | Fiyat: ₺1.775.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126234-0050-5008.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126234-0050-5008.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 36mm Mavi Yivli Motif Kadran Jubilee (₺1.737.500)</title>
+      <link>https://saatchi.com.tr/elit-saat/5223</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5223</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>36mm kasa, yivli motife sahip derin mavi kadran, beyaz altın yivli bezel ve Jubilee bilezik. | Fiyat: ₺1.737.500 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126234-0051-5223.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126234-0051-5223.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 36mm Pembe Kadran Elmas İndeks Jubilee (₺1.800.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5224</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5224</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Pudra pembe kadran üzerinde pırlanta elmas saat indeksleri, beyaz altın yivli bezel ve Jubilee bilezik. | Fiyat: ₺1.800.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126234-0045-5224.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126234-0045-5224.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 36mm Klasik Yeşil Kadran Oyster (₺1.225.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5225</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5225</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>36mm düz çelik bezel, güneş ışını nane yeşili kadran ve konforlu Oyster bilezik. | Fiyat: ₺1.225.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126200-0020-5225.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126200-0020-5225.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Submariner No-Date 41mm Oystersteel (₺1.687.478)</title>
+      <link>https://saatchi.com.tr/elit-saat/5011</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5011</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Tarih penceresiz saf simetrik tasarım: 41mm paslanmaz çelik Oyster kasa, tek yöne dönen siyah Cerachrom bezel. | Fiyat: ₺1.687.478 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-124060-5011.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-124060-5011.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Submariner Date 41mm &apos;Kermit / Starbucks&apos; Yeşil Bezel (₺1.965.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5012</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5012</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Yeşil Cerachrom seramik bezel ve parlak siyah kadran kombinasyonuna sahip efsanevi Starbucks Submariner Date. | Fiyat: ₺1.965.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126610lv-5012.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126610lv-5012.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Explorer 36mm Oystersteel Siyah Kadran (₺1.099.983)</title>
+      <link>https://saatchi.com.tr/elit-saat/5014</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5014</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>36mm orijinal miras boyutu, Chromalight 3-6-9 rakamlı siyah kadran ve dayanıklı Oystersteel kasa. | Fiyat: ₺1.099.983 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-124270-5014.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-124270-5014.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Explorer 40mm Oystersteel Siyah Kadran (₺1.180.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5236</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5236</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Genişletilmiş 40mm kasa formatı, Chromalight 3-6-9 rakamları ve güçlü ergonomik bilek duruşu. | Fiyat: ₺1.180.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-224270-5236.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-224270-5236.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Explorer II 42mm Beyaz &apos;Polar&apos; Kadran (₺1.506.850)</title>
+      <link>https://saatchi.com.tr/elit-saat/5015</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5015</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>42mm kasa, mat beyaz Polar kadran, turuncu 24 saat GMT ibresi ve 24 saat dereceli sabit çelik bezel. | Fiyat: ₺1.506.850 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-226570-0001-5015.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-226570-0001-5015.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Explorer II 42mm Siyah Kadran Turuncu GMT İbre (₺1.475.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5237</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5237</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Mat siyah kadran, turuncu 24 saat ibresi, 24 saat dereceli çelik sabit bezel ve çift zaman dilimi. | Fiyat: ₺1.475.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-226570-0002-5237.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-226570-0002-5237.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Sea-Dweller 43mm Oystersteel &amp; Siyah Kadran Kırmızı Yazı (₺1.646.498)</title>
+      <link>https://saatchi.com.tr/elit-saat/5020</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5020</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>43mm profesyonel derin deniz saati, kırmızı Sea-Dweller kabartma yazısı, helyum vanası ve 1.220 metre su geçirmezlik. | Fiyat: ₺1.646.498 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126600-5020.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126600-5020.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Oyster Perpetual 41mm Turkuaz Mavi &apos;Tiffany&apos; Kadran (₺1.280.610)</title>
+      <link>https://saatchi.com.tr/elit-saat/5018</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5018</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>İkonik Turkuaz Mavi (Tiffany) lakeli kadran, 41mm paslanmaz çelik Oyster kasa ve 3230 kalibre mekanizma. | Fiyat: ₺1.280.610 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-124300-0006-5018.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-124300-0006-5018.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Oyster Perpetual 41mm Yeşil Kadran Oyster (₺1.200.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5231</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5231</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Rolex&apos;in imza koyu yeşil kadranı, 41mm paslanmaz çelik Oyster kasa ve 70 saat güç rezervi. | Fiyat: ₺1.200.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-124300-0005-5231.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-124300-0005-5231.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Oyster Perpetual 41mm Parlak Mavi Kadran (₺1.100.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5232</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5232</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Güneş ışını desenli okyanus mavisi kadran, kromalight indeksler ve 41mm Oystersteel kasa. | Fiyat: ₺1.100.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-124300-0003-5232.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-124300-0003-5232.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Oyster Perpetual 41mm Gümüş Kadran Altın İndeks (₺1.050.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5233</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5233</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Sıcak sarı altın ibre ve indekslere sahip zarif gümüş kadranlı Oyster Perpetual 41. | Fiyat: ₺1.050.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-124300-0001-5233.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-124300-0001-5233.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Oyster Perpetual 36mm Parlak Siyah Kadran (₺1.340.980)</title>
+      <link>https://saatchi.com.tr/elit-saat/5019</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5019</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>36mm zamansız gövde yapısı, parlak güneş ışını siyah kadran ve Oysterlock güvenlik tokalı çelik bilezik. | Fiyat: ₺1.340.980 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126000-0014-5019.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126000-0014-5019.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Oyster Perpetual 36mm Turkuaz Mavi Kadran (₺1.225.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5234</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5234</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>36mm kasa boyutu, canlı lake Turkuaz Mavi (Tiffany) kadran ve 3230 kalibre mekanizma. | Fiyat: ₺1.225.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126000-0007-5234.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126000-0007-5234.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Oyster Perpetual 36mm Şeker Pembesi &apos;Candy Pink&apos; Kadran (₺1.300.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5235</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5235</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Popüler Candy Pink lake pembe kadran, 36mm Oystersteel kasa ve Oysterlock güvenlik tokası. | Fiyat: ₺1.300.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126000-0005-5235.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126000-0005-5235.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Air-King 40mm Oystersteel Tepe Korumalı Yeni Kasa (₺1.120.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5245</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5245</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Havacılık kokpit göstergelerinden esinlenen yeni nesil kurma kolu korumalı 40mm Air-King. | Fiyat: ₺1.120.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126900-5245.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126900-5245.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Yacht-Master 40mm Platin Bezel &amp; Rhodium Gri Kadran Mavi Saniye (₺1.800.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5238</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5238</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>950 ayar som platin kabartmalı çift yönlü döner bezel, arduvaz gri kadran ve deniz mavisi saniye ibresi. | Fiyat: ₺1.800.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126622-0001-5238.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126622-0001-5238.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Yacht-Master 40mm Platin Bezel &amp; Parlak Mavi Kadran Kırmızı Saniye (₺1.775.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5239</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5239</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Güneş ışını desenli okyanus mavisi kadran, 950 platin bezel ve kırmızı saniye ibreli Yacht-Master 40. | Fiyat: ₺1.775.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126622-0002-5239.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126622-0002-5239.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Submariner Date 41mm Bluesy 18K Sarı Altın &amp; Çelik Mavi Kadran (₺1.975.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5250</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5250</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>18 ayar sarı altın ve Oystersteel iki tonlu kasa, mavi Cerachrom seramik bezel ve kraliyet mavisi güneş ışını kadran. | Fiyat: ₺1.975.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126613lb-5250.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126613lb-5250.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Submariner Date 41mm 18K Sarı Altın &amp; Çelik Siyah Kadran (₺1.962.500)</title>
+      <link>https://saatchi.com.tr/elit-saat/5251</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5251</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Sarı Rolesor iki tonlu kasa, siyah Cerachrom seramik döner dalgıç bezeli ve altın çerçeveli indeksler. | Fiyat: ₺1.962.500 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126613ln-5251.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126613ln-5251.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex GMT-Master II 40mm Root Beer Everose Altın &amp; Çelik (₺1.987.500)</title>
+      <link>https://saatchi.com.tr/elit-saat/5252</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5252</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Kahverengi ve siyah iki renkli Cerachrom bezel, 18 ayar Everose altın detaylar ve Oyster bilezikli efsanevi Root Beer. | Fiyat: ₺1.987.500 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126711chnr-5252.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126711chnr-5252.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Milgauss 40mm Z-Blue Yeşil Safir Cam Elektrik Mavisi (₺1.450.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5253</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5253</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>1000 gauss manyetik dirence sahip antimanyetik kalkan, yeşil safir kristal cam ve elektrik mavisi Z-Blue kadran. | Fiyat: ₺1.450.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-116400gv-0002-5253.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-116400gv-0002-5253.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Milgauss 40mm Siyah Kadran Yeşil Safir Cam Turuncu Şimşek Saniye (₺1.350.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5254</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5254</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Yeşil safir cam, mat siyah kadran, turuncu indeks detayları ve ikonik turuncu şimşek saniye ibresi. | Fiyat: ₺1.350.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-116400gv-0001-5254.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-116400gv-0001-5254.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 41mm Yivli Bezel Beyaz Kadran Romen Rakamlı Jubilee (₺1.912.500)</title>
+      <link>https://saatchi.com.tr/elit-saat/5255</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5255</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>18 ayar beyaz altın yivli bezel, kusursuz saf beyaz kadran, siyah Romen rakamları ve beş parçalı Jubilee bilezik. | Fiyat: ₺1.912.500 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126334-0026-5255.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126334-0026-5255.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 41mm Yivli Bezel Parlak Siyah Kadran Jubilee (₺1.900.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5256</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5256</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Güneş ışını parlak siyah kadran, 18 ayar beyaz altın yivli bezel ve konforlu Jubilee bilezik. | Fiyat: ₺1.900.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126334-0001-5256.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126334-0001-5256.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 41mm Düz Bezel Rhodium Gri Kadran Oyster (₺1.362.500)</title>
+      <link>https://saatchi.com.tr/elit-saat/5257</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5257</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Parlatılmış düz çelik çerçeve, arduvaz rodyum gri kadran ve sağlam Oyster bilezik. | Fiyat: ₺1.362.500 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126300-0013-5257.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126300-0013-5257.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 41mm Düz Bezel Parlak Siyah Kadran Oyster (₺1.337.500)</title>
+      <link>https://saatchi.com.tr/elit-saat/5258</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5258</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>41mm Oystersteel kasa, cilalı düz bezel, derin siyah güneş ışını kadran ve Oysterlock tokalı bilezik. | Fiyat: ₺1.337.500 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126300-0011-5258.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126300-0011-5258.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 36mm Yivli Bezel Gümüş Kadran Jubilee (₺1.725.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5259</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5259</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Gümüş güneş ışını desenli kadran, 18 ayar beyaz altın yivli bezel ve Jubilee bilezik. | Fiyat: ₺1.725.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126234-0015-5259.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126234-0015-5259.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 36mm Yivli Bezel Siyah Kadran Jubilee (₺1.712.500)</title>
+      <link>https://saatchi.com.tr/elit-saat/5260</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5260</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>36mm kasa, parlak siyah kadran, beyaz altın yivli fluted bezel ve Jubilee bilezik. | Fiyat: ₺1.712.500 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126234-0017-5260.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126234-0017-5260.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 36mm Yivli Bezel Beyaz Romen Kadran Jubilee (₺1.700.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5261</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5261</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Beyaz lake kadran, 18 ayar beyaz altın Romen rakamları ve Jubilee bilezik. | Fiyat: ₺1.700.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126234-0025-5261.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126234-0025-5261.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 36mm Düz Bezel Parlak Mavi Kadran Oyster (₺1.212.500)</title>
+      <link>https://saatchi.com.tr/elit-saat/5262</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5262</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Düz çelik bezel, parlak mavi güneş ışını kadran ve sağlam üç parçalı Oyster bilezik. | Fiyat: ₺1.212.500 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126200-0005-5262.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126200-0005-5262.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 36mm Düz Bezel Parlak Siyah Kadran Oyster (₺1.200.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5263</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5263</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>36mm çelik kasa, düz cilalı çerçeve, derin siyah kadran ve Oyster bilezik. | Fiyat: ₺1.200.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-126200-0002-5263.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-126200-0002-5263.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Datejust 31mm 18K Beyaz Altın &amp; Çelik Mor Kadran Elmas İndeks Jubilee (₺1.475.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5264</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5264</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>31mm kadın boyu: Aubergine patlıcan moru güneş ışını kadran, VI romen rakamında pırlanta taşlar ve beyaz altın fluted bezel. | Fiyat: ₺1.475.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-278274-0018-5264.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-278274-0018-5264.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Oyster Perpetual 34mm Gümüş Kadran Oyster (₺950.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5265</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5265</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>34mm Oystersteel kasa, sarı altın ibreli gümüş kadran ve üç parçalı Oyster bilezik. | Fiyat: ₺950.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-124200-0001-5265.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-124200-0001-5265.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Oyster Perpetual 31mm Turkuaz Mavi Tiffany Kadran (₺1.225.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5266</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5266</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>31mm ikonik turkuaz tiffany lake kadran, Oystersteel kasa ve Oyster bilezik. | Fiyat: ₺1.225.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-277200-0007-5266.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-277200-0007-5266.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Oyster Perpetual 31mm Şeker Pembesi Candy Pink Kadran (₺1.275.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5267</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5267</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>31mm parlak şeker pembesi kadran, paslanmaz çelik kasa ve Oyster bilezik. | Fiyat: ₺1.275.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-277200-0005-5267.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-277200-0005-5267.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Rolex - Rolex Oyster Perpetual 31mm Yeşil Kadran Oyster (₺1.150.000)</title>
+      <link>https://saatchi.com.tr/elit-saat/5268</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5268</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>31mm zümrüt yeşili kadran, Oystersteel kasa ve konforlu Oyster bilezik. | Fiyat: ₺1.150.000 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/rolex-277200-0004-5268.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/rolex-277200-0004-5268.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Tank Must Large Model Paslanmaz Çelik Kuvars (₺390.280)</title>
+      <link>https://saatchi.com.tr/elit-saat/5104</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5104</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Tank Must Large Model Paslanmaz Çelik Kuvars | Fiyat: ₺390.280 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5104.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5104.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Ronde Must de Cartier 40mm Otomatik Çelik Kumral Deri (₺451.995)</title>
+      <link>https://saatchi.com.tr/elit-saat/5114</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5114</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Ronde Must de Cartier 40mm Otomatik Çelik Kumral Deri | Fiyat: ₺451.995 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5114.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5114.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Tank Française Medium Model Paslanmaz Çelik Kordon (₺511.027)</title>
+      <link>https://saatchi.com.tr/elit-saat/5107</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5107</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Tank Française Medium Model Paslanmaz Çelik Kordon | Fiyat: ₺511.027 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5107.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5107.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Ballon Bleu de Cartier 42mm Otomatik Çelik Mavi Kadran (₺522.245)</title>
+      <link>https://saatchi.com.tr/elit-saat/5108</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5108</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Ballon Bleu de Cartier 42mm Otomatik Çelik Mavi Kadran | Fiyat: ₺522.245 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5108.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5108.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Pasha de Cartier 41mm Otomatik Çelik &amp; Mavi Kordon (₺553.955)</title>
+      <link>https://saatchi.com.tr/elit-saat/5111</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5111</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Pasha de Cartier 41mm Otomatik Çelik &amp;amp; Mavi Kordon | Fiyat: ₺553.955 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5111.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5111.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Tank Must Extra-Large Otomatik Guilloché Kadran Çelik (₺602.862)</title>
+      <link>https://saatchi.com.tr/elit-saat/5105</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5105</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Tank Must Extra-Large Otomatik Guilloché Kadran Çelik | Fiyat: ₺602.862 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5105.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5105.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Pasha de Cartier Chronograph 41mm Çelik (₺803.002)</title>
+      <link>https://saatchi.com.tr/elit-saat/5120</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5120</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Pasha de Cartier Chronograph 41mm Çelik | Fiyat: ₺803.002 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5120.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5120.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Santos de Cartier Medium Model Çelik Otomatik (₺804.955)</title>
+      <link>https://saatchi.com.tr/elit-saat/5102</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5102</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Santos de Cartier Medium Model Çelik Otomatik | Fiyat: ₺804.955 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5102.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5102.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Tank Américaine Large Model Otomatik Paslanmaz Çelik (₺813.492)</title>
+      <link>https://saatchi.com.tr/elit-saat/5113</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5113</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Tank Américaine Large Model Otomatik Paslanmaz Çelik | Fiyat: ₺813.492 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5113.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5113.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Santos de Cartier Large Model Çelik Gümüş Kadran (₺987.287)</title>
+      <link>https://saatchi.com.tr/elit-saat/5101</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5101</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Santos de Cartier Large Model Çelik Gümüş Kadran | Fiyat: ₺987.287 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5101.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5101.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Santos de Cartier Chronograph XL Çelik &amp; ADLC Siyah Bezel (₺1.019.852)</title>
+      <link>https://saatchi.com.tr/elit-saat/5115</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5115</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Santos de Cartier Chronograph XL Çelik &amp;amp; ADLC Siyah Bezel | Fiyat: ₺1.019.852 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5115.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5115.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Tank Louis Cartier Small 18K Pembe Altın Manuel Kurmalı (₺1.134.252)</title>
+      <link>https://saatchi.com.tr/elit-saat/5106</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5106</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Tank Louis Cartier Small 18K Pembe Altın Manuel Kurmalı | Fiyat: ₺1.134.252 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5106.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5106.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Panthère de Cartier Medium Model 18K Sarı Altın &amp; Çelik (₺1.280.487)</title>
+      <link>https://saatchi.com.tr/elit-saat/5110</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5110</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Panthère de Cartier Medium Model 18K Sarı Altın &amp;amp; Çelik | Fiyat: ₺1.280.487 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5110.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5110.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Baignoire Small Model 18K Sarı Altın &amp; Siyah Rugan Deri (₺1.339.272)</title>
+      <link>https://saatchi.com.tr/elit-saat/5117</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5117</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Baignoire Small Model 18K Sarı Altın &amp;amp; Siyah Rugan Deri | Fiyat: ₺1.339.272 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5117.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5117.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Santos de Cartier 18K Sarı Altın &amp; Çelik İki Tonlu Medium (₺1.506.972)</title>
+      <link>https://saatchi.com.tr/elit-saat/5118</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5118</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Santos de Cartier 18K Sarı Altın &amp;amp; Çelik İki Tonlu Medium | Fiyat: ₺1.506.972 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5118.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5118.jpg" medium="image" />
+    </item>
+    <item>
+      <title>Cartier - Cartier Ballon Bleu de Cartier 42mm 18K Pembe Altın (₺1.610.517)</title>
+      <link>https://saatchi.com.tr/elit-saat/5116</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/5116</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Cartier - Cartier Ballon Bleu de Cartier 42mm 18K Pembe Altın | Fiyat: ₺1.610.517 | Durum: Sıfır Ayarında (Kutusunda Sertifikalı)</description>
+      <enclosure url="https://saatchi.com.tr/images/products/elite/cartier-5116.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://saatchi.com.tr/images/products/elite/cartier-5116.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 WAZ1110.FT8023 Kol Saati (₺158.100)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WAZ1110-FT8023</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WAZ1110-FT8023</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Sportif, şehirli ve cesur bir görünüme sahip bu erkek spor saati, siyah kadranı ve 41 mm fırçalanmış paslanmaz çelik kasasıyla dikkat çeker. Tek yönlü çelik… | Fiyat: ₺158.100 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WAZ1110.FT8023.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WAZ1110.FT8023.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer  Formula 1 Solargraph WBY1161.FT8086 Kol Saati (₺167.100)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBY1161-FT8086</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBY1161-FT8086</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer Formula 1 Solargraph, 38 mm&apos;lik kırmızı TH-Polylight kasasıyla cesur ve göz alıcı bir görünüm sunar. Şehir maceraları için tasarlanan bu özel saat,… | Fiyat: ₺167.100 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBY1161.FT8086.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBY1161.FT8086.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer WBY1163.FT8113 Kol Saati (₺167.100)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBY1163-FT8113</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBY1163-FT8113</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer Formula 1 Solargraph saat, cesur rengi hafif performansla birleştirerek dikkat çekiyor. Günlük kullanımda rahatlık sunarken dayanıklılığını koruyan bu… | Fiyat: ₺167.100 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBY1163.FT8113.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBY1163.FT8113.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 WAZ1112.BA0875 Kol Saati (₺171.600)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WAZ1112-BA0875</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WAZ1112-BA0875</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Siyah bir spor saat, 41 mm çelik kasaya, üç sıralı çelik bilekliğe ve 60 dakika ölçekli tek yönlü döner çerçeveye sahiptir. Kırmızı uçlu saniye ibresi ve ikonik… | Fiyat: ₺171.600 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WAZ1112.BA0875.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WAZ1112.BA0875.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 WBJ1318.BA0666 Kol Saati (₺171.600)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBJ1318-BA0666</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBJ1318-BA0666</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer - TAG Heuer Formula 1 WBJ1318.BA0666 Kol Saati | Fiyat: ₺171.600 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBJ1318.BA0666.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBJ1318.BA0666.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 Solargrap WBY1112.BA0042 Kol Saati (₺176.100)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBY1112-BA0042</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBY1112-BA0042</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Orijinal Series 1 saatinden ilham alan TAG Heuer Formula 1 Solargraph, canlı mavi kadranı ve şık tasarımıyla enerjik estetiğini sergiliyor. Eğlenceli stili… | Fiyat: ₺176.100 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBY1112.BA0042.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBY1112.BA0042.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 Solargraph WBY1111.BA0042 Kol Saati (₺176.100)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBY1111-BA0042</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBY1111-BA0042</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer Formula 1 Solargraph, enerjik çekiciliğiyle dikkat çeken, dinamik bir saat sunuyor. Orijinal Series 1 modelini modern malzemeler ve canlı renklerle… | Fiyat: ₺176.100 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBY1111.BA0042.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBY1111.BA0042.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ1010.FT8024 Kol Saati (₺180.600)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ1010-FT8024</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ1010-FT8024</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Motor sporlarından ilham alan bu sağlam model, hız, dayanıklılık ve cesaret arayanlar için özel olarak üretilmiştir. Yüksek hassasiyetli kuvars yarış… | Fiyat: ₺180.600 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ1010.FT8024.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ1010.FT8024.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ101Y.BA0842 Kol Saati (₺180.600)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101Y-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101Y-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer - TAG Heuer Formula 1 CAZ101Y.BA0842 Kol Saati | Fiyat: ₺180.600 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ101Y.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ101Y.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 WAZ1010.BA0842 Kol Saati (₺180.600)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WAZ1010-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WAZ1010-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer&apos;in eşsiz yarış mirasını ve baskı altında mükemmelliğe olan bağlılığını Formula 1&apos;den ilham alarak yansıtan bu model, klasik üç ibreli bir erkek kuvars… | Fiyat: ₺180.600 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WAZ1010.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WAZ1010.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ101K.BA0842 Kol Saati (₺189.750)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101K-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101K-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Mavi güneş ışını desenli kadrana ve üç sıralı çelik bilekliğe sahip bu kronograf, üstün hassasiyet sunan kuvars mekanizmasıyla donatılmıştır. 200 metreye kadar… | Fiyat: ₺189.750 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ101K.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ101K.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Carrera WAR1311.BA0778 Kol Saati (₺194.250)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WAR1311-BA0778</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WAR1311-BA0778</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer - TAG Heuer Carrera WAR1311.BA0778 Kol Saati | Fiyat: ₺194.250 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WAR1311.BA0778.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WAR1311.BA0778.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ1010.BA0842 Kol Saati (₺198.750)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ1010-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ1010-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Öne çıkmaktan ve risk almaktan çekinmeyenler için tasarlanan bu spor saati, motor sporlarının en üst seviyelerinden ilham alan son teknoloji bir tasarıma… | Fiyat: ₺198.750 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ1010.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ1010.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ101E.BA0842 Kol Saati (₺212.250)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101E-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101E-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer - TAG Heuer Formula 1 CAZ101E.BA0842 Kol Saati | Fiyat: ₺212.250 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ101E.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ101E.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Aquaracer WBP1315.BA0005 Kol Saati (₺216.750)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP1315-BA0005</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP1315-BA0005</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Kuzey ışıklarının göksel cazibesinden ilham alan TAG Heuer Aquaracer, zarafet ile dayanıklılığı bir araya getirir. Sağlam macera ruhunu şehirli sofistikasyonla… | Fiyat: ₺216.750 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBP1315.BA0005.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBP1315.BA0005.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ101AL.FT8052 Kol Saati (₺216.750)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AL-FT8052</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AL-FT8052</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer Formula 1 Red Bull Racing Özel Serisi, iki büyük liderin iş birliğini kutlayan, cesur ve aksiyon dolu bir kronograftır. Sportif görünümü ve dinamik… | Fiyat: ₺216.750 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ101AL.FT8052.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ101AL.FT8052.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ101AM.BA0842 Kol Saati (₺216.750)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AM-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AM-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer - TAG Heuer Formula 1 CAZ101AM.BA0842 Kol Saati | Fiyat: ₺216.750 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ101AM.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ101AM.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ101AN.BA0842 Kol Saati (₺216.750)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AN-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AN-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Kırmızı ve çeliğin bir senfonisi olan bu TAG Heuer Formula 1 saati, yarışın cüretkar ruhunu yansıtıyor. Canlı güneş ışını fırçalanmış kırmızı kadranıyla dikkat… | Fiyat: ₺216.750 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ101AN.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ101AN.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ101AP.BA0842 Kol Saati (₺216.750)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AP-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AP-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Ruhu cesur ve tasarımı çarpıcı bu enerjik TAG Heuer Formula 1 saati, parlak yeşil kadranıyla yarış pistlerinin korkusuz meydan okuyucularına adanmıştır. Gücü ve… | Fiyat: ₺216.750 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ101AP.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ101AP.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ101AV.BA0842 Kol Saati (₺216.750)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AV-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AV-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer Formula 1 kronograf, stil ve performansın mükemmel birleşimini sunarak her türlü zorluğa meydan okuyor. 43 mm&apos;lik bu saat, cesur mavi güneş ışını… | Fiyat: ₺216.750 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ101AV.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ101AV.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ101AT.BA0842 Kol Saati (₺234.900)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AT-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AT-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Bu cesur ve enerjik kronograf, TAG Heuer ve Gulf arasındaki efsanevi ortaklığın kalıcı bir izlenimini bırakıyor. Yarıştan ilham alan bu 43mm saat, Gulf&apos;un… | Fiyat: ₺234.900 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ101AT.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ101AT.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Aquaracer WBP1113.BA0000 Kol Saati (₺239.400)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP1113-BA0000</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP1113-BA0000</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer - TAG Heuer Aquaracer WBP1113.BA0000 Kol Saati | Fiyat: ₺239.400 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBP1113.BA0000.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBP1113.BA0000.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ101AC.BA0842 Kol Saati (₺243.900)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AC-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AC-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer - TAG Heuer Formula 1 CAZ101AC.BA0842 Kol Saati | Fiyat: ₺243.900 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ101AC.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ101AC.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 CAZ101AG.BA0842 Kol Saati (₺243.900)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AG-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CAZ101AG-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer - TAG Heuer Formula 1 CAZ101AG.BA0842 Kol Saati | Fiyat: ₺243.900 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CAZ101AG.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CAZ101AG.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 WAZ2011.BA0842 Kol Saati (₺252.900)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WAZ2011-BA0842</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WAZ2011-BA0842</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Yarış tutkusuyla dolu TAG Heuer Formula 1, hızlı tempolu bir yaşam için tasarlanmış enerjik bir saattir. Bu model, markanın motor sporlarıyla süregelen güçlü… | Fiyat: ₺252.900 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WAZ2011.BA0842.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WAZ2011.BA0842.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Aquaracer Professional 100 Solargraph 28mm WBP141E.BA0049 (₺257.400)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP141E-BA0049</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP141E-BA0049</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer Aquaracer Professional 100 Solargraph, koleksiyonun performans ve rafine tasarım dengesini yansıtır. Mavi güneş ışını kadranı, koleksiyonun kimliğini… | Fiyat: ₺257.400 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBP141E.BA0049.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBP141E.BA0049.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Aquaracer Professional 100 Solargraph 28mm WBP141G.BA0049 (₺257.400)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP141G-BA0049</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP141G-BA0049</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer Aquaracer Professional 100 Solargraph, günlük zarafeti markanın tool-watch&apos;larından beklenen performansla birleştiriyor. İnce fırçalanmış ve… | Fiyat: ₺257.400 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBP141G.BA0049.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBP141G.BA0049.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Aquaracer CBP1112.BA0627 Kol Saati (₺261.900)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CBP1112-BA0627</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CBP1112-BA0627</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>Gökyüzünü veya buzu ustaca çağrıştıran açık mavi temalı kadranıyla bu TAG Heuer Aquaracer, sahneyi oluşturuyor. Aşırı koşullara dayanacak şekilde üretilen bu… | Fiyat: ₺261.900 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CBP1112.BA0627.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CBP1112.BA0627.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Aquaracer Professional WBP1117.BA0047 (₺261.900)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP1117-BA0047</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP1117-BA0047</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer Aquaracer Professional 200 Solargraph, sağlam mühendisliği zahmetsiz çok yönlülük için değiştirilebilir bir kayış sistemiyle birleştiriyor. 40 mm… | Fiyat: ₺261.900 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBP1117.BA0047.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBP1117.BA0047.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Aquaracer Professional WBP1118.BA0047 (₺261.900)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP1118-BA0047</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP1118-BA0047</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer Aquaracer Professional 200 Solargraph, sağlam yapısı ve cesur yeşil güneş ışını kadranıyla dikkat çekiyor. Değiştirilebilir kayış sistemi ve yeni… | Fiyat: ₺261.900 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBP1118.BA0047.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBP1118.BA0047.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Aquaracer CBP1110.BA0627 Kol Saati (₺266.400)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CBP1110-BA0627</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CBP1110-BA0627</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer - TAG Heuer Aquaracer CBP1110.BA0627 Kol Saati | Fiyat: ₺266.400 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CBP1110.BA0627.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CBP1110.BA0627.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Aquaracer CBP1111.BA0627 Kol Saati (₺266.400)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CBP1111-BA0627</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-CBP1111-BA0627</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer - TAG Heuer Aquaracer CBP1111.BA0627 Kol Saati | Fiyat: ₺266.400 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/CBP1111.BA0627.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/CBP1111.BA0627.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Formula 1 WBJ131A.BA0666 Kol Saati (₺271.050)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBJ131A-BA0666</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBJ131A-BA0666</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer - TAG Heuer Formula 1 WBJ131A.BA0666 Kol Saati | Fiyat: ₺271.050 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBJ131A.BA0666.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBJ131A.BA0666.jpg" medium="image" />
+    </item>
+    <item>
+      <title>TAG Heuer - TAG Heuer Aquaracer Professional 100 Solargraph 28mm WBP141H.BA0049 (₺275.550)</title>
+      <link>https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP141H-BA0049</link>
+      <guid isPermaLink="true">https://saatchi.com.tr/elit-saat/SRC-TAG-HEUER-WBP141H-BA0049</guid>
+      <pubDate>Tue, 13 Oct 2026 14:19:37 GMT</pubDate>
+      <description>TAG Heuer Aquaracer Professional 100 Solargraph, rafine malzemeleri İsviçre Maison&apos;unun tool-watch&apos;unun teknik tasarımıyla birleştirerek sağlamlık ve zarafeti… | Fiyat: ₺275.550 | Durum: Sıfır / Kaynak katalog</description>
+      <enclosure url="https://contents.konyalisaat.com.tr/products/WBP141H.BA0049.jpg" type="image/jpeg" length="0" />
+      <media:content url="https://contents.konyalisaat.com.tr/products/WBP141H.BA0049.jpg" medium="image" />
     </item>
   </channel>
 </rss>

@@ -1,0 +1,50 @@
+{
+  "name": "SAATCHI & CO.",
+  "short_name": "SAATCHI",
+  "description": "Dünyanın en seçkin lüks kol saatleri. Rolex, Cartier, TAG Heuer, Rado sertifikalı lüks saat koleksiyonu.",
+  "start_url": "/?utm_source=pwa",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "tr-TR",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Lüks Koleksiyon",
+      "url": "/markalar",
+      "icons": [{ "src": "/favicon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Saat Değerleme",
+      "url": "/saat-degerleme",
+      "icons": [{ "src": "/favicon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Saat Karşılaştır",
+      "url": "/karsilastir",
+      "icons": [{ "src": "/favicon-96x96.png", "sizes": "96x96" }]
+    }
+  ],
+  "categories": ["shopping", "lifestyle", "luxury"]
+}

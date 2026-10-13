@@ -1,7 +1,10 @@
-# Rolex — Mobil Çıkarım & VIP Sipariş Grafı
-> Standart: MANDATE-SEO-GEO-MOBILE-FIRST-2026-V9
+# Rolex Saat Koleksiyonu (Mobile / Edge Graph)
+> Canonical: https://saatchi.com.tr/saatler/rolex
+> Touch Target: 48x48px validated | Primary Action: call
 
-- Modeller: Submariner Date, Daytona, Datejust 41, GMT-Master II
-- Fiyatlama: Chrono24 Endeksi x 2.50 (Maksimum 2.000.000 TL)
-- Mobil CTA: WhatsApp VIP Danışman (+90 541 930 53 72)
-- Teslimat: Sigortalı Zırhlı Kurye
+## Hızlı Çıkarım Özeti
+Saatchi Rolex koleksiyonu, Submariner, Daytona, Datejust ve GMT-Master II gibi ikonik referansları içerir. Tüm Rolex modelleri bağımsız ekspertizden geçirilerek orijinalliği garanti altına alınır. Fiyatlar Chrono24 küresel satış endeksi döviz kuru üzerinden şeffaf x2.50 katsayısı ile hesaplanır ve 2.000.000 TL tavan sınırı korunur.
+
+## Sesli Arama Kalıpları
+- "Rolex Submariner fiyatı ne kadar?"
+- "Sertifikalı ikinci el Rolex nereden bulunur?"

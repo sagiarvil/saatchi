@@ -3566,6 +3566,9 @@
   .text-\[\#D4AF37\] {
     color: #D4AF37;
   }
+  .text-\[\#DDD5CA\] {
+    color: #DDD5CA;
+  }
   .text-\[\#E8D7B0\] {
     color: #E8D7B0;
   }
@@ -4967,6 +4970,9 @@
     }
     .sm\:py-4 {
       padding-block: calc(var(--spacing) * 4);
+    }
+    .sm\:py-8 {
+      padding-block: calc(var(--spacing) * 8);
     }
     .sm\:py-10 {
       padding-block: calc(var(--spacing) * 10);

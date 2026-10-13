@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import ZoomImage from '@/components/ZoomImage';
 import WatchTechnicalPanel from '@/components/WatchTechnicalPanel';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
@@ -8,6 +9,47 @@ import { AlertCircle, MessageCircle } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const allWatches = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
+
+  if (['erkek', 'kadin', 'unisex'].includes(slug)) {
+    const title = slug === 'kadin' ? 'Kadın Kol Saatleri' : slug === 'erkek' ? 'Erkek Kol Saatleri' : 'Unisex Kol Saatleri';
+    return {
+      title: `${title} | Saatchi & Co.`,
+      description: `${title} koleksiyonu. Seçkin İsviçre ve lüks saat modelleri, %100 orijinallik garantisi ve VIP teslimat ayrıcalığıyla.`,
+      alternates: { canonical: `https://saatchi.com.tr/saatler/${slug}` },
+      openGraph: {
+        title: `${title} | Saatchi & Co.`,
+        description: `${title} koleksiyonu. Seçkin İsviçre ve lüks saat modelleri, %100 orijinallik garantisiyle.`,
+        url: `https://saatchi.com.tr/saatler/${slug}`,
+        siteName: 'SAATCHI & CO.',
+      }
+    };
+  }
+
+  const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug));
+  if (!watch) {
+    return { title: 'Saat Bulunamadı | Saatchi & Co.' };
+  }
+
+  const title = `${watch.brand} ${watch.modelName} | Saatchi & Co.`;
+  const desc = `${watch.brand} ${watch.modelName} kol saati. Orijinallik garantisi, sertifikalı ekspertiz onayı ve tam değer sigortalı VIP teslimatla Saatchi'de.`;
+
+  return {
+    title,
+    description: desc,
+    alternates: { canonical: `https://saatchi.com.tr/saatler/${slug}` },
+    openGraph: {
+      title,
+      description: desc,
+      url: `https://saatchi.com.tr/saatler/${slug}`,
+      siteName: 'SAATCHI & CO.',
+      images: watch.image ? [{ url: watch.image.startsWith('http') ? watch.image : `https://saatchi.com.tr${watch.image.startsWith('/') ? '' : '/'}${watch.image}` }] : [],
+    }
+  };
+}
 
 export async function generateStaticParams() {
   let slugs = ['erkek', 'kadin', 'unisex'];
@@ -36,8 +78,66 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
 
   const waStokMessage = encodeURIComponent(`Merhaba, ${watch.brand} ${watch.modelName} için sipariş öncesi stok durumunu öğrenmek istiyorum.`);
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "@id": `https://saatchi.com.tr/saatler/${slug}#product`,
+        "name": `${watch.brand} ${watch.modelName}`,
+        "description": description,
+        "image": watch.image ? (watch.image.startsWith('http') ? watch.image : `https://saatchi.com.tr${watch.image.startsWith('/') ? '' : '/'}${watch.image}`) : "https://saatchi.com.tr/logo.png",
+        "brand": {
+          "@type": "Brand",
+          "name": watch.brand
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": `https://saatchi.com.tr/saatler/${slug}`,
+          "priceCurrency": "TRY",
+          "price": Number(watch.calculatedPrice || 0) > 0 ? Number(watch.calculatedPrice) : 19990,
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@type": "Organization",
+            "name": "Saatchi & Co.",
+            "url": "https://saatchi.com.tr"
+          }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `https://saatchi.com.tr/saatler/${slug}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Ana Sayfa",
+            "item": "https://saatchi.com.tr/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Saatler",
+            "item": "https://saatchi.com.tr/saatler"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": watch.modelName,
+            "item": `https://saatchi.com.tr/saatler/${slug}`
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen border-t border-[#e8e1d7] bg-[#f6f3ef] py-8 sm:py-12 pb-28 md:pb-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <main className="mx-auto max-w-[1220px] px-4 sm:px-6 lg:px-8">
         <article className="rounded-[22px] border border-[#e5ddd2] bg-[#fffdfa] p-5 text-[#211d1a] shadow-[0_18px_60px_rgba(36,25,18,.06)] sm:p-7 lg:p-9">
           <nav className="mb-6 text-xs text-[#847b74]">

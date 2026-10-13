@@ -179,14 +179,20 @@ export function HeroSlider() {
         <div key={slide.id} data-hero-content={index === current ? 'active' : 'inactive'} className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === current ? 'z-10 opacity-100' : 'pointer-events-none z-0 opacity-0'}`}>
           <div className="absolute inset-0 mx-auto flex w-full max-w-[1600px] flex-col items-start justify-end px-6 pb-[max(3.5rem,env(safe-area-inset-bottom))] text-left sm:px-8 md:px-12 md:pb-20 lg:pb-24">
             {slide.subtitle && (
-              <h2 className={`mb-3 text-[11px] font-medium uppercase tracking-[0.24em] text-white/90 transition-all delay-300 duration-1000 sm:text-[12px] md:text-[13px] ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`} style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
+              <span className={`mb-3 block text-[11px] font-medium uppercase tracking-[0.24em] text-white/90 transition-all delay-300 duration-1000 sm:text-[12px] md:text-[13px] ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`} style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif' }}>
                 {slide.subtitle}
-              </h2>
+              </span>
             )}
 
-            <h1 className={`mb-5 max-w-[980px] whitespace-pre-line text-[clamp(42px,8vw,64px)] font-thin leading-[0.98] text-white transition-all delay-500 duration-1000 md:text-[clamp(58px,6.1vw,92px)] ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', fontWeight: 200, letterSpacing: '-0.025em' }}>
-              {slide.title}
-            </h1>
+            {index === 0 ? (
+              <h1 className={`mb-5 max-w-[980px] whitespace-pre-line text-[clamp(42px,8vw,64px)] font-thin leading-[0.98] text-white transition-all delay-500 duration-1000 md:text-[clamp(58px,6.1vw,92px)] ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', fontWeight: 200, letterSpacing: '-0.025em' }}>
+                {slide.title}
+              </h1>
+            ) : (
+              <h2 className={`mb-5 max-w-[980px] whitespace-pre-line text-[clamp(42px,8vw,64px)] font-thin leading-[0.98] text-white transition-all delay-500 duration-1000 md:text-[clamp(58px,6.1vw,92px)] ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`} style={{ fontFamily: '"Helvetica Neue", Helvetica, Arial, sans-serif', fontWeight: 200, letterSpacing: '-0.025em' }}>
+                {slide.title}
+              </h2>
+            )}
 
             <p className={`mb-9 max-w-2xl text-[15px] leading-[1.7] text-white/92 transition-all delay-[700ms] duration-1000 sm:text-[16px] md:text-[18px] ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`} style={{ fontFamily: '"Times New Roman", Times, serif' }}>
               {slide.desc}

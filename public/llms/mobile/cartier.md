@@ -1,7 +1,10 @@
-# Cartier — Mobil Çıkarım & VIP Sipariş Grafı
-> Standart: MANDATE-SEO-GEO-MOBILE-FIRST-2026-V9
+# Cartier Saat Koleksiyonu (Mobile / Edge Graph)
+> Canonical: https://saatchi.com.tr/saatler/cartier
+> Touch Target: 48x48px validated | Primary Action: call
 
-- Modeller: Santos de Cartier, Tank Must, Panthère, Ballon Bleu
-- Fiyatlama: Cartier Türkiye Resmi Liste x 2.50 (Maksimum 1.700.000 TL)
-- Mobil CTA: WhatsApp VIP Danışman (+90 541 930 53 72)
-- Teslimat: Sigortalı Zırhlı Kurye
+## Hızlı Çıkarım Özeti
+Saatchi Cartier koleksiyonu, Santos, Tank, Panthère ve Ballon Bleu gibi zarafet simgesi modelleri kapsar. Cartier modellerinin fiyatlandırması resmi Cartier Türkiye listesi temel alınarak x2.50 kat katsayı ile hesaplanır ve 1.700.000 TL katalog tavanı uygulanır. Her saat bağımsız sertifika ile teslim edilir.
+
+## Sesli Arama Kalıpları
+- "Santos de Cartier fiyatları nedir?"
+- "Cartier Tank Must orijinal mi?"

@@ -112,5 +112,47 @@ function syncAtom() {
   console.log('[Feeds] public/atom.xml senkronize edildi.');
 }
 
+// 3. SYNC FEED.XML (RSS 2.0 CANONICAL DUPLICATE)
+function syncFeedXml() {
+  const rssContent = fs.readFileSync(path.join(root, 'public/rss.xml'), 'utf8');
+  fs.writeFileSync(path.join(root, 'public/feed.xml'), rssContent, 'utf8');
+  
+  // Mobile Feed
+  const mobileDir = path.join(root, 'public/mobile');
+  fs.mkdirSync(mobileDir, { recursive: true });
+  fs.writeFileSync(path.join(mobileDir, 'feed.xml'), rssContent, 'utf8');
+  console.log('[Feeds] public/feed.xml ve public/mobile/feed.xml senkronize edildi.');
+}
+
+// 4. SYNC JSON FEED 1.1 (RAG OPTIMIZED)
+function syncJsonFeed() {
+  const items = all.slice(0, 100).map(item => {
+    const itemUrl = getWatchUrl(item);
+    const priceText = item.price || (item.calculatedPrice ? `₺${Number(item.calculatedPrice).toLocaleString('tr-TR')}` : '');
+    return {
+      id: itemUrl,
+      url: itemUrl,
+      title: `${item.brand} - ${item.modelName} (${priceText})`,
+      content_text: `${item.description || item.modelName} | Fiyat: ${priceText} | Durum: ${item.condition || 'Orijinal Sertifikalı'}`,
+      image: getWatchImageUrl(item),
+      date_published: updated
+    };
+  });
+
+  const jsonFeed = {
+    version: 'https://jsonfeed.org/version/1.1',
+    title: 'SAATCHI & CO. — Lüks Saat Akışı',
+    home_page_url: DOMAIN,
+    feed_url: `${DOMAIN}/feed.json`,
+    description: 'Rolex, Cartier, TAG Heuer, Rado ve İsviçre lüks saat modelleri akışı.',
+    items
+  };
+
+  fs.writeFileSync(path.join(root, 'public/feed.json'), JSON.stringify(jsonFeed, null, 2), 'utf8');
+  console.log('[Feeds] public/feed.json senkronize edildi.');
+}
+
 syncRss();
 syncAtom();
+syncFeedXml();
+syncJsonFeed();

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import ZoomImage from '@/components/ZoomImage';
 import WatchTechnicalPanel from '@/components/WatchTechnicalPanel';
 import elitSaatlerData from '@/data/elit-saatler.json';
@@ -7,6 +8,48 @@ import { getProxiedImageUrl } from '@/utils/imageProxy';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const allWatches = elitSaatlerData as any[];
+  const isCategory = ['limited-edition', 'tourbillon', 'altin-kaplama', 'koleksiyon'].includes(slug);
+
+  if (isCategory) {
+    const title = slug === 'limited-edition' ? 'Limited Edition Lüks Saatler' : slug === 'tourbillon' ? 'Tourbillon Lüks Saat Koleksiyonu' : slug === 'koleksiyon' ? 'Elit Lüks Saat Koleksiyonu' : 'Altın & Pırlanta Lüks Saatler';
+    return {
+      title: `${title} | Saatchi & Co.`,
+      description: `${title}. Rolex, Cartier, TAG Heuer bağımsız ekspertiz onaylı, sertifikalı ve VIP teslimatlı seçkin modeller.`,
+      alternates: { canonical: `https://saatchi.com.tr/elit-saat/${slug}` },
+      openGraph: {
+        title: `${title} | Saatchi & Co.`,
+        description: `${title}. Rolex, Cartier, TAG Heuer bağımsız ekspertiz onaylı, sertifikalı ve VIP teslimatlı seçkin modeller.`,
+        url: `https://saatchi.com.tr/elit-saat/${slug}`,
+        siteName: 'SAATCHI & CO.',
+      }
+    };
+  }
+
+  const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug));
+  if (!watch) {
+    return { title: 'Saat Bulunamadı | Saatchi & Co.' };
+  }
+
+  const title = `${watch.brand} ${watch.modelName} | Saatchi & Co.`;
+  const desc = `${watch.brand} ${watch.modelName} lüks kol saati. Orijinallik sertifikası, bağımsız ekspertiz onayı ve tam değer sigortalı VIP kurye teslimatıyla Saatchi'de.`;
+
+  return {
+    title,
+    description: desc,
+    alternates: { canonical: `https://saatchi.com.tr/elit-saat/${slug}` },
+    openGraph: {
+      title,
+      description: desc,
+      url: `https://saatchi.com.tr/elit-saat/${slug}`,
+      siteName: 'SAATCHI & CO.',
+      images: watch.image ? [{ url: watch.image.startsWith('http') ? watch.image : `https://saatchi.com.tr${watch.image.startsWith('/') ? '' : '/'}${watch.image}` }] : [],
+    }
+  };
+}
 
 export async function generateStaticParams() {
   let slugs = ['limited-edition', 'tourbillon', 'altin-kaplama', 'koleksiyon'];
@@ -79,8 +122,66 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
 
   const waMessage = encodeURIComponent(`Merhaba, ${watch.brand} ${watch.modelName} (Ref: ${watch.ref || watch.id || ''}) hakkında detaylı bilgi ve teslimat sürecini öğrenmek istiyorum.`);
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Product",
+        "@id": `https://saatchi.com.tr/elit-saat/${slug}#product`,
+        "name": `${watch.brand} ${watch.modelName}`,
+        "description": description,
+        "image": watch.image ? (watch.image.startsWith('http') ? watch.image : `https://saatchi.com.tr${watch.image.startsWith('/') ? '' : '/'}${watch.image}`) : "https://saatchi.com.tr/logo.png",
+        "brand": {
+          "@type": "Brand",
+          "name": watch.brand
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": `https://saatchi.com.tr/elit-saat/${slug}`,
+          "priceCurrency": "TRY",
+          "price": Number(watch.calculatedPrice || 0) > 0 ? Number(watch.calculatedPrice) : 500000,
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/UsedCondition",
+          "seller": {
+            "@type": "Organization",
+            "name": "Saatchi & Co.",
+            "url": "https://saatchi.com.tr"
+          }
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `https://saatchi.com.tr/elit-saat/${slug}#breadcrumb`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Ana Sayfa",
+            "item": "https://saatchi.com.tr/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Elit Koleksiyon",
+            "item": "https://saatchi.com.tr/elit-saat"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": watch.modelName,
+            "item": `https://saatchi.com.tr/elit-saat/${slug}`
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen border-t border-[#e8e1d7] bg-[#f6f3ef] py-8 sm:py-12 pb-28 md:pb-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <main className="mx-auto max-w-[1220px] px-4 sm:px-6 lg:px-8">
         <article className="rounded-[22px] border border-[#e5ddd2] bg-[#fffdfa] p-5 text-[#211d1a] shadow-[0_18px_60px_rgba(36,25,18,.06)] sm:p-7 lg:p-9">
           <nav className="mb-6 text-xs text-[#847b74]">
