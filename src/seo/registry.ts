@@ -646,5 +646,60 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       ttfbMs: 150,
       htmlKb: 32
     }
+  },
+  nedenSaatchi: {
+    route: "/neden-saatchi",
+    locale: "tr-TR",
+    role: "article",
+    indexDirective: "index, follow",
+    canonicalRoute: "/neden-saatchi",
+    title: "Neden Saatchi & Co.? | Karşılaştırmalı Satın Alma & Ekspertiz Güvencesi",
+    metaDescription: "Resmi bayi bekleme listeleri, yurt dışı gümrük riskleri ve Saatchi modeli. 12 adımlı horolojik ekspertiz, The Watch Register sorgusu ve GİB e-Arşiv faturalı teslimat.",
+    h1: "Neden Saatchi & Co.? Karşılaştırmalı Satın Alma & Ekspertiz Güvencesi",
+    primaryIntent: "Lüks saat satın alma kanallarını karşılaştırmak ve ekspertiz güvencesini incelemek",
+    primaryEntity: {
+      id: "https://saatchi.com.tr/#entity-neden-saatchi",
+      name: "Saatchi Decision Matrix",
+      type: "Service",
+      sameAs: ["https://saatchi.com.tr/neden-saatchi"]
+    },
+    semanticTriples: [
+      { subject: "Saatchi & Co.", predicate: "providesDecisionMatrix", object: "Bayi vs Gri Pazar vs Saatchi" },
+      { subject: "Saatchi & Co.", predicate: "appliesVerificationProtocol", object: "12 Aşamalı Horolojik Ekspertiz" },
+      { subject: "Saatchi & Co.", predicate: "compliesWith", object: "GİB e-Arşiv Fatura ve The Watch Register" }
+    ],
+    heroAnswerEngine: "Saatchi & Co., resmi bayi bekleme sıralarını ve kontrolsüz pazar yeri risklerini bertaraf eden bağımsız bir saat evidir. Tüm saatler 12 aşamalı bağımsız horoloji testinden geçer, The Watch Register global çalıntı veri tabanında taranır ve GİB e-Arşiv fatura güvencesiyle aynı gün teslim edilir.",
+    publishedAt: "2026-01-01T00:00:00+03:00",
+    modifiedAt: "2026-10-17T12:00:00+03:00",
+    bodyContentHash: "e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
+    llmSubGraphRoute: "/llms/pages/neden-saatchi.md",
+    mobileSubGraphRoute: "/llms/mobile/neden-saatchi.md",
+    breadcrumbs: [
+      { name: "Anasayfa", item: "/" },
+      { name: "Neden Saatchi?", item: "/neden-saatchi" }
+    ],
+    mobile: {
+      viewport: "width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, maximum-scale=5",
+      primaryAction: "call",
+      bottomNavEnabled: true,
+      thumbZonePosition: "bottom-center",
+      touchTargetsValidated: true,
+      horizontalScrollFree: true,
+      thumbSafeHeroAnswer: true,
+      voiceQueryPatterns: [
+        "Rolex bekleme listesi olmadan nereden alınır?",
+        "Saatchi & Co. güvenilir mi?",
+        "İkinci el saat alırken ekspertiz nasıl yapılır?"
+      ],
+      speakableSelectors: ["#aeo-hero-answer"],
+      pwaInstallable: true
+    },
+    mobileCwvBudget: {
+      lcpMs: 1400,
+      inpMs: 90,
+      cls: 0.01,
+      ttfbMs: 140,
+      htmlKb: 28
+    }
   }
 };

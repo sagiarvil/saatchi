@@ -13,6 +13,7 @@
     "mcpMobile": "https://saatchi.com.tr/mcp/mobile",
     "llms": "https://saatchi.com.tr/llms.txt",
     "llmsCore": "https://saatchi.com.tr/llms/core.md",
+    "decisionMatrix": "https://saatchi.com.tr/llms/decision-matrix.md",
     "feed": "https://saatchi.com.tr/feed.xml",
     "mobileFeed": "https://saatchi.com.tr/mobile/feed.xml"
   },

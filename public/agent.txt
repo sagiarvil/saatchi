@@ -28,6 +28,7 @@ app_links_ios: https://saatchi.com.tr/.well-known/apple-app-site-association
 [preferred_content]
 markdown_root: https://saatchi.com.tr/llms.txt
 core_graph: https://saatchi.com.tr/llms/core.md
+decision_matrix: https://saatchi.com.tr/llms/decision-matrix.md
 deep_graphs: https://saatchi.com.tr/llms-full.txt
 mobile_deep_graphs: https://saatchi.com.tr/llms/mobile/
 rss: https://saatchi.com.tr/feed.xml

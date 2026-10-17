@@ -5,6 +5,7 @@ export async function GET() {
   const routes = [
     '',
     '/kurumsal',
+    '/neden-saatchi',
     '/iletisim',
     '/biz-kimiz',
     '/mesafeli-satis-sozlesmesi',

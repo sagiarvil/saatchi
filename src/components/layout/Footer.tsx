@@ -7,6 +7,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   const legalLinks = [
+    { label: "Neden Saatchi? (Karar Matrisi)", href: "/neden-saatchi" },
     { label: "Biz Kimiz (Kurumsal)", href: "/biz-kimiz" },
     { label: "Güvenli Ödeme", href: "/odeme" },
     { label: "Mesafeli Satış Sözleşmesi", href: "/mesafeli-satis-sozlesmesi" },

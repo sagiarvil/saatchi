@@ -45,7 +45,9 @@ const requiredLlms = [
   "llms/pages/carren.md",
   "llms/pages/saat-degerleme.md",
   "llms/pages/kurumsal.md",
-  "llms/pages/iletisim.md"
+  "llms/pages/iletisim.md",
+  "llms/pages/neden-saatchi.md",
+  "llms/decision-matrix.md"
 ];
 requiredLlms.forEach(file => {
   const p = path.join(root, "public", file);
