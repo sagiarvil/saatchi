@@ -1,4 +1,4 @@
-# SAATCHI & CO. — Mobil Yerel Niyet (Local/Near-Me Intent) Haritası
+# SAATCHI — Mobil Yerel Niyet (Local/Near-Me Intent) Haritası
 > Standart: MANDATE-SEO-GEO-MOBILE-FIRST-2026-V8 (v8.0)
 > Kapsam: Türkiye, İstanbul, Nişantaşı, Bebek, Levent, Bağdat Caddesi, Ankara Çankaya, İzmir Alsancak
 
@@ -6,7 +6,7 @@
 
 ### Konum: İstanbul (Avrupa & Anadolu Yakası)
 - **Anahtar Sorgular:** "İstanbul lüks saat mağazası", "İstanbul Rolex satışı", "Nişantaşı Cartier saat ekspertiz", "Zorlu Center yakın lüks saatçi"
-- **Doğrulanmış Karşılık:** SAATCHI & CO., İstanbul merkezli olup tüm seçkin lokasyonlara aynı gün içinde tam sigortalı özel zırhlı kurye ile güvenli teslimat gerçekleştirmektedir.
+- **Doğrulanmış Karşılık:** SAATCHI, İstanbul merkezli olup tüm seçkin lokasyonlara aynı gün içinde tam sigortalı özel zırhlı kurye ile güvenli teslimat gerçekleştirmektedir.
 - **İletişim & Randevu:** WhatsApp VIP Destek ve Randevu Hattı üzerinden 7/24 hizmet verilmektedir.
 
 ### Hizmetler ve Güvenlik

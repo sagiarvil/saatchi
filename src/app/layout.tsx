@@ -34,19 +34,19 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
-  title: "SAATCHI & CO. | Sertifikalı Lüks Saatler & İsviçre Koleksiyonları",
+  title: "SAATCHI | Sertifikalı Lüks Saatler & İsviçre Koleksiyonları",
   description: "Rolex, Cartier, TAG Heuer, Rado ve İsviçre saat modelleri. %100 orijinallik kontrolü, bağımsız ekspertiz ve tam değer sigortalı VIP teslimat güvencesiyle.",
   openGraph: {
-    title: "SAATCHI & CO. | Lüks Saat Koleksiyonları & İsviçre Saatleri",
+    title: "SAATCHI | Lüks Saat Koleksiyonları & İsviçre Saatleri",
     description: "Rolex, Cartier, TAG Heuer ve İsviçre saat modelleri. %100 orijinallik kontrolü, bağımsız ekspertiz ve tam değer sigortalı VIP teslimat güvencesiyle.",
     url: "https://saatchi.com.tr",
-    siteName: "SAATCHI & CO.",
+    siteName: "SAATCHI",
     images: [
       {
         url: "https://saatchi.com.tr/logo.png",
         width: 800,
         height: 600,
-        alt: "SAATCHI & CO. Lüks Saat Koleksiyonu",
+        alt: "SAATCHI Lüks Saat Koleksiyonu",
       },
     ],
     type: "website",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAATCHI & CO. | Sertifikalı Lüks Saatler",
+    title: "SAATCHI | Sertifikalı Lüks Saatler",
     description: "Rolex, Cartier, TAG Heuer ve elit lüks saat koleksiyonları. Tam değer sigortalı VIP teslimat.",
     images: ["https://saatchi.com.tr/logo.png"],
   },
@@ -90,7 +90,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
-        <meta property="og:site_name" content="SAATCHI & CO." />
+        <meta property="og:site_name" content="SAATCHI" />
         <link rel="alternate" type="text/plain" href="https://saatchi.com.tr/llms.txt" title="LLM Knowledge Vault" />
         <link rel="alternate" type="application/rss+xml" href="https://saatchi.com.tr/feed.xml" title="SAATCHI RSS 2.0" />
         <link rel="alternate" type="application/atom+xml" href="https://saatchi.com.tr/atom.xml" title="SAATCHI Atom 1.0" />

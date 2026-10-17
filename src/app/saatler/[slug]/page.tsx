@@ -17,24 +17,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (['erkek', 'kadin', 'unisex'].includes(slug)) {
     const title = slug === 'kadin' ? 'Kadın Kol Saatleri' : slug === 'erkek' ? 'Erkek Kol Saatleri' : 'Unisex Kol Saatleri';
     return {
-      title: `${title} | Saatchi & Co.`,
+      title: `${title} | SAATCHI`,
       description: `${title} koleksiyonu. Seçkin İsviçre ve lüks saat modelleri, %100 orijinallik garantisi ve VIP teslimat ayrıcalığıyla.`,
       alternates: { canonical: `https://saatchi.com.tr/saatler/${slug}` },
       openGraph: {
-        title: `${title} | Saatchi & Co.`,
+        title: `${title} | SAATCHI`,
         description: `${title} koleksiyonu. Seçkin İsviçre ve lüks saat modelleri, %100 orijinallik garantisiyle.`,
         url: `https://saatchi.com.tr/saatler/${slug}`,
-        siteName: 'SAATCHI & CO.',
+        siteName: 'SAATCHI',
       }
     };
   }
 
   const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug));
   if (!watch) {
-    return { title: 'Saat Bulunamadı | Saatchi & Co.' };
+    return { title: 'Saat Bulunamadı | SAATCHI' };
   }
 
-  const title = `${watch.brand} ${watch.modelName} | Saatchi & Co.`;
+  const title = `${watch.brand} ${watch.modelName} | SAATCHI`;
   const desc = `${watch.brand} ${watch.modelName} kol saati. Orijinallik garantisi, sertifikalı ekspertiz onayı ve tam değer sigortalı VIP teslimatla Saatchi'de.`;
 
   return {
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title,
       description: desc,
       url: `https://saatchi.com.tr/saatler/${slug}`,
-      siteName: 'SAATCHI & CO.',
+      siteName: 'SAATCHI',
       images: watch.image ? [{ url: watch.image.startsWith('http') ? watch.image : `https://saatchi.com.tr${watch.image.startsWith('/') ? '' : '/'}${watch.image}` }] : [],
     }
   };
@@ -100,7 +100,7 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
           "itemCondition": "https://schema.org/NewCondition",
           "seller": {
             "@type": "Organization",
-            "name": "Saatchi & Co.",
+            "name": "SAATCHI",
             "url": "https://saatchi.com.tr"
           }
         }

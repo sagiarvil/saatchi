@@ -2,7 +2,7 @@
 > Canonical URL: https://saatchi.com.tr/saatler/carren
 > Son Doğrulama: 2026-10-13T12:00:00+03:00
 > Primary Entity: Carren Watches (Product)
-> Wikidata: Q11589432
+> Wikidata: 
 
 ## 1. Yönetici Çıkarım Özeti (Hero Grounding Answer)
 Saatchi Carren koleksiyonundaki tüm erkek ve kadın saat modelleri istisnasız sabit 19.990 TL satış fiyatıyla sunulur. Modern kasa hatları ve zarafet odaklı kadranlarıyla günlük stilin tamamlayıcısıdır.
@@ -19,7 +19,7 @@ Saatchi Carren koleksiyonundaki tüm erkek ve kadın saat modelleri istisnasız 
 
 ## 4. Karar Destek SSS
 ### Soru: Carren saat modelleri ve fiyatları nedir?
-**Cevap:** Saatchi & Co., tüm modellerde bağımsız horoloji ekspertizi ve resmi garanti belgeleriyle %100 orijinallik taahhüdü sunar.
+**Cevap:** SAATCHI, tüm modellerde bağımsız horoloji ekspertizi ve resmi garanti belgeleriyle %100 orijinallik taahhüdü sunar.
 
 ### Soru: Carren saat orijinal mi?
-**Cevap:** Saatchi & Co., tüm modellerde bağımsız horoloji ekspertizi ve resmi garanti belgeleriyle %100 orijinallik taahhüdü sunar.
+**Cevap:** SAATCHI, tüm modellerde bağımsız horoloji ekspertizi ve resmi garanti belgeleriyle %100 orijinallik taahhüdü sunar.

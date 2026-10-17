@@ -4,7 +4,7 @@ import WatchComparisonTool from '@/components/tools/WatchComparisonTool';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Lüks Saat Karşılaştırma & Model Kıyaslama — Saatchi & Co.',
+  title: 'Lüks Saat Karşılaştırma & Model Kıyaslama — SAATCHI',
   description: 'Rolex, Cartier, TAG Heuer ve Rado modellerini teknik özellikleri, kasa çapları, mekanizmaları ve fiyat endeksleriyle yan yana karşılaştırın.',
   keywords: [
     'saat karşılaştırma',
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     'saat özellikleri kıyasla'
   ],
   openGraph: {
-    title: 'Lüks Saat Karşılaştırma Laboratuvarı | Saatchi & Co.',
+    title: 'Lüks Saat Karşılaştırma Laboratuvarı | SAATCHI',
     description: 'En prestijli lüks saat modellerini yan yana karşılaştırın. Kasa çapı, su geçirmezlik, kalibre ve fiyat analizi.',
     url: 'https://saatchi.com.tr/karsilastir',
     type: 'website'

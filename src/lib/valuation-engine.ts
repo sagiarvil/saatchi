@@ -130,7 +130,7 @@ export function calculateWatchValuation(input: ValuationInput): ValuationResult 
 
   const fmt = (n: number) => `₺${n.toLocaleString('tr-TR')}`;
 
-  const messageText = `Merhaba Saatchi & Co., web sitenizdeki Ekspertiz Motoru üzerinden saatim için anlık değerleme aldım:%0A%0A` +
+  const messageText = `Merhaba SAATCHI, web sitenizdeki Ekspertiz Motoru üzerinden saatim için anlık değerleme aldım:%0A%0A` +
     `• Marka: ${brandGroup.brand}%0A` +
     `• Model: ${model.name}%0A` +
     `• Materyal: ${material.label}%0A` +

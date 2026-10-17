@@ -1,6 +1,6 @@
 {
   "host": "saatchi.com.tr",
-  "app_name": "SAATCHI & CO. Lüks Saatler",
+  "app_name": "SAATCHI Lüks Saatler",
   "package_name": "com.saatchi.luxury",
   "bundle_id": "com.saatchi.luxury",
   "deep_link_routes": [

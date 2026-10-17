@@ -12,17 +12,17 @@ export function buildCompleteJsonLdGraph(page: SeoPageRecord, domain: string = "
     {
       "@type": "Organization",
       "@id": `${origin}/#organization`,
-      name: "Saatchi & Co.",
-      legalName: "Saatchi & Co. Lüks Saat Danışmanlığı",
+      name: "SAATCHI",
+      legalName: "SAATCHI Lüks Saat Danışmanlığı",
       url: origin,
       logo: {
         "@type": "ImageObject",
         "@id": `${origin}/#logo`,
         url: `${origin}/logo.png`,
-        caption: "Saatchi & Co. Lüks Saatler"
+        caption: "SAATCHI Lüks Saatler"
       },
       sameAs: [
-        `https://www.wikidata.org/wiki/${page.primaryEntity.wikidataQid || "Q11589432"}`,
+        `https://www.wikidata.org/wiki/${page.primaryEntity.wikidataQid || ""}`,
         ...ecosystemUrls
       ],
       publishingPrinciples: `${origin}/biz-kimiz`,
@@ -42,7 +42,7 @@ export function buildCompleteJsonLdGraph(page: SeoPageRecord, domain: string = "
       "@type": "WebSite",
       "@id": `${origin}/#website`,
       url: origin,
-      name: "Saatchi & Co.",
+      name: "SAATCHI",
       description: "Sertifikalı Lüks Saatler & İsviçre Koleksiyonları",
       publisher: { "@id": `${origin}/#organization` },
       inLanguage: page.locale,

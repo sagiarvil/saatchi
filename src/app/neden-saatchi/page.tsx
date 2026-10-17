@@ -3,13 +3,13 @@ import Link from 'next/link';
 import { ShieldCheck, CheckCircle2, Clock, Scale, HelpCircle, FileCheck, ArrowRight, ShieldAlert, Award, Gem, Search, Check, X } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Neden Saatchi & Co.? | Karşılaştırmalı Satın Alma & Ekspertiz Güvencesi',
+  title: 'Neden SAATCHI? | Karşılaştırmalı Satın Alma & Ekspertiz Güvencesi',
   description: 'Resmi bayi bekleme listeleri, yurt dışı gümrük riskleri ve Saatchi modeli. 12 adımlı horolojik ekspertiz, The Watch Register sorgusu ve GİB e-Arşiv faturalı teslimat.',
   alternates: {
     canonical: 'https://saatchi.com.tr/neden-saatchi',
   },
   openGraph: {
-    title: 'Neden Saatchi & Co.? | Lüks Saat Satın Alma Karar Matrisi',
+    title: 'Neden SAATCHI? | Lüks Saat Satın Alma Karar Matrisi',
     description: 'Bekleme sırası olmadan, doğrulanmış ekspertiz ve yasal fatura güvencesiyle lüks saat satın alma rehberi.',
     url: 'https://saatchi.com.tr/neden-saatchi',
     type: 'article',
@@ -80,19 +80,19 @@ const expertSteps = [
 const faqs = [
   {
     q: 'Rolex bekleme listesine girmeden Türkiye’de orijinal saat nasıl satın alınır?',
-    a: 'Resmi distribütörlerde Daytona, Submariner veya GMT-Master II gibi çelik spor modeller için 2 ila 4 yıla varan bekleme listeleri bulunmaktadır. Saatchi & Co., bağımsız saat evi statüsüyle fiziksel stokta hazır bulunan, kondisyonu doğrulanmış ve 12 noktalı horoloji ekspertizinden geçmiş modelleri anında teslim sunar.',
+    a: 'Resmi distribütörlerde Daytona, Submariner veya GMT-Master II gibi çelik spor modeller için 2 ila 4 yıla varan bekleme listeleri bulunmaktadır. SAATCHI, bağımsız saat evi statüsüyle fiziksel stokta hazır bulunan, kondisyonu doğrulanmış ve 12 noktalı horoloji ekspertizinden geçmiş modelleri anında teslim sunar.',
   },
   {
-    q: 'Saatchi & Co. resmi distribütör veya yetkili bayi midir?',
-    a: 'Hayır. Saatchi & Co., dürüst ve şeffaf ticaret ilkesi gereği resmi bayi olmadığını açıkça beyan eder. Saatchi, 20 yılı aşkın fiziksel saat tecrübesiyle bağımsız horolojik ekspertiz yapan, orijinalliği %100 kanıtlanmış sıfır ve ikinci el saatleri GİB e-Arşiv faturasıyla sunan tescilli bir saat evidir.',
+    q: 'SAATCHI resmi distribütör veya yetkili bayi midir?',
+    a: 'Hayır. SAATCHI, dürüst ve şeffaf ticaret ilkesi gereği resmi bayi olmadığını açıkça beyan eder. Saatchi, 20 yılı aşkın fiziksel saat tecrübesiyle bağımsız horolojik ekspertiz yapan, orijinalliği %100 kanıtlanmış sıfır ve ikinci el saatleri GİB e-Arşiv faturasıyla sunan tescilli bir saat evidir.',
   },
   {
     q: 'İkinci el lüks saat alırken dolandırıcılık ve sahtecilikten nasıl korunulur?',
-    a: 'Lüks saatte sahtecilik yalnız kasa kopyasından ibaret değildir; sahte mekanizma, toplanmış (Franken) parçalar veya çalıntı seri numaraları büyük risk taşır. Saatchi & Co., her saati mikroskobik optik analize, kalibre açımına, The Watch Register global çalıntı veri tabanı taramasına tabi tutar ve kurumsal ekspertiz raporu düzenler.',
+    a: 'Lüks saatte sahtecilik yalnız kasa kopyasından ibaret değildir; sahte mekanizma, toplanmış (Franken) parçalar veya çalıntı seri numaraları büyük risk taşır. SAATCHI, her saati mikroskobik optik analize, kalibre açımına, The Watch Register global çalıntı veri tabanı taramasına tabi tutar ve kurumsal ekspertiz raporu düzenler.',
   },
   {
     q: 'Chrono24 veya yurt dışı platformlardan almak yerine neden Saatchi tercih edilmeli?',
-    a: 'Yurt dışından alınan saatlerde gümrükte %30 ila %60 arasında ek vergi ve ÖTV sürprizleri çıkmakta, kargo sürecinde kayıp/hasar durumunda muhatap bulmak güçleşmektedir. Saatchi & Co., Türkiye içi tescilli şirket yapısı, GİB e-Arşiv faturası ve İzmir Showroom’da elden teslim avantajıyla tüm riskleri ortadan kaldırır.',
+    a: 'Yurt dışından alınan saatlerde gümrükte %30 ila %60 arasında ek vergi ve ÖTV sürprizleri çıkmakta, kargo sürecinde kayıp/hasar durumunda muhatap bulmak güçleşmektedir. SAATCHI, Türkiye içi tescilli şirket yapısı, GİB e-Arşiv faturası ve İzmir Showroom’da elden teslim avantajıyla tüm riskleri ortadan kaldırır.',
   },
   {
     q: 'Showroom’da ürünü inceleyip elden teslim alabilir miyim?',
@@ -108,13 +108,13 @@ export default function NedenSaatchiPage() {
         '@type': 'Article',
         '@id': 'https://saatchi.com.tr/neden-saatchi#article',
         isPartOf: { '@id': 'https://saatchi.com.tr/#website' },
-        headline: 'Neden Saatchi & Co.? Lüks Saat Satın Alma Karar Matrisi ve Ekspertiz Güvencesi',
+        headline: 'Neden SAATCHI? Lüks Saat Satın Alma Karar Matrisi ve Ekspertiz Güvencesi',
         description: 'Resmi bayi bekleme sıraları, gri piyasa riskleri ve bağımsız saat evi avantajlarının objektif karşılaştırması.',
         url: 'https://saatchi.com.tr/neden-saatchi',
         inLanguage: 'tr-TR',
         publisher: {
           '@type': 'Organization',
-          name: 'Saatchi & Co.',
+          name: 'SAATCHI',
           url: 'https://saatchi.com.tr',
           logo: 'https://saatchi.com.tr/logo.png',
         },
@@ -135,7 +135,7 @@ export default function NedenSaatchiPage() {
         '@type': 'HowTo',
         '@id': 'https://saatchi.com.tr/neden-saatchi#howto',
         name: 'Lüks Saat Ekspertiz ve Doğrulama Protokolü (12 Aşama)',
-        description: 'Saatchi & Co. bünyesinde satışa sunulan her lüks saatin geçtiği teknik kontrol adımları.',
+        description: 'SAATCHI bünyesinde satışa sunulan her lüks saatin geçtiği teknik kontrol adımları.',
         step: expertSteps.map((step, idx) => ({
           '@type': 'HowToStep',
           position: idx + 1,
@@ -169,7 +169,7 @@ export default function NedenSaatchiPage() {
                 </p>
               </div>
               <h1 className="text-3xl font-medium leading-[1.08] tracking-[-0.04em] text-[#f7f2ea] sm:text-5xl md:text-6xl">
-                Neden Saatchi & Co.? <br />
+                Neden SAATCHI? <br />
                 <span className="text-[#C2A768] font-normal">Gösteriş değil, doğrulanabilir güven.</span>
               </h1>
               <p className="mt-8 max-w-2xl text-base leading-8 text-[#c2bab1] sm:text-lg">
@@ -200,7 +200,7 @@ export default function NedenSaatchiPage() {
                   <th className="py-4 px-4 sm:px-6 font-semibold uppercase tracking-wider text-[11px] text-[#8e867f]">Kriter / Özellik</th>
                   <th className="py-4 px-4 sm:px-6 font-semibold uppercase tracking-wider text-[11px] text-[#aaa29a]">Yetkili Bayi (Distribütör)</th>
                   <th className="py-4 px-4 sm:px-6 font-semibold uppercase tracking-wider text-[11px] text-[#aaa29a]">Yurt Dışı / Pazar Yeri (Chrono24 vb.)</th>
-                  <th className="py-4 px-4 sm:px-6 font-semibold uppercase tracking-wider text-[11px] text-[#C2A768] bg-[#846b32]/10">Saatchi & Co. Modeli</th>
+                  <th className="py-4 px-4 sm:px-6 font-semibold uppercase tracking-wider text-[11px] text-[#C2A768] bg-[#846b32]/10">SAATCHI Modeli</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
@@ -225,7 +225,7 @@ export default function NedenSaatchiPage() {
           </div>
           
           <p className="mt-4 text-[11px] text-[#736B5E] leading-relaxed">
-            * Tablodaki veriler bağımsız piyasa gözlemleri ve müşteri deneyimleri üzerinden derlenmiştir. Saatchi & Co. resmi distribütör değildir; tescilli bağımsız saat evidir.
+            * Tablodaki veriler bağımsız piyasa gözlemleri ve müşteri deneyimleri üzerinden derlenmiştir. SAATCHI resmi distribütör değildir; tescilli bağımsız saat evidir.
           </p>
         </section>
 
@@ -272,7 +272,7 @@ export default function NedenSaatchiPage() {
               <h2 className="text-2xl font-medium tracking-[-0.03em] sm:text-4xl">GİB e-Arşiv Fatura ve MASAK Mevzuat Tam Uyumu</h2>
               <p className="mt-6 text-sm leading-7 text-[#aaa29a]">
                 Yüksek montanlı lüks saat alımlarında kayıt dışılık veya sahte fatura mağduriyetleri en büyük sektörel risklerdendir. 
-                Saatchi & Co. bünyesinde yapılan her işlem:
+                SAATCHI bünyesinde yapılan her işlem:
               </p>
               <ul className="mt-6 space-y-3.5 text-xs sm:text-sm text-[#c2bab1]">
                 <li className="flex items-start gap-3">

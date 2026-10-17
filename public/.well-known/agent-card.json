@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "name": "Saatchi & Co. Agent Card",
+  "name": "SAATCHI Agent Card",
   "version": "9.0.0",
   "description": "Certified Luxury Watches & Horology Advisory Protocol",
   "provider": {
-    "name": "Saatchi & Co.",
+    "name": "SAATCHI",
     "url": "https://saatchi.com.tr",
-    "wikidata": "https://www.wikidata.org/wiki/Q11589432"
+    "wikidata": "https://www.wikidata.org/wiki/"
   },
   "endpoints": {
     "mcp": "https://saatchi.com.tr/mcp",

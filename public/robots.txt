@@ -1,5 +1,5 @@
 # ==============================================================================
-# SAATCHI & CO. — Lüks Saatler Resmi Robots.txt Yapılandırması
+# SAATCHI — Lüks Saatler Resmi Robots.txt Yapılandırması
 # Standart: MANDATE-SEO-GEO-MOBILE-FIRST-2026-V9 ($10M Tier Matrix)
 # ==============================================================================
 

@@ -22,7 +22,7 @@ export default function Home() {
               Doğrulanmış Horoloji Otoritesi & Küresel Referans
             </p>
             <p className="hero-answer-engine text-xs sm:text-sm text-[#DDD5CA] font-light leading-relaxed max-w-3xl mx-auto">
-              Saatchi & Co., Türkiye merkezli sertifikalı lüks saat ve bağımsız horoloji danışmanlığı sağlayıcısıdır. Rolex, Cartier, TAG Heuer ve İsviçre saat modelleri %100 orijinallik kontrolü, kutu/belge doğrulaması ve Chrono24 borsa endeksli şeffaf fiyatlandırma politikasıyla sunulur. Tüm siparişler tam değer sigortalı VIP kurye ile teslim edilir.
+              SAATCHI, Türkiye merkezli sertifikalı lüks saat ve bağımsız horoloji danışmanlığı sağlayıcısıdır. Rolex, Cartier, TAG Heuer ve İsviçre saat modelleri %100 orijinallik kontrolü, kutu/belge doğrulaması ve Chrono24 borsa endeksli şeffaf fiyatlandırma politikasıyla sunulur. Tüm siparişler tam değer sigortalı VIP kurye ile teslim edilir.
             </p>
           </div>
         </section>

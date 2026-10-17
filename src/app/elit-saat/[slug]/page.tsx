@@ -17,24 +17,24 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (isCategory) {
     const title = slug === 'limited-edition' ? 'Limited Edition Lüks Saatler' : slug === 'tourbillon' ? 'Tourbillon Lüks Saat Koleksiyonu' : slug === 'koleksiyon' ? 'Elit Lüks Saat Koleksiyonu' : 'Altın & Pırlanta Lüks Saatler';
     return {
-      title: `${title} | Saatchi & Co.`,
+      title: `${title} | SAATCHI`,
       description: `${title}. Rolex, Cartier, TAG Heuer bağımsız ekspertiz onaylı, sertifikalı ve VIP teslimatlı seçkin modeller.`,
       alternates: { canonical: `https://saatchi.com.tr/elit-saat/${slug}` },
       openGraph: {
-        title: `${title} | Saatchi & Co.`,
+        title: `${title} | SAATCHI`,
         description: `${title}. Rolex, Cartier, TAG Heuer bağımsız ekspertiz onaylı, sertifikalı ve VIP teslimatlı seçkin modeller.`,
         url: `https://saatchi.com.tr/elit-saat/${slug}`,
-        siteName: 'SAATCHI & CO.',
+        siteName: 'SAATCHI',
       }
     };
   }
 
   const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug));
   if (!watch) {
-    return { title: 'Saat Bulunamadı | Saatchi & Co.' };
+    return { title: 'Saat Bulunamadı | SAATCHI' };
   }
 
-  const title = `${watch.brand} ${watch.modelName} | Saatchi & Co.`;
+  const title = `${watch.brand} ${watch.modelName} | SAATCHI`;
   const desc = `${watch.brand} ${watch.modelName} lüks kol saati. Orijinallik sertifikası, bağımsız ekspertiz onayı ve tam değer sigortalı VIP kurye teslimatıyla Saatchi'de.`;
 
   return {
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title,
       description: desc,
       url: `https://saatchi.com.tr/elit-saat/${slug}`,
-      siteName: 'SAATCHI & CO.',
+      siteName: 'SAATCHI',
       images: watch.image ? [{ url: watch.image.startsWith('http') ? watch.image : `https://saatchi.com.tr${watch.image.startsWith('/') ? '' : '/'}${watch.image}` }] : [],
     }
   };
@@ -144,7 +144,7 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
           "itemCondition": "https://schema.org/UsedCondition",
           "seller": {
             "@type": "Organization",
-            "name": "Saatchi & Co.",
+            "name": "SAATCHI",
             "url": "https://saatchi.com.tr"
           }
         }

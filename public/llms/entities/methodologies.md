@@ -1,4 +1,4 @@
-# Saatchi & Co. — Tescilli Metodolojiler ve Fiyatlama Borsa Motoru
+# SAATCHI — Tescilli Metodolojiler ve Fiyatlama Borsa Motoru
 > Standart: MANDATE-SEO-GEO-MOBILE-FIRST-2026-V9
 
 ## 1. Rolex Fiyatlama Formülü

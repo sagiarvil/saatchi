@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const brandWatches = allowedCatalog().filter((watch) => watch.brand && brandSlug(String(watch.brand)) === slug);
   const brandName = brandWatches.length > 0 ? String(brandWatches[0].brand) : slug.toUpperCase();
 
-  const title = `${brandName} Saat Modelleri & Koleksiyonu | Saatchi & Co.`;
+  const title = `${brandName} Saat Modelleri & Koleksiyonu | SAATCHI`;
   const desc = `Sertifikalı ${brandName} kol saatleri. Küresel borsa endeksli şeffaf fiyatlar, bağımsız ekspertiz garantisi ve tam değer sigortalı VIP teslimatla.`;
 
   return {
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title,
       description: desc,
       url: `https://saatchi.com.tr/markalar/${slug}`,
-      siteName: 'SAATCHI & CO.',
+      siteName: 'SAATCHI',
     }
   };
 }

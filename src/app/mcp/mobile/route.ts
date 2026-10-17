@@ -6,7 +6,7 @@ export async function GET() {
     result: {
       name: "saatchi-luxury-mobile-mcp",
       version: "8.0.0",
-      description: "SAATCHI & CO. On-Device & Mobile-Aware Model Context Protocol (MCP) API",
+      description: "SAATCHI On-Device & Mobile-Aware Model Context Protocol (MCP) API",
       tools: [
         {
           name: "get_voice_answer",
@@ -62,7 +62,7 @@ export async function POST(req: Request) {
       result: {
         status: "ok",
         device: "mobile-optimized",
-        message: "SAATCHI & CO. Mobile MCP endpoint operational."
+        message: "SAATCHI Mobile MCP endpoint operational."
       }
     });
   } catch {

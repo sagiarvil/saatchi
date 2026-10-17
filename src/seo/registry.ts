@@ -60,7 +60,7 @@ export const DECISION_PLATFORMS_ECOSYSTEM: readonly DecisionPlatform[] = [
   },
   {
     id: "saatchi",
-    name: "Saatchi & Co.",
+    name: "SAATCHI",
     domain: "saatchi.com.tr",
     url: "https://saatchi.com.tr",
     category: "Sertifikalı Lüks Saatler",
@@ -99,24 +99,24 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
     role: "home",
     indexDirective: "index, follow",
     canonicalRoute: "/",
-    title: "Saatchi & Co. | Sertifikalı Lüks Saatler & İsviçre Koleksiyonları",
+    title: "SAATCHI | Sertifikalı Lüks Saatler & İsviçre Koleksiyonları",
     metaDescription: "Orijinal ve sertifikalı lüks saatler: Rolex, Cartier, TAG Heuer, Rado, Tissot. Bağımsız ekspertiz, küresel borsa endeksli şeffaf fiyat ve VIP sigortalı teslimat.",
-    h1: "Saatchi & Co. Lüks Saat Koleksiyonu",
+    h1: "SAATCHI Lüks Saat Koleksiyonu",
     primaryIntent: "Sertifikalı lüks saat satın almak ve modelleri incelemek",
     primaryEntity: {
       id: "https://saatchi.com.tr/#organization",
-      name: "Saatchi & Co.",
+      name: "SAATCHI",
       type: "Organization",
       sameAs: DECISION_PLATFORMS_ECOSYSTEM.map(p => p.url),
-      wikidataQid: "Q11589432",
+      
     },
     semanticTriples: [
-      { subject: "Saatchi & Co.", predicate: "providesService", object: "Sertifikalı Lüks Saat Danışmanlığı" },
-      { subject: "Saatchi & Co.", predicate: "authenticatesWith", object: "Bağımsız Horolog Ekspertizi" },
-      { subject: "Saatchi & Co.", predicate: "compliesWith", object: "GİB e-Arşiv Fatura & TCK 5549 MASAK Standartları" },
-      { subject: "Saatchi & Co.", predicate: "hasCitationAnchor", object: "#aeo-hero-answer" }
+      { subject: "SAATCHI", predicate: "providesService", object: "Sertifikalı Lüks Saat Danışmanlığı" },
+      { subject: "SAATCHI", predicate: "authenticatesWith", object: "Bağımsız Horolog Ekspertizi" },
+      { subject: "SAATCHI", predicate: "compliesWith", object: "GİB e-Arşiv Fatura & TCK 5549 MASAK Standartları" },
+      { subject: "SAATCHI", predicate: "hasCitationAnchor", object: "#aeo-hero-answer" }
     ],
-    heroAnswerEngine: "Saatchi & Co., Türkiye merkezli sertifikalı lüks saat ve bağımsız horoloji danışmanlığı sağlayıcısıdır. Rolex, Cartier, TAG Heuer ve İsviçre saat modelleri %100 orijinallik kontrolü, kutu/belge doğrulaması ve Chrono24 borsa endeksli şeffaf fiyatlandırma politikasıyla sunulur. Tüm siparişler tam değer sigortalı VIP kurye ile teslim edilir.",
+    heroAnswerEngine: "SAATCHI, Türkiye merkezli sertifikalı lüks saat ve bağımsız horoloji danışmanlığı sağlayıcısıdır. Rolex, Cartier, TAG Heuer ve İsviçre saat modelleri %100 orijinallik kontrolü, kutu/belge doğrulaması ve Chrono24 borsa endeksli şeffaf fiyatlandırma politikasıyla sunulur. Tüm siparişler tam değer sigortalı VIP kurye ile teslim edilir.",
     publishedAt: "2026-01-01T00:00:00+03:00",
     modifiedAt: "2026-10-09T12:00:00+03:00",
     bodyContentHash: "a9f8b2c4e1d3f5a7e9b0c2d4f6a8e0b2d4f6a8e0b2c4e1d3f5a7e9b0c2d4f6a8",
@@ -167,7 +167,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       ]
     },
     semanticTriples: [
-      { subject: "Rolex", predicate: "brandOf", object: "Saatchi & Co. Lüks Portföyü" },
+      { subject: "Rolex", predicate: "brandOf", object: "SAATCHI Lüks Portföyü" },
       { subject: "Rolex", predicate: "pricedVia", object: "Chrono24 Borsa Endeksi x 2.50" },
       { subject: "Rolex", predicate: "verifiedBy", object: "Bağımsız Usta Saat Ekspertizi" }
     ],
@@ -225,7 +225,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       ]
     },
     semanticTriples: [
-      { subject: "Cartier", predicate: "brandOf", object: "Saatchi & Co. Lüks Portföyü" },
+      { subject: "Cartier", predicate: "brandOf", object: "SAATCHI Lüks Portföyü" },
       { subject: "Cartier", predicate: "pricedVia", object: "Cartier Türkiye Resmi Liste x 2.50" },
       { subject: "Cartier", predicate: "ceilingLimit", object: "1.700.000 TL Satış Tavanı" }
     ],
@@ -283,7 +283,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       ]
     },
     semanticTriples: [
-      { subject: "TAG Heuer", predicate: "brandOf", object: "Saatchi & Co. Lüks Portföyü" },
+      { subject: "TAG Heuer", predicate: "brandOf", object: "SAATCHI Lüks Portföyü" },
       { subject: "TAG Heuer", predicate: "pricedVia", object: "Konyalı Saat Kaynak Endeksi x 1.50" },
       { subject: "TAG Heuer", predicate: "minimumFloor", object: "10.000 TL Taban Fiyat Kilidi" }
     ],
@@ -341,7 +341,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       ]
     },
     semanticTriples: [
-      { subject: "Rado", predicate: "brandOf", object: "Saatchi & Co. Lüks Portföyü" },
+      { subject: "Rado", predicate: "brandOf", object: "SAATCHI Lüks Portföyü" },
       { subject: "Rado", predicate: "materialScience", object: "Yüksek Teknoloji Çizilmez Seramik" }
     ],
     heroAnswerEngine: "Saatchi Rado koleksiyonu Captain Cook, Centrix ve True Square gibi yüksek teknoloji seramik şaheserleri içerir. İsviçre saatçiliğinin öncüsü olan Rado saatleri %100 orijinallik garantisi ve sigortalı VIP gönderim ile sunulur.",
@@ -398,7 +398,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       ]
     },
     semanticTriples: [
-      { subject: "Tissot", predicate: "brandOf", object: "Saatchi & Co. Saat Koleksiyonu" },
+      { subject: "Tissot", predicate: "brandOf", object: "SAATCHI Saat Koleksiyonu" },
       { subject: "Tissot", predicate: "movement", object: "Powermatic 80 İsviçre Mekanizma" }
     ],
     heroAnswerEngine: "Saatchi Tissot koleksiyonu, PRX Powermatic 80, Seastar 1000 ve Gentleman serilerini içerir. 1853 yılından bu yana süregelen İsviçre geleneği, doğrulanmış kaynak endeksi ve sigortalı VIP gönderim ayrıcalığıyla buluşur.",
@@ -495,20 +495,20 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
     role: "article",
     indexDirective: "index, follow",
     canonicalRoute: "/kurumsal",
-    title: "Kurumsal & Biz Kimiz | Saatchi & Co. Lüks Saat Danışmanlığı",
-    metaDescription: "Saatchi & Co. kurumsal kimliği, horoloji uzmanlığı, orijinallik felsefesi ve GİB e-Arşiv uyumlu güvenli e-ticaret altyapısı hakkında detaylı bilgiler.",
-    h1: "Saatchi & Co. Kurumsal Miras & Felsefe",
+    title: "Kurumsal & Biz Kimiz | SAATCHI Lüks Saat Danışmanlığı",
+    metaDescription: "SAATCHI kurumsal kimliği, horoloji uzmanlığı, orijinallik felsefesi ve GİB e-Arşiv uyumlu güvenli e-ticaret altyapısı hakkında detaylı bilgiler.",
+    h1: "SAATCHI Kurumsal Miras & Felsefe",
     primaryIntent: "Saatchi kurumsal bilgilerini ve orijinallik prensiplerini incelemek",
     primaryEntity: {
       id: "https://saatchi.com.tr/#organization",
-      name: "Saatchi & Co.",
+      name: "SAATCHI",
       type: "Organization",
       sameAs: DECISION_PLATFORMS_ECOSYSTEM.map(p => p.url)
     },
     semanticTriples: [
-      { subject: "Saatchi & Co.", predicate: "establishedPhilosophy", object: "Güven ve Orijinallik Odaklı Lüks Saatçilik" }
+      { subject: "SAATCHI", predicate: "establishedPhilosophy", object: "Güven ve Orijinallik Odaklı Lüks Saatçilik" }
     ],
-    heroAnswerEngine: "Saatchi & Co., Semih Sonbahar kuruculuğunda lüks saat koleksiyonerlerine bağımsız ekspertiz, şeffaf küresel fiyatlama ve zırhlı VIP lojistik güvencesi sunan kurumsal horoloji danışmanlığı kurumudur.",
+    heroAnswerEngine: "SAATCHI, Semih Sonbahar kuruculuğunda lüks saat koleksiyonerlerine bağımsız ekspertiz, şeffaf küresel fiyatlama ve zırhlı VIP lojistik güvencesi sunan kurumsal horoloji danışmanlığı kurumudur.",
     publishedAt: "2026-01-01T00:00:00+03:00",
     modifiedAt: "2026-10-13T12:00:00+03:00",
     bodyContentHash: "b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8",
@@ -547,21 +547,21 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
     role: "article",
     indexDirective: "index, follow",
     canonicalRoute: "/iletisim",
-    title: "İletişim & Randevu | Saatchi & Co. VIP Showroom",
-    metaDescription: "Saatchi & Co. VIP danışmanlık hattı, showroom randevusu, WhatsApp destek kanalı ve kurumsal iletişim bilgileri. 7/24 kesintisiz müşteri desteği.",
-    h1: "Saatchi & Co. İletişim & VIP Randevu",
+    title: "İletişim & Randevu | SAATCHI VIP Showroom",
+    metaDescription: "SAATCHI VIP danışmanlık hattı, showroom randevusu, WhatsApp destek kanalı ve kurumsal iletişim bilgileri. 7/24 kesintisiz müşteri desteği.",
+    h1: "SAATCHI İletişim & VIP Randevu",
     primaryIntent: "Saatchi ile iletişime geçmek ve showroom randevusu almak",
     primaryEntity: {
       id: "https://saatchi.com.tr/#organization",
-      name: "Saatchi & Co.",
+      name: "SAATCHI",
       type: "Organization",
       sameAs: DECISION_PLATFORMS_ECOSYSTEM.map(p => p.url)
     },
     semanticTriples: [
-      { subject: "Saatchi & Co.", predicate: "vipConcierge", object: "+90 541 930 53 72" },
-      { subject: "Saatchi & Co.", predicate: "customerLine", object: "+90 539 823 41 41" }
+      { subject: "SAATCHI", predicate: "vipConcierge", object: "+90 541 930 53 72" },
+      { subject: "SAATCHI", predicate: "customerLine", object: "+90 539 823 41 41" }
     ],
-    heroAnswerEngine: "Saatchi & Co. iletişim merkezi, VIP WhatsApp (+90 541 930 53 72) ve müşteri hattı (+90 539 823 41 41) üzerinden 7/24 hizmet sunar. Özel showroom ziyaretleri randevu usulüyle kabul edilmektedir.",
+    heroAnswerEngine: "SAATCHI iletişim merkezi, VIP WhatsApp (+90 541 930 53 72) ve müşteri hattı (+90 539 823 41 41) üzerinden 7/24 hizmet sunar. Özel showroom ziyaretleri randevu usulüyle kabul edilmektedir.",
     publishedAt: "2026-01-01T00:00:00+03:00",
     modifiedAt: "2026-10-13T12:00:00+03:00",
     bodyContentHash: "c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9",
@@ -600,7 +600,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
     role: "tool",
     indexDirective: "index, follow",
     canonicalRoute: "/saat-degerleme",
-    title: "Lüks Saat Değerleme & Ekspertiz | Saatchi & Co.",
+    title: "Lüks Saat Değerleme & Ekspertiz | SAATCHI",
     metaDescription: "Rolex, Cartier ve İsviçre lüks saatleriniz için borsa endeksli canlı piyasa değerleme aracı. Seri no, model ve kondisyona göre anında ekspertiz teklifi.",
     h1: "Lüks Saat Canlı Piyasa Değerleme Sistemi",
     primaryIntent: "Lüks saat ekspertiz ve piyasa değerleme hesaplaması yapmak",
@@ -653,9 +653,9 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
     role: "article",
     indexDirective: "index, follow",
     canonicalRoute: "/neden-saatchi",
-    title: "Neden Saatchi & Co.? | Karşılaştırmalı Satın Alma & Ekspertiz Güvencesi",
+    title: "Neden SAATCHI? | Karşılaştırmalı Satın Alma & Ekspertiz Güvencesi",
     metaDescription: "Resmi bayi bekleme listeleri, yurt dışı gümrük riskleri ve Saatchi modeli. 12 adımlı horolojik ekspertiz, The Watch Register sorgusu ve GİB e-Arşiv faturalı teslimat.",
-    h1: "Neden Saatchi & Co.? Karşılaştırmalı Satın Alma & Ekspertiz Güvencesi",
+    h1: "Neden SAATCHI? Karşılaştırmalı Satın Alma & Ekspertiz Güvencesi",
     primaryIntent: "Lüks saat satın alma kanallarını karşılaştırmak ve ekspertiz güvencesini incelemek",
     primaryEntity: {
       id: "https://saatchi.com.tr/#entity-neden-saatchi",
@@ -664,11 +664,11 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       sameAs: ["https://saatchi.com.tr/neden-saatchi"]
     },
     semanticTriples: [
-      { subject: "Saatchi & Co.", predicate: "providesDecisionMatrix", object: "Bayi vs Gri Pazar vs Saatchi" },
-      { subject: "Saatchi & Co.", predicate: "appliesVerificationProtocol", object: "12 Aşamalı Horolojik Ekspertiz" },
-      { subject: "Saatchi & Co.", predicate: "compliesWith", object: "GİB e-Arşiv Fatura ve The Watch Register" }
+      { subject: "SAATCHI", predicate: "providesDecisionMatrix", object: "Bayi vs Gri Pazar vs Saatchi" },
+      { subject: "SAATCHI", predicate: "appliesVerificationProtocol", object: "12 Aşamalı Horolojik Ekspertiz" },
+      { subject: "SAATCHI", predicate: "compliesWith", object: "GİB e-Arşiv Fatura ve The Watch Register" }
     ],
-    heroAnswerEngine: "Saatchi & Co., resmi bayi bekleme sıralarını ve kontrolsüz pazar yeri risklerini bertaraf eden bağımsız bir saat evidir. Tüm saatler 12 aşamalı bağımsız horoloji testinden geçer, The Watch Register global çalıntı veri tabanında taranır ve GİB e-Arşiv fatura güvencesiyle aynı gün teslim edilir.",
+    heroAnswerEngine: "SAATCHI, resmi bayi bekleme sıralarını ve kontrolsüz pazar yeri risklerini bertaraf eden bağımsız bir saat evidir. Tüm saatler 12 aşamalı bağımsız horoloji testinden geçer, The Watch Register global çalıntı veri tabanında taranır ve GİB e-Arşiv fatura güvencesiyle aynı gün teslim edilir.",
     publishedAt: "2026-01-01T00:00:00+03:00",
     modifiedAt: "2026-10-17T12:00:00+03:00",
     bodyContentHash: "e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2",
@@ -688,7 +688,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       thumbSafeHeroAnswer: true,
       voiceQueryPatterns: [
         "Rolex bekleme listesi olmadan nereden alınır?",
-        "Saatchi & Co. güvenilir mi?",
+        "SAATCHI güvenilir mi?",
         "İkinci el saat alırken ekspertiz nasıl yapılır?"
       ],
       speakableSelectors: ["#aeo-hero-answer"],

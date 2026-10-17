@@ -1,4 +1,4 @@
-# Saatchi & Co. — Teknik Akreditasyonlar ve Sertifikalar
+# SAATCHI — Teknik Akreditasyonlar ve Sertifikalar
 > Standart: MANDATE-SEO-GEO-MOBILE-FIRST-2026-V9
 
 ## Yasal ve Finansal Akreditasyonlar

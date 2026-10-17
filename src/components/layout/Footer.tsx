@@ -29,7 +29,7 @@ export function Footer() {
     { name: "Karbon Fiyat", domain: "karbonfiyat.com", url: "https://karbonfiyat.com", desc: "ETS & Küresel Emisyon Piyasaları" },
     { name: "Inversion Core", domain: "inversioncore.com", url: "https://inversioncore.com", desc: "AI Ajan & Yazılım Sistemleri" },
     { name: "Belgin Kuyumculuk", domain: "belginkuyumculuk.com", url: "https://belginkuyumculuk.com", desc: "Mücevherat & Rafine Kıymetli Maden" },
-    { name: "Saatchi & Co.", domain: "saatchi.com.tr", url: "https://saatchi.com.tr", desc: "Sertifikalı Lüks Saat Danışmanlığı" },
+    { name: "SAATCHI", domain: "saatchi.com.tr", url: "https://saatchi.com.tr", desc: "Sertifikalı Lüks Saat Danışmanlığı" },
     { name: "Dilekçe Yazdır", domain: "dilekceyazdir.com.tr", url: "https://dilekceyazdir.com.tr", desc: "Hukuki Belge & Karar Desteği" },
     { name: "HTML and HTML", domain: "htmlandhtml.com", url: "https://htmlandhtml.com", desc: "Semantik Web & Arayüz Mimarisi" },
     { name: "Değerlet", domain: "degerlet.com", url: "https://degerlet.com", desc: "AI Varlık Değerleme & Ekspertiz" }
@@ -50,7 +50,7 @@ export function Footer() {
             <Link href="/" className="inline-block mb-4">
               <Image 
                 src="/logo.png" 
-                alt="Saatchi & Saatchi" 
+                alt="SAATCHI" 
                 width={200} 
                 height={50} 
                 className="h-9 sm:h-10 w-auto object-contain invert brightness-0" 

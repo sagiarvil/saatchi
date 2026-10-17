@@ -89,7 +89,7 @@ export default function ProductTabs({ watch }: { watch: any }) {
             <div className="animate-in fade-in slide-in-from-bottom-2 duration-500 space-y-6">
               <h3 className="text-xl font-serif text-foreground mb-4">Uluslararası Garanti ve Orijinallik</h3>
               <p className="text-foreground/80 font-light leading-relaxed text-sm md:text-base">
-                Saatchi & Co. olarak sattığımız tüm saatler <strong>%100 Orijinaldir</strong> ve uluslararası marka garantisi altındadır. Sahte, replika veya modifiye edilmiş hiçbir saat portföyümüzde bulunmaz.
+                SAATCHI olarak sattığımız tüm saatler <strong>%100 Orijinaldir</strong> ve uluslararası marka garantisi altındadır. Sahte, replika veya modifiye edilmiş hiçbir saat portföyümüzde bulunmaz.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                 <div className="p-5 border border-surface-border rounded-lg bg-white shadow-sm">

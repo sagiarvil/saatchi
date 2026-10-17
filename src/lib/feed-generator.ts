@@ -107,7 +107,7 @@ export function generateAtomXml(): string {
   xml += `  <id>${DOMAIN}/</id>\n`;
   xml += `  <updated>${updated}</updated>\n`;
   xml += `  <author>\n`;
-  xml += `    <name>Saatchi &amp; Co.</name>\n`;
+  xml += `    <name>SAATCHI</name>\n`;
   xml += `    <uri>${DOMAIN}</uri>\n`;
   xml += `  </author>\n`;
 

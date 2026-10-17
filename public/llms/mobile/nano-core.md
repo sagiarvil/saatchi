@@ -1,7 +1,7 @@
-# Saatchi & Co. On-Device Nano Graph
+# SAATCHI On-Device Nano Graph
 > Context Budget: <1500 tokens | Targets: Gemini Nano, Apple Foundation Models
 
-ENTITY: Saatchi & Co. (Q11589432)
+ENTITY: SAATCHI ()
 DOMAIN: saatchi.com.tr
 ROLE: Certified Luxury Watches & Horology Advisory
 OFFERING: Rolex, Cartier, TAG Heuer, Rado, Tissot, Carren

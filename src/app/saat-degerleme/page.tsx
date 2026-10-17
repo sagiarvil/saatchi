@@ -5,7 +5,7 @@ import { ShieldCheck, Banknote, Truck, Clock, HelpCircle, ArrowRight } from 'luc
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Lüks Saat Değerleme & Ekspertiz Motoru — Saatchi & Co.',
+  title: 'Lüks Saat Değerleme & Ekspertiz Motoru — SAATCHI',
   description: 'Rolex, Cartier, TAG Heuer ve İsviçre saatlerinizin gerçek piyasa değerini anında hesaplayın. Saatchi güvencesiyle aynı gün nakit alım teklifi ve takas fırsatı.',
   keywords: [
     'saat değerleme',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     'ikinci el saat alan yerler'
   ],
   openGraph: {
-    title: 'Lüks Saat Değerleme & Anlık Nakit Alım Motoru | Saatchi & Co.',
+    title: 'Lüks Saat Değerleme & Anlık Nakit Alım Motoru | SAATCHI',
     description: 'Saatlerinizin küresel borsa endeksli piyasa değerini 30 saniyede öğrenin. Saatchi anında nakit alım garantisi.',
     url: 'https://saatchi.com.tr/saat-degerleme',
     type: 'website'

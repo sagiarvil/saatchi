@@ -1,4 +1,4 @@
-# Saatchi & Co. — Horolog ve Ekspertiz Uzman Sicilleri
+# SAATCHI — Horolog ve Ekspertiz Uzman Sicilleri
 > Standart: MANDATE-SEO-GEO-MOBILE-FIRST-2026-V9
 
 ## Uzman Horoloji Kurulu ve Ekspertiz Heyeti

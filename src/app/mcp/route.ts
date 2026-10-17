@@ -6,7 +6,7 @@ export async function GET() {
     result: {
       name: "saatchi-luxury-mcp",
       version: "8.0.0",
-      description: "SAATCHI & CO. Lüks Saatler Model Context Protocol (MCP) API",
+      description: "SAATCHI Lüks Saatler Model Context Protocol (MCP) API",
       tools: [
         {
           name: "search_watches",
@@ -64,7 +64,7 @@ export async function POST(req: Request) {
       id,
       result: {
         status: "ok",
-        message: "SAATCHI & CO. MCP endpoint ready."
+        message: "SAATCHI MCP endpoint ready."
       }
     });
   } catch {

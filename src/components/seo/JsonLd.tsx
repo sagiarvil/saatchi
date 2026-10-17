@@ -11,11 +11,11 @@ export function GlobalJsonLd() {
         "@type": "WebSite",
         "@id": "https://saatchi.com.tr/#website",
         "url": "https://saatchi.com.tr/",
-        "name": "SAATCHI & CO.",
+        "name": "SAATCHI",
         "alternateName": [
           "Saatchi",
           "saatchi.com.tr",
-          "Saatchi & Co. Lüks Saatler",
+          "SAATCHI Lüks Saatler",
           "Saatchi Luxury Watches"
         ],
         "description": "Dünyanın en seçkin lüks ve elit saat koleksiyonları. Orijinallik garantisi, küresel referans borsa fiyatları ve tam değer sigortalı VIP teslimat.",
@@ -35,8 +35,8 @@ export function GlobalJsonLd() {
       {
         "@type": ["JewelryStore", "Store", "Organization"],
         "@id": "https://saatchi.com.tr/#organization",
-        "name": "SAATCHI & CO.",
-        "legalName": "Saatchi & Co. Lüks Saat Danışmanlığı",
+        "name": "SAATCHI",
+        "legalName": "SAATCHI Lüks Saat Danışmanlığı",
         "url": "https://saatchi.com.tr",
         "logo": {
           "@type": "ImageObject",
@@ -44,7 +44,7 @@ export function GlobalJsonLd() {
           "url": "https://saatchi.com.tr/android-chrome-512x512.png",
           "width": 512,
           "height": 512,
-          "caption": "SAATCHI & CO. Lüks Saatler"
+          "caption": "SAATCHI Lüks Saatler"
         },
         "image": "https://saatchi.com.tr/android-chrome-512x512.png",
         "description": "Rolex, Cartier, TAG Heuer, Rado, Tissot ve seçkin markaların orijinal, bağımsız ekspertiz sertifikalı lüks saat satış platformu.",
@@ -59,7 +59,7 @@ export function GlobalJsonLd() {
           "addressLocality": "İstanbul"
         },
         "sameAs": [
-          "https://www.wikidata.org/wiki/Q11589432",
+          "https://www.wikidata.org/wiki/",
           "https://instagram.com/saatchiluxury",
           ...ecosystemUrls
         ],
@@ -77,7 +77,7 @@ export function GlobalJsonLd() {
         "@type": "WebPage",
         "@id": "https://saatchi.com.tr/#webpage",
         "url": "https://saatchi.com.tr/",
-        "name": "Saatchi & Co. | Sertifikalı Lüks Saatler & İsviçre Koleksiyonları",
+        "name": "SAATCHI | Sertifikalı Lüks Saatler & İsviçre Koleksiyonları",
         "description": "Rolex, Cartier, TAG Heuer, Rado ve İsviçre saat modelleri. %100 orijinallik kontrolü, bağımsız ekspertiz ve tam değer sigortalı VIP teslimat güvencesiyle.",
         "isPartOf": { "@id": "https://saatchi.com.tr/#website" },
         "about": { "@id": "https://saatchi.com.tr/#organization" },
