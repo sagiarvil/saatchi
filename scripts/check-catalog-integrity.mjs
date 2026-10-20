@@ -18,7 +18,7 @@ const PURE_ACCESSORY_PATTERNS = [
 ];
 
 const SWISS_BRANDS = ['TAG Heuer', 'Rado', 'Tissot'];
-const KONYALI_SVS_BRANDS = ['TAG Heuer', 'Rado', 'Tissot', 'Calvin Klein', 'Michael Kors', 'Versace'];
+const KONYALI_SVS_BRANDS = ['TAG Heuer', 'Rado', 'Tissot', 'Calvin Klein', 'Michael Kors', 'Versace', 'Gucci', 'Seiko'];
 const MAX_CATALOG_PRICE = 1_700_000;
 const MAX_ROLEX_PRICE = 2_000_000;
 const CARREN_FIXED_PRICE = 19_990;
