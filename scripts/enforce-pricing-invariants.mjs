@@ -51,12 +51,12 @@ for (const list of [elite, watches]) {
   }
 }
 
-// Diğer markalar için stok durumu ve etiket ataması (Stokta Yok)
+// Diğer markalar için stok durumu ve etiket ataması
 for (const item of watches) {
-  item.badge = 'Stokta Yok';
-  item.condition = 'Stokta Yok';
-  item.stock = 0;
-  item.stockStatus = 'out_of_stock';
+  item.badge = '';
+  item.condition = 'Orijinal';
+  item.stock = 1;
+  item.stockStatus = 'in_stock';
 }
 
 fs.writeFileSync(elitePath, JSON.stringify(elite, null, 2) + '\n', 'utf8');

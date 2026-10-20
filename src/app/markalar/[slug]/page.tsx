@@ -59,7 +59,7 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
   const { slug } = await params;
   const brandWatches = allowedCatalog().filter((watch) => watch.brand && brandSlug(String(watch.brand)) === slug);
   const brandName = brandWatches.length > 0 ? String(brandWatches[0].brand) : slug.toUpperCase();
-  const tierLabel = ELITE_BRANDS.has(brandName) ? 'Elit Kategori · 2. El' : 'Saat Kategorisi · Stokta Yok';
+  const tierLabel = ELITE_BRANDS.has(brandName) ? 'Elit Kategori · 2. El' : 'Saat Koleksiyonu';
 
   const brandSchema = {
     "@context": "https://schema.org",
@@ -109,10 +109,8 @@ export default async function BrandPage({ params }: { params: Promise<{ slug: st
         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-primary text-center">SAATCHI / {tierLabel}</p>
         <div className="flex items-center justify-center gap-3 mt-3 mb-4 flex-wrap">
           <h1 className="text-3xl md:text-5xl font-serif text-foreground uppercase tracking-[0.16em] text-center">{brandName}</h1>
-          {ELITE_BRANDS.has(brandName) ? (
+          {ELITE_BRANDS.has(brandName) && (
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#C5A059] bg-[#1C1917] border border-[#C5A059]/40 px-3 py-1 rounded-full shadow-xs">2. El</span>
-          ) : (
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-stone-600 bg-stone-100 border border-stone-300 px-3 py-1 rounded-full shadow-xs">Stokta Yok</span>
           )}
         </div>
 

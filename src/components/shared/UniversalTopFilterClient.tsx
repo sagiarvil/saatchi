@@ -334,10 +334,8 @@ export default function UniversalTopFilterClient({ initialWatches, isBrandPage =
                   <div className="w-full">
                     <div className="flex items-center justify-center gap-1.5 mb-2 md:mb-3">
                       <p className="text-primary text-[10px] md:text-[11px] font-bold tracking-[0.25em] uppercase">{watch.brand}</p>
-                      {isElit ? (
+                      {isElit && (
                         <span className="text-[8px] font-bold text-[#846b32] bg-[#fbf5e8] px-1.5 py-0.5 rounded border border-[#846b32]/40">2. El</span>
-                      ) : (
-                        <span className="text-[8px] font-semibold text-stone-600 bg-stone-100 px-1.5 py-0.5 rounded border border-stone-200">Stokta Yok</span>
                       )}
                     </div>
                     <h2 className="text-xs md:text-[15px] font-serif font-medium text-foreground/90 mb-4 leading-relaxed group-hover:text-primary transition-colors line-clamp-2 min-h-[36px] md:min-h-[46px]">{watch.modelName}</h2>
