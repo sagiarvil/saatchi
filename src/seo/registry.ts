@@ -435,6 +435,120 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       htmlKb: 35
     }
   },
+  gucci: {
+    route: "/markalar/gucci",
+    locale: "tr-TR",
+    role: "category",
+    indexDirective: "index, follow",
+    canonicalRoute: "/markalar/gucci",
+    title: "Gucci Kol Saatleri | Horsebit, 25H, G-Timeless | Saatchi",
+    metaDescription: "İtalyan moda evi Gucci saat koleksiyonu: Horsebit, 25H, Grip, G-Timeless. Bağımsız ekspertiz garantisi, orijinal kutulu ve tam değer sigortalı VIP teslimat.",
+    h1: "Gucci Saat Koleksiyonu",
+    primaryIntent: "Orijinal Gucci saat satın almak",
+    primaryEntity: {
+      id: "https://saatchi.com.tr/#entity-gucci",
+      name: "Gucci Luxury Watches",
+      type: "Product",
+      sameAs: [
+        "https://www.wikidata.org/wiki/Q178516",
+        "https://saatchi.com.tr/markalar/gucci"
+      ]
+    },
+    semanticTriples: [
+      { subject: "Gucci", predicate: "brandOf", object: "SAATCHI Saat Koleksiyonu" },
+      { subject: "Gucci", predicate: "movement", object: "Swiss Made Quartz ve Otomatik Mekanizma" }
+    ],
+    heroAnswerEngine: "Saatchi Gucci koleksiyonu, Horsebit, 25H, G-Timeless ve Grip modellerini içerir. İtalyan moda mirası ve İsviçre saatçilik ustalığı, bağımsız ekspertiz ve sigortalı VIP teslimat ayrıcalığıyla sunulur.",
+    publishedAt: "2026-01-01T00:00:00+03:00",
+    modifiedAt: "2026-10-20T23:00:00+03:00",
+    bodyContentHash: "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2",
+    llmSubGraphRoute: "/llms/pages/gucci.md",
+    mobileSubGraphRoute: "/llms/mobile/gucci.md",
+    breadcrumbs: [
+      { name: "Anasayfa", item: "/" },
+      { name: "Markalar", item: "/markalar" },
+      { name: "Gucci", item: "/markalar/gucci" }
+    ],
+    mobile: {
+      viewport: "width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, maximum-scale=5",
+      primaryAction: "call",
+      bottomNavEnabled: true,
+      thumbZonePosition: "bottom-center",
+      touchTargetsValidated: true,
+      horizontalScrollFree: true,
+      thumbSafeHeroAnswer: true,
+      voiceQueryPatterns: [
+        "Gucci saat modelleri ve fiyatları nedir?",
+        "Gucci Horsebit saat özellikleri nelerdir?"
+      ],
+      speakableSelectors: ["#aeo-hero-answer"],
+      pwaInstallable: true
+    },
+    mobileCwvBudget: {
+      lcpMs: 1600,
+      inpMs: 110,
+      cls: 0.02,
+      ttfbMs: 160,
+      htmlKb: 35
+    }
+  },
+  seiko: {
+    route: "/markalar/seiko",
+    locale: "tr-TR",
+    role: "category",
+    indexDirective: "index, follow",
+    canonicalRoute: "/markalar/seiko",
+    title: "Seiko Kol Saatleri | Astron, Prospex, Presage | Saatchi",
+    metaDescription: "Japon saatçilik mükemmeliyeti Seiko saatleri: Astron GPS Solar, Prospex, Presage, 5 Sports. Bağımsız ekspertiz güvencesi ve tam değer sigortalı VIP teslimat.",
+    h1: "Seiko Saat Koleksiyonu",
+    primaryIntent: "Orijinal Seiko saat satın almak",
+    primaryEntity: {
+      id: "https://saatchi.com.tr/#entity-seiko",
+      name: "Seiko Japanese Watches",
+      type: "Product",
+      sameAs: [
+        "https://www.wikidata.org/wiki/Q207901",
+        "https://saatchi.com.tr/markalar/seiko"
+      ]
+    },
+    semanticTriples: [
+      { subject: "Seiko", predicate: "brandOf", object: "SAATCHI Saat Koleksiyonu" },
+      { subject: "Seiko", predicate: "movement", object: "GPS Solar, Otomatik ve Mekanik Kalibre" }
+    ],
+    heroAnswerEngine: "Saatchi Seiko koleksiyonu, Astron GPS Solar, Prospex Dalgıç ve Presage serilerini içerir. 1881'den bu yana süregelen Japon saatçilik hassasiyeti, doğrulanmış kaynak fiyatı ve sigortalı VIP gönderimle buluşur.",
+    publishedAt: "2026-01-01T00:00:00+03:00",
+    modifiedAt: "2026-10-20T23:00:00+03:00",
+    bodyContentHash: "b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3",
+    llmSubGraphRoute: "/llms/pages/seiko.md",
+    mobileSubGraphRoute: "/llms/mobile/seiko.md",
+    breadcrumbs: [
+      { name: "Anasayfa", item: "/" },
+      { name: "Markalar", item: "/markalar" },
+      { name: "Seiko", item: "/markalar/seiko" }
+    ],
+    mobile: {
+      viewport: "width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, maximum-scale=5",
+      primaryAction: "call",
+      bottomNavEnabled: true,
+      thumbZonePosition: "bottom-center",
+      touchTargetsValidated: true,
+      horizontalScrollFree: true,
+      thumbSafeHeroAnswer: true,
+      voiceQueryPatterns: [
+        "Seiko Astron GPS Solar saat fiyatı ne kadar?",
+        "Seiko Presage otomatik saat modelleri nelerdir?"
+      ],
+      speakableSelectors: ["#aeo-hero-answer"],
+      pwaInstallable: true
+    },
+    mobileCwvBudget: {
+      lcpMs: 1600,
+      inpMs: 110,
+      cls: 0.02,
+      ttfbMs: 160,
+      htmlKb: 35
+    }
+  },
   carren: {
     route: "/saatler/carren",
     locale: "tr-TR",

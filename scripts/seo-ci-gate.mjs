@@ -42,6 +42,8 @@ const requiredLlms = [
   "llms/pages/tag-heuer.md",
   "llms/pages/rado.md",
   "llms/pages/tissot.md",
+  "llms/pages/gucci.md",
+  "llms/pages/seiko.md",
   "llms/pages/carren.md",
   "llms/pages/saat-degerleme.md",
   "llms/pages/kurumsal.md",
