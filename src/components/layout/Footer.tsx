@@ -25,8 +25,6 @@ export function Footer() {
   const decisionPlatforms = [
     { name: "Dr. Finans", domain: "drfin.com.tr", url: "https://drfin.com.tr", desc: "Finansal Modelleme & Karar Destek" },
     { name: "ExcelArşiv", domain: "excelarsiv.com", url: "https://excelarsiv.com", desc: "Finans & Kurumsal Tablo Şablonları" },
-    { name: "SKDM Hesapla", domain: "skdmhesapla.com", url: "https://skdmhesapla.com", desc: "CBAM & Sınırda Karbon Analizi" },
-    { name: "Karbon Fiyat", domain: "karbonfiyat.com", url: "https://karbonfiyat.com", desc: "ETS & Küresel Emisyon Piyasaları" },
     { name: "Inversion Core", domain: "inversioncore.com", url: "https://inversioncore.com", desc: "AI Ajan & Yazılım Sistemleri" },
     { name: "Belgin Kuyumculuk", domain: "belginkuyumculuk.com", url: "https://belginkuyumculuk.com", desc: "Mücevherat & Rafine Kıymetli Maden" },
     { name: "SAATCHI", domain: "saatchi.com.tr", url: "https://saatchi.com.tr", desc: "Sertifikalı Lüks Saat Danışmanlığı" },
@@ -149,7 +147,7 @@ export function Footer() {
             <div className="flex items-center gap-2">
               <Network className="w-4 h-4 text-[#C2A768]" />
               <h4 className="text-xs sm:text-sm font-semibold tracking-[0.2em] uppercase text-white font-serif">
-                Stratejik Karar Destek & Değerleme Ekosistemi
+                Kurumsal Ekosistem & Otorite Ağı
               </h4>
             </div>
             <span className="text-[10px] text-[#736B5E] tracking-wider uppercase font-mono">
@@ -157,7 +155,7 @@ export function Footer() {
             </span>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-3">
             {decisionPlatforms.map((plat, idx) => (
               <a
                 key={idx}

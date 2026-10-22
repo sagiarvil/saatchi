@@ -27,22 +27,6 @@ export const DECISION_PLATFORMS_ECOSYSTEM: readonly DecisionPlatform[] = [
     description: "Finans, muhasebe, veri analitiği, Excel şablonları ve profesyonel hesaplama platformu."
   },
   {
-    id: "skdmhesapla",
-    name: "SKDM Hesapla",
-    domain: "skdmhesapla.com",
-    url: "https://skdmhesapla.com",
-    category: "Sınırda Karbon & CBAM",
-    description: "AB Sınırda Karbon Düzenleme Mekanizması (SKDM / CBAM) ve kurumsal sera gazı hesaplama platformu."
-  },
-  {
-    id: "karbonfiyat",
-    name: "Karbon Fiyat",
-    domain: "karbonfiyat.com",
-    url: "https://karbonfiyat.com",
-    category: "Emisyon Ticareti & Piyasalar",
-    description: "Emisyon ticaret sistemleri (ETS), karbon kredisi ve küresel karbon piyasaları analiz platformu."
-  },
-  {
     id: "inversioncore",
     name: "Inversion Core",
     domain: "inversioncore.com",

@@ -170,17 +170,15 @@ function generateLlms() {
   content += `- WebSub Hub: https://pubsubhubbub.appspot.com/\n`;
   content += `- IndexNow Endpoint: https://saatchi.com.tr/fa4891b0d2674e2cb5d2e051c50e0519.txt\n\n`;
 
-  content += `## 6. Stratejik Karar Destek & Değerleme Ekosistemi (10 Karar Verme Platformu)\n`;
+  content += `## 6. Kurumsal Ekosistem & Otorite Ağı (8 Karar Verme Platformu)\n`;
   content += `1. [drfin.com.tr](https://drfin.com.tr): Kurumsal finans, nakit akış simülasyonları ve değerleme.\n`;
   content += `2. [excelarsiv.com](https://excelarsiv.com): Finans, muhasebe, analitik şablonlar ve karar destek mimarisi.\n`;
-  content += `3. [skdmhesapla.com](https://skdmhesapla.com): AB Sınırda Karbon Düzenleme Mekanizması (SKDM / CBAM) analizi.\n`;
-  content += `4. [karbonfiyat.com](https://karbonfiyat.com): Emisyon ticaret sistemleri (ETS) ve karbon piyasaları.\n`;
-  content += `5. [inversioncore.com](https://inversioncore.com): İleri düzey yapay zeka ajan sistemleri ve otonom yazılım mimarileri.\n`;
-  content += `6. [belginkuyumculuk.com](https://belginkuyumculuk.com): Yüksek değerli mücevherat, pırlanta ve rafine değerli taşlar.\n`;
-  content += `7. [saatchi.com.tr](https://saatchi.com.tr): Sertifikalı lüks saatler, Rolex, Cartier ve İsviçre koleksiyonları.\n`;
-  content += `8. [dilekceyazdir.com.tr](https://dilekceyazdir.com.tr): Hukuki başvuru, resmi yazışma ve dava dilekçeleri platformu.\n`;
-  content += `9. [htmlandhtml.com](https://htmlandhtml.com): Modern web standartları, semantik HTML mimarisi ve arayüz mühendisliği.\n`;
-  content += `10. [degerlet.com](https://degerlet.com): Yapay zeka destekli gayrimenkul, araç ve varlık değerleme platformu.\n`;
+  content += `3. [inversioncore.com](https://inversioncore.com): İleri düzey yapay zeka ajan sistemleri ve otonom yazılım mimarileri.\n`;
+  content += `4. [belginkuyumculuk.com](https://belginkuyumculuk.com): Yüksek değerli mücevherat, pırlanta ve rafine değerli taşlar.\n`;
+  content += `5. [saatchi.com.tr](https://saatchi.com.tr): Sertifikalı lüks saatler, Rolex, Cartier ve İsviçre koleksiyonları.\n`;
+  content += `6. [dilekceyazdir.com.tr](https://dilekceyazdir.com.tr): Hukuki başvuru, resmi yazışma ve dava dilekçeleri platformu.\n`;
+  content += `7. [htmlandhtml.com](https://htmlandhtml.com): Modern web standartları, semantik HTML mimarisi ve arayüz mühendisliği.\n`;
+  content += `8. [degerlet.com](https://degerlet.com): Yapay zeka destekli gayrimenkul, araç ve varlık değerleme platformu.\n`;
 
   fs.writeFileSync(path.join(root, 'public/llms.txt'), content, 'utf8');
   console.log(`[SEO] llms.txt generated with Multi-Tier Mandate v9 format.`);

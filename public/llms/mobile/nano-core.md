@@ -13,4 +13,4 @@ AUTHENTICITY: Independent Horologist Certification & The Watch Register Cleared
 DELIVERY: 100% Insured Armored Courier or Izmir Showroom VIP Handover
 CONTACT_WHATSAPP: +905419305372
 CONTACT_PHONE: +905398234141
-AFFILIATED_ECOSYSTEM: [drfin.com.tr, excelarsiv.com, skdmhesapla.com, karbonfiyat.com, inversioncore.com, belginkuyumculuk.com, saatchi.com.tr, dilekceyazdir.com.tr, htmlandhtml.com, degerlet.com]
+AFFILIATED_ECOSYSTEM: [drfin.com.tr, excelarsiv.com, inversioncore.com, belginkuyumculuk.com, saatchi.com.tr, dilekceyazdir.com.tr, htmlandhtml.com, degerlet.com]

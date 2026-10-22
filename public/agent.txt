@@ -38,7 +38,7 @@ json_feed: https://saatchi.com.tr/feed.json
 sitemap: https://saatchi.com.tr/sitemap.xml
 
 [ecosystem_network]
-platforms: drfin.com.tr, excelarsiv.com, skdmhesapla.com, karbonfiyat.com, inversioncore.com, belginkuyumculuk.com, saatchi.com.tr, dilekceyazdir.com.tr, htmlandhtml.com, degerlet.com
+platforms: drfin.com.tr, excelarsiv.com, inversioncore.com, belginkuyumculuk.com, saatchi.com.tr, dilekceyazdir.com.tr, htmlandhtml.com, degerlet.com
 
 [contact]
 email: vip@saatchi.com.tr
