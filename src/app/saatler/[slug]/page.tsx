@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import ZoomImage from '@/components/ZoomImage';
 import WatchTechnicalPanel from '@/components/WatchTechnicalPanel';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
@@ -7,8 +8,7 @@ import saatlerData from '@/data/saatler.json';
 import elitSaatlerData from '@/data/elit-saatler.json';
 import { AlertCircle, MessageCircle } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -29,22 +29,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug));
+  const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug) || String(w.id || '') === slug);
   if (!watch) {
     return { title: 'Saat Bulunamadı | SAATCHI' };
   }
 
+  const canonicalSlug = String(watch.seoUrl || '').split('/').pop() || String(watch.id);
   const title = `${watch.brand} ${watch.modelName} | SAATCHI`;
   const desc = `${watch.brand} ${watch.modelName} kol saati. Orijinallik garantisi, sertifikalı ekspertiz onayı ve tam değer sigortalı VIP teslimatla Saatchi'de.`;
 
   return {
     title,
     description: desc,
-    alternates: { canonical: `https://saatchi.com.tr/saatler/${slug}` },
+    alternates: { canonical: `https://saatchi.com.tr/saatler/${canonicalSlug}` },
     openGraph: {
       title,
       description: desc,
-      url: `https://saatchi.com.tr/saatler/${slug}`,
+      url: `https://saatchi.com.tr/saatler/${canonicalSlug}`,
       siteName: 'SAATCHI',
       images: watch.image ? [{ url: watch.image.startsWith('http') ? watch.image : `https://saatchi.com.tr${watch.image.startsWith('/') ? '' : '/'}${watch.image}` }] : [],
     }
@@ -65,9 +66,14 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
   const { slug } = await params;
   const allWatches = [...(saatlerData as any[]), ...(elitSaatlerData as any[])];
 
-  const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug));
+  const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug) || String(w.id || '') === slug);
   if (!watch) {
     return <div className="flex min-h-[70vh] items-center justify-center bg-[#f6f3ef]"><h1 className="text-3xl font-medium text-[#171514]">Saat Bulunamadı</h1></div>;
+  }
+
+  const canonicalSlug = String(watch.seoUrl || '').split('/').pop() || String(watch.id);
+  if (slug !== canonicalSlug) {
+    redirect(`/saatler/${canonicalSlug}`);
   }
 
   const isElite = ['Rolex', 'Cartier', 'TAG Heuer', 'Rado'].includes(String(watch.brand || ''));
@@ -83,7 +89,7 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
     "@graph": [
       {
         "@type": "Product",
-        "@id": `https://saatchi.com.tr/saatler/${slug}#product`,
+        "@id": `https://saatchi.com.tr/saatler/${canonicalSlug}#product`,
         "name": `${watch.brand} ${watch.modelName}`,
         "description": description,
         "image": watch.image ? (watch.image.startsWith('http') ? watch.image : `https://saatchi.com.tr${watch.image.startsWith('/') ? '' : '/'}${watch.image}`) : "https://saatchi.com.tr/logo.png",
@@ -93,7 +99,7 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
         },
         "offers": {
           "@type": "Offer",
-          "url": `https://saatchi.com.tr/saatler/${slug}`,
+          "url": `https://saatchi.com.tr/saatler/${canonicalSlug}`,
           "priceCurrency": "TRY",
           "price": Number(watch.calculatedPrice || 0) > 0 ? Number(watch.calculatedPrice) : 19990,
           "availability": "https://schema.org/InStock",
@@ -107,7 +113,7 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
       },
       {
         "@type": "BreadcrumbList",
-        "@id": `https://saatchi.com.tr/saatler/${slug}#breadcrumb`,
+        "@id": `https://saatchi.com.tr/saatler/${canonicalSlug}#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -125,7 +131,7 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
             "@type": "ListItem",
             "position": 3,
             "name": watch.modelName,
-            "item": `https://saatchi.com.tr/saatler/${slug}`
+            "item": `https://saatchi.com.tr/saatler/${canonicalSlug}`
           }
         ]
       }

@@ -23,13 +23,45 @@ function escapeXml(unsafe) {
   });
 }
 
+function getWatchUrl(watch, isElite) {
+  if (watch.seoUrl && watch.seoUrl.startsWith('/')) {
+    return `${DOMAIN}${watch.seoUrl}`;
+  }
+  const slug = watch.slug || watch.id;
+  return isElite ? `${DOMAIN}/elit-saat/${slug}` : `${DOMAIN}/saatler/${slug}`;
+}
+
 // 1. GENERATE ADVANCED SITEMAP.XML WITH IMAGE EXTENSIONS
 function generateSitemap() {
   const staticUrls = [
     { loc: `${DOMAIN}/`, changefreq: 'daily', priority: '1.0' },
-    { loc: `${DOMAIN}/markalar`, changefreq: 'weekly', priority: '0.8' },
+    { loc: `${DOMAIN}/elit-saat`, changefreq: 'daily', priority: '0.95' },
+    { loc: `${DOMAIN}/elit-saat/koleksiyon`, changefreq: 'daily', priority: '0.9' },
+    { loc: `${DOMAIN}/saatler`, changefreq: 'daily', priority: '0.9' },
     { loc: `${DOMAIN}/saatler/kadin`, changefreq: 'daily', priority: '0.9' },
     { loc: `${DOMAIN}/saatler/erkek`, changefreq: 'daily', priority: '0.9' },
+    { loc: `${DOMAIN}/saatler/unisex`, changefreq: 'daily', priority: '0.85' },
+    { loc: `${DOMAIN}/markalar`, changefreq: 'weekly', priority: '0.9' },
+    { loc: `${DOMAIN}/markalar/rolex`, changefreq: 'daily', priority: '0.95' },
+    { loc: `${DOMAIN}/markalar/cartier`, changefreq: 'daily', priority: '0.95' },
+    { loc: `${DOMAIN}/markalar/tag-heuer`, changefreq: 'daily', priority: '0.9' },
+    { loc: `${DOMAIN}/markalar/rado`, changefreq: 'daily', priority: '0.9' },
+    { loc: `${DOMAIN}/markalar/tissot`, changefreq: 'daily', priority: '0.9' },
+    { loc: `${DOMAIN}/markalar/carren`, changefreq: 'daily', priority: '0.85' },
+    { loc: `${DOMAIN}/markalar/carren/erkek`, changefreq: 'daily', priority: '0.85' },
+    { loc: `${DOMAIN}/markalar/carren/kadin`, changefreq: 'daily', priority: '0.85' },
+    { loc: `${DOMAIN}/markalar/gucci`, changefreq: 'weekly', priority: '0.85' },
+    { loc: `${DOMAIN}/markalar/seiko`, changefreq: 'weekly', priority: '0.85' },
+    { loc: `${DOMAIN}/neden-saatchi`, changefreq: 'monthly', priority: '0.8' },
+    { loc: `${DOMAIN}/saat-degerleme`, changefreq: 'weekly', priority: '0.85' },
+    { loc: `${DOMAIN}/kurumsal`, changefreq: 'monthly', priority: '0.8' },
+    { loc: `${DOMAIN}/iletisim`, changefreq: 'monthly', priority: '0.8' },
+    { loc: `${DOMAIN}/karsilastir`, changefreq: 'weekly', priority: '0.75' },
+    { loc: `${DOMAIN}/gizlilik-politikasi`, changefreq: 'monthly', priority: '0.5' },
+    { loc: `${DOMAIN}/mesafeli-satis-sozlesmesi`, changefreq: 'monthly', priority: '0.5' },
+    { loc: `${DOMAIN}/iade-ve-degisim`, changefreq: 'monthly', priority: '0.5' },
+    { loc: `${DOMAIN}/kullanim-kosullari`, changefreq: 'monthly', priority: '0.5' },
+    { loc: `${DOMAIN}/kvkk-aydinlatma-metni`, changefreq: 'monthly', priority: '0.5' },
   ];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
@@ -47,8 +79,7 @@ function generateSitemap() {
 
   // Elite Watches
   for (const watch of elite) {
-    const slug = watch.slug || watch.id;
-    const url = `${DOMAIN}/elit-saat/${slug}`;
+    const url = getWatchUrl(watch, true);
     const imgUrl = watch.image?.startsWith('http') ? watch.image : `${DOMAIN}${watch.image?.startsWith('/') ? '' : '/'}${watch.image || ''}`;
     const title = escapeXml(`${watch.brand} ${watch.modelName} Lüks Saat`);
 
@@ -69,8 +100,7 @@ function generateSitemap() {
 
   // Standard Catalog Watches
   for (const watch of watches) {
-    const slug = watch.slug || watch.id;
-    const url = `${DOMAIN}/saatler/${slug}`;
+    const url = getWatchUrl(watch, false);
     const imgUrl = watch.image?.startsWith('http') ? watch.image : `${DOMAIN}${watch.image?.startsWith('/') ? '' : '/'}${watch.image || ''}`;
     const title = escapeXml(`${watch.brand} ${watch.modelName} Kol Saati`);
 
@@ -165,7 +195,7 @@ function generateLlmsFull() {
   content += `## 1. Elit Koleksiyon (Rolex, Cartier, TAG Heuer, Rado)\n\n`;
   for (const w of elite) {
     content += `### ${w.brand} - ${w.modelName}\n`;
-    content += `- **URL:** https://saatchi.com.tr/elit-saat/${w.slug || w.id}\n`;
+    content += `- **URL:** ${getWatchUrl(w, true)}\n`;
     content += `- **Fiyat:** ${w.price || '₺' + Number(w.calculatedPrice).toLocaleString('tr-TR')}\n`;
     content += `- **Kategori:** ${w.category || 'Lüks Kol Saati'}\n`;
     content += `- **Cinsiyet:** ${w.gender || 'Erkek / Unisex'}\n`;
@@ -176,7 +206,7 @@ function generateLlmsFull() {
   content += `## 2. Diğer Seçkin Koleksiyonlar (Tissot, Carren, Calvin Klein, Michael Kors, Versace)\n\n`;
   for (const w of watches) {
     content += `### ${w.brand} - ${w.modelName}\n`;
-    content += `- **URL:** https://saatchi.com.tr/saatler/${w.slug || w.id}\n`;
+    content += `- **URL:** ${getWatchUrl(w, false)}\n`;
     content += `- **Fiyat:** ${w.price || '₺' + Number(w.calculatedPrice).toLocaleString('tr-TR')}\n`;
     content += `- **Kategori:** ${w.category || 'Kol Saati'}\n`;
     content += `- **Cinsiyet:** ${w.gender || 'Standart'}\n`;

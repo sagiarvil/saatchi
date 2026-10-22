@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 import ZoomImage from '@/components/ZoomImage';
 import WatchTechnicalPanel from '@/components/WatchTechnicalPanel';
 import elitSaatlerData from '@/data/elit-saatler.json';
 import { ShieldCheck, MessageCircle } from 'lucide-react';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
@@ -29,22 +29,23 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
-  const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug));
+  const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug) || String(w.id || '') === slug);
   if (!watch) {
     return { title: 'Saat Bulunamadı | SAATCHI' };
   }
 
+  const canonicalSlug = String(watch.seoUrl || '').split('/').pop() || String(watch.id);
   const title = `${watch.brand} ${watch.modelName} | SAATCHI`;
   const desc = `${watch.brand} ${watch.modelName} lüks kol saati. Orijinallik sertifikası, bağımsız ekspertiz onayı ve tam değer sigortalı VIP kurye teslimatıyla Saatchi'de.`;
 
   return {
     title,
     description: desc,
-    alternates: { canonical: `https://saatchi.com.tr/elit-saat/${slug}` },
+    alternates: { canonical: `https://saatchi.com.tr/elit-saat/${canonicalSlug}` },
     openGraph: {
       title,
       description: desc,
-      url: `https://saatchi.com.tr/elit-saat/${slug}`,
+      url: `https://saatchi.com.tr/elit-saat/${canonicalSlug}`,
       siteName: 'SAATCHI',
       images: watch.image ? [{ url: watch.image.startsWith('http') ? watch.image : `https://saatchi.com.tr${watch.image.startsWith('/') ? '' : '/'}${watch.image}` }] : [],
     }
@@ -111,9 +112,14 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
     );
   }
 
-  const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug));
+  const watch = allWatches.find((w: any) => String(w.seoUrl || '').includes(slug) || String(w.id || '') === slug);
   if (!watch) {
     return <div className="flex min-h-[70vh] items-center justify-center bg-[#f6f3ef]"><h1 className="text-3xl font-medium text-[#171514]">Saat Bulunamadı</h1></div>;
+  }
+
+  const canonicalSlug = String(watch.seoUrl || '').split('/').pop() || String(watch.id);
+  if (slug !== canonicalSlug) {
+    redirect(`/elit-saat/${canonicalSlug}`);
   }
 
   const description = watch.description?.trim()
@@ -127,7 +133,7 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
     "@graph": [
       {
         "@type": "Product",
-        "@id": `https://saatchi.com.tr/elit-saat/${slug}#product`,
+        "@id": `https://saatchi.com.tr/elit-saat/${canonicalSlug}#product`,
         "name": `${watch.brand} ${watch.modelName}`,
         "description": description,
         "image": watch.image ? (watch.image.startsWith('http') ? watch.image : `https://saatchi.com.tr${watch.image.startsWith('/') ? '' : '/'}${watch.image}`) : "https://saatchi.com.tr/logo.png",
@@ -137,7 +143,7 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
         },
         "offers": {
           "@type": "Offer",
-          "url": `https://saatchi.com.tr/elit-saat/${slug}`,
+          "url": `https://saatchi.com.tr/elit-saat/${canonicalSlug}`,
           "priceCurrency": "TRY",
           "price": Number(watch.calculatedPrice || 0) > 0 ? Number(watch.calculatedPrice) : 500000,
           "availability": "https://schema.org/InStock",
@@ -151,7 +157,7 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
       },
       {
         "@type": "BreadcrumbList",
-        "@id": `https://saatchi.com.tr/elit-saat/${slug}#breadcrumb`,
+        "@id": `https://saatchi.com.tr/elit-saat/${canonicalSlug}#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
@@ -169,7 +175,7 @@ export default async function ElitSaatDetail({ params }: { params: Promise<{ slu
             "@type": "ListItem",
             "position": 3,
             "name": watch.modelName,
-            "item": `https://saatchi.com.tr/elit-saat/${slug}`
+            "item": `https://saatchi.com.tr/elit-saat/${canonicalSlug}`
           }
         ]
       }

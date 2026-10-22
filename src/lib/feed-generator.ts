@@ -43,6 +43,9 @@ export function loadAllWatches(): { elite: WatchItem[]; watches: WatchItem[]; al
 }
 
 export function getWatchUrl(item: WatchItem): string {
+  if (item.seoUrl && item.seoUrl.startsWith('/')) {
+    return `${DOMAIN}${item.seoUrl}`;
+  }
   const isElite = item.catalogTier === 'elite' || item.category === 'Elit Kategori';
   const slug = item.slug || item.id;
   return isElite ? `${DOMAIN}/elit-saat/${slug}` : `${DOMAIN}/saatler/${slug}`;
@@ -137,9 +140,33 @@ export function generateSitemapXml(): string {
 
   const staticUrls = [
     { loc: `${DOMAIN}/`, changefreq: 'daily', priority: '1.0' },
-    { loc: `${DOMAIN}/markalar`, changefreq: 'weekly', priority: '0.8' },
+    { loc: `${DOMAIN}/elit-saat`, changefreq: 'daily', priority: '0.95' },
+    { loc: `${DOMAIN}/elit-saat/koleksiyon`, changefreq: 'daily', priority: '0.9' },
+    { loc: `${DOMAIN}/saatler`, changefreq: 'daily', priority: '0.9' },
     { loc: `${DOMAIN}/saatler/kadin`, changefreq: 'daily', priority: '0.9' },
     { loc: `${DOMAIN}/saatler/erkek`, changefreq: 'daily', priority: '0.9' },
+    { loc: `${DOMAIN}/saatler/unisex`, changefreq: 'daily', priority: '0.85' },
+    { loc: `${DOMAIN}/markalar`, changefreq: 'weekly', priority: '0.9' },
+    { loc: `${DOMAIN}/markalar/rolex`, changefreq: 'daily', priority: '0.95' },
+    { loc: `${DOMAIN}/markalar/cartier`, changefreq: 'daily', priority: '0.95' },
+    { loc: `${DOMAIN}/markalar/tag-heuer`, changefreq: 'daily', priority: '0.9' },
+    { loc: `${DOMAIN}/markalar/rado`, changefreq: 'daily', priority: '0.9' },
+    { loc: `${DOMAIN}/markalar/tissot`, changefreq: 'daily', priority: '0.9' },
+    { loc: `${DOMAIN}/markalar/carren`, changefreq: 'daily', priority: '0.85' },
+    { loc: `${DOMAIN}/markalar/carren/erkek`, changefreq: 'daily', priority: '0.85' },
+    { loc: `${DOMAIN}/markalar/carren/kadin`, changefreq: 'daily', priority: '0.85' },
+    { loc: `${DOMAIN}/markalar/gucci`, changefreq: 'weekly', priority: '0.85' },
+    { loc: `${DOMAIN}/markalar/seiko`, changefreq: 'weekly', priority: '0.85' },
+    { loc: `${DOMAIN}/neden-saatchi`, changefreq: 'monthly', priority: '0.8' },
+    { loc: `${DOMAIN}/saat-degerleme`, changefreq: 'weekly', priority: '0.85' },
+    { loc: `${DOMAIN}/kurumsal`, changefreq: 'monthly', priority: '0.8' },
+    { loc: `${DOMAIN}/iletisim`, changefreq: 'monthly', priority: '0.8' },
+    { loc: `${DOMAIN}/karsilastir`, changefreq: 'weekly', priority: '0.75' },
+    { loc: `${DOMAIN}/gizlilik-politikasi`, changefreq: 'monthly', priority: '0.5' },
+    { loc: `${DOMAIN}/mesafeli-satis-sozlesmesi`, changefreq: 'monthly', priority: '0.5' },
+    { loc: `${DOMAIN}/iade-ve-degisim`, changefreq: 'monthly', priority: '0.5' },
+    { loc: `${DOMAIN}/kullanim-kosullari`, changefreq: 'monthly', priority: '0.5' },
+    { loc: `${DOMAIN}/kvkk-aydinlatma-metni`, changefreq: 'monthly', priority: '0.5' },
   ];
 
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;

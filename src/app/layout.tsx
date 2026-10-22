@@ -74,6 +74,9 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  verification: {
+    google: "HVjtbmt5yCKWy0Bakgx6BhkOwuloXCKj6ZuHxiFQOXw",
+  },
 };
 
 export default function RootLayout({
@@ -84,6 +87,7 @@ export default function RootLayout({
   return (
     <html lang="tr" className="h-full antialiased">
       <head>
+        <meta name="google-site-verification" content="HVjtbmt5yCKWy0Bakgx6BhkOwuloXCKj6ZuHxiFQOXw" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
