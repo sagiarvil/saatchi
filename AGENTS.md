@@ -96,6 +96,16 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - **Fail-Closed Otomatik Filtre:** `enforce-pricing-invariants.mjs` ve tüm senkronizasyon motorları 10.000 TL altındaki modelleri koşulsuz olarak filtreler ve eler.
 - **check:catalog Denetimi:** `scripts/check-catalog-integrity.mjs` kalite kapısı tüm katalogda (`saatler.json`, `elit-saatler.json`, `saatler_paytr.json`) 10.000 TL tabanını denetler; 10.000 TL altında tek bir saat bulunması durumunda derleme ve dağıtım fail-closed olarak durdurulur.
 
+## 16. 7'li Web Tasarım & Mühendislik Motoru Zinciri (Eksiksiz Bağlama Kuralı)
+Projede aşağıdaki 7 motor aktif olarak kurulmuş, doğrulanmış ve derleme boru hattına bağlanmıştır:
+1. **Taste Skill (`DESIGN.md`):** Saatchi lüks görsel yönü, sessiz lüks renk paleti (`#846b32` altın, `#000000`, `#ffffff`), tipografi ve anti-slop kuralları.
+2. **Impeccable (`scripts/check-craft-floor.mjs` / `npm run check:craft`):** Kodda yapay zeka slop gradyanları, ucuz sıçrama animasyonları veya kural ihlallerini denetleyen derleme kapısı.
+3. **React Bits (`src/components/react-bits/`):** `SpotlightCard`, `BlurText`, `SplitText`, `DecryptedText` lüks animasyonlu mikro bileşen kütüphanesi.
+4. **GSAP Engine (`src/lib/gsap/`):** Next.js 16 / React 19 uyumlu `gsap`, `ScrollTrigger`, `useGsapScrollReveal` ve `useGsapStagger` kancaları.
+5. **Playwright CLI (`playwright.config.ts` / `tests/e2e/smoke.spec.ts` / `npm run test:e2e`):** Gerçek tarayıcı üzerinde E2E ve rota doğrulama motoru.
+6. **transitions.dev (`src/lib/transitions/` & `src/app/globals.css`):** Native Document View Transitions API sarmalayıcısı ve yumuşak sayfa morfolojisi.
+7. **designlang (`scripts/designlang-analyzer.mjs` / `npm run engine:tokens`):** Kod tabanındaki tüm tasarım tokenlerini, CSS değişkenlerini ve HEX renklerini tarayıp `design-tokens.json` oluşturan analiz motoru.
+
 
 ## 🎛️ /suiteN Komutu — NVIDIA NIM AI Entegrasyonu (ChatGPT & Tüm AI Modelleri)
 - **Komut Formatı:** `/suiteN [kod, soru, analiz veya log]`
