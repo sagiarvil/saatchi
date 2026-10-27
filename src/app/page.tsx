@@ -1,6 +1,7 @@
 import { HeroSlider } from '@/components/ui/HeroSlider';
 import { BrandMarquee } from '@/components/ui/BrandMarquee';
 import { FeaturedLuxuryWatches } from '@/components/ui/FeaturedLuxuryWatches';
+import { SpotlightCard } from '@/components/react-bits';
 import Link from 'next/link';
 import { ArrowRight, Compass, Gem, Shield, Sparkles } from 'lucide-react';
 import elitSaatler from '@/data/elit-saatler.json';
@@ -55,39 +56,39 @@ export default function Home() {
               Malzeme bilimi, kadran sanatı ve kronometrik performans: Saatchi seçkisindeki her bir saat teknik mükemmelliği taçlandırıyor, gerçeğe dönüşen hayalleri ölümsüzleştiriyor ve geleceğin saatçilik tutkularını şekillendiriyor.
             </p>
 
-            {/* 4 Pillars Grid (Ultra-Clean Swiss Layout) */}
+            {/* 4 Pillars Grid (Ultra-Clean Swiss Layout with React Bits SpotlightCard) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-left mb-14 sm:mb-18">
-              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E8E2D5] shadow-xs">
+              <SpotlightCard spotlightColor="rgba(132, 107, 50, 0.15)" className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E8E2D5] shadow-xs">
                 <span className="text-xs font-mono text-[#846b32] font-bold tracking-widest block mb-2">01 / PRESTİJ</span>
                 <h4 className="text-base font-serif font-bold text-[#1A1814] mb-2">Doğrulanmış Orijinallik</h4>
                 <p className="text-xs text-[#736B5E] leading-relaxed">
                   Her parça bağımsız horologlar ve optik mikro-inceleme testlerinden geçirilerek tescillenir.
                 </p>
-              </div>
+              </SpotlightCard>
 
-              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E8E2D5] shadow-xs">
+              <SpotlightCard spotlightColor="rgba(132, 107, 50, 0.15)" className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E8E2D5] shadow-xs">
                 <span className="text-xs font-mono text-[#846b32] font-bold tracking-widest block mb-2">02 / NADİRLİK</span>
                 <h4 className="text-base font-serif font-bold text-[#1A1814] mb-2">Seçkin Referanslar</h4>
                 <p className="text-xs text-[#736B5E] leading-relaxed">
                   Piyasada bulunması güç, bekleme listesi gerektiren en değerli Rolex ve Cartier modelleri.
                 </p>
-              </div>
+              </SpotlightCard>
 
-              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E8E2D5] shadow-xs">
+              <SpotlightCard spotlightColor="rgba(132, 107, 50, 0.15)" className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E8E2D5] shadow-xs">
                 <span className="text-xs font-mono text-[#846b32] font-bold tracking-widest block mb-2">03 / GÜVENLİK</span>
                 <h4 className="text-base font-serif font-bold text-[#1A1814] mb-2">Sigortalı Transfer</h4>
                 <p className="text-xs text-[#736B5E] leading-relaxed">
                   Tam kasko teminatı ve elden teslim VIP lojistik güvencesi.
                 </p>
-              </div>
+              </SpotlightCard>
 
-              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E8E2D5] shadow-xs">
+              <SpotlightCard spotlightColor="rgba(132, 107, 50, 0.15)" className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E8E2D5] shadow-xs">
                 <span className="text-xs font-mono text-[#846b32] font-bold tracking-widest block mb-2">04 / KONSİYERJ</span>
                 <h4 className="text-base font-serif font-bold text-[#1A1814] mb-2">Kişisel Danışmanlık</h4>
                 <p className="text-xs text-[#736B5E] leading-relaxed">
                   Koleksiyon yatırımı ve model seçimi sürecinde 7/24 kesintisiz VIP horoloji desteği.
                 </p>
-              </div>
+              </SpotlightCard>
             </div>
 
             <Link 

@@ -60,3 +60,6 @@ __pycache__/
 
 .firebase/
 firebase-debug.log
+test-results/
+playwright-report/
+

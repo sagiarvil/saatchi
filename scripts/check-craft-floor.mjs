@@ -1,41 +1,23 @@
-// Impeccable Craft Floor Verification Gate
-import { readFileSync, readdirSync, statSync } from 'fs';
+// Impeccable Craft Floor Engine Runner
+import { execSync } from 'child_process';
+import { homedir } from 'os';
 import { join } from 'path';
 
-const forbidden = [
-  { pattern: /from-purple-|to-pink-|from-violet-/i, msg: 'Yapay zeka mor-pembe gradyanı yasaktır' },
-  { pattern: /animate-bounce/i, msg: 'Lüks saat vitrininde ucuz sıçrama animasyonu yasaktır' }
-];
+const impeccableBin = join(homedir(), '.gemini/config/skills/impeccable/scripts/impeccable');
 
-function scanDir(dir, fileList = []) {
-  const files = readdirSync(dir);
-  for (const file of files) {
-    const full = join(dir, file);
-    if (statSync(full).isDirectory()) {
-      scanDir(full, fileList);
-    } else if (file.endsWith('.tsx') || file.endsWith('.jsx')) {
-      fileList.push(full);
-    }
-  }
-  return fileList;
-}
+console.log('[Impeccable Craft Floor] Gerçek Impeccable analiz motoru çalıştırılıyor...');
 
-const files = scanDir('src');
-let errors = 0;
-
-for (const file of files) {
-  const content = readFileSync(file, 'utf8');
-  for (const rule of forbidden) {
-    if (rule.pattern.test(content)) {
-      console.error(`[Impeccable Hatası] ${file}: ${rule.msg}`);
-      errors++;
-    }
-  }
-}
-
-if (errors > 0) {
-  console.error(`[Impeccable Craft Floor] Toplam ${errors} ihlal bulundu.`);
-  process.exit(1);
-} else {
-  console.log(`[Impeccable Craft Floor] ${files.length} bileşen tarandı: SIFIR İHLAL, %100 LÜKS CRAFT STANDARDI.`);
+try {
+  const output = execSync(`"${impeccableBin}" detect src/app src/components`, {
+    encoding: 'utf8',
+    stdio: 'pipe',
+  });
+  console.log(output);
+  console.log('[Impeccable Craft Floor] SIFIR HATA — TÜM ARAYÜZ VE CRAFT KURALLARI DOĞRULANDI: PASS');
+  process.exit(0);
+} catch (err) {
+  console.error('[Impeccable Craft Floor] Tasarım veya craft ihlalleri tespit edildi:');
+  if (err.stdout) console.error(err.stdout);
+  if (err.stderr) console.error(err.stderr);
+  process.exit(err.status || 1);
 }

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Watch, ShieldCheck, Truck, Award, ArrowRight, Sparkles, CheckCircle2, Clock } from 'lucide-react';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
+import { useGsapScrollReveal } from '@/lib/gsap';
 
 interface WatchItem {
   id: string;
@@ -33,6 +34,7 @@ const BRAND_TABS = [
 
 export function FeaturedLuxuryWatches({ allWatches }: Props) {
   const [activeTab, setActiveTab] = useState("all");
+  const sectionRef = useGsapScrollReveal<HTMLElement>({ y: 20, duration: 0.8 });
 
   const filteredWatches = useMemo(() => {
     let list = [...allWatches];
@@ -59,7 +61,7 @@ export function FeaturedLuxuryWatches({ allWatches }: Props) {
   }, [allWatches, activeTab]);
 
   return (
-    <section className="w-full bg-[#FAF8F5] py-14 sm:py-20 md:py-28 px-3.5 sm:px-6 lg:px-8 relative overflow-hidden border-b border-[#E8E2D5]">
+    <section ref={sectionRef} className="w-full bg-[#FAF8F5] py-14 sm:py-20 md:py-28 px-3.5 sm:px-6 lg:px-8 relative overflow-hidden border-b border-[#E8E2D5]">
       {/* Ambient background lighting */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-[radial-gradient(circle_at_top,rgba(194,167,104,0.16),transparent_70%)] pointer-events-none" />
 

@@ -1,4 +1,5 @@
 import { Box, CircleGauge, Gem, PackageCheck, Ruler, ShieldCheck, Waves } from 'lucide-react';
+import { DecryptedText } from '@/components/react-bits';
 
 type WatchLike = {
   brand?: string;
@@ -40,7 +41,14 @@ export default function WatchTechnicalPanel({ watch }: { watch: WatchLike }) {
     <section className="mt-10 border-t border-[#e8e1d7] pt-8" aria-labelledby="technical-specs-title">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#7f262b]">Ürün kimliği</p>
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#7f262b]">Ürün kimliği:</span>
+            <DecryptedText 
+              text={`REF-${watch.brand?.replace(/\s+/g, '').toUpperCase() || 'HOROLOGY'}-CERTIFIED`} 
+              speed={30} 
+              className="text-[10px] font-mono tracking-widest text-[#846b32] font-semibold"
+            />
+          </div>
           <h2 id="technical-specs-title" className="mt-2 text-2xl font-semibold tracking-[-0.025em] text-[#171514]">Teknik Özellikler</h2>
         </div>
         <p className="max-w-lg text-right text-xs leading-5 text-[#7b746e]">Katalogda bulunmayan teknik değerler tahmin edilmez; ürün/referans bazında satış öncesinde teyit edilir.</p>
