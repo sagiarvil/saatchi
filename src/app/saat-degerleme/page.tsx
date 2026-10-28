@@ -119,8 +119,8 @@ export default function SaatDegerlemePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-neutral-900/50 border border-neutral-800/80 rounded-xl p-6 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-group">
+            <div className="fade-up-item bg-neutral-900/50 border border-neutral-800/80 rounded-xl p-6 text-center">
               <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-6 h-6" />
               </div>
@@ -130,7 +130,7 @@ export default function SaatDegerlemePage() {
               </p>
             </div>
 
-            <div className="bg-neutral-900/50 border border-neutral-800/80 rounded-xl p-6 text-center">
+            <div className="fade-up-item bg-neutral-900/50 border border-neutral-800/80 rounded-xl p-6 text-center">
               <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto mb-4">
                 <ShieldCheck className="w-6 h-6" />
               </div>
@@ -140,7 +140,7 @@ export default function SaatDegerlemePage() {
               </p>
             </div>
 
-            <div className="bg-neutral-900/50 border border-neutral-800/80 rounded-xl p-6 text-center">
+            <div className="fade-up-item bg-neutral-900/50 border border-neutral-800/80 rounded-xl p-6 text-center">
               <div className="w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center mx-auto mb-4">
                 <Banknote className="w-6 h-6" />
               </div>

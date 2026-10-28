@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import "./tailwind.css";
 import { PremiumBackButton } from "@/components/ui/PremiumBackButton";
 import { GlobalJsonLd } from "@/components/seo/JsonLd";
+import { ScrollRevealProvider } from "@/components/motion";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -102,6 +103,7 @@ export default function RootLayout({
         <GlobalJsonLd />
       </head>
       <body className="min-h-full flex flex-col bg-black">
+        <ScrollRevealProvider />
         <Navbar />
         <PremiumBackButton />
         <main className="flex-grow">

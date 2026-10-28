@@ -21,7 +21,7 @@ const WATCH_BRANDS = [
 function BrandCard({ brand, dense = false }: { brand: (typeof ELITE_BRANDS)[number] | (typeof WATCH_BRANDS)[number]; dense?: boolean }) {
   const Icon = brand.Icon;
   return (
-    <Link href={`/markalar/${brand.slug}`} className={`group relative overflow-hidden border border-white/10 bg-[#121110] transition-all duration-700 hover:-translate-y-1 hover:border-[#7f262b]/70 hover:shadow-[0_28px_80px_rgba(0,0,0,.32)] ${dense ? 'min-h-[250px] p-6 sm:p-7' : 'min-h-[310px] p-7 sm:p-8'}`}>
+    <Link href={`/markalar/${brand.slug}`} className={`fade-up-item group relative overflow-hidden border border-white/10 bg-[#121110] transition-all duration-700 hover:-translate-y-1 hover:border-[#7f262b]/70 hover:shadow-[0_28px_80px_rgba(0,0,0,.32)] ${dense ? 'min-h-[250px] p-6 sm:p-7' : 'min-h-[310px] p-7 sm:p-8'}`}>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(111,31,37,.25),transparent_34%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
       <div className="relative flex h-full flex-col justify-between">
         <div className="flex items-center justify-between"><span className="text-[9px] tracking-[0.24em] text-[#6f6862]">{brand.no}</span><Icon className="h-5 w-5 text-[#8d7850] transition-all duration-700 group-hover:scale-110 group-hover:text-[#c2a768]" strokeWidth={1.1} /></div>
@@ -51,12 +51,12 @@ export default function MarkalarPage() {
       <main className="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-16 lg:px-12">
         <section>
           <div className="mb-7 flex flex-wrap items-end justify-between gap-4"><div><p className="text-[10px] font-semibold uppercase tracking-[0.27em] text-[#a87678]">01 / Elite</p><h2 className="mt-2 text-2xl font-medium tracking-[-0.03em] sm:text-3xl">Elit Kategori</h2></div><Link href="/elit-saat" className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d7cec5]">Tüm Elite saatler <ChevronRight className="h-4 w-4" /></Link></div>
-          <div className="grid gap-3 lg:grid-cols-2">{ELITE_BRANDS.map((brand) => <BrandCard key={brand.slug} brand={brand} />)}</div>
+          <div className="grid gap-3 lg:grid-cols-2 stagger-group">{ELITE_BRANDS.map((brand) => <BrandCard key={brand.slug} brand={brand} />)}</div>
         </section>
 
         <section className="mt-16 border-t border-white/10 pt-12">
           <div className="mb-7 flex flex-wrap items-end justify-between gap-4"><div><p className="text-[10px] font-semibold uppercase tracking-[0.27em] text-[#a87678]">02 / Saat</p><h2 className="mt-2 text-2xl font-medium tracking-[-0.03em] sm:text-3xl">Saat Kategorisi</h2></div><Link href="/saatler" className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d7cec5]">Tüm saatler <ChevronRight className="h-4 w-4" /></Link></div>
-          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-6">
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-6 stagger-group">
             {WATCH_BRANDS.map((brand, index) => <div key={brand.slug} className={index < 2 ? 'lg:col-span-3' : 'lg:col-span-2'}><BrandCard brand={brand} dense /></div>)}
           </div>
           <div className="mt-4 grid gap-3 sm:grid-cols-2">

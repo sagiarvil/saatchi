@@ -115,14 +115,14 @@ export function FeaturedLuxuryWatches({ allWatches }: Props) {
         </div>
 
         {/* Symmetrical Luxury Grid (2 columns on mobile, 3-4 on desktop) */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 md:gap-8 stagger-group">
           {filteredWatches.map((watch) => {
             const refCode = watch.ref || watch.reference || "";
             return (
               <Link 
                 href={watch.seoUrl} 
                 key={watch.id} 
-                className="group cursor-pointer flex flex-col bg-white rounded-2xl border border-[#E8E2D5] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_35px_-10px_rgba(132,107,50,0.2)] hover:border-[#846b32]/50 transition-all duration-500 hover:-translate-y-1 relative active:scale-[0.98]"
+                className="fade-up-item group cursor-pointer flex flex-col bg-white rounded-2xl border border-[#E8E2D5] overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_35px_-10px_rgba(132,107,50,0.2)] hover:border-[#846b32]/50 transition-all duration-500 hover:-translate-y-1 relative active:scale-[0.98]"
               >
                 {/* Watch Presentation Pedestal / Image Stage with Diamond Finish */}
                 <div className="w-full aspect-square sm:aspect-[4/5] bg-gradient-to-b from-[#FCFBF8] via-[#F8F5EE] to-[#EFEAE0] relative flex items-center justify-center overflow-hidden border-b border-[#EFECE3]">

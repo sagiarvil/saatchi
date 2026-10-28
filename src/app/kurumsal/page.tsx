@@ -68,9 +68,9 @@ export default function KurumsalPage() {
               <p className="text-sm leading-7 text-[#918a83]">Ürünün vitrinden müşteriye kadar izlediği yolun her aşamasında, belirsizliği azaltan bir kontrol noktası.</p>
             </div>
 
-            <div className="grid gap-px border border-white/10 bg-white/10 md:grid-cols-2 xl:grid-cols-4">
+            <div className="grid gap-px border border-white/10 bg-white/10 md:grid-cols-2 xl:grid-cols-4 stagger-group">
               {pillars.map((item) => (
-                <article key={item.no} className="group bg-[#0d0c0b] p-8 transition-colors duration-500 hover:bg-[#151211]">
+                <article key={item.no} className="fade-up-item group bg-[#0d0c0b] p-8 transition-colors duration-500 hover:bg-[#151211]">
                   <div className="flex items-center justify-between"><span className="text-[10px] tracking-[0.22em] text-[#8c4b50]">{item.no}</span><Check className="h-4 w-4 text-[#d1b36f]/70" strokeWidth={1.2} /></div>
                   <h3 className="mt-8 text-xl font-medium">{item.title}</h3>
                   <p className="mt-4 text-sm leading-7 text-[#969088]">{item.text}</p>

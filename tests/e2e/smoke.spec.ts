@@ -16,4 +16,15 @@ test.describe('Saatchi & Co. Luxury Watch Smoke Suite', () => {
     const responseMarkalar = await page.goto('/markalar');
     expect(responseMarkalar?.status()).toBeLessThan(400);
   });
+
+  test('Apple Motion: Scroll-Driven Reveal ve Stagger sınıfları aktif olmalıdır', async ({ page }) => {
+    await page.goto('/');
+    // html elementi üzerinde apple-motion-active sınıfı bulunmalı
+    const html = page.locator('html');
+    await expect(html).toHaveClass(/apple-motion-active/);
+
+    // Fade-up ve stagger sınıfları DOM'da yer almalı
+    const fadeUpItems = page.locator('.fade-up-item');
+    expect(await fadeUpItems.count()).toBeGreaterThan(0);
+  });
 });

@@ -209,9 +209,11 @@ export default async function SaatlerPage({ params }: { params: Promise<{ slug: 
             </div>
           </div>
 
-          <WatchTechnicalPanel watch={watch} />
+          <div className="fade-up-item">
+            <WatchTechnicalPanel watch={watch} />
+          </div>
 
-          <div className="mt-6 rounded-2xl border border-[#e5ddd2] bg-[#f8f4ef] p-5 sm:p-6">
+          <div className="fade-up-item mt-6 rounded-2xl border border-[#e5ddd2] bg-[#f8f4ef] p-5 sm:p-6">
             <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#7f262b]">Satın alma notu</p>
             <p className="mt-2 text-sm leading-6 text-[#665e58]">Fiyat, stok ve temin bilgileri piyasa koşullarına göre değişebilir. Nihai ürün kapsamı, teslim yöntemi ve varsa garanti/sertifika detayları ödeme öncesinde yazılı olarak teyit edilir.</p>
           </div>

@@ -243,9 +243,9 @@ export default function NedenSaatchiPage() {
               </p>
             </div>
 
-            <div className="grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3 stagger-group">
               {expertSteps.map((step) => (
-                <article key={step.no} className="bg-[#0d0c0b] p-8 flex flex-col justify-between hover:bg-[#141210] transition-colors">
+                <article key={step.no} className="fade-up-item bg-[#0d0c0b] p-8 flex flex-col justify-between hover:bg-[#141210] transition-colors">
                   <div>
                     <span className="text-xs font-mono tracking-widest text-[#846b32] font-semibold">{step.no}</span>
                     <h3 className="mt-4 text-lg font-medium text-white">{step.title}</h3>

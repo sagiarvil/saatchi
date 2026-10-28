@@ -49,8 +49,8 @@ export default function IletisimPage() {
             <p className="max-w-md text-sm leading-7 text-[#928a83]">Tek merkez, üç temas noktası. Showroom, WhatsApp ve müşteri temsilcisi aynı fiziksel işletme yapısına bağlıdır.</p>
           </div>
 
-          <div className="grid gap-px border border-white/10 bg-white/10 md:grid-cols-3">
-            <article className="group bg-[#121110] p-7 transition-colors duration-500 hover:bg-[#161413] md:p-9">
+          <div className="grid gap-px border border-white/10 bg-white/10 md:grid-cols-3 stagger-group">
+            <article className="fade-up-item group bg-[#121110] p-7 transition-colors duration-500 hover:bg-[#161413] md:p-9">
               <div className="flex items-center justify-between">
                 <MapPin className="h-6 w-6 text-[#c2a768]" strokeWidth={1.2} />
                 <span className="text-[9px] uppercase tracking-[0.22em] text-[#6f6862]">01</span>
@@ -63,7 +63,7 @@ export default function IletisimPage() {
               </a>
             </article>
 
-            <article className="group bg-[linear-gradient(155deg,#1b1514_0%,#131110_58%,#190d0f_100%)] p-7 transition-colors duration-500 md:p-9">
+            <article className="fade-up-item group bg-[linear-gradient(155deg,#1b1514_0%,#131110_58%,#190d0f_100%)] p-7 transition-colors duration-500 md:p-9">
               <div className="flex items-center justify-between">
                 <MessageCircle className="h-6 w-6 text-[#c2a768]" strokeWidth={1.2} />
                 <span className="text-[9px] uppercase tracking-[0.22em] text-[#6f6862]">02</span>
@@ -76,7 +76,7 @@ export default function IletisimPage() {
               </a>
             </article>
 
-            <article className="group bg-[#121110] p-7 transition-colors duration-500 hover:bg-[#161413] md:p-9">
+            <article className="fade-up-item group bg-[#121110] p-7 transition-colors duration-500 hover:bg-[#161413] md:p-9">
               <div className="flex items-center justify-between">
                 <PhoneCall className="h-6 w-6 text-[#c2a768]" strokeWidth={1.2} />
                 <span className="text-[9px] uppercase tracking-[0.22em] text-[#6f6862]">03</span>

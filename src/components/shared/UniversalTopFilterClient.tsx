@@ -310,14 +310,14 @@ export default function UniversalTopFilterClient({ initialWatches, isBrandPage =
           <p className="text-sm mt-2">Lütfen filtreleri esneterek tekrar deneyin.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-8 stagger-group">
           {filteredAndSorted.map((watch, idx) => {
             const watchSlug = String(watch.seoUrl || '').split('/').filter(Boolean).pop() || String(watch.id || idx);
             const isElit = String(watch.category || '').toLowerCase().includes('elit') || ['Rolex', 'Cartier', 'TAG Heuer', 'Rado'].includes(String(watch.brand || ''));
             const linkUrl = isElit ? `/elit-saat/${watchSlug}` : `/saatler/${watchSlug}`;
 
             return (
-              <Link href={linkUrl} key={String(watch.id || idx)} className="group bg-surface rounded-xl md:rounded-2xl border border-surface-border overflow-hidden hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:border-primary/30 transition-all duration-500 flex flex-col relative">
+              <Link href={linkUrl} key={String(watch.id || idx)} className="fade-up-item group bg-surface rounded-xl md:rounded-2xl border border-surface-border overflow-hidden hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:border-primary/30 transition-all duration-500 flex flex-col relative">
                 <div className="w-full aspect-[4/5] relative overflow-hidden bg-[#FAFAFA] flex items-center justify-center border-b border-surface-border/50">
                   {isElit && (
                     <div className="absolute top-4 left-4 z-10 text-[9px] font-bold tracking-[0.2em] px-2.5 py-1 rounded-[3px] uppercase bg-[#1C1917] text-[#C5A059] border border-[#C5A059]/40">
