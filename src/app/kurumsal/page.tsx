@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight, Check, Gem, ShieldCheck, Sparkles } from 'lucide-react';
+import { GiantWatermark } from '@/components/ui/GiantWatermark';
 
 const pillars = [
   { no: '01', title: 'Seçim', text: 'Marka gücü, referans niteliği, kondisyon, kutu-belge bütünlüğü ve gerçek piyasa talebi birlikte değerlendirilir.' },
@@ -14,7 +15,11 @@ export default function KurumsalPage() {
       <main>
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(107,31,36,.30),transparent_31%),radial-gradient(circle_at_14%_0%,rgba(194,167,104,.09),transparent_28%),linear-gradient(180deg,#171311_0%,#0d0c0b_100%)]" />
-          <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-20 lg:px-12 lg:py-24">
+          <div className="relative mx-auto max-w-7xl px-5 pt-10 sm:px-8 lg:px-12">
+            {/* Dev Stacked Dynamic Watermark */}
+            <GiantWatermark text="HERITAGE" theme="gold" align="left" className="mb-2 sm:mb-4" />
+          </div>
+          <div className="relative mx-auto max-w-7xl px-5 pb-16 sm:px-8 md:pb-20 lg:px-12 lg:pb-24">
             <div className="grid gap-12 lg:grid-cols-[1.15fr_.85fr] lg:items-end">
               <div>
                 <div className="mb-6 flex items-center gap-3">

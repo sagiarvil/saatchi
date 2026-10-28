@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ShieldCheck, CheckCircle2, Clock, Scale, HelpCircle, FileCheck, ArrowRight, ShieldAlert, Award, Gem, Search, Check, X } from 'lucide-react';
+import { GiantWatermark } from '@/components/ui/GiantWatermark';
 
 export const metadata: Metadata = {
   title: 'Neden SAATCHI? | Karşılaştırmalı Satın Alma & Ekspertiz Güvencesi',
@@ -160,7 +161,11 @@ export default function NedenSaatchiPage() {
         {/* Hero Section */}
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(132,107,50,0.18),transparent_40%),radial-gradient(circle_at_20%_80%,rgba(127,38,43,0.15),transparent_35%),linear-gradient(180deg,#141210_0%,#0d0c0b_100%)] pointer-events-none" />
-          <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-24 lg:px-12">
+          <div className="relative mx-auto max-w-7xl px-5 pt-10 sm:px-8 lg:px-12">
+            {/* Dev Stacked Dynamic Watermark */}
+            <GiantWatermark text="AUTHENTICITY" theme="gold" align="left" className="mb-2 sm:mb-4" />
+          </div>
+          <div className="relative mx-auto max-w-7xl px-5 pb-16 sm:px-8 md:pb-24 lg:px-12">
             <div className="max-w-4xl">
               <div className="mb-6 flex items-center gap-3">
                 <span className="h-px w-8 bg-[#846b32]" />

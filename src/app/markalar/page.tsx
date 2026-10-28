@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { ArrowUpRight, Crown, Gem, Gauge, Layers3, Watch, Sparkles, CircleDot, Clock3, ChevronRight } from 'lucide-react';
+import { GiantWatermark } from '@/components/ui/GiantWatermark';
 
 const ELITE_BRANDS = [
   { no: '01', name: 'Rolex', slug: 'rolex', eyebrow: 'Elite / Iconic references', note: 'Oyster, Datejust, GMT-Master II ve seçili ikonik referanslar.', Icon: Crown },
@@ -42,7 +43,11 @@ export default function MarkalarPage() {
     <div className="min-h-screen bg-[#0d0c0b] text-[#f5f0e8]">
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_10%,rgba(111,31,37,.30),transparent_30%),radial-gradient(circle_at_10%_0%,rgba(194,167,104,.08),transparent_24%)]" />
-        <div className="relative mx-auto grid max-w-7xl gap-8 px-5 py-16 sm:px-8 md:py-20 lg:grid-cols-[1fr_420px] lg:items-end lg:px-12">
+        <div className="relative mx-auto max-w-7xl px-5 pt-10 sm:px-8 lg:px-12">
+          {/* Dev Stacked Dynamic Watermark */}
+          <GiantWatermark text="MANUFACTURES" theme="gold" align="left" className="mb-2 sm:mb-4" />
+        </div>
+        <div className="relative mx-auto grid max-w-7xl gap-8 px-5 pb-16 sm:px-8 md:pb-20 lg:grid-cols-[1fr_420px] lg:items-end lg:px-12">
           <div><p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-[#b98284]">SAATCHI / Saat Evleri</p><h1 className="mt-5 max-w-4xl text-4xl font-medium leading-[1.02] tracking-[-0.045em] sm:text-5xl md:text-6xl">Elite ve Saat.<br />Tek marka evinde iki ayrı dünya.</h1></div>
           <div className="border-l border-[#7f262b] pl-6"><p className="text-sm leading-7 text-[#aaa29a]">Rolex, Cartier, TAG Heuer ve Rado Elit Kategori altında; Tissot, Carren, Calvin Klein, Michael Kors, Versace, Gucci ve Seiko Saat kategorisinde konumlanır. Katalog fiyatları doğrulanmış kaynak veriye göre güncellenir.</p><Link href="/elit-saat" className="mt-6 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#e4d8cb]">Elit koleksiyona geç <ArrowUpRight className="h-4 w-4" /></Link></div>
         </div>

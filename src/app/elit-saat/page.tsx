@@ -1,6 +1,7 @@
 import UniversalTopFilterClient from '@/components/shared/UniversalTopFilterClient';
 import elitSaatlerData from '@/data/elit-saatler.json';
 import { BlurText } from '@/components/react-bits';
+import { GiantWatermark } from '@/components/ui/GiantWatermark';
 
 export const metadata = {
   title: 'Elit Kategori | Rolex, Cartier, TAG Heuer, Rado | Saatchi',
@@ -24,6 +25,9 @@ export default function ElitSaatlerPage() {
   return (
     <div className="min-h-screen bg-background border-t border-surface-border">
       <main className="w-full max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
+        {/* Dev Stacked Dynamic Watermark */}
+        <GiantWatermark text="HAUTE HORLOGERIE" theme="gold" align="center" className="mb-4 sm:mb-6" />
+
         <p className="text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-primary">SAATCHI / Elite</p>
         <h1 className="mt-3 text-3xl md:text-4xl font-serif text-foreground mb-3 text-center">
           <BlurText text="Elit Kategori Koleksiyonu" />

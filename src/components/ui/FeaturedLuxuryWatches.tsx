@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Watch, ShieldCheck, Truck, Award, ArrowRight, Sparkles, CheckCircle2, Clock } from 'lucide-react';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
 import { useGsapScrollReveal } from '@/lib/gsap';
+import { GiantWatermark } from '@/components/ui/GiantWatermark';
 
 interface WatchItem {
   id: string;
@@ -69,6 +70,9 @@ export function FeaturedLuxuryWatches({ allWatches }: Props) {
         
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-12 md:mb-16">
+          {/* Dev Stacked Dynamic Watermark */}
+          <GiantWatermark text="CHRONOMETER" theme="gold" align="center" className="mb-3 sm:mb-5" />
+
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#846b32]/10 border border-[#846b32]/25 mb-3 shadow-xs">
             <Sparkles className="w-3 h-3 text-[#846b32]" />
             <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.28em] text-[#846b32]">

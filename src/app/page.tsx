@@ -2,6 +2,7 @@ import { HeroSlider } from '@/components/ui/HeroSlider';
 import { BrandMarquee } from '@/components/ui/BrandMarquee';
 import { FeaturedLuxuryWatches } from '@/components/ui/FeaturedLuxuryWatches';
 import { SpotlightCard } from '@/components/react-bits';
+import { GiantWatermark } from '@/components/ui/GiantWatermark';
 import Link from 'next/link';
 import { ArrowRight, Compass, Gem, Shield, Sparkles } from 'lucide-react';
 import elitSaatler from '@/data/elit-saatler.json';
@@ -35,6 +36,9 @@ export default function Home() {
         <section className="w-full bg-[#FAF9F5] py-20 sm:py-28 md:py-36 border-t border-[#E8E2D5] relative overflow-hidden">
           <div className="max-w-6xl mx-auto px-5 sm:px-8 text-center">
             
+            {/* Dev Stacked Dynamic Watermark */}
+            <GiantWatermark text="HORLOGERIE" theme="gold" align="center" className="mb-4 sm:mb-6" />
+
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#846b32]/10 border border-[#846b32]/25 mb-4">
               <Sparkles className="w-3 h-3 text-[#846b32]" />
               <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.28em] text-[#846b32]">

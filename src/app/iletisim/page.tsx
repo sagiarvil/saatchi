@@ -1,5 +1,6 @@
 import { ArrowUpRight, Clock3, MapPin, MessageCircle, PhoneCall, ShieldCheck } from 'lucide-react';
 import PremiumMap from '@/components/contact/PremiumMap';
+import { GiantWatermark } from '@/components/ui/GiantWatermark';
 
 const address = 'Menderes Caddesi No:231/B, Buca / İzmir';
 const mapsUrl = 'https://share.google/mhx0N9skVc5ZibBPM';
@@ -10,7 +11,11 @@ export default function IletisimPage() {
       <main>
         <section className="relative overflow-hidden border-b border-white/10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(111,31,37,.28),transparent_31%),radial-gradient(circle_at_84%_8%,rgba(194,167,104,.08),transparent_26%),linear-gradient(180deg,#171412_0%,#0d0c0b_100%)]" />
-          <div className="relative mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-20 lg:px-12 lg:py-24">
+          <div className="relative mx-auto max-w-7xl px-5 pt-10 sm:px-8 lg:px-12">
+            {/* Dev Stacked Dynamic Watermark */}
+            <GiantWatermark text="CONCIERGE" theme="gold" align="left" className="mb-2 sm:mb-4" />
+          </div>
+          <div className="relative mx-auto max-w-7xl px-5 pb-16 sm:px-8 md:pb-20 lg:px-12 lg:pb-24">
             <div className="grid gap-10 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
               <div>
                 <div className="mb-6 flex items-center gap-3">

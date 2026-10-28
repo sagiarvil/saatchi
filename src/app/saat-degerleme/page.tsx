@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import WatchValuationCalculator from '@/components/tools/WatchValuationCalculator';
 import { ShieldCheck, Banknote, Truck, Clock, HelpCircle, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { GiantWatermark } from '@/components/ui/GiantWatermark';
 
 export const metadata: Metadata = {
   title: 'Lüks Saat Değerleme & Ekspertiz Motoru — SAATCHI',
@@ -93,6 +94,9 @@ export default function SaatDegerlemePage() {
 
         {/* Hero Metni */}
         <div className="text-center max-w-3xl mx-auto mb-12">
+          {/* Dev Stacked Dynamic Watermark */}
+          <GiantWatermark text="VALUATION" theme="gold" align="center" className="mb-4 sm:mb-6" />
+
           <span className="text-amber-500 text-xs font-semibold tracking-widest uppercase block mb-3">
             SAATCHI PRESTIGE VALUATION ENGINE
           </span>

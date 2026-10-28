@@ -212,5 +212,45 @@ html.apple-motion-active .reveal-on-scroll.is-revealed {
 .stagger-group > *:nth-child(11) { transition-delay: 800ms !important; }
 .stagger-group > *:nth-child(12) { transition-delay: 880ms !important; }
 
+/* ==========================================================================
+   Giant Stacked Dynamic Vector Watermark Architecture (Haute Horlogerie)
+   ========================================================================== */
+.giant-watermark-wrap {
+  width: 100%;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  margin-bottom: -1rem;
+  overflow: hidden;
+  line-height: 1;
+}
+
+@media (min-width: 640px) {
+  .giant-watermark-wrap {
+    margin-bottom: -1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .giant-watermark-wrap {
+    margin-bottom: -2.5rem;
+  }
+}
+
+.giant-watermark-svg {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  overflow: hidden;
+}
+
+.giant-watermark-text {
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+
 
 
