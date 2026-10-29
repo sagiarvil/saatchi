@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import "./tailwind.css";
 import { PremiumBackButton } from "@/components/ui/PremiumBackButton";
+import { PremiumWhatsAppButton } from "@/components/ui/PremiumWhatsAppButton";
 import { GlobalJsonLd } from "@/components/seo/JsonLd";
 import { ScrollRevealProvider } from "@/components/motion";
 
@@ -110,6 +111,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <PremiumWhatsAppButton />
       </body>
     </html>
   );
