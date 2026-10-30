@@ -11,7 +11,7 @@ import {
 import { ShieldCheck, ArrowRight, Zap, RefreshCw, Award, CheckCircle2, MessageCircle } from 'lucide-react';
 
 export default function WatchValuationCalculator() {
-  const [selectedBrand, setSelectedBrand] = useState<string>('Rolex');
+  const [selectedBrand, setSelectedBrand] = useState<string>('Cartier');
   const [selectedModel, setSelectedModel] = useState<string>(SUPPORTED_LUXURY_BRANDS[0].models[0].name);
   const [selectedMaterial, setSelectedMaterial] = useState<string>('steel');
   const [selectedCondition, setSelectedCondition] = useState<string>('mint');

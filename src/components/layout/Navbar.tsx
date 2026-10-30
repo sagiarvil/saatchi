@@ -19,28 +19,26 @@ import elitSaatlerData from '@/data/elit-saatler.json';
 import { getProxiedImageUrl } from '@/utils/imageProxy';
 
 const MAX_CATALOG_PRICE = 1_700_000;
-const MAX_ROLEX_PRICE = 2_000_000;
 const allWatches = [...elitSaatlerData, ...saatlerData].filter(w => {
   const p = Number(w.calculatedPrice || 0);
   if (p <= 0) return false;
-  return w.brand === 'Rolex' ? p <= MAX_ROLEX_PRICE : p <= MAX_CATALOG_PRICE;
+  return p <= MAX_CATALOG_PRICE;
 });
 const menuItems = [
-  { no: '01', name: 'Rolex', href: '/markalar/rolex', note: 'Referans seçkisi' },
-  { no: '02', name: 'Cartier', href: '/markalar/cartier', note: 'Maison seçkisi' },
-  { no: '03', name: 'TAG Heuer', href: '/markalar/tag-heuer', note: 'Sportif saatçilik' },
-  { no: '04', name: 'Rado', href: '/markalar/rado', note: 'Malzeme ve tasarım' }
+  { no: '01', name: 'Cartier', href: '/markalar/cartier', note: 'Maison seçkisi' },
+  { no: '02', name: 'TAG Heuer', href: '/markalar/tag-heuer', note: 'Sportif saatçilik' },
+  { no: '03', name: 'Rado', href: '/markalar/rado', note: 'Malzeme ve tasarım' }
 ];
 
 const secondaryMenuItems = [
-  { no: '05', name: 'Tissot', href: '/markalar/tissot', note: 'İsviçre saatçiliği' },
-  { no: '06', name: 'Gucci', href: '/markalar/gucci', note: 'İtalyan moda evi' },
-  { no: '07', name: 'Seiko', href: '/markalar/seiko', note: 'Japon saatçiliği' },
-  { no: '08', name: 'Carren Erkek', href: '/markalar/carren/erkek', note: 'Erkek koleksiyonu' },
-  { no: '09', name: 'Carren Kadın', href: '/markalar/carren/kadin', note: 'Kadın koleksiyonu' },
-  { no: '10', name: 'Calvin Klein', href: '/markalar/calvin-klein', note: 'Modern tasarım' },
-  { no: '11', name: 'Michael Kors', href: '/markalar/michael-kors', note: 'Moda ve lüks' },
-  { no: '12', name: 'Versace', href: '/markalar/versace', note: 'İtalyan zarafeti' }
+  { no: '04', name: 'Tissot', href: '/markalar/tissot', note: 'İsviçre saatçiliği' },
+  { no: '05', name: 'Gucci', href: '/markalar/gucci', note: 'İtalyan moda evi' },
+  { no: '06', name: 'Seiko', href: '/markalar/seiko', note: 'Japon saatçiliği' },
+  { no: '07', name: 'Carren Erkek', href: '/markalar/carren/erkek', note: 'Erkek koleksiyonu' },
+  { no: '08', name: 'Carren Kadın', href: '/markalar/carren/kadin', note: 'Kadın koleksiyonu' },
+  { no: '09', name: 'Calvin Klein', href: '/markalar/calvin-klein', note: 'Modern tasarım' },
+  { no: '10', name: 'Michael Kors', href: '/markalar/michael-kors', note: 'Moda ve lüks' },
+  { no: '11', name: 'Versace', href: '/markalar/versace', note: 'İtalyan zarafeti' }
 ];
 
 export function Navbar() {

@@ -10,18 +10,6 @@ export interface WatchBrandModel {
 
 export const SUPPORTED_LUXURY_BRANDS: WatchBrandModel[] = [
   {
-    brand: 'Rolex',
-    models: [
-      { name: 'Submariner Date (126610LN / 116610LN)', baseMarketValueTry: 550000, popularYears: '2015-2024', description: 'İkonik dalgıç saati, seramik bezel, 300m su geçirmezlik' },
-      { name: 'Cosmograph Daytona (116500LN / 126500LN)', baseMarketValueTry: 1150000, popularYears: '2016-2024', description: 'Efsanevi yarış kronografı, Cerachrom bezel' },
-      { name: 'Datejust 41 (126334 Fluted Jubilee)', baseMarketValueTry: 490000, popularYears: '2017-2024', description: 'Zamansız şıklık, yivli beyaz altın bezel, jübile bilezik' },
-      { name: 'GMT-Master II "Pepsi" (126710BLRO)', baseMarketValueTry: 720000, popularYears: '2018-2024', description: 'Çift zaman dilimli, kırmızı-mavi seramik Cerachrom bezel' },
-      { name: 'GMT-Master II "Batman" (126710BLNR)', baseMarketValueTry: 650000, popularYears: '2019-2024', description: 'Mavi-siyah seramik bezel, yüksek talep gören seyahat saati' },
-      { name: 'Oyster Perpetual 41 (124300)', baseMarketValueTry: 340000, popularYears: '2020-2024', description: 'Minimalist Rolex DNA, canlı kadran seçenekleri' },
-      { name: 'Day-Date 40 "President" (228238)', baseMarketValueTry: 1650000, popularYears: '2015-2024', description: 'Liderlerin tercihi, som altın kasa ve president bilezik' }
-    ]
-  },
-  {
     brand: 'Cartier',
     models: [
       { name: 'Santos de Cartier (Büyük Boy WSSA0018)', baseMarketValueTry: 310000, popularYears: '2018-2024', description: 'Tarihin ilk pilot saati, vidalı kare bezel, QuickSwitch' },

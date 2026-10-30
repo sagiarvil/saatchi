@@ -13,14 +13,6 @@ interface BrandItem {
 
 const LUXURY_BRANDS: BrandItem[] = [
   {
-    name: "ROLEX",
-    sub: "OYSTER PERPETUAL",
-    origin: "GENÈVE • 1905",
-    href: "/markalar/rolex",
-    accent: "text-[#006039] group-hover/card:text-[#007a49]",
-    fontClass: "font-serif tracking-[0.18em] font-black"
-  },
-  {
     name: "CARTIER",
     sub: "HAUTE HORLOGERIE",
     origin: "PARIS • 1847",

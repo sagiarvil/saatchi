@@ -47,28 +47,11 @@ for (const item of carrenItems) {
   }
 }
 
-// 3. ROLEX & CARTIER INVARIANTS (2.50 Katsayısı | Rolex 2M Tavan, Cartier 1.7M Tavan)
-const rolexItems = allItems.filter(x => x.brand === 'Rolex');
+// 3. CARTIER INVARIANTS (2.50 Katsayısı | Cartier 1.7M Tavan)
 const cartierItems = allItems.filter(x => x.brand === 'Cartier');
-const rcItems = [...rolexItems, ...cartierItems];
 
-if (rolexItems.length < 15) {
-  failures.push(`[ROLEX COUNT LOW] En az 15 adet Rolex olmalı, bulunan: ${rolexItems.length}`);
-}
 if (cartierItems.length < 10) {
   failures.push(`[CARTIER COUNT LOW] En az 10 adet Cartier olmalı, bulunan: ${cartierItems.length}`);
-}
-
-for (const item of rolexItems) {
-  if (item.pricingRule !== 'FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50' && item.pricingRule !== 'CHRONO24_TR_X_2_50') {
-    failures.push(`[ROLEX RULE INVALID] ID: ${item.id} | Rule: ${item.pricingRule}`);
-  }
-  if (item.calculatedPrice > MAX_ROLEX_PRICE) {
-    failures.push(`[ROLEX CEILING EXCEEDED] ID: ${item.id} | Fiyat: ${item.calculatedPrice} > ${MAX_ROLEX_PRICE}`);
-  }
-  if (item.calculatedPrice < 250_000) {
-    failures.push(`[ROLEX SUSPICIOUS LOW PRICE] ID: ${item.id} | Fiyat çok düşük: ${item.calculatedPrice}`);
-  }
 }
 
 for (const item of cartierItems) {
@@ -149,7 +132,6 @@ if (failures.length > 0) {
 
 console.log(`✅ SAATCHI CATALOG INTEGRITY GUARD: PASS (${allItems.length} ürün eksiksiz doğrulandı)`);
 console.log(`   - Carren: ${carrenItems.length} adet (19.990 ₺ sabit KORUNDU)`);
-console.log(`   - Rolex: ${rolexItems.length} adet (x2.50 marj + 2.000.000 ₺ tavan KORUNDU)`);
 console.log(`   - Cartier: ${cartierItems.length} adet (x2.50 marj + 1.700.000 ₺ tavan KORUNDU)`);
-console.log(`   - Konyalı/Saat&Saat: ${allItems.length - carrenItems.length - rcItems.length} adet (x1.50 marj KORUNDU)`);
+console.log(`   - Konyalı/Saat&Saat: ${allItems.length - carrenItems.length - cartierItems.length} adet (x1.50 marj KORUNDU)`);
 console.log(`   - PayTR & Fiyat Formatları: %100 Senkronize`);

@@ -8,9 +8,8 @@ import CartierFilterClient from '@/components/cartier/CartierFilterClient';
 import UniversalTopFilterClient from '@/components/shared/UniversalTopFilterClient';
 
 const MAX_CATALOG_PRICE = 1_700_000;
-const MAX_ROLEX_PRICE = 2_000_000;
-const ELITE_BRANDS = new Set(['Rolex', 'Cartier', 'TAG Heuer', 'Rado']);
-const NO_CAP_BRANDS = new Set(['Rolex', 'Cartier']);
+const ELITE_BRANDS = new Set(['Cartier', 'TAG Heuer', 'Rado']);
+const NO_CAP_BRANDS = new Set(['Cartier']);
 
 function brandSlug(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
@@ -21,8 +20,7 @@ function allowedCatalog() {
     const brand = String(watch.brand || '');
     const price = Number(watch.calculatedPrice || 0);
     if (price <= 0) return false;
-    const maxLimit = brand === 'Rolex' ? MAX_ROLEX_PRICE : MAX_CATALOG_PRICE;
-    return price <= maxLimit;
+    return price <= MAX_CATALOG_PRICE;
   });
 }
 

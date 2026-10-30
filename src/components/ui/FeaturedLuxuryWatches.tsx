@@ -27,7 +27,6 @@ interface Props {
 
 const BRAND_TABS = [
   { id: "all", label: "Tüm Başyapıtlar" },
-  { id: "rolex", label: "Rolex" },
   { id: "cartier", label: "Cartier" },
   { id: "tag-heuer", label: "TAG Heuer" },
   { id: "rado", label: "Rado" },
@@ -39,21 +38,18 @@ export function FeaturedLuxuryWatches({ allWatches }: Props) {
 
   const filteredWatches = useMemo(() => {
     let list = [...allWatches];
-    if (activeTab === "rolex") {
-      list = list.filter(w => (w.brand || "").toLowerCase().includes("rolex"));
-    } else if (activeTab === "cartier") {
+    if (activeTab === "cartier") {
       list = list.filter(w => (w.brand || "").toLowerCase().includes("cartier"));
     } else if (activeTab === "tag-heuer") {
       list = list.filter(w => (w.brand || "").toLowerCase().includes("tag heuer"));
     } else if (activeTab === "rado") {
       list = list.filter(w => (w.brand || "").toLowerCase().includes("rado"));
     } else {
-      // Tüm başyapıtlar için: En yüksek fiyatlı Rolex, Cartier, TAG Heuer ve Rado modellerinden dengeli ve prestijli bir seçki
-      const rolexes = list.filter(w => (w.brand || "").toLowerCase().includes("rolex")).sort((a,b) => b.calculatedPrice - a.calculatedPrice).slice(0, 2);
-      const cartiers = list.filter(w => (w.brand || "").toLowerCase().includes("cartier")).sort((a,b) => b.calculatedPrice - a.calculatedPrice).slice(0, 2);
-      const tagHeuers = list.filter(w => (w.brand || "").toLowerCase().includes("tag heuer")).sort((a,b) => b.calculatedPrice - a.calculatedPrice).slice(0, 2);
+      // Tüm başyapıtlar için: En yüksek fiyatlı Cartier, TAG Heuer ve Rado modellerinden dengeli ve prestijli bir seçki
+      const cartiers = list.filter(w => (w.brand || "").toLowerCase().includes("cartier")).sort((a,b) => b.calculatedPrice - a.calculatedPrice).slice(0, 3);
+      const tagHeuers = list.filter(w => (w.brand || "").toLowerCase().includes("tag heuer")).sort((a,b) => b.calculatedPrice - a.calculatedPrice).slice(0, 3);
       const rados = list.filter(w => (w.brand || "").toLowerCase().includes("rado")).sort((a,b) => b.calculatedPrice - a.calculatedPrice).slice(0, 2);
-      return [...rolexes, ...cartiers, ...tagHeuers, ...rados];
+      return [...cartiers, ...tagHeuers, ...rados];
     }
     const sorted = list.sort((a, b) => b.calculatedPrice - a.calculatedPrice);
     const count = sorted.length >= 8 ? 8 : (sorted.length >= 6 ? 6 : (sorted.length >= 4 ? 4 : sorted.length));

@@ -19,7 +19,6 @@ const staticUrls = [
   `https://${host}/saatler/kadin`,
   `https://${host}/saatler/unisex`,
   `https://${host}/markalar`,
-  `https://${host}/markalar/rolex`,
   `https://${host}/markalar/cartier`,
   `https://${host}/markalar/tag-heuer`,
   `https://${host}/markalar/rado`,

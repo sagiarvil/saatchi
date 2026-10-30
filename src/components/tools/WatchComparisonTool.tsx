@@ -24,40 +24,6 @@ interface WatchSpec {
 
 const COMPARABLE_WATCHES: WatchSpec[] = [
   {
-    id: 'rolex-submariner',
-    name: 'Submariner Date 41',
-    brand: 'Rolex',
-    price: '₺1.375.000',
-    priceNum: 1375000,
-    image: '/images/saatler/submariner.png',
-    slug: 'rolex-submariner-date',
-    caseDiameter: '41 mm',
-    material: 'Oystersteel (904L Çelik)',
-    movement: 'Otomatik Calibre 3235',
-    powerReserve: '70 Saat',
-    waterResistance: '300 Metre / 30 Bar',
-    crystal: 'Çizilmeye Dayanıklı Safir, Cyclops Lens',
-    bezel: 'Tek Yönlü Dönebilen Seramik Cerachrom',
-    targetUser: 'Profesyonel Dalış & Günlük Prestij'
-  },
-  {
-    id: 'rolex-daytona',
-    name: 'Cosmograph Daytona',
-    brand: 'Rolex',
-    price: '₺1.980.000',
-    priceNum: 1980000,
-    image: '/images/saatler/daytona.png',
-    slug: 'rolex-cosmograph-daytona',
-    caseDiameter: '40 mm',
-    material: 'Oystersteel (904L Çelik)',
-    movement: 'Otomatik Kronograf Calibre 4131',
-    powerReserve: '72 Saat',
-    waterResistance: '100 Metre / 10 Bar',
-    crystal: 'Çizilmeye Dayanıklı Safir',
-    bezel: 'Takimetre Skalalı Siyah Cerachrom Seramik',
-    targetUser: 'Motor Sporları & Koleksiyoner'
-  },
-  {
     id: 'cartier-santos',
     name: 'Santos de Cartier Büyük Boy',
     brand: 'Cartier',
@@ -128,8 +94,8 @@ const COMPARABLE_WATCHES: WatchSpec[] = [
 ];
 
 export default function WatchComparisonTool() {
-  const [watchAId, setWatchAId] = useState<string>('rolex-submariner');
-  const [watchBId, setWatchBId] = useState<string>('cartier-santos');
+  const [watchAId, setWatchAId] = useState<string>('cartier-santos');
+  const [watchBId, setWatchBId] = useState<string>('tag-carrera');
 
   const watchA = COMPARABLE_WATCHES.find(w => w.id === watchAId) || COMPARABLE_WATCHES[0];
   const watchB = COMPARABLE_WATCHES.find(w => w.id === watchBId) || COMPARABLE_WATCHES[1];

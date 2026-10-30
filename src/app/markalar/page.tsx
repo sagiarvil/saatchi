@@ -3,20 +3,19 @@ import { ArrowUpRight, Crown, Gem, Gauge, Layers3, Watch, Sparkles, CircleDot, C
 import { GiantWatermark } from '@/components/ui/GiantWatermark';
 
 const ELITE_BRANDS = [
-  { no: '01', name: 'Rolex', slug: 'rolex', eyebrow: 'Elite / Iconic references', note: 'Oyster, Datejust, GMT-Master II ve seçili ikonik referanslar.', Icon: Crown },
-  { no: '02', name: 'Cartier', slug: 'cartier', eyebrow: 'Elite / Maison & design', note: 'Tank, Santos ve Cartier tasarım dilini taşıyan seçili modeller.', Icon: Gem },
-  { no: '03', name: 'TAG Heuer', slug: 'tag-heuer', eyebrow: 'Elite / Performance', note: 'Formula 1, Aquaracer, Carrera ve Monaco çizgisinden kaynak katalog.', Icon: Gauge },
-  { no: '04', name: 'Rado', slug: 'rado', eyebrow: 'Elite / Materials', note: 'Centrix, DiaStar ve modern malzeme yaklaşımını taşıyan seçkiler.', Icon: Layers3 },
+  { no: '01', name: 'Cartier', slug: 'cartier', eyebrow: 'Elite / Maison & design', note: 'Tank, Santos ve Cartier tasarım dilini taşıyan seçili modeller.', Icon: Gem },
+  { no: '02', name: 'TAG Heuer', slug: 'tag-heuer', eyebrow: 'Elite / Performance', note: 'Formula 1, Aquaracer, Carrera ve Monaco çizgisinden kaynak katalog.', Icon: Gauge },
+  { no: '03', name: 'Rado', slug: 'rado', eyebrow: 'Elite / Materials', note: 'Centrix, DiaStar ve modern malzeme yaklaşımını taşıyan seçkiler.', Icon: Layers3 },
 ];
 
 const WATCH_BRANDS = [
-  { no: '05', name: 'Tissot', slug: 'tissot', eyebrow: 'Swiss watchmaking', note: 'PRX, Seastar, Le Locle, Gentleman ve günlük İsviçre saatçiliği.', Icon: Watch },
-  { no: '06', name: 'Carren', slug: 'carren', eyebrow: 'Men / Women', note: 'Erkek ve Kadın alt koleksiyonlarıyla ayrı katalog yapısı.', Icon: Clock3 },
-  { no: '07', name: 'Calvin Klein', slug: 'calvin-klein', eyebrow: 'Contemporary', note: 'Minimal, modern ve günlük kullanıma odaklı saat seçkisi.', Icon: CircleDot },
-  { no: '08', name: 'Michael Kors', slug: 'michael-kors', eyebrow: 'Fashion watch', note: 'Moda odaklı metal, kronograf ve taş detaylı koleksiyon.', Icon: Sparkles },
-  { no: '09', name: 'Versace', slug: 'versace', eyebrow: 'Italian luxury', note: 'Medusa imzası ve güçlü İtalyan tasarım diliyle saat seçkisi.', Icon: Gem },
-  { no: '10', name: 'Gucci', slug: 'gucci', eyebrow: 'Italian High Fashion', note: 'Horsebit, Grip, G-Timeless ve İtalyan moda evi tasarım mirası.', Icon: Sparkles },
-  { no: '11', name: 'Seiko', slug: 'seiko', eyebrow: 'Japanese Precision', note: 'Astron, Prospex, Presage ve Seiko 5 Sports mekanik saatçilik seçkisi.', Icon: Watch },
+  { no: '04', name: 'Tissot', slug: 'tissot', eyebrow: 'Swiss watchmaking', note: 'PRX, Seastar, Le Locle, Gentleman ve günlük İsviçre saatçiliği.', Icon: Watch },
+  { no: '05', name: 'Carren', slug: 'carren', eyebrow: 'Men / Women', note: 'Erkek ve Kadın alt koleksiyonlarıyla ayrı katalog yapısı.', Icon: Clock3 },
+  { no: '06', name: 'Calvin Klein', slug: 'calvin-klein', eyebrow: 'Contemporary', note: 'Minimal, modern ve günlük kullanıma odaklı saat seçkisi.', Icon: CircleDot },
+  { no: '07', name: 'Michael Kors', slug: 'michael-kors', eyebrow: 'Fashion watch', note: 'Moda odaklı metal, kronograf ve taş detaylı koleksiyon.', Icon: Sparkles },
+  { no: '08', name: 'Versace', slug: 'versace', eyebrow: 'Italian luxury', note: 'Medusa imzası ve güçlü İtalyan tasarım diliyle saat seçkisi.', Icon: Gem },
+  { no: '09', name: 'Gucci', slug: 'gucci', eyebrow: 'Italian High Fashion', note: 'Horsebit, Grip, G-Timeless ve İtalyan moda evi tasarım mirası.', Icon: Sparkles },
+  { no: '10', name: 'Seiko', slug: 'seiko', eyebrow: 'Japanese Precision', note: 'Astron, Prospex, Presage ve Seiko 5 Sports mekanik saatçilik seçkisi.', Icon: Watch },
 ];
 
 function BrandCard({ brand, dense = false }: { brand: (typeof ELITE_BRANDS)[number] | (typeof WATCH_BRANDS)[number]; dense?: boolean }) {

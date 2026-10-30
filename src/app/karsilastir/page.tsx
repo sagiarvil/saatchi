@@ -5,11 +5,11 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Lüks Saat Karşılaştırma & Model Kıyaslama — SAATCHI',
-  description: 'Rolex, Cartier, TAG Heuer ve Rado modellerini teknik özellikleri, kasa çapları, mekanizmaları ve fiyat endeksleriyle yan yana karşılaştırın.',
+  description: 'Cartier, TAG Heuer ve Rado modellerini teknik özellikleri, kasa çapları, mekanizmaları ve fiyat endeksleriyle yan yana karşılaştırın.',
   keywords: [
     'saat karşılaştırma',
-    'rolex submariner vs daytona',
     'cartier santos vs tank',
+    'tag heuer vs rado',
     'lüks saat kıyaslama',
     'mekanizma karşılaştırma',
     'saat özellikleri kıyasla'

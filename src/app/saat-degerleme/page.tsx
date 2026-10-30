@@ -7,11 +7,11 @@ import { GiantWatermark } from '@/components/ui/GiantWatermark';
 
 export const metadata: Metadata = {
   title: 'Lüks Saat Değerleme & Ekspertiz Motoru — SAATCHI',
-  description: 'Rolex, Cartier, TAG Heuer ve İsviçre saatlerinizin gerçek piyasa değerini anında hesaplayın. Saatchi güvencesiyle aynı gün nakit alım teklifi ve takas fırsatı.',
+  description: 'Cartier, TAG Heuer ve İsviçre saatlerinizin gerçek piyasa değerini anında hesaplayın. Saatchi güvencesiyle aynı gün nakit alım teklifi ve takas fırsatı.',
   keywords: [
     'saat değerleme',
-    'rolex saatim ne kadar eder',
     'cartier saat fiyat hesaplama',
+    'tag heuer saatim ne kadar eder',
     'ikinci el lüks saat ekspertiz',
     'saat satmak istiyorum',
     'lüks saat nakit alım',

@@ -42,7 +42,6 @@ function generateSitemap() {
     { loc: `${DOMAIN}/saatler/erkek`, changefreq: 'daily', priority: '0.9' },
     { loc: `${DOMAIN}/saatler/unisex`, changefreq: 'daily', priority: '0.85' },
     { loc: `${DOMAIN}/markalar`, changefreq: 'weekly', priority: '0.9' },
-    { loc: `${DOMAIN}/markalar/rolex`, changefreq: 'daily', priority: '0.95' },
     { loc: `${DOMAIN}/markalar/cartier`, changefreq: 'daily', priority: '0.95' },
     { loc: `${DOMAIN}/markalar/tag-heuer`, changefreq: 'daily', priority: '0.9' },
     { loc: `${DOMAIN}/markalar/rado`, changefreq: 'daily', priority: '0.9' },
