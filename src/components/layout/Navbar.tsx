@@ -25,20 +25,21 @@ const allWatches = [...elitSaatlerData, ...saatlerData].filter(w => {
   return p <= MAX_CATALOG_PRICE;
 });
 const menuItems = [
-  { no: '01', name: 'Cartier', href: '/markalar/cartier', note: 'Maison seçkisi' },
-  { no: '02', name: 'TAG Heuer', href: '/markalar/tag-heuer', note: 'Sportif saatçilik' },
-  { no: '03', name: 'Rado', href: '/markalar/rado', note: 'Malzeme ve tasarım' }
+  { no: '01', name: 'Tissot', href: '/markalar/tissot', note: 'İsviçre saatçiliği' },
+  { no: '02', name: 'Seiko', href: '/markalar/seiko', note: 'Japon saatçiliği' },
+  { no: '03', name: 'Versace', href: '/markalar/versace', note: 'İtalyan lüksü' },
+  { no: '04', name: 'Casio', href: '/markalar/casio', note: 'Yüksek teknoloji' },
+  { no: '05', name: 'Swatch', href: '/markalar/swatch', note: 'İsviçre ikonu' },
+  { no: '06', name: 'Carren', href: '/markalar/carren', note: 'Çağdaş zarafet' }
 ];
 
 const secondaryMenuItems = [
-  { no: '04', name: 'Tissot', href: '/markalar/tissot', note: 'İsviçre saatçiliği' },
-  { no: '05', name: 'Gucci', href: '/markalar/gucci', note: 'İtalyan moda evi' },
-  { no: '06', name: 'Seiko', href: '/markalar/seiko', note: 'Japon saatçiliği' },
-  { no: '07', name: 'Carren Erkek', href: '/markalar/carren/erkek', note: 'Erkek koleksiyonu' },
-  { no: '08', name: 'Carren Kadın', href: '/markalar/carren/kadin', note: 'Kadın koleksiyonu' },
-  { no: '09', name: 'Calvin Klein', href: '/markalar/calvin-klein', note: 'Modern tasarım' },
-  { no: '10', name: 'Michael Kors', href: '/markalar/michael-kors', note: 'Moda ve lüks' },
-  { no: '11', name: 'Versace', href: '/markalar/versace', note: 'İtalyan zarafeti' }
+  { no: '07', name: 'Calvin Klein', href: '/markalar/calvin-klein', note: 'Modern tasarım' },
+  { no: '08', name: 'Michael Kors', href: '/markalar/michael-kors', note: 'Amerikan şıklığı' },
+  { no: '09', name: 'Guess', href: '/markalar/guess', note: 'Dinamik trendler' },
+  { no: '10', name: 'Welder', href: '/markalar/welder', note: 'Moody fotokromik cam' },
+  { no: '11', name: 'Diesel', href: '/markalar/diesel', note: 'Güçlü ve cesur stil' },
+  { no: '12', name: 'Fossil', href: '/markalar/fossil', note: 'Vintage mirası' }
 ];
 
 export function Navbar() {

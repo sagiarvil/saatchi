@@ -1,37 +1,55 @@
 import Link from 'next/link';
-import { ArrowUpRight, Crown, Gem, Gauge, Layers3, Watch, Sparkles, CircleDot, Clock3, ChevronRight } from 'lucide-react';
+import { ArrowUpRight, Crown, Gem, Gauge, Layers3, Watch, Sparkles, CircleDot, Clock3, ChevronRight, Compass } from 'lucide-react';
 import { GiantWatermark } from '@/components/ui/GiantWatermark';
 
-const ELITE_BRANDS = [
-  { no: '01', name: 'Cartier', slug: 'cartier', eyebrow: 'Elite / Maison & design', note: 'Tank, Santos ve Cartier tasarım dilini taşıyan seçili modeller.', Icon: Gem },
-  { no: '02', name: 'TAG Heuer', slug: 'tag-heuer', eyebrow: 'Elite / Performance', note: 'Formula 1, Aquaracer, Carrera ve Monaco çizgisinden kaynak katalog.', Icon: Gauge },
-  { no: '03', name: 'Rado', slug: 'rado', eyebrow: 'Elite / Materials', note: 'Centrix, DiaStar ve modern malzeme yaklaşımını taşıyan seçkiler.', Icon: Layers3 },
+const ALL_BRANDS = [
+  { no: '01', name: 'Tissot', slug: 'tissot', eyebrow: 'Swiss Watchmaking', note: 'PRX, Seastar, Gentleman ve Le Locle serileriyle asırlık İsviçre mükemmelliği.', Icon: Watch },
+  { no: '02', name: 'Seiko', slug: 'seiko', eyebrow: 'Japanese Precision', note: 'Prospex, Presage, King Seiko ve Seiko 5 serileriyle Japon mekanik ustalığı.', Icon: Compass },
+  { no: '03', name: 'Versace', slug: 'versace', eyebrow: 'Italian Haute Couture', note: 'Medusa arması, Greca motifi ve İtalyan lüksünün görkemli çizgisi.', Icon: Gem },
+  { no: '04', name: 'Casio', slug: 'casio', eyebrow: 'High-Tech & Endurance', note: 'G-Shock, Edifice, Pro Trek ve efsanevi Casio dayanıklılık teknolojisi.', Icon: Gauge },
+  { no: '05', name: 'Swatch', slug: 'swatch', eyebrow: 'Swiss Pop & Culture', note: 'Yenilikçi İsviçre renkleri, hafif biyo-seramik kasalar ve ikonik tasarım.', Icon: Layers3 },
+  { no: '06', name: 'Carren', slug: 'carren', eyebrow: 'Contemporary Elegance', note: 'Erkek ve Kadın koleksiyonlarıyla modern ve çağdaş saatçilik estetiği.', Icon: Clock3 },
+  { no: '07', name: 'Calvin Klein', slug: 'calvin-klein', eyebrow: 'New York Minimalism', note: 'Yalın hatlar, çağdaş çizgiler ve günlük kullanıma uygun modern zarafet.', Icon: CircleDot },
+  { no: '08', name: 'Michael Kors', slug: 'michael-kors', eyebrow: 'American Jet-Set', note: 'Işıltılı podyum stili, lüks metalik tonlar ve zarif kronograflar.', Icon: Sparkles },
+  { no: '09', name: 'Guess', slug: 'guess', eyebrow: 'Trendsetter Design', note: 'Cesur, enerjik ve sokak modasına yön veren dinamik saat modelleri.', Icon: Crown },
+  { no: '10', name: 'Welder', slug: 'welder', eyebrow: 'Moody Time Concept', note: 'Işığa göre renk değiştiren fotokromik cam ve sol kurma kollu özgün tasarım.', Icon: Compass },
+  { no: '11', name: 'Diesel', slug: 'diesel', eyebrow: 'Brave & Industrial', note: 'Endüstriyel cesaret, iri kadranlar ve tavizsiz maskülen duruş.', Icon: Gauge },
+  { no: '12', name: 'Fossil', slug: 'fossil', eyebrow: 'Authentic Vintage', note: 'Amerikan vintage ruhu, zamansız deri kayışlar ve klasik saat sanatı.', Icon: Watch },
 ];
 
-const WATCH_BRANDS = [
-  { no: '04', name: 'Tissot', slug: 'tissot', eyebrow: 'Swiss watchmaking', note: 'PRX, Seastar, Le Locle, Gentleman ve günlük İsviçre saatçiliği.', Icon: Watch },
-  { no: '05', name: 'Carren', slug: 'carren', eyebrow: 'Men / Women', note: 'Erkek ve Kadın alt koleksiyonlarıyla ayrı katalog yapısı.', Icon: Clock3 },
-  { no: '06', name: 'Calvin Klein', slug: 'calvin-klein', eyebrow: 'Contemporary', note: 'Minimal, modern ve günlük kullanıma odaklı saat seçkisi.', Icon: CircleDot },
-  { no: '07', name: 'Michael Kors', slug: 'michael-kors', eyebrow: 'Fashion watch', note: 'Moda odaklı metal, kronograf ve taş detaylı koleksiyon.', Icon: Sparkles },
-  { no: '08', name: 'Versace', slug: 'versace', eyebrow: 'Italian luxury', note: 'Medusa imzası ve güçlü İtalyan tasarım diliyle saat seçkisi.', Icon: Gem },
-  { no: '09', name: 'Gucci', slug: 'gucci', eyebrow: 'Italian High Fashion', note: 'Horsebit, Grip, G-Timeless ve İtalyan moda evi tasarım mirası.', Icon: Sparkles },
-  { no: '10', name: 'Seiko', slug: 'seiko', eyebrow: 'Japanese Precision', note: 'Astron, Prospex, Presage ve Seiko 5 Sports mekanik saatçilik seçkisi.', Icon: Watch },
-];
-
-function BrandCard({ brand, dense = false }: { brand: (typeof ELITE_BRANDS)[number] | (typeof WATCH_BRANDS)[number]; dense?: boolean }) {
-  const Icon = brand.Icon;
+function BrandCard({ brand }: { brand: (typeof ALL_BRANDS)[number] }) {
+  const { no, name, slug, eyebrow, note, Icon } = brand;
   return (
-    <Link href={`/markalar/${brand.slug}`} className={`fade-up-item group relative overflow-hidden border border-white/10 bg-[#121110] transition-all duration-700 hover:-translate-y-1 hover:border-[#7f262b]/70 hover:shadow-[0_28px_80px_rgba(0,0,0,.32)] ${dense ? 'min-h-[250px] p-6 sm:p-7' : 'min-h-[310px] p-7 sm:p-8'}`}>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(111,31,37,.25),transparent_34%)] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-      <div className="relative flex h-full flex-col justify-between">
-        <div className="flex items-center justify-between"><span className="text-[9px] tracking-[0.24em] text-[#6f6862]">{brand.no}</span><Icon className="h-5 w-5 text-[#8d7850] transition-all duration-700 group-hover:scale-110 group-hover:text-[#c2a768]" strokeWidth={1.1} /></div>
-        <div className={dense ? 'mt-12' : 'mt-20'}>
-          <p className="text-[9px] font-semibold uppercase tracking-[0.24em] text-[#a67678]">{brand.eyebrow}</p>
-          <div className="mt-3 flex items-end justify-between gap-6">
-            <div><h2 className={`${dense ? 'text-2xl sm:text-3xl' : 'text-3xl sm:text-4xl'} font-medium tracking-[-0.035em]`}>{brand.name}</h2><p className="mt-4 max-w-sm text-sm leading-6 text-[#8f8780]">{brand.note}</p></div>
-            <ArrowUpRight className="h-5 w-5 shrink-0 text-[#6d6560] transition-all duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#c2a768]" />
-          </div>
+    <Link
+      href={`/markalar/${slug}`}
+      className="group block relative rounded-2xl border border-white/10 bg-[#121110] p-6 sm:p-7 md:p-8 hover:border-[#846b32]/50 hover:bg-[#181716] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(0,0,0,0.5)]"
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <span className="text-[11px] font-mono tracking-widest text-[#846b32] font-semibold">{no}</span>
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[#A8A29E] font-medium">{eyebrow}</span>
         </div>
+        <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-[#A8A29E] group-hover:text-white group-hover:border-[#846b32] transition-colors">
+          <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </div>
+      </div>
+
+      <div className="mt-6 flex items-center gap-3">
+        <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#C2A768] group-hover:bg-[#846b32]/20 group-hover:border-[#846b32]/40 transition-colors">
+          <Icon className="w-5 h-5" />
+        </div>
+        <h3 className="text-xl sm:text-2xl font-serif text-[#F5F2EB] group-hover:text-[#C2A768] transition-colors tracking-wide">
+          {name}
+        </h3>
+      </div>
+
+      <p className="mt-4 text-xs sm:text-sm text-[#A8A29E] leading-relaxed font-light">
+        {note}
+      </p>
+
+      <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-[#846b32] font-medium tracking-wide">
+        <span>Koleksiyonu İncele</span>
+        <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
       </div>
     </Link>
   );
@@ -39,38 +57,33 @@ function BrandCard({ brand, dense = false }: { brand: (typeof ELITE_BRANDS)[numb
 
 export default function MarkalarPage() {
   return (
-    <div className="min-h-screen bg-[#0d0c0b] text-[#f5f0e8]">
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_10%,rgba(111,31,37,.30),transparent_30%),radial-gradient(circle_at_10%_0%,rgba(194,167,104,.08),transparent_24%)]" />
-        <div className="relative mx-auto max-w-7xl px-5 pt-10 sm:px-8 lg:px-12">
-          {/* Dev Stacked Dynamic Watermark */}
-          <GiantWatermark text="MANUFACTURES" theme="gold" align="left" className="mb-2 sm:mb-4" />
-        </div>
-        <div className="relative mx-auto grid max-w-7xl gap-8 px-5 pb-16 sm:px-8 md:pb-20 lg:grid-cols-[1fr_420px] lg:items-end lg:px-12">
-          <div><p className="text-[10px] font-semibold uppercase tracking-[0.32em] text-[#b98284]">SAATCHI / Saat Evleri</p><h1 className="mt-5 max-w-4xl text-4xl font-medium leading-[1.02] tracking-[-0.045em] sm:text-5xl md:text-6xl">Elite ve Saat.<br />Tek marka evinde iki ayrı dünya.</h1></div>
-          <div className="border-l border-[#7f262b] pl-6"><p className="text-sm leading-7 text-[#aaa29a]">Rolex, Cartier, TAG Heuer ve Rado Elit Kategori altında; Tissot, Carren, Calvin Klein, Michael Kors, Versace, Gucci ve Seiko Saat kategorisinde konumlanır. Katalog fiyatları doğrulanmış kaynak veriye göre güncellenir.</p><Link href="/elit-saat" className="mt-6 inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#e4d8cb]">Elit koleksiyona geç <ArrowUpRight className="h-4 w-4" /></Link></div>
-        </div>
-      </section>
+    <div className="min-h-screen bg-[#0A0A0A] text-white pt-28 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <GiantWatermark text="MARKALAR" theme="dark" />
 
-      <main className="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-16 lg:px-12">
-        <section>
-          <div className="mb-7 flex flex-wrap items-end justify-between gap-4"><div><p className="text-[10px] font-semibold uppercase tracking-[0.27em] text-[#a87678]">01 / Elite</p><h2 className="mt-2 text-2xl font-medium tracking-[-0.03em] sm:text-3xl">Elit Kategori</h2></div><Link href="/elit-saat" className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d7cec5]">Tüm Elite saatler <ChevronRight className="h-4 w-4" /></Link></div>
-          <div className="grid gap-3 lg:grid-cols-2 stagger-group">{ELITE_BRANDS.map((brand) => <BrandCard key={brand.slug} brand={brand} />)}</div>
-        </section>
-
-        <section className="mt-16 border-t border-white/10 pt-12">
-          <div className="mb-7 flex flex-wrap items-end justify-between gap-4"><div><p className="text-[10px] font-semibold uppercase tracking-[0.27em] text-[#a87678]">02 / Saat</p><h2 className="mt-2 text-2xl font-medium tracking-[-0.03em] sm:text-3xl">Saat Kategorisi</h2></div><Link href="/saatler" className="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#d7cec5]">Tüm saatler <ChevronRight className="h-4 w-4" /></Link></div>
-          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-6 stagger-group">
-            {WATCH_BRANDS.map((brand, index) => <div key={brand.slug} className={index < 2 ? 'lg:col-span-3' : 'lg:col-span-2'}><BrandCard brand={brand} dense /></div>)}
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#846b32]/10 border border-[#846b32]/30 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C2A768] animate-pulse" />
+            <span className="text-[10px] uppercase font-bold tracking-[0.25em] text-[#C2A768]">
+              Resmi Koleksiyonlar & Portföy
+            </span>
           </div>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <Link href="/markalar/carren/erkek" className="group flex min-h-[74px] items-center justify-between border border-white/10 bg-[#151312] px-5 text-sm text-[#e4dcd4] transition-colors hover:border-[#7f262b]/70"><span>Carren Erkek</span><ArrowUpRight className="h-4 w-4 text-[#806f68] group-hover:text-[#c2a768]" /></Link>
-            <Link href="/markalar/carren/kadin" className="group flex min-h-[74px] items-center justify-between border border-white/10 bg-[#151312] px-5 text-sm text-[#e4dcd4] transition-colors hover:border-[#7f262b]/70"><span>Carren Kadın</span><ArrowUpRight className="h-4 w-4 text-[#806f68] group-hover:text-[#c2a768]" /></Link>
-          </div>
-        </section>
 
-        <section className="mt-14 grid gap-6 border-t border-white/10 pt-10 md:grid-cols-[1fr_auto] md:items-center"><div><p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-[#8e6668]">Katalog standardı</p><h2 className="mt-3 text-2xl font-medium tracking-[-0.025em] sm:text-3xl">Kaynak doğrulamalı fiyat. Katalog tavanı 1.799.000 TL.</h2><p className="mt-3 max-w-2xl text-sm leading-6 text-[#8d857e]">Kaynakta fiyatı doğrulanamayan ürün yayınlanmaz. Katalog tavanının üzerindeki modeller otomatik olarak listeden çıkarılır.</p></div><Link href="/iletisim" className="inline-flex items-center justify-center gap-2 border border-white/15 px-6 py-4 text-[10px] font-semibold uppercase tracking-[0.19em] text-[#e7dfd6] transition-colors hover:border-[#7f262b] hover:bg-[#7f262b]/10">Concierge ile görüş <ArrowUpRight className="h-4 w-4" /></Link></section>
-      </main>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-[#F5F2EB] tracking-tight uppercase">
+            Dünyaca Ünlü Saat Markaları
+          </h1>
+
+          <p className="mt-4 text-sm sm:text-base text-[#A8A29E] font-light leading-relaxed">
+            İsviçre geleneğinden Japon hassasiyetine, İtalyan yüksek modasından çağdaş Amerikan çizgilerine uzanan 12 seçkin saat evi Saatchi & Co. güvencesiyle sunuluyor.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {ALL_BRANDS.map(b => (
+            <BrandCard key={b.slug} brand={b} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

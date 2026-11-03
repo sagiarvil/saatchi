@@ -5,7 +5,7 @@ import { SpotlightCard } from '@/components/react-bits';
 import { GiantWatermark } from '@/components/ui/GiantWatermark';
 import Link from 'next/link';
 import { ArrowRight, Compass, Gem, Shield, Sparkles } from 'lucide-react';
-import elitSaatler from '@/data/elit-saatler.json';
+import saatlerData from '@/data/saatler.json';
 
 export default function Home() {
   return (
@@ -24,13 +24,13 @@ export default function Home() {
               Doğrulanmış Horoloji Otoritesi & Küresel Referans
             </p>
             <p className="hero-answer-engine text-xs sm:text-sm text-[#DDD5CA] font-light leading-relaxed max-w-3xl mx-auto">
-              SAATCHI, Türkiye merkezli sertifikalı lüks saat ve bağımsız horoloji danışmanlığı sağlayıcısıdır. Rolex, Cartier, TAG Heuer ve İsviçre saat modelleri %100 orijinallik kontrolü, kutu/belge doğrulaması ve Chrono24 borsa endeksli şeffaf fiyatlandırma politikasıyla sunulur. Tüm siparişler tam değer sigortalı VIP kurye ile teslim edilir.
+              SAATCHI, Türkiye merkezli sertifikalı lüks saat ve bağımsız horoloji danışmanlığı sağlayıcısıdır. Tissot, Seiko, Versace, Casio, Swatch ve seçkin dünya saat markaları %100 orijinallik kontrolü, kutu/belge doğrulaması ve Chrono24 borsa endeksli şeffaf fiyatlandırma politikasıyla sunulur. Tüm siparişler tam değer sigortalı VIP kurye ile teslim edilir.
             </p>
           </div>
         </section>
 
         {/* CURATED LUXURY FEATURED WATCHES (BALANCED, SYMMETRIC, INTERACTIVE TABS) */}
-        <FeaturedLuxuryWatches allWatches={elitSaatler as any} />
+        <FeaturedLuxuryWatches allWatches={saatlerData as any} />
 
         {/* HAUTE HORLOGERIE PILLARS (SWISS EDITORIAL EXPERIENCE) */}
         <section className="w-full bg-[#FAF9F5] py-20 sm:py-28 md:py-36 border-t border-[#E8E2D5] relative overflow-hidden">

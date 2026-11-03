@@ -14,13 +14,42 @@ const PURE_ACCESSORY_PATTERNS = [
   /^(?:kadın|erkek|unisex)?\s*(?:bileklik|kolye|küpe|yüzük|cüzdan|çanta|parfüm)\b/i,
   /\b(?:kolye ucu|tek küpe|deri bileklik|çelik bileklik)\b/i,
   /^cuir\b/i,
-  /^(?:yedek kayış|saat kayışı|kordon takımı)\b/i,
+  /^(?:yedek kayış|saat kayışı|kordon takımı|deri kordon|çelik kordon)\b/i,
+  /^(?:toka|strap|aksesuar)\b/i,
 ];
 
-const SWISS_BRANDS = ['TAG Heuer', 'Rado', 'Tissot'];
-const KONYALI_SVS_BRANDS = ['TAG Heuer', 'Rado', 'Tissot', 'Calvin Klein', 'Michael Kors', 'Versace', 'Gucci', 'Seiko'];
+// İzin verilen 12 marka
+const ALLOWED_BRANDS = new Set([
+  'Seiko',
+  'Tissot',
+  'Swatch',
+  'Casio',
+  'Carren',
+  'Versace',
+  'Calvin Klein',
+  'Michael Kors',
+  'Guess',
+  'Welder',
+  'Diesel',
+  'Fossil'
+]);
+
+const MULTIPLIER_1_60_BRANDS = [
+  'Seiko',
+  'Tissot',
+  'Swatch',
+  'Casio',
+  'Versace',
+  'Calvin Klein',
+  'Michael Kors',
+  'Guess',
+  'Welder',
+  'Diesel',
+  'Fossil'
+];
+
 const MAX_CATALOG_PRICE = 1_700_000;
-const MAX_ROLEX_PRICE = 2_000_000;
+const MIN_CATALOG_FLOOR = 10_000;
 const CARREN_FIXED_PRICE = 19_990;
 
 const failures = [];
@@ -36,7 +65,14 @@ for (const item of allItems) {
   }
 }
 
-// 2. CARREN PRICE INVARIANT (Sabit 19.990 TL)
+// 2. ONLY ALLOWED 12 BRANDS
+for (const item of allItems) {
+  if (!ALLOWED_BRANDS.has(item.brand)) {
+    failures.push(`[UNAUTHORIZED BRAND] Brand: ${item.brand} izin verilen 12 marka listesinde değil! (ID: ${item.id})`);
+  }
+}
+
+// 3. CARREN PRICE INVARIANT (Sabit 19.990 TL)
 const carrenItems = allItems.filter(x => x.brand === 'Carren');
 if (carrenItems.length === 0) {
   failures.push('[CARREN MISSING] Katalogda hiç Carren saat bulunamadı.');
@@ -47,27 +83,8 @@ for (const item of carrenItems) {
   }
 }
 
-// 3. CARTIER INVARIANTS (2.50 Katsayısı | Cartier 1.7M Tavan)
-const cartierItems = allItems.filter(x => x.brand === 'Cartier');
-
-if (cartierItems.length < 10) {
-  failures.push(`[CARTIER COUNT LOW] En az 10 adet Cartier olmalı, bulunan: ${cartierItems.length}`);
-}
-
-for (const item of cartierItems) {
-  if (item.pricingRule !== 'FOREIGN_SOURCE_X_DOVIZ_SELL_X_2_50' && item.pricingRule !== 'CARTIER_TR_X_2_50') {
-    failures.push(`[CARTIER RULE INVALID] ID: ${item.id} | Rule: ${item.pricingRule}`);
-  }
-  if (item.calculatedPrice > MAX_CATALOG_PRICE) {
-    failures.push(`[CARTIER CEILING EXCEEDED] ID: ${item.id} | Fiyat: ${item.calculatedPrice} > ${MAX_CATALOG_PRICE}`);
-  }
-  if (item.calculatedPrice < 200_000) {
-    failures.push(`[CARTIER SUSPICIOUS LOW PRICE] ID: ${item.id} | Fiyat çok düşük: ${item.calculatedPrice}`);
-  }
-}
-
-// 4. KONYALI & SAAT&SAAT INVARIANTS (1.50 Katsayısı)
-for (const brand of KONYALI_SVS_BRANDS) {
+// 4. MULTIPLIER x1.60 INVARIANTS
+for (const brand of MULTIPLIER_1_60_BRANDS) {
   const items = allItems.filter(x => x.brand === brand);
   if (items.length === 0) {
     failures.push(`[BRAND EMPTY] ${brand} markasında hiç ürün yok.`);
@@ -80,7 +97,7 @@ for (const brand of KONYALI_SVS_BRANDS) {
       failures.push(`[ZERO PRICE] ${brand} | ID: ${item.id} | orig: ${orig} | calc: ${calc}`);
       continue;
     }
-    const expectedCalc = Math.round(orig * 1.50);
+    const expectedCalc = Math.round(orig * 1.60);
     if (Math.abs(calc - expectedCalc) > 2) {
       failures.push(`[PRICE MULTIPLIER INVALID] ${brand} | ID: ${item.id} | orig: ${orig} | calc: ${calc} | expected: ${expectedCalc}`);
     }
@@ -91,11 +108,10 @@ for (const brand of KONYALI_SVS_BRANDS) {
 }
 
 // 5. ALL WATCHES BASELINE (Minimum 10.000 TL Tabanı - DEĞİŞMEZ KALICI KURAL)
-const MIN_CATALOG_FLOOR = 10_000;
 for (const item of allItems) {
   const calc = Number(item.calculatedPrice || 0);
   if (calc < MIN_CATALOG_FLOOR) {
-    failures.push(`[UNDER 10K FLOOR VIOLATION] ${item.brand} | ID: ${item.id} | ${item.modelName} | Fiyat: ${calc} < 10.000 TL (10.000 TL altı ürün barındırılamaz)`);
+    failures.push(`[UNDER 10K FLOOR VIOLATION] ${item.brand} | ID: ${item.id} | ${item.modelName} | Fiyat: ${calc} < 10.000 TL`);
   }
 }
 
@@ -118,20 +134,30 @@ for (const item of allItems) {
   }
 }
 
-// REPORT
-if (failures.length > 0) {
-  console.error('❌ SAATCHI CATALOG INTEGRITY GUARD FAILED:');
-  for (const f of failures.slice(0, 20)) {
-    console.error(`  - ${f}`);
+// 7. DESCRIPTION UNIQUENESS & QUALITY
+const descSet = new Set();
+let descDuplicates = 0;
+for (const item of allItems) {
+  const d = String(item.description || '').trim();
+  if (d.length < 50) {
+    failures.push(`[DESCRIPTION TOO SHORT] ID: ${item.id} | ${item.modelName} | Açıklama çok kısa: ${d.length} karakter`);
   }
-  if (failures.length > 20) {
-    console.error(`  ... ve ${failures.length - 20} hata daha`);
-  }
-  process.exit(1);
 }
 
-console.log(`✅ SAATCHI CATALOG INTEGRITY GUARD: PASS (${allItems.length} ürün eksiksiz doğrulandı)`);
-console.log(`   - Carren: ${carrenItems.length} adet (19.990 ₺ sabit KORUNDU)`);
-console.log(`   - Cartier: ${cartierItems.length} adet (x2.50 marj + 1.700.000 ₺ tavan KORUNDU)`);
-console.log(`   - Konyalı/Saat&Saat: ${allItems.length - carrenItems.length - cartierItems.length} adet (x1.50 marj KORUNDU)`);
-console.log(`   - PayTR & Fiyat Formatları: %100 Senkronize`);
+console.log('--- CATALOG INTEGRITY AUDIT ---');
+console.log(`Total Products: ${allItems.length} (Elite: ${elite.length}, General: ${watches.length})`);
+console.log(`PayTR Registry: ${paytr.length}`);
+
+if (failures.length > 0) {
+  console.error(`\n❌ FAIL: ${failures.length} integrity violations found:`);
+  for (const f of failures.slice(0, 30)) {
+    console.error(' - ' + f);
+  }
+  if (failures.length > 30) {
+    console.error(` ... ve ${failures.length - 30} ek hata daha.`);
+  }
+  process.exit(1);
+} else {
+  console.log('✅ PASS: All catalog integrity rules verified successfully! (12 Brands, 1.60x Pricing, 10k Floor, PayTR sync)');
+  process.exit(0);
+}
