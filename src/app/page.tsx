@@ -74,7 +74,7 @@ export default function Home() {
                 <span className="text-xs font-mono text-[#846b32] font-bold tracking-widest block mb-2">02 / NADİRLİK</span>
                 <h4 className="text-base font-serif font-bold text-[#1A1814] mb-2">Seçkin Referanslar</h4>
                 <p className="text-xs text-[#736B5E] leading-relaxed">
-                  Piyasada bulunması güç, bekleme listesi gerektiren en değerli Rolex ve Cartier modelleri.
+                  Piyasada bulunması güç, koleksiyon değeri yüksek en seçkin İsviçre ve Japon başyapıtları.
                 </p>
               </SpotlightCard>
 

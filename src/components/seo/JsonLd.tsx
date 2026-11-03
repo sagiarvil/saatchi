@@ -47,7 +47,7 @@ export function GlobalJsonLd() {
           "caption": "SAATCHI Lüks Saatler"
         },
         "image": "https://saatchi.com.tr/android-chrome-512x512.png",
-        "description": "Rolex, Cartier, TAG Heuer, Rado, Tissot ve seçkin markaların orijinal, bağımsız ekspertiz sertifikalı lüks saat satış platformu.",
+        "description": "Seiko, Tissot, Swatch, Casio, Carren, Versace ve seçkin markaların orijinal, bağımsız ekspertiz sertifikalı lüks saat satış platformu.",
         "currenciesAccepted": "TRY, USD, EUR",
         "paymentAccepted": "Credit Card, VIP Link, Bank Transfer",
         "priceRange": "₺₺₺₺",
@@ -77,8 +77,8 @@ export function GlobalJsonLd() {
         "@type": "WebPage",
         "@id": "https://saatchi.com.tr/#webpage",
         "url": "https://saatchi.com.tr/",
-        "name": "SAATCHI | Sertifikalı Lüks Saatler & İsviçre Koleksiyonları",
-        "description": "Rolex, Cartier, TAG Heuer, Rado ve İsviçre saat modelleri. %100 orijinallik kontrolü, bağımsız ekspertiz ve tam değer sigortalı VIP teslimat güvencesiyle.",
+        "name": "SAATCHI | Sertifikalı Orijinal Saatler & Marka Koleksiyonları",
+        "description": "Seiko, Tissot, Swatch, Casio, Carren, Versace ve seçkin saat modelleri. %100 orijinallik kontrolü, bağımsız ekspertiz ve tam değer sigortalı VIP teslimat güvencesiyle.",
         "isPartOf": { "@id": "https://saatchi.com.tr/#website" },
         "about": { "@id": "https://saatchi.com.tr/#organization" },
         "inLanguage": "tr-TR",
@@ -106,18 +106,18 @@ export function GlobalJsonLd() {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Saatchi bünyesindeki lüks saatler orijinal mi ve sertifikalı mıdır?",
+            "name": "Saatchi bünyesindeki saatler orijinal mi ve garantili midir?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Evet. Saatchi envanterindeki tüm lüks saatler seri numarası ve mekanizma incelemesinden geçmiş %100 orijinal ve sertifikalı saatlerdir. Her parça uzman horolog kontrolünden geçer ve orijinal evraklarıyla teslim edilir."
+              "text": "Evet. Saatchi envanterindeki tüm saatler seri numarası ve mekanizma incelemesinden geçmiş %100 orijinal, garantili saatlerdir. Her parça uzman kontrolünden geçer ve orijinal kutu/evraklarıyla teslim edilir."
             }
           },
           {
             "@type": "Question",
-            "name": "Rolex ve Cartier fiyatları nasıl belirlenmektedir?",
+            "name": "Saat fiyatları nasıl belirlenmektedir?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Fiyatlar Chrono24 küresel borsa endeksi ve Cartier resmi Türkiye satış kurları temel alınarak şeffaf x2.50 katsayısı ile hesaplanır. Rolex modellerinde 2.000.000 TL, Cartier modellerinde 1.700.000 TL tavan fiyat sınırı uygulanır."
+              "text": "Fiyatlar yetkili distribütör referans satış fiyatları temel alınarak şeffaf ve resmi x1.60 katsayısı ile hesaplanır. Carren saatler sabit 19.990 TL olup, tüm katalogda 10.000 TL taban fiyat standardı uygulanır."
             }
           },
           {

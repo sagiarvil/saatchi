@@ -36,11 +36,11 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
-  title: "SAATCHI | Sertifikalı Lüks Saatler & İsviçre Koleksiyonları",
-  description: "Rolex, Cartier, TAG Heuer, Rado ve İsviçre saat modelleri. %100 orijinallik kontrolü, bağımsız ekspertiz ve tam değer sigortalı VIP teslimat güvencesiyle.",
+  title: "SAATCHI | Sertifikalı Lüks Saatler & Seçkin Marka Koleksiyonları",
+  description: "Seiko, Tissot, Swatch, Casio, Carren, Versace ve seçkin dünya markaları. %100 orijinallik kontrolü, bağımsız ekspertiz ve tam değer sigortalı VIP teslimat güvencesiyle.",
   openGraph: {
-    title: "SAATCHI | Lüks Saat Koleksiyonları & İsviçre Saatleri",
-    description: "Rolex, Cartier, TAG Heuer ve İsviçre saat modelleri. %100 orijinallik kontrolü, bağımsız ekspertiz ve tam değer sigortalı VIP teslimat güvencesiyle.",
+    title: "SAATCHI | Lüks Saat Koleksiyonları & Orijinal Saatler",
+    description: "Seiko, Tissot, Swatch, Casio, Carren, Versace ve seçkin saat modelleri. %100 orijinallik kontrolü, bağımsız ekspertiz ve tam değer sigortalı VIP teslimat güvencesiyle.",
     url: "https://saatchi.com.tr",
     siteName: "SAATCHI",
     images: [
@@ -56,8 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SAATCHI | Sertifikalı Lüks Saatler",
-    description: "Rolex, Cartier, TAG Heuer ve elit lüks saat koleksiyonları. Tam değer sigortalı VIP teslimat.",
+    title: "SAATCHI | Sertifikalı Orijinal Saatler",
+    description: "Seiko, Tissot, Swatch, Casio, Versace ve seçkin koleksiyonlar. Tam değer sigortalı VIP teslimat.",
     images: ["https://saatchi.com.tr/logo.png"],
   },
   appleWebApp: {

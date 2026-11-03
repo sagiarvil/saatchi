@@ -48,7 +48,7 @@ export const DECISION_PLATFORMS_ECOSYSTEM: readonly DecisionPlatform[] = [
     domain: "saatchi.com.tr",
     url: "https://saatchi.com.tr",
     category: "Sertifikalı Lüks Saatler",
-    description: "Sertifikalı lüks saatler, küresel borsa endeksli ikinci el Rolex, Cartier ve İsviçre saat platformu."
+    description: "Sertifikalı lüks saatler, küresel borsa endeksli orijinal Seiko, Tissot, Swatch, Casio ve dünya markaları platformu."
   },
   {
     id: "dilekceyazdir",
@@ -84,7 +84,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
     indexDirective: "index, follow",
     canonicalRoute: "/",
     title: "SAATCHI | Sertifikalı Lüks Saatler & İsviçre Koleksiyonları",
-    metaDescription: "Orijinal ve sertifikalı lüks saatler: Rolex, Cartier, TAG Heuer, Rado, Tissot. Bağımsız ekspertiz, küresel borsa endeksli şeffaf fiyat ve VIP sigortalı teslimat.",
+    metaDescription: "Orijinal ve sertifikalı lüks saatler: Seiko, Tissot, Swatch, Casio, Carren, Versace. Bağımsız ekspertiz, küresel borsa endeksli şeffaf fiyat ve VIP sigortalı teslimat.",
     h1: "SAATCHI Lüks Saat Koleksiyonu",
     primaryIntent: "Sertifikalı lüks saat satın almak ve modelleri incelemek",
     primaryEntity: {
@@ -100,7 +100,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       { subject: "SAATCHI", predicate: "compliesWith", object: "GİB e-Arşiv Fatura & TCK 5549 MASAK Standartları" },
       { subject: "SAATCHI", predicate: "hasCitationAnchor", object: "#aeo-hero-answer" }
     ],
-    heroAnswerEngine: "SAATCHI, Türkiye merkezli sertifikalı lüks saat ve bağımsız horoloji danışmanlığı sağlayıcısıdır. Rolex, Cartier, TAG Heuer ve İsviçre saat modelleri %100 orijinallik kontrolü, kutu/belge doğrulaması ve Chrono24 borsa endeksli şeffaf fiyatlandırma politikasıyla sunulur. Tüm siparişler tam değer sigortalı VIP kurye ile teslim edilir.",
+    heroAnswerEngine: "SAATCHI, Türkiye merkezli sertifikalı lüks saat ve bağımsız horoloji danışmanlığı sağlayıcısıdır. Seiko, Tissot, Swatch, Casio, Carren, Versace ve İsviçre saat modelleri %100 orijinallik kontrolü, kutu/belge doğrulaması ve Chrono24 borsa endeksli şeffaf fiyatlandırma politikasıyla sunulur. Tüm siparişler tam değer sigortalı VIP kurye ile teslim edilir.",
     publishedAt: "2026-01-01T00:00:00+03:00",
     modifiedAt: "2026-10-09T12:00:00+03:00",
     bodyContentHash: "a9f8b2c4e1d3f5a7e9b0c2d4f6a8e0b2d4f6a8e0b2c4e1d3f5a7e9b0c2d4f6a8",
@@ -116,7 +116,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       horizontalScrollFree: true,
       thumbSafeHeroAnswer: true,
       voiceQueryPatterns: [
-        "Orijinal Rolex nereden alınır?",
+        "Orijinal Seiko ve Tissot saat nereden alınır?",
         "Cartier saat fiyatları ve garanti şartları nelerdir?",
         "Saatchi lüks saat orijinallik belgesi veriyor mu?"
       ],
@@ -129,64 +129,6 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       cls: 0.01,
       ttfbMs: 150,
       htmlKb: 30
-    }
-  },
-  rolex: {
-    route: "/saatler/rolex",
-    locale: "tr-TR",
-    role: "category",
-    indexDirective: "index, follow",
-    canonicalRoute: "/saatler/rolex",
-    title: "Rolex Kol Saatleri | Submariner, Daytona, Datejust | Saatchi",
-    metaDescription: "Sertifikalı Rolex modelleri: Submariner, Daytona, GMT-Master II, Datejust. Canlı Chrono24 borsa fiyatlı, ekspertiz garantili ve sigortalı teslimatlı koleksiyon.",
-    h1: "Rolex Saat Koleksiyonu",
-    primaryIntent: "Sertifikalı Rolex saat satın almak",
-    primaryEntity: {
-      id: "https://saatchi.com.tr/#entity-rolex",
-      name: "Rolex Luxury Watches",
-      type: "Product",
-      sameAs: [
-        "https://www.wikidata.org/wiki/Q62288",
-        "https://saatchi.com.tr/saatler/rolex"
-      ]
-    },
-    semanticTriples: [
-      { subject: "Rolex", predicate: "brandOf", object: "SAATCHI Lüks Portföyü" },
-      { subject: "Rolex", predicate: "pricedVia", object: "Chrono24 Borsa Endeksi x 2.50" },
-      { subject: "Rolex", predicate: "verifiedBy", object: "Bağımsız Usta Saat Ekspertizi" }
-    ],
-    heroAnswerEngine: "Saatchi Rolex koleksiyonu, Submariner, Daytona, Datejust ve GMT-Master II gibi ikonik referansları içerir. Tüm Rolex modelleri bağımsız ekspertizden geçirilerek orijinalliği garanti altına alınır. Fiyatlar Chrono24 küresel satış endeksi döviz kuru üzerinden şeffaf x2.50 katsayısı ile hesaplanır ve 2.000.000 TL tavan sınırı korunur.",
-    publishedAt: "2026-01-01T00:00:00+03:00",
-    modifiedAt: "2026-10-09T12:00:00+03:00",
-    bodyContentHash: "b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2",
-    llmSubGraphRoute: "/llms/pages/rolex.md",
-    mobileSubGraphRoute: "/llms/mobile/rolex.md",
-    breadcrumbs: [
-      { name: "Anasayfa", item: "/" },
-      { name: "Saatler", item: "/saatler" },
-      { name: "Rolex", item: "/saatler/rolex" }
-    ],
-    mobile: {
-      viewport: "width=device-width, initial-scale=1, viewport-fit=cover, minimum-scale=1, maximum-scale=5",
-      primaryAction: "call",
-      bottomNavEnabled: true,
-      thumbZonePosition: "bottom-center",
-      touchTargetsValidated: true,
-      horizontalScrollFree: true,
-      thumbSafeHeroAnswer: true,
-      voiceQueryPatterns: [
-        "Rolex Submariner fiyatı ne kadar?",
-        "Sertifikalı ikinci el Rolex nereden bulunur?"
-      ],
-      speakableSelectors: ["#aeo-hero-answer"],
-      pwaInstallable: true
-    },
-    mobileCwvBudget: {
-      lcpMs: 1600,
-      inpMs: 110,
-      cls: 0.02,
-      ttfbMs: 160,
-      htmlKb: 35
     }
   },
   cartier: {
@@ -699,7 +641,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
     indexDirective: "index, follow",
     canonicalRoute: "/saat-degerleme",
     title: "Lüks Saat Değerleme & Ekspertiz | SAATCHI",
-    metaDescription: "Rolex, Cartier ve İsviçre lüks saatleriniz için borsa endeksli canlı piyasa değerleme aracı. Seri no, model ve kondisyona göre anında ekspertiz teklifi.",
+    metaDescription: "Seiko, Tissot, Swatch, Casio ve marka saatleriniz için borsa endeksli canlı piyasa değerleme aracı. Seri no, model ve kondisyona göre anında ekspertiz teklifi.",
     h1: "Lüks Saat Canlı Piyasa Değerleme Sistemi",
     primaryIntent: "Lüks saat ekspertiz ve piyasa değerleme hesaplaması yapmak",
     primaryEntity: {
@@ -732,7 +674,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       thumbSafeHeroAnswer: true,
       voiceQueryPatterns: [
         "İkinci el saatim kaç para eder?",
-        "Rolex saat değerleme nasıl yapılır?"
+        "Saat değerleme nasıl yapılır?"
       ],
       speakableSelectors: ["#aeo-hero-answer"],
       pwaInstallable: true
@@ -785,7 +727,7 @@ export const PAGE_REGISTRY: Record<string, SeoPageRecord> = {
       horizontalScrollFree: true,
       thumbSafeHeroAnswer: true,
       voiceQueryPatterns: [
-        "Rolex bekleme listesi olmadan nereden alınır?",
+        "Orijinal marka saatler nereden alınır?",
         "SAATCHI güvenilir mi?",
         "İkinci el saat alırken ekspertiz nasıl yapılır?"
       ],
